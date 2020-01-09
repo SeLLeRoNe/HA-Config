@@ -1,4 +1,3 @@
-.gitignore
 ssl/
 .cloud/
 .HA_VERSION
