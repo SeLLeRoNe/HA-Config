@@ -1,0 +1,7 @@
+---
+name: Datacentre Rome
+latitude: !secret zone_datacentre_rome_latitude
+longitude: !secret zone_datacentre_rome_longitude
+radius: 15
+passive: false
+icon: mdi:server

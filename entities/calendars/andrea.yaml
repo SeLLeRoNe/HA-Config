@@ -1,0 +1,9 @@
+---
+platform: caldav
+username: !secret calendar_andrea_username
+password: !secret calendar_andrea_password
+url: !secret calendar_andrea_url
+custom_calendars:
+  - name: 'Andrea'
+    calendar: 'Personal'
+    search: ''

@@ -1,0 +1,35 @@
+---
+studio_sonia_energy:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: custom:decluttering-card
+        template: room_cost
+        variables:
+          - entity_daily_usage: sensor.studio_sonia_daily_energy_usage
+          - entity_daily_cost: sensor.studio_sonia_cost_daily
+          - entity_monthly_usage: sensor.studio_sonia_monthly_energy_usage
+          - entity_monthly_cost: sensor.studio_sonia_cost_monthly
+          - entity_yearly_usage: sensor.studio_sonia_yearly_energy_usage
+          - entity_yearly_cost: sensor.studio_sonia_cost_yearly
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_total
+        variables:
+          - entity_energy_usage: sensor.studio_sonia_today_energy_usage
+          - entity_power_usage: sensor.studio_sonia_total_power_usage
+          - entity_ampere_usage: sensor.studio_sonia_total_ampere_usage
+          - entity_voltage_usage: sensor.studio_sonia_average_voltage
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - device: Desk
+          - entity_energy_usage: sensor.power_usage_desk_sonia_today_energy
+          - entity_power_usage: sensor.power_usage_desk_sonia_power
+          - entity_ampere_usage: sensor.power_usage_desk_sonia_ampere
+          - entity_voltage_usage: sensor.power_usage_desk_sonia_voltage

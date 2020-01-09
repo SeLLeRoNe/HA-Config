@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  spotify_artist:
+    friendly_name: "Spotify - Artist"
+    value_template: "{{ state_attr('media_player.spotify', 'media_artist') }}"

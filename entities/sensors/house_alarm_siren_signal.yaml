@@ -1,0 +1,11 @@
+---
+# MQTT Device: House Alarm Siren Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "House Alarm Siren Link Quality"
+icon: mdi:alarm-bell
+state_topic: "zigbee2mqtt/house_alarm_siren"
+availability_topic: "zigbee2mqtt/house_alarm_siren/availability"
+value_template: "{{ value_json.linkquality }}"

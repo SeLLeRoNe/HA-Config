@@ -1,0 +1,148 @@
+title: Patio
+#icon: mdi:washing-machine
+#icon: fas:sunglasses
+icon: mdi:sunglasses
+panel: true
+path: patio
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Lights
+          - type: conditional
+            conditions:
+              - entity: light.patio_light
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.patio_light
+                  name: Light
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.patio_light
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.patio_light
+                  name: Light
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.patio_light
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+#          - type: custom:light-entity-card
+#            entity: light.patio_light
+#            header: Light
+#            group: true
+#            persist_features: true
+#            brightness: true
+#            color_temp: true
+#            white_value: true
+#            color_picker: true
+#            effects_list:
+#              - 1
+#              - 2
+#              - 3
+#              - 4
+#          - type: entities
+#            title: Lights
+#            entities:
+#              - entity: light.patio_light
+      - break
+      - type: vertical-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:decluttering-card
+                template: title
+                variables:
+                  - title: Sensors
+              - type: glance
+#                title: Sensors
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: Motion Sensor
+                    entity: binary_sensor.patio_pir
+                    tap_action:
+                      action: none
+                  - name: Door Status
+                    entity: binary_sensor.patio_mccgq01lm_door
+                    tap_action:
+                      action: none
+          - type: horizontal-stack
+            cards:
+              - type: custom:decluttering-card
+                template: patio_temperature
+          - type: horizontal-stack
+            cards:
+              - type: custom:decluttering-card
+                template: humidity
+                variables:
+                  - entity: sensor.patio_humidity
+              - type: custom:decluttering-card
+                template: pressure
+                variables:
+                  - entity: sensor.patio_pressure
+#      - break
+#      - type: custom:vertical-stack-in-card
+#        cards:
+#          - type: picture-glance
+#            title: Live view
+#            entities: []
+#            camera_image: camera.patio
+#            camera_view: camera.patio

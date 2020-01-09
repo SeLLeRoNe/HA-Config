@@ -1,0 +1,10 @@
+---
+dishwasher_status:
+  name: Dishwasher
+  options:
+    - Idle
+    - Warming Up
+    - Washing
+    - Drying
+    - Done
+  initial: Idle

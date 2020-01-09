@@ -1,0 +1,7 @@
+---
+name: Sarah Home
+latitude: !secret zone_sarah_home_latitude
+longitude: !secret zone_sarah_home_longitude
+radius: 10
+passive: false
+icon: mdi:home-city

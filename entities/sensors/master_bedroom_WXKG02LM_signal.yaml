@@ -1,0 +1,11 @@
+---
+# MQTT Device: Master Bedroom WXKG02LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Master Bedroom WXKG02LM Link Quality"
+icon: mdi:light-switch
+state_topic: "zigbee2mqtt/master_bedroom_WXKG02LM"
+availability_topic: "zigbee2mqtt/master_bedroom_WXKG02LM/availability"
+value_template: "{{ value_json.linkquality }}"

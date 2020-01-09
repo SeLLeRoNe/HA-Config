@@ -1,0 +1,23 @@
+---
+# Automations to set colors on HASP Page 7
+alias: hasp_desk01_alarm_colors
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: 'binary_sensor.hasp_desk'
+    to: 'on'
+  - platform: homeassistant
+    event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/command/json'
+      payload_template: >-
+        [{%- for i in range(4,13) -%}"p[7].b[{{i}}].pco=31663",{%- endfor -%}
+        "p[7].b[14].pco=31663",
+        {%- for i in range(4,13) -%}"p[7].b[{{i}}].bco=0",{%- endfor -%}
+        "p[7].b[14].bco=0",
+        {%- for i in range(4,13) -%}"p[7].b[{{i}}].pco2=23179",{%- endfor -%}
+        "p[7].b[14].pco2=23179",
+        {%- for i in range(4,13) -%}"p[7].b[{{i}}].bco2=10741",{%- endfor -%}
+        "p[7].b[14].bco2=10741"]

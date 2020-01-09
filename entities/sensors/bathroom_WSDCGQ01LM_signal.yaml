@@ -1,0 +1,11 @@
+---
+# MQTT Device: Bathroom WSDCGQ01LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Bathroom WSDCGQ01LM Link Quality'
+icon: mdi:home-thermometer
+state_topic: "zigbee2mqtt/bathroom_WSDCGQ01LM"
+availability_topic: "zigbee2mqtt/bathroom_WSDCGQ01LM/availability"
+value_template: "{{ value_json.linkquality }}"

@@ -1,0 +1,16 @@
+---
+# Toggle all light_toggle_group when p[3].b[7] pressed
+alias: hasp_desk01_light_all
+initial_state: 'on'
+trigger:
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[3].b[7]'
+    payload: 'ON'
+action:
+  - service_template: >
+        {% if is_state('group.hasp_desk01_lights', 'on') -%}
+          homeassistant.turn_off
+        {%- else -%}
+          homeassistant.turn_on
+        {%- endif %}
+    entity_id: group.hasp_desk01_lights

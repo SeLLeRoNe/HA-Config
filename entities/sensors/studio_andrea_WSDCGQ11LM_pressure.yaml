@@ -1,0 +1,12 @@
+---
+# MQTT Device: Andrea's Studio Humidity Sensor
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Studio Andrea Pressure'
+state_topic: "zigbee2mqtt/studio_andrea_WSDCGQ11LM"
+availability_topic: "zigbee2mqtt/studio_andrea_WSDCGQ11LM/availability"
+unit_of_measurement: "mbar"
+device_class: "pressure"
+value_template: "{{ value_json.pressure }}"

@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  spotify_device:
+    friendly_name: "Spotify - Device"
+    value_template: "{{ state_attr('media_player.spotify', 'source') }}"

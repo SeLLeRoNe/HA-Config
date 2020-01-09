@@ -1,0 +1,8 @@
+---
+energy_daily_price:
+  name: Energy Price for 4.6kW Provided (Daily)
+  mode: box
+  min: 0
+  max: 100
+  unit_of_measurement: "EUR/kWh"
+  icon: mdi:currency-eur

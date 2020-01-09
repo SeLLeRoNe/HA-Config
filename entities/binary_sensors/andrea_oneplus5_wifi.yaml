@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  andrea_oneplus5_wifi:
+    friendly_name: OnePlus 5 WiFi
+    value_template: "{{ state_attr('device_tracker.andrea_iannucci', 'wifi_on') }}"
+    icon_template: >-
+      {% if is_state('binary_sensor.andrea_oneplus5_wifi', 'on') %}
+        mdi:wifi
+      {% elif is_state('input_boolean.andrea_oneplus5_wifi', 'on') %}
+        mdi:wifi
+      {% else %}
+        mdi:wifi-off
+      {% endif %}

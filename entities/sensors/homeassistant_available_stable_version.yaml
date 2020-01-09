@@ -1,0 +1,4 @@
+---
+platform: version
+name: Home Assistant Available Stable Version
+source: pypi

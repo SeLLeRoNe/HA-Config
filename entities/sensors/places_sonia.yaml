@@ -1,0 +1,9 @@
+---
+platform: places
+name: Sonia
+devicetracker_id: device_tracker.sonia_mi9tpro
+options: formatted_address
+map_provider: google
+map_zoom: 18
+home_zone: zone.home
+api_key: !secret mail_sonia

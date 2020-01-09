@@ -1,0 +1,5 @@
+---
+platform: tod
+name: Night Time
+after: sunset
+before: sunrise

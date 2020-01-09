@@ -1,0 +1,25 @@
+---
+alias: Mobile - Honor 8 - Battery Full
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.sonia_honor8_battery
+    above: 99
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.sonia_honor8_charging
+      state: 'on'
+    - condition: state
+      entity_id: person.sonia
+      state: 'home'
+action:
+  - service: notify.html5_sonia
+    data_template:
+      title: "Battery Full"
+      message: "Battery Full on Honor 8, please unplug it!"
+  - service: notify.html5_andrea_computer_studio
+    data_template:
+      title: "Battery Full"
+      message: "Battery Full on Honor 8, please unplug it!"

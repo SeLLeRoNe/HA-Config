@@ -1,0 +1,11 @@
+---
+platform: rest
+resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
+name: Tasmota Available Version
+value_template: '{{ value_json.tag_name }}'
+headers:
+  Accept: application/vnd.github.v3+json
+  Content-Type: application/json
+  User-Agent: Home Assistant REST sensor
+force_update: true
+scan_interval: 3600

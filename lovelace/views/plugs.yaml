@@ -1,0 +1,703 @@
+title: Plugs
+icon: mdi:power-plug
+panel: true
+path: plugs
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: entities
+            title: Summary
+            show_header_toggle: false
+            style: |
+              ha-card {
+                border: solid 1px var(--primary-color);
+              }
+            entities:
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Costs Breakdown
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.house_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_cost_yearly
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.living_room_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_cost_yearly
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.kitchen_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_cost_yearly
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.laundry_room_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_cost_yearly
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_andrea_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_cost_yearly
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_sonia_cost_daily
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_cost_monthly
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_cost_yearly
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Energy Meters (Daily)
+                  type: section
+                padding: 0
+                entities:
+                  - type: divider
+                  - entity: sensor.living_room_electricity_daily_peak
+                    name: Living Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_electricity_daily_offpeak
+                    name: Living Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_daily_energy_usage
+                    name: Living Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.kitchen_electricity_daily_peak
+                    name: Kitchen (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_electricity_daily_offpeak
+                    name: Kitchen (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_daily_energy_usage
+                    name: Kitchen (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.laundry_room_electricity_daily_peak
+                    name: Laundry Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_electricity_daily_offpeak
+                    name: Laundry Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_daily_energy_usage
+                    name: Laundry Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_andrea_electricity_daily_peak
+                    name: Studio Andrea (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_electricity_daily_offpeak
+                    name: Studio Andrea (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_daily_energy_usage
+                    name: Studio Andrea (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_sonia_electricity_daily_peak
+                    name: Studio Sonia (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_electricity_daily_offpeak
+                    name: Studio Sonia (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_daily_energy_usage
+                    name: Studio Sonia (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.house_electricity_daily_peak
+                    name: House (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_daily_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_electricity_daily_offpeak
+                    name: House (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_daily_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_daily_energy_usage
+                    name: House (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_daily
+                      name: false
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Energy Meters (Monthly)
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.living_room_electricity_monthly_peak
+                    name: Living Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_electricity_monthly_offpeak
+                    name: Living Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_monthly_energy_usage
+                    name: Living Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.kitchen_electricity_monthly_peak
+                    name: Kitchen (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_electricity_monthly_offpeak
+                    name: Kitchen (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_monthly_energy_usage
+                    name: Kitchen (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.laundry_room_electricity_monthly_peak
+                    name: Laundry Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_electricity_monthly_offpeak
+                    name: Laundry Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_monthly_energy_usage
+                    name: Laundry Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_andrea_electricity_monthly_peak
+                    name: Studio Andrea (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_electricity_monthly_offpeak
+                    name: Studio Andrea (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_monthly_energy_usage
+                    name: Studio Andrea (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_sonia_electricity_monthly_peak
+                    name: Studio Sonia (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_electricity_monthly_offpeak
+                    name: Studio Sonia (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_monthly_energy_usage
+                    name: Studio Sonia (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.house_electricity_monthly_peak
+                    name: House (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_monthly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_electricity_monthly_offpeak
+                    name: House (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_monthly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_monthly_energy_usage
+                    name: House (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_monthly
+                      name: false
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Energy Meters (Yearly)
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.living_room_electricity_yearly_peak
+                    name: Living Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_electricity_yearly_offpeak
+                    name: Living Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.living_room_yearly_energy_usage
+                    name: Living Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.living_room_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.kitchen_electricity_yearly_peak
+                    name: Kitchen (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_electricity_yearly_offpeak
+                    name: Kitchen (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.kitchen_yearly_energy_usage
+                    name: Kitchen (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.kitchen_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.laundry_room_electricity_yearly_peak
+                    name: Laundry Room (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_electricity_yearly_offpeak
+                    name: Laundry Room (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.laundry_room_yearly_energy_usage
+                    name: Laundry Room (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.laundry_room_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_andrea_electricity_yearly_peak
+                    name: Studio Andrea (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_electricity_yearly_offpeak
+                    name: Studio Andrea (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_andrea_yearly_energy_usage
+                    name: Studio Andrea (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_andrea_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.studio_sonia_electricity_yearly_peak
+                    name: Studio Sonia (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_electricity_yearly_offpeak
+                    name: Studio Sonia (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.studio_sonia_yearly_energy_usage
+                    name: Studio Sonia (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.studio_sonia_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+                  - type: divider
+                  - entity: sensor.house_electricity_yearly_peak
+                    name: House (Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_yearly_peak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_electricity_yearly_offpeak
+                    name: House (Off Peak)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_yearly_offpeak
+                      name: false
+                    tap_action:
+                      action: none
+                  - entity: sensor.house_yearly_energy_usage
+                    name: House (Total)
+                    type: custom:multiple-entity-row
+                    primary:
+                      entity: sensor.house_cost_yearly
+                      name: false
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Monitored Devices (Today)
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.power_usage_desk_andrea_today_energy
+                    name: Desk Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_table_andrea_today_energy
+                    name: Table Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_desk_sonia_today_energy
+                    name: Desk Sonia
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_tv_stand_today_energy
+                    name: TV Stand
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_fridge_today_energy
+                    name: Fridge
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_dishwasher_today_energy
+                    name: Dishwasher
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_washing_machine_today_energy
+                    name: Washing Machine
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Monitored Devices (Yesterday)
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.power_usage_desk_andrea_yesterday_energy
+                    name: Desk Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_table_andrea_yesterday_energy
+                    name: Table Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_desk_sonia_yesterday_energy
+                    name: Desk Sonia
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_tv_stand_yesterday_energy
+                    name: TV Stand
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_fridge_yesterday_energy
+                    name: Fridge
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_dishwasher_yesterday_energy
+                    name: Dishwasher
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_washing_machine_yesterday_energy
+                    name: Washing Machine
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Monitored Devices (Total)
+                  type: section
+                padding: 0
+                entities:
+                  - entity: sensor.power_usage_desk_andrea_total_energy
+                    name: Desk Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_table_andrea_total_energy
+                    name: Table Andrea
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_desk_sonia_total_energy
+                    name: Desk Sonia
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_tv_stand_total_energy
+                    name: TV Stand
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_fridge_total_energy
+                    name: Fridge
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_dishwasher_total_energy
+                    name: Dishwasher
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_washing_machine_total_energy
+                    name: Washing Machine
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Tariff Prices
+                  type: section
+                padding: 0
+                entities:
+                  - entity: utility_meter.house_electricity_daily
+                    name: Current Tariff
+                    tap_action:
+                      action: none
+                  - entity: input_number.energy_daily_price
+                    tap_action:
+                      action: none
+                  - entity: input_number.energy_price_peak
+                    tap_action:
+                      action: none
+                  - entity: input_number.energy_price_offpeak
+                    tap_action:
+                      action: none
+#              - entity: script.reset_utility_meters
+#                    tap_action:
+#                      action: none
+      - break
+      - type: custom:decluttering-card
+        template: house_energy
+        variables:
+          - title: House
+      - break
+      - type: custom:decluttering-card
+        template: living_room_energy
+        variables:
+          - title: Living Room
+      - break
+      - type: custom:decluttering-card
+        template: kitchen_energy
+        variables:
+          - title: Kitchen
+      - break
+      - type: custom:decluttering-card
+        template: laundry_room_energy
+        variables:
+          - title: Laundry Room
+      - break
+      - type: custom:decluttering-card
+        template: studio_andrea_energy
+        variables:
+          - title: Studio Andrea
+      - break
+      - type: custom:decluttering-card
+        template: studio_sonia_energy
+        variables:
+          - title: Studio Sonia

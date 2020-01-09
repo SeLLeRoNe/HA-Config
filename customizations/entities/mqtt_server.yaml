@@ -1,0 +1,3 @@
+---
+binary_sensor.mqtt_server:
+  icon: mdi:format-list-bulleted

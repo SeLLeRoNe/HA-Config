@@ -1,0 +1,7 @@
+---
+name: Alessandra Home
+latitude: !secret zone_alessandra_home_latitude
+longitude: !secret zone_alessandra_home_longitude
+radius: 10
+passive: false
+icon: mdi:home-heart

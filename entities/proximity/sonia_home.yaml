@@ -1,0 +1,9 @@
+---
+sonia_home:
+  zone: home
+  ignored_zones:
+#    - office_sonia
+  devices:
+    - person.sonia
+  tolerance: 50
+  unit_of_measurement: m

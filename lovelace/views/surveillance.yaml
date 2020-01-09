@@ -1,0 +1,17 @@
+title: Surveillance
+icon: mdi:cctv
+panel: true
+path: surveiilance
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:surveillance-card
+        thumb_interval: 15
+        update_interval: 1
+        focus_motion: true
+        cameras:
+          - entity: camera.hallway
+#            motion_entity: binary_sensor.hallway_pir
+#      - type: picture-entity
+#        camera_view: live
+#        entity: camera.hallway

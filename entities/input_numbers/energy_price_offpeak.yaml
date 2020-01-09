@@ -1,0 +1,8 @@
+---
+energy_price_offpeak:
+  name: Energy Price per kWh (Off Peak)
+  mode: box
+  min: 0
+  max: 100
+  unit_of_measurement: "EUR/kWh"
+  icon: mdi:currency-eur

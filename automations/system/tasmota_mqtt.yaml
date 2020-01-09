@@ -1,0 +1,111 @@
+---
+#
+# Send Standard Configuration to all Tasmota Devices.
+#
+alias: System - Tasmota Default Settings
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: '00:00:00'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/sonoffs/grouptopic"
+      payload: "tasmotas"
+      retain: true
+  - delay:
+      seconds: 5
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/NtpServer"
+      payload: "192.168.0.100"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: cmnd/tasmotas/otaurl
+      payload: "http://thehackbox.org/tasmota/tasmota.bin"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/Backlog"
+      payload: "POWER1 ;POWER2 ;POWER3 ;POWER4 ;POWER5; DIMMER; STATE;"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/WebServer"
+      payload: "0"
+      retain: true
+  - delay:
+      seconds: 10
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/WebServer"
+      payload: "2"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/TelePeriod"
+      payload: "60"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/PowerRetain"
+      payload: "1"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SensorRetain"
+      payload: "1"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SwitchRetain"
+      payload: "Off"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/ButtonRetain"
+      payload: "Off"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/PowerOnState"
+      payload: "3"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SetOption0"
+      payload: "1"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SetOption19"
+      payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SetOption36"
+      payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SetOption59"
+      payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/WebColor"
+      payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/Status"
+      payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/WifiConfig"
+      payload: "5"
+      retain: true

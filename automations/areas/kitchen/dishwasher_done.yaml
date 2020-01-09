@@ -1,0 +1,30 @@
+---
+# When power is detected, and the dish washer is not in 
+# the Running state, change the status of the washing machine
+# to Running. 
+# The status check will ensure we don't try to put the state 
+# to Running each time the power level changes, and we're already
+# in the Running state.
+alias: Kitchen - Dishwasher - Done
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.power_usage_dishwasher_power
+    above: 1
+    below: 3
+    for:
+      seconds: 30
+condition:
+  condition: or
+  conditions:
+    - condition: state
+      entity_id: input_select.dishwasher_status
+      state: 'Running'
+    - condition: state
+      entity_id: input_select.dishwasher_status
+      state: 'Spinning'
+action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dishwasher_status
+      option: Done

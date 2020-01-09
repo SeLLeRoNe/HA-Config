@@ -1,0 +1,51 @@
+---
+# Set page button colors across selected pages to show active page button
+alias: hasp_desk01_button_colors
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: 'binary_sensor.hasp_desk'
+    to: 'on'
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/command/json'
+      payload_template: >-
+        [{%- for i in range(1,10) -%}"p[{{i}}].b[1].pco={% if i == 7 -%}
+            31663
+          {%- else -%}
+            23179
+          {%- endif %}",
+        {%- endfor -%}
+        {%- for i in range(1,10) -%}"p[{{i}}].b[1].bco={% if i == 7 -%}
+            0
+          {%- else -%}
+            0
+          {%- endif %}",
+        {%- endfor -%}
+        {%- for i in range(1,10) -%}"p[{{i}}].b[2].pco={% if i == 2 -%}
+            31663
+          {%- else -%}
+            23179
+          {%- endif %}",
+        {%- endfor -%}
+        {%- for i in range(1,10) -%}"p[{{i}}].b[2].bco={% if i == 2 -%}
+            0
+          {%- else -%}
+            0
+          {%- endif %}",
+        {%- endfor -%}
+        {%- for i in range(1,10) -%}"p[{{i}}].b[3].pco={% if i == 3 -%}
+            31663
+          {%- else -%}
+            23179
+          {%- endif %}",
+        {%- endfor -%}
+        {%- for i in range(1,10) -%}"p[{{i}}].b[3].bco={% if i == 3 -%}
+            0
+          {%- else -%}
+            0
+          {%- endif %}",
+        {%- endfor -%}]

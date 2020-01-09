@@ -1,0 +1,450 @@
+title: Humidities
+icon: mdi:water-percent
+panel: true
+path: humidity
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Humidities
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.dark_sky_humidity
+            variables:
+              - states['sensor.dark_sky_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Outside
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.dark_sky_humidity
+                  color: '#FF8000'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.patio_humidity
+            variables:
+              - states['sensor.patio_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Patio
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.patio_humidity
+                  color: '#FF3333'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.living_room_humidity
+            variables:
+              - states['sensor.living_room_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Living Room
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.living_room_humidity
+                  color: '#FF3333'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.kitchen_humidity
+            variables:
+              - states['sensor.kitchen_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Kitchen
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.kitchen_humidity
+                  color: '#FF6666'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.bathroom_humidity
+            variables:
+              - states['sensor.bathroom_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Bathroom
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.bathroom_humidity
+                  color: '#FF33FF'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.studio_andrea_humidity
+            variables:
+              - states['sensor.studio_andrea_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Studio Andrea
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.studio_andrea_humidity
+                  color: '#7F00FF'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.studio_sonia_humidity
+            variables:
+              - states['sensor.studio_sonia_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Studio Sonia
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.studio_sonia_humidity
+                  color: '#00FF00'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.master_bedroom_humidity
+            variables:
+              - states['sensor.master_bedroom_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Master Bedroom
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.master_bedroom_humidity
+                  color: '#0080FF'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.master_bathroom_humidity
+            variables:
+              - states['sensor.master_bathroom_humidity'].state
+            card:
+              type: custom:mini-graph-card
+              name: Master Bathroom
+              icon: fas:tint
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              entities:
+                - entity: sensor.master_bathroom_humidity
+                  color: '#33FF99'
+                  show_indicator: true
+      - type: custom:mini-graph-card
+        name: Humidity 48h
+        icon: fas:tint
+        more_info: false
+        group: false
+        height: 150
+        line_width: 4
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        hour24: true
+        animate: false
+        decimals: 1
+        font_size: 100
+        font_size_header: 14
+        align_header: default
+        align_icon: right
+        align_state: center
+        lower_bound: 0
+        upper_bound: 100
+#        state_map:
+#          - value: "off"
+#            label: "Day"
+#          - value: "on"
+#            label: "Night"
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: bar
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+          labels_secondary: false
+          name_adaptive_color: false
+          icon_adaptive_color: false
+        entities:
+          - entity: sensor.dark_sky_humidity
+            name: Outside
+            color: '#FF8000'
+          - entity: sensor.patio_humidity
+            name: Patio
+            color: '#0066FF'
+          - entity: sensor.master_bedroom_humidity
+            name: Master Bedroom
+            color: '#0080FF'
+          - entity: sensor.living_room_humidity
+            name: Living Room
+            color: '#FF3333'
+          - entity: sensor.studio_andrea_humidity
+            name: Studio Andrea
+            color: '#7F00FF'
+          - entity: sensor.studio_sonia_humidity
+            name: Studio Sonia
+            color: '#00FF00'
+          - entity: sensor.master_bathroom_humidity
+            name: Master Bathroom
+            color: '#33FF99'
+          - entity: sensor.bathroom_humidity
+            name: Bathroom
+            color: '#FF33FF'
+          - entity: sensor.kitchen_humidity
+            name: Bathroom
+            color: '#FF6666'
+#          - entity: input_number.night_time
+#            color: '#B3B3B3'
+#            name: Night Time
+#            show_fill: true
+#            show_line: false
+#            show_points: false
+#            show_legend: false
+#            y_axis: secondary

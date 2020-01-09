@@ -1,0 +1,7 @@
+---
+name: Patrizia Home
+latitude: !secret zone_patrizia_home_latitude
+longitude: !secret zone_patrizia_home_longitude
+radius: 25
+passive: false
+icon: mdi:home

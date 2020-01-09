@@ -1,0 +1,122 @@
+---
+# Utility Meters are gathering information about states and conditions.
+#
+# This loads up my sensor configurations
+#
+# https://www.home-assistant.io/components/utility_meter/
+#
+utility_meter:
+  # HOUSE #
+  house_electricity_daily:
+    source: sensor.house_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  house_electricity_monthly:
+    source: sensor.house_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  house_electricity_yearly:
+    source: sensor.house_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak
+  # LIVING ROOM #
+  living_room_electricity_daily:
+    source: sensor.living_room_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  living_room_electricity_monthly:
+    source: sensor.living_room_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  living_room_electricity_yearly:
+    source: sensor.living_room_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak
+  # KITCHEN #
+  kitchen_electricity_daily:
+    source: sensor.kitchen_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  kitchen_electricity_monthly:
+    source: sensor.kitchen_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  kitchen_electricity_yearly:
+    source: sensor.kitchen_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak
+  # LAUNDRY ROOM #
+  laundry_room_electricity_daily:
+    source: sensor.laundry_room_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  laundry_room_electricity_monthly:
+    source: sensor.laundry_room_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  laundry_room_electricity_yearly:
+    source: sensor.laundry_room_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak
+  # STUDIO ANDREA #
+  studio_andrea_electricity_daily:
+    source: sensor.studio_andrea_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  studio_andrea_electricity_monthly:
+    source: sensor.studio_andrea_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  studio_andrea_electricity_yearly:
+    source: sensor.studio_andrea_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak
+  # STUDIO SONIA #
+  studio_sonia_electricity_daily:
+    source: sensor.studio_sonia_total_energy_usage
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  studio_sonia_electricity_monthly:
+    source: sensor.studio_sonia_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  studio_sonia_electricity_yearly:
+    source: sensor.studio_sonia_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - peak
+      - offpeak

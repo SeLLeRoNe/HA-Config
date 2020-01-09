@@ -1,0 +1,647 @@
+title: Test
+icon: mdi:tune
+panel: true
+path: test
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.andrea_oneplus5_gps
+          - entity: sensor.sonia_mi9tpro_gps
+          - entity: sensor.sonia_honor8_gps
+      - type: history-graph
+        title:
+        hours_to_show: 24
+        refresh_interval: 15
+        entities:
+          - person.andrea
+          - person.sonia
+#      - type: custom:decluttering-card
+#        template: house_humidity
+#        variables:
+#          - entity1: sensor.living_room_humidity
+#          - title: House
+#          - entity_daily_usage: sensor.house_daily_energy_usage
+#          - entity_daily_cost: sensor.house_cost_daily
+#          - entity_monthly_usage: sensor.house_monthly_energy_usage
+#          - entity_monthly_cost: sensor.house_cost_monthly
+#          - entity_yearly_usage: sensor.house_yearly_energy_usage
+#          - entity_yearly_cost: sensor.house_cost_yearly
+#          - entity_total_usage: sensor.house_today_energy_usage
+#          - entity_power_usage: sensor.house_power_usage
+#          - entity_ampere_usage: sensor.house_ampere_usage
+#          - entity_voltage_usage: sensor.house_average_voltage
+
+#      - type: custom:decluttering-card
+#        template: title
+#        variables:
+#          - title: House
+#      - type: custom:decluttering-card
+#        template: house_cost
+#        variables:
+#          - entity_daily_usage: sensor.house_daily_energy_usage
+#          - entity_daily_cost: sensor.house_cost_daily
+#          - entity_monthly_usage: sensor.house_monthly_energy_usage
+#          - entity_monthly_cost: sensor.house_cost_monthly
+#          - entity_yearly_usage: sensor.house_yearly_energy_usage
+#          - entity_yearly_cost: sensor.house_cost_yearly
+#      - type: custom:decluttering-card
+#        template: house_total
+#        variables:
+#          - entity_total_usage: sensor.house_today_energy_usage
+#          - entity_power_usage: sensor.house_power_usage
+#          - entity_ampere_usage: sensor.house_ampere_usage
+#          - entity_voltage_usage: sensor.house_average_voltage
+#          - type: custom:gui-sandbox
+#          - type: custom:ha-card-waze-travel-time
+#            header: false
+#            name: "Route to..."
+#            columns:
+#              - from
+#              - to
+#              - duration
+#              - distance
+#              - icon
+#            destinations:
+#              - entity: sensor.waze_home_1_workplace
+#                name: "1 workplace"
+#              - entity: sensor.waze_home_2_workplace
+#                name: "2 workplace"
+#      - break
+#      - type: vertical-stack
+#        cards:
+      # - break
+      # - type: vertical-stack
+      #   cards:
+      #     - type: 'custom:config-template-card'
+      #       variables:
+      #         - states['sensor.andrea_bedside_lamp_status'].attributes['MqttCount']
+      #         - states['sensor.andrea_bedside_lamp_status'].attributes['WiFi LinkCount']
+      #         - states['sensor.andrea_bedside_lamp_status'].state
+      #         - states['sensor.sonia_bedside_lamp_status'].attributes['MqttCount']
+      #         - states['sensor.sonia_bedside_lamp_status'].attributes['WiFi LinkCount']
+      #         - states['sensor.sonia_bedside_lamp_status'].state
+      #         - states['sensor.desk_lamp_status'].attributes['MqttCount']
+      #         - states['sensor.desk_lamp_status'].attributes['WiFi LinkCount']
+      #         - states['sensor.desk_lamp_status'].state
+      #         - states['sensor.rf_bridge_status'].attributes['MqttCount']
+      #         - states['sensor.rf_bridge_status'].attributes['WiFi LinkCount']
+      #         - states['sensor.rf_bridge_status'].state
+      #       entities:
+      #         - sensor.andrea_bedside_lamp_status
+      #         - sensor.sonia_bedside_lamp_status
+      #         - sensor.desk_lamp_status
+      #         - sensor.rf_bridge_status
+      #       card:
+      #         type: 'custom:hui-entities-card'
+      #         title: MQTT & Wifi Connections
+      #         show_header_toggle: false
+      #         entities:
+      #           - entity: sensor.andrea_bedside_lamp_status
+      #             name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + states['vars[0]'].state + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + ((parseInt(vars[2]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
+      #             icon: "${vars[2] >= 100 ? 'mdi:wifi' : vars[2] >= 80 ? 'mdi:wifi-strength-3' : vars[2] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+      #           - entity: sensor.sonia_bedside_lamp_status
+      #             name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + ((parseInt(vars[5]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
+      #             icon: "${vars[5] >= 100 ? 'mdi:wifi' : vars[5] >= 80 ? 'mdi:wifi-strength-3' : vars[5] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+      #           - entity: sensor.desk_lamp_status
+      #             name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + ((parseInt(vars[8]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
+      #             icon: "${vars[8] >= 100 ? 'mdi:wifi' : vars[8] >= 80 ? 'mdi:wifi-strength-3' : vars[8] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+      #           - entity: sensor.rf_bridge_status
+      #             name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
+      #             icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
+      # - type: horizontal-stack
+      #   cards:
+      #     - type: custom:garbage-collection-card
+      #       entity: sensor.waste
+      #     - type: custom:garbage-collection-card
+      #       entity: sensor.bio_waste
+      # - break
+      # - type: horizontal-stack
+      #   cards:
+      #     - type: picture-elements
+      #       image: /local/icons/family/sellerone.png
+      #       elements:
+      #         - type: state-label
+      #           entity: device_tracker.andrea_iannucci
+      #           prefix: ''
+      #           style: {color: white, left: 30%, top: 90%}
+      #           tap_action:
+      #             action: none
+      #         - type: state-icon
+      #           entity: sensor.andrea_oneplus5_battery
+      #           tap_action: 
+      #             action: none
+      #           style: {color: white, left: 73%, top: 90%}
+      #         - type: state-label
+      #           entity: sensor.andrea_oneplus5_battery
+      #           style: {color: white, left: 87%, top: 91%}
+      #           tap_action:
+      #             action: none
+      #         - type: state-label
+      #           entity: proximity.andrea_home
+      #           style: {color: white, left: 92%, top: 10%}
+      #           tap_action:
+      #             action: none
+      #         - type: state-icon
+      #           entity: binary_sensor.james_ble_status
+      #           style: {color: white, left: 92%, top: 25%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_keys_status
+      #           style: {color: white, left: 92%, top: 40%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_bag_status
+      #           style: {color: white, left: 92%, top: 55%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_car_status
+      #           style: {color: white, left: 92%, top: 70%}
+      #       style: |
+      #         ha-card {
+      #           border-radius: 20px
+      #           border: solid 1px rgba(100,100,100,0.3)
+      #           box-shadow: 3px 3px rgba(0,0,0,0.4)
+      #           overflow: hidden
+      #         }
+      #     - type: picture-elements
+      #       image: /local/icons/family/sonia.png
+      #       elements:
+      #         - type: state-label
+      #           entity: device_tracker.sonia_espejo_brea
+      #           prefix: ''
+      #           style: {color: white, left: 30%, top: 90%}
+      #           tap_action:
+      #             action: none
+      #         - type: state-icon
+      #           entity: sensor.sonia_honor8_battery
+      #           tap_action: 
+      #             action: none
+      #           style: {color: white, left: 73%, top: 90%}
+      #         - type: state-label
+      #           entity: sensor.sonia_honor8_battery
+      #           tap_action:
+      #             action: none
+      #           style: {color: white, left: 87%, top: 91%}
+      #         - type: state-label
+      #           entity: proximity.sonia_home
+      #           style: {color: white, left: 92%, top: 10%}
+      #           tap_action:
+      #             action: none
+      #         - type: state-icon
+      #           entity: binary_sensor.james_ble_status
+      #           style: {color: white, left: 92%, top: 25%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_keys_status
+      #           style: {color: white, left: 92%, top: 40%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_bag_status
+      #           style: {color: white, left: 92%, top: 55%}
+      #         - type: state-icon
+      #           entity: binary_sensor.james_car_status
+      #           style: {color: white, left: 92%, top: 70%}
+      #       style: |
+      #         ha-card {
+      #           border-radius: 20px
+      #           border: solid 1px rgba(100,100,100,0.3)
+      #           box-shadow: 3px 3px rgba(0,0,0,0.4)
+      #           overflow: hidden
+      #         }
+      # - type: horizontal-stack
+      #   cards:
+      #     - type: 'custom:config-template-card'
+      #       variables:
+      #         - '''andrea'''
+      #         - >-
+      #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state ===
+      #           '70px')'unset';else 'nowrap'}
+      #         - >-
+      #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state === '70px')'4px';else
+      #           '14px'}
+      #       card:
+      #         type: 'custom:vertical-stack-in-card'
+      #         cards:
+      #           - type: 'custom:hui-picture-elements-card'
+      #             elements:
+      #               - type: image
+      #                 entity: '${''person.'' + states['vars[0]'].state}'
+      #                 image: >-
+      #                   "${states['sensor.' + states['vars[0]'].state
+      #                   +'_status'].attributes['entity_picture']}"
+      #                 style:
+      #                   left: 50%
+      #                   top: 50%
+      #                   width: 100%
+      #               - type: state-icon
+      #                 entity: sensor.andrea_oneplus5_battery
+      #                 style:
+      #                   '--paper-item-icon-color': >-
+      #                     ${'hsl(' + (states['sensor.andrea_oneplus5_battery'].state*1.1
+      #                     )*((states['sensor.andrea_oneplus5_battery'].state/100)) +
+      #                     ',90%,40%)'}
+      #                   left: 4.5%
+      #                   top: 3.5%
+      #                   transform: 'scale(1.2,1.2)'
+      #               - type: state-icon
+      #                 entity: binary_sensor.andrea_oneplus5_wifi
+      #                 style:
+      #                   '--paper-item-icon-color': '#2b9af9'
+      #                   left: 80.5%
+      #                   top: 3.5%
+      #                   transform: 'scale(1.2,1.2)'
+      #             image: '${''/local/images/'' + states['vars[0]'].state +''/home.png''}'
+      #           - type: 'custom:button-card'
+      #             color_type: icon
+      #             entity: '${''sensor.'' + states['vars[0]'].state +''_status''}'
+      #             show_icon: false
+      #             show_name: false
+      #             show_state: true
+      #             tap_action:
+      #               action: url
+      #               url: '${states[''sensor.'' + states['vars[0]'].state].attributes[''map_link'']}'
+      #             styles:
+      #               card:
+      #                 - height: '${states[''sensor.'' + states['vars[0]'].state +''_height''].state}'
+      #               state:
+      #                 - padding-top: '${vars[2]}'
+      #                 - padding-left: 14px
+      #                 - padding-right: 14px
+      #                 - white-space: '${vars[1]}'
+      #                 - text-overflow: '${vars[1]}'
+      #                 - word-break: break-word
+      #           - type: conditional
+      #             conditions:
+      #               - entity: '${''binary_sensor.'' + states['vars[0]'].state + ''_moving''}'
+      #                 state: 'off'
+      #               - entity: '${''binary_sensor.'' + states['vars[0]'].state + ''_driving''}'
+      #                 state: 'off'
+      #             card:
+      #               type: 'custom:button-card'
+      #               color_type: icon
+      #               entity: '${''sensor.'' + states['vars[0]'].state +''_at_loc_since''}'
+      #               show_icon: false
+      #               show_name: false
+      #               show_state: true
+      #               tap_action:
+      #                 action: url
+      #                 url: '${states[''sensor.'' + states['vars[0]'].state].attributes[''map_link'']}'
+      #               styles:
+      #                 card:
+      #                   - height: 30px
+      #                 state:
+      #                   - padding-bottom: 14px
+      #                   - font-size: 12px
+      #     - type: 'custom:config-template-card'
+      #       variables:
+      #         - '''sonia'''
+      #         - >-
+      #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state ===
+      #           '70px')'unset';else 'nowrap'}
+      #         - >-
+      #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state === '70px')'4px';else
+      #           '14px'}
+      #       card:
+      #         type: 'custom:vertical-stack-in-card'
+      #         cards:
+      #           - type: 'custom:hui-picture-elements-card'
+      #             elements:
+      #               - type: image
+      #                 entity: '${''person.'' + states['vars[0]'].state}'
+      #                 image: >-
+      #                   "${states['sensor.' + states['vars[0]'].state
+      #                   +'_status'].attributes['entity_picture']}"
+      #                 style:
+      #                   left: 50%
+      #                   top: 50%
+      #                   width: 100%
+      #               - type: state-icon
+      #                 entity: sensor.sonia_honor8_battery
+      #                 style:
+      #                   '--paper-item-icon-color': >-
+      #                     ${'hsl(' + (states['sensor.sonia_honor8_battery']. Fstate*1.1
+      #                     )*((states['sensor.sonia_honor8_battery'].state/100)) +
+      #                     ',90%,40%)'}
+      #                   left: 4.5%
+      #                   top: 3.5%
+      #                   transform: 'scale(1.2,1.2)'
+      #               - type: state-icon
+      #                 entity: binary_sensor.sonia_honor8_wifi
+      #                 style:
+      #                   '--paper-item-icon-color': '#2b9af9'
+      #                   left: 80.5%
+      #                   top: 3.5%
+      #                   transform: 'scale(1.2,1.2)'
+      #             image: '${''/local/images/'' + states['vars[0]'].state +''/home.png''}'
+      #           - type: 'custom:button-card'
+      #             color_type: icon
+      #             entity: '${''sensor.'' + states['vars[0]'].state +''_status''}'
+      #             show_icon: false
+      #             show_name: false
+      #             show_state: true
+      #             tap_action:
+      #               action: url
+      #               url: '${states[''sensor.'' + states['vars[0]'].state].attributes[''map_link'']}'
+      #             styles:
+      #               card:
+      #                 - height: '${states[''sensor.'' + states['vars[0]'].state +''_height''].state}'
+      #               state:
+      #                 - padding-top: '${vars[2]}'
+      #                 - padding-left: 14px
+      #                 - padding-right: 14px
+      #                 - white-space: '${vars[1]}'
+      #                 - text-overflow: '${vars[1]}'
+      #                 - word-break: break-word
+      #           - type: conditional
+      #             conditions:
+      #               - entity: '${''binary_sensor.'' + states['vars[0]'].state + ''_moving''}'
+      #                 state: 'off'
+      #               - entity: '${''binary_sensor.'' + states['vars[0]'].state + ''_driving''}'
+      #                 state: 'off'
+      #             card:
+      #               type: 'custom:button-card'
+      #               color_type: icon
+      #               entity: '${''sensor.'' + states['vars[0]'].state +''_at_loc_since''}'
+      #               show_icon: false
+      #               show_name: false
+      #               show_state: true
+      #               tap_action:
+      #                 action: url
+      #                 url: '${states[''sensor.'' + states['vars[0]'].state].attributes[''map_link'']}'
+      #               styles:
+      #                 card:
+      #                   - height: 30px
+      #                 state:
+      #                   - padding-bottom: 14px
+      #                   - font-size: 12px
+      # - type: entities
+      #   title: Custom Secondary Info
+      #   show_header_toggle: false
+      #   entities:
+      #     - entity: sun.sun
+      #       name: Entity ID with wrapped in tag
+      #       type: "custom:secondaryinfo-entity-row"
+      #       secondary_info: "<b style='color: white,red'>[[ sun.sun.entity_id ]]</b>"
+      #     - entity: sun.sun
+      #       name: Absolute time for last-changed
+      #       type: "custom:secondaryinfo-entity-row"
+      #       secondary_info: "[[ sun.sun.last_changed ]]"
+      #     - entity: sun.sun
+      #       name: Static text
+      #       type: "custom:secondaryinfo-entity-row"
+      #       secondary_info: "This is the entity row for the Sun"
+      #     - entity: sun.sun
+      #       name: Entity attribute
+      #       type: "custom:secondaryinfo-entity-row"
+      #       secondary_info: "Next Dawn: [[ sun.sun.attributes.next_dawn ]]"
+      - break
+      - type: custom:dual-gauge-card
+#        title: CPU/RAM
+        min: 0
+        max: 100
+        outer:
+          entity: sensor.processor_use
+          label: "CPU"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+        inner:
+          entity: sensor.memory_use_percent
+          label: "RAM"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+      - type: custom:dual-gauge-card
+#        title: CPU/RAM
+        min: 0
+        max: 100
+        outer:
+          entity: sensor.disk_use_percent
+          label: "HDD"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+        inner:
+          entity: sensor.swap_use_percent
+          label: "SWAP"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+      - break
+#      - type: horizontal-stack
+#        cards:
+#          - type: custom:decluttering-card
+#            template: light_button_with_brightness
+#            variables:
+#              - entity: light.andrea_bedside_lamp
+#              - name: Stairwell
+#              - icon: stairs
+#          - type: custom:decluttering-card
+#            template: light_button_with_brightness
+##            template: light_button
+#            variables:
+#              - entity: light.sonia_bedside_lamp
+#              - name: Hobb LED
+#              - icon: led-strip
+#          - type: custom:decluttering-card
+#            template: light_button_with_brightness
+##            template: light_button
+#            variables:
+#              - entity: light.andrea_bedside_lamp
+#              - name: Bench
+#              - icon: ceiling-light
+#          - type: custom:decluttering-card
+#            template: light_button_with_brightness
+#            variables:
+#              - entity: light.sonia_bedside_lamp
+#              - name: Kitchen
+#              - icon: lightbulb
+      # - type: vertical-stack
+      #   cards:
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_salone
+      #           state: "off"
+      #       card:
+      #         type: entity-button
+      #         show_header_toggle: false
+      #         entity: switch.webcam_salone
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_cucina
+      #           state: "off"
+      #       card:
+      #         type: entity-button
+      #         show_header_toggle: false
+      #         entity: switch.webcam_cucina
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_letto
+      #           state: "off"
+      #       card:
+      #         type: entity-button
+      #         show_header_toggle: false
+      #         entity: switch.webcam_letto
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_salone
+      #           state: "on"
+      #       card:
+      #         type: picture-glance
+      #         title: Webcam Salone
+      #         tap_action:
+      #           action: toggle
+      #         camera_image: camera.salone
+      #         camera_view: live
+      #         entities:
+      #           - switch.webcam_salone
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_cucina
+      #           state: "on"
+      #       card:
+      #         type: picture-glance
+      #         title: Webcam Cucina
+      #         tap_action:
+      #           action: toggle
+      #         camera_image: camera.cucina
+      #         camera_view: live
+      #         entities:
+      #           - switch.webcam_cucina
+      #     - type: conditional
+      #       conditions:
+      #         - entity: switch.webcam_letto
+      #           state: "on"
+      #       card:
+      #         type: picture-glance
+      #         title: WebCam Camera
+      #         tap_action:
+      #           action: toggle
+      #         camera_image: camera.camera_letto
+      #         camera_view: live
+      #         entities:
+      #           - switch.webcam_letto
+#      - type: custom:calendar-card
+#        title: "Andrea's Calendar"
+#        numberOfDays: 15
+#        showProgressBar: false
+#        entities:
+#          - entity: calendar.personal_andrea
+#      - type: "custom:atomic-calendar"
+#        title: "Calendar"
+#        entities:
+#          - entity: calendar.personal_andrea
+#        fullDayEventText: 'All day'
+#        untilText: 'Until'
+#        showColors: true
+#        maxDaysToShow: 30
+#        showLocation: true
+#        showMonth: false
+#        showCurrentEventLine: false
+#        dateColor: black
+#        dateSize: 90
+#        timeColor: blue
+#        timeSize: 90
+#        titleColor: black
+#        titleSize: 100
+#        locationIconColor: 'rgb(230, 124, 115)'
+#        locationLinkColor: black
+#        locationTextSize: 90
+#        dimFinishedEvents: true
+#        finishedEventOpacity: 0.6
+#        finishedEventFilter: 'grayscale(100%)'
+#        dayWrapperLineColor: black
+#        eventBarColor: blue
+#        showProgressBar: true
+#        progressBarColor: blue
+#      - type: "custom:atomic-calendar"
+#        title: "Calendar"
+#        entities:
+#          - entity: calendar.personal_andrea
+#        showLoader: true
+#        showDate: true
+#        dateFormat: L
+#        fullDayEventText: 'All day'
+#        untilText: 'Until'
+#        showColors: true
+#        maxDaysToShow: 15
+#        showLocation: true
+#        showMonth: false
+#        showCurrentEventLine: true
+#        datecolor: white
+#        dateSize: 90
+#        timecolor: white
+#        timeSize: 90
+#        titlecolor: white
+#        titleSize: 100
+#        locationLinkcolor: white
+#        locationTextSize: 90
+#        locationIconcolor: 'rgb(230, 124, 115)'
+#        dimFinishedEvents: true
+#        finishedEventOpacity: 0.6
+#        finishedEventFilter: 'grayscale(0%)'
+#        dayWrapperLinecolor: white
+#        eventBarcolor: white
+#        showProgressBar: true
+#        progressBarcolor: white
+#  - type: "custom:graph-card"
+#    title: 'System Load'
+#    hours_to_show: 24
+#    update_interval: 10
+#    zoom: 75
+#    entities:
+#      - entity: sensor.load_1m
+#        name: '1 Minute'
+#        smooth: false
+#        color: white, "blue"
+#        areaStyle:
+#          color: white,
+#            type: 'linear'
+#            x: 0
+#            y: 0
+#            x2: 0
+#            y2: 1
+#            colorStops:
+#              - offset: 0
+#                color: white, 'red'
+#              - offset: 1
+#                color: white, 'blue'
+#            globalCoord: false
+#      - entity: sensor.load_5m
+#        name: '5 Minutes'
+#        smooth: true
+#        color: white, "red"
+#        areaStyle:
+#          color: white,
+#            type: 'radial'
+#            x: 0.5
+#            y: 0.5
+#            r: 0.5
+#            colorStops:
+#              - offset: 0
+#                color: white, 'blue'
+#              - offset: 1
+#                color: white, 'red'
+#            globalCoord: false
+#      - entity: sensor.load_15m
+#        areaStyle: {}
+#        name: '15 Minutes'

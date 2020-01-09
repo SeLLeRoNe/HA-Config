@@ -1,0 +1,145 @@
+title: Laundry Room
+#icon: fas:restroom
+icon: mdi:washing-machine
+panel: true
+path: laundry_room
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Lights
+          - type: conditional
+            conditions:
+              - entity: light.bathroom_light
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.bathroom_light
+                  name: Light
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.bathroom_light
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.bathroom_light
+                  name: Light
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.bathroom_light
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Plugs
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - type: "custom:restriction-card"
+                restrictions:
+                  block: true
+                row: true
+                card:
+                  type: entities
+                  name: Washing Machine
+                  entity: switch.washing_machine
+                  tap_action:
+                    action: none
+      - break
+      - type: vertical-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:decluttering-card
+                template: title
+                variables:
+                  - title: Sensors
+              - type: custom:hui-glance-card
+                columns: 3
+                entities:
+                  - name: Leak Sensor
+                    entity: binary_sensor.laundry_room_sjcgq11lm_leak
+                    tap_action:
+                      action: none
+                  - name: Washing Machine
+                    entity: input_select.washing_machine_status
+                    icon: "mdi:washing-machine"
+                    tap_action:
+                      action: none
+#                  - name: Washing Machine
+#                    entity: binary_sensor.washing_machine_djt11lm_vibration
+#                    icon: "mdi:washing-machine"
+#                    tap_action:
+#                      action: none
+                  - name: Window Status
+                    entity: binary_sensor.bathroom_mccgq01lm_window
+                    tap_action:
+                      action: none
+          - type: horizontal-stack
+            cards:
+              - type: custom:decluttering-card
+                template: bathroom_temperature
+              - type: custom:decluttering-card
+                template: humidity
+                variables:
+                  - entity: sensor.bathroom_humidity
+      - break
+      - type: custom:decluttering-card
+        template: laundry_room_energy
+        variables:
+          - title: Energy Consumption

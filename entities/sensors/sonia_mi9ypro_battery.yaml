@@ -1,0 +1,61 @@
+---
+platform: template
+sensors:
+  sonia_mi9tpro_battery:
+    friendly_name: Mi 9T Pro Battery
+    device_class: battery
+    unit_of_measurement: '%'
+    value_template: >-
+      {% if state_attr('device_tracker.sonia_mi9tpro', 'battery_level') %}
+        {{ state_attr('device_tracker.sonia_mi9tpro', 'battery_level') }}
+      {% elif not is_state('input_text.sonia_mi9tpro_battery', 'unknown') %}
+        {{ states('input_text.sonia_mi9tpro_battery') | int }}
+      {% else %}
+        unknown
+      {% endif %}
+    icon_template: >
+      {% if state_attr('device_tracker.sonia_mi9tpro', 'battery_level') %}
+        {% set battery_level = state_attr('device_tracker.sonia_mi9tpro', 'battery_level') | int %}
+      {% elif not is_state('input_text.sonia_mi9tpro_battery', 'unknown') %}
+        {% set battery_level = states('input_text.sonia_mi9tpro_battery') | int %}
+      {% else %}
+        mdi:battery-unknown
+      {% endif %}
+      {% if battery_level is defined %}
+        {% if battery_level == 100 %}
+          {% if is_state('binary_sensor.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-100
+          {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-100
+          {% else %}
+            mdi:battery
+          {% endif %}
+        {% elif battery_level >= 10 %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}
+          {% if is_state('binary_sensor.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-{{ battery_round }}
+          {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-{{ battery_round }}
+          {% else %}
+            mdi:battery-{{ battery_round }}
+          {% endif %}
+        {% elif battery_level >= 5 %}
+          {% if is_state('binary_sensor.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-outline
+          {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-outline
+          {% else %}
+            mdi:battery-outline
+          {% endif %}
+        {% elif battery_level >= 0 %}
+          {% if is_state('binary_sensor.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-outline
+          {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'on') %}
+            mdi:battery-charging-outline
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+        {% else %}
+          mdi:battery-unknown
+        {% endif %}
+      {% endif %}

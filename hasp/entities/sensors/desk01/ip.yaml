@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Desk IP Address
+icon: mdi:ip-network
+state_topic: "hasp/desk01/sensor"
+value_template: '{{ value_json.haspIP }}'
+availability_topic: "hasp/desk01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

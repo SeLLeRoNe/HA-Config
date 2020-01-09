@@ -1,0 +1,62 @@
+---
+alias: Utility Meter - Meter Tariff Change - Peak
+initial_state: on
+trigger:
+  - platform: time_pattern
+    minutes: '*'
+  - platform: time
+    at: '15:00:00'
+  - platform: time
+    at: '22:00:00'
+condition:
+  condition: or
+  conditions:
+    - condition: time
+      after: '15:00:00'
+      before: '18:00:00'
+    - condition: time
+      after: '22:00:00'
+      before: '11:00:00'
+action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.house_electricity_daily
+      - utility_meter.house_electricity_monthly
+      - utility_meter.house_electricity_yearly
+      tariff: peak
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.living_room_electricity_daily
+      - utility_meter.living_room_electricity_monthly
+      - utility_meter.living_room_electricity_yearly
+      tariff: peak
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.kitchen_electricity_daily
+      - utility_meter.kitchen_electricity_monthly
+      - utility_meter.kitchen_electricity_yearly
+      tariff: peak
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.laundry_room_electricity_daily
+      - utility_meter.laundry_room_electricity_monthly
+      - utility_meter.laundry_room_electricity_yearly
+      tariff: peak
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.studio_andrea_electricity_daily
+      - utility_meter.studio_andrea_electricity_monthly
+      - utility_meter.studio_andrea_electricity_yearly
+      tariff: peak
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+      - utility_meter.studio_sonia_electricity_daily
+      - utility_meter.studio_sonia_electricity_monthly
+      - utility_meter.studio_sonia_electricity_yearly
+      tariff: peak

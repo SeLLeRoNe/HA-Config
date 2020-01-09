@@ -1,0 +1,12 @@
+---
+# MQTT Device: Sonia's Studio WSDCGQ11LM Voltage
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Studio Sonia WSDCGQ11LM Voltage"
+icon: mdi:flash
+state_topic: "zigbee2mqtt/studio_sonia_WSDCGQ11LM"
+availability_topic: "zigbee2mqtt/studio_sonia_WSDCGQ11LM/availability"
+unit_of_measurement: "mV"
+value_template: "{{ value_json.voltage }}"

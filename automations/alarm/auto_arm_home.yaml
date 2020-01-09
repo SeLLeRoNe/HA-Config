@@ -1,0 +1,47 @@
+---
+alias: Alarm - Auto Arm - Home
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+  - platform: time_pattern
+    minutes: '*'
+  - platform: zone
+    entity_id: group.family
+    zone: zone.home
+    event: enter
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'armed_home') }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
+    - condition: time
+      after: '07:00:00'
+      before: '01:00:00'
+action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/house_alarm_siren/set
+      payload: '{"warning": {"duration": 1, "mode": "stop", "strobe": false}}'
+  - service: alarm_control_panel.alarm_arm_home
+    entity_id: alarm_control_panel.home_alarm
+    data_template:
+      code: !secret zone_home_alarm_code
+#  - service: tts.google_translate_say
+#    data:
+#      entity_id: media_player.studio_andrea_google
+#      message: "Switched to Home Mode" 
+#      language: 'en'
+#  - service: notify.alarm
+#    data_template:
+#      title: "Home Alarm Activated"
+#      message: "Alarm automatically activated - Home mode"

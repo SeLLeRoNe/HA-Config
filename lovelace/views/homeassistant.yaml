@@ -1,0 +1,349 @@
+title: Home Assistant
+icon: mdi:home-assistant
+panel: true
+path: ha
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: markdown
+            content: Search by Entity
+            style: |
+              ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.40)';
+                text-align: left;
+                color: white;
+                font-size: 25px;
+                border-radius: 20px;
+                border: solid 1px rgba(100,100,100,0.3);
+                box-shadow: 3px 3px rgba(0,0,0,0.4);
+                background-image: url("/local/cardbackK.png");
+                background-repeat: no-repeat;
+                background-color: rgba(50,50,50,0.3);
+                background-size: 100% 48px;
+              }
+          - type: custom:search-card
+            max_results: 25
+          - type: entities
+            title: Version Checks
+            show_header_toggle: false
+            entities:
+              - entity: sensor.home_assistant_current_version
+                tap_action:
+                  action: none
+              - entity: sensor.home_assistant_available_stable_version
+                tap_action:
+                  action: none
+              - entity: sensor.home_assistant_available_beta_version
+                tap_action:
+                  action: none
+              - entity: sensor.potential_breaking_changes
+                tap_action:
+                  action: none
+              - type: divider
+              - entity: sensor.hacs
+                name: HACS Available Updates
+                tap_action:
+                  action: none
+              - type: divider
+              - entity: sensor.tasmota_current_version
+                tap_action:
+                  action: none
+              - entity: sensor.tasmota_available_version
+                tap_action:
+                  action: none
+          - type: divider
+          - type: entities
+            title: Debug
+            show_header_toggle: false
+            entities:
+              - input_text.debug
+          - type: divider
+          - type: glance
+#            title: Components Count
+            columns: 4
+            entities:
+              - entity: sensor.count_automations
+                icon: mdi:autorenew
+                tap_action:
+                  action: none
+              - entity: sensor.count_scripts
+                icon: mdi:script-text-outline
+                tap_action:
+                  action: none
+              - entity: sensor.count_calendars
+                icon: mdi:calendar
+                tap_action:
+                  action: none
+              - entity: sensor.count_timers
+                icon: mdi:av-timer
+                tap_action:
+                  action: none
+          - type: glance
+            columns: 3
+            entities:
+              - entity: sensor.count_persons
+                icon: mdi:account-group
+                tap_action:
+                  action: none
+              - entity: sensor.count_device_trackers
+                icon: mdi:map-marker
+                tap_action:
+                  action: none
+              - entity: sensor.count_zones
+                name: Zones
+                icon: mdi:map-marker-radius
+                tap_action:
+                  action: none
+          - type: glance
+            columns: 3
+            entities:
+              - entity: sensor.count_switches
+                icon: mdi:light-switch
+                tap_action:
+                  action: none
+              - entity: sensor.count_lights
+                icon: mdi:lightbulb
+                tap_action:
+                  action: none
+              - entity: sensor.count_locks
+                icon: mdi:lock
+                tap_action:
+                  action: none
+              - entity: sensor.count_cameras
+                icon: mdi:cctv
+                tap_action:
+                  action: none
+              - entity: sensor.count_climates
+                icon: mdi:thermostat
+                tap_action:
+                  action: none
+              - entity: sensor.count_fans
+                icon: mdi:fan
+                tap_action:
+                  action: none
+              - entity: sensor.count_sensors
+                icon: mdi:resistor
+                tap_action:
+                  action: none
+              - entity: sensor.count_binary_sensors
+                icon: mdi:unfold-more-horizontal
+                tap_action:
+                  action: none
+              - entity: sensor.count_media_players
+                icon: mdi:playlist-music
+                tap_action:
+                  action: none
+          - type: glance
+            columns: 3
+            entities:
+              - entity: sensor.count_input_booleans
+                icon: mdi:toggle-switch
+                tap_action:
+                  action: none
+              - entity: sensor.count_input_selects
+                icon: mdi:view-list
+                tap_action:
+                  action: none
+              - entity: sensor.count_input_datetimes
+                icon: mdi:calendar-clock
+                tap_action:
+                  action: none
+          - type: glance
+            columns: 2
+            entities:
+              - entity: sensor.count_input_numbers
+                icon: mdi:numeric
+                tap_action:
+                  action: none
+              - entity: sensor.count_input_texts
+                icon: mdi:alphabetical
+                tap_action:
+                  action: none
+      - break
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: House
+        filter:
+          include:
+            - entity_id: "automation.house*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Utility Meter
+        filter:
+          include:
+            - entity_id: "automation.utility_meter*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Living Room
+        filter:
+          include:
+            - entity_id: "automation.living_room*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Kitchen
+        filter:
+          include:
+            - entity_id: "automation.kitchen*"
+      - break
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Studio Andrea
+        filter:
+          include:
+            - entity_id: "automation.studio_andrea*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Master Bedroom
+        filter:
+          include:
+            - entity_id: "automation.master_bedroom*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Studio Sonia
+        filter:
+          include:
+            - entity_id: "automation.studio_sonia*"
+      - break
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Laundry Room
+        filter:
+          include:
+            - entity_id: "automation.laundry_room*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Patio
+        filter:
+          include:
+            - entity_id: "automation.patio*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Outside
+        filter:
+          include:
+            - entity_id: "automation.outside*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Alarm
+        filter:
+          include:
+            - entity_id: "automation.alarm*"
+      - break
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Mobile
+        filter:
+          include:
+            - entity_id: "automation.mobile*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Lights
+        filter:
+          include:
+            - entity_id: "automation.lights*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Presence
+        filter:
+          include:
+            - entity_id: "automation.presence*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Temperature
+        filter:
+          include:
+            - entity_id: "automation.temperature*"
+      - break
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: System
+        filter:
+          include:
+            - entity_id: "automation.system*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Media Player
+        filter:
+          include:
+            - entity_id: "automation.media_player*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: ZigBee
+        filter:
+          include:
+            - entity_id: "automation.zigbee.*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: TTS
+        filter:
+          include:
+            - entity_id: "automation.tts*"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Alerts
+        filter:
+          include:
+            - entity_id: "alert.*"

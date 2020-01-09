@@ -1,0 +1,5 @@
+---
+platform: aemet
+name: AEMET
+api_key: !secret aemet_api_key
+station_id: !secret aemet_station_id

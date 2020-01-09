@@ -1,0 +1,20 @@
+---
+# Send "Month Day Year" every day
+alias: hasp_calendar_update
+initial_state: 'on'
+trigger:
+  - platform: time
+    at: '00:00:00'
+condition:
+  - condition: state
+    entity_id: group.hasp
+    state: 'on'
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[2].b[5].font'
+      payload_template: '2'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[2].b[5].txt'
+      payload_template: "\"{{now().strftime('%d ') ~ now().strftime('%m ') ~ now().strftime('%Y ')}}\""

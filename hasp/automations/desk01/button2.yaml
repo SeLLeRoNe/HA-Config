@@ -1,0 +1,37 @@
+---
+# Configure Button 2 Page Value
+alias: hasp_desk01_button2
+initial_state: 'on'
+trigger:
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[1].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[2].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[3].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[4].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[5].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[6].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[7].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[8].b[2]'
+    payload: 'ON'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/p[9].b[2]'
+    payload: 'ON'
+action:
+  - service: mqtt.publish
+    data_template:
+      topic: 'hasp/desk01/command/page'
+      payload: '2'

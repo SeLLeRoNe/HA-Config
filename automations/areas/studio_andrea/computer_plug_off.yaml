@@ -1,0 +1,10 @@
+---
+alias: Studio Andrea - Computer Plug Off
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: switch.studio_andrea_computer_plug
+    to: 'off'
+action:
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_lg_monitor_1

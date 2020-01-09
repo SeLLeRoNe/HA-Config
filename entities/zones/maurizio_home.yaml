@@ -1,0 +1,7 @@
+---
+name: Maurizio Home
+latitude: !secret zone_maurizio_home_latitude
+longitude: !secret zone_maurizio_home_longitude
+radius: 25
+passive: false
+icon: mdi:home

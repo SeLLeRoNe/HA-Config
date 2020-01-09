@@ -1,0 +1,530 @@
+title: Temperatures
+#icon: fas:thermometer-half
+icon: mdi:thermometer
+panel: true
+path: temperatures
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: Temperatures
+            style: |
+              ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.40)';
+                text-align: center;
+                color: white;
+                font-size: 25px;
+                border-radius: 20px;
+                border: solid 1px rgba(100,100,100,0.3);
+                box-shadow: 3px 3px rgba(0,0,0,0.4);
+                background-image: url("/local/cardbackK.png");
+                background-repeat: no-repeat;
+                background-color: rgba(50,50,50,0.3);
+                background-size: 100% 48px;
+              }
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.dark_sky_temperature
+            variables:
+              - states['sensor.dark_sky_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Outside
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.dark_sky_temperature
+                  color: '#FF8000'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.patio_temperature
+            variables:
+              - states['sensor.patio_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Patio
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.patio_temperature
+                  color: '#FF3333'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.living_room_temperature
+            variables:
+              - states['sensor.living_room_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Living Room
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.living_room_temperature
+                  color: '#FF3333'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.kitchen_temperature
+            variables:
+              - states['sensor.kitchen_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Kitchen
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.kitchen_temperature
+                  color: '#FF6666'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.bathroom_temperature
+            variables:
+              - states['sensor.bathroom_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Bathroom
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.bathroom_temperature
+                  color: '#FF33FF'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.studio_andrea_temperature
+            variables:
+              - states['sensor.studio_andrea_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Studio Andrea
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.studio_andrea_temperature
+                  color: '#7F00FF'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.studio_sonia_temperature
+            variables:
+              - states['sensor.studio_sonia_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Studio Sonia
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.studio_sonia_temperature
+                  color: '#00FF00'
+                  show_indicator: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:config-template-card
+            entities:
+              - sensor.master_bedroom_temperature
+            variables:
+              - states['sensor.master_bedroom_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Master Bedroom
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.master_bedroom_temperature
+                  color: '#0080FF'
+                  show_indicator: true
+          - type: custom:config-template-card
+            entities:
+              - sensor.master_bathroom_temperature
+            variables:
+              - states['sensor.master_bathroom_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Master Bathroom
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 40
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: false
+                fill: false
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+#              style: |
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.master_bathroom_temperature
+                  color: '#33FF99'
+                  show_indicator: true
+      - type: custom:mini-graph-card
+        name: Temperature 48h
+        icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+        more_info: false
+        group: false
+        height: 150
+        line_width: 4
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        hour24: true
+        animate: false
+        decimals: 1
+        font_size: 100
+        font_size_header: 14
+        align_header: default
+        align_icon: right
+        align_state: center
+        lower_bound: -5
+        upper_bound: 40
+#        state_map:
+#          - value: "off"
+#            label: "Day"
+#          - value: "on"
+#            label: "Night"
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: line
+          fill: true
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+          labels_secondary: false
+          name_adaptive_color: false
+          icon_adaptive_color: false
+#        style: |
+#        ha-icon {
+#          color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#        }
+        entities:
+          - entity: sensor.dark_sky_temperature
+            name: Outside
+            color: '#FF8000'
+            show_fill: false
+          - entity: sensor.patio_temperature
+            name: Patio
+            color: '#0066FF'
+            show_fill: false
+          - entity: sensor.master_bedroom_temperature
+            name: Master Bedroom
+            color: '#0080FF'
+            show_fill: false
+          - entity: sensor.living_room_temperature
+            name: Living Room
+            color: '#FF3333'
+            show_fill: false
+          - entity: sensor.studio_andrea_temperature
+            name: Studio Andrea
+            color: '#7F00FF'
+            show_fill: false
+          - entity: sensor.studio_sonia_temperature
+            name: Studio Sonia
+            color: '#00FF00'
+            show_fill: false
+          - entity: sensor.master_bathroom_temperature
+            name: Master Bathroom
+            color: '#33FF99'
+            show_fill: false
+          - entity: sensor.bathroom_temperature
+            name: Bathroom
+            color: '#FF33FF'
+            show_fill: false
+          - entity: sensor.kitchen_temperature
+            name: Bathroom
+            color: '#FF6666'
+            show_fill: false
+          - entity: input_number.night_time
+            color: '#B3B3B3'
+            name: Night Time
+            show_fill: true
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary

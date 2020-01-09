@@ -1,0 +1,19 @@
+---
+alias: hasp_desk01_screen_timer_start
+trigger:
+  - platform: state
+    entity_id: light.hasp_desk_display
+    to: 'on'
+  - platform: mqtt
+    topic: 'hasp/desk01/state/#'
+action:
+  - service: timer.start
+    data:
+      entity_id: 'timer.desk01_screen_low'
+  - service: timer.start
+    data:
+      entity_id: 'timer.desk01_screen_off'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/brightness/set'
+      payload: '255'

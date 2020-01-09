@@ -1,0 +1,4 @@
+#---
+#platform: bluetooth_tracker
+#request_rssi: true
+#device_id: 0

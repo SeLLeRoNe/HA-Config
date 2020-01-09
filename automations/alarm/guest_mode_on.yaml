@@ -1,0 +1,23 @@
+---
+alias: Alarm - Guast Mode Activated
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '09:00:00'
+      before: '23:00:00'
+action:
+  - service: notify.html5
+    data:
+      title: 'Alarm Notification'
+      message: "Guest Mode Activated"
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.studio_andrea_google
+      message: "Guest Mode Activated"
+      language: 'en'

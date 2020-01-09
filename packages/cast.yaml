@@ -1,0 +1,4 @@
+---
+cast:
+  media_player: 
+    - host: !secret studio_andrea_google_ip

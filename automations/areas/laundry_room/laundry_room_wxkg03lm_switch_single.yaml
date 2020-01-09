@@ -1,0 +1,18 @@
+---
+alias: Laundry Room - Laundry Room WXKG03LM Switch Single
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/laundry_room_WXKG03LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['click'] == 'single' }}"
+action:
+  - service: light.toggle
+    data:
+      entity_id: light.patio_light
+      color_name: white
+      brightness: 150
+      transition: 5

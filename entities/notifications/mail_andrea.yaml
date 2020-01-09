@@ -1,0 +1,11 @@
+---
+platform: smtp
+name: mail_andrea
+sender: !secret smtp_sender
+sender_name: !secret smtp_sender_name
+server: !secret smtp_server
+port: !secret smtp_port
+username: !secret smtp_username
+password: !secret smtp_password
+encryption: !secret smtp_encryption
+recipient: !secret mail_andrea

@@ -1,0 +1,11 @@
+title: Shopping List
+#icon: fas:shopping-cart
+icon: mdi:food
+panel: true
+path: shopping-list
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: shopping-list
+        title: Shopping List

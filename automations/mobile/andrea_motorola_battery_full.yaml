@@ -1,0 +1,25 @@
+---
+alias: Mobile - Motorola XT1032 - Battery Full
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.andrea_xt1032_battery
+    above: 99
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.andrea_xt1032_charging
+      state: 'on'
+    - condition: state
+      entity_id: person.andrea
+      state: 'home'
+action:
+  - service: notify.html5_andrea_computer_studio
+    data_template:
+      title: "Battery Full"
+      message: "Battery Full on Motorola XT1032, please unplug it!"
+  - service: notify.html5_andrea_oneplus5
+    data_template:
+      title: "Battery Full"
+      message: "Battery Full on Motorola XT1032, please unplug it!"

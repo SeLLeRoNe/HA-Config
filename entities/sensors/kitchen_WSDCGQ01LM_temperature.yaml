@@ -1,0 +1,13 @@
+---
+# MQTT Device: Kitchen WSDCGQ01LM Temperature Sensor
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Kitchen Temperature'
+icon: mdi:thermometer
+state_topic: "zigbee2mqtt/living_room_WSDCGQ01LM"
+availability_topic: "zigbee2mqtt/living_room_WSDCGQ01LM/availability"
+unit_of_measurement: "°C"
+device_class: "temperature"
+value_template: "{{ value_json.temperature }}"

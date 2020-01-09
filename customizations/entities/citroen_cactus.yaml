@@ -1,0 +1,4 @@
+---
+device_tracker.citroen_cactus:
+  friendly_name: Citroen Cactus
+  icon: mdi:car-hatchback

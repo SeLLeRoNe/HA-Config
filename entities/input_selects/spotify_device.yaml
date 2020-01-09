@@ -1,0 +1,10 @@
+---
+spotify_device:
+  name: 'Device:'
+  options:
+    - YAMAHA-RXV779
+    - PC-SELLERONE
+    - DESKTOP-A03VJ8G
+    - OnePlus 5
+    - Spotify not running
+  icon: mdi:speaker-wireless

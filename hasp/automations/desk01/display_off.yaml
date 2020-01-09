@@ -1,0 +1,13 @@
+---
+alias: hasp_desk01_display_off
+trigger:
+  - platform: state
+    entity_id: light.hasp_desk_display
+    to: 'off'
+action:
+  - service: timer.finish
+    data:
+      entity_id: 'timer.desk01_screen_low'
+  - service: timer.finish
+    data:
+      entity_id: 'timer.desk01_screen_off'

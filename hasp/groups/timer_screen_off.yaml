@@ -1,0 +1,7 @@
+---
+timer_screen_off:
+#  name: Timer Screen Off
+  entities:
+    - timer.desk01_screen_off
+    - timer.andrea01_screen_off
+    - timer.sonia01_screen_off

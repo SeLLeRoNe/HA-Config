@@ -1,0 +1,11 @@
+---
+# MQTT Device: Patio WSDCGQ11LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Patio MCCGQ01LM Link Quality'
+icon: mdi:door-closed
+state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+value_template: "{{ value_json.linkquality }}"

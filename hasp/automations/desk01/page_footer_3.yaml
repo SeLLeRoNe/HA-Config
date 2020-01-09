@@ -1,0 +1,16 @@
+---
+# set page button text on each page to hasp-desk01-PageButton3Label
+alias: hasp_desk01_footer_3
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: 'binary_sensor.hasp_desk'
+    to: 'on'
+  - platform: homeassistant
+    event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/command/json'
+      payload_template: >-
+        [{%- for i in range(1,10) -%}"p[{{i}}].b[3].txt=\"Lights\"",{%- endfor -%}]

@@ -1,0 +1,6 @@
+---
+platform: ping
+name: Studio Andrea Computer Ping
+host: !secret studio_andrea_computer_ip
+count: 2
+scan_interval: 30

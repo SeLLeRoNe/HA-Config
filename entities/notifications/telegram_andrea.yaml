@@ -1,0 +1,4 @@
+---
+platform: telegram
+name: telegram_andrea
+chat_id: !secret telegram_andrea_id

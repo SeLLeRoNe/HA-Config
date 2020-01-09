@@ -1,0 +1,12 @@
+---
+platform: mqtt
+name: HASP Sonia Display
+command_topic: "hasp/sonia01/light/switch"
+state_topic: "hasp/sonia01/light/state"
+brightness_state_topic: "hasp/sonia01/brightness/state"
+brightness_command_topic: "hasp/sonia01/brightness/set"
+availability_topic: "hasp/sonia01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1
+retain: false

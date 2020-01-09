@@ -1,0 +1,7 @@
+---
+name: First Clarity Office
+latitude: !secret zone_fc_office_latitude
+longitude: !secret zone_fc_office_longitude
+radius: 25
+passive: false
+icon: mdi:briefcase

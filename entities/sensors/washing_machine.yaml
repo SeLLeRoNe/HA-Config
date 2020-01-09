@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  washing_machine:
+    friendly_name: Washing Machine
+    entity_id: "sensor.washing_machine_power"
+    value_template: "{{ states('sensor.washing_machine_power') | int < 3.4 }}"

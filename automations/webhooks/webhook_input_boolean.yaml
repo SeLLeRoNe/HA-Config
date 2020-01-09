@@ -1,0 +1,10 @@
+---
+alias: System - Incoming Webhook - input_boolean
+initial_state: on
+trigger:
+  platform: webhook
+  webhook_id: input_boolean
+action:
+  service_template: '{{ trigger.json.service }}'
+  data_template:
+    entity_id: '{{ trigger.json.entity_id }}'

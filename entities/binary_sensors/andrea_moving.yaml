@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  andrea_moving:
+    friendly_name: "Andrea Moving"
+    value_template: "{{ state_attr('device_tracker.andrea_iannucci', 'moving') }}"

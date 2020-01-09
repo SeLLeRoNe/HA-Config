@@ -1,0 +1,22 @@
+---
+alias: Master Bedroom - Lamp Bottom On
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: light.master_bedroom_lamp_bottom_light
+    to: 'on'
+    for:
+      seconds: 43200
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: light.master_bedroom_lamp_bottom_light
+      state: "on"
+      for:
+        seconds: 43200
+action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_lamp_bottom_light

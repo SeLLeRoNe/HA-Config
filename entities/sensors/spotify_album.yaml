@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  spotify_title:
+    friendly_name: "Spotify - Title"
+    value_template: "{{ state_attr('media_player.spotify', 'media_title') }}"

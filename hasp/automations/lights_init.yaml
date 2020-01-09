@@ -1,0 +1,40 @@
+---
+# Automations for handling toggle state buttons on page 3
+# Set font and text for toggle buttons on device connection
+alias: hasp_lights_init
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: group.hasp
+    to: 'on'
+  - platform: homeassistant
+    event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[4].font'
+      payload: '2'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[4].txt'
+      payload: '"Patio"'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[5].font'
+      payload: '2'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[5].txt'
+      payload: '"Andrea"'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[6].font'
+      payload: '2'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[6].txt'
+      payload: '"Sonia"'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[3].b[7].font'
+      payload: '2'

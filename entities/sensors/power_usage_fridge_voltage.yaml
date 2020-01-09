@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "Power Usage Fridge Voltage"
+state_topic: "tele/Fridge_Plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+unit_of_measurement: "V"

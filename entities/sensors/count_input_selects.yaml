@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  count_input_selects:
+    friendly_name: 'Input Selects'
+    value_template: >
+      {%- set domains = ['input_select'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

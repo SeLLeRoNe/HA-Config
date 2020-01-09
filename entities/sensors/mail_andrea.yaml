@@ -1,0 +1,8 @@
+---
+platform: imap
+name: Mail Andrea
+server: !secret mail_andrea_server
+port: 993
+username: !secret mail_andrea
+password: !secret mail_andrea_password
+

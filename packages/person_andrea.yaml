@@ -1,0 +1,54 @@
+---
+sensor:
+  platform: template
+  sensors:
+    andrea_location:
+      friendly_name: "Andrea Location"
+      value_template: >-
+        {% if state_attr('device_tracker.andrea_oneplus5', 'place') != None %}
+          {{ state_attr('device_tracker.andrea_oneplus5', 'place') }}
+        {% elif states.sensor.andrea.attributes.place_name != "-" %}
+          {{ state_attr('sensor.andrea', 'place_name') }}
+        {% else %}
+          {{ state_attr('sensor.andrea', 'formatted_address') }}
+        {% endif %}
+
+    andrea_status:
+      friendly_name: "Andrea Status"
+      value_template: >-
+        {% if is_state_attr('device_tracker.andrea_oneplus5', 'driving', true) %}
+          Driving near {{ states('sensor.andrea_location') }}
+        {% elif is_state_attr('device_tracker.andrea_oneplus5', 'moving', true) %}
+          Moving near {{ states('sensor.andrea_location') }}
+        {% else %}
+          {{ states('sensor.andrea_location') }}
+        {% endif %}
+      entity_picture_template: >-
+        {% if state_attr('sensor.andrea', 'place_type') == 'supermarket' %}
+          /local/images/andrea/grocery.png
+        {% elif state_attr('device_tracker.andrea_oneplus5', 'place') == 'Work' %}
+          /local/images/andrea/work.png
+        {% elif state_attr('device_tracker.andrea_oneplus5', 'place') == 'Home' %}
+          /local/images/andrea/home.png
+        {% elif state_attr('device_tracker.andrea_oneplus5', 'driving') == true %}
+          /local/images/andrea/driving.png
+        {% elif state_attr('device_tracker.andrea_oneplus5', 'moving') == true %}
+          /local/images/andrea/moving.png
+        {%else %} /local/images/andrea/home.png{%endif%}
+
+    andrea_at_loc_since:
+      friendly_name: "At Location Since"
+      value_template: >-
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.andrea_location.last_changed)) / 3600 < 24 %}
+          Since {{ (states.sensor.andrea_location.last_changed.strftime("%s") | int ) | timestamp_custom("%-I:%M %p") }}
+        {% else  %}
+          Since {{ (states.sensor.andrea_location.last_changed.strftime("%s") | int ) | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+        {% endif %}
+
+    andrea_height:
+      value_template: >-
+        {% if is_state('binary_sensor.andrea_moving', 'on') %}
+          70px
+        {% else %}
+          40px
+        {% endif %}

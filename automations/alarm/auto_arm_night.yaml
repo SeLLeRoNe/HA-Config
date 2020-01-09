@@ -1,0 +1,62 @@
+---
+alias: Alarm - Auto Arm - Night
+initial_state: on
+trigger:
+  - platform: time
+    at: '01:00:00'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: zone
+    entity_id: group.family
+    zone: zone.home
+    event: enter
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: binary_sensor.living_room_tv
+    to: 'off'
+    for:
+      minutes: 10
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'armed_night') }}"
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: time
+      after: '01:00:00'
+      before: '07:00:00'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.living_room_tv
+      state: 'off'
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: '{% if states.binary_sensor.studio_andrea_computer_ping is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.studio_andrea_computer_ping.last_changed)) > 600 }} {% endif %}'
+        - condition: template
+          value_template: '{% if states.binary_sensor.living_room_tv is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.living_room_tv.last_changed)) > 600 }} {% endif %}'
+action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/house_alarm_siren/set
+      payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": false}}'
+  - service: alarm_control_panel.alarm_arm_night
+    entity_id: alarm_control_panel.home_alarm
+    data_template:
+      code: !secret zone_home_alarm_code
+#  - service: notify.alarm
+#    data_template:
+#      title: "Home Alarm Activated"
+#      message: "Alarm automatically activated - Night mode"

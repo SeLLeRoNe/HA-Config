@@ -1,0 +1,218 @@
+---
+house_cost:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: markdown
+        content: >
+          ## Costs
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Daily Energy
+            icon: mdi:flash
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 2.5
+              - color: '#e0b400'
+                value: 7.5
+              - color: '#e45e65'
+                value: 15
+            entities:
+              - entity: '[[entity_daily_usage]]'
+            tap_action:
+              action: none
+          - type: 'custom:mini-graph-card'
+            name: Daily Cost
+            icon: mdi:currency-eur
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 1
+              - color: '#e0b400'
+                value: 2.5
+              - color: '#e45e65'
+                value: 5
+            entities:
+              - entity: '[[entity_daily_cost]]'
+            tap_action:
+              action: none
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Monthly Energy
+            icon: mdi:flash
+            hours_to_show: 744
+            points_per_hour: 0.04
+            aggregate_func: max
+            group_by: date
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 75
+              - color: '#e0b400'
+                value: 150
+              - color: '#e45e65'
+                value: 250
+            entities:
+              - entity: '[[entity_monthly_usage]]'
+            tap_action:
+              action: none
+          - type: 'custom:mini-graph-card'
+            name: Monthly Cost
+            icon: mdi:currency-eur
+            hours_to_show: 774
+            points_per_hour: 0.04
+            aggregate_func: max
+            group_by: date
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 25
+              - color: '#e0b400'
+                value: 75
+              - color: '#e45e65'
+                value: 100
+            entities:
+              - entity: '[[entity_monthly_cost]]'
+            tap_action:
+              action: none
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Yearly Energy
+            icon: mdi:flash
+            hours_to_show: 8760
+            points_per_hour: 0.001388888888889
+            aggregate_func: max
+            group_by: date
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 500
+              - color: '#e0b400'
+                value: 1500
+              - color: '#e45e65'
+                value: 2500
+            entities:
+              - entity: '[[entity_yearly_usage]]'
+            tap_action:
+              action: none
+          - type: 'custom:mini-graph-card'
+            name: Yearly Cost
+            icon: mdi:currency-eur
+            hours_to_show: 8760
+            points_per_hour: 0.001388888888889
+            aggregate_func: max
+            group_by: date
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds:
+              - color: '#039BE5'
+                value: 0
+              - color: '#0da035'
+                value: 500
+              - color: '#e0b400'
+                value: 750
+              - color: '#e45e65'
+                value: 1000
+            entities:
+              - entity: '[[entity_yearly_cost]]'
+            tap_action:
+              action: none

@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  kitchen_today_energy_usage:
+    friendly_name: Kitchena Daily Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.power_usage_dishwasher_today_energy.state | float) +
+      (states.sensor.power_usage_fridge_today_energy.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

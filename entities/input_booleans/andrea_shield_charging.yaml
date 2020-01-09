@@ -1,0 +1,4 @@
+---
+andrea_shield_charging:
+  name: NVIDIA Shield K1 Charging Status
+  icon: mdi:power-plug

@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  count_automations:
+    friendly_name: 'Automations'
+    value_template: >
+      {%- set domains = ['automation'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

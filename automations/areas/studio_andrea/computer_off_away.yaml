@@ -1,0 +1,26 @@
+---
+alias: Studio Andrea - Computer Off - Away
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      seconds: 120
+condition:
+  - condition: state
+    entity_id: person.andrea
+    state: 'not_home'
+action:
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_computer_plug
+  - service: media_player.turn_off
+    entity_id: media_player.studio_andrea_amplifier
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_usb_hub
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_lg_monitor_1
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_lg_monitor_2
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_uk_powerstrip

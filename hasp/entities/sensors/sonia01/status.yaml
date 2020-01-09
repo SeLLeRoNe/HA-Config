@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Sonia Status
+icon: mdi:lan-connect
+state_topic: "hasp/sonia01/sensor"
+value_template: '{{ value_json.status }}'
+availability_topic: "hasp/sonia01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

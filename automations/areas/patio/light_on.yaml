@@ -1,0 +1,38 @@
+---
+alias: Patio - Light Off
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: binary_sensor.patio_pir
+    to: 'off'
+    for:
+      seconds: 30
+  - platform: state
+    entity_id: light.patio_light
+    to: 'on'
+    for:
+      seconds: 60
+  - platform: state
+    entity_id: binary_sensor.patio_mccgq01lm_door
+    to: 'off'
+    for:
+      seconds: 60
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: light.patio_light
+      state: "on"
+      for:
+        seconds: 60
+    - condition: state
+      entity_id: binary_sensor.patio_mccgq01lm_door
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.patio_pir
+      state: 'off'
+action:
+  - service: light.turn_off
+    entity_id: light.patio_light

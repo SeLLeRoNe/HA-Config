@@ -1,0 +1,14 @@
+---
+people:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: People
+      - type: custom:decluttering-card
+        template: andrea
+      - type: divider
+      - type: custom:decluttering-card
+        template: sonia

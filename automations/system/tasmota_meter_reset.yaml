@@ -1,0 +1,16 @@
+---
+#
+# Reset Meters on Tasmota Power Monitor Plugs.
+#
+alias: System - Tasmota Meters Reset
+initial_state: on
+trigger:
+  - platform: time
+    at: '00:00:00'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/EnergyReset1"
+      payload: "0"
+      retain: false
+  

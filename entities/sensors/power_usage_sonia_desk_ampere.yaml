@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "Power Usage Desk Sonia Ampere"
+state_topic: "tele/Desk_Sonia_Plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Current"] }}'
+unit_of_measurement: "A"

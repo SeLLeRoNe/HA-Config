@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  laundry_room_total_energy_usage:
+    friendly_name: Laundry Room Daily Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.power_usage_washing_machine_total_energy.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

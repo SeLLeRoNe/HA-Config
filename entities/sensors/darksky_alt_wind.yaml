@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  dark_sky_alt_wind:
+    value_template: >-
+      {% set winddir = ['North','North-Northeast','Northeast','East-Northeast','East','East-Southeast','Southeast','South-Southeast','South','South-Southwest','Southwest','West-Southwest','West','West-Northwest','Northwest','North-Northwest','North'] %}
+      {{ states('sensor.dark_sky_wind_speed') | round }} mi/h from {{ winddir[((states('sensor.dark_sky_wind_bearing') | float / 360)*16) | round]}}

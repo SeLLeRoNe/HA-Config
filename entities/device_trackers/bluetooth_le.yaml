@@ -1,0 +1,4 @@
+#---
+#platform: bluetooth_le_tracker
+#interval_seconds: 3600
+#track_new_devices: false

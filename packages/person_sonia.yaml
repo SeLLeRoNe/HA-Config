@@ -1,0 +1,54 @@
+---
+sensor:
+  platform: template
+  sensors:
+    sonia_location:
+      friendly_name: "Sonia Location"
+      value_template: >-
+        {% if state_attr('device_tracker.sonia_mi9tpro', 'place') != None %}
+          {{ state_attr('device_tracker.sonia_mi9tpro', 'place') }}
+        {% elif states.sensor.sonia.attributes.place_name != "-" %}
+          {{ state_attr('sensor.sonia', 'place_name') }}
+        {% else %}
+          {{ state_attr('sensor.sonia', 'formatted_address') }}
+        {% endif %}
+
+    sonia_status:
+      friendly_name: "Sonia Status"
+      value_template: >-
+        {% if is_state_attr('device_tracker.sonia_mi9tpro', 'driving', true) %}
+          Driving near {{ states('sensor.sonia_location') }}
+        {% elif is_state_attr('device_tracker.sonia_mi9tpro', 'moving', true) %}
+          Moving near {{ states('sensor.sonia_location') }}
+        {% else %}
+          {{ states('sensor.sonia_location') }}
+        {% endif %}
+      entity_picture_template: >-
+        {% if state_attr('sensor.sonia', 'place_type') == 'supermarket' %}
+          /local/images/sonia/grocery.png
+        {% elif state_attr('device_tracker.sonia_mi9tpro', 'place') == 'Work' %}
+          /local/images/sonia/work.png
+        {% elif state_attr('device_tracker.sonia_mi9tpro', 'place') == 'Home' %}
+          /local/images/sonia/home.png
+        {% elif state_attr('device_tracker.sonia_mi9tpro', 'driving') == true %}
+          /local/images/sonia/driving.png
+        {% elif state_attr('device_tracker.sonia_mi9tpro', 'moving') == true %}
+          /local/images/sonia/moving.png
+        {%else %} /local/images/sonia/home.png{%endif%}
+
+    sonia_at_loc_since:
+      friendly_name: "At Location Since"
+      value_template: >-
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.sonia_location.last_changed)) / 3600 < 24 %}
+          Since {{ (states.sensor.sonia_location.last_changed.strftime("%s") | int ) | timestamp_custom("%-I:%M %p") }}
+        {% else  %}
+          Since {{ (states.sensor.sonia_location.last_changed.strftime("%s") | int ) | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+        {% endif %}
+
+    sonia_height:
+      value_template: >-
+        {% if is_state('binary_sensor.sonia_moving', 'on') %}
+          70px
+        {% else %}
+          40px
+        {% endif %}

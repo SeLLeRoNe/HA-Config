@@ -1,0 +1,18 @@
+---
+# MQTT Device: Kitchen - Dishwasher
+# My living room has a Lamp attached to a Sonoff Basic
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Dishwasher"
+icon: mdi:power-plug
+command_topic: "cmnd/Dishwasher_Plug/POWER"
+state_topic: "stat/Dishwasher_Plug/POWER"
+availability_topic: "tele/Dishwasher_Plug/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: false

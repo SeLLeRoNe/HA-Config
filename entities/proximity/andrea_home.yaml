@@ -1,0 +1,9 @@
+---
+andrea_home:
+  zone: home
+  ignored_zones:
+#    - office_andrea
+  devices:
+    - person.andrea
+  tolerance: 50
+  unit_of_measurement: m

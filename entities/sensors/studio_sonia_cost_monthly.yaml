@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  studio_sonia_cost_monthly:
+    friendly_name: 'Studio Sonia Cost Monthly'
+    icon_template: mdi:currency-eur
+    value_template: >-
+      {{
+      (
+      (states('sensor.studio_sonia_electricity_monthly_peak')|float * states('input_number.energy_price_peak')|float) +
+      (states('sensor.studio_sonia_electricity_monthly_offpeak')|float * states('input_number.energy_price_offpeak')|float)
+      )
+      | round(2)
+      }}
+    unit_of_measurement: "EUR"

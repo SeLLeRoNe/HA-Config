@@ -1,0 +1,13 @@
+---
+spotify_playlist:
+  name: 'Select Playlist to Play:'
+  options:
+    - Let's do my best!
+    - Thrice - Beggars
+    - Thrice - Live at the House of Blues
+    - Bob Marley - Legend
+    - Mannarino - Bar Della Rabbia
+    - Muse - Live at Rome
+    - Pink Floyd - The Dark Side of the Moon
+    - Unknown Playlist
+  icon: mdi:spotify

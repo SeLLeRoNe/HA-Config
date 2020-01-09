@@ -1,0 +1,8 @@
+---
+platform: min_max
+name: Kitchen Average Voltage
+type: max
+round_digits: 1
+entity_ids:
+  - sensor.power_usage_dishwasher_voltage
+  - sensor.power_usage_fridge_voltage

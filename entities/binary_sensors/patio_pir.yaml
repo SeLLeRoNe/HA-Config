@@ -1,0 +1,8 @@
+---
+platform: mqtt
+name: "Patio PIR"
+device_class: motion
+state_topic: "tele/RFBridge01/RESULT"
+value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
+payload_on: "E8447E"
+off_delay: 30

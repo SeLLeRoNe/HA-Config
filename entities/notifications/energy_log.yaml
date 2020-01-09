@@ -1,0 +1,5 @@
+---
+platform: file
+name: Energy LOG
+filename: /www/csv_logs/energy_log.csv
+timestamp: false

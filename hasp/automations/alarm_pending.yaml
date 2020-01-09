@@ -1,0 +1,13 @@
+---
+# Alarm panel is pending arm so update panel text
+alias: hasp_alarm_pending
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: 'pending'
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/p[7].b[13].txt'
+      payload: '"ARMING"'

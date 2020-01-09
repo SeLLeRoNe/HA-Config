@@ -1,0 +1,6 @@
+---
+platform: group
+name: Alarm
+services:
+  - service: andrea_oneplus5
+  - service: sonia_honor8

@@ -1,0 +1,18 @@
+---
+# MQTT Device: Living Room Light
+# My living room has a Lamp attached to a Sonoff Basic
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "4 Canali 1/4"
+icon: mdi:power-plug
+command_topic: "cmnd/sonoff_4ch/POWER1"
+state_topic: "stat/sonoff_4ch/POWER1"
+availability_topic: "tele/sonoff_4ch/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: false

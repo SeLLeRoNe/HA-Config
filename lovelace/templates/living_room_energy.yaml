@@ -1,0 +1,35 @@
+---
+living_room_energy:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: custom:decluttering-card
+        template: room_cost
+        variables:
+          - entity_daily_usage: sensor.living_room_daily_energy_usage
+          - entity_daily_cost: sensor.living_room_cost_daily
+          - entity_monthly_usage: sensor.living_room_monthly_energy_usage
+          - entity_monthly_cost: sensor.living_room_cost_monthly
+          - entity_yearly_usage: sensor.living_room_yearly_energy_usage
+          - entity_yearly_cost: sensor.living_room_cost_yearly
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_total
+        variables:
+          - entity_energy_usage: sensor.living_room_today_energy_usage
+          - entity_power_usage: sensor.living_room_total_power_usage
+          - entity_ampere_usage: sensor.living_room_total_ampere_usage
+          - entity_voltage_usage: sensor.living_room_average_voltage
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - device: TV Stand
+          - entity_energy_usage: sensor.power_usage_tv_stand_today_energy
+          - entity_power_usage: sensor.power_usage_tv_stand_power
+          - entity_ampere_usage: sensor.power_usage_tv_stand_ampere
+          - entity_voltage_usage: sensor.power_usage_tv_stand_voltage

@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  spotify_volume:
+    friendly_name: "Spotify - Volume"
+    value_template: "{{ state_attr('media_player.spotify', 'volume_level') }}"

@@ -1,0 +1,7 @@
+---
+name: Jose Home
+latitude: !secret zone_jose_home_latitude
+longitude: !secret zone_jose_home_longitude
+radius: 15
+passive: false
+icon: mdi:home-heart

@@ -1,0 +1,17 @@
+---
+alias: Master Bedroom - WXKG02LM Switch Left Long
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/master_bedroom_WXKG02LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['click'] == 'left_long' }}"
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lamp_top_light
+      brightness: 250
+      rgb_color: [255,0,0]

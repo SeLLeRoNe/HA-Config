@@ -1,0 +1,16 @@
+---
+platform: mqtt
+name: "Bathroom Light"
+command_topic: "cmnd/Bathroom_Light/POWER"
+state_topic: "stat/Bathroom_Light/POWER"
+payload_on: "ON"
+payload_off: "OFF"
+#brightness_command_topic: "cmnd/Bathroom_Light/DIMMER"
+#brightness_scale: 100
+#brightness_state_topic: "stat/Bathroom_Light/RESULT"
+#brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+availability_topic: "tele/Bathroom_Light/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

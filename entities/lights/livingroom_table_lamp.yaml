@@ -1,0 +1,16 @@
+---
+platform: mqtt
+name: "Living Room Table Light"
+command_topic: "cmnd/DeskLamp/POWER"
+state_topic: "stat/DeskLamp/POWER"
+payload_on: "ON"
+payload_off: "OFF"
+#brightness_command_topic: "cmnd/DeskLamp/DIMMER"
+#brightness_scale: 100
+#brightness_state_topic: "stat/DeskLamp/RESULT"
+#brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+availability_topic: "tele/DeskLamp/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

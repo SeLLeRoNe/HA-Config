@@ -1,0 +1,18 @@
+---
+# MQTT Device: Laundry Room - Washing Machine
+# My living room has a Lamp attached to a Sonoff Basic
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Washing Machine"
+icon: mdi:power-plug
+command_topic: "cmnd/Washing_Machine_Plug/POWER"
+state_topic: "stat/Washing_Machine_Plug/POWER"
+availability_topic: "tele/Washing_Machine_Plug/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: false

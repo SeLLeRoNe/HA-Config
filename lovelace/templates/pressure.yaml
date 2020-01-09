@@ -1,0 +1,46 @@
+---
+pressure:
+  card:
+    type: custom:mini-graph-card
+    name: Pressure
+    icon: fas:tachometer-alt
+    more_info: false
+    height: 150
+    line_width: 4
+    hours_to_show: 168
+    points_per_hour: 0.25
+    aggregate_func: max
+    group_by: hour
+    group: false
+    hour24: true
+    animate: false
+    decimals: 1
+    font_size: 100
+    font_size_header: 14
+    align_header: default
+    align_icon: right
+    align_state: center
+#    state_map:
+#      - value: "off"
+#        label: "Day"
+#      - value: "on"
+#        label: "Night"
+    show:
+      name: true
+      icon: true
+      state: true
+      graph: bar
+      fill: false
+      points: false
+      legend: false
+      extrema: false
+      labels: false
+      labels_secondary: false
+      name_adaptive_color: true
+      icon_adaptive_color: true
+    entities:
+      - entity: '[[entity]]'
+        name: Pressure
+        color: '#BF00FF'
+    tap_action:
+      action: none

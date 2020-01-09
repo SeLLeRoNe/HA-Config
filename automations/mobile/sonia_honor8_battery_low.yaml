@@ -1,0 +1,25 @@
+---
+alias: Mobile - Honor 8 - Battery Low
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.sonia_honor8_battery
+    below: 20
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.sonia_honor8_charging
+      state: 'on'
+    - condition: state
+      entity_id: person.sonia
+      state: 'home'
+action:
+  - service: notify.html5_sonia
+    data_template:
+      title: "Low Battery"
+      message: "Low Battery on Honor 8, please plug it!"
+  - service: notify.html5_andrea_computer_studio
+    data_template:
+      title: "Low Battery"
+      message: "Low Battery on Honor 8, please plug it!"

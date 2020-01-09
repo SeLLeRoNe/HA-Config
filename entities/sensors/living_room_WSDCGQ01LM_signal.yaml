@@ -1,0 +1,11 @@
+---
+# MQTT Device: Living Room WSDCGQ01LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Living Room WSDCGQ01LM Link Quality'
+icon: mdi:home-thermometer
+state_topic: "zigbee2mqtt/living_room_WSDCGQ01LM"
+availability_topic: "zigbee2mqtt/living_room_WSDCGQ01LM/availability"
+value_template: "{{ value_json.linkquality }}"

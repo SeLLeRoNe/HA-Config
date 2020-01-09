@@ -1,0 +1,17 @@
+---
+platform: template
+sensors:
+  day_night:
+    friendly_name: "Day/Night"
+    value_template: >-
+      {% if is_state('sun.sun', 'above_horizon') %}
+        Day
+      {% else %}
+        Night
+      {% endif %}
+    icon_template: >-
+      {% if is_state('sun.sun', 'above_horizon') %}
+        mdi:weather-sunny
+      {% else %}
+        mdi:weather-night
+      {% endif %}

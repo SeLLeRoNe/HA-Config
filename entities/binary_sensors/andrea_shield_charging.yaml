@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  andrea_shield_charging:
+    friendly_name: NVIDIA Shield K1 Charging
+    value_template: "{{ is_state('input_boolean.andrea_shield_charging', 'on') }}"
+    icon_template: mdi:power-plug

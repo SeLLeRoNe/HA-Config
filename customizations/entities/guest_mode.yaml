@@ -1,0 +1,9 @@
+---
+input_boolean.guest_mode:
+  templates:
+    icon: >
+      if (state === 'on') return 'mdi:hotel';
+      return 'mdi:bed-empty';
+    icon_color: >
+      if (state === 'on') return 'rgb(255, 0, 0)';
+      return 'rgb(51, 204, 51)';

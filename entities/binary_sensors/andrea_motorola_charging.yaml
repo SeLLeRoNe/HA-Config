@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  andrea_xt1032_charging:
+    friendly_name: Motorola XT1032 Charging
+    value_template: "{{ is_state('input_boolean.andrea_xt1032_charging', 'on') }}"
+    icon_template: mdi:power-plug

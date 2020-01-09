@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  count_calendars:
+    friendly_name: 'Calendars'
+    value_template: >
+      {%- set domains = ['calendar'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

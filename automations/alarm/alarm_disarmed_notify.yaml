@@ -1,0 +1,21 @@
+---
+alias: Alarm - Disarmed Notification
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: 'disarmed'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: 'armed_away'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+action:
+  - service: notify.alarm
+    data_template:
+      title: "Alarm Notification"
+      message: "Alarm Deactivated while no one is at home!"

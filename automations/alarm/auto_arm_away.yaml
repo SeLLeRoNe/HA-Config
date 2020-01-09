@@ -1,0 +1,33 @@
+---
+alias: Alarm - Auto Arm - Away
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: time_pattern
+    minutes: '*'
+  - platform: zone
+    entity_id: group.family
+    zone: zone.home
+    event: leave
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'armed_away') }}"
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+action:
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.home_alarm
+    data_template:
+      code: !secret zone_home_alarm_code
+#  - service: notify.alarm
+#    data_template:
+#      title: "Home Alarm Activated"
+#      message: "Alarm automatically activated - Away mode"

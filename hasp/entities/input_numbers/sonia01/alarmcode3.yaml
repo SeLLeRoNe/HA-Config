@@ -1,0 +1,8 @@
+---
+hasp_sonia01_alarmcode3:
+  name: Alarm Code 3
+  icon: mdi:format-list-numbers
+  min: -1
+  max: 9
+  step: 1
+  initial: -1

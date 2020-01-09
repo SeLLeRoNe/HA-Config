@@ -1,0 +1,7 @@
+---
+name: Gym
+latitude: !secret zone_gym_latitude
+longitude: !secret zone_gym_longitude
+radius: 25
+passive: false
+icon: mdi:run-fast

@@ -1,0 +1,31 @@
+---
+alias: Utility Meter - Update House Total Energy Usage
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: tele/TV_Stand_Plug/SENSOR
+  - platform: mqtt
+    topic: tele/Washing_Machine_Plug/SENSOR
+  - platform: mqtt
+    topic: tele/Desk_Andrea_Plug/SENSOR
+  - platform: mqtt
+    topic: tele/Table_Andrea_Plug/SENSOR
+  - platform: mqtt
+    topic: tele/Desk_Sonia_Plug/SENSOR
+action:
+  - service: mqtt.publish
+    data:
+      topic: "tele/House/TOTAL_ENERGY"
+      payload_template: >-
+        {{
+        (
+        (states.sensor.living_room_total_energy_usage.state | float) +
+        (states.sensor.kitchen_total_energy_usage.state | float) +
+        (states.sensor.laundry_room_total_energy_usage.state | float) +
+        (states.sensor.studio_andrea_total_energy_usage.state | float) +
+        (states.sensor.studio_sonia_total_energy_usage.state | float)
+        )
+        | round(3)
+        }}
+      qos: 1
+      retain: true

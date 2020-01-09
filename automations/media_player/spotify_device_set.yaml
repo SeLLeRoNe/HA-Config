@@ -1,0 +1,11 @@
+---
+alias: Media Player - Spotify Set Device
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: input_select.spotify_device
+action:
+  - service: media_player.select_source
+    entity_id: media_player.spotify
+    data_template:
+      source: "{{ states('input_select.spotify_device') }}"

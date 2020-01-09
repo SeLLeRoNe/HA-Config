@@ -1,0 +1,19 @@
+---
+alias: Media Player - Get Spotify Volume Status
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sensor.spotify_volume
+action:
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_off
+    entity_id: automation.media_player_spotify_set_volume
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.spotify_volume
+      value: "{{ states('sensor.spotify_volume') | float | round(2) * 100 | default('{{ (1.0)*100.0 | int }}', True) }}"
+  - service: homeassistant.turn_on
+    entity_id: automation.media_player_spotify_set_volume

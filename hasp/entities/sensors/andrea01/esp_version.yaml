@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Andrea ESP Version
+icon: mdi:git
+state_topic: "hasp/andrea01/sensor"
+value_template: '{{ value_json.espVersion }}'
+availability_topic: "hasp/andrea01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

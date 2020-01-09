@@ -1,0 +1,12 @@
+---
+# MQTT Device: Laundry Room SJCGQ11LM Voltage
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Laundry Room SJCGQ11LM Voltage"
+state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
+availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+icon: mdi:flash
+unit_of_measurement: "mV"
+value_template: "{{ value_json.voltage }}"

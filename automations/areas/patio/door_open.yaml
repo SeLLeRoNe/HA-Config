@@ -1,0 +1,36 @@
+---
+alias: Patio - Door Left Open for 10 Minutes
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: binary_sensor.patio_mccgq01lm_door
+    to: 'on'
+    for:
+      minutes: 15
+condition:
+  condition: and
+  conditions:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'armed_home'
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'armed_night'
+action:
+#  - service: light.turn_on
+#    data:
+#      entity_id: light.patio_light
+  - service: notify.html5_andrea
+    data_template:
+      title: "Security Alert"
+      message: "Patio Door has been open for 10 minutes."
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.studio_andrea_google
+      message: "The patio door has been opened for 10 minutes."
+      language: 'en'

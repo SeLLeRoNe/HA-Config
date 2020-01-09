@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  sonia_driving:
+    friendly_name: "Sonia Driving"
+    value_template: "{{ state_attr('device_tracker.sonia_espejo_brea', 'moving') }}"

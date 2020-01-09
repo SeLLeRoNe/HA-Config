@@ -1,0 +1,11 @@
+---
+alias: 'System - Zigbee Map Update'
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time_pattern
+    minutes: '/5'
+    seconds: 00
+action:
+  - service: zigbee2mqtt_networkmap.update

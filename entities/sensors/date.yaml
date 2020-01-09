@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  date:
+    friendly_name: 'Date'
+    value_template: '{{ as_timestamp(now()) | timestamp_custom("%d/%m/%Y", True) }}'

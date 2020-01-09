@@ -1,0 +1,7 @@
+---
+name: Otilia Home
+latitude: !secret zone_otilia_home_latitude
+longitude: !secret zone_otilia_home_longitude
+radius: 15
+passive: false
+icon: mdi:home-heart

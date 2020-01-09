@@ -1,0 +1,36 @@
+---
+alias: Studio Andrea - PIR
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+    to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: numeric_state
+      entity_id: sensor.illuminance
+      below: 1000
+    - condition: state
+      entity_id: light.studio_andrea_light
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'armed_home'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.studio_andrea_light
+      brightness: 25
+#      rgb_color: [102,204,255]

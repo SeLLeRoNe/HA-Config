@@ -1,0 +1,9 @@
+---
+platform: generic
+name: Hallway
+stream_source: !secret camera_hallway_live_url
+still_image_url: !secret camera_hallway_snapshot_url
+verify_ssl: false
+authentication: basic
+username: !secret camera_hallway_username
+password: !secret camera_hallway_password

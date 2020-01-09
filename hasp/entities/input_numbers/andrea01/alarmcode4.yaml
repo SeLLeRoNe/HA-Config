@@ -1,0 +1,8 @@
+---
+hasp_andrea01_alarmcode4:
+  name: Alarm Code 4
+  icon: mdi:format-list-numbers
+  min: -1
+  max: 9
+  step: 1
+  initial: -1

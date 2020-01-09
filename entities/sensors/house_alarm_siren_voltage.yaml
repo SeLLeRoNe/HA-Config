@@ -1,0 +1,12 @@
+---
+# MQTT Device: House Alarm Siren Voltage
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "House Alarm Siren Voltage"
+icon: mdi:flash
+state_topic: "zigbee2mqtt/house_alarm_siren"
+availability_topic: "zigbee2mqtt/house_alarm_siren/availability"
+unit_of_measurement: "mV"
+value_template: "{{ value_json.voltage }}"

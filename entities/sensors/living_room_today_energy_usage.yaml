@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  living_room_today_energy_usage:
+    friendly_name: Living Rooma Daily Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.power_usage_tv_stand_today_energy.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

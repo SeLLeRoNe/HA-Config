@@ -1,0 +1,13 @@
+---
+platform: aemet
+name: AEMET
+api_key: !secret aemet_api_key
+station_id: !secret aemet_station_id
+monitored_conditions:
+  - temperature
+  - humidity
+  - pressure
+  - precipitation
+  - snow
+  - visibility
+  - wind_speed

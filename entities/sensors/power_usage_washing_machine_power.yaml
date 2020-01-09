@@ -1,0 +1,7 @@
+---
+platform: mqtt
+name: "Power Usage Washing Machine Power"
+icon: mdi:flash
+state_topic: "tele/Washing_Machine_Plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

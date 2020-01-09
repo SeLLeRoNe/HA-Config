@@ -1,0 +1,9 @@
+---
+platform: generic
+name: Meteo
+still_image_url: https://www.yr.no/place/Storbritannia/England/London/meteogram.svg # London
+#still_image_url: https://www.yr.no/place/Italia/Lazio/Civitella_San_Paolo/meteogram.svg  # Civitella San Paolo
+#still_image_url: https://www.yr.no/place/Italia/Lazio/Ardea//meteogram.svg # Ardea
+content_type: 'image/svg+xml'
+#platform: mjpeg
+#mjpeg_url: http://user:passs@ip/video2.mjpg

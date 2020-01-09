@@ -1,0 +1,18 @@
+---
+alias: hasp_desk01_screen_timer_finish_low
+trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.desk01_screen_low
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: light.hasp_desk_display
+      state: 'on'
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/brightness/set'
+      payload: '20'

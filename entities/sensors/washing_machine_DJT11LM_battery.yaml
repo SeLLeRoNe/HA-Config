@@ -1,0 +1,12 @@
+---
+# MQTT Device: Washing Machine DJT11LM Battery
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Washing Machine DJT11LM Battery"
+state_topic: "zigbee2mqtt/washing_machine_DJT11LM"
+availability_topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
+unit_of_measurement: "%"
+device_class: "battery"
+value_template: "{{ value_json.battery | int }}"

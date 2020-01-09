@@ -1,0 +1,8 @@
+---
+maurizio_home:
+  zone: maurizio_home
+  ignored_zones:
+  devices:
+    - device_tracker.maurizio_honor10
+  tolerance: 50
+  unit_of_measurement: m

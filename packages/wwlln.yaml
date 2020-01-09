@@ -1,0 +1,5 @@
+---
+wwlln:
+  radius: 50
+  latitude: !secret zone_home_latitude
+  longitude: !secret zone_home_longitude

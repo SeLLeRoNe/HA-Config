@@ -1,0 +1,24 @@
+---
+alias: Laundry Room - Laundry Room WXKG03LM Switch Double
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/laundry_room_WXKG03LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['click'] == 'double' }}"
+#    - condition: state
+#      entity_id: sun.sun
+#      state: below_horizon
+#    - condition: numeric_state
+#      entity_id: sensor.illuminance
+#      below: 2500
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.patio_light
+      color_name: cyan
+      brightness: 100
+      transition: 5

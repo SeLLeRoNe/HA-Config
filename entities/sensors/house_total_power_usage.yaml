@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  house_total_power_usage:
+    friendly_name: Total Power Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{ (
+      (states.sensor.living_room_total_power_usage.state | float) +
+      (states.sensor.kitchen_total_power_usage.state | float) +
+      (states.sensor.laundry_room_total_power_usage.state | float) +
+      (states.sensor.studio_andrea_total_power_usage.state | float) +
+      (states.sensor.studio_sonia_total_power_usage.state | float)
+      ) | round(1) }}
+    unit_of_measurement: 'W'

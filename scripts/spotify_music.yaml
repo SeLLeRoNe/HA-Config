@@ -1,0 +1,19 @@
+spotify_music:
+  alias: "Play selected spotify playlist"
+  sequence:
+    - service: media_player.select_source
+      data_template:
+        entity_id: media_player.spotify
+        source: '{{input_select.spotify_source}}'
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.spotify
+        media_content_type: playlist
+        media_content_id: >
+          {% if is_state("input_select.spotify_playlist", "Let's do my best!") %} spotify:user:playlists.germany:playlist:50VoXXDyqPPMFwYLE8E87o
+          {% elif is_state("input_select.spotify_playlist", "Thrice - Beggars") %} spotify:user:1143893613:playlist:08KNqFe1TQqYLU4JEydIQt
+          {% elif is_state("input_select.spotify_playlist", "Bob Marley - Legend") %} spotify:user:spotify:playlist:5Go7tNRkY1L6XltOrGsio3
+          {% elif is_state("input_select.spotify_playlist", "Mannarino - Bar Della Rabbia") %} spotify:user:kent1337:playlist:3SjdMGiGPLAkoYEhhVg70C
+          {% elif is_state("input_select.spotify_playlist", "Muse - Live at Rome") %} spotify:user:kent1337:playlist:2av8vafZFdRu5qRxL0NPS6
+          {% elif is_state("input_select.spotify_playlist", "Pink Floyd - The Dark Side of the Moon") %} spotify:user:kent1337:playlist:6XVQoDFnN8DrrkGRTDoxoo
+          {% endif %}

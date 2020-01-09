@@ -1,0 +1,29 @@
+---
+# The recorder component is storing details in a database which
+# then are handled by the history component.
+#
+# https://www.home-assistant.io/components/recorder/
+#
+recorder:
+  # MySQL / MariaDB Connection
+  db_url: !secret recorder_mysql
+
+  # The number of days of history to keep in the recorder database
+  purge_keep_days: 15
+
+  # How often (in days) the purge task runs
+  purge_interval: 1
+
+  # Select what to exclude from recording
+  exclude:
+    domains:
+      - automation
+      - binary_sensor
+      - weblink
+      - updater
+      - group
+      - media_player
+      - weather
+      - zone
+    entities:
+      - sun.sun

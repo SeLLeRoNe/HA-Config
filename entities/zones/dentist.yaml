@@ -1,0 +1,7 @@
+---
+name: Dentist
+latitude: !secret zone_dentist_latitude
+longitude: !secret zone_dentist_longitude
+radius: 25
+passive: false
+icon: mdi:run-fast

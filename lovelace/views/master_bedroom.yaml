@@ -1,0 +1,498 @@
+title: Master Bedroom
+#icon: fas:bed
+icon: mdi:bed-empty
+panel: true
+path: master-bedroom
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Master Bedroom
+          - type: horizontal-stack
+            cards:
+              - type: glance
+#                title: Sensors
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: Motion Sensor
+                    entity: binary_sensor.master_bedroom_pir
+                    tap_action:
+                      action: none
+                  - name: Window Status
+                    entity: binary_sensor.master_bedroom_window
+                    tap_action:
+                      action: none
+          - type: horizontal-stack
+            cards:
+              - type: custom:decluttering-card
+                template: master_bedroom_temperature
+              - type: custom:decluttering-card
+                template: humidity
+                variables:
+                  - entity: sensor.master_bedroom_humidity
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Lights
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_lamp_top_light
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: section
+                  label: Lamp
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_lamp_top_light
+                  name: Top
+                  toggle: true
+#                  full_row: true
+                  tap_action:
+                    action: none
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_lamp_top_light
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: section
+                  label: Lamp
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_lamp_top_light
+                  name:  Top
+                  toggle: true
+#                  full_row: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.master_bedroom_lamp_top_light
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FFFF00'
+                  tap_action:
+                    action: none
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - type: custom:slider-entity-row
+                entity: light.master_bedroom_lamp_bottom_light
+                name: Bottom
+                toggle: true
+#                full_row: true
+                tap_action:
+                  action: none
+#      - type: custom:light-entity-card
+#        entity: light.andrea_bedside_lamp
+#        header: Andrea
+#        group: true
+#        persist_features: true
+#        brightness: true
+#        color_temp: true
+#        white_value: true
+#        color_picker: true
+#        effects_list:
+#          - 1
+#          - 2
+#          - 3
+#          - 4
+#      - type: custom:light-entity-card
+#        entity: light.sonia_bedside_lamp
+#        header: Sonia
+#        group: true
+#        persist_features: true
+#        brightness: true
+#        color_temp: true
+#        white_value: true
+#        color_picker: true
+#        effects_list:
+#          - 1
+#          - 2
+#          - 3
+#          - 4
+#      - break
+#      - type: vertical-stack
+#        cards:
+#      - type: horizontal-stack
+#        cards:
+#          - type: light
+#            entity: light.andrea_bedside_lamp
+#            header: Andrea
+#            tap_action:
+#              action: toggle
+#            hold_action:
+#              action: more-info
+#          - type: light
+#            entity: light.sonia_bedside_lamp
+#            name: Sonia
+#            toggle: true
+#            tap_action:
+#              action: toggle
+#            hold_action:
+#              action: more-info
+#          - type: horizontal-stack
+#            cards:
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_ceiling_light
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_ceiling_light
+                  name: Ceiling Light
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_ceiling_light
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_ceiling_light
+                  name: Ceiling Light
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.master_bedroom_ceiling_light
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_wardrobe_light
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_wardrobe_light
+                  name: Wardrobe Light
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.master_bedroom_wardrobe_light
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.master_bedroom_wardrobe_light
+                  name: Wrdrobe Light
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.master_bedroom_wardrobe_light
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+          - type: conditional
+            conditions:
+              - entity: light.andrea_bedside_lamp
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.andrea_bedside_lamp
+                  name: Andrea
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.andrea_bedside_lamp
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.andrea_bedside_lamp
+                  name: Andrea
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.andrea_bedside_lamp
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+          - type: conditional
+            conditions:
+              - entity: light.sonia_bedside_lamp
+                state: "off"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.sonia_bedside_lamp
+                  name: Sonia
+                  toggle: true
+          - type: conditional
+            conditions:
+              - entity: light.sonia_bedside_lamp
+                state: "on"
+            card:
+              type: entities
+              show_header_toggle: false
+              entities:
+                - type: 'custom:slider-entity-row'
+                  entity: light.sonia_bedside_lamp
+                  name: Sonia
+                  toggle: true
+                - type: 'custom:rgb-light-card'
+                  entity: light.sonia_bedside_lamp
+                  size: 25
+                  colors:
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FFFFFF'
+                    - rgb_color:
+                      - 0
+                      - 00
+                      - 255
+#                      brightness: 255
+                      icon_color: '#0000FF'
+                    - rgb_color:
+                      - 0
+                      - 255
+                      - 0
+#                      brightness: 255
+                      icon_color: '#00FF00'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 0
+#                      brightness: 255
+                      icon_color: '#FF0000'
+                    - rgb_color:
+                      - 255
+                      - 0
+                      - 255
+#                      brightness: 255
+                      icon_color: '#FF00FF'
+                    - rgb_color:
+                      - 255
+                      - 102
+                      - 0
+                      brightness: 150
+                      icon_color: '#FF6600'
+                    - rgb_color:
+                      - 255
+                      - 255
+                      - 0
+#                      brightness: 150
+                      icon_color: '#FFFF00'
+      - break
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: En Suite
+          - type: horizontal-stack
+            cards:
+              - type: glance
+#                title: Sensors
+                columns: 3
+                show_header_toggle: false
+                entities:
+                  - name: Leak Sensor
+                    entity: binary_sensor.master_bathroom_sjcgq11lm_leak
+                    tap_action:
+                      action: none
+                  - name: Motion Sensor
+                    entity: binary_sensor.master_bathroom_pir
+                    tap_action:
+                      action: none
+                  - name: Window Status
+                    entity: binary_sensor.master_bathroom_window
+                    tap_action:
+                      action: none
+          - type: horizontal-stack
+            cards:
+              - type: custom:decluttering-card
+                template: master_bathroom_temperature
+              - type: custom:decluttering-card
+                template: humidity
+                variables:
+                  - entity: sensor.master_bathroom_humidity

@@ -1,0 +1,11 @@
+---
+platform: mqtt
+name: "Lampada Soggiorno"
+icon: mdi:floor-lamp
+state_topic: "stat/RFBridge01/RESULT"
+value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
+command_topic: "cmnd/RFBridge01/RFCODE"
+payload_on: "E8447A"
+payload_off: "E8447Aoff"
+qos: 1
+retain: false

@@ -1,0 +1,17 @@
+---
+# This is Yamaha RV-X 776 Amplifier.
+#
+# https://www.home-assistant.io/components/media_player.yamaha/
+#
+platform: yamaha
+name: Studio Andrea Amplifier
+#name: Amplifier YAMAHA RX-V779
+host: !secret studio_andrea_amplifier_ip
+#source_ignore:
+source_names:
+  HDMI1: "PC"
+  V-AUX: "NowTV"
+zone_ignore:
+  "Zone_2"
+#zone_names:
+#  Main_Zone: "Living Room"

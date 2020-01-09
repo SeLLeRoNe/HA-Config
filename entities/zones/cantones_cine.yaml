@@ -1,0 +1,7 @@
+---
+name: Cantones Cines
+latitude: !secret zone_cantones_cines_latitude
+longitude: !secret zone_cantones_cines_longitude
+radius: 25
+passive: false
+icon: mdi:home

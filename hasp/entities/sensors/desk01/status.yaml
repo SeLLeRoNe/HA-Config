@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Desk Status
+icon: mdi:lan-connect
+state_topic: "hasp/desk01/status"
+#value_template: '{{ value_json.status }}'
+availability_topic: "hasp/desk01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

@@ -1,0 +1,20 @@
+---
+alias: System - Night Time Off
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: sensor.day_night
+    to: 'Day'
+  - platform: homeassistant
+    event: start
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sensor.day_night
+      state: 'Day'
+action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.night_time
+      value: 0

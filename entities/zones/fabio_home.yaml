@@ -1,0 +1,7 @@
+---
+name: Fabio Home
+latitude: !secret zone_fabio_home_latitude
+longitude: !secret zone_fabio_home_longitude
+radius: 25
+passive: false
+icon: mdi:home

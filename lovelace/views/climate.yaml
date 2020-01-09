@@ -1,0 +1,29 @@
+title: Climate
+icon: mdi:temperature-celsius
+panel: true
+path: climate
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:dual-thermostat
+        name: Downstairs
+        entities:
+          cool: climate.downstairs_cool
+          heat: climate.downstairs_heat
+        fan_control: true
+        min_slider: 18
+        max_slider: 30
+      - break
+#      - type: vertical-stack
+#        cards:
+#          - type: custom:thermostat-card
+#            title: Bedroom
+#            entity: climate.home
+#            chevron_size: 100
+#            hvac:
+#              states:
+#                'Off': 'off'
+#                'Cooling': 'cool'
+#                'Heating': 'heat'
+#              attribute: operation_mode

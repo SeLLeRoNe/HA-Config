@@ -1,0 +1,7 @@
+---
+name: Casa del Agua
+latitude: !secret zone_casa_del_agua_latitude
+longitude: !secret zone_casa_del_agua_longitude
+radius: 75
+passive: false
+icon: mdi:run-fast

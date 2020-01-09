@@ -1,0 +1,50 @@
+---
+platform: mqtt 
+schema: json
+name: "Dream Light"
+command_topic: "cmnd/DreamLight"
+state_topic: "stat/DreamLight"
+availability_topic: "LWT/DreamLight"
+payload_available: "Online"
+payload_not_available: "Offline"
+white_value: true
+optimistic: false
+rgb: true
+flash_time_short: 1
+flash_time_long: 5
+brightness: true
+effect: true
+effect_list:
+  - "Confetti"
+  - "Glitter"
+  - "Juggle"
+  - "Sinelon"
+  - "Solid"
+  - "Christmas"
+  - "Candy Cane"
+  - "Holly Jolly"
+  - "Valentine"
+  - "Lovey Day"
+  - "St Patty"
+  - "Easter"
+  - "USA"
+  - "Independence"
+  - "Go Blue"
+  - "Hail"
+  - "Touchdown"
+  - "Halloween"
+  - "Punkin"
+  - "Thanksgiving"
+  - "Turkey Day"
+  - "BPM"
+  - "Cyclon Rainbow"
+  - "Dots"
+  - "Fire"
+  - "Lightning"
+  - "Police All"
+  - "Police One"
+  - "Rainbow"
+  - "Glitter Rainbow"
+  - "Ripple"
+  - "Twinkle"
+  - "E131"

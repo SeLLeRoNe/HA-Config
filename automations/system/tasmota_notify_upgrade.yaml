@@ -1,0 +1,23 @@
+---
+# This alers me on via HTML5 
+# of a new release of Home Assistant.
+#
+alias: System - Tasmota Update Notification
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ not is_state('sensor.tasmota_available_version', 'unknown') }}"
+    - condition: template
+      value_template: "{{ not is_state('sensor.tasmota_current_version', 'unknown') }}"
+    - condition: template
+      value_template: "{{ states('sensor.tasmota_available_version') > states('sensor.tasmota_current_version') }}"
+action:
+  - service: notify.html5_andrea
+    data_template:
+      title: "Updates Notification"
+      message: "Tasmota {{ states('sensor.tasmota_available_version') }} update is now available."

@@ -1,0 +1,65 @@
+---
+sonia:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: person.sonia
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
+        tap_action:
+          action: none
+      - entity: sensor.sonia_mi9tpro_battery
+        name: "Mi 9T Pro"
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "WiFi: [[ if(binary_sensor.sonia_mi9tpro_wifi == 'on', 'Connected', if(binary_sensor.sonia_mi9tpro_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.sonia_mi9tpro_charging == 'on', ' - Charging', if(input_boolean.sonia_mi9tpro_charging == 'on', ' - Charging', '' )) ]]"
+        tap_action:
+          action: none
+        style: |
+          :host {
+            --paper-item-icon-color:
+              {% if is_state(config.entity, 'unknown') %}
+                rgb(128, 128, 128);
+              {% elif states(config.entity)|int > 100 %}
+                rgb(128, 128, 128);
+              {% elif states(config.entity)|int >= 80 %}
+                rgb(0, 153, 51);
+              {% elif states(config.entity)|int >= 60 %}
+                rgb(0, 153, 0);
+              {% elif states(config.entity)|int >= 40 %}
+                rgb(255, 128, 0);
+              {% elif states(config.entity)|int >= 20 %}
+                rgb(204, 102, 0);
+              {% elif states(config.entity)|int >= 0 %}
+                rgb(153, 0, 0);
+              {% else %}
+                rgb(128, 128, 128);
+              {% endif %}
+          }
+      - entity: sensor.sonia_honor8_battery
+        name: "Honor 8"
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "WiFi: [[ if(binary_sensor.sonia_honor8_wifi == 'on', 'Connected', if(binary_sensor.sonia_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.sonia_honor8_charging == 'on', ' - Charging', if(input_boolean.sonia_honor8_charging == 'on', ' - Charging', '' )) ]]"
+        tap_action:
+          action: none
+        style: |
+          :host {
+            --paper-item-icon-color:
+              {% if is_state(config.entity, 'unknown') %}
+                rgb(128, 128, 128);
+              {% elif states(config.entity)|int > 100 %}
+                rgb(128, 128, 128);
+              {% elif states(config.entity)|int >= 80 %}
+                rgb(0, 153, 51);
+              {% elif states(config.entity)|int >= 60 %}
+                rgb(0, 153, 0);
+              {% elif states(config.entity)|int >= 40 %}
+                rgb(255, 128, 0);
+              {% elif states(config.entity)|int >= 20 %}
+                rgb(204, 102, 0);
+              {% elif states(config.entity)|int >= 0 %}
+                rgb(153, 0, 0);
+              {% else %}
+                rgb(128, 128, 128);
+              {% endif %}
+          }

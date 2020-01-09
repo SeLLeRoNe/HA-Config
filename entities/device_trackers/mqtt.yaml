@@ -1,0 +1,4 @@
+---
+platform: mqtt_json
+devices:
+  Citroen_Cactus: 'tele/Citroen_Cactus/GPS'

@@ -1,0 +1,6 @@
+---
+platform: ping
+name: NETGEAR EX7000
+host: !secret netgear_ex7000_ip
+count: 2
+scan_interval: 30

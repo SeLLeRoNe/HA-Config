@@ -1,0 +1,12 @@
+---
+# MQTT Device: House Alarm Siren Battery
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "House Alarm Siren Battery"
+state_topic: "zigbee2mqtt/house_alarm_siren"
+availability_topic: "zigbee2mqtt/house_alarm_siren/availability"
+unit_of_measurement: "%"
+device_class: "battery"
+value_template: "{{ value_json.battery | int }}"

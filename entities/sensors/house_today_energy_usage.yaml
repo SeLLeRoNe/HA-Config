@@ -1,0 +1,18 @@
+---
+platform: template
+sensors:
+  house_today_energy_usage:
+    friendly_name: Today Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.living_room_today_energy_usage.state | float) +
+      (states.sensor.kitchen_today_energy_usage.state | float) +
+      (states.sensor.laundry_room_today_energy_usage.state | float) +
+      (states.sensor.studio_andrea_today_energy_usage.state | float) +
+      (states.sensor.studio_sonia_today_energy_usage.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

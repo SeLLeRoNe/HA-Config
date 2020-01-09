@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "House Total Energy Usage"
+icon: mdi:flash
+state_topic: "tele/House/TOTAL_ENERGY"
+unit_of_measurement: "kWh"

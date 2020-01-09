@@ -1,0 +1,10 @@
+---
+washing_machine_status:
+  name: Washing Machine
+  options:
+    - Idle
+    - Warming Up
+    - Running
+    - Spinning
+    - Done
+  initial: Idle

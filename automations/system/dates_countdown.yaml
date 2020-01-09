@@ -1,0 +1,44 @@
+---
+alias: System - Refresh date countdown sensors
+initial_state: on
+trigger:
+  - platform: time
+    at: '00:00:01'
+  - platform: homeassistant
+    event: start
+action:
+  - service: python_script.date_countdown
+    data:
+      name: Andrea
+      type: birthday
+      date: 22/09/1982
+  - service: python_script.date_countdown
+    data:
+      name: Sonia
+      type: birthday
+      date: 30/12/1980
+  - service: python_script.date_countdown
+    data:
+      name: Maurizio
+      type: birthday
+      date: 07/08/1957
+  - service: python_script.date_countdown
+    data:
+      name: Patrizia
+      type: birthday
+      date: 25/06/1959
+  - service: python_script.date_countdown
+    data:
+      name: Alessandra
+      type: birthday
+      date: 12/08/1985
+  - service: python_script.date_countdown
+    data:
+      name: Martina
+      type: birthday
+      date: 03/06/1992
+  - service: python_script.date_countdown
+    data:
+      name: "Andrea Sonia"
+      type: anniversary
+      date: 01/02/2016

@@ -1,0 +1,695 @@
+title: Weather
+icon: mdi:weather-partly-cloudy
+panel: true
+path: weather
+#background: center / cover no-repeat url("/local/backgroundz/Purple-fractals.jpg") fixed
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:dark-sky-weather-card
+            locale: en
+            static_icons: false
+            tooltip_bg_color: 'rgb( 75,155,239)'
+            tooltip_border_color: orange
+            tooltip_border_width: 3
+            tooltip_caret_size: 10
+            tooltip_fg_color: '#fff'
+            tooltip_left_offset: -12
+            tooltip_width: 100
+            tooltips: true
+            old_daily_format: false
+            time_format: 24
+            show_beaufort: true
+            entity_current_conditions: sensor.dark_sky_icon
+            entity_temperature: sensor.dark_sky_temperature
+            entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+            entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+            entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+            entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+            entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+            entity_forecast_icon_1: sensor.dark_sky_icon_1d
+            entity_forecast_icon_2: sensor.dark_sky_icon_2d
+            entity_forecast_icon_3: sensor.dark_sky_icon_3d
+            entity_forecast_icon_4: sensor.dark_sky_icon_4d
+            entity_forecast_icon_5: sensor.dark_sky_icon_5d
+            entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
+            entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
+            entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
+            entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
+            entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+            entity_summary_1: sensor.dark_sky_summary_1d
+            entity_summary_2: sensor.dark_sky_summary_2d
+            entity_summary_3: sensor.dark_sky_summary_3d
+            entity_summary_4: sensor.dark_sky_summary_4d
+            entity_summary_5: sensor.dark_sky_summary_5d
+            entity_sun: sun.sun
+            entity_visibility: sensor.dark_sky_visibility
+            entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
+            entity_wind_bearing: sensor.dark_sky_wind_bearing
+            entity_wind_speed: sensor.dark_sky_wind_speed
+            entity_humidity: sensor.dark_sky_humidity
+            entity_pressure: sensor.dark_sky_pressure
+            entity_apparent_temp: sensor.dark_sky_apparent_temperature
+            entity_daily_summary: sensor.dark_sky_daily_summary
+            entity_pop: sensor.dark_sky_precip_probability
+            entity_pop_intensity: sensor.dark_sky_precip_intensity
+            entity_pop_1: sensor.dark_sky_precip_probability_1d
+            entity_pop_2: sensor.dark_sky_precip_probability_2d
+            entity_pop_3: sensor.dark_sky_precip_probability_3d
+            entity_pop_4: sensor.dark_sky_precip_probability_4d
+            entity_pop_5: sensor.dark_sky_precip_probability_5d
+            entity_current_text: sensor.dark_sky_current_text
+            alt_wind: sensor.dark_sky_alt_wind
+#            alt_daytime_high: sensor.dark_sky_alt_daytime_high
+#            alt_visibility: sensor.dark_sky_alt_visibility
+#            alt_pop: sensor.dark_sky_alt_pop
+#            alt_pressure: sensor.dark_sky_alt_pressure
+#            alt_humidity: sensor.dark_sky_alt_humidity
+#          - type: custom:custom-weather-animated
+#            entity: weather.aemet
+#          - type: custom:custom-weather-animated
+#            entity: weather.dark_sky
+          - type: custom:air-visual-card
+            air_pollution_level: sensor.u_s_air_pollution_level
+            air_quality_index: sensor.u_s_air_quality_index
+            main_pollutant: sensor.u_s_main_pollutant
+            temp: weather.dark_sky
+            city: 'Pollution Levels'
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: binary_sensor.meteoalarm
+                name: Meteo Alert - Safety Level
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: '[[ if(binary_sensor.meteoalarm.state == "on", binary_sensor.meteoalarm.attributes.description, "") ]]'
+          - type: iframe
+            url: https://embed.windy.com/embed2.html
+            aspect_ratio: 72%
+      - break
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:config-template-card
+                entities:
+                  - sensor.dark_sky_overnight_low_temperature_0d
+                variables:
+                  - states['sensor.dark_sky_overnight_low_temperature_0d'].state
+                card:
+                  type: custom:mini-graph-card
+                  name: Min Temperature
+                  icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+                  more_info: false
+                  height: 150
+                  line_width: 4
+                  hours_to_show: 168
+                  points_per_hour: 0.25
+                  aggregate_func: max
+                  group_by: hour
+                  group: false
+                  hour24: true
+                  animate: false
+                  decimals: 1
+                  font_size: 100
+                  font_size_header: 14
+                  align_header: default
+                  align_icon: right
+                  align_state: center
+                  lower_bound: -5
+                  upper_bound: 40
+                  show:
+                    name: true
+                    icon: true
+                    state: true
+                    graph: false
+                    fill: false
+                    points: false
+                    legend: false
+                    extrema: false
+                    labels: false
+                    name_adaptive_color: true
+                    icon_adaptive_color: true
+                  style: |
+                    ha-card {
+                      padding: 16px !important;
+                    }
+#                    ha-icon {
+#                      color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                    }
+                  entities:
+                    - entity: sensor.dark_sky_overnight_low_temperature_0d
+                      name: Min Temperature
+                      color: '#0040FF'
+              - type: custom:config-template-card
+                entities:
+                  - sensor.dark_sky_daytime_high_temperature_0d
+                variables:
+                  - states['sensor.dark_sky_daytime_high_temperature_0d'].state
+                card:
+                  type: custom:mini-graph-card
+                  name: Max Temperature
+                  icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+                  more_info: false
+                  height: 150
+                  line_width: 4
+                  hours_to_show: 168
+                  points_per_hour: 0.25
+                  aggregate_func: max
+                  group_by: hour
+                  group: false
+                  hour24: true
+                  animate: false
+                  decimals: 1
+                  font_size: 100
+                  font_size_header: 14
+                  align_header: default
+                  align_icon: right
+                  align_state: center
+                  show:
+                    name: true
+                    icon: true
+                    state: true
+                    graph: false
+                    fill: false
+                    points: false
+                    legend: false
+                    extrema: false
+                    labels: false
+                    name_adaptive_color: true
+                    icon_adaptive_color: true
+                  style: |
+                    ha-card {
+                      padding: 16px !important;
+                    }
+#                    ha-icon {
+#                      color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                    }
+                  entities:
+                    - entity: sensor.dark_sky_daytime_high_temperature_0d
+                      name: Max Temperature
+                      color: '#FF0000'
+          - type: custom:config-template-card
+            entities:
+              - sensor.dark_sky_temperature
+#              - sensor.dark_sky_apparent_temperature
+#              - sensor.aemet_temperature
+            variables:
+              - states['sensor.dark_sky_temperature'].state
+            card:
+              type: custom:mini-graph-card
+              name: Temperature
+              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+              more_info: false
+              height: 150
+              line_width: 4
+              hours_to_show: 168
+              points_per_hour: 0.25
+              aggregate_func: max
+              group_by: hour
+              group: false
+              hour24: true
+              animate: false
+              decimals: 1
+              font_size: 100
+              font_size_header: 14
+              align_header: default
+              align_icon: right
+              align_state: center
+              lower_bound: -5
+              upper_bound: 45
+              show:
+                name: true
+                icon: true
+                state: true
+                graph: line
+                fill: true
+                points: false
+                legend: false
+                extrema: false
+                labels: false
+                labels_secondary: false
+                name_adaptive_color: true
+                icon_adaptive_color: true
+              color_thresholds:
+                - value: 5
+                  color: "#0055FF"
+                - value: 15
+                  color: "#FF6600"
+                - value: 20
+                  color: "#FFAA00"
+                - value: 22.5
+                  color: "#FF7700"
+                - value: 25
+                  color: "#FF3700"
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
+#                ha-icon {
+#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
+#                }
+              entities:
+                - entity: sensor.dark_sky_temperature
+                  name: Temperature
+                  color: '#FF5000'
+#                - entity: sensor.aemet_temperature
+#                  name: Temperature
+#                  color: '#FFFF00'
+#                - entity: sensor.dark_sky_apparent_temperature
+#                  name: Apparent Temperature
+#                  color: '#FFFF00'
+#                - entity: sensor.dark_sky_temperature
+#                  name: Temperature
+#                  color: '#FF5000'
+                - entity: input_number.night_time
+                  color: '#B3B3B3'
+                  name: Night Time
+                  show_fill: true
+                  show_line: false
+                  show_points: false
+                  show_legend: false
+                  y_axis: secondary
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Rain Probability
+                icon: fas:tint
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false2
+                hour24: true
+                animate: false
+                decimals: 1
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: false
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_precip_probability
+                    name: Rain Probability
+                    color: '#0040FF'
+              - type: custom:mini-graph-card
+                name: Rain Intesity
+                icon: fas:umbrella
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 0
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: false
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_precip_intensity
+                    name: Rain intensity
+                    color: '#0040FF'
+#      - type: custom:vertical-stack-in-card
+#        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Visibility
+                icon: fas:eye
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 2
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                lower_bound: 0
+                upper_bound: 50
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: bar
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_visibility
+                    name: Visibility
+                    color: '#0099CC'
+                  - entity: sensor.aemet_visibility
+                    name: Visibility
+                    color: '#0099CC'
+              - type: custom:mini-graph-card
+                name: Illuminance
+                icon: fas:sun
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 0
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                lower_bound: 0
+                upper_bound: 10000
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: bar
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.illuminance
+                    name: Illuminance
+                    color: '#FFDD00'
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Wind Speed
+                icon: fas:wind
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 2
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                lower_bound: 0
+                upper_bound: 25
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: bar
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_wind_speed
+                    name: Wind Speed
+                    color: '#80FF00'
+                  - entity: sensor.aemet_wind_speed
+                    name: Wind Speed
+                    color: '#80FF00'
+              - type: custom:mini-graph-card
+                name: Pressure
+                icon: fas:tachometer-alt
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 1
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                lower_bound: 850
+                upper_bound: 1100
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: bar
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_pressure
+                    name: Pressure
+                    color: '#BF00FF'
+                  - entity: sensor.aemet_pressure
+                    name: Pressure
+                    color: '#BF00FF'
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Humidity
+                icon: fas:tint
+                more_info: false
+                height: 150
+                line_width: 4
+                hours_to_show: 168
+                points_per_hour: 0.25
+                aggregate_func: max
+                group_by: hour
+                group: false
+                hour24: true
+                animate: false
+                decimals: 1
+                font_size: 100
+                font_size_header: 14
+                align_header: default
+                align_icon: right
+                align_state: center
+                lower_bound: 0
+                upper_bound: 100
+                show:
+                  name: true
+                  icon: true
+                  state: true
+                  graph: bar
+                  fill: true
+                  points: false
+                  legend: false
+                  extrema: false
+                  labels: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
+                entities:
+                  - entity: sensor.dark_sky_humidity
+                    name: Humidity
+                    color: '#00BFFF'
+                  - entity: sensor.aemet_humidity
+                    name: Humidity
+                    color: '#00BFFF'
+              - type: custom:config-template-card
+                entities:
+                  - sensor.dark_sky_dew_point
+                variables:
+                  - states['sensor.dark_sky_dew_point'].state
+                card:
+                  type: custom:mini-graph-card
+                  name: Dew Point
+                  icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+                  more_info: false
+                  height: 150
+                  line_width: 4
+                  hours_to_show: 168
+                  points_per_hour: 0.25
+                  aggregate_func: max
+                  group_by: hour
+                  group: false
+                  hour24: true
+                  animate: false
+                  decimals: 1
+                  font_size: 100
+                  font_size_header: 14
+                  align_header: default
+                  align_icon: right
+                  align_state: center
+                  lower_bound: -5
+                  upper_bound: 45
+                  show:
+                    name: true
+                    icon: true
+                    state: true
+                    graph: line
+                    fill: true
+                    points: false
+                    legend: false
+                    extrema: false
+                    labels: false
+                    labels_secondary: false
+                    name_adaptive_color: true
+                    icon_adaptive_color: true
+                  style: |
+                    ha-card {
+                      padding: 16px !important;
+                    }
+                  entities:
+                    - entity: sensor.dark_sky_dew_point
+                      name: Dew Point
+                      color: '#CC99FF'
+                    - entity: input_number.night_time
+                      color: '#B3B3B3'
+                      name: Night Time
+                      show_fill: true
+                      show_line: false
+                      show_points: false
+                      show_legend: false
+                      y_axis: secondary
+      - break
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: "custom:sun-card"
+            name: Sun
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: entities
+                entities:
+                  - entity: sensor.day_night
+                    name: Day/Night
+                  - entity: sensor.season
+                    name: Season
+                  - type: divider
+                  - entity: sensor.dark_sky_temperature
+                    name: Temperature
+                  - entity: sensor.dark_sky_apparent_temperature
+                    name: Apparent Temperature
+                  - type: divider
+                  - entity: sensor.dark_sky_daytime_high_temperature_0d
+                    name: Maximum Temperature
+                  - entity: sensor.dark_sky_overnight_low_temperature_0d
+                    name: Minimum Temperature
+                  - type: divider
+                  - entity: sensor.dark_sky_humidity
+                    name: Humidity
+                  - entity: sensor.dark_sky_dew_point
+                    name: Dew Point
+                  - type: divider
+                  - entity: sensor.dark_sky_visibility
+                    name: Visibility
+                  - entity: sensor.illuminance
+                    name: Illuminance
+                    icon: mdi:weather-sunny
+                  - type: divider
+                  - entity: sensor.dark_sky_precip_intensity
+                    name: Precipitation Intensity
+                  - entity: sensor.dark_sky_precip_probability
+                    name: Precipitation Probability
+                  - type: divider
+                  - entity: sensor.dark_sky_pressure
+                    name: Pressure
+                  - entity: sensor.dark_sky_wind_speed
+                    name: Wind Speed
+#  - type: markdown
+#    content: >
+#      ##
+#      Local Radar
+#  - type: horizontal-stack
+#    cards:
+#      - type: picture-entity
+#        entity: camera.local_radar
+#        camera_image: camera.local_radar
+#        show_state: false
+#        show_name: false
+#      - type: picture-entity
+#        entity: camera.new_orleans_radar
+#        camera_image: camera.new_orleans_radar
+#        show_state: false
+#        show_name: false

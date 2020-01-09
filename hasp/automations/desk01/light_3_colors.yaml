@@ -1,0 +1,31 @@
+---
+# Toggle colors on p[3].b[6] when light1 changes
+alias: hasp_desk01_light_3_colors
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: light.sonia_bedside_lamp
+  - platform: state
+    entity_id: 'binary_sensor.hasp_desk'
+    to: 'on'
+  - platform: homeassistant
+    event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/desk01/command/p[3].b[6].bco'
+      payload_template: >-
+        {% if is_state('light.sonia_bedside_lamp', 'on') -%}
+          31663
+        {%- else -%}
+          23179
+        {%- endif %}
+  - service: mqtt.publish
+    data_template:
+      topic: 'hasp/desk01/command/p[3].b[6].pco'
+      payload_template: >-
+        {% if is_state('light.sonia_bedside_lamp', 'on') -%}
+          0
+        {%- else -%}
+          0
+        {%- endif %}

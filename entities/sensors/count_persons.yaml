@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  count_persons:
+    friendly_name: 'People'
+    value_template: >
+      {%- set domains = ['person'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

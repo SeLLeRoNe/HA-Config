@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  spotify_shuffle:
+    friendly_name: "Spotify - Shuffle"
+    value_template: "{{ state_attr('media_player.spotify', 'shuffle') }}"

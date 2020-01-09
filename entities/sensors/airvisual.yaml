@@ -1,0 +1,9 @@
+---
+platform: airvisual
+api_key: !secret airvisual_api_key
+monitored_conditions:
+  - us
+show_on_map: false
+scan_interval: 600
+latitude: !secret zone_home_latitude
+longitude: !secret zone_home_longitude

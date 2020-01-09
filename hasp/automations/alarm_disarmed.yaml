@@ -1,0 +1,25 @@
+---
+alias: hasp_alarm_disarmed
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: 'disarmed'
+  - platform: state
+    entity_id: group.hasp
+    to: 'on'
+  - platform: homeassistant
+    event: start
+condition:
+  condition: and
+  conditions:
+    - condition: or
+      conditions:
+       - condition: state
+         entity_id: alarm_control_panel.home_alarm
+         state: 'disarmed'
+action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plates/command/json'
+      payload: '["p[7].b[13].font=0","p[7].b[13].pco=10741","p[7].b[13].bco=65535","p[7].b[13].txt=\"DIS\\rARMED\"","p[7].b[15].font=1","p[7].b[15].pco=65535","p[7].b[15].bco=63488","p[7].b[15].txt=\"ARM\""]'

@@ -1,0 +1,7 @@
+---
+hasp_desk01_lights:
+  name: HASP Desk Lights
+  entities:
+    - light.patio_light
+    - light.andrea_bedside_lamp
+    - light.sonia_bedside_lamp

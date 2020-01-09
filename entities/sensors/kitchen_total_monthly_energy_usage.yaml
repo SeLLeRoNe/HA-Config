@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  kitchen_monthly_energy_usage:
+    friendly_name: Monthly Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.kitchen_electricity_monthly_offpeak.state | float) +
+      (states.sensor.kitchen_electricity_monthly_peak.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

@@ -1,0 +1,12 @@
+---
+# MQTT Device: Living Room WSDCGQ01LM Voltage
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Living Room WSDCGQ01LM Voltage"
+state_topic: "zigbee2mqtt/living_room_WSDCGQ01LM"
+availability_topic: "zigbee2mqtt/living_room_WSDCGQ01LM/availability"
+icon: mdi:flash
+unit_of_measurement: "mV"
+value_template: "{{ value_json.voltage }}"

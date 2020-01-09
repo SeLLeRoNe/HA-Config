@@ -1,0 +1,39 @@
+---
+alias: Studio Andrea - Weekend
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "11:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.andrea
+      state: 'home'
+    - condition: state
+      entity_id: binary_sensor.workday
+      state: 'off'
+    - condition: time
+      after: '11:00:00'
+      before: '12:00:00'
+action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_table_plug
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_powerstrip_2
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_uk_powerstrip
+  - delay:
+      seconds: 10
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - delay:
+      seconds: 10
+#  - service: switch.turn_on
+#    entity_id: switch.studio_andrea_computer_plug
+#  - delay:
+#      seconds: 10
+#  - service: switch.turn_on
+#    entity_id: switch.studio_andrea_computer_wol

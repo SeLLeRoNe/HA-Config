@@ -1,0 +1,12 @@
+---
+# MQTT Device: Master Bedroom WXKG02LM Voltage
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Master Bedroom WXKG02LM Voltage"
+state_topic: "zigbee2mqtt/master_bedroom_WXKG02LM"
+availability_topic: "zigbee2mqtt/master_bedroom_WXKG02LM/availability"
+icon: mdi:flash
+unit_of_measurement: "mV"
+value_template: "{{ value_json.voltage }}"

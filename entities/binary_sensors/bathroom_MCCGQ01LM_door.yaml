@@ -1,0 +1,9 @@
+---
+platform: mqtt
+name: "Bathroom MCCGQ01LM Window"
+state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
+availability_topic: "zigbee2mqtt/bathroom_MCCGQ01LM/availability"
+payload_on: false
+payload_off: true
+value_template: "{{ value_json.contact }}"
+device_class: window

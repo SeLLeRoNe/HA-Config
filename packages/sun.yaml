@@ -1,0 +1,24 @@
+---
+# The sun component will use your current location to track if the sun is
+# above or below the horizon.
+#
+# https://www.home-assistant.io/components/sun/
+#
+sun:
+  # The (physical) elevation of your location, in meters above sea level.
+  elevation: !secret zone_home_elevation
+  monitored_conditions:
+    - azimuth
+    - elevation
+    - max_elevation
+    - next_dawn
+    - next_dusk
+    - next_midnight
+    - next_noon
+    - daylight
+    - next_daylight
+    - prev_daylight
+    - sunrise
+    - sunset
+  scan_interval:
+    minutes: 5

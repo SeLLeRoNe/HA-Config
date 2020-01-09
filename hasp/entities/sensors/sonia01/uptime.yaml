@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Sonia Uptime
+icon: mdi:clock-start
+state_topic: "hasp/sonia01/sensor"
+value_template: '{{ value_json.espUptime }}'
+availability_topic: "hasp/sonia01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

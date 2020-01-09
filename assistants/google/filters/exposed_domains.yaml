@@ -1,0 +1,6 @@
+---
+# Provides a list of domains to include in Google Assistant.
+#
+- switch
+- light
+- media_player

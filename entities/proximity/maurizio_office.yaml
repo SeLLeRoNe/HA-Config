@@ -1,0 +1,8 @@
+---
+office_maurizio:
+  zone: office_maurizio
+  ignored_zones:
+  devices:
+    - device_tracker.maurizio_iannuccci
+  tolerance: 50
+  unit_of_measurement: m

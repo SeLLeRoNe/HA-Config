@@ -1,0 +1,24 @@
+---
+# Restore Main Page on connect
+alias: hasp_desk01_main_page
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: 'binary_sensor.hasp_desk'
+    to: 'on'
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: light.hasp_desk_display
+    to: 'on'
+#condition:
+#  condition: and
+#  conditions:
+#    - condition: state
+#      entity_id: alarm_control_panel.home_alarm
+#      state: 'disarmed'
+action:
+  - service: mqtt.publish
+    data_template:
+      topic: 'hasp/desk01/command/page'
+      payload: '2'

@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  studio_andrea_daily_energy_usage:
+    friendly_name: Daily Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.studio_andrea_electricity_daily_offpeak.state | float) +
+      (states.sensor.studio_andrea_electricity_daily_peak.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

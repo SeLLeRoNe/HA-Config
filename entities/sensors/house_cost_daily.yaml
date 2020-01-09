@@ -1,0 +1,16 @@
+---
+platform: template
+sensors:
+  house_cost_daily:
+    friendly_name: 'Total Cost Daily'
+    icon_template: mdi:currency-eur
+    value_template: >-
+      {{
+      (
+      (states('input_number.energy_daily_price')|float) +
+      (states('sensor.house_electricity_daily_peak')|float * states('input_number.energy_price_peak')|float) +
+      (states('sensor.house_electricity_daily_offpeak')|float * states('input_number.energy_price_offpeak')|float)
+      )
+      | round(2)
+      }}
+    unit_of_measurement: "EUR"

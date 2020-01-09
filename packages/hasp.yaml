@@ -1,0 +1,11 @@
+---
+automation: !include_dir_list ../hasp/automations
+group: !include_dir_merge_named ../hasp/groups
+input_boolean: !include_dir_merge_named ../hasp/entities/input_booleans
+input_number: !include_dir_merge_named ../hasp/entities/input_numbers
+light: !include_dir_list ../hasp/entities/lights
+binary_sensor: !include_dir_list ../hasp/entities/binary_sensors
+sensor: !include_dir_list ../hasp/entities/sensors
+timer: !include_dir_merge_named ../hasp/entities/timers
+homeassistant:
+  customize: !include_dir_merge_named ../hasp/customizations

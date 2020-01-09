@@ -1,0 +1,11 @@
+---
+alias: 'System - Incoming Webhook - Service'
+initial_state: 'on'
+trigger:
+  platform: webhook
+  webhook_id: state
+action:
+  service_template: python_script.set_state
+  data_template:
+    entity_id: '{{ trigger.json.entity_id }}'
+    state: '{{ trigger.json.state }}'

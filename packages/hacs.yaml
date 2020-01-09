@@ -1,0 +1,10 @@
+---
+hacs:
+  token: !secret hacs_github_token
+  sidepanel_title: HACS
+  sidepanel_icon: "mdi:alpha-c-box"
+  appdaemon: false
+  python_script: true
+  theme: true
+  options:
+    experimental: true

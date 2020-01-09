@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: 'Master Bedroom Lamp Top Light Wireless Signal'
+icon: mdi:signal-variant
+state_topic: 'tele/Master_Bedroom_Lamp_Top_Light/STATE'
+value_template: "{{ value_json.Wifi.RSSI }}"
+unit_of_measurement: '%'
+availability_topic: "tele/Master_Bedroom_Lamp_Top_Light/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"

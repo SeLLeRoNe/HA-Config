@@ -1,0 +1,25 @@
+---
+alias: Mobile - Mi 9T Pro - Battery Low
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.sonia_mi9tpro_battery
+    below: 20
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.sonia_mi9tpro_charging
+      state: 'on'
+    - condition: state
+      entity_id: person.sonia
+      state: 'home'
+action:
+  - service: notify.html5_sonia
+    data_template:
+      title: "Low Battery"
+      message: "Low Battery on Mi 9T Pro, please plug it!"
+  - service: notify.html5_andrea_computer_studio
+    data_template:
+      title: "Low Battery"
+      message: "Low Battery on Mi 9T Pro, please plug it!"

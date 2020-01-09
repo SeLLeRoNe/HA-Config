@@ -1,0 +1,561 @@
+title: home
+icon: 'mdi:home'
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: horizontal
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/images/home/top_section.svg
+            elements:
+              - type: state-label
+                entity: sensor.today_clock
+                style:
+                  top: 4%
+                  left: 1%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 18px
+              - type: state-label
+                entity: sensor.dark_sky_minutely_summary
+                style:
+                  top: 48%
+                  left: 1%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 14px
+      # --- Sunrise ---      
+              - type: state-label
+                entity: sensor.sunrise_tomorrow
+                style:
+                  top: 6%
+                  left: 82%
+                  transform: none
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 12px
+      # --- Sunset ---      
+              - type: state-label
+                entity: sensor.sunset_today
+                style:
+                  top: 43%
+                  left: 93%
+                  transform: none
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 12px            
+#MAIN SECTION ------------------------------------------------------------------------------------                  
+      - type: horizontal-stack
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/images/home/main_section.svg
+            elements:
+      # --- Current Temeperature ---      
+              - type: state-label
+                entity: sensor.current_temperature
+                style:
+                  top: 15%
+                  left: 33%
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 96px
+      # --- Current Feels Like ---      
+              - type: state-label
+                entity: sensor.current_feels
+                style:
+                  top: 65%
+                  left: 14.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 18px
+      # --- Daily High ---      
+              - type: state-label
+                entity: sensor.daily_high
+                style:
+                  top: 75%
+                  left: 12%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Current Humidity ---      
+              - type: state-label
+                entity: sensor.current_humidity
+                style:
+                  top: 69.5%
+                  left: 35%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 32px            
+      # --- Daily Low ---      
+              - type: state-label
+                entity: sensor.daily_low
+                style:
+                  top: 86%
+                  left: 17.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Cloud Cover ---      
+              - type: state-label
+                entity: sensor.cloud_cover
+                style:
+                  top: 32%
+                  left: 33%
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Nearest Storm ---      
+              - type: state-label
+                entity: sensor.nearest_storm
+                style:
+                  top: 38%
+                  left: 33%
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Second Floor Status ---      
+              - type: state-label
+                entity: sensor.upstairs_status
+                style:
+                  top: 4%
+                  left: 81%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Main Floor Status ---      
+              - type: state-label
+                entity: sensor.main_status
+                style:
+                  top: 46.4%
+                  left: 81%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+      # --- Precipitation Detected ---      
+              - type: state-label
+                entity: sensor.precipitation
+                style:
+                  top: 78%
+                  left: 31%
+                  transform: none
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+      # --- Precipitation Amount ---      
+              - type: state-label
+                entity: sensor.precipitation_amount
+                style:
+                  top: 82%
+                  left: 31%
+                  transform: none
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+      # --- Precipitation Probability ---      
+              - type: state-label
+                entity: sensor.precipitation_prob
+                style:
+                  top: 86%
+                  left: 31%
+                  transform: none
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+                  
+      # --- Current Temeperature Icon ---
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'clear-day'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/clear-day.svg
+                    style:
+                      top: 23%
+                      left: 12%
+                      width: 15%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'clear-night'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/clear-night.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'rain'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/rain.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'snow'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/snow.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'sleet'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/sleet.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'wind'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/wind.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'fog'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/fog.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'cloudy'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/cloudy.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none        
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'partly-cloudy-day'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/partly-cloudy-day.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'partly-cloudy-night'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/partly-cloudy-night.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'hail'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/hail.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'thunderstorm'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/thunderstorm.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+              - type: conditional
+                conditions:
+                  - entity: sensor.dark_sky_icon
+                    state: 'tornado'
+                elements:
+                  - type: image
+                    image: /local/lovelace/images/assets/weather/tornado.svg
+                    style:
+                      top: 20%
+                      left: 12%
+                      width: 12%
+                      pointer-events: none
+      # --- Light Toggles ---                  
+              - type: image
+                tap_action: 
+                  action: toggle
+                entity: light.bedroom_lights
+                state_image:
+                  "off": /local/lovelace/images/assets/lights/dark_off.svg
+                  "on": /local/lovelace/images/assets/lights/dark_on.svg
+                style:
+                  top: 31%
+                  left: 61%
+                  width: 4%
+              - type: image
+                tap_action: 
+                  action: toggle
+                entity: light.XX1_bedroom_lights
+                state_image:
+                  "off": /local/lovelace/images/assets/lights/dark_off.svg
+                  "on": /local/lovelace/images/assets/lights/dark_on.svg
+                style:
+                  top: 31%
+                  left: 75%
+                  width: 4%
+              - type: image
+                tap_action: 
+                  action: toggle
+                entity: light.XX2_bedroom_lights
+                state_image:
+                  "off": /local/lovelace/images/assets/lights/dark_off.svg
+                  "on": /local/lovelace/images/assets/lights/dark_on.svg
+                style:
+                  top: 31%
+                  left: 89%
+                  width: 4%
+              - type: image
+                tap_action: 
+                  action: toggle
+                entity: light.kitchen_table
+                state_image:
+                  "off": /local/lovelace/images/assets/lights/dark_off.svg
+                  "on": /local/lovelace/images/assets/lights/dark_on.svg
+                style:
+                  top: 73%
+                  left: 58%
+                  width: 4%
+              - type: image
+                tap_action: 
+                  action: toggle
+                entity: light.kitchen_island
+                state_image:
+                  "off": /local/lovelace/images/assets/lights/dark_off.svg
+                  "on": /local/lovelace/images/assets/lights/dark_on.svg
+                style:
+                  top: 73%
+                  left: 63.7%
+                  width: 4%
+      # --- Room Temperatures ---        
+              - type: state-label
+                entity: sensor.diningroom_temperature
+                style:
+                  top: 73%
+                  left: 75%
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 48px
+              - type: state-label
+                entity: sensor.familyroom_temperature
+                style:
+                  top: 73%
+                  left: 89%
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 48px
+      # --- Text Elements ---        
+              - type: state-label
+                entity: sensor.text_mainfloor
+                style:
+                  top: 46.4%
+                  left: 52%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+              - type: state-label
+                entity: sensor.text_secondfloor
+                style:
+                  top: 4%
+                  left: 52%
+                  transform: none
+                  color: "#FFFFFF"
+                  font-family: Quicksand
+                  font-size: 16px
+              - type: state-label
+                entity: sensor.text_master
+                style:
+                  top: 17%
+                  left: 61%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_XX1room
+                style:
+                  top: 17%
+                  left: 74.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_XX2room
+                style:
+                  top: 17%
+                  left: 88.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_kitchen
+                style:
+                  top: 59.5%
+                  left: 61%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_diningroom
+                style:
+                  top: 59.5%
+                  left: 74.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_familyroom
+                style:
+                  top: 59.5%
+                  left: 88.5%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 14px
+              - type: state-label
+                entity: sensor.text_table
+                style:
+                  top: 84%
+                  left: 58.1%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 12px
+              - type: state-label
+                entity: sensor.text_island
+                style:
+                  top: 84%
+                  left: 63.6%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 12px
+                      
+#PRESENCE SECTION ------------------------------------------------------------------------------------                          
+      - type: horizontal-stack
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/images/home/bottom_section.svg
+            elements:
+              - type: image
+                entity: device_tracker.life360_YY1
+                image: /local/lovelace/images/assets/person/YY1_away.svg
+                state_image:
+                  "home": /local/lovelace/images/assets/person/YY1_home.svg
+                  "not_home": /local/lovelace/images/assets/person/YY1_away.svg
+                style:
+                  top: 37%
+                  left: 12%
+                  width: 8%
+              - type: image
+                entity: device_tracker.life360_YY2
+                image: /local/lovelace/images/assets/person/YY2_away.svg
+                state_image:
+                  "home": /local/lovelace/images/assets/person/YY2_home.svg
+                  "not_home": /local/lovelace/images/assets/person/YY2_away.svg
+                style:
+                  top: 37%
+                  left: 37%
+                  width: 8%
+              - type: image
+                entity: device_tracker.life360_YY3
+                image: /local/lovelace/images/assets/person/YY3_away.svg
+                state_image:
+                  "home": /local/lovelace/images/assets/person/YY3_home.svg
+                  "not_home": /local/lovelace/images/assets/person/YY3_away.svg
+                style:
+                  top: 37%
+                  left: 62%
+                  width: 8%
+              - type: image
+                entity: device_tracker.life360_YY4
+                image: /local/lovelace/images/assets/person/YY4_away.svg
+                state_image:
+                  "home": /local/lovelace/images/assets/person/YY4_home.svg
+                  "not_home": /local/lovelace/images/assets/person/YY4_away.svg
+                style:
+                  top: 37%
+                  left: 87%
+                  width: 8%
+              - type: state-label
+                entity: sensor.YY1_location
+                style:
+                  top: 82%
+                  left: 12%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 100%
+              - type: state-label
+                entity: sensor.YY2_location
+                style:
+                  top: 82%
+                  left: 37%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 100%
+              - type: state-label
+                entity: sensor.YY3_location
+                style:
+                  top: 82%
+                  left: 62%
+                  color: "#A1A1A1"
+                  font-family: Quicksand
+                  font-size: 100%
+              - type: state-label
+                entity: sensor.YY4_location
+                style:
+                  top: 82%
+                  left: 87%
+                  color: "#A1A1A1"
+                  font-family: Quicksand

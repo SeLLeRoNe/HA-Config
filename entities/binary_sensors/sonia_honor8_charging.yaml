@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  sonia_honor8_charging:
+    friendly_name: Honor 8 Charging Status
+    value_template: "{{ state_attr('device_tracker.sonia_honor8', 'battery_charging') }}"
+    icon_template: mdi:power-plug

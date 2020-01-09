@@ -1,0 +1,19 @@
+---
+# This alers me on via HTML5 
+# of a new release of Home Assistant.
+#
+alias: System - HACS Update Notification
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ states('sensor.hacs') > 0 }}"
+action:
+  - service: notify.html5_andrea
+    data_template:
+      title: "Updates Notification"
+      message: "There are {{ states('sensor.hacs') }} new update(s) available in HACS."

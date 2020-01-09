@@ -1,0 +1,10 @@
+---
+platform: "mqtt"
+name: "Studio Andrea 2AJZ4KPBS PIR"
+state_topic: "zigbee2mqtt/studio_andrea_2AJZ4KPBS"
+availability_topic: "zigbee2mqtt/studio_andrea_2AJZ4KPBS/availability"
+payload_on: true
+payload_off: false
+value_template: "{{ value_json.occupancy }}"
+device_class: "motion"
+off_delay: 90

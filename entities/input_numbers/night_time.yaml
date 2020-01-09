@@ -1,0 +1,7 @@
+---
+night_time:
+  name: Night Time
+  icon: mdi:theme-light-dark
+  min: 0
+  max: 1
+  step: 1

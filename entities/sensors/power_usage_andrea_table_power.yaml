@@ -1,0 +1,7 @@
+---
+platform: mqtt
+name: "Power Usage Table Andrea Power"
+icon: mdi:flash
+state_topic: "tele/Table_Andrea_Plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

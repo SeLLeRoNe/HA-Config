@@ -1,0 +1,15 @@
+---
+platform: template
+sensors:
+  laundry_room_yearly_energy_usage:
+    friendly_name: Yearly Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.laundry_room_electricity_yearly_offpeak.state | float) +
+      (states.sensor.laundry_room_electricity_yearly_peak.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

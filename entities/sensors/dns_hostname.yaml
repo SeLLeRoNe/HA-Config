@@ -1,0 +1,5 @@
+---
+platform: dnsip
+name: Hostname IP
+hostname: !secret http_base_url
+resolver: 1.1.1.1

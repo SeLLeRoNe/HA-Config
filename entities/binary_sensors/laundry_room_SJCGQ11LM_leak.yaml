@@ -1,0 +1,9 @@
+---
+platform: "mqtt"
+name: "Laundry Room SJCGQ11LM Leak"
+state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
+availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+payload_on: true
+payload_off: false
+value_template: "{{ value_json.water_leak }}"
+device_class: "moisture"

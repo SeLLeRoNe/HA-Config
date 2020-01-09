@@ -1,0 +1,11 @@
+---
+platform: template
+sensors:
+  living_room_total_power_usage:
+    friendly_name: Living Room Total Power Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{ (
+      (states.sensor.power_usage_tv_stand_power.state | float)
+      ) | round(1) }}
+    unit_of_measurement: 'W'

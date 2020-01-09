@@ -1,0 +1,12 @@
+---
+# MQTT Device: WXKG03LM Battery
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Laundry Room WXKG03LM Battery"
+state_topic: "zigbee2mqtt/laundry_room_WXKG03LM"
+availability_topic: "zigbee2mqtt/laundry_room_WXKG03LM/availability"
+unit_of_measurement: "%"
+device_class: "battery"
+value_template: "{{ value_json.battery | int }}"

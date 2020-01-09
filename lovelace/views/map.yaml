@@ -1,0 +1,19 @@
+title: Map
+#icon: fas:globe-europe
+icon: mdi:earth
+panel: true
+path: map
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: map
+            entities:
+              - zone.home
+              - zone.gym
+              - zone.fc_office
+              - zone.xunta_galicia
+              - device_tracker.andrea_iannucci
+              - device_tracker.sonia_espejo_brea

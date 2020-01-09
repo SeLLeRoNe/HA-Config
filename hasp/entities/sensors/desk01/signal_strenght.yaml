@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: HASP Desk Signal Strenght
+icon: mdi:signal-variant
+state_topic: "hasp/desk01/sensor"
+value_template: '{{ value_json.signalStrength }}'
+availability_topic: "hasp/desk01/status"
+payload_available: "ON"
+payload_not_available: "OFF"
+qos: 1

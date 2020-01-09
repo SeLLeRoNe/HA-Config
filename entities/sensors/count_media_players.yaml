@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  count_media_players:
+    friendly_name: 'Media Players'
+    value_template: >
+      {%- set domains = ['media_player'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

@@ -1,0 +1,43 @@
+---
+alias: Studio Andrea - Workday
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "10:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.andrea
+      state: 'home'
+    - condition: state
+      entity_id: binary_sensor.workday
+      state: 'on'
+    - condition: time
+      after: '10:00:00'
+      before: '12:00:00'
+action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_table_plug
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_powerstrip_2
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_uk_powerstrip
+#  - service: switch.turn_on
+#    entity_id: switch.studio_andrea_media01_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - delay:
+      seconds: 5
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_computer_plug
+  - delay:
+      seconds: 5
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_computer_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_lg_monitor_1
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_lg_monitor_2

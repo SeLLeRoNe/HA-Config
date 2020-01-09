@@ -1,0 +1,18 @@
+---
+# MQTT Device: Studio Sonia - Desk
+# My living room has a Lamp attached to a Sonoff Basic
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Studio Sonia Desk Plug"
+icon: mdi:power-plug
+command_topic: "cmnd/Desk_Sonia_Plug/POWER"
+state_topic: "stat/Desk_Sonia_Plug/POWER"
+availability_topic: "tele/Desk_Sonia_Plug/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: false

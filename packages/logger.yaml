@@ -1,0 +1,26 @@
+---
+# The logger component allows the user to define text values that
+# can be controlled via the frontend and can be used within conditions of
+# automation. This can for example be used to disable or enable certain
+# automations.
+#
+# https://www.home-assistant.io/components/logger/
+#
+logger:
+  default: error
+  logs:
+    pyupdate: error
+    hacs: error
+    custom_components: error
+    custom_components.sensor.places: error
+    custom_components.sensor.authenticated: error
+    homeassistant.loader: error
+    homeassistant.components: error
+    homeassistant.components.group: error
+    homeassistant.components.automation: error
+    homeassistant.components.device_tracker: error
+    homeassistant.components.notify: error
+    homeassistant.components.media_player: error
+    homeassistant.components.mqtt: error
+    homeassistant.components.websocket_api: error
+    custom_components.entity_controller: error
