@@ -21,3 +21,5 @@ custom_components/
 packages/shell_command.yaml
 packages/person.yaml
 panels/iframes/
+known_devices.yaml
+sync_github.sh

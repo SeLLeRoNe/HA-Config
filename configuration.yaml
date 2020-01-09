@@ -47,4 +47,12 @@ homeassistant:
 #      allow_bypass_login: false
 #      trusted_users: !secret trusted_users
 
+#remote_homeassistant:
+#  instances:
+#  - host: !secret casa_maurizio_host
+#    port: 443
+#    secure: true
+#    access_token: !secret casa_maurizio_token
+#    entity_prefix: "casa_maurizio_"
+
 scene: !include scenes.yaml
