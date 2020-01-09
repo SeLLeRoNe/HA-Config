@@ -112,7 +112,9 @@ cards:
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card
-                template: bathroom_temperature
+                template: temperature
+                variables:
+                  - entity: sensor.bathroom_temperature
               - type: custom:decluttering-card
                 template: humidity
                 variables:

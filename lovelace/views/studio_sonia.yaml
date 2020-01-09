@@ -128,7 +128,9 @@ cards:
           - type: horizontal-stack
             cards:
              - type: custom:decluttering-card
-               template: studio_sonia_temperature
+               template: temperature
+               variables:
+                 - entity: sensor.studio_sonia_temperature
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card

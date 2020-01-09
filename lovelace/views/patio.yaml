@@ -127,7 +127,9 @@ cards:
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card
-                template: patio_temperature
+                template: temperature
+                variables:
+                  - entity: sensor.patio_temperature
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card

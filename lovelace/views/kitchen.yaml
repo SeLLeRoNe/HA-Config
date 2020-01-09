@@ -146,7 +146,9 @@ cards:
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card
-                template: kitchen_temperature
+                template: temperature
+                variables:
+                  - entity: sensor.kitchen_temperature
               - type: custom:decluttering-card
                 template: humidity
                 variables:

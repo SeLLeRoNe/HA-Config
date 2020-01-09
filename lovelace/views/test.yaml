@@ -6,6 +6,11 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: custom:decluttering-card
+        template: temperature
+        variables:
+          - entity: sensor.studio_andrea_temperature
+      - break
       - type: entities
         show_header_toggle: false
         entities:
