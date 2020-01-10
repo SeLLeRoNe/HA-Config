@@ -69,9 +69,9 @@ room_total:
               - color: '#0da035'
                 value: 250
               - color: '#e0b400'
-                value: 1000
+                value: 1500
               - color: '#e45e65'
-                value: 2000
+                value: 2500
             entities:
               - entity: '[[entity_power_usage]]'
             tap_action:
