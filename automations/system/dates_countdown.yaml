@@ -11,34 +11,34 @@ action:
     data:
       name: Andrea
       type: birthday
-      date: 22/09/1982
+      date: !secret andrea_birthday
   - service: python_script.date_countdown
     data:
       name: Sonia
       type: birthday
-      date: 30/12/1980
+      date: !secret sonia_birthday
   - service: python_script.date_countdown
     data:
       name: Maurizio
       type: birthday
-      date: 07/08/1957
+      date: !secret maurizio_birthday
   - service: python_script.date_countdown
     data:
       name: Patrizia
       type: birthday
-      date: 25/06/1959
+      date: !secret patrizia_birthday
   - service: python_script.date_countdown
     data:
       name: Alessandra
       type: birthday
-      date: 12/08/1985
+      date: !secret alessandra_birthday
   - service: python_script.date_countdown
     data:
       name: Martina
       type: birthday
-      date: 03/06/1992
+      date: !secret martina_birthday
   - service: python_script.date_countdown
     data:
       name: "Andrea Sonia"
       type: anniversary
-      date: 01/02/2016
+      date: !secret andrea_sonia_anniversary
