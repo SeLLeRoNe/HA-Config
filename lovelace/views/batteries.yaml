@@ -38,6 +38,31 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
+              - entity: sensor.andrea_honor8_battery
+                name: "Andrea - Honor 8"
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: '[[ if(binary_sensor.andrea_honor8_charging.state == "on", "Charging", if(input_boolean.andrea_honor8_charging.state == "on", "Charging", "" )) ]]'
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state(config.entity, 'unknown') %}
+                        rgb(128, 128, 128);
+                      {% elif states(config.entity)|int > 100 %}
+                        rgb(128, 128, 128);
+                      {% elif states(config.entity)|int >= 80 %}
+                        rgb(0, 153, 51);
+                      {% elif states(config.entity)|int >= 60 %}
+                        rgb(0, 153, 0);
+                      {% elif states(config.entity)|int >= 40 %}
+                        rgb(255, 128, 0);
+                      {% elif states(config.entity)|int >= 20 %}
+                        rgb(204, 102, 0);
+                      {% elif states(config.entity)|int >= 0 %}
+                        rgb(153, 0, 0);
+                      {% else %}
+                        rgb(128, 128, 128);
+                      {% endif %}
+                  }
               - entity: sensor.andrea_xt1032_battery
                 name: "Andrea - Motorola XT1032"
                 type: "custom:secondaryinfo-entity-row"
