@@ -5,7 +5,7 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: time
-    at: "10:00:00"
+    at: "09:30:00"
 condition:
   condition: and
   conditions:
@@ -16,7 +16,7 @@ condition:
       entity_id: binary_sensor.workday
       state: 'on'
     - condition: time
-      after: '10:00:00'
+      after: '09:30:00'
       before: '12:00:00'
 action:
   - service: switch.turn_on
@@ -30,7 +30,7 @@ action:
   - service: switch.turn_on
     entity_id: switch.studio_andrea_media03_wol
   - delay:
-      seconds: 5
+      minutes: 30
   - service: switch.turn_on
     entity_id: switch.studio_andrea_computer_plug
   - delay:
