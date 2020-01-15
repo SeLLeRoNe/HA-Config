@@ -1,0 +1,21 @@
+---
+alias: Master Bedroom - Workday Andrea
+initial_state: on
+trigger:
+  - platform: time
+    at: "09:55:00"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.andrea
+      state: 'home'
+    - condition: state
+      entity_id: binary_sensor.workday
+      state: 'on'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lamp_top_light
+      brightness: 255
+      rgb_color: [0,0,255]
