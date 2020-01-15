@@ -66,7 +66,7 @@ andrea:
       - entity: sensor.andrea_xt1032_battery
         name: "Motorola XT1032"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_xt1032_wifi == 'on', 'Connected', if(binary_sensor.andrea_xt1032_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(input_boolean.andrea_xt1032_charging.state == 'on', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(binary_sensor.andrea_xt1032_wifi == 'on', 'Connected', if(binary_sensor.andrea_xt1032_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_xt1032_charging == 'on', ' - Charging', if(input_boolean.andrea_xt1032_charging == 'on', ' - Charging', '' )) ]]"
         tap_action:
           action: none
         style: |
