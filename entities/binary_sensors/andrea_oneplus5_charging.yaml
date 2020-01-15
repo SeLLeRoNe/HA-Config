@@ -3,5 +3,16 @@ platform: template
 sensors:
   andrea_oneplus5_charging:
     friendly_name: OnePlus 5 Charging Status
-    value_template: "{{ is_state('input_boolean.andrea_oneplus5_charging', 'on') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.andrea_oneplus5', 'charging') %}
+        {{ state_attr('device_tracker.andrea_oneplus5', 'charging') }}
+      {% elif is_state('input_boolean.andrea_oneplus5_charging', 'on') %}
+        True
+      {% elif is_state('input_boolean.andrea_oneplus5_charging', 'off') %}
+        False
+      {% elif not is_state('input_boolean.andrea_oneplus5_charging', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: mdi:power-plug

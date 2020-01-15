@@ -3,5 +3,16 @@ platform: template
 sensors:
   sonia_mi9tpro_charging:
     friendly_name: Mi 9T Pro Charging Status
-    value_template: "{{ state_attr('device_tracker.sonia_mi9tpro', 'battery_charging') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.sonia_mi9tpro', 'charging') %}
+        {{ state_attr('device_tracker.sonia_mi9tpro', 'charging') }}
+      {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'on') %}
+        True
+      {% elif is_state('input_boolean.sonia_mi9tpro_charging', 'off') %}
+        False
+      {% elif not is_state('input_boolean.sonia_mi9tpro_charging', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: mdi:power-plug

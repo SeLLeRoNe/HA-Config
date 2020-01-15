@@ -3,7 +3,18 @@ platform: template
 sensors:
   andrea_shield_wifi:
     friendly_name: NVIDIA Shield K1 WiFi
-    value_template: "{{ is_state('input_boolean.andrea_shield_wifi', 'on') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.andrea_shield', 'wifi_on') %}
+        {{ state_attr('device_tracker.andrea_shield', 'wifi_on') }}
+      {% elif is_state('input_boolean.andrea_shield_wifi', 'on') %}
+        True
+      {% elif is_state('input_boolean.andrea_shield_wifi', 'off') %}
+        False
+      {% elif not is_state('input_boolean.andrea_shield_wifi', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: >-
       {% if is_state('binary_sensor.andrea_shield_wifi', 'on') %}
         mdi:wifi

@@ -3,7 +3,18 @@ platform: template
 sensors:
   sonia_honor8_wifi:
     friendly_name: Honor 8 WiFi
-    value_template: "{{ state_attr('device_tracker.sonia_honor8', 'wifi_on') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.sonia_honor8', 'wifi_on') %}
+        {{ state_attr('device_tracker.sonia_honor8', 'wifi_on') }}
+      {% elif is_state('input_boolean.sonia_honor8_wifi', 'on') %}
+        True
+      {% elif is_state('input_boolean.sonia_honor8_wifi', 'off') %}
+        False
+      {% elif not is_state('input_boolean.sonia_honor8_wifi', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: >-
       {% if is_state('binary_sensor.sonia_honor8_wifi', 'on') %}
         mdi:wifi

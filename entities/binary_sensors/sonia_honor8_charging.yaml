@@ -3,5 +3,16 @@ platform: template
 sensors:
   sonia_honor8_charging:
     friendly_name: Honor 8 Charging Status
-    value_template: "{{ state_attr('device_tracker.sonia_honor8', 'battery_charging') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.sonia_honor8', 'charging') %}
+        {{ state_attr('device_tracker.sonia_honor8', 'charging') }}
+      {% elif is_state('input_boolean.sonia_honor8_charging', 'on') %}
+        True
+      {% elif is_state('input_boolean.sonia_honor8_charging', 'off') %}
+        False
+      {% elif not is_state('input_boolean.sonia_honor8_charging', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: mdi:power-plug

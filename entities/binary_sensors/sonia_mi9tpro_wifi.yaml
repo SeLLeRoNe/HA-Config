@@ -3,7 +3,18 @@ platform: template
 sensors:
   sonia_mi9tpro_wifi:
     friendly_name: Mi 9T Pro WiFi
-    value_template: "{{ state_attr('device_tracker.sonia_mi9tpro', 'wifi_on') }}"
+    value_template: >-
+      {% if state_attr('device_tracker.sonia_mi9tpro', 'wifi_on') %}
+        {{ state_attr('device_tracker.sonia_mi9tpro', 'wifi_on') }}
+      {% elif is_state('input_boolean.sonia_mi9tpro_wifi', 'on') %}
+        True
+      {% elif is_state('input_boolean.sonia_mi9tpro_wifi', 'off') %}
+        False
+      {% elif not is_state('input_boolean.sonia_mi9tpro_wifi', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
     icon_template: >-
       {% if is_state('binary_sensor.sonia_mi9tpro_wifi', 'on') %}
         mdi:wifi
