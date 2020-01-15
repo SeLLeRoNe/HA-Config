@@ -78,6 +78,8 @@ cards:
                 --paper-item-icon-color:
                   {% if is_state(config.entity, 'home') %}
                     rgb(51, 204, 51);
+                  {% elif is_state(config.entity, 'Garage') %}
+                    rgb(51, 204, 51);
                   {% else %}
                     rgb(128, 128, 128);
                   {% endif %}
