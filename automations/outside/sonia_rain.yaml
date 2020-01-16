@@ -3,7 +3,7 @@ alias: Outside - Rain - Sonia
 initial_state: on
 trigger:
   - platform: time
-    at: 07:30:00
+    at: 09:00:00
 condition:
   condition: and
   conditions:
@@ -13,10 +13,13 @@ condition:
      entity_id: sensor.dark_sky_precip_probability
      above: 50
    - condition: state
-     entity_id: binary_sensor.workday
+     entity_id: binary_sensor.workday_es
+     state: 'off'
+   - condition: state
+     entity_id: binary_sensor.workday_uk
      state: 'on'
 action:
   - service: notify.html5_sonia
     data_template:
       title: "Rain Alert!"
-      message: "Today will probably ({{ states('sensor.dark_sky_precip_probability') }}) rain, get an umbrella!"
+      message: "Today will probably rain with {{ states('sensor.dark_sky_precip_probability') }} probability, get an umbrella!"

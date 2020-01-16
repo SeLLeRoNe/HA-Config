@@ -14,7 +14,7 @@ condition:
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.workday
+          entity_id: binary_sensor.workday_uk
           state: 'off'
         - condition: time
           after: '18:30:00'

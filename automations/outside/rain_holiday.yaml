@@ -1,24 +1,28 @@
 ---
-alias: Outside - Rain - Andrea
+alias: Outside - Rain - Holiday
 initial_state: on
 trigger:
   - platform: time
-    at: 09:30:00
+    at: 09:00:00
 condition:
   condition: and
   conditions:
    - condition: template
-     value_template: "{{ is_state('person.andrea', 'home') }}"
+     value_template: "{{ is_state('person.sonia', 'home') }}"
    - condition: numeric_state
      entity_id: sensor.dark_sky_precip_probability
      above: 50
    - condition: state
      entity_id: binary_sensor.workday_es
-     state: 'on'
+     state: 'off'
    - condition: state
      entity_id: binary_sensor.workday_uk
      state: 'off'
 action:
+  - service: notify.html5_sonia
+    data_template:
+      title: "Rain Alert!"
+      message: "Today will probably rain with {{ states('sensor.dark_sky_precip_probability') }} probability, get an umbrella!"
   - service: notify.html5_andrea
     data_template:
       title: "Rain Alert!"

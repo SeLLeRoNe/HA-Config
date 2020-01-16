@@ -11,7 +11,7 @@ condition:
       entity_id: group.family
       state: 'home'
     - condition: state
-      entity_id: binary_sensor.workday
+      entity_id: binary_sensor.workday_es
       state: 'on'
 action:
   - service: switch.turn_on

@@ -15,7 +15,7 @@ condition:
       after: '09:30:00'
       before: '18:30:00'
     - condition: state
-      entity_id: binary_sensor.workday
+      entity_id: binary_sensor.workday_uk
       state: 'on'
 action:
   - service: switch.turn_on

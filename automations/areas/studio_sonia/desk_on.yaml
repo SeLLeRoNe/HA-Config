@@ -13,7 +13,7 @@ condition:
     - condition: template
       value_template: "{{ is_state('person.sonia', 'home') }}"
     - condition: state
-      entity_id: binary_sensor.workday
+      entity_id: binary_sensor.workday_es
       state: 'on'
 action:
   - service: switch.turn_on
