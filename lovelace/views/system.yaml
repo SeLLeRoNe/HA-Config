@@ -325,6 +325,11 @@ cards:
                 name: Ads blocked
                 color: blue
                 show_fill: false
+          - type: custom:github-card
+            show_github_icon: false
+            show_extended: true
+            entities:
+              - sensor.ha_config
       - break
       - type: vertical-stack
         cards:

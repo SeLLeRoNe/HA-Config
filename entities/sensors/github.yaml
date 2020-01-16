@@ -1,0 +1,6 @@
+---
+platform: github
+access_token: !secret github_access_token
+repositories:
+  - name: 'HA-Config'
+    path: 'SeLLeRoNe/HA-Config'

@@ -23,6 +23,8 @@
     url: /community_plugin/air-visual-card/air-visual-card.js
   - type: js
     url: /community_plugin/rgb-light-card/card.js
+  - type: js
+    url: /community_plugin/github-card/github-card.js
 
   - type: module
     url: /community_plugin/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
