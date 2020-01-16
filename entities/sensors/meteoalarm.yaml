@@ -1,0 +1,5 @@
+---
+platform: meteoalarm_m
+id: 'ES-Espana'
+name: Meteo Alarm
+scan_interval: 1800
