@@ -12,4 +12,4 @@ trigger:
 action:
   - service: frontend.set_theme
     data:
-      name: blue_night
+      name: 'Google Dark Theme'
