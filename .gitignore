@@ -1,6 +1,7 @@
 ssl/
 .cloud/
 .HA_VERSION
+.pip_progress
 .storage/
 .spotify-token-cache
 .vscode/
