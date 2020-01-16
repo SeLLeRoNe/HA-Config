@@ -55,14 +55,13 @@ cards:
                 tap_action:
                   action: none
           - type: divider
-          - type: entities
-            title: Debug
-            show_header_toggle: false
+          - type: custom:github-card
+            show_github_icon: false
+            show_extended: false
             entities:
-              - input_text.debug
+              - sensor.ha_config
           - type: divider
           - type: glance
-#            title: Components Count
             columns: 4
             entities:
               - entity: sensor.count_automations
@@ -163,6 +162,11 @@ cards:
                 tap_action:
                   action: none
       - break
+      - type: entities
+        title: Debug
+        show_header_toggle: false
+        entities:
+          - input_text.debug
       - type: custom:auto-entities
         show_empty: false
         card:
