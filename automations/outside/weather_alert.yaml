@@ -2,11 +2,17 @@
 alias: Outside - Weather Alert
 initial_state: on
 trigger:
+  - platform: time
+    at: 07:00:00
   - platform: state
     entity_id: binary_sensor.meteoalarm
-    from: "off"
+    to: on
+condition:
+  - condition: state
+    entity_id: binary_sensor.meteoalarm
+    state: on
 action:
-  - service: notify.html5_andrea
+  - service: notify.html5
     data_template:
       title: "{{state_attr('binary_sensor.meteoalarm', 'headline')}}"
       message: "{{state_attr('binary_sensor.meteoalarm', 'description')}} is effective on {{state_attr('binary_sensor.meteoalarm', 'effective')}}"
