@@ -1,6 +1,6 @@
 ---
 hacs:
-  token: !secret hacs_github_token
+  token: !secret github_access_token
   sidepanel_title: HACS
   sidepanel_icon: "mdi:alpha-c-box"
   appdaemon: false
