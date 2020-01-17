@@ -1,0 +1,8 @@
+{
+  "domain": "meteoalarm_m",
+  "name": "meteoalarm_m",
+  "documentation": "https://github.com/kodi1/meteoalarm",
+  "dependencies": [],
+  "codeowners": ["@kodi1"],
+  "requirements": []
+}

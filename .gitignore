@@ -1,13 +1,14 @@
 ssl/
 .cloud/
 .HA_VERSION
+.ip_authenticated.yaml
 .pip_progress
 .storage/
 .spotify-token-cache
 .vscode/
 commands.txt
 getLatestConfs.sh
-www/
+www/icons/family/
 deps/
 secrets.yaml
 fitbit.conf
@@ -18,7 +19,6 @@ www/community/zigbee2mqtt_networkmap/source.js
 update.sh
 panels/
 hacs_update.sh
-custom_components/
 packages/shell_command.yaml
 packages/person.yaml
 panels/iframes/
