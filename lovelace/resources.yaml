@@ -15,8 +15,8 @@
     url: /community_plugin/bar-card/bar-card.js
   - type: js
     url: /community_plugin/calendar-card/calendar-card.js
-#  - type: js
-#    url: /community_plugin/favicon-counter/favicon-counter.js
+  - type: js
+    url: /community_plugin/favicon-counter/favicon-counter.js
   - type: js
     url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
   - type: js
