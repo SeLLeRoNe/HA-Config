@@ -52,6 +52,29 @@ cards:
 #                  }
                 tap_action:
                   action: none
+              - entity: input_boolean.vacation_mode
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state(config.entity, 'on') %}
+                        rgb(51, 204, 51);
+                      {% else %}
+                        rgb(128, 128, 128);
+                      {% endif %}
+                  }
+#                style: |
+#                  :host {
+#                    --paper-item-icon-color:
+#                      {% if is_state(config.entity, 'on') %}
+#                        rgb(51, 204, 51);
+#                      {% elif is_state(config.entity, 'off') %}
+#                        rgb(2550, 0, 0);
+#                      {% else %}
+#                        rgb(128, 128, 128);
+#                      {% endif %}
+#                  }
+                tap_action:
+                  action: none
 #      - type: picture-glance
 #        title: Hallway
 #        tap_action:
@@ -127,6 +150,53 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.living_room_table_light
                     toggle: true
+                    name: "Lamp"
+                  - type: 'custom:rgb-light-card'
+                    entity: light.living_room_table_light
+                    size: 20
+                    colors:
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FFFFFF'
+                      - rgb_color:
+                        - 0
+                        - 00
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#0000FF'
+                      - rgb_color:
+                        - 0
+                        - 255
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#00FF00'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#FF0000'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FF00FF'
+                      - rgb_color:
+                        - 255
+                        - 102
+                        - 0
+                        brightness: 150
+                        icon_color: '#FF6600'
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 0
+  #                      brightness: 150
+                        icon_color: '#FFFF00'
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -137,6 +207,7 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.kitchen_light
                     toggle: true
+                    name: "Cealing Light"
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -147,6 +218,53 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.studio_andrea_light
                     toggle: true
+                    name: "Wall"
+                  - type: 'custom:rgb-light-card'
+                    entity: light.studio_andrea_light
+                    size: 20
+                    colors:
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FFFFFF'
+                      - rgb_color:
+                        - 0
+                        - 00
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#0000FF'
+                      - rgb_color:
+                        - 0
+                        - 255
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#00FF00'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#FF0000'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FF00FF'
+                      - rgb_color:
+                        - 255
+                        - 102
+                        - 0
+                        brightness: 150
+                        icon_color: '#FF6600'
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 0
+  #                      brightness: 150
+                        icon_color: '#FFFF00'
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -157,6 +275,53 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.studio_sonia_light
                     toggle: true
+                    name: "Wall"
+                  - type: 'custom:rgb-light-card'
+                    entity: light.studio_sonia_light
+                    size: 20
+                    colors:
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FFFFFF'
+                      - rgb_color:
+                        - 0
+                        - 00
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#0000FF'
+                      - rgb_color:
+                        - 0
+                        - 255
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#00FF00'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#FF0000'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FF00FF'
+                      - rgb_color:
+                        - 255
+                        - 102
+                        - 0
+                        brightness: 150
+                        icon_color: '#FF6600'
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 0
+  #                      brightness: 150
+                        icon_color: '#FFFF00'
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -167,6 +332,7 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.bathroom_light
                     toggle: true
+                    name: "Mirror Light"
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -177,15 +343,65 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.master_bedroom_lamp_top_light
                     toggle: true
+                    name: "Lamp Top"
+                  - type: 'custom:rgb-light-card'
+                    entity: light.master_bedroom_lamp_top_light
+                    size: 20
+                    colors:
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FFFFFF'
+                      - rgb_color:
+                        - 0
+                        - 00
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#0000FF'
+                      - rgb_color:
+                        - 0
+                        - 255
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#00FF00'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#FF0000'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FF00FF'
+                      - rgb_color:
+                        - 255
+                        - 102
+                        - 0
+                        brightness: 150
+                        icon_color: '#FF6600'
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 0
+  #                      brightness: 150
+                        icon_color: '#FFFF00'
                   - type: 'custom:slider-entity-row'
                     entity: light.master_bedroom_lamp_bottom_light
                     toggle: true
+                    name: "Lamp Bottom"
                   - type: 'custom:slider-entity-row'
                     entity: light.andrea_bedside_lamp
                     toggle: true
+                    name: "Bedside - Andrea"
                   - type: 'custom:slider-entity-row'
                     entity: light.sonia_bedside_lamp
                     toggle: true
+                    name: "Bedside - Sonia"
                   - type: custom:fold-entity-row
                     head:
                       type: custom:slider-entity-row
@@ -196,6 +412,7 @@ cards:
                       - type: 'custom:slider-entity-row'
                         entity: light.master_bathroom_light
                         toggle: true
+                        name: "Mirror Light"
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -216,6 +433,53 @@ cards:
                   - type: 'custom:slider-entity-row'
                     entity: light.patio_light
                     toggle: true
+                    name: "Flying Bulb"
+                  - type: 'custom:rgb-light-card'
+                    entity: light.patio_light
+                    size: 20
+                    colors:
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FFFFFF'
+                      - rgb_color:
+                        - 0
+                        - 00
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#0000FF'
+                      - rgb_color:
+                        - 0
+                        - 255
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#00FF00'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 0
+  #                      brightness: 255
+                        icon_color: '#FF0000'
+                      - rgb_color:
+                        - 255
+                        - 0
+                        - 255
+  #                      brightness: 255
+                        icon_color: '#FF00FF'
+                      - rgb_color:
+                        - 255
+                        - 102
+                        - 0
+                        brightness: 150
+                        icon_color: '#FF6600'
+                      - rgb_color:
+                        - 255
+                        - 255
+                        - 0
+  #                      brightness: 150
+                        icon_color: '#FFFF00'
       - break
       - type: custom:vertical-stack-in-card
         cards:
