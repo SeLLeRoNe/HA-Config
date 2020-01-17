@@ -6,11 +6,11 @@ trigger:
     at: 07:00:00
   - platform: state
     entity_id: binary_sensor.meteoalarm
-    to: on
+    to: 'on'
 condition:
   - condition: state
     entity_id: binary_sensor.meteoalarm
-    state: on
+    state: 'on'
 action:
   - service: notify.html5
     data_template:
