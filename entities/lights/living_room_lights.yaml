@@ -1,0 +1,5 @@
+---
+platform: group
+name: Living Room Lights
+entities:
+  - light.living_room_table_light

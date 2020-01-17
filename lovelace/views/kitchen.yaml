@@ -154,7 +154,11 @@ cards:
                 variables:
                   - entity: sensor.kitchen_humidity
       - break
+      - type: shopping-list
+        title: Shopping List
+      - break
       - type: custom:decluttering-card
         template: kitchen_energy
         variables:
           - title: Energy Consumption
+

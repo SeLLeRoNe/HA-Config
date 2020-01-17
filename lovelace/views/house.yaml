@@ -113,6 +113,79 @@ cards:
           - type: custom:decluttering-card
             template: title
             variables:
+              - title: Lights
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.living_room_lights
+              name: Living Room
+            entities:
+              - light.living_room_table_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.kitchen_lights
+              name: Kitchen
+            entities:
+              - light.kitchen_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.studio_andrea_lights
+              name: Studio Andrea
+            entities:
+              - light.studio_andrea_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.studio_sonia_lights
+              name: Studio Sonia
+            entities:
+              - light.studio_sonia_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.bathroom_lights
+              name: Bathroom
+            entities:
+              - light.bathroom_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.master_bedroom_lights
+              name: Master Bedroom
+            entities:
+              - light.master_bedroom_lamp_top_light
+              - light.master_bedroom_lamp_bottom_light
+              - light.andrea_bedside_lamp
+              - light.sonia_bedside_lamp
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.master_bathroom_lights
+              name: Master Bathroom
+            entities:
+              - light.master_bathroom_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.laundry_room_lights
+              name: Laundry Room
+            entities:
+              - light.laundry_room_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.patio_lights
+              name: Patio
+            entities:
+              - light.patio_light
+      - break
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
               - title: Weather
           - type: custom:dark-sky-weather-card
             locale: en

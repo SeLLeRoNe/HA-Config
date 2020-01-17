@@ -1,0 +1,5 @@
+---
+platform: group
+name: Studio Sonia Lights
+entities:
+  - light.studio_sonia_light

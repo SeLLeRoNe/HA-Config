@@ -1,5 +1,4 @@
 title: Bathroom
-#icon: fas:restroom
 icon: mdi:toilet
 panel: true
 path: bathroom

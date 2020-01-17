@@ -1,0 +1,8 @@
+---
+platform: group
+name: Master Bedroom Lights
+entities:
+  - light.master_bedroom_lamp_top_light
+  - light.master_bedroom_lamp_bottom_light
+  - light.andrea_bedside_lamp
+  - light.sonia_bedside_lamp
