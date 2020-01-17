@@ -54,13 +54,13 @@ views:
 #  - !include lovelace/views/transport.yaml
   - !include lovelace/views/living_room.yaml
   - !include lovelace/views/kitchen.yaml
-  - !include lovelace/views/shopping_list.yaml
+#  - !include lovelace/views/shopping_list.yaml
   - !include lovelace/views/studio_andrea.yaml
   - !include lovelace/views/studio_sonia.yaml
   - !include lovelace/views/bathroom.yaml
   - !include lovelace/views/master_bedroom.yaml
-  - !include lovelace/views/patio.yaml
   - !include lovelace/views/laundry_room.yaml
+  - !include lovelace/views/patio.yaml
   - !include lovelace/views/surveillance.yaml
   - !include lovelace/views/weather.yaml
   - !include lovelace/views/plugs.yaml
