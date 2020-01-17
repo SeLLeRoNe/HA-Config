@@ -147,56 +147,84 @@ cards:
                   name: Living Room
                   toggle: true
                 entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.living_room_table_light
-                    toggle: true
-                    name: "Lamp"
-                  - type: 'custom:rgb-light-card'
-                    entity: light.living_room_table_light
-                    size: 20
-                    colors:
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FFFFFF'
-                      - rgb_color:
-                        - 0
-                        - 00
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#0000FF'
-                      - rgb_color:
-                        - 0
-                        - 255
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#00FF00'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#FF0000'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FF00FF'
-                      - rgb_color:
-                        - 255
-                        - 102
-                        - 0
-                        brightness: 150
-                        icon_color: '#FF6600'
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 0
-  #                      brightness: 150
-                        icon_color: '#FFFF00'
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.living_room_table_light
+                        state: "off"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.living_room_table_light
+                          name: "Lamp"
+                          toggle: true
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.living_room_table_light
+                        state: "on"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.living_room_table_light
+                          toggle: true
+                          name: "Lamp"
+                        - type: 'custom:rgb-light-card'
+                          entity: light.living_room_table_light
+                          size: 25
+                          colors:
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FFFFFF'
+                            - rgb_color:
+                              - 0
+                              - 00
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#0000FF'
+                            - rgb_color:
+                              - 0
+                              - 255
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#00FF00'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#FF0000'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FF00FF'
+                            - rgb_color:
+                              - 255
+                              - 102
+                              - 0
+                              brightness: 150
+                              icon_color: '#FF6600'
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 0
+        #                      brightness: 150
+                              icon_color: '#FFFF00'
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -215,56 +243,84 @@ cards:
                   name: Studio Andrea
                   toggle: true
                 entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.studio_andrea_light
-                    toggle: true
-                    name: "Wall"
-                  - type: 'custom:rgb-light-card'
-                    entity: light.studio_andrea_light
-                    size: 20
-                    colors:
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FFFFFF'
-                      - rgb_color:
-                        - 0
-                        - 00
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#0000FF'
-                      - rgb_color:
-                        - 0
-                        - 255
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#00FF00'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#FF0000'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FF00FF'
-                      - rgb_color:
-                        - 255
-                        - 102
-                        - 0
-                        brightness: 150
-                        icon_color: '#FF6600'
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 0
-  #                      brightness: 150
-                        icon_color: '#FFFF00'
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.studio_andrea_light
+                        state: "off"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.studio_andrea_light
+                          name: "Wall"
+                          toggle: true
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.studio_andrea_light
+                        state: "on"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.studio_andrea_light
+                          toggle: true
+                          name: "Wall"
+                        - type: 'custom:rgb-light-card'
+                          entity: light.studio_andrea_light
+                          size: 25
+                          colors:
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FFFFFF'
+                            - rgb_color:
+                              - 0
+                              - 00
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#0000FF'
+                            - rgb_color:
+                              - 0
+                              - 255
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#00FF00'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#FF0000'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FF00FF'
+                            - rgb_color:
+                              - 255
+                              - 102
+                              - 0
+                              brightness: 150
+                              icon_color: '#FF6600'
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 0
+        #                      brightness: 150
+                              icon_color: '#FFFF00'
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -272,56 +328,84 @@ cards:
                   name: Studio Sonia
                   toggle: true
                 entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.studio_sonia_light
-                    toggle: true
-                    name: "Wall"
-                  - type: 'custom:rgb-light-card'
-                    entity: light.studio_sonia_light
-                    size: 20
-                    colors:
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FFFFFF'
-                      - rgb_color:
-                        - 0
-                        - 00
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#0000FF'
-                      - rgb_color:
-                        - 0
-                        - 255
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#00FF00'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#FF0000'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FF00FF'
-                      - rgb_color:
-                        - 255
-                        - 102
-                        - 0
-                        brightness: 150
-                        icon_color: '#FF6600'
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 0
-  #                      brightness: 150
-                        icon_color: '#FFFF00'
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.studio_sonia_light
+                        state: "off"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.studio_sonia_light
+                          name: "Wall"
+                          toggle: true
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.studio_sonia_light
+                        state: "on"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.studio_sonia_light
+                          toggle: true
+                          name: "Wall"
+                        - type: 'custom:rgb-light-card'
+                          entity: light.studio_sonia_light
+                          size: 25
+                          colors:
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FFFFFF'
+                            - rgb_color:
+                              - 0
+                              - 00
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#0000FF'
+                            - rgb_color:
+                              - 0
+                              - 255
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#00FF00'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#FF0000'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FF00FF'
+                            - rgb_color:
+                              - 255
+                              - 102
+                              - 0
+                              brightness: 150
+                              icon_color: '#FF6600'
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 0
+        #                      brightness: 150
+                              icon_color: '#FFFF00'
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
               - type: custom:fold-entity-row
                 head:
                   type: custom:slider-entity-row
@@ -340,56 +424,84 @@ cards:
                   name: Master Bedroom
                   toggle: true
                 entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.master_bedroom_lamp_top_light
-                    toggle: true
-                    name: "Lamp Top"
-                  - type: 'custom:rgb-light-card'
-                    entity: light.master_bedroom_lamp_top_light
-                    size: 20
-                    colors:
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FFFFFF'
-                      - rgb_color:
-                        - 0
-                        - 00
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#0000FF'
-                      - rgb_color:
-                        - 0
-                        - 255
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#00FF00'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#FF0000'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FF00FF'
-                      - rgb_color:
-                        - 255
-                        - 102
-                        - 0
-                        brightness: 150
-                        icon_color: '#FF6600'
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 0
-  #                      brightness: 150
-                        icon_color: '#FFFF00'
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.master_bedroom_lamp_top_light
+                        state: "off"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.master_bedroom_lamp_top_light
+                          name: "Lamp Top"
+                          toggle: true
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.master_bedroom_lamp_top_light
+                        state: "on"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.master_bedroom_lamp_top_light
+                          toggle: true
+                          name: "Lamp Top"
+                        - type: 'custom:rgb-light-card'
+                          entity: light.master_bedroom_lamp_top_light
+                          size: 25
+                          colors:
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FFFFFF'
+                            - rgb_color:
+                              - 0
+                              - 00
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#0000FF'
+                            - rgb_color:
+                              - 0
+                              - 255
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#00FF00'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#FF0000'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FF00FF'
+                            - rgb_color:
+                              - 255
+                              - 102
+                              - 0
+                              brightness: 150
+                              icon_color: '#FF6600'
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 0
+        #                      brightness: 150
+                              icon_color: '#FFFF00'
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
                   - type: 'custom:slider-entity-row'
                     entity: light.master_bedroom_lamp_bottom_light
                     toggle: true
@@ -430,56 +542,84 @@ cards:
                   name: Patio
                   toggle: true
                 entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.patio_light
-                    toggle: true
-                    name: "Flying Bulb"
-                  - type: 'custom:rgb-light-card'
-                    entity: light.patio_light
-                    size: 20
-                    colors:
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FFFFFF'
-                      - rgb_color:
-                        - 0
-                        - 00
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#0000FF'
-                      - rgb_color:
-                        - 0
-                        - 255
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#00FF00'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 0
-  #                      brightness: 255
-                        icon_color: '#FF0000'
-                      - rgb_color:
-                        - 255
-                        - 0
-                        - 255
-  #                      brightness: 255
-                        icon_color: '#FF00FF'
-                      - rgb_color:
-                        - 255
-                        - 102
-                        - 0
-                        brightness: 150
-                        icon_color: '#FF6600'
-                      - rgb_color:
-                        - 255
-                        - 255
-                        - 0
-  #                      brightness: 150
-                        icon_color: '#FFFF00'
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.patio_light
+                        state: "off"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.patio_light
+                          name: "Light"
+                          toggle: true
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                  - type: "custom:hui-conditional-card"
+                    conditions:
+                      - entity: light.patio_light
+                        state: "on"
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - type: 'custom:slider-entity-row'
+                          entity: light.patio_light
+                          toggle: true
+                          name: "Light"
+                        - type: 'custom:rgb-light-card'
+                          entity: light.patio_light
+                          size: 25
+                          colors:
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FFFFFF'
+                            - rgb_color:
+                              - 0
+                              - 00
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#0000FF'
+                            - rgb_color:
+                              - 0
+                              - 255
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#00FF00'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 0
+        #                      brightness: 255
+                              icon_color: '#FF0000'
+                            - rgb_color:
+                              - 255
+                              - 0
+                              - 255
+        #                      brightness: 255
+                              icon_color: '#FF00FF'
+                            - rgb_color:
+                              - 255
+                              - 102
+                              - 0
+                              brightness: 150
+                              icon_color: '#FF6600'
+                            - rgb_color:
+                              - 255
+                              - 255
+                              - 0
+        #                      brightness: 150
+                              icon_color: '#FFFF00'
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
       - break
       - type: custom:vertical-stack-in-card
         cards:
