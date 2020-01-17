@@ -51,6 +51,7 @@ action:
       entity_id:
         - light.studio_andrea_light
         - light.patio_light
+        - light.master_bedroom_lamp_top_light
   - service: notify.html5
     data_template:
       title: 'Alarm Notification'
@@ -91,6 +92,12 @@ action:
   - service: homeassistant.turn_on
     data:
       entity_id: light.studio_andrea_light
+      color_name: red
+      brightness: 255
+      transition: 1
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.master_bedroom_lamp_top_light
       color_name: red
       brightness: 255
       transition: 1
