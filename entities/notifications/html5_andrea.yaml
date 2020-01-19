@@ -4,4 +4,7 @@ name: html5_sonia
 services:
   - service: html5
     data:
+      target: andrea_oneplus5
+  - service: html5
+    data:
       target: andrea_honor8
