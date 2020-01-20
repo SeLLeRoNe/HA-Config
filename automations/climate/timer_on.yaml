@@ -20,9 +20,9 @@ action:
       duration: '{{ states("input_datetime.climate_timer") }}'
   - service: climate.turn_on
     data:
-      entity_id: climate.living_room
+      entity_id: climate.house
   - service: climate.set_temperature
     data_template:
-      entity_id: climate.living_room
+      entity_id: climate.house
       temperature: "{{ states('input_number.climate_timer') | float }}"
       hvac_mode: heat

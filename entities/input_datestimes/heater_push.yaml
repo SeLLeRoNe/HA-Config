@@ -1,5 +1,5 @@
 ---
 heater_push:
-  name: Duration
+  name: Heater Push Duration
   has_date: false
   has_time: true

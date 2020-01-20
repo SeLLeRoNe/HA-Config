@@ -1,9 +1,9 @@
 ---
 platform: generic_thermostat
-name: Living Room
+name: House
 heater: switch.heater
 target_sensor: sensor.house_temperature
-min_temp: 10
+min_temp: 18
 max_temp: 25
 ac_mode: false
 hot_tolerance: 0
