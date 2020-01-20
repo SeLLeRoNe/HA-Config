@@ -52,7 +52,7 @@ cards:
 #                  }
                 tap_action:
                   action: none
-              - entity: input_boolean.vacation_mode
+              - entity: input_boolean.holiday_mode
                 style: |
                   :host {
                     --paper-item-icon-color:
