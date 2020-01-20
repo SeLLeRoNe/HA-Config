@@ -10,8 +10,7 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_dishwasher_power
-    above: 1
-    below: 3
+    below: 2
     for:
       seconds: 30
 condition:
@@ -28,3 +27,7 @@ action:
     data:
       entity_id: input_select.dishwasher_status
       option: Done
+  - service: tts.google_translate_say
+    data_template:
+      entity_id: media_player.studio_andrea_google
+      message: "Dishwasher now Done"

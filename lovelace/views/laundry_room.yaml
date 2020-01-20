@@ -120,6 +120,17 @@ cards:
                     icon: "mdi:washing-machine"
                     tap_action:
                       action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state(config.entity, 'Done') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state(config.entity, 'Washing') %}
+                            rgb(51, 127, 255);
+                          {% else %}
+                            rgb(128, 128, 128);
+                          {% endif %}
+                      }
 #                  - name: Washing Machine
 #                    entity: binary_sensor.washing_machine_djt11lm_vibration
 #                    icon: "mdi:washing-machine"
