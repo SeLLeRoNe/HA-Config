@@ -69,9 +69,9 @@ house_total:
               - color: '#0da035'
                 value: 1500
               - color: '#e0b400'
-                value: 2500
+                value: 5000
               - color: '#e45e65'
-                value: 3500
+                value: 7500
             entities:
               - entity: '[[entity_power_usage]]'
             tap_action:
