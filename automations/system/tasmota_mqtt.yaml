@@ -47,7 +47,7 @@ action:
   - service: mqtt.publish
     data:
       topic: "cmnd/tasmotas/TelePeriod"
-      payload: "60"
+      payload: "10"
       retain: true
   - service: mqtt.publish
     data:
