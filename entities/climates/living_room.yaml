@@ -13,5 +13,5 @@ min_cycle_duration:
 keep_alive:
   minutes: 1
 #initial_hvac_mode: "auto"
-#away_temp: 15
+away_temp: 15
 precision: 0.1

@@ -1,0 +1,42 @@
+---
+alias: Climate - Away Mode On
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+#  - platform: time_pattern
+#    minutes: '*'
+  - platform: zone
+    entity_id: group.family
+    zone: zone.home
+    event: leave
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_number.climate_t0
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.heating_push
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.living_room
+      temperature: "{{ states('input_number.climate_t0') | float }}"
+      hvac_mode: heat
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living_room
+      preset_mode: away
+#  - service: climate.turn_off
+#    data:
+#      entity_id: climate.living_room
