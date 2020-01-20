@@ -15,4 +15,4 @@ action:
       entity_id: input_boolean.heating_push
   - service: timer.finish
     data:
-      entity_id: timer.caldaia_soggiorno
+      entity_id: timer.heater_push

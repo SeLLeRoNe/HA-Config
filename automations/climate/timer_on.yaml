@@ -16,13 +16,13 @@ condition:
 action:
   - service: timer.start
     data_template:
-      entity_id: timer.caldaia
+      entity_id: timer.heater_push
       duration: '{{ states("input_datetime.climate_timer") }}'
   - service: climate.turn_on
     data:
-      entity_id: climate.soggiorno
+      entity_id: climate.living_room
   - service: climate.set_temperature
     data_template:
-      entity_id: climate.soggiorno
+      entity_id: climate.living_room
       temperature: "{{ states('input_number.climate_timer') | float }}"
       hvac_mode: heat
