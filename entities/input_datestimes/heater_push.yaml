@@ -1,5 +1,5 @@
 ---
 heater_push:
-  name: Timer
+  name: Duration
   has_date: false
   has_time: true

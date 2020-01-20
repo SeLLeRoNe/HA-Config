@@ -99,7 +99,7 @@ cards:
                       action: none
               - type: 'custom:fold-entity-row'
                 head:
-                  label: Timer
+                  label: Heater Push
                   type: section
                 padding: 0
                 entities:
