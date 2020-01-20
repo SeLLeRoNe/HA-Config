@@ -1,6 +1,6 @@
 ---
-climate_timer:
-  name: Timer
+heater_push:
+  name: Heater Push
   icon: mdi:temperature-celsius
   min: 15
   max: 25

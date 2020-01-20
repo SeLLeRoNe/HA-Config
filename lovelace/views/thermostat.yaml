@@ -103,10 +103,10 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: input_datetime.climate_timer
+                  - entity: input_datetime.heater_push
                     tap_action:
                       action: none
-                  - entity: input_number.climate_timer
+                  - entity: input_number.heater_push
                     type: custom:slider-entity-row
                     full_row: true
                     tap_action:

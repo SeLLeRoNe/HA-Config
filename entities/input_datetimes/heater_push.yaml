@@ -1,5 +1,5 @@
 ---
-climate_timer:
+heater_push:
   name: Timer
   has_date: false
   has_time: true
