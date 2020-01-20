@@ -1,0 +1,5 @@
+---
+climate_t5:
+  name: T5
+  has_date: false
+  has_time: true

@@ -26,7 +26,7 @@ cards:
             cards:
               - type: thermostat
                 icon: mdi:thermometer-lines
-                entity: climate.soggiorno
+                entity: climate.living_room
           - type: entities
             show_header_toggle: false
             entities:

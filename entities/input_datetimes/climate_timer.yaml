@@ -1,0 +1,5 @@
+---
+climate_timer:
+  name: Timer
+  has_date: false
+  has_time: true
