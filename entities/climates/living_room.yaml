@@ -1,0 +1,17 @@
+---
+platform: generic_thermostat
+name: Living Room
+heater: switch.heater
+target_sensor: sensor.house_temperature
+min_temp: 10
+max_temp: 25
+ac_mode: false
+hot_tolerance: 0
+cold_tolerance: 0.1
+min_cycle_duration:
+  seconds: 5
+keep_alive:
+  minutes: 1
+#initial_hvac_mode: "auto"
+#away_temp: 15
+precision: 0.1

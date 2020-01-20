@@ -56,10 +56,8 @@ custom_header:
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/house.yaml
-#  - !include lovelace/views/transport.yaml
   - !include lovelace/views/living_room.yaml
   - !include lovelace/views/kitchen.yaml
-#  - !include lovelace/views/shopping_list.yaml
   - !include lovelace/views/studio_andrea.yaml
   - !include lovelace/views/studio_sonia.yaml
   - !include lovelace/views/bathroom.yaml
@@ -74,6 +72,8 @@ views:
   - !include lovelace/views/humidities.yaml
   - !include lovelace/views/system.yaml
   - !include lovelace/views/homeassistant.yaml
+  - !include lovelace/views/thermostat.yaml
+#  - !include lovelace/views/transport.yaml
 #  - !include lovelace/views/tablet.yaml
   - !include lovelace/views/test.yaml
 #  - !include lovelace/views/fitbit.yaml

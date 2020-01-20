@@ -1,0 +1,124 @@
+title: Thermostat
+icon: mdi:home-thermometer
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Security
+#          - type: horizontal-stack
+#            cards:
+#              - type: custom:bignumber-card
+#                entity: sensor.time
+#                scale: 20px
+#              - type: custom:bignumber-card
+#                entity: sensor.date
+#                scale: 20px
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            title: Riscaldamento
+            cards:
+              - type: thermostat
+                icon: mdi:thermometer-lines
+                entity: climate.soggiorno
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: input_boolean.heating_push
+                name: Heating Push
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state(config.entity, 'on') %}
+                        rgb(51, 204, 51);
+                      {% else %}
+                        rgb(128, 128, 128);
+                      {% endif %}
+                  }
+                tap_action:
+                  action: none
+          - type: entities
+            title: Cronotermostato
+            show_header_toggle: false
+            style: |
+              ha-card {
+                border: solid 1px var(--primary-color);
+              }
+            entities:
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: In casa
+                  type: section
+                padding: 0
+                entities:
+                  - entity: input_datetime.climate_t1
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_t1
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+                  - entity: input_datetime.climate_t2
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_t2
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+                  - entity: input_datetime.climate_t3
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_t3
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+                  - entity: input_datetime.climate_t4
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_t4
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+                  - entity: input_datetime.climate_t5
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_t5
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Timer
+                  type: section
+                padding: 0
+                entities:
+                  - entity: input_datetime.climate_timer
+                    tap_action:
+                      action: none
+                  - entity: input_number.climate_timer
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Fuori casa
+                  type: section
+                padding: 0
+                entities:
+                  - entity: input_number.climate_t0
+                    type: custom:slider-entity-row
+                    full_row: true
+                    tap_action:
+                      action: none

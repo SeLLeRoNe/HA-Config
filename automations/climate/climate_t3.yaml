@@ -1,0 +1,50 @@
+---
+alias: Climate - T3
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_t3')[0:5] }}"
+  - platform: state
+    entity_id: group.family
+    to: 'home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.heating_push
+    to: 'off'
+  - platform: state
+    entity_id: input_number.climate_t3
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.heating_push
+      state: 'off'
+    - condition: template
+      value_template: "{{ states('sensor.time') >= states('input_datetime.climate_t3')[0:5] }}"
+    - condition: template
+      value_template: "{{ states('sensor.time') < states('input_datetime.climate_t4')[0:5] }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
+action:
+  - service: climate.turn_on
+    data:
+      entity_id: climate.soggiorno
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.soggiorno
+      preset_mode: none
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.soggiorno
+      temperature: "{{ states('input_number.climate_t3') | float }}"
+      hvac_mode: heat

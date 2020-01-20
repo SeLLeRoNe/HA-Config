@@ -1,0 +1,28 @@
+---
+alias: Climate - Timer Start
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.heating_push
+    to: 'on'
+  - platform: state
+    entity_id: input_number.climate_timer
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.heating_push
+      state: 'on'
+action:
+  - service: timer.start
+    data_template:
+      entity_id: timer.caldaia
+      duration: '{{ states("input_datetime.climate_timer") }}'
+  - service: climate.turn_on
+    data:
+      entity_id: climate.soggiorno
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.soggiorno
+      temperature: "{{ states('input_number.climate_timer') | float }}"
+      hvac_mode: heat
