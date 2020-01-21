@@ -25,30 +25,30 @@ action:
       title: 'Alarm Notification'
       message: >
         Alarm triggered 
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %} in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %} in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_andrea_2ajz4kpbs_pir" %} in Andrea's Studio
-        {% elif trigger.entity_id == "binary_sensor.studio_sonia_pir" %} in the Sonia's Studio
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %} at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %} in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %} at the Patio Door
-        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %} at the Garage Door
-        {% else %} from Unknown Sensor
+        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_2ajz4kpbs_pir" %}in Andrea's Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_sonia_pir" %}in the Sonia's Studio
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
+        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %}at the Patio Door
+        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
+        {% else %}from Unknown Sensor
         {% endif %}
   - service: tts.google_translate_say
     data_template:
       entity_id: media_player.studio_andrea_google
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %} in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %} in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_andrea_2ajz4kpbs_pir" %} in Andrea's Studio
-        {% elif trigger.entity_id == "binary_sensor.studio_sonia_pir" %} in the Sonia's Studio
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %} at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %} in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %} at the Patio Door
-        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %} at the Garage Door
-        {% else %} from Unknown Sensor
+        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_2ajz4kpbs_pir" %}in Andrea's Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_sonia_pir" %}in the Sonia's Studio
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
+        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %}at the Patio Door
+        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
+        {% else %}from Unknown Sensor
         {% endif %}
       language: 'en'
   - service: homeassistant.turn_on
