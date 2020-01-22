@@ -2,6 +2,9 @@
 alias: Alarm - Triggered - Home
 initial_state: on
 trigger:
+#  - platform: state
+#    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+#    to: 'on'
   - platform: state
     entity_id: binary_sensor.patio_mccgq01lm_door
     to: 'on'
@@ -53,7 +56,10 @@ action:
       language: 'en'
   - service: homeassistant.turn_on
     data:
-      entity_id: light.patio_light
+      entity_id:
+        - light.patio_light
+        - light.studio_andrea_light
+        - light.master_bedroom_lamp_top_light
   - service: homeassistant.turn_on
     data:
       entity_id: light.studio_andrea_light
@@ -63,15 +69,22 @@ action:
       entity_id:
         - light.patio_light
         - light.studio_andrea_light
+        - light.master_bedroom_lamp_top_light
   - service: homeassistant.turn_on
     data:
       entity_id: light.patio_light
-      color_name: red
+      rgb_color: [255,0,0]
       brightness: 255
       transition: 1
   - service: homeassistant.turn_on
     data:
       entity_id: light.studio_andrea_light
+      rgb_color: [255,0,0]
+      brightness: 255
+      transition: 1
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.master_bedroom_lamp_top_light
       color_name: red
       brightness: 255
       transition: 1
@@ -83,7 +96,7 @@ action:
       operation: restore
   - service: homeassistant.turn_off
     data:
-      entity_id: light.patio_light
-  - service: homeassistant.turn_off
-    data:
-      entity_id: light.studio_andrea_light
+     entity_id:
+        - light.patio_light
+        - light.studio_andrea_light
+        - light.master_bedroom_lamp_top_light

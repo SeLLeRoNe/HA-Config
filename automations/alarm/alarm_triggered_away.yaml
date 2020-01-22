@@ -80,13 +80,13 @@ action:
   - service: homeassistant.turn_on
     data:
       entity_id: light.patio_light
-      color_name: red
+      rgb_color: [255,0,0]
       brightness: 255
       transition: 1
   - service: homeassistant.turn_on
     data:
       entity_id: light.studio_andrea_light
-      color_name: red
+      rgb_color: [255,0,0]
       brightness: 255
       transition: 1
   - service: homeassistant.turn_on
@@ -101,3 +101,9 @@ action:
     data:
       store_name: alarm_store
       operation: restore
+  - service: homeassistant.turn_off
+    data:
+     entity_id:
+        - light.patio_light
+        - light.studio_andrea_light
+        - light.master_bedroom_lamp_top_light

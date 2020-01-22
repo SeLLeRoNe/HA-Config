@@ -52,10 +52,9 @@ action:
         {% endif %}
   - service: homeassistant.turn_on
     data:
-      entity_id: light.patio_light
-#  - service: homeassistant.turn_on
-#    data:
-#      entity_id: light.studio_andrea_light
+      entity_id:
+        - light.patio_light
+        - light.studio_andrea_light
   - service: python_script.light_store
     data:
       store_name: alarm_store
@@ -65,15 +64,15 @@ action:
   - service: homeassistant.turn_on
     data:
       entity_id: light.patio_light
-      color_name: red
+      rgb_color: [255,0,0]
       brightness: 255
       transition: 1
-#  - service: homeassistant.turn_on
-#    data:
-#      entity_id: light.studio_andrea_light
-#      color_name: red
-#      brightness: 255
-#      transition: 1
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.studio_andrea_light
+      rgb_color: [255,0,0]
+      brightness: 255
+      transition: 1
   - delay:
       seconds: 30
   - service: python_script.light_store
@@ -82,7 +81,6 @@ action:
       operation: restore
   - service: homeassistant.turn_off
     data:
-      entity_id: light.patio_light
-#  - service: homeassistant.turn_off
-#    data:
-#      entity_id: light.studio_andrea_light
+      entity_id:
+        - light.patio_light
+        - light.studio_andrea_light
