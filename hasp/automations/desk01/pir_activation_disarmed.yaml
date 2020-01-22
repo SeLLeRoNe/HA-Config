@@ -8,7 +8,7 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: state
-    entity_id: binary_sensor.studio_andrea_pir
+    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
     to: 'on'
 condition:
   condition: and
