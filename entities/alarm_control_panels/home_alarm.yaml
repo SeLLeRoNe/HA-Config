@@ -8,6 +8,7 @@
 platform: manual
 name: Home Alarm
 code: !secret zone_home_alarm_code
+code_arm_required: false
 trigger_time: 60
 disarmed:
   trigger_time: 0
