@@ -52,7 +52,7 @@ action:
   - service: mqtt.publish
     data:
       topic: "cmnd/tasmotas/PowerDelta"
-      payload: "5"
+      payload: "10"
       retain: true
   - service: mqtt.publish
     data:
