@@ -8,7 +8,7 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: "{% if not is_state('input_number.spotify_volume', '0.0') %}True{% else %}False{% endif %}"
+      value_template: "{{ not is_state('input_number.spotify_volume', '0.0') }}"
 action:
   - service: media_player.volume_set
     data_template:
