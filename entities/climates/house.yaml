@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: House
-heater: switch.heater
+heater: switch.heater_house
 target_sensor: sensor.house_temperature
 min_temp: 18
 max_temp: 25
@@ -12,6 +12,6 @@ min_cycle_duration:
   seconds: 5
 keep_alive:
   minutes: 1
-#initial_hvac_mode: "auto"
+initial_hvac_mode: "heat"
 away_temp: 15
 precision: 0.1

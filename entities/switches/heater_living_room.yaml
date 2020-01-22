@@ -1,0 +1,13 @@
+---
+platform: mqtt
+name: "Heater Kitchen"
+icon: mdi:fire
+command_topic: "cmnd/kitchen_heater/POWER"
+state_topic: "stat/kitchen_heater/POWER"
+availability_topic: "tele/kitchen_heater/LWT"
+#payload_available: "Online"
+#payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: true
