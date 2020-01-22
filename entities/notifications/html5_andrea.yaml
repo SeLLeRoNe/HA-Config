@@ -1,6 +1,6 @@
 ---
 platform: group
-name: html5_sonia
+name: html5_andrea
 services:
   - service: html5
     data:
