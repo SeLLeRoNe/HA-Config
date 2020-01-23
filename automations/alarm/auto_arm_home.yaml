@@ -9,8 +9,12 @@ trigger:
     minutes: '*'
   - platform: zone
     entity_id: group.family
-    zone: zone.home
     event: enter
+    zone: zone.home
+  - platform: zone
+    entity_id: device_tracker.citroen_cactus
+    event: enter
+    zone: zone.garage
 condition:
   condition: and
   conditions:
