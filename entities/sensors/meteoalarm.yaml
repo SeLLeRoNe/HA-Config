@@ -1,5 +1,5 @@
 ---
 platform: meteoalarm_m
-id: 'ES-Espana'
+id: 'ES202-Noroeste de A Coruña'
 name: Meteo Alarm
 scan_interval: 1800
