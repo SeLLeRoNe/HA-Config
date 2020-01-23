@@ -12,22 +12,23 @@ dateMonth = int(dateSplit[1])
 dateYear =  int(dateSplit[2])
 date = datetime.date(dateYear , dateMonth , dateDay)
 
-thisYear = today.year
+thisYear = int(today.year)
 nextOccur = datetime.date(thisYear , dateMonth , dateDay)
 
 numberOfDays = 0
-years = int(thisYear) - dateYear
+years = dateYear - thisYear
 
-if today < nextOccur:
+# if the year is "next year" or further
+if years > 0:
+  nextOccur = datetime.date(dateYear , dateMonth , dateDay)
   numberOfDays = (nextOccur - today).days
-
-elif today > nextOccur:
-  if thisYear > dateYear + 1:
-    nextOccur = datetime.date(thisYear + 1 , dateMonth , dateDay)
-    numberOfDays = (nextOccur - today).days
-    years = years + 1
-  else:
-    nextOccur = datetime.date(dateYear , dateMonth , dateDay)
+else:
+  
+  numberOfDays = (nextOccur - today).days
+  # if event has passed this year
+  if numberOfDays < 0:
+    nextYear = thisYear + 1
+    nextOccur = datetime.date(nextYear , dateMonth , dateDay)
     numberOfDays = (nextOccur - today).days
     years = years + 1
 

@@ -115,7 +115,7 @@ else:
       self._fetch = fetch_data
       self._data = self._fetch(self._id)
       self._unit_of_measurement = 'events' 
-      self._location = self._id.split('-')[1].lower()
+      self._location = self._id.split('-', 1)[1].lower().replace('-', ' ')
       self._name = name
 
     @property
