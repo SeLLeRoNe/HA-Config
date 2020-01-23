@@ -125,7 +125,7 @@ cards:
                         --paper-item-icon-color:
                           {% if is_state(config.entity, 'Done') %}
                             rgb(51, 204, 51);
-                          {% elif is_state(config.entity, 'Washing') %}
+                          {% elif is_state(config.entity, 'Running') %}
                             rgb(51, 127, 255);
                           {% else %}
                             rgb(128, 128, 128);
