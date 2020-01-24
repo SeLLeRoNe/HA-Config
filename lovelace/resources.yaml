@@ -58,8 +58,6 @@
     url: /community_plugin/decluttering-card/decluttering-card.js
   - type: module
     url: /community_plugin/lovelace-template-entity-row/template-entity-row.js
-  - type: module
-    url: /community_plugin/simple-thermostat/simple-thermostat.js
 
 
   - type: module
