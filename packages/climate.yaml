@@ -6,4 +6,4 @@
 #
 # https://www.home-assistant.io/components/climate/
 #
-climate: !include_dir_merge_named ../entities/climates
+climate: !include_dir_list ../entities/climates

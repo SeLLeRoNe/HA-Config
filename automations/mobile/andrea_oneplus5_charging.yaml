@@ -1,5 +1,5 @@
 ---
-alias: Mobile - OnePlus 5 - Charging
+alias: Mobile - Andrea - OnePlus 5 - Charging
 initial_state: on
 trigger:
   - platform: time_pattern

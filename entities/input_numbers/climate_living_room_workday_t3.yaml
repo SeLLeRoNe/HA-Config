@@ -1,0 +1,7 @@
+---
+climate_t3_living_room_workday:
+  name: T3
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

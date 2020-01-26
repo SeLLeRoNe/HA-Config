@@ -1,0 +1,7 @@
+---
+climate_t0_house_weekend:
+  name: T0
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

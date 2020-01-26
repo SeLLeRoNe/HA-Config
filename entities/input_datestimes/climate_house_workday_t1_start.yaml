@@ -1,0 +1,5 @@
+---
+climate_t1_house_workday_start:
+  name: Start
+  has_date: false
+  has_time: true

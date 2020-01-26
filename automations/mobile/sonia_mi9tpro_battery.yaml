@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Mi 9T Pro - Battery
+alias: Mobile - Sonia - Mi 9T Pro - Battery
 initial_state: on
 trigger:
   - platform: time_pattern

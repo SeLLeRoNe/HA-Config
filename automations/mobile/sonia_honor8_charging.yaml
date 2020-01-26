@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Honor 8 - Charging
+alias: Mobile - Sonia - Honor 8 - Charging
 initial_state: on
 trigger:
   - platform: time_pattern

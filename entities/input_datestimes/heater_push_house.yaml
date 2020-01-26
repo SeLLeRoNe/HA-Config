@@ -1,0 +1,5 @@
+---
+heating_push_house:
+  name: Duration
+  has_date: false
+  has_time: true

@@ -1,0 +1,7 @@
+---
+climate_t8_living_room_workday:
+  name: T8
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

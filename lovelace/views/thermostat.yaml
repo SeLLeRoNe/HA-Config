@@ -9,36 +9,11 @@ cards:
       - type: custom:decluttering-card
         template: house_thermostat
       - break
-#      - type: custom:decluttering-card
-#        template: living_room_thermostat
-#      - break
-#      - type: custom:decluttering-card
-#        template: kitchen_thermostat
-#      - break
-      - type: 'custom:simple-thermostat'
-        entity: climate.house
-        step_size: 0.1
-        sensors:
-#          - attribute: min_temp
-#            name: Min Temperature
-        control:
-#          _names: false
-#          _icons: true
-          hvac:
-            _headings: false
-            some_mode: true
-            another_mode: true
-            'off':
-              name: false
-            'heat':
-              name: false
-          preset:
-            away: 
-              name: "Away"
-              icon: false
-            none:
-              name: "Home"
-              icon: false
-        hide:
-          state: true
-          temperature: true
+      - type: custom:decluttering-card
+        template: living_room_thermostat
+      - break
+      - type: custom:decluttering-card
+        template: studio_andrea_thermostat
+      - break
+      - type: custom:decluttering-card
+        template: studio_sonia_thermostat

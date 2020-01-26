@@ -28,9 +28,19 @@ condition:
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'on'
-    - condition: time
-      after: '07:00:00'
-      before: '01:00:00'
+    - condition: or
+      conditions:
+        - condition: time
+          after: '07:00:00'
+          before: '01:00:00'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: binary_sensor.studio_andrea_computer_ping
+              state: 'on'
+            - condition: state
+              entity_id: binary_sensor.living_room_tv
+              state: 'on'
 action:
   - service: mqtt.publish
     data:

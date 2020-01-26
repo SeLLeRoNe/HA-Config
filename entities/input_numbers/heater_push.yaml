@@ -1,7 +1,0 @@
----
-heater_push:
-  name: Heater Push
-  icon: mdi:temperature-celsius
-  min: 15
-  max: 25
-  step: 0.1

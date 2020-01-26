@@ -1,0 +1,7 @@
+---
+heating_push_living_room:
+  name: Heater Push
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

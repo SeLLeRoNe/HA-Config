@@ -1,0 +1,5 @@
+---
+heating_push_living_room:
+  name: Duration
+  has_date: false
+  has_time: true

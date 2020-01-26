@@ -1,0 +1,68 @@
+---
+alias: Climate - T9 - House - Weekend
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_t9_house_weekend_start')[0:5] }}"
+  - platform: state
+    entity_id: group.family
+    to: 'home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.climate_house_heating_push
+    to: 'off'
+  - platform: state
+    entity_id: input_number.climate_t9_house_weekend
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t9
+    to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.climate_house_weekend_t9
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.climate_house_heating_push
+      state: 'off'
+    - condition: template
+      value_template: "{{ states('sensor.time') >= states('input_datetime.climate_t9_house_weekend_start')[0:5] }}"
+    - condition: template
+      value_template: "{{ states('sensor.time') < states('input_datetime.climate_t9_house_weekend_end')[0:5] }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.workday_uk
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.workday_es
+          state: 'off'
+action:
+  - service: climate.turn_on
+    data:
+      entity_id: climate.house
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.house
+      preset_mode: none
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.house
+      temperature: "{{ states('input_number.climate_t9_house_weekend') | float }}"
+      hvac_mode: heat
+  - service: homeassistant.turn_off
+    entity_id: group.climate_house_active
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.climate_house_weekend_t9_active

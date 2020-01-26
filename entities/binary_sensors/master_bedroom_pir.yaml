@@ -4,6 +4,6 @@ name: "Master Bedroom PIR"
 device_class: motion
 state_topic: "tele/RFBridge01/RESULT"
 value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
-payload_on: "EE485E"
+payload_on: "E85E"
 off_delay: 5
 qos: 1

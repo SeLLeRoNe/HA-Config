@@ -1,0 +1,710 @@
+---
+thermostat:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: thermostat
+        icon: mdi:thermometer-lines
+        entity: climate.[[area]]
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.climate_[[area]]_heating_push
+            name: Heating Push
+            style: |
+              :host {
+                --paper-item-icon-color:
+                  {% if is_state(config.entity, 'on') %}
+                    rgb(51, 204, 51);
+                  {% else %}
+                    rgb(128, 128, 128);
+                  {% endif %}
+              }
+            tap_action:
+              action: none
+#      - type: custom:decluttering-card
+#        template: title
+#        variables:
+#          - title: Settings
+      - type: entities
+#        title: Chrono Thermostat Settings
+        show_header_toggle: false
+        entities:
+          - type: 'custom:fold-entity-row'
+            head:
+              label: Settings
+              type: section
+            padding: 0
+            entities:
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Workday
+                  type: section
+                padding: 0
+                entities:
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t1_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t1
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t1_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t1_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+#                    tap_action:
+#                      action: call-service
+#                      service: browser_mod.popup
+#                      service_data:
+#                        title: T1 Workday
+#                        card:
+#                          type: entities
+#                          entities:
+#                            - input_boolean.climate_[[area]]_workday_t1
+#                            - input_datetime.climate_t1_[[area]]_workday_start
+#                            - input_datetime.climate_t1_[[area]]_workday_end
+#                            - input_number.climate_t1_[[area]]_workday
+#                  - entity: input_number.climate_t1_[[area]]_workday
+#                    type: custom:slider-entity-row
+#                    full_row: true
+#                    hide_state: true
+#                    tap_action:
+#                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t1', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t2_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t2
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t2_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t2_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t2', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t3_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t3
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t3_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t3_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t3', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t4_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t4
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t4_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t4_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t4', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t5_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t5
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t5_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t5_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t5', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t6_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t6
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t6_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t6_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t6', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t7_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t7
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t7_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t7_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t7', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t8_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t8
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t8_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t8_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t8', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t9_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t9
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t9_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t9_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t9', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t10_[[area]]_workday
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_workday_t10
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t10_[[area]]_workday_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t10_[[area]]_workday_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_workday_t10', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Weekend
+                  type: section
+                padding: 0
+                entities:
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t1_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t1
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t1_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t1_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+#                    tap_action:
+#                      action: call-service
+#                      service: browser_mod.popup
+#                      service_data:
+#                        title: T1 weekend
+#                        card:
+#                          type: entities
+#                          entities:
+#                            - input_boolean.climate_[[area]]_weekend_t1
+#                            - input_datetime.climate_t1_[[area]]_weekend_start
+#                            - input_datetime.climate_t1_[[area]]_weekend_end
+#                            - input_number.climate_t1_[[area]]_weekend
+#                  - entity: input_number.climate_t1_[[area]]_weekend
+#                    type: custom:slider-entity-row
+#                    full_row: true
+#                    hide_state: true
+#                    tap_action:
+#                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t1', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t2_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t2
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t2_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t2_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t2', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t3_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t3
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t3_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t3_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t3', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t4_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t4
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t4_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t4_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t4', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t5_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t5
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t5_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t5_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t5', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t6_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t6
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t6_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t6_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t6', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t7_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t7
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t7_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t7_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t7', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t8_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t8
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t8_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t8_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t8', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t9_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t9
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t9_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t9_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t9', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+                  - type: custom:multiple-entity-row
+                    entity: input_number.climate_t10_[[area]]_weekend
+                    icon: mdi:timer
+                    primary:
+                      entity: input_boolean.climate_[[area]]_weekend_t10
+                      tap_action:
+                        action: toggle
+                    secondary:
+                      entity: input_datetime.climate_t10_[[area]]_weekend_start
+                      tap_action:
+                        action: none
+                    tertiary:
+                      entity: input_datetime.climate_t10_[[area]]_weekend_end
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_weekend_t10', 'off') %}
+                            rgb(128, 128, 128);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'on') %}
+                            rgb(51, 204, 51);
+                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'off') %}
+                            rgb(0, 0, 255);
+                          {% else %}
+                            rgb(0, 0, 255);
+                          {% endif %}
+                      }
+              - type: 'custom:fold-entity-row'
+                head:
+                  label: Heating Push
+                  type: section
+                padding: 0
+                entities:
+                  - type: custom:multiple-entity-row
+                    entity: input_number.heating_push_[[area]]
+                    icon: mdi:timer
+                    primary:
+                      entity: input_datetime.heating_push_[[area]]
+                      tap_action:
+                        action: none
+                    tap_action:
+                      action: none
+                    style: |
+                      :host {
+                        --paper-item-icon-color:
+                          {% if is_state('input_boolean.climate_[[area]]_heating_push', 'on') %}
+                            rgb(51, 204, 51);
+                          {% else %}
+                            rgb(128, 128, 128);
+                          {% endif %}
+                      }

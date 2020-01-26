@@ -1,5 +1,5 @@
 ---
-alias: Mobile - OnePlus 5 - Battery
+alias: Mobile - Andrea - OnePlus 5 - Battery
 initial_state: on
 trigger:
   - platform: time_pattern

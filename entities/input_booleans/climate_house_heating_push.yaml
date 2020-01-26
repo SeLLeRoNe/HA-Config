@@ -1,0 +1,4 @@
+---
+climate_house_heating_push:
+  name: Heating Push
+  icon: mdi:timer

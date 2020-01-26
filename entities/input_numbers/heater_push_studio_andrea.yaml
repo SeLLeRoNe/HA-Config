@@ -1,0 +1,7 @@
+---
+heating_push_studio_andrea:
+  name: Heater Push
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

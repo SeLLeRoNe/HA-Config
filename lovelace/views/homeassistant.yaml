@@ -167,187 +167,232 @@ cards:
         show_header_toggle: false
         entities:
           - input_text.debug
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: House
-        filter:
-          include:
-            - entity_id: "automation.house*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Utility Meter
-        filter:
-          include:
-            - entity_id: "automation.utility_meter*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Living Room
-        filter:
-          include:
-            - entity_id: "automation.living_room*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Kitchen
-        filter:
-          include:
-            - entity_id: "automation.kitchen*"
       - break
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Studio Andrea
-        filter:
-          include:
-            - entity_id: "automation.studio_andrea*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Master Bedroom
-        filter:
-          include:
-            - entity_id: "automation.master_bedroom*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Studio Sonia
-        filter:
-          include:
-            - entity_id: "automation.studio_sonia*"
-      - break
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Laundry Room
-        filter:
-          include:
-            - entity_id: "automation.laundry_room*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Patio
-        filter:
-          include:
-            - entity_id: "automation.patio*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Outside
-        filter:
-          include:
-            - entity_id: "automation.outside*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Alarm
-        filter:
-          include:
-            - entity_id: "automation.alarm*"
-      - break
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Mobile
-        filter:
-          include:
-            - entity_id: "automation.mobile*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Lights
-        filter:
-          include:
-            - entity_id: "automation.lights*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Presence
-        filter:
-          include:
-            - entity_id: "automation.presence*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Temperature
-        filter:
-          include:
-            - entity_id: "automation.temperature*"
-      - break
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: System
-        filter:
-          include:
-            - entity_id: "automation.system*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Media Player
-        filter:
-          include:
-            - entity_id: "automation.media_player*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: ZigBee
-        filter:
-          include:
-            - entity_id: "automation.zigbee.*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: TTS
-        filter:
-          include:
-            - entity_id: "automation.tts*"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Alerts
-        filter:
-          include:
-            - entity_id: "alert.*"
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Automations
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Climate
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.climate*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: House
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.house*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Utility Meter
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.utility_meter*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Living Room
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.living_room*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Kitchen
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.kitchen*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Studio Andrea
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.studio_andrea*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Studio Sonia
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.studio_sonia*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Master Bedroom
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.master_bedroom*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Laundry Room
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.laundry_room*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Patio
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.patio*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Outside
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.outside*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Alarm
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.alarm*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Mobile
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.mobile*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: System
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.system*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: Media Player
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.media_player*"
+      - type: 'custom:fold-entity-row'
+        head:
+          label: ZigBee
+          type: section
+        padding: 0
+        entities:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "automation.zigbee.*"

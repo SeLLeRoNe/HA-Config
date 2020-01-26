@@ -1,5 +1,5 @@
 ---
-alias: Mobile - OnePlus 5 - Battery Full
+alias: Mobile - Andrea - OnePlus 5 - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state

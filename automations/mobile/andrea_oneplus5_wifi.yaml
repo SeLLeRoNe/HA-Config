@@ -1,5 +1,5 @@
 ---
-alias: Mobile - OnePlus 5 - Wifi
+alias: Mobile - Andrea - OnePlus 5 - Wifi
 initial_state: on
 trigger:
   - platform: time_pattern

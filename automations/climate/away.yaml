@@ -27,16 +27,34 @@ condition:
 action:
   - service: input_boolean.turn_off
     data:
-      entity_id: input_boolean.heating_push
-  - service: climate.set_temperature
-    data_template:
-      entity_id: climate.house
-      temperature: "{{ states('input_number.climate_t0') | float }}"
-      hvac_mode: heat
+      entity_id: input_boolean.climate_heating_push_house
   - service: climate.set_preset_mode
     data:
       entity_id: climate.house
       preset_mode: away
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.climate_heating_push_living_room
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living_room
+      preset_mode: away
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.climate_heating_push_studio_andrea
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.studio_andrea
+      preset_mode: away
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.climate_heating_push_studio_sonia
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.studio_sonia
+      preset_mode: away
 #  - service: climate.turn_off
 #    data:
 #      entity_id: climate.house
+  - service: homeassistant.turn_off
+    entity_id: group.climate_active

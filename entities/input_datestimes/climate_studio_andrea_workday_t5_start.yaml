@@ -1,0 +1,5 @@
+---
+climate_t5_studio_andrea_workday_start:
+  name: Start
+  has_date: false
+  has_time: true

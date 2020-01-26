@@ -1,5 +1,0 @@
----
-climate_t1:
-  name: T1
-  has_date: false
-  has_time: true

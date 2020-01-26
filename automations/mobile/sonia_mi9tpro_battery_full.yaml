@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Mi 9T Pro - Battery Full
+alias: Mobile - Sonia - Mi 9T Pro - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state

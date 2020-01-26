@@ -1,0 +1,7 @@
+---
+climate_t4_studio_sonia_workday:
+  name: T4
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

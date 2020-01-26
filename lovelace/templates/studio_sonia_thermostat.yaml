@@ -1,0 +1,13 @@
+---
+studio_sonia_thermostat:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Studio Sonia
+      - type: custom:decluttering-card
+        template: thermostat
+        variables:
+          - area: studio_sonia

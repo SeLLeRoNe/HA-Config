@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Motorola XT1032 - Battery
+alias: Mobile - Andrea - Motorola XT1032 - Battery
 initial_state: on
 trigger:
   - platform: time_pattern

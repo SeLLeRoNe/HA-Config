@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Honor 8 - Wifi
+alias: Mobile - Sonia - Honor 8 - Wifi
 initial_state: on
 trigger:
   - platform: time_pattern

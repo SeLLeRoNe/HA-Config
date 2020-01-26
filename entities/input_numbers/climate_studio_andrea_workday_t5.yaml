@@ -1,0 +1,7 @@
+---
+climate_t5_studio_andrea_workday:
+  name: T5
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

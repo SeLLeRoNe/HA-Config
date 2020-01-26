@@ -13,6 +13,7 @@ trigger:
     above: 1
     below: 3
     for:
+      minutes: 2
       seconds: 30
 condition:
   condition: or

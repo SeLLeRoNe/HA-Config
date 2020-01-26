@@ -1,0 +1,30 @@
+---
+alias: Climate - Studio Andrea - Timer Start
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.climate_studio_andrea_heating_push
+    to: 'on'
+  - platform: state
+    entity_id: input_number.heating_push_studio_andrea
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.climate_studio_andrea_heating_push
+      state: 'on'
+action:
+  - service: timer.start
+    data_template:
+      entity_id: timer.heating_push_studio_andrea
+      duration: '{{ states("input_datetime.heating_push_studio_andrea") }}'
+  - service: climate.turn_on
+    data:
+      entity_id: climate.studio_andrea
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.studio_andrea
+      temperature: "{{ states('input_number.heating_push_studio_andrea') | float }}"
+      hvac_mode: heat
+  - service: homeassistant.turn_off
+    entity_id: group.climate_studio_andrea_active

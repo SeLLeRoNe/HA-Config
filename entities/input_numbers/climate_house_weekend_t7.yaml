@@ -1,0 +1,7 @@
+---
+climate_t7_house_weekend:
+  name: T7
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

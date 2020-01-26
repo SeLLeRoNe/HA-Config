@@ -1,0 +1,7 @@
+---
+climate_t2_studio_andrea_weekend:
+  name: T2
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 22
+  step: 0.1

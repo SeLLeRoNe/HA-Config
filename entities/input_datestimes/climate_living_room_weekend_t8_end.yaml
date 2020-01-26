@@ -1,0 +1,5 @@
+---
+climate_t8_living_room_weekend_end:
+  name: End
+  has_date: false
+  has_time: true

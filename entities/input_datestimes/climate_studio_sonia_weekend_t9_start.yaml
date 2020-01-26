@@ -1,0 +1,5 @@
+---
+climate_t9_studio_sonia_weekend_start:
+  name: End
+  has_date: false
+  has_time: true

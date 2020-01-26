@@ -1,7 +1,0 @@
----
-climate_t4:
-  name: T4
-  icon: mdi:temperature-celsius
-  min: 15
-  max: 25
-  step: 0.1

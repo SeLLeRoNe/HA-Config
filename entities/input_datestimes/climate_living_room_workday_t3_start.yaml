@@ -1,0 +1,5 @@
+---
+climate_t3_living_room_workday_start:
+  name: Start
+  has_date: false
+  has_time: true

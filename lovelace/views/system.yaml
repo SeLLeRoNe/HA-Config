@@ -703,7 +703,7 @@ cards:
                   options:
                     name: Master Bedroom - WXKG02LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg02lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg02lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

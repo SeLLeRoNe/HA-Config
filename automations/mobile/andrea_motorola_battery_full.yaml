@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Motorola XT1032 - Battery Full
+alias: Mobile - Andrea - Motorola XT1032 - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state

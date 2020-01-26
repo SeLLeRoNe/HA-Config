@@ -5,8 +5,8 @@ icon: mdi:fire
 command_topic: "cmnd/house_heater/POWER"
 state_topic: "stat/house_heater/POWER"
 availability_topic: "tele/house_heater/LWT"
-#payload_available: "Online"
-#payload_not_available: "Offline"
+payload_available: "Online"
+payload_not_available: "Offline"
 payload_on: "ON"
 payload_off: "OFF"
 qos: 1

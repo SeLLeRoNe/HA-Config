@@ -1,5 +1,5 @@
 ---
-alias: Mobile - Honor 8 - Battery Low
+alias: Mobile - Sonia - Honor 8 - Battery Low
 initial_state: on
 trigger:
   - platform: numeric_state
