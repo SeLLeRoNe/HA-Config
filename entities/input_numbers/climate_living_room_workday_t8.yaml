@@ -1,6 +1,6 @@
 ---
-climate_t8_living_room_workday:
-  name: T8
+climate_living_room_workday_t8:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

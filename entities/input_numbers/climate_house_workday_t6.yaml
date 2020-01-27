@@ -1,6 +1,6 @@
 ---
-climate_t6_house_workday:
-  name: T6
+climate_house_workday_t6:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

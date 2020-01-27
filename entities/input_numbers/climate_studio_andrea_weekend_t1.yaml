@@ -1,6 +1,6 @@
 ---
-climate_t1_studio_andrea_weekend:
-  name: T1
+climate_studio_andrea_weekend_t1:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

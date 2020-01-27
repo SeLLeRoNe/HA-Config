@@ -110,6 +110,16 @@ cards:
                   entity: switch.dishwasher
                   tap_action:
                     action: none
+              - type: "custom:restriction-card"
+                restrictions:
+                  block: true
+                row: true
+                card:
+                  type: entities
+                  name: Toaster
+                  entity: switch.toaster
+                  tap_action:
+                    action: none
       - break
       - type: vertical-stack
         cards:

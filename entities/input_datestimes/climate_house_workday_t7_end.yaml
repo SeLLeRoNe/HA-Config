@@ -1,5 +1,5 @@
 ---
-climate_t7_house_workday_end:
+climate_house_workday_t7_end:
   name: End
   has_date: false
   has_time: true

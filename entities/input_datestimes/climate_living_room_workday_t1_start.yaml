@@ -1,5 +1,5 @@
 ---
-climate_t1_living_room_workday_start:
+climate_living_room_workday_t1_start:
   name: Start
   has_date: false
   has_time: true

@@ -5,7 +5,7 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: template
-    value_template: "{{ states('sensor.time') == states('input_datetime.climate_t3_studio_andrea_weekend_start')[0:5] }}"
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_andrea_weekend_t3_start')[0:5] }}"
   - platform: state
     entity_id: group.family
     to: 'home'
@@ -16,7 +16,7 @@ trigger:
     entity_id: input_boolean.climate_studio_andrea_heating_push
     to: 'off'
   - platform: state
-    entity_id: input_number.climate_t3_studio_andrea_weekend
+    entity_id: input_number.climate_studio_andrea_weekend_t3
   - platform: state
     entity_id: input_boolean.climate_studio_andrea_weekend_t3
     to: 'on'
@@ -30,9 +30,9 @@ condition:
       entity_id: input_boolean.climate_studio_andrea_heating_push
       state: 'off'
     - condition: template
-      value_template: "{{ states('sensor.time') >= states('input_datetime.climate_t3_studio_andrea_weekend_start')[0:5] }}"
+      value_template: "{{ states('sensor.time') >= states('input_datetime.climate_studio_andrea_weekend_t3_start')[0:5] }}"
     - condition: template
-      value_template: "{{ states('sensor.time') < states('input_datetime.climate_t3_studio_andrea_weekend_end')[0:5] }}"
+      value_template: "{{ states('sensor.time') < states('input_datetime.climate_studio_andrea_weekend_t3_end')[0:5] }}"
     - condition: or
       conditions:
         - condition: state
@@ -60,7 +60,7 @@ action:
   - service: climate.set_temperature
     data_template:
       entity_id: climate.studio_andrea
-      temperature: "{{ states('input_number.climate_t3_studio_andrea_weekend') | float }}"
+      temperature: "{{ states('input_number.climate_studio_andrea_weekend_t3') | float }}"
       hvac_mode: heat
   - service: homeassistant.turn_off
     entity_id: group.climate_studio_andrea_active

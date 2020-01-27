@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "Power Usage Toaster Voltage"
+state_topic: "tele/Toaster_Plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+unit_of_measurement: "V"

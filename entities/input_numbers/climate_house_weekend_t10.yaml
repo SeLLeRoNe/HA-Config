@@ -1,6 +1,6 @@
 ---
-climate_t10_house_weekend:
-  name: T10
+climate_house_weekend_t10:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

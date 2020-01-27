@@ -1,5 +1,5 @@
 ---
-climate_t7_studio_sonia_workday_end:
+climate_studio_sonia_workday_t7_end:
   name: End
   has_date: false
   has_time: true

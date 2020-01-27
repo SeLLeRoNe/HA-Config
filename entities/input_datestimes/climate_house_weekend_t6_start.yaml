@@ -1,5 +1,5 @@
 ---
-climate_t6_house_weekend_start:
-  name: End
+climate_house_weekend_t6_start:
+  name: Start
   has_date: false
   has_time: true

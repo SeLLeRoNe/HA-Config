@@ -8,24 +8,10 @@ cards:
     cards:
       - type: custom:vertical-stack-in-card
         cards:
-          - type: markdown
-            content: Search by Entity
-            style: |
-              ha-card {
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.40)';
-                text-align: left;
-                color: white;
-                font-size: 25px;
-                border-radius: 20px;
-                border: solid 1px rgba(100,100,100,0.3);
-                box-shadow: 3px 3px rgba(0,0,0,0.4);
-                background-image: url("/local/cardbackK.png");
-                background-repeat: no-repeat;
-                background-color: rgba(50,50,50,0.3);
-                background-size: 100% 48px;
-              }
-          - type: custom:search-card
-            max_results: 25
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Information
           - type: entities
             title: Version Checks
             show_header_toggle: false
@@ -162,11 +148,18 @@ cards:
                 tap_action:
                   action: none
       - break
-      - type: entities
-        title: Debug
-        show_header_toggle: false
-        entities:
-          - input_text.debug
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Debug
+          - type: custom:search-card
+            max_results: 25
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - input_text.debug
       - break
       - type: custom:decluttering-card
         template: title

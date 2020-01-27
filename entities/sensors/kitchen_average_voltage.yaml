@@ -6,3 +6,4 @@ round_digits: 1
 entity_ids:
   - sensor.power_usage_dishwasher_voltage
   - sensor.power_usage_fridge_voltage
+  - sensor.power_usage_toaster_voltage

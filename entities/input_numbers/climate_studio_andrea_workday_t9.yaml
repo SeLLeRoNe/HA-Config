@@ -1,6 +1,6 @@
 ---
-climate_t9_studio_andrea_workday:
-  name: T9
+climate_studio_andrea_workday_t9:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

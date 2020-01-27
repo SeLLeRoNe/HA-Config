@@ -1,5 +1,5 @@
 ---
-climate_t2_studio_andrea_workday_end:
+climate_studio_andrea_workday_t2_end:
   name: End
   has_date: false
   has_time: true

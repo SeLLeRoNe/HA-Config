@@ -1,6 +1,6 @@
 ---
 heating_push_living_room:
-  name: Heater Push
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

@@ -42,3 +42,12 @@ kitchen_energy:
           - entity_power_usage: sensor.power_usage_fridge_power
           - entity_ampere_usage: sensor.power_usage_fridge_ampere
           - entity_voltage_usage: sensor.power_usage_fridge_voltage
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_16
+        variables:
+          - device: Toaster
+          - entity_energy_usage: sensor.power_usage_toaster_today_energy
+          - entity_power_usage: sensor.power_usage_toaster_power
+          - entity_ampere_usage: sensor.power_usage_toaster_ampere
+          - entity_voltage_usage: sensor.power_usage_toaster_voltage

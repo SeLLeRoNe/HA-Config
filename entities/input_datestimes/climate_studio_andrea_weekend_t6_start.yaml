@@ -1,5 +1,5 @@
 ---
-climate_t6_studio_andrea_weekend_start:
-  name: End
+climate_studio_andrea_weekend_t6_start:
+  name: Start
   has_date: false
   has_time: true

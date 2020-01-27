@@ -7,6 +7,7 @@ sensors:
     value_template: >-
       {{ (
       (states.sensor.power_usage_dishwasher_power.state | float) +
-      (states.sensor.power_usage_fridge_power.state | float)
+      (states.sensor.power_usage_fridge_power.state | float) +
+      (states.sensor.power_usage_toaster_power.state | float)
       ) | round(1) }}
     unit_of_measurement: 'W'

@@ -1,6 +1,6 @@
 ---
-climate_t2_living_room_weekend:
-  name: T2
+climate_living_room_weekend_t2:
+  name: Temperature
   icon: mdi:temperature-celsius
   min: 15
   max: 22

@@ -8,7 +8,8 @@ sensors:
       {{
       (
       (states.sensor.power_usage_dishwasher_yesterday_energy.state | float) +
-      (states.sensor.power_usage_fridge_yesterday_energy.state | float)
+      (states.sensor.power_usage_fridge_yesterday_energy.state | float) +
+      (states.sensor.power_usage_toaster_yesterday_energy.state | float)
       )
       | round(3)
       }}

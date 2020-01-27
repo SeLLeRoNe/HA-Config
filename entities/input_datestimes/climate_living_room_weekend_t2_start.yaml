@@ -1,5 +1,5 @@
 ---
-climate_t2_living_room_weekend_start:
-  name: End
+climate_living_room_weekend_t2_start:
+  name: Start
   has_date: false
   has_time: true

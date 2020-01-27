@@ -9,25 +9,48 @@ thermostat:
       - type: entities
         show_header_toggle: false
         entities:
-          - entity: input_boolean.climate_[[area]]_heating_push
-            name: Heating Push
+          - type: custom:multiple-entity-row
+            entity: input_boolean.climate_[[area]]_heating_push
+            icon: mdi:timer
+            toggle: true
+            primary:
+              entity: input_datetime.heating_push_[[area]]
+              service: browser_mod.popup
+              service_data:
+                title: Configuration
+                card:
+                  type: entities
+                  entities:
+                    - input_boolean.climate_[[area]]_heating_push
+                    - input_datetime.heating_push_[[area]]
+                    - type: section
+                      label: Temperature
+                    - type: custom:slider-entity-row
+                      entity: input_number.heating_push_[[area]]
+                      full_row: true
+            secondary:
+              entity: input_number.heating_push_[[area]]
+              service: browser_mod.popup
+              service_data:
+                title: Configuration
+                card:
+                  type: entities
+                  entities:
+                    - input_datetime.heating_push_[[area]]
+                    - type: section
+                      label: Temperature
+                    - type: custom:slider-entity-row
+                      entity: input_number.heating_push_[[area]]
             style: |
               :host {
                 --paper-item-icon-color:
-                  {% if is_state(config.entity, 'on') %}
+                  {% if is_state('input_boolean.climate_[[area]]_heating_push', 'on') %}
                     rgb(51, 204, 51);
                   {% else %}
                     rgb(128, 128, 128);
                   {% endif %}
               }
-            tap_action:
-              action: none
-#      - type: custom:decluttering-card
-#        template: title
-#        variables:
-#          - title: Settings
       - type: entities
-#        title: Chrono Thermostat Settings
         show_header_toggle: false
         entities:
           - type: 'custom:fold-entity-row'
@@ -42,41 +65,13 @@ thermostat:
                   type: section
                 padding: 0
                 entities:
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t1_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t1
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t1_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t1_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
-#                    tap_action:
-#                      action: call-service
-#                      service: browser_mod.popup
-#                      service_data:
-#                        title: T1 Workday
-#                        card:
-#                          type: entities
-#                          entities:
-#                            - input_boolean.climate_[[area]]_workday_t1
-#                            - input_datetime.climate_t1_[[area]]_workday_start
-#                            - input_datetime.climate_t1_[[area]]_workday_end
-#                            - input_number.climate_t1_[[area]]_workday
-#                  - entity: input_number.climate_t1_[[area]]_workday
-#                    type: custom:slider-entity-row
-#                    full_row: true
-#                    hide_state: true
-#                    tap_action:
-#                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T1
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t1
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -90,23 +85,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t2_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t2
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t2_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t2_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T2
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t2
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -120,23 +105,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t3_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t3
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t3_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t3_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T3
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t3
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -150,23 +125,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t4_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t4
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t4_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t4_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T4
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t4
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -180,23 +145,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t5_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t5
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t5_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t5_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T5
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t5
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -210,23 +165,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t6_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t6
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t6_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t6_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T6
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t6
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -240,23 +185,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t7_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t7
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t7_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t7_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T7
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t7
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -270,23 +205,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t8_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t8
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t8_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t8_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T8
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t8
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -300,23 +225,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t9_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t9
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t9_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t9_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T9
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t9
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -330,23 +245,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t10_[[area]]_workday
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_workday_t10
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t10_[[area]]_workday_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t10_[[area]]_workday_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T10
+                      - area: '[[area]]'
+                      - day: workday
+                      - timing: t10
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -366,41 +271,13 @@ thermostat:
                   type: section
                 padding: 0
                 entities:
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t1_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t1
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t1_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t1_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
-#                    tap_action:
-#                      action: call-service
-#                      service: browser_mod.popup
-#                      service_data:
-#                        title: T1 weekend
-#                        card:
-#                          type: entities
-#                          entities:
-#                            - input_boolean.climate_[[area]]_weekend_t1
-#                            - input_datetime.climate_t1_[[area]]_weekend_start
-#                            - input_datetime.climate_t1_[[area]]_weekend_end
-#                            - input_number.climate_t1_[[area]]_weekend
-#                  - entity: input_number.climate_t1_[[area]]_weekend
-#                    type: custom:slider-entity-row
-#                    full_row: true
-#                    hide_state: true
-#                    tap_action:
-#                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T1
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t1
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -414,23 +291,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t2_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t2
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t2_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t2_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T2
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t2
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -444,23 +311,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t3_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t3
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t3_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t3_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T3
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t3
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -474,23 +331,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t4_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t4
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t4_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t4_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T4
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t4
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -504,23 +351,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t5_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t5
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t5_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t5_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T5
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t5
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -534,23 +371,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t6_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t6
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t6_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t6_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T6
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t6
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -564,23 +391,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t7_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t7
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t7_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t7_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T7
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t7
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -594,23 +411,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t8_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t8
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t8_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t8_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T8
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t8
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -624,23 +431,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t9_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t9
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t9_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t9_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T9
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t9
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -654,23 +451,13 @@ thermostat:
                             rgb(0, 0, 255);
                           {% endif %}
                       }
-                  - type: custom:multiple-entity-row
-                    entity: input_number.climate_t10_[[area]]_weekend
-                    icon: mdi:timer
-                    primary:
-                      entity: input_boolean.climate_[[area]]_weekend_t10
-                      tap_action:
-                        action: toggle
-                    secondary:
-                      entity: input_datetime.climate_t10_[[area]]_weekend_start
-                      tap_action:
-                        action: none
-                    tertiary:
-                      entity: input_datetime.climate_t10_[[area]]_weekend_end
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
+                  - type: 'custom:decluttering-card'
+                    template: thermostat_entry
+                    variables:
+                      - name: T10
+                      - area: '[[area]]'
+                      - day: weekend
+                      - timing: t10
                     style: |
                       :host {
                         --paper-item-icon-color:
@@ -691,14 +478,11 @@ thermostat:
                 padding: 0
                 entities:
                   - type: custom:multiple-entity-row
+                    name: Timer and Temperature
                     entity: input_number.heating_push_[[area]]
                     icon: mdi:timer
                     primary:
                       entity: input_datetime.heating_push_[[area]]
-                      tap_action:
-                        action: none
-                    tap_action:
-                      action: none
                     style: |
                       :host {
                         --paper-item-icon-color:

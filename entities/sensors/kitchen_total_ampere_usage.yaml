@@ -8,7 +8,8 @@ sensors:
       {{
       (
       (states.sensor.power_usage_dishwasher_ampere.state | float) +
-      (states.sensor.power_usage_fridge_ampere.state | float)
+      (states.sensor.power_usage_fridge_ampere.state | float) +
+      (states.sensor.power_usage_toaster_ampere.state | float)
       | round(3)
       )
       }}

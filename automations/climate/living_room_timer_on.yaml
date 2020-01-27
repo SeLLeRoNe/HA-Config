@@ -3,7 +3,7 @@ alias: Climate - Living Room - Timer Start
 initial_state: 'on'
 trigger:
   - platform: state
-    entity_id: input_boolean.climate_living_roomt_heating_push
+    entity_id: input_boolean.climate_living_room_heating_push
     to: 'on'
   - platform: state
     entity_id: input_number.heating_push_living_room
@@ -11,7 +11,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: input_boolean.climate_living_roomt_heating_push
+      entity_id: input_boolean.climate_living_room_heating_push
       state: 'on'
 action:
   - service: timer.start
