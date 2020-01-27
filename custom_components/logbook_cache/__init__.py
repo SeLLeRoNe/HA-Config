@@ -143,22 +143,23 @@ class MonkeyClass:
             self.async_refresh_cache, step_timestamp(current_timestamp)
         )
 
-        self.hass.async_add_job(refresh)
+        self.hass.async_add_executor_job(refresh)
 
     def load_chunk(self, timestamp):
         if timestamp in self.cache:
-            chunk = self.cache[timestamp]
-        elif dt_util.utcnow() < timestamp:
-            chunk = []
-        else:
-            _LOGGER.debug(f"Loading {timestamp}")
-            next_timestamp = step_timestamp(timestamp)
-            chunk = self.original_get_events(
-                self.hass, logbook_config, timestamp, next_timestamp
-            )
+            return self.cache[timestamp]
 
-            if timestamp >= self.cache_start() and dt_util.utcnow() > next_timestamp:
-                _LOGGER.debug(f"Storing {timestamp}")
-                self.cache[timestamp] = chunk
+        if timestamp > dt_util.utcnow():
+            return []
+
+        _LOGGER.debug(f"Loading {timestamp}")
+        next_timestamp = step_timestamp(timestamp)
+        chunk = self.original_get_events(
+            self.hass, logbook_config, timestamp, next_timestamp
+        )
+
+        if self.cache_start() <= timestamp and next_timestamp < dt_util.utcnow():
+            _LOGGER.debug(f"Storing {timestamp}")
+            self.cache[timestamp] = chunk
 
         return chunk
