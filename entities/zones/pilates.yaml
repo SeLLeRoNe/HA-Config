@@ -1,0 +1,7 @@
+---
+name: Pilates
+latitude: !secret zone_pilates_latitude
+longitude: !secret zone_pilates_longitude
+radius: 25
+passive: false
+icon: mdi:human-handsup

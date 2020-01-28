@@ -1,4 +1,4 @@
 ---
 climate_living_room_heating_push:
-  name: Heating Push
+  name: Push
   icon: mdi:timer

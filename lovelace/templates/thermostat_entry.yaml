@@ -31,6 +31,8 @@ thermostat_entry:
           type: entities
           entities:
             - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+            - type: section
+              label: Time Schedule
             - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
             - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
             - type: section
@@ -47,6 +49,8 @@ thermostat_entry:
           type: entities
           entities:
             - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+            - type: section
+              label: Time Schedule
             - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
             - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
             - type: section
@@ -61,6 +65,8 @@ thermostat_entry:
         type: entities
         entities:
           - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+          - type: section
+            label: Time Schedule
           - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
           - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
           - type: section

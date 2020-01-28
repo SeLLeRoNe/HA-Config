@@ -3,9 +3,14 @@ thermostat:
   card:
     type: custom:vertical-stack-in-card
     cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
       - type: thermostat
         icon: mdi:thermometer-lines
         entity: climate.[[area]]
+        name: " "
       - type: entities
         show_header_toggle: false
         entities:
@@ -59,436 +64,407 @@ thermostat:
               type: section
             padding: 0
             entities:
-              - type: 'custom:fold-entity-row'
-                head:
-                  label: Workday
-                  type: section
-                padding: 0
-                entities:
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T1
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t1
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t1', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T2
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t2
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t2', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T3
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t3
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t3', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T4
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t4
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t4', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T5
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t5
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t5', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T6
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t6
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t6', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T7
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t7
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t7', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T8
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t8
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t8', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T9
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t9
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t9', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T10
-                      - area: '[[area]]'
-                      - day: workday
-                      - timing: t10
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_workday_t10', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-              - type: 'custom:fold-entity-row'
-                head:
-                  label: Weekend
-                  type: section
-                padding: 0
-                entities:
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T1
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t1
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t1', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T2
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t2
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t2', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T3
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t3
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t3', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T4
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t4
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t4', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T5
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t5
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t5', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T6
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t6
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t6', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T7
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t7
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t7', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T8
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t8
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t8', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T9
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t9
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t9', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-                  - type: 'custom:decluttering-card'
-                    template: thermostat_entry
-                    variables:
-                      - name: T10
-                      - area: '[[area]]'
-                      - day: weekend
-                      - timing: t10
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_weekend_t10', 'off') %}
-                            rgb(128, 128, 128);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'on') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'off') %}
-                            rgb(0, 0, 255);
-                          {% else %}
-                            rgb(0, 0, 255);
-                          {% endif %}
-                      }
-              - type: 'custom:fold-entity-row'
-                head:
-                  label: Heating Push
-                  type: section
-                padding: 0
-                entities:
-                  - type: custom:multiple-entity-row
-                    name: Timer and Temperature
-                    entity: input_number.heating_push_[[area]]
-                    icon: mdi:timer
-                    primary:
-                      entity: input_datetime.heating_push_[[area]]
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state('input_boolean.climate_[[area]]_heating_push', 'on') %}
-                            rgb(51, 204, 51);
-                          {% else %}
-                            rgb(128, 128, 128);
-                          {% endif %}
-                      }
+              - type: section
+                label: Workday
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T1
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t1
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t1', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T2
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t2
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t2', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T3
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t3
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t3', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T4
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t4
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t4', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T5
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t5
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t5', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T6
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t6
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t6', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T7
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t7
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t7', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T8
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t8
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t8', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T9
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t9
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t9', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T10
+                  - area: '[[area]]'
+                  - day: workday
+                  - timing: t10
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_workday_t10', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: section
+                label: Workday
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T1
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t1
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t1', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T2
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t2
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t2', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T3
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t3
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t3', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T4
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t4
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t4', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T5
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t5
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t5', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T6
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t6
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t6', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T7
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t7
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t7', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T8
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t8
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t8', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T9
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t9
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t9', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }
+              - type: 'custom:decluttering-card'
+                template: thermostat_entry
+                variables:
+                  - name: T10
+                  - area: '[[area]]'
+                  - day: weekend
+                  - timing: t10
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state('input_boolean.climate_[[area]]_weekend_t10', 'off') %}
+                        rgb(128, 128, 128);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'on') %}
+                        rgb(51, 204, 51);
+                      {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'off') %}
+                        rgb(0, 0, 255);
+                      {% else %}
+                        rgb(0, 0, 255);
+                      {% endif %}
+                  }

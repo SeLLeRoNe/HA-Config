@@ -3,5 +3,5 @@ climate_house_workday_t3:
   name: Temperature
   icon: mdi:temperature-celsius
   min: 15
-  max: 22
+  max: 25
   step: 0.1

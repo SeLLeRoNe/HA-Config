@@ -25,30 +25,21 @@ condition:
       entity_id: input_boolean.guest_mode
       state: 'off'
 action:
-  - service: input_boolean.turn_off
+  - service: homeassistant.turn_off
     data:
-      entity_id: input_boolean.climate_heating_push_house
+      entity_id: group.heating_push
   - service: climate.set_preset_mode
     data:
       entity_id: climate.house
       preset_mode: away
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.climate_heating_push_living_room
   - service: climate.set_preset_mode
     data:
       entity_id: climate.living_room
       preset_mode: away
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.climate_heating_push_studio_andrea
   - service: climate.set_preset_mode
     data:
       entity_id: climate.studio_andrea
       preset_mode: away
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.climate_heating_push_studio_sonia
   - service: climate.set_preset_mode
     data:
       entity_id: climate.studio_sonia

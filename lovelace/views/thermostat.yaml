@@ -7,13 +7,25 @@ cards:
     layout: vertical
     cards:
       - type: custom:decluttering-card
-        template: house_thermostat
+        template: thermostat
+        variables:
+          - title: House
+          - area: house
       - break
       - type: custom:decluttering-card
-        template: living_room_thermostat
+        template: thermostat
+        variables:
+          - title: Living Room
+          - area: living_room
       - break
       - type: custom:decluttering-card
-        template: studio_andrea_thermostat
+        template: thermostat
+        variables:
+          - title: Studio Andrea
+          - area: studio_andrea
       - break
       - type: custom:decluttering-card
-        template: studio_sonia_thermostat
+        template: thermostat
+        variables:
+          - title: Studio Sonia
+          - area: studio_sonia

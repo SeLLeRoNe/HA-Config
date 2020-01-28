@@ -17,9 +17,6 @@ trigger:
     to: 'off'
   - platform: state
     entity_id: input_number.climate_studio_sonia_weekend_t4
-  - platform: state
-    entity_id: input_boolean.climate_studio_sonia_weekend_t4
-    to: 'on'
 condition:
   condition: and
   conditions:
@@ -29,10 +26,30 @@ condition:
     - condition: state
       entity_id: input_boolean.climate_studio_sonia_heating_push
       state: 'off'
-    - condition: template
-      value_template: "{{ states('sensor.time') >= states('input_datetime.climate_studio_sonia_weekend_t4_start')[0:5] }}"
-    - condition: template
-      value_template: "{{ states('sensor.time') < states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] }}"
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_studio_sonia_weekend_t4_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('sensor.time') < states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_studio_sonia_weekend_t4_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] == '00:00' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_studio_sonia_weekend_t4_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] < states('input_datetime.climate_studio_sonia_weekend_t4_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] >= '00:00' }}"
+            - condition: template
+              value_template: "{{ states('sensor.time') <= states('input_datetime.climate_studio_sonia_weekend_t4_end')[0:5] }}"
     - condition: or
       conditions:
         - condition: state
@@ -41,14 +58,9 @@ condition:
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'on'
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: binary_sensor.workday_uk
-          state: 'off'
-        - condition: state
-          entity_id: binary_sensor.workday_es
-          state: 'off'
+    - condition: state
+      entity_id: group.workday
+      state: 'off'
 action:
   - service: climate.turn_on
     data:
@@ -66,3 +78,7 @@ action:
     entity_id: group.climate_studio_sonia_active
   - service: homeassistant.turn_on
     entity_id: input_boolean.climate_studio_sonia_weekend_t4_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate.studio_sonia
+      option: "T4"

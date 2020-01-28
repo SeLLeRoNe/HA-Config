@@ -1,0 +1,67 @@
+---
+thermostat_card:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: custom:multiple-entity-row
+            entity: input_select.climate_[[area]]
+            name: Thermostat
+            icon: mdi:fire
+            toggle: false
+            primary:
+              entity: climate.[[area]]
+              attribute: current_temperature
+              name: Current Temperature
+              service: browser_mod.popup
+              service_data:
+                title: Configuration
+                card:
+                  type: custom:decluttering-card
+                  template: thermostat
+                  variables:
+                   - title: House
+                   - area: '[[area]]'
+            secondary:
+              entity: climate.[[area]]
+              attribute: temperature
+              name: Set Temperature
+              service: browser_mod.popup
+              service_data:
+                title: Configuration
+                card:
+                  type: entities
+                  entities:
+                    - input_datetime.heating_push_[[area]]
+                    - type: section
+                      label: Temperature
+                    - type: custom:slider-entity-row
+                      entity: input_number.heating_push_[[area]]
+            tertiary:
+              entity: climate.[[area]]
+              attribute: hvac_action
+              name: Status
+              service: browser_mod.popup
+              service_data:
+                title: Configuration
+                card:
+                  type: entities
+                  entities:
+                    - input_datetime.heating_push_[[area]]
+                    - type: section
+                      label: Temperature
+                    - type: custom:slider-entity-row
+                      entity: input_number.heating_push_[[area]]
+            style: |
+              :host {
+                --paper-item-icon-color:
+                  {% if is_state_attr('climate.[[area]]', 'hvac_action', 'heating') %}
+                    rgb(51, 204, 51);
+                  {% elif is_state_attr('climate.[[area]]', 'hvac_action', 'idle') %}
+                    rgb(255, 0, 0);
+                  {% else %}
+                    rgb(128, 128, 128);
+                  {% endif %}
+              }
