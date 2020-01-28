@@ -14,6 +14,13 @@ condition:
       entity_id: input_boolean.climate_living_room_heating_push
       state: 'on'
 action:
+  - service: climate.turn_on
+    data:
+      entity_id: climate.living_room
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living_room
+      preset_mode: none
   - service: timer.start
     data_template:
       entity_id: timer.heating_push_living_room
