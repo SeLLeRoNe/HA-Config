@@ -20,10 +20,12 @@ thermostat_card:
                 title: Configuration
                 card:
                   type: custom:decluttering-card
-                  template: thermostat
+                  template: thermostat_popup
                   variables:
                    - title: House
                    - area: '[[area]]'
+                style:
+                  width: 450px
             secondary:
               entity: climate.[[area]]
               attribute: temperature
@@ -32,13 +34,13 @@ thermostat_card:
               service_data:
                 title: Configuration
                 card:
-                  type: entities
-                  entities:
-                    - input_datetime.heating_push_[[area]]
-                    - type: section
-                      label: Temperature
-                    - type: custom:slider-entity-row
-                      entity: input_number.heating_push_[[area]]
+                  type: custom:decluttering-card
+                  template: thermostat_popup
+                  variables:
+                   - title: House
+                   - area: '[[area]]'
+                style:
+                  width: 450px
             tertiary:
               entity: climate.[[area]]
               attribute: hvac_action
@@ -47,13 +49,13 @@ thermostat_card:
               service_data:
                 title: Configuration
                 card:
-                  type: entities
-                  entities:
-                    - input_datetime.heating_push_[[area]]
-                    - type: section
-                      label: Temperature
-                    - type: custom:slider-entity-row
-                      entity: input_number.heating_push_[[area]]
+                  type: custom:decluttering-card
+                  template: thermostat_popup
+                  variables:
+                   - title: House
+                   - area: '[[area]]'
+                style:
+                  width: 450px
             style: |
               :host {
                 --paper-item-icon-color:
