@@ -2,5 +2,6 @@
 workday:
   name: Workday
   entities:
+    - binary_sensor.workday_it
     - binary_sensor.workday_uk
     - binary_sensor.workday_es
