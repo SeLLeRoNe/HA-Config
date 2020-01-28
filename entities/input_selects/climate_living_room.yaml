@@ -13,6 +13,7 @@ climate_living_room:
     - T9
     - T10
     - Push
+    - Away
     - N/A
     - Unknown
   initial: Unknown

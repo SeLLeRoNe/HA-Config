@@ -22,8 +22,7 @@ thermostat_card:
                   type: custom:decluttering-card
                   template: thermostat_popup
                   variables:
-                   - title: House
-                   - area: '[[area]]'
+                    - area: '[[area]]'
                 style:
                   width: 450px
             secondary:
@@ -37,8 +36,7 @@ thermostat_card:
                   type: custom:decluttering-card
                   template: thermostat_popup
                   variables:
-                   - title: House
-                   - area: '[[area]]'
+                    - area: '[[area]]'
                 style:
                   width: 450px
             tertiary:
@@ -52,8 +50,7 @@ thermostat_card:
                   type: custom:decluttering-card
                   template: thermostat_popup
                   variables:
-                   - title: House
-                   - area: '[[area]]'
+                    - area: '[[area]]'
                 style:
                   width: 450px
             style: |

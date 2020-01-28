@@ -458,6 +458,10 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.studio_andrea_pressure
+      - type: custom:decluttering-card
+        template: thermostat_card
+        variables:
+          - area: studio_andrea
       - break
       - type: custom:vertical-stack-in-card
         cards:

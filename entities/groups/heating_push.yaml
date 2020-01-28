@@ -1,5 +1,5 @@
 ---
-heateing_push:
+heating_push:
   name: Heating Push
   entities:
     - input_boolean.climate_house_heating_push

@@ -141,6 +141,10 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.studio_sonia_pressure
+      - type: custom:decluttering-card
+        template: thermostat_card
+        variables:
+          - area: studio_sonia
       - break
       - type: custom:decluttering-card
         template: studio_sonia_energy

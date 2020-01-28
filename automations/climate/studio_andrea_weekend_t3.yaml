@@ -80,5 +80,5 @@ action:
     entity_id: input_boolean.climate_studio_andrea_weekend_t3_active
   - service: input_select.select_option
     data:
-      entity_id: input_select.climate.studio_andrea
+      entity_id: input_select.climate_studio_andrea
       option: "T3"

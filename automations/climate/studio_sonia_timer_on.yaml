@@ -28,3 +28,7 @@ action:
       hvac_mode: heat
   - service: homeassistant.turn_off
     entity_id: group.climate_studio_sonia_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate_studio_sonia
+      option: "Push"

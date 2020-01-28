@@ -14,7 +14,8 @@ trigger:
     entity_id: input_boolean.guest_mode
     to: 'off'
   - platform: state
-    entity_id: input_number.climate_t0
+    entity_id: group.heating_push
+    to: 'off'
 condition:
   condition: and
   conditions:
@@ -49,3 +50,19 @@ action:
 #      entity_id: climate.house
   - service: homeassistant.turn_off
     entity_id: group.climate_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate_house
+      option: "Away"
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate.living_room
+      option: "Away"
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate.studio_andrea
+      option: "Away"
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate.studio_sonia
+      option: "Away"

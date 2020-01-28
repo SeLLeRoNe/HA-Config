@@ -137,6 +137,10 @@ cards:
                 template: humidity
                 variables:
                   - entity: sensor.living_room_humidity
+      - type: custom:decluttering-card
+        template: thermostat_card
+        variables:
+          - area: living_room
       - break
       - type: custom:vertical-stack-in-card
         cards:
