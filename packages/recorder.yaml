@@ -18,10 +18,8 @@ recorder:
   exclude:
     domains:
       - automation
-      - binary_sensor
       - weblink
       - updater
-      - group
       - media_player
       - weather
       - zone
