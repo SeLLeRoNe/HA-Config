@@ -5,8 +5,8 @@
 # https://www.home-assistant.io/components/mqtt/
 #
 platform: mqtt
-name: "Studio Andrea Powerstrip 2 Plug 3"
-icon: mdi:power-plug
+name: "Studio Andrea Google Mini"
+icon: mdi:google-home
 command_topic: "cmnd/Studio_Andrea_PowerStrip_2/POWER3"
 state_topic: "stat/Studio_Andrea_PowerStrip_2/POWER3"
 availability_topic: "tele/Studio_Andrea_PowerStrip_2/LWT"

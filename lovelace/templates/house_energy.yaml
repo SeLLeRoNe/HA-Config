@@ -10,17 +10,9 @@ house_energy:
       - type: custom:decluttering-card
         template: house_cost
         variables:
-          - entity_daily_usage: sensor.house_daily_energy_usage
-          - entity_daily_cost: sensor.house_cost_daily
-          - entity_monthly_usage: sensor.house_monthly_energy_usage
-          - entity_monthly_cost: sensor.house_cost_monthly
-          - entity_yearly_usage: sensor.house_yearly_energy_usage
-          - entity_yearly_cost: sensor.house_cost_yearly
+          - area: house
       - type: divider
       - type: custom:decluttering-card
         template: house_total
         variables:
-          - entity_energy_usage: sensor.house_today_energy_usage
-          - entity_power_usage: sensor.house_total_power_usage
-          - entity_ampere_usage: sensor.house_total_ampere_usage
-          - entity_voltage_usage: sensor.house_average_voltage
+          - area: house

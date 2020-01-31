@@ -7,10 +7,9 @@ trigger:
     to: 'on'
   - platform: time_pattern
     minutes: '*'
-  - platform: zone
+  - platform: state
     entity_id: group.family
-    event: enter
-    zone: zone.home
+    to: 'home'
   - platform: zone
     entity_id: device_tracker.citroen_cactus
     event: enter

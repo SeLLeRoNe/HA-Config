@@ -1,0 +1,24 @@
+---
+energy_card:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+          - type: custom:decluttering-card
+            template: energy_usage_card
+            variables:
+              - area: '[[area]]'
+          - type: custom:decluttering-card
+            template: energy_cost_card
+            variables:
+              - area: '[[area]]'
+          - type: section
+          - type: custom:decluttering-card
+            template: energy_total_card
+            variables:
+              - area: '[[area]]'
+          - type: section
+            label: Devices

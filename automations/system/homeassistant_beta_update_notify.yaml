@@ -28,4 +28,4 @@ action:
   - service: notify.html5_andrea
     data_template:
       title: "Updates Notification"
-      message: "Home Assistant Version {{ states('sensor.home_assistant_available_stable_version') }} (BETA) update is now available"
+      message: "Home Assistant Version {{ states('sensor.home_assistant_available_beta_version') }} (BETA) update is now available"

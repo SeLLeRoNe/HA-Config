@@ -2,10 +2,9 @@
 alias: Living Room - Away
 initial_state: off
 trigger:
-  - platform: zone
+  - platform: state
     entity_id: group.family
-    zone: zone.home
-    event: leave
+    to: 'not_home'
   - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'

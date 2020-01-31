@@ -1,0 +1,29 @@
+---
+house_energy_small:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+          - type: custom:decluttering-card
+            template: energy_usage_card
+            variables:
+              - type: house
+              - area: house
+          - type: custom:decluttering-card
+            template: energy_cost_card
+            variables:
+              - type: house
+              - area: house
+          - type: section
+          - type: custom:decluttering-card
+            template: energy_total_card
+            variables:
+              - type: house
+              - area: house

@@ -39,7 +39,7 @@ house_total:
               - color: '#e45e65'
                 value: 2400
             entities:
-              - entity: '[[entity_energy_usage]]'
+              - entity: sensor.[[area]]_today_energy_usage
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -73,7 +73,7 @@ house_total:
               - color: '#e45e65'
                 value: 7500
             entities:
-              - entity: '[[entity_power_usage]]'
+              - entity: sensor.[[area]]_total_power_usage
             tap_action:
               action: none
       - type: horizontal-stack
@@ -109,7 +109,7 @@ house_total:
               - color: '#e45e65'
                 value: 2400
             entities:
-              - entity: '[[entity_ampere_usage]]'
+              - entity: sensor.[[area]]_total_ampere_usage
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -143,6 +143,6 @@ house_total:
               - color: '#e45e65'
                 value: 2400
             entities:
-              - entity: '[[entity_voltage_usage]]'
+              - entity: sensor.[[area]]_average_voltage
             tap_action:
               action: none

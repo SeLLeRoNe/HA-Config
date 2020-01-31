@@ -6,10 +6,9 @@ trigger:
     event: start
 #  - platform: time_pattern
 #    minutes: '*'
-  - platform: zone
+  - platform: state
     entity_id: group.family
-    zone: zone.home
-    event: leave
+    to: 'not_home'
   - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'
@@ -24,6 +23,9 @@ condition:
       state: 'not_home'
     - condition: state
       entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: group.heating_push
       state: 'off'
 action:
   - service: homeassistant.turn_off

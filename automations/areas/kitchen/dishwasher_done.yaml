@@ -18,10 +18,10 @@ condition:
   conditions:
     - condition: state
       entity_id: input_select.dishwasher_status
-      state: 'Running'
+      state: 'Washing'
     - condition: state
       entity_id: input_select.dishwasher_status
-      state: 'Spinning'
+      state: 'Drying'
 action:
   - service: input_select.select_option
     data:

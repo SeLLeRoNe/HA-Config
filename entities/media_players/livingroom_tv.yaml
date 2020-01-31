@@ -1,7 +1,8 @@
 ---
-# This is my Livingroom Yamaha RV-X 776 Amplifier.
+# This is my Livingroom Samsung Q60 TV.
 #
-# https://www.home-assistant.io/components/media_player.yamaha/
+# https://github.com/jaruba/ha-samsungtv-custom
+#
 platform: samsungtv_custom
 name: Living Room TV
 #name: TV SAMSUNG Q60R

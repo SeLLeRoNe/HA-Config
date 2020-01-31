@@ -21,7 +21,7 @@ condition:
       state: 'Idle'
     - condition: state
       entity_id: input_select.washing_machine_status
-      state: 'Running'
+      state: 'Washing'
 action:
   - service: input_select.select_option
     data:

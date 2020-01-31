@@ -1,0 +1,7 @@
+---
+name: Library
+latitude: !secret zone_library_sagrada_familia_latitude
+longitude: !secret zone_library_sagrada_familia_longitude
+radius: 20
+passive: false
+icon: mdi:library

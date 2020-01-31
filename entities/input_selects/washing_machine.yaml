@@ -4,7 +4,7 @@ washing_machine_status:
   options:
     - Idle
     - Warming Up
-    - Running
+    - Washing
     - Spinning
     - Done
   initial: Idle

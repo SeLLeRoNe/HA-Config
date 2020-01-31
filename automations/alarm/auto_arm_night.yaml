@@ -7,10 +7,9 @@ trigger:
   - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'
-  - platform: zone
+  - platform: state
     entity_id: group.family
-    event: enter
-    zone: zone.home
+    to: 'home'
   - platform: zone
     entity_id: device_tracker.citroen_cactus
     event: enter

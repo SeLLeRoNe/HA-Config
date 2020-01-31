@@ -10,7 +10,7 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 1
+    above: 0
     below: 3
     for:
       minutes: 2
@@ -20,7 +20,7 @@ condition:
   conditions:
     - condition: state
       entity_id: input_select.washing_machine_status
-      state: 'Running'
+      state: 'Washing'
     - condition: state
       entity_id: input_select.washing_machine_status
       state: 'Spinning'

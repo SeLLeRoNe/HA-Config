@@ -10,26 +10,15 @@ laundry_room_energy:
       - type: custom:decluttering-card
         template: room_cost
         variables:
-          - entity_daily_usage: sensor.laundry_room_daily_energy_usage
-          - entity_daily_cost: sensor.laundry_room_cost_daily
-          - entity_monthly_usage: sensor.laundry_room_monthly_energy_usage
-          - entity_monthly_cost: sensor.laundry_room_cost_monthly
-          - entity_yearly_usage: sensor.laundry_room_yearly_energy_usage
-          - entity_yearly_cost: sensor.laundry_room_cost_yearly
+          - area: laundry_room
       - type: divider
       - type: custom:decluttering-card
         template: room_total
         variables:
-          - entity_energy_usage: sensor.laundry_room_today_energy_usage
-          - entity_power_usage: sensor.laundry_room_total_power_usage
-          - entity_ampere_usage: sensor.laundry_room_total_ampere_usage
-          - entity_voltage_usage: sensor.laundry_room_average_voltage
+          - area: laundry_room
       - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
-          - device: Washing Machine
-          - entity_energy_usage: sensor.power_usage_washing_machine_today_energy
-          - entity_power_usage: sensor.power_usage_washing_machine_power
-          - entity_ampere_usage: sensor.power_usage_washing_machine_ampere
-          - entity_voltage_usage: sensor.power_usage_washing_machine_voltage
+          - device_name: Washing Machine
+          - device: washing_machine

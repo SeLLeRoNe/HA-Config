@@ -1,0 +1,48 @@
+---
+energy_total_card:
+  card:
+    type: custom:multiple-entity-row
+    entity: sensor.[[area]]_total_power_usage
+    name: Current Usage
+    icon: mdi:flash
+    hide_state: false
+    toggle: false
+    primary:
+      entity: sensor.[[area]]_average_voltage
+      name: false
+      service: browser_mod.popup
+      service_data:
+        title: Details
+        card:
+          type: custom:decluttering-card
+          template: '[[type]]_total'
+          variables:
+            - area: '[[area]]'
+        style:
+          width: 450px
+    secondary:
+      entity: sensor.[[area]]_total_ampere_usage
+      name: false
+      service: browser_mod.popup
+      service_data:
+        title: Details
+        card:
+          type: custom:decluttering-card
+          template: '[[type]]_total'
+          variables:
+            - area: '[[area]]'
+        style:
+          width: 450px
+    tertiary:
+      entity: sensor.[[area]]_today_energy_usage
+      name: false
+      service: browser_mod.popup
+      service_data:
+        title: Details
+        card:
+          type: custom:decluttering-card
+          template: '[[type]]_total'
+          variables:
+            - area: '[[area]]'
+        style:
+          width: 450px

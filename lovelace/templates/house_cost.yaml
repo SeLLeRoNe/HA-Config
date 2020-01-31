@@ -5,7 +5,7 @@ house_cost:
     cards:
       - type: markdown
         content: >
-          ## Costs
+          ## Usage/Costs
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
@@ -39,7 +39,7 @@ house_cost:
               - color: '#e45e65'
                 value: 15
             entities:
-              - entity: '[[entity_daily_usage]]'
+              - entity: sensor.[[area]]_daily_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -73,7 +73,7 @@ house_cost:
               - color: '#e45e65'
                 value: 5
             entities:
-              - entity: '[[entity_daily_cost]]'
+              - entity: sensor.[[area]]_cost_daily
             tap_action:
               action: none
       - type: horizontal-stack
@@ -109,7 +109,7 @@ house_cost:
               - color: '#e45e65'
                 value: 250
             entities:
-              - entity: '[[entity_monthly_usage]]'
+              - entity: sensor.[[area]]_monthly_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -143,7 +143,7 @@ house_cost:
               - color: '#e45e65'
                 value: 100
             entities:
-              - entity: '[[entity_monthly_cost]]'
+              - entity: sensor.[[area]]_cost_monthly
             tap_action:
               action: none
       - type: horizontal-stack
@@ -179,7 +179,7 @@ house_cost:
               - color: '#e45e65'
                 value: 2500
             entities:
-              - entity: '[[entity_yearly_usage]]'
+              - entity: sensor.[[area]]_yearly_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -213,6 +213,6 @@ house_cost:
               - color: '#e45e65'
                 value: 1000
             entities:
-              - entity: '[[entity_yearly_cost]]'
+              - entity: sensor.[[area]]_cost_yearly
             tap_action:
               action: none

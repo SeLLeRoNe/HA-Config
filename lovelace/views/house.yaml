@@ -681,20 +681,20 @@ cards:
             entity_pop_5: sensor.dark_sky_precip_probability_5d
             entity_current_text: sensor.dark_sky_current_text
             alt_wind: sensor.dark_sky_alt_wind
-          - type: custom:vertical-stack-in-card
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
             cards:
-              - type: horizontal-stack
-                cards:
-                  - type: custom:decluttering-card
-                    template: house_temperature
-                  - type: custom:decluttering-card
-                    template: house_humidity 
+              - type: custom:decluttering-card
+                template: house_temperature
+              - type: custom:decluttering-card
+                template: house_humidity 
       - type: custom:decluttering-card
         template: thermostat_card
         variables:
           - area: house
       - break
       - type: custom:decluttering-card
-        template: house_energy
+        template: house_energy_small
         variables:
           - title: Energy Consumption

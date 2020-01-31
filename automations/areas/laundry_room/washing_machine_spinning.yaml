@@ -10,8 +10,8 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    below: 500
     above: 200
+    below: 500
     for:
       seconds: 10
 condition:
@@ -19,7 +19,7 @@ condition:
   conditions:
     - condition: state
       entity_id: input_select.washing_machine_status
-      state: 'Running'
+      state: 'Washing'
 action:
   - service: input_select.select_option
     data:

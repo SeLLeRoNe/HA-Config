@@ -1,7 +1,7 @@
 ---
 platform: places
 name: Sonia
-devicetracker_id: device_tracker.sonia_mi9tpro
+devicetracker_id: device_tracker.life360_sonia_espejo_brea
 options: formatted_address
 map_provider: google
 map_zoom: 18

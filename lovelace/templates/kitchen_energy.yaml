@@ -10,44 +10,27 @@ kitchen_energy:
       - type: custom:decluttering-card
         template: room_cost
         variables:
-          - entity_daily_usage: sensor.kitchen_daily_energy_usage
-          - entity_daily_cost: sensor.kitchen_cost_daily
-          - entity_monthly_usage: sensor.kitchen_monthly_energy_usage
-          - entity_monthly_cost: sensor.kitchen_cost_monthly
-          - entity_yearly_usage: sensor.kitchen_yearly_energy_usage
-          - entity_yearly_cost: sensor.kitchen_cost_yearly
+          - area: kitchen
       - type: divider
       - type: custom:decluttering-card
         template: room_total
         variables:
-          - entity_energy_usage: sensor.kitchen_today_energy_usage
-          - entity_power_usage: sensor.kitchen_total_power_usage
-          - entity_ampere_usage: sensor.kitchen_total_ampere_usage
-          - entity_voltage_usage: sensor.kitchen_average_voltage
+          - area: kitchen
       - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
-          - device: Dishwasher
-          - entity_energy_usage: sensor.power_usage_dishwasher_today_energy
-          - entity_power_usage: sensor.power_usage_dishwasher_power
-          - entity_ampere_usage: sensor.power_usage_dishwasher_ampere
-          - entity_voltage_usage: sensor.power_usage_dishwasher_voltage
+          - device_name: Dishwasher
+          - device: dishwasher
       - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
-          - device: Fridge
-          - entity_energy_usage: sensor.power_usage_fridge_today_energy
-          - entity_power_usage: sensor.power_usage_fridge_power
-          - entity_ampere_usage: sensor.power_usage_fridge_ampere
-          - entity_voltage_usage: sensor.power_usage_fridge_voltage
+          - device_name: Fridge
+          - device: fridge
       - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
-          - device: Toaster
-          - entity_energy_usage: sensor.power_usage_toaster_today_energy
-          - entity_power_usage: sensor.power_usage_toaster_power
-          - entity_ampere_usage: sensor.power_usage_toaster_ampere
-          - entity_voltage_usage: sensor.power_usage_toaster_voltage
+          - device_name: Toaster
+          - device: toaster

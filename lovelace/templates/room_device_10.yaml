@@ -5,7 +5,7 @@ room_device_10:
     cards:
       - type: markdown
         content: >
-          ## [[device]]
+          ## [[device_name]]
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
@@ -39,7 +39,7 @@ room_device_10:
               - color: '#e45e65'
                 value: 7.5
             entities:
-              - entity: '[[entity_energy_usage]]'
+              - entity: sensor.power_usage_[[device]]_today_energy
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -73,7 +73,7 @@ room_device_10:
               - color: '#e45e65'
                 value: 2000
             entities:
-              - entity: '[[entity_power_usage]]'
+              - entity: sensor.power_usage_[[device]]_power
             tap_action:
               action: none
       - type: horizontal-stack
@@ -109,7 +109,7 @@ room_device_10:
               - color: '#e45e65'
                 value: 10
             entities:
-              - entity: '[[entity_ampere_usage]]'
+              - entity: sensor.power_usage_[[device]]_ampere
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -143,6 +143,6 @@ room_device_10:
               - color: '#e45e65'
                 value: 250
             entities:
-              - entity: '[[entity_voltage_usage]]'
+              - entity: sensor.power_usage_[[device]]_voltage
             tap_action:
               action: none

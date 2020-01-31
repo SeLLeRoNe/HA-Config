@@ -577,6 +577,10 @@ cards:
                     name: Dishwasher
                     tap_action:
                       action: none
+                  - entity: sensor.power_usage_toaster_today_energy
+                    name: Toaster
+                    tap_action:
+                      action: none
                   - entity: sensor.power_usage_washing_machine_today_energy
                     name: Washing Machine
                     tap_action:
@@ -611,6 +615,10 @@ cards:
                     name: Dishwasher
                     tap_action:
                       action: none
+                  - entity: sensor.power_usage_toaster_yesterday_energy
+                    name: Toaster
+                    tap_action:
+                      action: none
                   - entity: sensor.power_usage_washing_machine_yesterday_energy
                     name: Washing Machine
                     tap_action:
@@ -643,6 +651,10 @@ cards:
                       action: none
                   - entity: sensor.power_usage_dishwasher_total_energy
                     name: Dishwasher
+                    tap_action:
+                      action: none
+                  - entity: sensor.power_usage_toaster_total_energy
+                    name: Toaster
                     tap_action:
                       action: none
                   - entity: sensor.power_usage_washing_machine_total_energy

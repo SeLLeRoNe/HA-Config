@@ -174,6 +174,25 @@ cards:
                 row: true
                 card:
                   type: entities
+                  name: Google Mini
+                  entity: switch.studio_andrea_google_mini
+                  tap_action:
+                    action: none
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state(config.entity, 'on') %}
+                        rgb(251, 205, 65);
+                      {% elif is_state(config.entity, 'off') %}
+                        rgb(2550, 0, 0);
+                      {% else %}
+                        rgb(128, 128, 128);
+                      {% endif %}
+                  }
+              - type: "custom:restriction-card"
+                row: true
+                card:
+                  type: entities
                   name: Computer
                   entity: switch.studio_andrea_computer_plug
                   tap_action:
@@ -313,29 +332,29 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-          - type: divider
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plugs not in use
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - entity: switch.studio_andrea_powerstrip_2_plug_3
-                name: "PowerStrip #2 Plug #3"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-                tap_action:
-                  action: none
+#          - type: divider
+#          - type: custom:decluttering-card
+#            template: title
+#            variables:
+#              - title: Plugs not in use
+#          - type: entities
+#            show_header_toggle: false
+#            entities:
+#              - entity: switch.studio_andrea_powerstrip_2_plug_3
+#                name: "Google Mini"
+#                style: |
+#                  :host {
+#                    --paper-item-icon-color:
+#                      {% if is_state(config.entity, 'on') %}
+#                        rgb(251, 205, 65);
+#                      {% elif is_state(config.entity, 'off') %}
+#                        rgb(2550, 0, 0);
+#                      {% else %}
+#                        rgb(128, 128, 128);
+#                      {% endif %}
+#                  }
+#                tap_action:
+#                  action: none
       - break
       - type: vertical-stack
         cards:
@@ -458,10 +477,10 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.studio_andrea_pressure
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - area: studio_andrea
+          - type: custom:decluttering-card
+            template: thermostat_card
+            variables:
+              - area: studio_andrea
       - break
       - type: custom:vertical-stack-in-card
         cards:
@@ -548,6 +567,6 @@ cards:
 #            device: YAMAHA-RXV779
       - break
       - type: custom:decluttering-card
-        template: studio_andrea_energy
+        template: studio_andrea_energy_small
         variables:
           - title: Energy Consumption
