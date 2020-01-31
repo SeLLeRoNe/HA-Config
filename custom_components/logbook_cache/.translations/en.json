@@ -15,6 +15,7 @@
     "step": {
         "init": {
             "data": {
+                "only_cache": "Show only cached entries (fast or nothing)",
                 "cache_days": "Number of logbook days to cache"
             }
         }
