@@ -19,9 +19,9 @@ condition:
     - condition: state
       entity_id: input_select.dishwasher_status
       state: 'Idle'
-    - condition: state
-      entity_id: input_select.dishwasher_status
-      state: 'Washing'
+#    - condition: state
+#      entity_id: input_select.dishwasher_status
+#      state: 'Washing'
 action:
   - service: input_select.select_option
     data:
