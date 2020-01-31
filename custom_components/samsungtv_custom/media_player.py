@@ -11,10 +11,14 @@ import websocket
 import requests
 import time
 
-from samsungtvws import SamsungTVWS
+from .samsungtvws.remote import SamsungTVWS
 
 from homeassistant import util
-from homeassistant.components.media_player import MediaPlayerDevice, PLATFORM_SCHEMA
+from homeassistant.components.media_player import (
+    MediaPlayerDevice,
+    PLATFORM_SCHEMA,
+    DEVICE_CLASS_TV,
+)
 from homeassistant.components.media_player.const import (
     MEDIA_TYPE_CHANNEL,
     SUPPORT_NEXT_TRACK,
@@ -27,6 +31,7 @@ from homeassistant.components.media_player.const import (
     SUPPORT_TURN_ON,
     SUPPORT_VOLUME_MUTE,
     SUPPORT_VOLUME_STEP,
+    SUPPORT_VOLUME_SET,
     MEDIA_TYPE_APP,
 )
 from homeassistant.const import (
@@ -64,6 +69,7 @@ SUPPORT_SAMSUNGTV = (
     SUPPORT_PAUSE
     | SUPPORT_VOLUME_STEP
     | SUPPORT_VOLUME_MUTE
+    | SUPPORT_VOLUME_SET
     | SUPPORT_PREVIOUS_TRACK
     | SUPPORT_SELECT_SOURCE
     | SUPPORT_NEXT_TRACK
@@ -149,12 +155,14 @@ class SamsungTVDevice(MediaPlayerDevice):
         self._mac = mac
         self._update_method = update_method
         self._update_custom_ping_url = update_custom_ping_url
+        self._source = None
         self._source_list = json.loads(source_list)
         self._app_list = json.loads(app_list) if app_list is not None else None
         self._uuid = uuid
         self._is_ws_connection = True if port in (8001, 8002) else False
         # Assume that the TV is not muted and volume is 0
         self._muted = False
+        self._volume = 0
         # Assume that the TV is in Play mode
         self._playing = True
         self._state = None
@@ -173,7 +181,8 @@ class SamsungTVDevice(MediaPlayerDevice):
             port=port,
             timeout=self._timeout,
             key_press_delay=KEY_PRESS_TIMEOUT,
-            token_file=self._token_file
+            token_file=self._token_file,
+            app_list=self._app_list
         )
 
     def _gen_token_file(self):
@@ -287,7 +296,11 @@ class SamsungTVDevice(MediaPlayerDevice):
     def name(self):
         """Return the name of the device."""
         return self._name
-
+    @property
+    def media_title(self):
+        """Title of current playing media."""
+        self._media_title = self._source
+        return self._media_title
     @property
     def state(self):
         """Return the state of the device."""
@@ -296,6 +309,7 @@ class SamsungTVDevice(MediaPlayerDevice):
     @property
     def is_volume_muted(self):
         """Boolean if volume is currently muted."""
+        self._muted = self._remote.get_mute()
         return self._muted
 
     @property
@@ -311,12 +325,32 @@ class SamsungTVDevice(MediaPlayerDevice):
         return source_list
 
     @property
+    def volume_level(self):
+        """Volume level of the media player (0..1)."""
+        self._volume = int(self._remote.get_volume()) / 100
+        return self._volume
+    
+    @property
+    def source(self):
+        """Return the current input source."""
+        if self._state != STATE_OFF:
+            self._source = self._remote.get_running_app()
+        else:
+            self._source = None
+        return self._source
+    
+    @property
     def supported_features(self):
         """Flag media player features that are supported."""
         if self._mac:
             return SUPPORT_SAMSUNGTV | SUPPORT_TURN_ON
 
         return SUPPORT_SAMSUNGTV
+
+    @property
+    def device_class(self):
+        """Set the device class to TV."""
+        return DEVICE_CLASS_TV
 
     def turn_on(self):
         """Turn the media player on."""
@@ -358,6 +392,10 @@ class SamsungTVDevice(MediaPlayerDevice):
     def mute_volume(self, mute):
         """Send mute command."""
         self.send_command("KEY_MUTE")
+
+    def set_volume_level(self, volume):
+        """Set volume level, range 0..1."""
+        self._remote.set_volume(int(volume*100))
 
     def media_play_pause(self):
         """Simulate play pause media player."""
@@ -421,8 +459,18 @@ class SamsungTVDevice(MediaPlayerDevice):
     async def async_select_source(self, source):
         """Select input source."""
         if source in self._source_list:
-            await self.hass.async_add_job(self.send_command, self._source_list[ source ])
+            source_key = self._source_list[ source ]
+            if "+" in source_key:
+                all_source_keys = source_key.split("+")
+                for this_key in all_source_keys:
+                    if this_key.isdigit():
+                        time.sleep(int(this_key)/1000)
+                    else:
+                        await self.hass.async_add_job(self.send_command, this_key)
+            else:
+                await self.hass.async_add_job(self.send_command, self._source_list[ source ])
         elif source in self._app_list:
-            await self.hass.async_add_job(self.send_command, self._app_list[ source ], "run_app")
+            source_key = self._app_list[ source ]
+            await self.hass.async_add_job(self.send_command, source_key, "run_app")
         else:
             _LOGGER.error("Unsupported source")
