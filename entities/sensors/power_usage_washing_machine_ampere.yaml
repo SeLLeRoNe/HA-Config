@@ -1,6 +1,6 @@
 ---
 platform: mqtt
 name: "Power Usage Washing Machine Ampere"
-state_topic: "tele/Washing_Machine_Plug/SENSOR"
+state_topic: "tele/washing_machine_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Current"] }}'
 unit_of_measurement: "A"

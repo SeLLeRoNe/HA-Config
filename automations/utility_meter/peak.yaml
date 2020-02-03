@@ -49,14 +49,14 @@ action:
   - service: utility_meter.select_tariff
     data:
       entity_id:
-      - utility_meter.studio_andrea_electricity_daily
-      - utility_meter.studio_andrea_electricity_monthly
-      - utility_meter.studio_andrea_electricity_yearly
+      - utility_meter.studio_electricity_daily
+      - utility_meter.studio_electricity_monthly
+      - utility_meter.studio_electricity_yearly
       tariff: peak
-  - service: utility_meter.select_tariff
-    data:
-      entity_id:
-      - utility_meter.studio_sonia_electricity_daily
-      - utility_meter.studio_sonia_electricity_monthly
-      - utility_meter.studio_sonia_electricity_yearly
-      tariff: peak
+#  - service: utility_meter.select_tariff
+#    data:
+#      entity_id:
+#      - utility_meter.studio_sonia_electricity_daily
+#      - utility_meter.studio_sonia_electricity_monthly
+#      - utility_meter.studio_sonia_electricity_yearly
+#      tariff: peak

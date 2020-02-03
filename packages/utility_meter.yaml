@@ -83,40 +83,40 @@ utility_meter:
       - peak
       - offpeak
   # STUDIO ANDREA #
-  studio_andrea_electricity_daily:
+  studio_electricity_daily:
     source: sensor.studio_andrea_total_energy_usage
     cycle: daily
     tariffs:
       - peak
       - offpeak
-  studio_andrea_electricity_monthly:
+  studio_electricity_monthly:
     source: sensor.studio_andrea_total_energy_usage
     cycle: monthly
     tariffs:
       - peak
       - offpeak
-  studio_andrea_electricity_yearly:
+  studio_electricity_yearly:
     source: sensor.studio_andrea_total_energy_usage
     cycle: yearly
     tariffs:
       - peak
       - offpeak
-  # STUDIO SONIA #
-  studio_sonia_electricity_daily:
-    source: sensor.studio_sonia_total_energy_usage
-    cycle: daily
-    tariffs:
-      - peak
-      - offpeak
-  studio_sonia_electricity_monthly:
-    source: sensor.studio_sonia_total_energy_usage
-    cycle: monthly
-    tariffs:
-      - peak
-      - offpeak
-  studio_sonia_electricity_yearly:
-    source: sensor.studio_sonia_total_energy_usage
-    cycle: yearly
-    tariffs:
-      - peak
-      - offpeak
+#  # STUDIO SONIA #
+#  studio_sonia_electricity_daily:
+#    source: sensor.studio_sonia_total_energy_usage
+#    cycle: daily
+#    tariffs:
+#      - peak
+#      - offpeak
+#  studio_sonia_electricity_monthly:
+#    source: sensor.studio_sonia_total_energy_usage
+#    cycle: monthly
+#    tariffs:
+#      - peak
+#      - offpeak
+#  studio_sonia_electricity_yearly:
+#    source: sensor.studio_sonia_total_energy_usage
+#    cycle: yearly
+#    tariffs:
+#      - peak
+#      - offpeak

@@ -1,0 +1,18 @@
+---
+# MQTT Device: Living Room Light
+# My living room has a Lamp attached to a Sonoff Basic
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Studio Google Mini"
+icon: mdi:google-home
+command_topic: "cmnd/desk_andrea_powerstrip_2/POWER3"
+state_topic: "stat/desk_andrea_powerstrip_2/POWER3"
+availability_topic: "tele/desk_andrea_powerstrip_2/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: false

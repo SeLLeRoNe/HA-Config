@@ -1,0 +1,11 @@
+---
+# MQTT Device: Andrea's Studio 2AJZ4KPBS Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Studio 2AJZ4KPBS Link Quality"
+icon: mdi:motion-sensor
+state_topic: "zigbee2mqtt/studio_2AJZ4KPBS"
+availability_topic: "zigbee2mqtt/studio_2AJZ4KPBS/availability"
+value_template: "{{ value_json.linkquality }}"

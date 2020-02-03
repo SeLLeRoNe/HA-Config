@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Washing Machine"
 icon: mdi:power-plug
-command_topic: "cmnd/Washing_Machine_Plug/POWER"
-state_topic: "stat/Washing_Machine_Plug/POWER"
-availability_topic: "tele/Washing_Machine_Plug/LWT"
+command_topic: "cmnd/washing_machine_plug/POWER"
+state_topic: "stat/washing_machine_plug/POWER"
+availability_topic: "tele/washing_machine_plug/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

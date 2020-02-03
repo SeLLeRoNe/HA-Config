@@ -1,0 +1,20 @@
+---
+alias: Studio - Sonia - Desk Off
+initial_state: on
+trigger:
+#  - platform: state
+#    entity_id: binary_sensor.studio_sonia_computer
+#    to: 'off'
+#    for:
+#      seconds: 300
+  - platform: time
+    at: "19:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.workday_es
+      state: 'on'
+action:
+  - service: switch.turn_off
+    entity_id: switch.studio_sonia_desk_plug

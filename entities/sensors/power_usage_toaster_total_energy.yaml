@@ -2,6 +2,6 @@
 platform: mqtt
 name: "Power Usage Toaster Total Energy"
 icon: mdi:flash
-state_topic: "tele/Toaster_Plug/SENSOR"
+state_topic: "tele/toaster_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Total"] }}'
 unit_of_measurement: "kWh"

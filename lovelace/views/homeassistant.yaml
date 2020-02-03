@@ -237,7 +237,7 @@ cards:
                 - entity_id: "automation.kitchen*"
       - type: 'custom:fold-entity-row'
         head:
-          label: Studio Andrea
+          label: Studio
           type: section
         padding: 0
         entities:
@@ -248,10 +248,10 @@ cards:
               show_header_toggle: false
             filter:
               include:
-                - entity_id: "automation.studio_andrea*"
+                - entity_id: "automation.studio_*"
       - type: 'custom:fold-entity-row'
         head:
-          label: Studio Sonia
+          label: Bedroom Luca
           type: section
         padding: 0
         entities:
@@ -262,7 +262,7 @@ cards:
               show_header_toggle: false
             filter:
               include:
-                - entity_id: "automation.studio_sonia*"
+                - entity_id: "automation.bedroom_luca*"
       - type: 'custom:fold-entity-row'
         head:
           label: Master Bedroom

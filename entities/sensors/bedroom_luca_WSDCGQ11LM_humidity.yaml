@@ -1,0 +1,13 @@
+---
+# MQTT Device: Sonia's Studio Humidity Sensor
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Bedroom Luca Humidity'
+icon: mdi:water-percent
+state_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM"
+availability_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM/availability"
+unit_of_measurement: "%"
+device_class: "humidity"
+value_template: "{{ value_json.humidity }}"

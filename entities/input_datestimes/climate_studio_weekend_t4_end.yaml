@@ -1,0 +1,5 @@
+---
+climate_studio_weekend_t4_end:
+  name: End
+  has_date: false
+  has_time: true

@@ -1,0 +1,24 @@
+---
+climate_bedroom_luca_active:
+  name: All Climate Timings
+  entities:
+    - input_boolean.climate_bedroom_luca_workday_t1_active
+    - input_boolean.climate_bedroom_luca_workday_t2_active
+    - input_boolean.climate_bedroom_luca_workday_t3_active
+    - input_boolean.climate_bedroom_luca_workday_t4_active
+    - input_boolean.climate_bedroom_luca_workday_t5_active
+    - input_boolean.climate_bedroom_luca_workday_t6_active
+    - input_boolean.climate_bedroom_luca_workday_t7_active
+    - input_boolean.climate_bedroom_luca_workday_t8_active
+    - input_boolean.climate_bedroom_luca_workday_t9_active
+    - input_boolean.climate_bedroom_luca_workday_t10_active
+    - input_boolean.climate_bedroom_luca_weekend_t1_active
+    - input_boolean.climate_bedroom_luca_weekend_t2_active
+    - input_boolean.climate_bedroom_luca_weekend_t3_active
+    - input_boolean.climate_bedroom_luca_weekend_t4_active
+    - input_boolean.climate_bedroom_luca_weekend_t5_active
+    - input_boolean.climate_bedroom_luca_weekend_t6_active
+    - input_boolean.climate_bedroom_luca_weekend_t7_active
+    - input_boolean.climate_bedroom_luca_weekend_t8_active
+    - input_boolean.climate_bedroom_luca_weekend_t9_active
+    - input_boolean.climate_bedroom_luca_weekend_t10_active

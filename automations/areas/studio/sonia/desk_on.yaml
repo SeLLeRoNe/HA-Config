@@ -1,0 +1,20 @@
+---
+alias: Studio - Sonia - Desk On
+initial_state: on
+trigger:
+#  - platform: state
+#    entity_id: binary_sensor.studio_sonia_computer
+#    to: 'on'
+  - platform: time
+    at: "07:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ is_state('person.sonia', 'home') }}"
+    - condition: state
+      entity_id: binary_sensor.workday_es
+      state: 'on'
+action:
+  - service: switch.turn_on
+    entity_id: switch.studio_sonia_desk_plug

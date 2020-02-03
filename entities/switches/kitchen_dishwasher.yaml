@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Dishwasher"
 icon: mdi:power-plug
-command_topic: "cmnd/Dishwasher_Plug/POWER"
-state_topic: "stat/Dishwasher_Plug/POWER"
-availability_topic: "tele/Dishwasher_Plug/LWT"
+command_topic: "cmnd/dishwasher_plug/POWER"
+state_topic: "stat/dishwasher_plug/POWER"
+availability_topic: "tele/dishwasher_plug/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

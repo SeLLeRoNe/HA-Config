@@ -2,6 +2,6 @@
 platform: mqtt
 name: "Power Usage Washing Machine Yesterday Energy"
 icon: mdi:flash
-state_topic: "tele/Washing_Machine_Plug/SENSOR"
+state_topic: "tele/washing_machine_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
 unit_of_measurement: "kWh"

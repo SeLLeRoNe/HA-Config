@@ -1,6 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Table Andrea Voltage"
-state_topic: "tele/Table_Andrea_Plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-unit_of_measurement: "V"

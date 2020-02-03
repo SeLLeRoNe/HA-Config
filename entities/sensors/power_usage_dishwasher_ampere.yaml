@@ -1,6 +1,6 @@
 ---
 platform: mqtt
 name: "Power Usage Dishwasher Ampere"
-state_topic: "tele/Dishwasher_Plug/SENSOR"
+state_topic: "tele/dishwasher_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Current"] }}'
 unit_of_measurement: "A"

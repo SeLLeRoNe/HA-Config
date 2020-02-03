@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Andrea PowerStrip 2"
 icon: mdi:power-plug
-command_topic: "cmnd/Studio_Andrea_PowerStrip_1/POWER3"
-state_topic: "stat/Studio_Andrea_PowerStrip_1/POWER3"
-availability_topic: "tele/Studio_Andrea_PowerStrip_1/LWT"
+command_topic: "cmnd/desk_andrea_powerstrip_1/POWER3"
+state_topic: "stat/desk_andrea_powerstrip_1/POWER3"
+availability_topic: "tele/desk_andrea_powerstrip_1/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

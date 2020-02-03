@@ -1,6 +1,6 @@
 ---
 platform: mqtt
 name: "Power Usage TV Stand Voltage"
-state_topic: "tele/TV_Stand_Plug/SENSOR"
+state_topic: "tele/tv_stand_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
 unit_of_measurement: "V"

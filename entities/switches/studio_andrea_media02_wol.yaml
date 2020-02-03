@@ -1,7 +1,0 @@
----
-platform: wake_on_lan
-name: Studio Andrea MEDIA02 WOL
-mac: !secret studio_andrea_media02_mac
-host: !secret studio_andrea_media02_ip
-turn_off:
-  service: shell_command.media02_off

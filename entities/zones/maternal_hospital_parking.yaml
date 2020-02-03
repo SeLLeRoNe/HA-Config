@@ -1,0 +1,7 @@
+---
+name: Maternal Hospital Parking
+latitude: !secret zone_maternal_hospital_parking_latitude
+longitude: !secret zone_maternal_hospital_parking_longitude
+radius: 25
+passive: false
+icon: mdi:hospital-marker

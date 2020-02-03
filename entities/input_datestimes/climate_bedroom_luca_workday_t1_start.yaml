@@ -1,0 +1,5 @@
+---
+climate_bedroom_luca_workday_t1_start:
+  name: Start
+  has_date: false
+  has_time: true

@@ -1,0 +1,11 @@
+---
+# MQTT Device: Sonia's Studio WSDCGQ11LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Bedroom Luca WSDCGQ11LM Link Quality'
+icon: mdi:home-thermometer
+state_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM"
+availability_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM/availability"
+value_template: "{{ value_json.linkquality }}"

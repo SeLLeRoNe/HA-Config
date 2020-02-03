@@ -1,0 +1,36 @@
+---
+studio_energy:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: custom:decluttering-card
+        template: room_cost
+        variables:
+          - area: studio
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_total
+        variables:
+          - area: studio
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - device_name: Desk Andrea
+          - device: desk_andrea
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - device_name: Desk Sonia
+          - device: desk_sonia
+      - type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - device_name: Table
+          - device: studio_table

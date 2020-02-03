@@ -387,7 +387,7 @@ cards:
                       action: call-service
                       service: switch.turn_on
                       service_data:
-                        entity_id: switch.studio_andrea_media01_wol
+                        entity_id: switch.studio_media01_wol
                     hold_action:
                       action: call-service
                       service: shell_command.media01_off
@@ -398,7 +398,7 @@ cards:
                       action: call-service
                       service: switch.turn_on
                       service_data:
-                        entity_id: switch.studio_andrea_media02_wol
+                        entity_id: switch.studio_media02_wol
                     hold_action:
                       action: call-service
                       service: shell_command.media02_off
@@ -409,7 +409,7 @@ cards:
                       action: call-service
                       service: switch.turn_on
                       service_data:
-                        entity_id: switch.studio_andrea_media03_wol
+                        entity_id: switch.studio_media03_wol
                     hold_action:
                       action: call-service
                       service: shell_command.media03_off
@@ -545,35 +545,35 @@ cards:
             show_header_toggle: false
             entities:
               - entity: sensor.rf_bridge_wireless_signal
-                name: Sonoff RF Bridge
-                tap_action:
-                  action: none
-              - entity: sensor.studio_andrea_light_wireless_signal
-                name: Sonoff B1 - Studio Andrea Light
+                name: "Sonoff RF Bridge"
                 tap_action:
                   action: none
               - entity: sensor.master_bedroom_lamp_top_light_wireless_signal
-                name: Sonoff B1 - Master Bedroom Lamp Top Light
+                name: "Master Bedroom - Lamp Top Light"
+                tap_action:
+                  action: none
+              - entity: sensor.studio_light_wireless_signal
+                name: "Studio - Light"
                 tap_action:
                   action: none
               - entity: sensor.studio_andrea_desk_plug_wireless_signal
-                name: "Studio Andrea - Desk Plug"
+                name: "Studio - Desk Andrea Plug"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_table_plug_wireless_signal
-                name: "Studio Andrea - Table Plug"
+              - entity: sensor.studio_table_plug_wireless_signal
+                name: "Studio - Table Plug"
                 tap_action:
                   action: none
               - entity: sensor.studio_andrea_powerstrip_1_wireless_signal
-                name: "Studio Andrea - PowerStrip #1"
+                name: "Studio - Desk Andrea PowerStrip #1"
                 tap_action:
                   action: none
               - entity: sensor.studio_andrea_powerstrip_2_wireless_signal
-                name: "Studio Andrea - PowerStrip #2"
+                name: "Studio - Desk Andrea PowerStrip #2"
                 tap_action:
                   action: none
               - entity: sensor.studio_sonia_desk_plug_wireless_signal
-                name: "Studio Sonia - Desk Plug"
+                name: "Studio - Desk Sonia Plug"
                 tap_action:
                   action: none
               - entity: sensor.living_room_tv_stand_plug_wireless_signal
@@ -688,11 +688,11 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.studio_andrea_wsdcgq11lm_link_quality
+                - entity_id: sensor.studio_wsdcgq11lm_link_quality
                   options:
                     name: Andrea's Studio - WSDCGQ11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_andrea_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_andrea_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_andrea_wsdcgq11lm_link_quality != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_andrea_wsdcgq11lm_link_quality != "unknown", sensor.studio_andrea_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_andrea_wsdcgq11lm_link_quality != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.studio_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", sensor.studio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:
@@ -710,11 +710,11 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.studio_andrea_2ajz4kpbs_link_quality
+                - entity_id: sensor.studio_2ajz4kpbs_link_quality
                   options:
-                    name: Studio Andrea - 2AJZ4KPBS - Link Quality
+                    name: Studio - 2AJZ4KPBS - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_andrea_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_andrea_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_andrea_2ajz4kpbs_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_andrea_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_andrea_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_andrea_2ajz4kpbs_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

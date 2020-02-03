@@ -1,0 +1,5 @@
+---
+climate_studio_weekend_t9_start:
+  name: Start
+  has_date: false
+  has_time: true

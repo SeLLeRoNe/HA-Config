@@ -1,6 +1,6 @@
 ---
 platform: mqtt
 name: "Power Usage Desk Andrea Ampere"
-state_topic: "tele/Desk_Andrea_Plug/SENSOR"
+state_topic: "tele/desk_andrea_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Current"] }}'
 unit_of_measurement: "A"

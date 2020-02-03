@@ -1,0 +1,7 @@
+---
+climate_studio_weekend_t9:
+  name: Temperature
+  icon: mdi:temperature-celsius
+  min: 15
+  max: 25
+  step: 0.1

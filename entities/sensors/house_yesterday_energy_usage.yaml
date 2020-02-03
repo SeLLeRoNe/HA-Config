@@ -9,8 +9,7 @@ sensors:
       (
       (states.sensor.living_room_yesterday_energy_usage.state | float) +
       (states.sensor.laundry_room_yesterday_energy_usage.state | float) +
-      (states.sensor.studio_andrea_yesterday_energy_usage.state | float) +
-      (states.sensor.studio_sonia_yesterday_energy_usage.state | float)
+      (states.sensor.studio_yesterday_energy_usage.state | float)
       )
       | round(3)
       }}

@@ -2,6 +2,6 @@
 platform: mqtt
 name: "Power Usage Desk Andrea Yesterday Energy"
 icon: mdi:flash
-state_topic: "tele/Desk_Andrea_Plug/SENSOR"
+state_topic: "tele/desk_andrea_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
 unit_of_measurement: "kWh"

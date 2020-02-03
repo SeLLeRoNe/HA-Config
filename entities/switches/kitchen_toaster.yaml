@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Toaster"
 icon: mdi:power-plug
-command_topic: "cmnd/Toaster_Plug/POWER"
-state_topic: "stat/Toaster_Plug/POWER"
-availability_topic: "tele/Toaster_Plug/LWT"
+command_topic: "cmnd/toaster_plug/POWER"
+state_topic: "stat/toaster_plug/POWER"
+availability_topic: "tele/toaster_plug/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

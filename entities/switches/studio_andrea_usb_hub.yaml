@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Andrea USB Hub"
 icon: mdi:usb
-command_topic: "cmnd/Studio_Andrea_PowerStrip_2/POWER1"
-state_topic: "stat/Studio_Andrea_PowerStrip_2/POWER1"
-availability_topic: "tele/Studio_Andrea_PowerStrip_2/LWT"
+command_topic: "cmnd/desk_andrea_powerstrip_2/POWER1"
+state_topic: "stat/desk_andrea_powerstrip_2/POWER1"
+availability_topic: "tele/desk_andrea_powerstrip_2/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

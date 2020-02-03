@@ -1,0 +1,12 @@
+---
+# MQTT Device: Andrea's Studio WSDCGQ11LM Battery
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: "Studio WSDCGQ11LM Battery"
+state_topic: "zigbee2mqtt/studio_WSDCGQ11LM"
+availability_topic: "zigbee2mqtt/studio_WSDCGQ11LM/availability"
+unit_of_measurement: "%"
+device_class: "battery"
+value_template: "{{ value_json.battery | int }}"

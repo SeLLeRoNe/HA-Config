@@ -2,6 +2,6 @@
 platform: mqtt
 name: "Power Usage TV Stand Power"
 icon: mdi:flash
-state_topic: "tele/TV_Stand_Plug/SENSOR"
+state_topic: "tele/tv_stand_plug/SENSOR"
 value_template: '{{ value_json["ENERGY"]["Power"] }}'
 unit_of_measurement: "W"

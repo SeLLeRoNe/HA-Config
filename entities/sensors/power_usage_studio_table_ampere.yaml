@@ -1,0 +1,6 @@
+---
+platform: mqtt
+name: "Power Usage Studio Table Ampere"
+state_topic: "tele/studio_table_plug/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Current"] }}'
+unit_of_measurement: "A"

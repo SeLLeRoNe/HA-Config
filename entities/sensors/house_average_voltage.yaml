@@ -6,5 +6,5 @@ round_digits: 1
 entity_ids:
   - sensor.living_room_average_voltage
   - sensor.laundry_room_average_voltage
-  - sensor.studio_andrea_average_voltage
-  - sensor.studio_sonia_average_voltage
+  - sensor.studio_average_voltage
+#  - sensor.studio_sonia_average_voltage

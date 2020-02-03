@@ -10,8 +10,7 @@ sensors:
       (states.sensor.living_room_total_ampere_usage.state | float) +
       (states.sensor.kitchen_total_ampere_usage.state | float) +
       (states.sensor.laundry_room_total_ampere_usage.state | float) +
-      (states.sensor.studio_andrea_total_ampere_usage.state | float) +
-      (states.sensor.studio_sonia_total_ampere_usage.state | float)
+      (states.sensor.studio_total_ampere_usage.state | float)
       )
       | round(3)
       }}

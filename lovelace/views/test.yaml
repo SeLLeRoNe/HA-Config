@@ -6,32 +6,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:decluttering-card
-        template: thermostat
-        variables:
-          - title: House
-          - area: house
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - title: House
-          - area: house
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - title: Living Room
-          - area: living_room
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - title: Studio Andrea
-          - area: studio_andrea
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - title: Stsudio Sonia
-          - area: studio_sonia
-      - break
       - type: 'custom:config-template-card'
         entities: sensor.dark_sky_alt_wind
         variables:

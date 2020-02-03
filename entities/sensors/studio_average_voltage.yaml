@@ -1,0 +1,9 @@
+---
+platform: min_max
+name: Studio Average Voltage
+type: max
+round_digits: 1
+entity_ids:
+  - sensor.power_usage_desk_andrea_voltage
+  - sensor.power_usage_desk_sonia_voltage
+  - sensor.power_usage_studio_table_voltage

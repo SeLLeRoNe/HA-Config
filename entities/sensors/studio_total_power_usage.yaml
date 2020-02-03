@@ -1,0 +1,13 @@
+---
+platform: template
+sensors:
+  studio_total_power_usage:
+    friendly_name: Studio Total Power Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{ (
+      (states.sensor.power_usage_desk_andrea_power.state | float) +
+      (states.sensor.power_usage_desk_sonia_power.state | float) +
+      (states.sensor.power_usage_studio_table_power.state | float)
+      ) | round(1) }}
+    unit_of_measurement: 'W'

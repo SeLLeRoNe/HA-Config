@@ -62,25 +62,25 @@ cards:
                     tap_action:
                       action: none
                   - type: divider
-                  - entity: sensor.studio_andrea_cost_daily
+                  - entity: sensor.studio_cost_daily
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_cost_monthly
+                  - entity: sensor.studio_cost_monthly
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_cost_yearly
+                  - entity: sensor.studio_cost_yearly
                     tap_action:
                       action: none
-                  - type: divider
-                  - entity: sensor.studio_sonia_cost_daily
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_cost_monthly
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_cost_yearly
-                    tap_action:
-                      action: none
+#                  - type: divider
+#                  - entity: sensor.studio_sonia_cost_daily
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_cost_monthly
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_cost_yearly
+#                    tap_action:
+#                      action: none
               - type: 'custom:fold-entity-row'
                 head:
                   label: Energy Meters (Daily)
@@ -163,56 +163,56 @@ cards:
                     tap_action:
                       action: none
                   - type: divider
-                  - entity: sensor.studio_andrea_electricity_daily_peak
+                  - entity: sensor.studio_electricity_daily_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_daily_peak
+                      entity: sensor.studio_cost_daily_peak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_electricity_daily_offpeak
+                  - entity: sensor.studio_electricity_daily_offpeak
                     name: Studio Andrea (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_daily_offpeak
+                      entity: sensor.studio_cost_daily_offpeak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_daily_energy_usage
+                  - entity: sensor.studio_daily_energy_usage
                     name: Studio Andrea (Total)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_daily
+                      entity: sensor.studio_cost_daily
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
-                  - entity: sensor.studio_sonia_electricity_daily_peak
-                    name: Studio Sonia (Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_daily_peak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_electricity_daily_offpeak
-                    name: Studio Sonia (Off Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_daily_offpeak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_daily_energy_usage
-                    name: Studio Sonia (Total)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_daily
-                      name: false
-                    tap_action:
-                      action: none
-                  - type: divider
+#                  - type: divider
+#                  - entity: sensor.studio_sonia_electricity_daily_peak
+#                    name: Studio Sonia (Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_daily_peak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_electricity_daily_offpeak
+#                    name: Studio Sonia (Off Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_daily_offpeak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_daily_energy_usage
+#                    name: Studio Sonia (Total)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_daily
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - type: divider
                   - entity: sensor.house_electricity_daily_peak
                     name: House (Peak)
                     type: custom:multiple-entity-row
@@ -318,55 +318,55 @@ cards:
                     tap_action:
                       action: none
                   - type: divider
-                  - entity: sensor.studio_andrea_electricity_monthly_peak
+                  - entity: sensor.studio_electricity_monthly_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_monthly_peak
+                      entity: sensor.studio_cost_monthly_peak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_electricity_monthly_offpeak
+                  - entity: sensor.studio_electricity_monthly_offpeak
                     name: Studio Andrea (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_monthly_offpeak
+                      entity: sensor.studio_cost_monthly_offpeak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_monthly_energy_usage
+                  - entity: sensor.studio_monthly_energy_usage
                     name: Studio Andrea (Total)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_monthly
+                      entity: sensor.studio_cost_monthly
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
-                  - entity: sensor.studio_sonia_electricity_monthly_peak
-                    name: Studio Sonia (Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_monthly_peak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_electricity_monthly_offpeak
-                    name: Studio Sonia (Off Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_monthly_offpeak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_monthly_energy_usage
-                    name: Studio Sonia (Total)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_monthly
-                      name: false
-                    tap_action:
-                      action: none
+#                  - type: divider
+#                  - entity: sensor.studio_sonia_electricity_monthly_peak
+#                    name: Studio Sonia (Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_monthly_peak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_electricity_monthly_offpeak
+#                    name: Studio Sonia (Off Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_monthly_offpeak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_monthly_energy_usage
+#                    name: Studio Sonia (Total)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_monthly
+#                      name: false
+#                    tap_action:
+#                      action: none
                   - type: divider
                   - entity: sensor.house_electricity_monthly_peak
                     name: House (Peak)
@@ -473,55 +473,55 @@ cards:
                     tap_action:
                       action: none
                   - type: divider
-                  - entity: sensor.studio_andrea_electricity_yearly_peak
+                  - entity: sensor.studio_electricity_yearly_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_yearly_peak
+                      entity: sensor.studio_cost_yearly_peak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_electricity_yearly_offpeak
+                  - entity: sensor.studio_electricity_yearly_offpeak
                     name: Studio Andrea (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_yearly_offpeak
+                      entity: sensor.studio_cost_yearly_offpeak
                       name: false
                     tap_action:
                       action: none
-                  - entity: sensor.studio_andrea_yearly_energy_usage
+                  - entity: sensor.studio_yearly_energy_usage
                     name: Studio Andrea (Total)
                     type: custom:multiple-entity-row
                     primary:
-                      entity: sensor.studio_andrea_cost_yearly
+                      entity: sensor.studio_cost_yearly
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
-                  - entity: sensor.studio_sonia_electricity_yearly_peak
-                    name: Studio Sonia (Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_yearly_peak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_electricity_yearly_offpeak
-                    name: Studio Sonia (Off Peak)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_yearly_offpeak
-                      name: false
-                    tap_action:
-                      action: none
-                  - entity: sensor.studio_sonia_yearly_energy_usage
-                    name: Studio Sonia (Total)
-                    type: custom:multiple-entity-row
-                    primary:
-                      entity: sensor.studio_sonia_cost_yearly
-                      name: false
-                    tap_action:
-                      action: none
+#                  - type: divider
+#                  - entity: sensor.studio_sonia_electricity_yearly_peak
+#                    name: Studio Sonia (Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_yearly_peak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_electricity_yearly_offpeak
+#                    name: Studio Sonia (Off Peak)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_yearly_offpeak
+#                      name: false
+#                    tap_action:
+#                      action: none
+#                  - entity: sensor.studio_sonia_yearly_energy_usage
+#                    name: Studio Sonia (Total)
+#                    type: custom:multiple-entity-row
+#                    primary:
+#                      entity: sensor.studio_sonia_cost_yearly
+#                      name: false
+#                    tap_action:
+#                      action: none
                   - type: divider
                   - entity: sensor.house_electricity_yearly_peak
                     name: House (Peak)
@@ -553,11 +553,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_today_energy
+                  - entity: sensor.power_usage_desk_today_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_andrea_today_energy
+                  - entity: sensor.power_usage_table_today_energy
                     name: Table Andrea
                     tap_action:
                       action: none
@@ -591,11 +591,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_yesterday_energy
+                  - entity: sensor.power_usage_desk_yesterday_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_andrea_yesterday_energy
+                  - entity: sensor.power_usage_table_yesterday_energy
                     name: Table Andrea
                     tap_action:
                       action: none
@@ -629,11 +629,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_total_energy
+                  - entity: sensor.power_usage_desk_total_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_andrea_total_energy
+                  - entity: sensor.power_usage_table_total_energy
                     name: Table Andrea
                     tap_action:
                       action: none
@@ -705,11 +705,11 @@ cards:
           - title: Laundry Room
       - break
       - type: custom:decluttering-card
-        template: studio_andrea_energy
+        template: studio_energy
         variables:
-          - title: Studio Andrea
-      - break
-      - type: custom:decluttering-card
-        template: studio_sonia_energy
-        variables:
-          - title: Studio Sonia
+          - title: Studio
+#      - break
+#      - type: custom:decluttering-card
+#        template: studio_sonia_energy
+#        variables:
+#          - title: Studio Sonia

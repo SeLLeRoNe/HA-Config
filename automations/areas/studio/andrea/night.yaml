@@ -1,0 +1,40 @@
+---
+alias: Studio - Andrea - Night
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+  - platform: time_pattern
+    minutes: '*'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '00:00:00'
+      before: '09:30:00'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'off'
+      for:
+        seconds: 60
+action:
+  - service: shell_command.media01_off
+  - service: shell_command.media02_off
+  - service: shell_command.media03_off
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_usb_hub
+  - service: media_player.turn_off
+    entity_id: media_player.studio_andrea_amplifier
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_lg_monitor_2
+#  - service: switch.turn_off
+#    entity_id: switch.studio_andrea_computer_plug
+#  - service: switch.turn_off
+#    entity_id: switch.studio_andrea_uk_powerstrip
+#  - service: switch.turn_off
+#    entity_id: switch.studio_andrea_powerstrip_2
+#  - service: switch.turn_off
+#    entity_id: switch.studio_andrea_table_plug

@@ -1,0 +1,7 @@
+---
+platform: wake_on_lan
+name: Studio MEDIA03 WOL
+mac: !secret studio_media03_mac
+host: !secret studio_media03_ip
+turn_off:
+  service: shell_command.media03_off

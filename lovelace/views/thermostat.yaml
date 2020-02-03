@@ -21,11 +21,11 @@ cards:
       - type: custom:decluttering-card
         template: thermostat
         variables:
-          - title: Studio Andrea
-          - area: studio_andrea
+          - title: Studio
+          - area: studio
       - break
       - type: custom:decluttering-card
         template: thermostat
         variables:
-          - title: Studio Sonia
-          - area: studio_sonia
+          - title: Bedroom Luca
+          - area: bedroom_luca

@@ -1,7 +1,0 @@
----
-platform: min_max
-name: Studio Sonia Average Voltage
-type: max
-round_digits: 1
-entity_ids:
-  - sensor.power_usage_desk_sonia_voltage

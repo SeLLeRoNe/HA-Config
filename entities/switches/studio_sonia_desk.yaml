@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Sonia Desk Plug"
 icon: mdi:power-plug
-command_topic: "cmnd/Desk_Sonia_Plug/POWER"
-state_topic: "stat/Desk_Sonia_Plug/POWER"
-availability_topic: "tele/Desk_Sonia_Plug/LWT"
+command_topic: "cmnd/desk_sonia_plug/POWER"
+state_topic: "stat/desk_sonia_plug/POWER"
+availability_topic: "tele/desk_sonia_plug/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"
