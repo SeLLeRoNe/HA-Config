@@ -1,0 +1,7 @@
+---
+name: Maternal Hospital
+latitude: !secret zone_maternal_hospital_latitude
+longitude: !secret zone_maternal_hospital_longitude
+radius: 50
+passive: false
+icon: mdi:hospital-building
