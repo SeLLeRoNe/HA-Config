@@ -10,15 +10,15 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 2000
+    above: 2500
     for:
       seconds: 10
 condition:
   condition: or
   conditions:
-    - condition: state
-      entity_id: input_select.washing_machine_status
-      state: 'Idle'
+#    - condition: state
+#      entity_id: input_select.washing_machine_status
+#      state: 'Idle'
     - condition: state
       entity_id: input_select.washing_machine_status
       state: 'Washing'
