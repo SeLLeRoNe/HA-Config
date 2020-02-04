@@ -17,13 +17,7 @@ condition:
   conditions:
     - condition: state
       entity_id: input_select.dishwasher_status
-      state: 'Idle'
-    - condition: state
-      entity_id: input_select.dishwasher_status
       state: 'Warming Up'
-    - condition: state
-      entity_id: input_select.dishwasher_status
-      state: 'Spinning'
 action:
   - service: input_select.select_option
     data:

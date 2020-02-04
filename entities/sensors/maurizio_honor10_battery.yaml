@@ -1,0 +1,32 @@
+---
+platform: template
+sensors:
+  maurizio_honor10_battery:
+    friendly_name: Honor 10 Battery
+    device_class: battery
+    unit_of_measurement: '%'
+    value_template: "{{ state_attr('device_tracker.life360_maurizio_iannucci', 'battery_level') | round }}"
+    icon_template: >
+      {% set battery_level = state_attr('device_tracker.life360_maurizio_iannucci', 'battery_level') | int %}
+      {% set battery_round = (battery_level / 10) |int * 10 %}
+      {% if battery_round >= 100 %}
+        {% if is_state('binary_sensor.maurizio_honor10_charging', 'on') %}
+          mdi:battery-charging
+        {% else %}
+          mdi:battery
+        {% endif %}
+      {% elif battery_round > 0 %}
+        {% if is_state('binary_sensor.maurizio_honor10_charging', 'on') %}
+           mdi:battery-charging-{{ battery_round }}
+        {% else %}
+           mdi:battery-{{ battery_round }}
+        {% endif %}
+      {% elif battery_round == 0 %}
+        {% if is_state('binary_sensor.maurizio_honor10_charging', 'on') %}
+           mdi:battery-charging-outline
+        {% else %}
+           mdi:battery-outline
+        {% endif %}
+      {% else %}
+        mdi:battery-alert
+      {% endif %}

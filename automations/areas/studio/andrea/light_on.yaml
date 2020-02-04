@@ -8,10 +8,10 @@ trigger:
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+    entity_id: binary_sensor.studio_2ajz4kpbs_pir
     to: 'off'
   - platform: state
-    entity_id: light.studio_andrea_light
+    entity_id: light.studio_wall_light
     to: 'on'
     for:
       seconds: 60
@@ -19,16 +19,16 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: light.studio_andrea_light
+      entity_id: light.studio_wall_light
       state: "on"
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+          entity_id: binary_sensor.studio_2ajz4kpbs_pir
           state: 'off'
         - condition: state
           entity_id: binary_sensor.studio_andrea_computer_ping
           state: 'on'
 action:
   - service: light.turn_off
-    entity_id: light.studio_andrea_light
+    entity_id: light.studio_wall_light

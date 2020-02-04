@@ -179,7 +179,7 @@ cards:
         title: Shopping List
       - break
       - type: custom:decluttering-card
-        template: kitchen_energy_small
+        template: kitchen_energy
         variables:
           - title: Energy Consumption
 

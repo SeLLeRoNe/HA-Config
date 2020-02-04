@@ -130,9 +130,9 @@ cards:
             timeSize: 90
             firstDayOfWeek: 7
             titleSize: 100
-      - break
-      - type: custom:decluttering-card
-        template: house_lights
+#      - break
+#      - type: custom:decluttering-card
+#        template: house_lights
       - break
       - type: custom:vertical-stack-in-card
         cards:
@@ -150,12 +150,12 @@ cards:
                 template: house_temperature
               - type: custom:decluttering-card
                 template: house_humidity 
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - area: house
+#      - type: custom:decluttering-card
+#        template: thermostat_card
+#        variables:
+#          - area: house
       - break
       - type: custom:decluttering-card
-        template: house_energy_small
+        template: house_energy
         variables:
           - title: Energy Consumption

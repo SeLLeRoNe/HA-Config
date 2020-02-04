@@ -552,7 +552,7 @@ cards:
                 name: "Master Bedroom - Lamp Top Light"
                 tap_action:
                   action: none
-              - entity: sensor.studio_light_wireless_signal
+              - entity: sensor.studio_wall_light_wireless_signal
                 name: "Studio - Light"
                 tap_action:
                   action: none

@@ -31,6 +31,6 @@ action:
       message: "Patio Door has been open for 10 minutes."
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.studio_andrea_google
+      entity_id: media_player.studio_google_mini
       message: "The patio door has been opened for 10 minutes."
       language: 'en'

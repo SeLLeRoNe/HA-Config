@@ -41,11 +41,11 @@ action:
       preset_mode: away
   - service: climate.set_preset_mode
     data:
-      entity_id: climate.studio_andrea
+      entity_id: climate.studio
       preset_mode: away
   - service: climate.set_preset_mode
     data:
-      entity_id: climate.studio_sonia
+      entity_id: climate.bedroom_luca
       preset_mode: away
 #  - service: climate.turn_off
 #    data:
@@ -62,9 +62,9 @@ action:
       option: "Away"
   - service: input_select.select_option
     data:
-      entity_id: input_select.climate.studio_andrea
+      entity_id: input_select.climate.studio
       option: "Away"
   - service: input_select.select_option
     data:
-      entity_id: input_select.climate.studio_sonia
+      entity_id: input_select.climate.bedroom_luca
       option: "Away"

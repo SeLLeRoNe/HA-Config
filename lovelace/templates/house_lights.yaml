@@ -109,20 +109,20 @@ house_lights:
           - type: custom:fold-entity-row
             head:
               type: custom:slider-entity-row
-              entity: light.studio_andrea_lights
-              name: Studio Andrea
+              entity: light.studio_lights
+              name: Studio
               toggle: true
             entities:
               - type: "custom:hui-conditional-card"
                 conditions:
-                  - entity: light.studio_andrea_light
+                  - entity: light.studio_light
                     state: "off"
                 card:
                   type: entities
                   show_header_toggle: false
                   entities:
                     - type: 'custom:slider-entity-row'
-                      entity: light.studio_andrea_light
+                      entity: light.studio_wall_light
                       name: "Wall"
                       toggle: true
                   style: |
@@ -131,18 +131,18 @@ house_lights:
                     }
               - type: "custom:hui-conditional-card"
                 conditions:
-                  - entity: light.studio_andrea_light
+                  - entity: light.studio_wall_light
                     state: "on"
                 card:
                   type: entities
                   show_header_toggle: false
                   entities:
                     - type: 'custom:slider-entity-row'
-                      entity: light.studio_andrea_light
+                      entity: light.studio_wall_light
                       toggle: true
                       name: "Wall"
                     - type: 'custom:rgb-light-card'
-                      entity: light.studio_andrea_light
+                      entity: light.studio_wall_light
                       size: 25
                       colors:
                         - rgb_color:
@@ -194,20 +194,20 @@ house_lights:
           - type: custom:fold-entity-row
             head:
               type: custom:slider-entity-row
-              entity: light.studio_sonia_lights
-              name: Studio Sonia
+              entity: light.bedroom_luca_lights
+              name: Bedroom Luca
               toggle: true
             entities:
               - type: "custom:hui-conditional-card"
                 conditions:
-                  - entity: light.studio_sonia_light
+                  - entity: light.bedroom_luca_light
                     state: "off"
                 card:
                   type: entities
                   show_header_toggle: false
                   entities:
                     - type: 'custom:slider-entity-row'
-                      entity: light.studio_sonia_light
+                      entity: light.bedroom_luca_light
                       name: "Wall"
                       toggle: true
                   style: |
@@ -216,18 +216,18 @@ house_lights:
                     }
               - type: "custom:hui-conditional-card"
                 conditions:
-                  - entity: light.studio_sonia_light
+                  - entity: light.bedroom_luca_light
                     state: "on"
                 card:
                   type: entities
                   show_header_toggle: false
                   entities:
                     - type: 'custom:slider-entity-row'
-                      entity: light.studio_sonia_light
+                      entity: light.bedroom_luca_light
                       toggle: true
                       name: "Wall"
                     - type: 'custom:rgb-light-card'
-                      entity: light.studio_sonia_light
+                      entity: light.bedroom_luca_light
                       size: 25
                       colors:
                         - rgb_color:

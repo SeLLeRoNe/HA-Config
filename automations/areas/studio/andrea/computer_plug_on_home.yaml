@@ -7,6 +7,6 @@ trigger:
     to: 'on'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_media03_wol
+    entity_id: switch.studio_media03_wol
   - service: switch.turn_on
     entity_id: switch.studio_andrea_lg_monitor_1

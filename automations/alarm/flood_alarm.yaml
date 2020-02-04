@@ -27,7 +27,7 @@ action:
         {% endif %}
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.studio_andrea_google
+      entity_id: media_player.studio_google_mini
       message: >
         Flood detected in the
         {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} Master Bathroom

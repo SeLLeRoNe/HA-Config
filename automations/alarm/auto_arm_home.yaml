@@ -51,7 +51,7 @@ action:
       code: !secret zone_home_alarm_code
 #  - service: tts.google_translate_say
 #    data:
-#      entity_id: media_player.studio_andrea_google
+#      entity_id: media_player.studio_google_mini
 #      message: "Switched to Home Mode" 
 #      language: 'en'
 #  - service: notify.alarm

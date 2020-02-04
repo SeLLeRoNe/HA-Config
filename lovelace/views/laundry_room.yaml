@@ -152,6 +152,6 @@ cards:
                   - entity: sensor.bathroom_humidity
       - break
       - type: custom:decluttering-card
-        template: laundry_room_energy_small
+        template: laundry_room_energy
         variables:
           - title: Energy Consumption

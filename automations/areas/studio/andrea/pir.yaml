@@ -3,7 +3,7 @@ alias: Studio - Andrea - PIR
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+    entity_id: binary_sensor.studio_2ajz4kpbs_pir
     to: 'on'
 condition:
   condition: and
@@ -15,7 +15,7 @@ condition:
       entity_id: sensor.illuminance
       below: 1000
     - condition: state
-      entity_id: light.studio_andrea_light
+      entity_id: light.studio_wall_light
       state: 'off'
     - condition: state
       entity_id: binary_sensor.studio_andrea_computer_ping
@@ -31,6 +31,6 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.studio_andrea_light
+      entity_id: light.studio_wall_light
       brightness: 25
 #      rgb_color: [102,204,255]

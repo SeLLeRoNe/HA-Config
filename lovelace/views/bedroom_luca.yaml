@@ -140,12 +140,12 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.bedroom_luca_pressure
-          - type: custom:decluttering-card
-            template: thermostat_card
-            variables:
-              - area: bedroom_luca
+#          - type: custom:decluttering-card
+#            template: thermostat_card
+#            variables:
+#              - area: bedroom_luca
 #      - break
 #      - type: custom:decluttering-card
-#        template: bedroom_luca_energy_small
+#        template: bedroom_luca_energy
 #        variables:
 #          - title: Energy Consumption

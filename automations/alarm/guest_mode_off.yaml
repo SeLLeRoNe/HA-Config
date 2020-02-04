@@ -18,6 +18,6 @@ action:
       message: "Guest Mode Deactivated"
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.studio_andrea_google
+      entity_id: media_player.studio_google_mini
       message: "Guest Mode Deactivated"
       language: 'en'

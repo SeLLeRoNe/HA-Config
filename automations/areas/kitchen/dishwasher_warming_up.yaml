@@ -10,7 +10,7 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_dishwasher_power
-    above: 2500
+    above: 2000
     for:
       seconds: 10
 condition:
@@ -19,9 +19,6 @@ condition:
     - condition: state
       entity_id: input_select.dishwasher_status
       state: 'Idle'
-#    - condition: state
-#      entity_id: input_select.dishwasher_status
-#      state: 'Washing'
 action:
   - service: input_select.select_option
     data:

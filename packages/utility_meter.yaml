@@ -84,19 +84,19 @@ utility_meter:
       - offpeak
   # STUDIO ANDREA #
   studio_electricity_daily:
-    source: sensor.studio_andrea_total_energy_usage
+    source: sensor.studio_total_energy_usage
     cycle: daily
     tariffs:
       - peak
       - offpeak
   studio_electricity_monthly:
-    source: sensor.studio_andrea_total_energy_usage
+    source: sensor.studio_total_energy_usage
     cycle: monthly
     tariffs:
       - peak
       - offpeak
   studio_electricity_yearly:
-    source: sensor.studio_andrea_total_energy_usage
+    source: sensor.studio_total_energy_usage
     cycle: yearly
     tariffs:
       - peak

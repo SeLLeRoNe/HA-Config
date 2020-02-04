@@ -2,4 +2,4 @@
 platform: group
 name: Studio Lights
 entities:
-  - light.studio_light
+  - light.studio_wall_light

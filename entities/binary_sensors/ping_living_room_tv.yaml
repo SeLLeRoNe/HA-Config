@@ -1,6 +1,6 @@
 ---
 platform: ping
 name: Living Room TV
-host: !secret livingroom_tv_ip
+host: !secret living_room_tv_ip
 count: 2
 scan_interval: 30

@@ -20,15 +20,15 @@ condition:
       before: '12:00:00'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_table_plug
+    entity_id: switch.studio_table_plug
   - service: switch.turn_on
     entity_id: switch.studio_andrea_powerstrip_2
   - service: switch.turn_on
     entity_id: switch.studio_andrea_uk_powerstrip
 #  - service: switch.turn_on
-#    entity_id: switch.studio_andrea_media01_wol
+#    entity_id: switch.studio_media01_wol
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_media03_wol
+    entity_id: switch.studio_media03_wol
   - delay:
       minutes: 5
   - service: switch.turn_on
