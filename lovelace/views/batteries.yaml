@@ -197,8 +197,8 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                     }
-              - entity: sensor.studio_andrea_wsdcgq11lm_battery
-                name: "Studio Andrea - WSDCGQ11LM"
+              - entity: sensor.studio_wsdcgq11lm_battery
+                name: "Studio - WSDCGQ11LM"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -220,8 +220,8 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-              - entity: sensor.studio_andrea_2ajz4kpbs_battery
-                name: "Studio Andrea - 2AJZ4KPBS"
+              - entity: sensor.studio_2ajz4kpbs_battery
+                name: "Studio - 2AJZ4KPBS"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -404,8 +404,8 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-              - entity: sensor.studio_sonia_wsdcgq11lm_battery
-                name: "Studio Sonia - WSDCGQ11LM"
+              - entity: sensor.bedroom_luca_wsdcgq11lm_battery
+                name: "Bedroom Luca - WSDCGQ11LM"
                 style: |
                   :host {
                     --paper-item-icon-color:

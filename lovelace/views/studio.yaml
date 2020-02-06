@@ -113,17 +113,17 @@ cards:
                   entity: switch.studio_andrea_desk_plug
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                         rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #          rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
 #               restrictions:
 #                 block: true
@@ -134,17 +134,17 @@ cards:
                   entity: switch.studio_sonia_desk_plug
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                         rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #          rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
@@ -155,17 +155,17 @@ cards:
                   entity: switch.studio_table_plug
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
           - type: divider
           - type: entities
             show_header_toggle: false
@@ -180,17 +180,17 @@ cards:
                   entity: switch.studio_home_assistant_server
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -199,17 +199,17 @@ cards:
                   entity: switch.studio_google_mini
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -218,17 +218,17 @@ cards:
                   entity: switch.studio_andrea_computer_plug
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -237,17 +237,17 @@ cards:
                   entity: switch.studio_andrea_lg_monitor_1
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -256,17 +256,17 @@ cards:
                   entity: switch.studio_andrea_lg_monitor_2
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
           - type: divider
           - type: entities
             show_header_toggle: false
@@ -281,17 +281,17 @@ cards:
                   entity: switch.studio_andrea_usb_ports
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -300,17 +300,17 @@ cards:
                   entity: switch.studio_andrea_usb_hub
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                       rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #        rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
           - type: divider
           - type: entities
             show_header_toggle: false
@@ -323,17 +323,17 @@ cards:
                   entity: switch.studio_andrea_uk_powerstrip
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
               - type: "custom:restriction-card"
                 row: true
                 card:
@@ -342,17 +342,17 @@ cards:
                   entity: switch.studio_andrea_powerstrip_2
                   tap_action:
                     action: none
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(251, 205, 65);
-                      {% elif is_state(config.entity, 'off') %}
-                        rgb(2550, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+                # style: |
+                #   :host {
+                #     --paper-item-icon-color:
+                #       {% if is_state(config.entity, 'on') %}
+                #         rgb(251, 205, 65);
+                #       {% elif is_state(config.entity, 'off') %}
+                #         rgb(2550, 0, 0);
+                #       {% else %}
+                #         rgb(128, 128, 128);
+                #       {% endif %}
+                #   }
 #          - type: divider
 #          - type: custom:decluttering-card
 #            template: title
@@ -385,27 +385,27 @@ cards:
                 template: title
                 variables:
                   - title: Devices
-#              - type: glance
-#                show_state: false
-#                columns: 2
-#                show_header_toggle: false
-#                entities:
-#                  - name: "Computer"
-#                    icon: mdi:desktop-tower
-#                    entity: binary_sensor.studio_andrea_computer_ping
-#                    tap_action:
-#                      action: call-service
-#                      service: switch.turn_on
-#                      service_data:
-#                        entity_id: switch.studio_andrea_computer_wol
-#                  - name: "Laptop"
-#                    icon: mdi:laptop
-#                    entity: binary_sensor.studio_andrea_laptop_ping
-#                    tap_action:
-#                      action: call-service
-#                      service: switch.turn_on
-#                      service_data:
-#                        entity_id: switch.studio_andrea_laptop_wol
+              - type: glance
+                show_state: false
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: "Computer"
+                    icon: mdi:desktop-tower
+                    entity: binary_sensor.studio_andrea_computer_ping
+                    tap_action:
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.studio_andrea_computer_wol
+                  - name: "Laptop"
+                    icon: mdi:laptop
+                    entity: binary_sensor.studio_andrea_laptop_ping
+                    tap_action:
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.studio_andrea_laptop_wol
               - type: glance
                 show_state: false
                 columns: 2
@@ -498,10 +498,10 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.studio_pressure
-#          - type: custom:decluttering-card
-#            template: thermostat_card
-#            variables:
-#              - area: studio
+          - type: custom:decluttering-card
+            template: thermostat_card
+            variables:
+              - area: studio
       - break
       - type: custom:vertical-stack-in-card
         cards:
@@ -588,6 +588,6 @@ cards:
 #            device: YAMAHA-RXV779
       - break
       - type: custom:decluttering-card
-        template: studio_energy
+        template: studio_energy_small
         variables:
           - title: Energy Consumption
