@@ -1,0 +1,9 @@
+---
+samsungtv:
+  - name: Living Room TV
+    host: !secret living_room_tv_ip
+    port: !secret living_room_tv_port
+    turn_on_action:
+      - service: wake_on_lan.send_magic_packet
+        data:
+         mac: !secret living_room_tv_mac
