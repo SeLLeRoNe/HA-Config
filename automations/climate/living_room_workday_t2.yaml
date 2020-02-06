@@ -2,8 +2,8 @@
 alias: Climate - T2 - Living Room - Workday
 initial_state: 'on'
 trigger:
-  - platform: homeassistant
-    event: start
+#  - platform: homeassistant
+#    event: start
   - platform: template
     value_template: "{{ states('sensor.time') == states('input_datetime.climate_living_room_workday_t2_start')[0:5] }}"
   - platform: state
@@ -17,9 +17,9 @@ trigger:
     to: 'off'
   - platform: state
     entity_id: input_number.climate_living_room_workday_t2
-  - platform: state
-    entity_id: input_boolean.climate_living_room_workday_t2_active
-    to: 'on'
+#  - platform: state
+#    entity_id: input_boolean.climate_living_room_workday_t2_active
+#    to: 'on'
 condition:
   condition: and
   conditions:
