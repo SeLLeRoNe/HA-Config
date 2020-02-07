@@ -39,17 +39,6 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-#                style: |
-#                  :host {
-#                    --paper-item-icon-color:
-#                      {% if is_state(config.entity, 'on') %}
-#                        rgb(51, 204, 51);
-#                      {% elif is_state(config.entity, 'off') %}
-#                        rgb(2550, 0, 0);
-#                      {% else %}
-#                        rgb(128, 128, 128);
-#                      {% endif %}
-#                  }
                 tap_action:
                   action: none
               - entity: input_boolean.holiday_mode
@@ -62,17 +51,6 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-#                style: |
-#                  :host {
-#                    --paper-item-icon-color:
-#                      {% if is_state(config.entity, 'on') %}
-#                        rgb(51, 204, 51);
-#                      {% elif is_state(config.entity, 'off') %}
-#                        rgb(2550, 0, 0);
-#                      {% else %}
-#                        rgb(128, 128, 128);
-#                      {% endif %}
-#                  }
                 tap_action:
                   action: none
 #      - type: picture-glance
@@ -82,7 +60,7 @@ cards:
 #        camera_image: camera.hallway
 #        camera_view: live
 #        entities:
-#          - switch.living_room_lamp  
+#          - switch.studio_wall_light  
       - break
       - type: custom:vertical-stack-in-card
         cards:
@@ -130,9 +108,9 @@ cards:
             timeSize: 90
             firstDayOfWeek: 7
             titleSize: 100
-#      - break
-#      - type: custom:decluttering-card
-#        template: house_lights
+      - break
+      - type: custom:decluttering-card
+        template: house_lights
       - break
       - type: custom:vertical-stack-in-card
         cards:

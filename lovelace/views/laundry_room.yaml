@@ -97,6 +97,7 @@ cards:
                   type: entities
                   name: Washing Machine
                   entity: switch.washing_machine
+                  state_color: true
                   tap_action:
                     action: none
       - break
