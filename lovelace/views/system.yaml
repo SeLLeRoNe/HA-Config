@@ -548,8 +548,8 @@ cards:
                 name: "Sonoff RF Bridge"
                 tap_action:
                   action: none
-              - entity: sensor.master_bedroom_lamp_top_light_wireless_signal
-                name: "Master Bedroom - Lamp Top Light"
+              - entity: sensor.bedroom_luca_light_1_wireless_signal
+                name: "Bedroom Luca - Light 1"
                 tap_action:
                   action: none
               - entity: sensor.studio_wall_light_wireless_signal
@@ -690,7 +690,7 @@ cards:
                     state: "unknown"
                 - entity_id: sensor.studio_wsdcgq11lm_link_quality
                   options:
-                    name: Andrea's Studio - WSDCGQ11LM - Link Quality
+                    name: Studio - WSDCGQ11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: 'Battery Level: [[ if(sensor.studio_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", sensor.studio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "mV", "") ]]'
                     tap_action:
