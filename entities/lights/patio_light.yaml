@@ -1,9 +1,32 @@
 ---
-platform: "mqtt"
+platform: mqtt
 name: "Patio Light"
-state_topic: "zigbee2mqtt/patio_light"
-availability_topic: "zigbee2mqtt/patio_light/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/patio_light/set"
+command_topic: "cmnd/patio_light/POWER"
+state_topic: "stat/patio_light/POWER"
+payload_on: "ON"
+payload_off: "OFF"
+brightness_command_topic: "cmnd/patio_light/DIMMER"
+brightness_scale: 100
+brightness_state_topic: "stat/patio_light/RESULT"
+brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+rgb_command_topic: "cmnd/patio_light/COLOR"
+rgb_command_template: "{{ '%02X%02X%02X0000' | format(red, green, blue) }}"
+rgb_state_topic: "stat/patio_light/RESULT"
+rgb_value_template: "{% if value_json.Color is defined %}{{ value_json.Color[0:2]|int(base=16) }},{{ value_json.Color[2:4]|int(base=16) }},{{ value_json.Color[4:6]|int(base=16) }}{% endif %}"
+color_temp_command_topic: "cmnd/patio_light/CT"
+color_temp_state_topic: "stat/patio_light/RESULT"
+color_temp_value_template: "{% if value_json.CT is defined %}{{ value_json.CT }}{% endif %}"
+effect_command_topic: "cmnd/patio_light/SCHEME"
+effect_state_topic: "stat/patio_light/RESULT"
+effect_value_template: "{% if value_json.Scheme is defined %}{{ value_json.Scheme }}{% endif %}"
+effect_list:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+availability_topic: "tele/patio_light/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false
