@@ -18,7 +18,7 @@ trigger:
   - platform: state
     entity_id: input_number.climate_living_room_workday_t6
   - platform: state
-    entity_id: input_boolean.climate_living_room_workday_t6_active
+    entity_id: input_boolean.climate_living_room_workday_t6
     to: 'on'
 condition:
   condition: and

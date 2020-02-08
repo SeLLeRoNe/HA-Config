@@ -18,7 +18,7 @@ trigger:
   - platform: state
     entity_id: input_number.climate_house_weekend_t10
   - platform: state
-    entity_id: input_boolean.climate_house_weekend_t10_active
+    entity_id: input_boolean.climate_house_weekend_t10
     to: 'on'
 condition:
   condition: and
