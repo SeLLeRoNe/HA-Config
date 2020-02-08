@@ -1,0 +1,9 @@
+---
+platform: "mqtt"
+name: "Bedroom Luca Light 2"
+state_topic: "zigbee2mqtt/bedroom_luca_light_2"
+availability_topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
+brightness: true
+xy: true
+schema: "json"
+command_topic: "zigbee2mqtt/bedroom_luca_light_2/set"

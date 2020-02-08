@@ -1,5 +1,0 @@
----
-platform: group
-name: Bedroom Luca Lights
-entities:
-  - light.bedroom_luca_light

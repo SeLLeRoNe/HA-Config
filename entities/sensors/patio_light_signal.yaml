@@ -1,10 +1,11 @@
 ---
+# MQTT Device: Patio Light Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
 platform: mqtt
-name: 'Patio Light Wireless Signal'
-icon: mdi:signal-variant
-state_topic: 'tele/patio_light/STATE'
-value_template: "{{ value_json.Wifi.RSSI }}"
-unit_of_measurement: '%'
-availability_topic: "tele/patio_light/LWT"
-payload_available: "Online"
-payload_not_available: "Offline"
+name: 'Patio Light Link Quality'
+icon: mdi:lightbulb
+state_topic: "zigbee2mqtt/patio_light"
+availability_topic: "zigbee2mqtt/patio_light/availability"
+value_template: "{{ value_json.linkquality }}"
