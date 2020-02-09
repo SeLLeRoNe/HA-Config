@@ -33,10 +33,6 @@ cards:
             W: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'W-blu.png' : vars[0] <= 20 ? 'W-grn.png' : vars[0] <= 30 ? 'W-yel.png' : 'W-red.png' ) }"
             WNW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WNW-blu.png' : vars[0] <= 20 ? 'WNW-grn.png' : vars[0] <= 30 ? 'WNW-yel.png' : 'WNw-red.png' ) }"
             WSW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WSW-blu.png ': vars[0] <= 20 ? 'WSW-grn.png' : vars[0] <= 30 ? 'WSW-yel.png' : 'WSw-red.png' ) }"
-      - type: entities
-        show_header_toggle: false
-        entities:
-         - entity: scene.diaper_change
       - break
       - type: entities
         show_header_toggle: false
