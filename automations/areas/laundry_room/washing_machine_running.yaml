@@ -17,9 +17,6 @@ condition:
   conditions:
     - condition: state
       entity_id: input_select.washing_machine_status
-      state: 'Idle'
-    - condition: state
-      entity_id: input_select.washing_machine_status
       state: 'Warming Up'
     - condition: state
       entity_id: input_select.washing_machine_status
