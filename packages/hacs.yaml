@@ -2,7 +2,7 @@
 hacs:
   token: !secret github_access_token
   sidepanel_title: HACS
-  sidepanel_icon: "mdi:alpha-c-box"
+  sidepanel_icon: "hacs:hacs"
   appdaemon: false
   python_script: true
   theme: true
