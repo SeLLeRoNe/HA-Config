@@ -1,7 +1,7 @@
 ---
 name: Maria's Home
-latitude: !secret zone_otilia_home_latitude
-longitude: !secret zone_otilia_home_longitude
+latitude: !secret zone_maria_home_latitude
+longitude: !secret zone_maria_home_longitude
 radius: 5
 passive: false
 icon: mdi:home-heart
