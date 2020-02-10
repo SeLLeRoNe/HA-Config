@@ -32,7 +32,7 @@ def get_info(t):
 
       d = {}
 
-      for m in re.finditer(r'^(?P<lang>.*):\s*(?P<desc>.*)', _desc, re.M):
+      for m in re.finditer(r'^(?P<lang>.*?):\s*(?P<desc>.*)', _desc, re.M):
         d.update({m.group('lang'): m.group('desc')})
 
       if not d:
