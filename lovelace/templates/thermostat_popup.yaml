@@ -73,7 +73,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t1', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t1_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -93,7 +97,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t2', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t2_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -113,7 +121,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t3', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t3_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -133,7 +145,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t4', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t4_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -153,7 +169,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t5', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t5_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -173,7 +193,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t6', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t6_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -193,7 +217,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t7', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t7_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -213,7 +241,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t8', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t8_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -233,7 +265,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t9', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t9_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -253,7 +289,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_workday_t10', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_workday_t10_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -275,7 +315,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t1', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t1_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -295,7 +339,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t2', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t2_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -315,7 +363,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t3', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t3_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -335,7 +387,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t4', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t4_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -355,7 +411,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t5', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t5_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -375,7 +435,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t6', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t6_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -395,7 +459,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t7', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t7_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -415,7 +483,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t8', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t8_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -435,7 +507,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t9', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t9_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
@@ -455,7 +531,11 @@ thermostat_popup:
                   {% if is_state('input_boolean.climate_[[area]]_weekend_t10', 'off') %}
                     rgb(128, 128, 128);
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'on') %}
-                    rgb(51, 204, 51);
+                    {% if is_state_attr('climate.[[area]]', 'preset_mode', 'away') %}
+                      rgb(255, 153, 0);
+                    {% else %}
+                      rgb(51, 204, 51);
+                    {% endif %}
                   {% elif is_state('input_boolean.climate_[[area]]_weekend_t10_active', 'off') %}
                     rgb(0, 0, 255);
                   {% else %}
