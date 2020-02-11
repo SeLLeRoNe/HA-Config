@@ -12,7 +12,7 @@ andrea:
       - entity: sensor.andrea_oneplus5_battery
         name: "OnePlus 5"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_oneplus5_wifi == 'on', 'Connected', if(binary_sensor.andrea_oneplus5_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_oneplus5_charging.state == 'on', ' - Charging', if(input_boolean.andrea_oneplus5_charging.state == 'on', ' - Charging', '' )) ]]"
+        secondary_info: "WiFi: [[ if(binary_sensor.andrea_oneplus5_wifi == 'on', 'Connected', if(binary_sensor.andrea_oneplus5_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_oneplus5_charging == 'on', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
@@ -39,7 +39,7 @@ andrea:
       - entity: sensor.andrea_honor8_battery
         name: "Honor 8"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_honor8_wifi == 'on', 'Connected', if(binary_sensor.andrea_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_honor8_charging == 'on', ' - Charging', if(input_boolean.andrea_honor8_charging == 'on', ' - Charging', '' )) ]]"
+        secondary_info: "WiFi: [[ if(binary_sensor.andrea_honor8_wifi == 'on', 'Connected', if(binary_sensor.andrea_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_honor8_charging == 'on', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
@@ -93,7 +93,7 @@ andrea:
       - entity: sensor.andrea_shield_battery
         name: "NVIDIA Shield K1"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_shield_wifi == 'on', 'Connected', if(binary_sensor.andrea_shield_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_shield_charging.state == 'on', ' - Charging', if(input_boolean.andrea_shield_charging.state == 'on', ' - Charging', '' )) ]]"
+        secondary_info: "WiFi: [[ if(binary_sensor.andrea_shield_wifi == 'on', 'Connected', if(binary_sensor.andrea_shield_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_shield_charging == 'on', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
