@@ -10,7 +10,7 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 2200
+    above: 2000
     for:
       seconds: 5
 condition:
