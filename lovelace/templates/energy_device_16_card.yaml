@@ -5,39 +5,56 @@ energy_device_16_card:
     entity: sensor.power_usage_[[device]]_power
     name: '[[device_name]]'
     icon: mdi:flash
-    hide_state: false
+    show_state: true
     toggle: false
-    primary:
-      entity: sensor.power_usage_[[device]]_voltage
-      name: false
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: room_device_16
-          variables:
-            - device_name: '[[device_name]]'
-            - device: '[[device]]'
-        style:
-          width: 450px
-    secondary:
-      entity: sensor.power_usage_[[device]]_ampere
-      name: false
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: room_device_16
-          variables:
-            - device_name: '[[device_name]]'
-            - device: '[[device]]'
-        style:
-          width: 450px
-    tertiary:
-      entity: sensor.power_usage_[[device]]_today_energy
-      name: false
+    entities:
+      - entity: sensor.power_usage_[[device]]_voltage
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            style:
+              width: 450px
+      - entity: sensor.power_usage_[[device]]_ampere
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            style:
+              width: 450px
+      - entity: sensor.power_usage_[[device]]_today_energy
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            style:
+              width: 450px
+    tap_action:
+      action: call-service
       service: browser_mod.popup
       service_data:
         title: Details

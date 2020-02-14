@@ -5,11 +5,53 @@ energy_usage_card:
     entity: sensor.[[area]]_daily_energy_usage
     name: Usage
     icon: mdi:flash
-    hide_state: true
+    show_state: false
     toggle: false
-    primary:
-      entity: sensor.[[area]]_daily_energy_usage
-      name: Dailly
+    entities:
+      - entity: sensor.[[area]]_daily_energy_usage
+        name: Dailly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+          style:
+            width: 450px
+      - entity: sensor.[[area]]_monthly_energy_usage
+        name: Monthly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+          style:
+            width: 450px
+      - entity: sensor.[[area]]_yearly_energy_usage
+        name: Yearly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+          style:
+            width: 450px
+    tap_action:
+      action: call-service
       service: browser_mod.popup
       service_data:
         title: Details
@@ -18,31 +60,5 @@ energy_usage_card:
           template: '[[type]]_cost'
           variables:
             - area: '[[area]]'
-        style:
-          width: 450px
-    secondary:
-      entity: sensor.[[area]]_monthly_energy_usage
-      name: Monthly
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: '[[type]]_cost'
-          variables:
-            - area: '[[area]]'
-        style:
-          width: 450px
-    tertiary:
-      entity: sensor.[[area]]_yearly_energy_usage
-      name: Yearly
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: '[[type]]_cost'
-          variables:
-            - area: '[[area]]'
-        style:
-          width: 450px
+      style:
+        width: 450px

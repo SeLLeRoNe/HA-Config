@@ -12,7 +12,9 @@ andrea:
       - entity: sensor.andrea_oneplus5_battery
         name: "OnePlus 5"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_oneplus5_wifi == 'on', 'Connected', if(binary_sensor.andrea_oneplus5_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_oneplus5_charging == 'on', ' - Charging', '' ) ]]"
+#        secondary_info: "WiFi: [[ if(binary_sensor.andrea_oneplus5_wifi == 'on', 'Connected', if(binary_sensor.andrea_oneplus5_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_oneplus5_charging == 'on', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.andrea_oneplus5_wifi.attributes.bssid != 'null', 'Connected', if(sensor.andrea_oneplus5_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_oneplus5_battery.attributes.is_charging == 'true', ' - Charging', '' ) ]]"
+#        secondary_info: "WiFi: [[ if(sensor.andrea_oneplus5_wifi != '<not connected>', 'Connected to {{ sensor.andrea_oneplus5_wifi }}', if(sensor.andrea_oneplus5_wifi == '<not connected>', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_oneplus5_battery.attributes.is_charging == 'true', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |

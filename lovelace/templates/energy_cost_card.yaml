@@ -5,37 +5,53 @@ energy_cost_card:
     entity: sensor.[[area]]_cost_daily
     name: Cost
     icon: mdi:currency-eur
-    hide_state: true
+    show_state: false
     toggle: false
-    primary:
-      entity: sensor.[[area]]_cost_daily
-      name: Dailly
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: '[[type]]_cost'
-          variables:
-            - area: '[[area]]'
-        style:
-          width: 450px
-    secondary:
-      entity: sensor.[[area]]_cost_monthly
-      name: Monthly
-      service: browser_mod.popup
-      service_data:
-        title: Details
-        card:
-          type: custom:decluttering-card
-          template: '[[type]]_cost'
-          variables:
-            - area: '[[area]]'
-        style:
-          width: 450px
-    tertiary:
-      entity: sensor.[[area]]_cost_yearly
-      name: Yearly
+    entities:
+      - entity: sensor.[[area]]_cost_daily
+        name: Dailly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+            style:
+              width: 450px
+      - entity: sensor.[[area]]_cost_monthly
+        name: Monthly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+            style:
+              width: 450px
+      - entity: sensor.[[area]]_cost_yearly
+        name: Yearly
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: '[[type]]_cost'
+              variables:
+                - area: '[[area]]'
+            style:
+              width: 450px
+    tap_action:
+      action: call-service
       service: browser_mod.popup
       service_data:
         title: Details

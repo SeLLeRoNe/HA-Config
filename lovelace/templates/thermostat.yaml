@@ -18,34 +18,37 @@ thermostat:
             entity: input_boolean.climate_[[area]]_heating_push
             icon: mdi:timer
             toggle: true
-            primary:
-              entity: input_datetime.heating_push_[[area]]
-              service: browser_mod.popup
-              service_data:
-                title: Configuration
-                card:
-                  type: entities
-                  entities:
-                    - input_boolean.climate_[[area]]_heating_push
-                    - input_datetime.heating_push_[[area]]
-                    - type: section
-                      label: Temperature
-                    - type: custom:slider-entity-row
-                      entity: input_number.heating_push_[[area]]
-                      full_row: true
-            secondary:
-              entity: input_number.heating_push_[[area]]
-              service: browser_mod.popup
-              service_data:
-                title: Configuration
-                card:
-                  type: entities
-                  entities:
-                    - input_datetime.heating_push_[[area]]
-                    - type: section
-                      label: Temperature
-                    - type: custom:slider-entity-row
-                      entity: input_number.heating_push_[[area]]
+            entities:
+              - entity: input_datetime.heating_push_[[area]]
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: Configuration
+                    card:
+                      type: entities
+                      entities:
+                        - input_boolean.climate_[[area]]_heating_push
+                        - input_datetime.heating_push_[[area]]
+                        - type: section
+                          label: Temperature
+                        - type: custom:slider-entity-row
+                          entity: input_number.heating_push_[[area]]
+                          full_row: true
+              - entity: input_number.heating_push_[[area]]
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: Configuration
+                    card:
+                      type: entities
+                      entities:
+                        - input_datetime.heating_push_[[area]]
+                        - type: section
+                          label: Temperature
+                        - type: custom:slider-entity-row
+                          entity: input_number.heating_push_[[area]]
             style: |
               :host {
                 --paper-item-icon-color:

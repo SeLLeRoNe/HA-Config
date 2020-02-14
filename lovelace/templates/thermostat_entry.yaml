@@ -6,24 +6,65 @@ thermostat_entry:
     entity: input_boolean.climate_[[area]]_[[day]]_[[timing]]
     toggle: true
     icon: mdi:timer
-    primary:
-      entity: input_number.climate_[[area]]_[[day]]_[[timing]]
-      service: browser_mod.popup
-      service_data:
-        title: Configuration
-        card:
-          type: entities
-          entities:
-            - input_boolean.climate_[[area]]_[[day]]_[[timing]]
-            - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
-            - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
-            - type: section
-              label: Temperature
-            - type: custom:slider-entity-row
-              entity: input_number.climate_[[area]]_[[day]]_[[timing]]
-              full_row: true
-    secondary:
-      entity: input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+    entities:
+      - entity: input_number.climate_[[area]]_[[day]]_[[timing]]
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Configuration
+            card:
+              type: entities
+              entities:
+                - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
+                - type: section
+                  label: Temperature
+                - type: custom:slider-entity-row
+                  entity: input_number.climate_[[area]]_[[day]]_[[timing]]
+                  full_row: true
+      - entity: input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Configuration
+            card:
+              type: entities
+              entities:
+                - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+                - type: section
+                  label: Time Schedule
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
+                - type: section
+                  label: Temperature
+                - type: custom:slider-entity-row
+                  entity: input_number.climate_[[area]]_[[day]]_[[timing]]
+                  full_row: true
+      - entity: input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Configuration
+            card:
+              type: entities
+              entities:
+                - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+                - type: section
+                  label: Time Schedule
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+                - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
+                - type: section
+                  label: Temperature
+                - type: custom:slider-entity-row
+                  entity: input_number.climate_[[area]]_[[day]]_[[timing]]
+                  full_row: true
+
+    tap_action:
+      action: call-service
       service: browser_mod.popup
       service_data:
         title: Configuration
@@ -40,37 +81,3 @@ thermostat_entry:
             - type: custom:slider-entity-row
               entity: input_number.climate_[[area]]_[[day]]_[[timing]]
               full_row: true
-    tertiary:
-      entity: input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
-      service: browser_mod.popup
-      service_data:
-        title: Configuration
-        card:
-          type: entities
-          entities:
-            - input_boolean.climate_[[area]]_[[day]]_[[timing]]
-            - type: section
-              label: Time Schedule
-            - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
-            - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
-            - type: section
-              label: Temperature
-            - type: custom:slider-entity-row
-              entity: input_number.climate_[[area]]_[[day]]_[[timing]]
-              full_row: true
-    service: browser_mod.popup
-    service_data:
-      title: Configuration
-      card:
-        type: entities
-        entities:
-          - input_boolean.climate_[[area]]_[[day]]_[[timing]]
-          - type: section
-            label: Time Schedule
-          - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
-          - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
-          - type: section
-            label: Temperature
-          - type: custom:slider-entity-row
-            entity: input_number.climate_[[area]]_[[day]]_[[timing]]
-            full_row: true

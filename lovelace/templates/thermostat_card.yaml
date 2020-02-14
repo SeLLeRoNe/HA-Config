@@ -11,38 +11,54 @@ thermostat_card:
             name: Thermostat
             icon: mdi:fire
             toggle: false
-            primary:
-              entity: climate.[[area]]
-              attribute: current_temperature
-              name: Current Temperature
-              service: browser_mod.popup
-              service_data:
-                title: Configuration
-                card:
-                  type: custom:decluttering-card
-                  template: thermostat_popup
-                  variables:
-                    - area: '[[area]]'
-                style:
-                  width: 450px
-            secondary:
-              entity: climate.[[area]]
-              attribute: temperature
-              name: Set Temperature
-              service: browser_mod.popup
-              service_data:
-                title: Configuration
-                card:
-                  type: custom:decluttering-card
-                  template: thermostat_popup
-                  variables:
-                    - area: '[[area]]'
-                style:
-                  width: 450px
-            tertiary:
-              entity: climate.[[area]]
-              attribute: hvac_action
-              name: Status
+            entities:
+              - entity: climate.[[area]]
+                attribute: current_temperature
+                name: Current Temperature
+                tap_action: 
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: Configuration
+                    card:
+                      type: custom:decluttering-card
+                      template: thermostat_popup
+                      variables:
+                        - area: '[[area]]'
+                    style:
+                      width: 450px
+              - entity: climate.[[area]]
+                attribute: temperature
+                name: Set Temperature
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: Configuration
+                    card:
+                      type: custom:decluttering-card
+                      template: thermostat_popup
+                      variables:
+                        - area: '[[area]]'
+                    style:
+                      width: 450px
+              - entity: climate.[[area]]
+                attribute: hvac_action
+                name: Status
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: Configuration
+                    card:
+                      type: custom:decluttering-card
+                      template: thermostat_popup
+                      variables:
+                        - area: '[[area]]'
+                    style:
+                      width: 450px
+            tap_action:
+              action: call-service
               service: browser_mod.popup
               service_data:
                 title: Configuration
