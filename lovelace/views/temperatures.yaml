@@ -260,12 +260,12 @@ cards:
         cards:
           - type: custom:config-template-card
             entities:
-              - sensor.studio_andrea_temperature
+              - sensor.studio_temperature
             variables:
-              - states['sensor.studio_andrea_temperature'].state
+              - states['sensor.studio_temperature'].state
             card:
               type: custom:mini-graph-card
-              name: Studio Andrea
+              name: Studio
               icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
               more_info: false
               height: 150
@@ -300,17 +300,17 @@ cards:
 #                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
 #                }
               entities:
-                - entity: sensor.studio_andrea_temperature
+                - entity: sensor.studio_temperature
                   color: '#7F00FF'
                   show_indicator: true
           - type: custom:config-template-card
             entities:
-              - sensor.studio_sonia_temperature
+              - sensor.bedroom_luca_temperature
             variables:
-              - states['sensor.studio_sonia_temperature'].state
+              - states['sensor.bedroom_luca_temperature'].state
             card:
               type: custom:mini-graph-card
-              name: Studio Sonia
+              name: Bedroom Luca
               icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
               more_info: false
               height: 150
@@ -345,7 +345,7 @@ cards:
 #                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
 #                }
               entities:
-                - entity: sensor.studio_sonia_temperature
+                - entity: sensor.bedroom_luca_temperature
                   color: '#00FF00'
                   show_indicator: true
       - type: horizontal-stack
@@ -500,12 +500,12 @@ cards:
             name: Living Room
             color: '#FF3333'
             show_fill: false
-          - entity: sensor.studio_andrea_temperature
-            name: Studio Andrea
+          - entity: sensor.studio_temperature
+            name: Studio
             color: '#7F00FF'
             show_fill: false
-          - entity: sensor.studio_sonia_temperature
-            name: Studio Sonia
+          - entity: sensor.bedroom_luca_temperature
+            name: Bedroom Luca
             color: '#00FF00'
             show_fill: false
           - entity: sensor.master_bathroom_temperature

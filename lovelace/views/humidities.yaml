@@ -217,12 +217,12 @@ cards:
         cards:
           - type: custom:config-template-card
             entities:
-              - sensor.studio_andrea_humidity
+              - sensor.studio_humidity
             variables:
-              - states['sensor.studio_andrea_humidity'].state
+              - states['sensor.studio_humidity'].state
             card:
               type: custom:mini-graph-card
-              name: Studio Andrea
+              name: Studio
               icon: fas:tint
               more_info: false
               height: 150
@@ -251,17 +251,17 @@ cards:
                 name_adaptive_color: true
                 icon_adaptive_color: true
               entities:
-                - entity: sensor.studio_andrea_humidity
+                - entity: sensor.studio_humidity
                   color: '#7F00FF'
                   show_indicator: true
           - type: custom:config-template-card
             entities:
-              - sensor.studio_sonia_humidity
+              - sensor.bedroom_luca_humidity
             variables:
-              - states['sensor.studio_sonia_humidity'].state
+              - states['sensor.bedroom_luca_humidity'].state
             card:
               type: custom:mini-graph-card
-              name: Studio Sonia
+              name: Bedroom Luca
               icon: fas:tint
               more_info: false
               height: 150
@@ -290,7 +290,7 @@ cards:
                 name_adaptive_color: true
                 icon_adaptive_color: true
               entities:
-                - entity: sensor.studio_sonia_humidity
+                - entity: sensor.bedroom_luca_humidity
                   color: '#00FF00'
                   show_indicator: true
       - type: horizontal-stack
@@ -425,11 +425,11 @@ cards:
           - entity: sensor.living_room_humidity
             name: Living Room
             color: '#FF3333'
-          - entity: sensor.studio_andrea_humidity
-            name: Studio Andrea
+          - entity: sensor.studio_humidity
+            name: Studio
             color: '#7F00FF'
-          - entity: sensor.studio_sonia_humidity
-            name: Studio Sonia
+          - entity: sensor.bedroom_luca_humidity
+            name: Bedroom Luca
             color: '#00FF00'
           - entity: sensor.master_bathroom_humidity
             name: Master Bathroom
