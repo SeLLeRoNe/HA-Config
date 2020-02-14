@@ -4,8 +4,8 @@ initial_state: 'on'
 trigger:
   - platform: homeassistant
     event: start
-#  - platform: time_pattern
-#    minutes: '*'
+  - platform: time_pattern
+    minutes: '*'
   - platform: state
     entity_id: group.family
     to: 'not_home'
@@ -47,24 +47,3 @@ action:
     data:
       entity_id: climate.bedroom_luca
       preset_mode: away
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.house
-  - service: homeassistant.turn_off
-    entity_id: group.climate_active
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.climate_house
-      option: "Away"
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.climate.living_room
-      option: "Away"
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.climate.studio
-      option: "Away"
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.climate.bedroom_luca
-      option: "Away"
