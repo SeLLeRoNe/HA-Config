@@ -56,7 +56,7 @@ action:
 #  - service: utility_meter.select_tariff
 #    data:
 #      entity_id:
-#      - utility_meter.studio_sonia_electricity_daily
-#      - utility_meter.studio_sonia_electricity_monthly
-#      - utility_meter.studio_sonia_electricity_yearly
+#      - utility_meter.bedroom_luca_electricity_daily
+#      - utility_meter.bedroom_luca_electricity_monthly
+#      - utility_meter.bedroom_luca_electricity_yearly
 #      tariff: offpeak
