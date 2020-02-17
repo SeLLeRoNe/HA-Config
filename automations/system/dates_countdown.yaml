@@ -21,7 +21,7 @@ action:
     data:
       name: Luca
       type: birthday
-      date: !secret lucaa_birthday
+      date: !secret luca_birthday
   - service: python_script.date_countdown
     data:
       name: Maurizio
