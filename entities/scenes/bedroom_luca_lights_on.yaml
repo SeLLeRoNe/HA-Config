@@ -1,15 +1,15 @@
 ---
-name: Diaper Change
+name: Bedroom Luca Lights On
 entities:
   light.bedroom_luca_light_1:
     state: on
-    rgb_color: [0,0,255]
+    rgb_color: [255,255,255]
     brightness: 255
   light.bedroom_luca_light_2:
     state: on
-    rgb_color: [255,0,0]
-    brightness: 150
+    rgb_color: [255,255,255]
+    brightness: 255
   light.bedroom_luca_light_3:
     state: on
-    rgb_color: [0,255,0]
-    brightness: 150
+    rgb_color: [255,255,255]
+    brightness: 255
