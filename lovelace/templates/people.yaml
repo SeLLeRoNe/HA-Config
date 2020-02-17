@@ -12,3 +12,6 @@ people:
       - type: divider
       - type: custom:decluttering-card
         template: sonia
+      - type: divider
+      - type: custom:decluttering-card
+        template: luca
