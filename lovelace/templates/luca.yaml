@@ -1,0 +1,11 @@
+---
+luca:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: person.luca
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
+        tap_action:
+          action: none
