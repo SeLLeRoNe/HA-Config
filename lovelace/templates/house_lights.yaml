@@ -653,5 +653,6 @@ house_lights:
       - type: entities
         show_header_toggle: false
         entities:
-         - entity: scene.diaper_change
+         - entity: scene.bedroom_luca_lights_on
+         - entity: scene.bedroom_luca_diaper_change
 
