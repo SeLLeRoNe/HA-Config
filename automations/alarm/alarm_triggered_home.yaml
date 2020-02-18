@@ -59,7 +59,7 @@ action:
       entity_id:
         - light.patio_light
         - light.studio_wall_light
-        - light.master_bedroom_lamp_top_light
+#        - light.master_bedroom_lamp_top_light
   - service: homeassistant.turn_on
     data:
       entity_id: light.studio_wall_light
@@ -69,7 +69,7 @@ action:
       entity_id:
         - light.patio_light
         - light.studio_wall_light
-        - light.master_bedroom_lamp_top_light
+#        - light.master_bedroom_lamp_top_light
   - service: homeassistant.turn_on
     data:
       entity_id: light.patio_light
@@ -82,12 +82,12 @@ action:
       rgb_color: [255,0,0]
       brightness: 255
       transition: 1
-  - service: homeassistant.turn_on
-    data:
-      entity_id: light.master_bedroom_lamp_top_light
-      color_name: red
-      brightness: 255
-      transition: 1
+#  - service: homeassistant.turn_on
+#    data:
+#      entity_id: light.master_bedroom_lamp_top_light
+#      color_name: red
+#      brightness: 255
+#      transition: 1
   - delay:
       seconds: 30
   - service: python_script.light_store
@@ -99,4 +99,4 @@ action:
      entity_id:
         - light.patio_light
         - light.studio_wall_light
-        - light.master_bedroom_lamp_top_light
+#        - light.master_bedroom_lamp_top_light
