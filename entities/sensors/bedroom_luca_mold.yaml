@@ -1,0 +1,7 @@
+---
+platform: mold_indicator
+name: Bedroom Luca Mold Indicator
+indoor_temp_sensor: sensor.bedroom_luca_temperature
+indoor_humidity_sensor: sensor.bedroom_luca_humidity
+outdoor_temp_sensor: sensor.dark_sky_temperature
+calibration_factor: 1.5

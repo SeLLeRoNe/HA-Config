@@ -1,0 +1,7 @@
+---
+platform: mold_indicator
+name: Studio Mold Indicator
+indoor_temp_sensor: sensor.studio_temperature
+indoor_humidity_sensor: sensor.studio_humidity
+outdoor_temp_sensor: sensor.dark_sky_temperature
+calibration_factor: 1.5
