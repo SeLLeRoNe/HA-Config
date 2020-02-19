@@ -1,6 +1,6 @@
 ---
 alias: Master Bedroom - Workday Andrea
-initial_state: on
+initial_state: off
 trigger:
   - platform: time
     at: "09:55:00"
