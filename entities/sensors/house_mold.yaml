@@ -1,10 +1,9 @@
 ---
-platform: average
+platform: min_max
 name: House Mold Indicator
-duration:
-  minutes: 1
-precision: 2
-entities:
+type: max
+round_digits: 2
+entity_ids:
   - sensor.living_room_mold_indicator
   - sensor.kitchen_mold_indicator
   - sensor.studio_mold_indicator
