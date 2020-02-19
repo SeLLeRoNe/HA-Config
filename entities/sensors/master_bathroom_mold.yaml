@@ -4,4 +4,4 @@ name: Master Bathroom Mold Indicator
 indoor_temp_sensor: sensor.master_bathroom_temperature
 indoor_humidity_sensor: sensor.master_bathroom_humidity
 outdoor_temp_sensor: sensor.dark_sky_temperature
-calibration_factor: 1.6
+calibration_factor: 1.3
