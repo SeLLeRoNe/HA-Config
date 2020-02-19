@@ -1,24 +1,22 @@
 ---
-house_temperature:
+mold:
   card:
     type: custom:config-template-card
     entities:
+      - [[entity]]
       - binary_sensor.night_time
       - input_number.night_time
-      - sensor.house_temperature
-      - sensor.dark_sky_temperature
     variables:
-      - states['sensor.house_temperature'].state
+      - states['[[entity]]'].state
     card:
       type: custom:mini-graph-card
-      name: Temperature
+      name: Mold Indicator
       icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
       more_info: false
       height: 150
       line_width: 4
       hours_to_show: 168
       points_per_hour: 0.25
-      font_size: 75
       aggregate_func: max
       group_by: hour
       group: false
@@ -30,8 +28,8 @@ house_temperature:
       align_header: default
       align_icon: right
       align_state: center
-      lower_bound: -5
-      upper_bound: 40
+      lower_bound: 0
+      upper_bound: 100
       show:
         name: true
         icon: true
@@ -39,7 +37,7 @@ house_temperature:
         graph: line
         fill: true
         points: false
-        legend: true
+        legend: false
         extrema: false
         labels: false
         labels_secondary: false
@@ -69,16 +67,10 @@ house_temperature:
 #          color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
 #        }
       entities:
-        - entity: sensor.house_temperature
-          name: Temperature
-          color: '#FF5000'
-          show_state: true
-          show_fill: true
-        - entity: sensor.dark_sky_temperature
-          name: Outside
-          color: '#0099CC'
-          show_state: true
-          show_fill: true
+        - entity: '[[entity]]'
+          name: Mold Indicator
+          color: '#33CC33'
+          show_fill: false
         - entity: input_number.night_time
           color: '#B3B3B3'
           name: Night Time
