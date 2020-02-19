@@ -50,13 +50,13 @@ action:
       title: 'Mold Alert'
       message: >
         Mold alert
-        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ( sensor.living_room_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ( sensor.kitchen_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ( sensor.bedroom_luca_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ( sensor.bathroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ( sensor.master_bedroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ( sensor.master_bathroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( sensor.studio_mold_indicator ) %)
+        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ( [[ sensor.living_room_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ( [[ sensor.kitchen_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ( [[ sensor.bedroom_luca_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ( [[ sensor.bathroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ( [[ sensor.master_bedroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ( [[ sensor.master_bathroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( [[ sensor.studio_mold_indicator ]] ) %)
         {% else %}from Unknown Sensor
         {% endif %}
   - service: tts.google_translate_say
@@ -64,13 +64,13 @@ action:
       entity_id: media_player.studio_google_mini
       message: >
         Mold Alert
-        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ( sensor.living_room_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ( sensor.kitchen_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ( sensor.bedroom_luca_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ( sensor.bathroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ( sensor.master_bedroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ( sensor.master_bathroom_mold_indicator ) %)
-        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( sensor.studio_mold_indicator ) %)
+        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ( [[ sensor.living_room_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ( [[ sensor.kitchen_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ( [[ sensor.bedroom_luca_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ( [[ sensor.bathroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ( [[ sensor.master_bedroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ( [[ sensor.master_bathroom_mold_indicator ]] ) %)
+        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( [[ sensor.studio_mold_indicator ]] ) %)
         {% else %}from Unknown Sensor
         {% endif %}
       language: 'en'
