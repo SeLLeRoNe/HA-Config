@@ -306,7 +306,7 @@ thermostat:
                       {% endif %}
                   }
               - type: section
-                label: Workday
+                label: Weekend
               - type: 'custom:decluttering-card'
                 template: thermostat_entry
                 variables:
