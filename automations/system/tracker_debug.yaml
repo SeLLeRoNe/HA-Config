@@ -1,0 +1,19 @@
+---
+alias: System - Debug Device Trackers
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: device_tracker.andrea_oneplus5
+  - platform: state
+    entity_id: device_tracker.life360_andrea_iannucci
+action:
+  - service: python_script.device_tracker_merge
+    data_template:
+      device_name: 'Andrea Iannucci'
+      master_device: device_tracker.andrea_oneplus5
+      slave_device: device_tracker.life360_andrea_iannucci
+      trigger_id: '{{trigger.entity_id}}'
+      time: 10
+      force_update: 10
+      accuracy: 1000
+      distance: "{{ distance(states.device_tracker.andrea_oneplus5, states.device_tracker.life360_andrea_iannucci) }}"
