@@ -1,0 +1,20 @@
+---
+alias: Bedroom Luca - Baby Monitor Off
+trigger:
+  - platform: state
+    entity_id: binary_sensor.hallway_noise
+    to: "on"
+condition:
+  condition: or
+  conditions:
+    - condition: state
+      entity_id: input_boolean.baby_monitor_andrea
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.baby_monitor_sonia
+      state: "on"
+action:
+  - service: notify.html5_andrea
+    data_template:
+      title: 'Baby Monitor'
+      message: "Luca is awake!"

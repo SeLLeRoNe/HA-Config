@@ -1,0 +1,16 @@
+---
+alias: Bedroom Luca - Baby Monitor On
+trigger:
+  - platform: state
+    entity_id: input_boolean.baby_monitor_andrea
+    to: "on"
+  - platform: state
+    entity_id: input_boolean.baby_monitor_sonia
+    to: "on"
+condition:
+  - condition: state
+    entity_id: binary_sensor.hallway_noise
+    state: unavailable
+action:
+  - service: ffmpeg.stop
+    entity_id: binary_sensor.hallway_noise
