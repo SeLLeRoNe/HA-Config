@@ -179,6 +179,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.climate*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: House
@@ -193,6 +195,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.house*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Utility Meter
@@ -207,6 +211,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.utility_meter*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Living Room
@@ -221,6 +227,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.living_room*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Kitchen
@@ -235,6 +243,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.kitchen*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Studio
@@ -249,6 +259,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.studio_*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Bedroom Luca
@@ -263,6 +275,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.bedroom_luca*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Master Bedroom
@@ -277,6 +291,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.master_bedroom*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Laundry Room
@@ -291,6 +307,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.laundry_room*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Patio
@@ -305,6 +323,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.patio*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Outside
@@ -319,6 +339,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.outside*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Alarm
@@ -333,6 +355,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.alarm*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Mobile
@@ -347,6 +371,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.mobile*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: System
@@ -361,6 +387,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.system*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: Media Player
@@ -375,6 +403,8 @@ cards:
             filter:
               include:
                 - entity_id: "automation.media_player*"
+            sort:
+              method: name
       - type: 'custom:fold-entity-row'
         head:
           label: ZigBee
@@ -389,3 +419,5 @@ cards:
             filter:
               include:
                 - entity_id: "automation.zigbee.*"
+            sort:
+              method: name
