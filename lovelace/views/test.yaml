@@ -6,6 +6,9 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: picture-entity
+        entity: camera.tracker_andrea
+        camera_view: live
       - type: 'custom:config-template-card'
         entities: sensor.dark_sky_alt_wind
         variables:

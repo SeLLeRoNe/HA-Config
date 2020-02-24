@@ -1,7 +1,11 @@
 ---
-alias: System - Debug Device Trackers
+alias: System - Merge Device Trackers
 initial_state: on
 trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: '00:00:00'
   - platform: state
     entity_id: device_tracker.andrea_oneplus5
   - platform: state

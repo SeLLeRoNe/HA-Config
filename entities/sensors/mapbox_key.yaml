@@ -1,0 +1,6 @@
+---
+platform: template
+sensors:
+  mapbox_key:
+    friendly_name: MapBox API Key
+    value_template: !secret mapbox_api_key

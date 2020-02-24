@@ -14,8 +14,8 @@ still_image_url: >-
   {%- set bearing = state_attr('sensor.view_andrea_iannucci', 'bearing') -%}
   {%- set key = states('sensor.mapbox_key') -%}
   {%- if zoom == 'auto' -%}
-    https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-o+2ecc71({{o_longitude}},{{o_latitude}}),pin-s-c+3498db({{c_longitude}},{{c_latitude}})/auto/400x400?access_token={{key}}
+    https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-l+2ecc71({{o_longitude}},{{o_latitude}}),pin-s-o+3498db({{c_longitude}},{{c_latitude}})/auto/400x400?access_token={{key}}
   {%- else -%}
-    https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-o+2ecc71({{o_longitude}},{{o_latitude}}),pin-s-c+3498db({{c_longitude}},{{c_latitude}})/{{m_longitude}},{{m_latitude}},{{zoom}},{{bearing}},{{pitch}}/400x400?access_token={{key}}
+    https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-l+2ecc71({{o_longitude}},{{o_latitude}}),pin-s-o+3498db({{c_longitude}},{{c_latitude}})/{{m_longitude}},{{m_latitude}},{{zoom}},{{bearing}},{{pitch}}/400x400?access_token={{key}}
   {%- endif -%}
-  limit_refetch_to_url_change: true
+limit_refetch_to_url_change: true
