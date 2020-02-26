@@ -620,6 +620,13 @@ cards:
                     name: Pressure
                   - entity: sensor.dark_sky_wind_speed
                     name: Wind Speed
+                  - type: divider
+                  - entity: sensor.co2_intensity_es
+                    name: CO2 Intensity - Spain
+                  - entity: sensor.co2_intensity_it_cso
+                    name: CO2 Intensity - Italy - Centro Sud
+                  - entity: sensor.co2_intensity_gb
+                    name: CO2 Intensity - United Kingdom
 #  - type: markdown
 #    content: >
 #      ##
