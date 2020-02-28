@@ -29,15 +29,7 @@ room_device_10:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 2
-              - color: '#e0b400'
-                value: 5
-              - color: '#e45e65'
-                value: 7.5
+            color_thresholds: !include thresholds/device_today_energy.yaml
             entities:
               - entity: sensor.power_usage_[[device]]_today_energy
             tap_action:
@@ -63,15 +55,7 @@ room_device_10:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 250
-              - color: '#e0b400'
-                value: 1000
-              - color: '#e45e65'
-                value: 2000
+            color_thresholds: !include thresholds/device_10_current_power.yaml
             entities:
               - entity: sensor.power_usage_[[device]]_power
             tap_action:
@@ -99,15 +83,7 @@ room_device_10:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 2.5
-              - color: '#e0b400'
-                value: 5
-              - color: '#e45e65'
-                value: 10
+            color_thresholds: !include thresholds/device_10_current_ampere.yaml
             entities:
               - entity: sensor.power_usage_[[device]]_ampere
             tap_action:
@@ -133,15 +109,7 @@ room_device_10:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 220
-              - color: '#e0b400'
-                value: 240
-              - color: '#e45e65'
-                value: 250
+            color_thresholds: !include thresholds/voltage.yaml
             entities:
               - entity: sensor.power_usage_[[device]]_voltage
             tap_action:

@@ -29,15 +29,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 2.5
-              - color: '#e0b400'
-                value: 7.5
-              - color: '#e45e65'
-                value: 15
+            color_thresholds: !include thresholds/house_daily_energy.yaml
             entities:
               - entity: sensor.[[area]]_daily_energy_usage
             tap_action:
@@ -63,15 +55,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 1
-              - color: '#e0b400'
-                value: 2.5
-              - color: '#e45e65'
-                value: 5
+            color_thresholds: !include thresholds/house_daily_cost.yaml
             entities:
               - entity: sensor.[[area]]_cost_daily
             tap_action:
@@ -99,15 +83,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 75
-              - color: '#e0b400'
-                value: 150
-              - color: '#e45e65'
-                value: 250
+            color_thresholds: !include thresholds/house_monthly_energy.yaml
             entities:
               - entity: sensor.[[area]]_monthly_energy_usage
             tap_action:
@@ -133,15 +109,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 25
-              - color: '#e0b400'
-                value: 75
-              - color: '#e45e65'
-                value: 100
+            color_thresholds: !include thresholds/house_monthly_cost.yaml
             entities:
               - entity: sensor.[[area]]_cost_monthly
             tap_action:
@@ -169,15 +137,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 500
-              - color: '#e0b400'
-                value: 1500
-              - color: '#e45e65'
-                value: 2500
+            color_thresholds: !include thresholds/house_yearly_energy.yaml
             entities:
               - entity: sensor.[[area]]_yearly_energy_usage
             tap_action:
@@ -203,15 +163,7 @@ house_cost:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 500
-              - color: '#e0b400'
-                value: 750
-              - color: '#e45e65'
-                value: 1000
+            color_thresholds: !include thresholds/house_yearly_cost.yaml
             entities:
               - entity: sensor.[[area]]_cost_yearly
             tap_action:

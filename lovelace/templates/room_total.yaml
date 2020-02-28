@@ -29,15 +29,7 @@ room_total:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 2
-              - color: '#e0b400'
-                value: 5
-              - color: '#e45e65'
-                value: 7.5
+            color_thresholds: !include thresholds/room_today_energy.yaml
             entities:
               - entity: sensor.[[area]]_today_energy_usage
             tap_action:
@@ -63,15 +55,7 @@ room_total:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 1000
-              - color: '#e0b400'
-                value: 2500
-              - color: '#e45e65'
-                value: 5000
+            color_thresholds: !include thresholds/room_current_power.yaml
             entities:
               - entity: sensor.[[area]]_total_power_usage
             tap_action:
@@ -99,15 +83,7 @@ room_total:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 5
-              - color: '#e0b400'
-                value: 10
-              - color: '#e45e65'
-                value: 25
+            color_thresholds: !include thresholds/room_current_ampere.yaml
             entities:
               - entity: sensor.[[area]]_total_ampere_usage
             tap_action:
@@ -133,15 +109,7 @@ room_total:
               legend: true
               extrema: false
               labels: false
-            color_thresholds:
-              - color: '#039BE5'
-                value: 0
-              - color: '#0da035'
-                value: 220
-              - color: '#e0b400'
-                value: 240
-              - color: '#e45e65'
-                value: 250
+            color_thresholds: !include thresholds/voltage.yaml
             entities:
               - entity: sensor.[[area]]_average_voltage
             tap_action:

@@ -48,7 +48,7 @@ temperature:
 #          label: "Day"
 #        - value: "on"
 #          label: "Night"
-      color_thresholds: !include temperature_thresholds.yaml
+      color_thresholds: !include thresholds/temperature.yaml
       style: |
         ha-card {
           padding: 16px !important;
