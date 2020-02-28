@@ -150,7 +150,7 @@ cards:
               - title: TV
 #          - type: media-control
 #            entity: media_player.living_room_tv
-#          - type: divider
+          - type: divider
           - type: custom:mini-media-player
             entity: media_player.living_room_tv
             artwork: cover
