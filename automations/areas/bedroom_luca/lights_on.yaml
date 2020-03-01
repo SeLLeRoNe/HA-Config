@@ -14,12 +14,27 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: time
-      after: '09:30:00'
-      before: '23:30:00'
     - condition: state
       entity_id: group.family
       state: 'home'
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: time
+              after: '10:00:00'
+              before: '23:30:00'
+            - condition: state
+              entity_id: binary_sensor.workday_uk
+              state: 'on'
+        - condition: and
+          conditions:
+            - condition: time
+              after: '11:30:00'
+              before: '23:30:00'
+            - condition: state
+              entity_id: binary_sensor.workday_uk
+              state: 'off'
 action:
   - service: scene.turn_on
     entity_id: scene.bedroom_luca_lights_on

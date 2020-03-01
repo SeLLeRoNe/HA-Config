@@ -5,7 +5,8 @@ trigger:
   platform: webhook
   webhook_id: state
 action:
-  service_template: python_script.set_state
+  service_template: python_script.hass_entities
   data_template:
+    action: set_state
     entity_id: '{{ trigger.json.entity_id }}'
     state: '{{ trigger.json.state }}'
