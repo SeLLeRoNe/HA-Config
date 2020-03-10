@@ -65,6 +65,7 @@ views:
   - !include lovelace/views/laundry_room.yaml
   - !include lovelace/views/patio.yaml
   - !include lovelace/views/surveillance.yaml
+  - !include lovelace/views/health.yaml
   - !include lovelace/views/weather.yaml
   - !include lovelace/views/plugs.yaml
   - !include lovelace/views/batteries.yaml

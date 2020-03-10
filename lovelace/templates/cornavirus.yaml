@@ -1,0 +1,84 @@
+---
+coronavirus:
+  card:
+    type: custom:vertical-stack-in-card
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            title: '[[country_name]]'
+            columns: 4
+            show_header_toggle: false
+            entities:
+              - name: Confirmed
+                entity: sensor.[[country]]_coronavirus_confirmed
+                icon: 'mdi:emoticon-neutral-outline'
+                tap_action:
+                  action: none
+              - name: Current
+                entity: sensor.[[country]]_coronavirus_current
+                icon: 'mdi:emoticon-frown-outline'
+                tap_action:
+                  action: none
+              - name: Recovered
+                entity: sensor.[[country]]_coronavirus_recovered
+                icon: 'mdi:emoticon-happy-outline'
+                tap_action:
+                  action: none
+              - name: Deaths
+                entity: sensor.[[country]]_coronavirus_deaths
+                icon: 'mdi:emoticon-dead-outline'
+                tap_action:
+                  action: none
+      - type: custom:mini-graph-card
+        name: [[country_name]]
+        icon: mdi:hospital-box
+        more_info: false
+        height: 150
+        line_width: 4
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        group: false
+        hour24: true
+        animate: false
+        decimals: 1
+        font_size: 100
+        font_size_header: 14
+        align_header: default
+        align_icon: right
+        align_state: center
+        lower_bound: 0
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: line
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+          labels_secondary: false
+          name_adaptive_color: true
+          icon_adaptive_color: true
+        entities:
+            - entity: sensor.[[country]]_coronavirus_confirmed
+              name: Confirmed
+              color: '#0066FF'
+              show_fill: false
+            - entity: sensor.[[country]]_coronavirus_current
+              name: Current
+              color: '#3399FF'
+              show_fill: false
+            - entity: sensor.[[country]]_coronavirus_recovered
+              name: Recovered
+              color: '#33CC33'
+              show_fill: false
+            - entity: sensor.[[country]]_coronavirus_deaths
+              name: Deaths
+              color: '#FF9900'
+              show_fill: false
+        tap_action:
+          action: none
