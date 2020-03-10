@@ -33,3 +33,4 @@ action:
     data_template:
       entity_id: media_player.studio_google_mini
       message: "Washing Machine is now Done"
+      language: 'en'
