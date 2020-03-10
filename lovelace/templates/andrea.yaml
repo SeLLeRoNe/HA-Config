@@ -41,7 +41,8 @@ andrea:
       - entity: sensor.andrea_honor8_battery
         name: "Honor 8"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.andrea_honor8_wifi == 'on', 'Connected', if(binary_sensor.andrea_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_honor8_charging == 'on', ' - Charging', '' ) ]]"
+#        secondary_info: "WiFi: [[ if(binary_sensor.andrea_honor8_wifi == 'on', 'Connected', if(binary_sensor.andrea_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_honor8_charging == 'on', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(binary_sensor.andrea_honor8_wifi == 'on', 'Connected', if(binary_sensor.andrea_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.andrea_honor8_charging == 'on', ' - Charging', if(input_boolean.andrea_honor8_charging == 'on', ' - Charging', '' )) ]]"
         tap_action:
           action: none
         style: |
