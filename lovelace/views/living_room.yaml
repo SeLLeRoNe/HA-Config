@@ -98,6 +98,7 @@ cards:
                   type: entities
                   name: TV Appliances
                   entity: switch.living_room_tv_stand_plug
+                  state_color: true
                   tap_action:
                     action: none
 #              - entity: switch.living_room_powerstrip_1
