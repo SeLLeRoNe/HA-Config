@@ -1,4 +1,11 @@
 
+// UPDATE FOR EACH RELEASE!!! From aftership-card. Version # is hard-coded for now.
+console.info(
+  `%c  AIR-VISUAL-CARD  \n%c  Version 0.0.11   `,
+  'color: orange; font-weight: bold; background: black',
+  'color: white; font-weight: bold; background: dimgray',
+);
+
 // From weather-card
 const fireEvent = (node, type, detail, options) => {
   options = options || {};
@@ -54,7 +61,7 @@ class AirVisualCard extends HTMLElement {
           font-weight: 300;
           padding: .2em .2em;    
           background-color: var(--background-color); 
-          text-color: var(--text-color);  
+          color: var(--text-color);  
         }
 
         .temp {
@@ -65,7 +72,7 @@ class AirVisualCard extends HTMLElement {
           font-size: 1.7em;
           font-weight: 300;
           background-color: var(--background-color); 
-          text-color: var(--text-color);  
+          color: var(--text-color);  
           padding: .2em .2em;       
         }
   
@@ -146,6 +153,7 @@ class AirVisualCard extends HTMLElement {
       const country = config.country || 'US';
       const city = config.city || '';
       const tempSensor = config.temp || '';
+      const weatherStatus = config.weather || '';
       // value is used as a string instead of integer in order for 
       const aqiSensor = { name: 'aqiSensor', config: config.air_quality_index || null, value: 0 };
       const aplSensor = { name: 'aplSensor', config: config.air_pollution_level || null, value: 0 };
@@ -222,6 +230,7 @@ class AirVisualCard extends HTMLElement {
 
       if (tempSensor.split('.')[0] == 'sensor') {
         tempValue = hass.states[tempSensor].state + 'º';
+        if (weatherStatus !== '') { currentCondition = hass.states[weatherStatus].state };
       } else if (tempSensor.split('.')[0] == 'weather') {
         tempValue = hass.states[tempSensor].attributes['temperature'] + 'º';     
         currentCondition = hass.states[tempSensor].state;
