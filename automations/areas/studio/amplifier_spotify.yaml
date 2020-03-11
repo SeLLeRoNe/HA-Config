@@ -1,0 +1,18 @@
+---
+alias: Studio - Set Amplifier Volume for Spotify
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: template
+    value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'Spotify') }}"
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'Spotify') }}"
+action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.studio_amplifier
+      volume_level: "0.65"
