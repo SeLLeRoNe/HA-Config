@@ -31,4 +31,4 @@ cards:
             template: coronavirus
             variables:
               - country_name: United Kingdom
-              - country: uk
+              - country: united_kingdom
