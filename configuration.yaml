@@ -55,4 +55,6 @@ homeassistant:
 #    access_token: !secret casa_maurizio_token
 #    entity_prefix: "casa_maurizio_"
 
+lovelace:
+  resources: !include lovelace/resources.yaml
 scene: !include scenes.yaml

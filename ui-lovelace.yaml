@@ -7,7 +7,6 @@
 # the tabs of the view in the UI.
 #
 title: Home Control Panel
-resources: !include lovelace/resources.yaml
 custom_header:
   compact_mode: true
   footer_mode: false
