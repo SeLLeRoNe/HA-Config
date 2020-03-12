@@ -25,7 +25,7 @@ action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
     data_template:
-      code: !secret zone_home_alarm_code
+      code: !secret home_alarm_pin
 #  - service: notify.alarm
 #    data_template:
 #      title: "Home Alarm Activated"

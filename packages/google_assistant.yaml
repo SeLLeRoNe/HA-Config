@@ -7,9 +7,10 @@
 google_assistant:
   project_id: !secret google_assistant_project_id
   service_account: !secret google_token_file
-  secure_devices_pin: !secret secure_pin
+  secure_devices_pin: !secret home_alarm_pin
   report_state: true
   exposed_domains:
+    - alarm_control_panel 
     - switch
     - light
     - sensor
