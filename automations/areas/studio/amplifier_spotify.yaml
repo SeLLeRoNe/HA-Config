@@ -15,4 +15,4 @@ action:
   - service: media_player.volume_set
     data:
       entity_id: media_player.studio_amplifier
-      volume_level: "0.65"
+      volume_level: "0.5"
