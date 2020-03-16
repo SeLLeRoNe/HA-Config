@@ -24,4 +24,5 @@ logger:
     homeassistant.components.mqtt: error
     homeassistant.components.python_script: error
     homeassistant.components.websocket_api: error
+    homeassistant.helpers: error
     custom_components.entity_controller: error
