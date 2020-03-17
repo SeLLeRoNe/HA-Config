@@ -29,9 +29,9 @@ action:
       option: 'Done'
   - service: tts.google_translate_say
     data_template:
-      entity_id: media_player.studio_andrea_google
+      entity_id: media_player.studio_google_mini
       message: "Dishwasher is now done"
-      language: 'en'
+      language: "en"
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
