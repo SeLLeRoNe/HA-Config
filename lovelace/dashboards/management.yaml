@@ -7,6 +7,11 @@
 # the tabs of the view in the UI.
 #
 title: Management
+preload:
+  - alarm-panel
+  - conditional
+  - markdown
+  - divider
 custom_header:
   compact_mode: true
   footer_mode: false
@@ -30,4 +35,4 @@ views:
   - !include lovelace/views/system.yaml
   - !include lovelace/views/homeassistant.yaml
   - !include lovelace/views/thermostat.yaml
-  - !include lovelace/views/test.yaml
+

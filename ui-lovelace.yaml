@@ -11,7 +11,7 @@ preload:
   - alarm-panel
   - conditional
   - markdown
-  - gauge
+  - divider
 custom_header:
   compact_mode: true
   footer_mode: false
