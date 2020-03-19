@@ -25,6 +25,8 @@
     type: js
   - url: /hacsfiles/github-card/github-card.js
     type: js
+  - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
+    type: js
 
   - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
     type: module
