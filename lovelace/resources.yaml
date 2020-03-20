@@ -1,32 +1,32 @@
 ---
   - url: /hacsfiles/lovelace-layout-card/layout-card.js
-    type: js
+    type: module
   - url: /hacsfiles/dual-gauge-card/dual-gauge-card.js
-    type: js
+    type: module
   - url: /hacsfiles/lovelace-card-mod/card-mod.js
-    type: js
+    type: module
   - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
-    type: js
+    type: module
   - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
-    type: js
+    type: module
   - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
-    type: js
+    type: module
   - url: /hacsfiles/bar-card/bar-card.js
-    type: js
+    type: module
   - url: /hacsfiles/calendar-card/calendar-card.js
-    type: js
+    type: module
   - url: /hacsfiles/favicon-counter/favicon-counter.js
-    type: js
+    type: module
   - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
-    type: js
+    type: module
   - url: /hacsfiles/air-visual-card/air-visual-card.js
-    type: js
+    type: module
   - url: /hacsfiles/rgb-light-card/card.js
-    type: js
+    type: module
   - url: /hacsfiles/github-card/github-card.js
-    type: js
+    type: module
   - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
-    type: js
+    type: module
 
   - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
     type: module
