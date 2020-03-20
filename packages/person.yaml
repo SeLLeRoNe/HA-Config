@@ -1,0 +1,23 @@
+---
+person:
+  - name: Andrea Iannucci
+    id: !secret andrea_id
+    user_id: !secret andrea_user_id
+    device_trackers:
+      - device_tracker.life360_andrea_iannucci
+#      - device_tracker.andrea_oneplus5
+  - name: Sonia Espejo Brea
+    id: !secret sonia_id
+    user_id: !secret sonia_user_id
+    device_trackers:
+      - device_tracker.life360_sonia_espejo_brea
+#      - device_tracker.sonia_mi9tpro
+  - name: Luca Iannucci Espejo
+    id: !secret luca_id
+    device_trackers:
+      - device_tracker.life360_sonia_espejo_brea
+  - name: Maurizio Iannucci
+    id: !secret maurizio_id
+    device_trackers:
+      - device_tracker.life360_maurizio_iannucci
+#      - device_tracker.maurizio_honor10
