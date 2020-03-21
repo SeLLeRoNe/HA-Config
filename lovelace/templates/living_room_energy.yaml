@@ -1,7 +1,8 @@
 ---
 living_room_energy:
   card:
-    type: custom:vertical-stack-in-card
+    type: custom:stack-in-card
+    mode: vertical
     cards:
       - type: custom:decluttering-card
         template: title
