@@ -9,6 +9,9 @@ condition:
   condition: and
   conditions:
     - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: state
       entity_id: person.andrea
       state: 'home'
     - condition: or
@@ -35,7 +38,7 @@ action:
   - service: media_player.select_source
     data:
       entity_id: media_player.studio_amplifier
-      source: HDMI1
+      source: PC
   - service: mqtt.publish
     data:
       topic: "wled/001/fx"

@@ -1,0 +1,19 @@
+---
+alias: Studio - Andrea - Amplifier On
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: media_player.studio_amplifier
+    from: "off"
+    to: "on"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+action:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.studio_amplifier
+      source: PC
