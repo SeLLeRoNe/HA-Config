@@ -1,8 +1,8 @@
 today = datetime.datetime.now().date()
 
 name = data.get('name')
-type = data.get('type')
-sensorName = "sensor.{}_{}".format(type , name.replace(" " , "_"))
+eventType = data.get('type')
+sensorName = "sensor.{}_{}".format(eventType , name.replace(" " , "_"))
 
 dateStr = data.get('date')
 dateSplit = dateStr.split("/")
@@ -14,6 +14,8 @@ date = datetime.date(dateYear , dateMonth , dateDay)
 
 nextOccurYear = int(today.year)
 nextOccur = datetime.date(nextOccurYear , dateMonth , dateDay)
+
+defaultFriendlyName = ''
 
 if nextOccur < date:
   # date must be the first occurrence
@@ -34,12 +36,10 @@ if years < 0:
 
 numberOfDays = (nextOccur - today).days
 
-defaultFriendlyName = ''
-
-if type.lower() == 'birthday':
-  defaultFriendlyName = "{}'s {}".format(name , type)
+if eventType.lower() == 'birthday':
+  defaultFriendlyName = "{}'s {}".format(name , eventType)
 else:
-  defaultFriendlyName = "{} {}".format(name , type)
+  defaultFriendlyName = "{} {}".format(name , eventType)
 
 hass.states.set(sensorName , numberOfDays ,
   {
