@@ -7,7 +7,8 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title
@@ -95,7 +96,7 @@ cards:
 #                  block: true
                 row: true
                 card:
-                  type: entities
+                  type: custom:hui-entities-card
                   name: TV Appliances
                   entity: switch.living_room_tv_stand_plug
                   state_color: true
@@ -108,7 +109,8 @@ cards:
       - break
       - type: vertical-stack
         cards:
-          - type: custom:vertical-stack-in-card
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: custom:decluttering-card
                 template: title
@@ -143,7 +145,8 @@ cards:
             variables:
               - area: living_room
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title

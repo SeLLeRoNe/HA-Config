@@ -5,7 +5,8 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title
@@ -62,11 +63,13 @@ cards:
 #        entities:
 #          - switch.studio_wall_light  
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: people
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title
@@ -114,7 +117,8 @@ cards:
       - type: custom:decluttering-card
         template: house_lights
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title

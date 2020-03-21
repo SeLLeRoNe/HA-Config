@@ -6,7 +6,8 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title
@@ -148,7 +149,8 @@ cards:
                 tap_action:
                   action: none
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title

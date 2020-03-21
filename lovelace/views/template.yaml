@@ -9,5 +9,6 @@ cards:
       - type: vertical-stack
         cards:
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:

@@ -38,7 +38,8 @@ cards:
                 template: humidity
                 variables:
                   - entity: sensor.master_bedroom_humidity
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title

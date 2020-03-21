@@ -12,7 +12,8 @@ cards:
             template: title
             variables:
               - title: Intel NUC
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: entities
             title: System
@@ -254,7 +255,8 @@ cards:
             template: title
             variables:
               - title: Pi Hole
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: entities
             title: Statistics
@@ -332,7 +334,8 @@ cards:
             template: title
             variables:
               - title: Network Devices
-          - type: custom:vertical-stack-in-card
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: glance
 #                title: Devices

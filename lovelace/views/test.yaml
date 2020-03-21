@@ -251,7 +251,8 @@ cards:
       #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state === '70px')'4px';else
       #           '14px'}
       #       card:
-      #         type: 'custom:vertical-stack-in-card'
+      #         type: custom:stack-in-card
+      #         mode: vertical
       #         cards:
       #           - type: 'custom:hui-picture-elements-card'
       #             elements:
@@ -333,7 +334,8 @@ cards:
       #           {if (states['sensor.' + states['vars[0]'].state +'_height'].state === '70px')'4px';else
       #           '14px'}
       #       card:
-      #         type: 'custom:vertical-stack-in-card'
+      #         type: custom:stack-in-card
+      #         mode: vertical
       #         cards:
       #           - type: 'custom:hui-picture-elements-card'
       #             elements:

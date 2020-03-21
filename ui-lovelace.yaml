@@ -8,9 +8,8 @@
 #
 title: Home Control Panel
 preload:
-  - alarm-panel
-  - conditional
   - markdown
+  - conditional
 custom_header:
   compact_mode: true
   footer_mode: false

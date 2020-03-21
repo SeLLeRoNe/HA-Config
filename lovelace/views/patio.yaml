@@ -8,7 +8,8 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: title
@@ -105,7 +106,8 @@ cards:
       - break
       - type: vertical-stack
         cards:
-          - type: custom:vertical-stack-in-card
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: custom:decluttering-card
                 template: title
@@ -141,7 +143,8 @@ cards:
                 variables:
                   - entity: sensor.patio_pressure
 #      - break
-#      - type: custom:vertical-stack-in-card
+#      - type: custom:stack-in-card
+#        mode: vertical
 #        cards:
 #          - type: picture-glance
 #            title: Live view
