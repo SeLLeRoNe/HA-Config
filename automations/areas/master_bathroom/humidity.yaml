@@ -1,0 +1,19 @@
+---
+alias: Master Bathroom - Humidity Alert
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.master_bathroom_huimidity
+    above: '80'
+    for:
+      minutes: 5
+action:
+  - service: tts.google_translate_say
+    data_template:
+      entity_id: media_player.studio_google_mini
+      message: "The humidity in the master bathroom is too high, please open the window"
+      language: "en"
+  - service: notify.telegram_andrea
+    data:
+      title: "Master Bathroom"
+      message: "The humidity in the master bathroom is too high, please open the window"
