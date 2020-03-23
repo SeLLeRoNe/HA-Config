@@ -5,12 +5,10 @@
 #
 platform: samsungtv_tizen
 name: Living Room TV
-#name: TV SAMSUNG Q60R
 host: !secret living_room_tv_ip
 mac: !secret living_room_tv_mac
 port: !secret living_room_tv_port
-#applist: "YouTube, Apple TV, Plex, Prime Video, Spotify"
-#sourcelist: '{"R": "KEY_HDMI1", "NowTV IT": "KEY_HDMI2", "NowTV UK": "KEY_HDMI3", "Nintendo Wii": "KEY_HDMI4"}'
-#protocol: ctl_beta
-#timeout: 15
-#update_method: ping
+update_method: smartthings
+api_key: !secret living_room_tv_api_key
+device_id: !secret living_room_tv_device_id
+app_list: '{"Netflix": "11101200001/org.tizen.netflix-app", "Prime Video": "3201512006785/org.tizen.ignition", "Spotify": "3201606009684"}'
