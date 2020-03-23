@@ -9,7 +9,6 @@
 title: Home Control Panel
 preload:
   - markdown
-  - conditional
 custom_header:
   compact_mode: true
   footer_mode: false

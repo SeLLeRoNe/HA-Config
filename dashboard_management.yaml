@@ -9,7 +9,6 @@
 title: Management
 preload:
   - markdown
-  - conditional
 custom_header:
   compact_mode: true
   footer_mode: false
