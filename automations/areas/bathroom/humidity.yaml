@@ -7,6 +7,12 @@ trigger:
     above: '80'
     for:
       minutes: 5
+condition:
+  condition: or
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.bathroom_mccgq01lm_window
+      state: 'off'
 action:
   - service: tts.google_translate_say
     data_template:
