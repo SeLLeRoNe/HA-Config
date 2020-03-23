@@ -116,7 +116,7 @@ house_lights:
             entities:
               - type: "custom:hui-conditional-card"
                 conditions:
-                  - entity: light.studio_light
+                  - entity: light.studio_wall_light
                     state: "off"
                 card:
                   type: entities
@@ -534,11 +534,11 @@ house_lights:
                 toggle: true
                 name: "Lamp Bottom"
               - type: 'custom:slider-entity-row'
-                entity: light.andrea_bedside_lamp
+                entity: light.master_bedroom_andrea_bedside_lamp
                 toggle: true
                 name: "Bedside - Andrea"
               - type: 'custom:slider-entity-row'
-                entity: light.sonia_bedside_lamp
+                entity: light.master_bedroom_sonia_bedside_lamp
                 toggle: true
                 name: "Bedside - Sonia"
               - type: custom:fold-entity-row
@@ -549,7 +549,7 @@ house_lights:
                   toggle: true
                 entities:
                   - type: 'custom:slider-entity-row'
-                    entity: light.master_bathroom_light
+                    entity: light.master_bathroom_mirror_light
                     toggle: true
                     name: "Mirror Light"
           - type: custom:fold-entity-row
