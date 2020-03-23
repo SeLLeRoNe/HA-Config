@@ -1,0 +1,9 @@
+---
+platform: "mqtt"
+name: "Master Bedroom Sonia Bedside Lamp"
+state_topic: "zigbee2mqtt/master_bedroom_sonia_bedside_lamp"
+availability_topic: "zigbee2mqtt/master_bedroom_sonia_bedside_lamp/availability"
+brightness: true
+xy: true
+schema: "json"
+command_topic: "zigbee2mqtt/master_bedroom_sonia_bedside_lamp/set"
