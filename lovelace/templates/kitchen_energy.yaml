@@ -12,24 +12,32 @@ kitchen_energy:
         template: room_cost
         variables:
           - area: kitchen
-      - type: divider
+      - type: entities
+        entities:
+          - type: divider
       - type: custom:decluttering-card
         template: room_total
         variables:
           - area: kitchen
-      - type: divider
+      - type: entities
+        entities:
+          - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
           - device_name: Dishwasher
           - device: dishwasher
-      - type: divider
+      - type: entities
+        entities:
+          - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
           - device_name: Fridge
           - device: fridge
-      - type: divider
+      - type: entities
+        entities:
+          - type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:

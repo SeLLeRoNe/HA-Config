@@ -103,13 +103,13 @@ cards:
               - title: Plugs
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Desk Andrea
                   entity: switch.studio_andrea_desk_plug
                   state_color: true
@@ -120,7 +120,6 @@ cards:
 #                 block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Desk Sonia
                   entity: switch.studio_sonia_desk_plug
                   state_color: true
@@ -131,22 +130,23 @@ cards:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Table
                   entity: switch.studio_table_plug
                   state_color: true
                   tap_action:
                     action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Home Assistant Server
                   entity: switch.studio_home_assistant_server
                   state_color: true
@@ -155,7 +155,6 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Google Mini
                   entity: switch.studio_google_mini
                   state_color: true
@@ -164,7 +163,6 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Computer
                   entity: switch.studio_andrea_computer_plug
                   state_color: true
@@ -173,7 +171,6 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: "LG Monitor #1"
                   entity: switch.studio_andrea_lg_monitor_1
                   state_color: true
@@ -182,22 +179,23 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: "LG Monitor #2"
                   entity: switch.studio_andrea_lg_monitor_2
                   state_color: true
                   tap_action:
                     action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: USB Ports
                   entity: switch.studio_andrea_usb_ports
                   state_color: true
@@ -206,20 +204,21 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: USB Hub
                   entity: switch.studio_andrea_usb_hub
                   state_color: true
                   tap_action:
                     action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: UK Powerstrip
                   entity: switch.studio_andrea_uk_powerstrip
                   state_color: true
@@ -239,19 +238,21 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: "Powerstrip #2"
                   entity: switch.studio_andrea_powerstrip_2
                   state_color: true
                   tap_action:
                     action: none
-#          - type: divider
+#          - type: entities
+#            entities:
+#              - type: divider
 #          - type: custom:decluttering-card
 #            template: title
 #            variables:
 #              - title: Plugs not in use
 #          - type: custom:hui-entities-card
 #            show_header_toggle: false
+##            state_color: true
 #            entities:
 #              - entity: switch.studio_andrea_powerstrip_2_plug_3
 #                state_color: true
@@ -267,6 +268,7 @@ cards:
 #                        rgb(128, 128, 128);
 #                      {% endif %}
 #                  }
+#                  state_color: true
 #                tap_action:
 #                  action: none
       - break
@@ -434,7 +436,9 @@ cards:
 #              - entity: input_boolean.spotify_shuffle
 #                tap_action:
 #                  action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: custom:mini-media-player
             entity: media_player.spotify
             artwork: cover
@@ -456,7 +460,9 @@ cards:
               shuffle: false
             tap_action:
               action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: custom:mini-media-player
             entity: media_player.studio_google_mini
             hide:

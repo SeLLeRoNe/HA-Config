@@ -90,43 +90,38 @@ cards:
               - title: Plugs
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Fridge
-                  entities:
-                    - entity: switch.fridge
-                      state_color: true
-                      tap_action:
-                        action: none
+                  entity: switch.fridge
+                  state_color: true
+                  tap_action:
+                    action: none
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Dishwasher
-                  entities:
-                    - entity: switch.dishwasher
-                      state_color: true
-                      tap_action:
-                        action: none
+                  entity: switch.dishwasher
+                  state_color: true
+                  tap_action:
+                    action: none
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Toaster
-                  entities:
-                    - entity: switch.toaster
-                      state_color: true
-                      tap_action:
-                        action: none
+                  entity: switch.toaster
+                  state_color: true
+                  tap_action:
+                    action: none
       - break
       - type: vertical-stack
         cards:

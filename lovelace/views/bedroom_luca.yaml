@@ -229,13 +229,14 @@ cards:
               - title: Plugs
 #          - type: entities
 #            show_header_toggle: false
+##            state_color: true
 #            entities:
 #              - type: "custom:restriction-card"
 #                row: true
 #                card:
-#                  type: entities
 #                  name: Desk Plug
 #                  entity: switch.bedroom_luca_desk_plug
+#                  state_color: true
 #                  tap_action:
 #                    action: none
 #              - entity: switch.bedroom_luca_powerstrip_1

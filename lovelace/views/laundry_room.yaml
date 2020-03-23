@@ -89,13 +89,13 @@ cards:
               - title: Plugs
           - type: entities
             show_header_toggle: false
+#            state_color: true
             entities:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
                 row: true
                 card:
-                  type: custom:hui-entities-card
                   name: Washing Machine
                   entity: switch.washing_machine
                   state_color: true

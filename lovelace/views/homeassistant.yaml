@@ -41,13 +41,17 @@ cards:
               - entity: sensor.tasmota_available_version
                 tap_action:
                   action: none
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: custom:github-card
             show_github_icon: false
             show_extended: false
             entities:
               - sensor.ha_config
-          - type: divider
+          - type: entities
+            entities:
+              - type: divider
           - type: glance
             columns: 4
             entities:
