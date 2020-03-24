@@ -226,6 +226,15 @@ cards:
           - type: custom:decluttering-card
             template: title
             variables:
+              - title: Scenes
+          - type: entities
+            show_header_toggle: false
+            entities:
+             - entity: scene.bedroom_luca_lights_on
+             - entity: scene.bedroom_luca_diaper_change
+          - type: custom:decluttering-card
+            template: title
+            variables:
               - title: Plugs
 #          - type: entities
 #            show_header_toggle: false
