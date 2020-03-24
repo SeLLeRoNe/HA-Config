@@ -4,7 +4,7 @@ sonia:
     type: entities
     show_header_toggle: false
     entities:
-      - entity: person.sonia
+      - entity: person.sonia_espejo_brea
         type: "custom:secondaryinfo-entity-row"
         secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
         tap_action:

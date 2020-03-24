@@ -12,7 +12,7 @@ condition:
       entity_id: binary_sensor.andrea_xt1032_charging
       state: 'on'
     - condition: state
-      entity_id: person.andrea
+      entity_id: person.andrea_iannucci
       state: 'home'
 action:
   - service: notify.html5_andrea_computer_studio

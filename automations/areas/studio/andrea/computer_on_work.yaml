@@ -9,7 +9,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: person.andrea
+      entity_id: person.andrea_iannucci
       state: 'home'
     - condition: time
       after: '09:30:00'

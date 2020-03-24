@@ -3,14 +3,14 @@ alias: House - Sonia is home
 initial_state: on
 trigger:
   - platform: zone
-    entity_id: person.sonia
+    entity_id: person.sonia_espejo_brea
     zone: zone.home
     event: enter
 condition:
     - condition: and
       conditions:
         - condition: template
-          value_template: "{{ not is_state('person.andrea', 'home') }}"
+          value_template: "{{ not is_state('person.andrea_iannucci', 'home') }}"
     - condition: time
       after: '09:00:00'
       before: '23:00:00'

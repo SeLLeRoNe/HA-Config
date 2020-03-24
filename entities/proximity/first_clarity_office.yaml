@@ -3,6 +3,6 @@ first_clarity_office:
   zone: first_clarity_office
   ignored_zones:
   devices:
-    - person.andrea
+    - person.andrea_iannucci
   tolerance: 50
   unit_of_measurement: m

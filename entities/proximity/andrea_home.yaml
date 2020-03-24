@@ -4,6 +4,6 @@ andrea_home:
   ignored_zones:
 #    - office_andrea
   devices:
-    - person.andrea
+    - person.andrea_iannucci
   tolerance: 50
   unit_of_measurement: m

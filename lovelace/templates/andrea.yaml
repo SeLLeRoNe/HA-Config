@@ -4,7 +4,7 @@ andrea:
     type: custom:hui-entities-card
     show_header_toggle: false
     entities:
-      - entity: person.andrea
+      - entity: person.andrea_iannucci
         type: "custom:secondaryinfo-entity-row"
         secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
         tap_action:

@@ -9,7 +9,7 @@ trigger:
       seconds: 120
 condition:
   - condition: state
-    entity_id: person.andrea
+    entity_id: person.andrea_iannucci
     state: 'home'
 action:
   - service: switch.turn_off

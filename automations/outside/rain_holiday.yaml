@@ -8,7 +8,7 @@ condition:
   condition: and
   conditions:
    - condition: template
-     value_template: "{{ is_state('person.sonia', 'home') }}"
+     value_template: "{{ is_state('person.sonia_espejo_brea', 'home') }}"
    - condition: numeric_state
      entity_id: sensor.dark_sky_precip_probability
      above: 50

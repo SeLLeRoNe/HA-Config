@@ -7,7 +7,7 @@ trigger:
     to: 'on'
 condition:
   - condition: state
-    entity_id: person.andrea
+    entity_id: person.andrea_iannucci
     state: 'not_home'
 action:
   - service: switch.turn_on

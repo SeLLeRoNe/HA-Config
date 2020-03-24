@@ -4,6 +4,6 @@ sonia_home:
   ignored_zones:
 #    - office_sonia
   devices:
-    - person.sonia
+    - person.sonia_espejo_brea
   tolerance: 50
   unit_of_measurement: m
