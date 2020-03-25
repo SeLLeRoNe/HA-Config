@@ -4,4 +4,4 @@
 #
 # https://www.home-assistant.io/integrations/scene/
 #
-scene: !include_dir_list ../entities/scenes
+scene: !include_dir_list ../scenes
