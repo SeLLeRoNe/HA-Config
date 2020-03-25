@@ -1,16 +1,7 @@
 ---
-alias: Bedroom Luca - Diaper Change
+alias: Bedroom Luca - PIR Day
 initial_state: on
 trigger:
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_1
-#    to: 'on'
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_2
-#    to: 'on'
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_3
-#    to: 'on'
   - platform: state
     entity_id: binary_sensor.bedroom_luca_pir
     to: 'on'
@@ -36,16 +27,16 @@ condition:
         - condition: and
           conditions:
             - condition: time
-              after: '23:00:00'
-              before: '10:00:00'
+              after: '10:00:00'
+              before: '21:30:00'
             - condition: state
               entity_id: binary_sensor.workday_uk
               state: 'on'
         - condition: and
           conditions:
             - condition: time
-              after: '23:00:00'
-              before: '11:30:00'
+              after: '11:30:00'
+              before: '21:30:00'
             - condition: state
               entity_id: binary_sensor.workday_uk
               state: 'off'
@@ -57,4 +48,4 @@ action:
   - delay:
       seconds: 5
   - service: scene.turn_on
-    entity_id: scene.bedroom_luca_diaper_change
+    entity_id: scene.bedroom_luca_lights_on
