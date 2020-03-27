@@ -105,6 +105,13 @@ cards:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
+#                condition:
+#                  entity: input_select.dishwasher_status
+#                  value: "Warming Up"
+#                  entity: input_select.dishwasher_status
+#                  value: "Washing"
+#                  entity: input_select.dishwasher_status
+#                  value: "Drying"
                 row: true
                 card:
                   name: Dishwasher
@@ -114,7 +121,7 @@ cards:
                     action: none
               - type: "custom:restriction-card"
                 restrictions:
-                  block: true
+                  block: false
                 row: true
                 card:
                   name: Toaster

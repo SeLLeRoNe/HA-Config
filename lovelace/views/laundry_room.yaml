@@ -94,6 +94,13 @@ cards:
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
+#                condition:
+#                  entity: input_select.washing_machine_status
+#                  value: "Warming Up"
+#                  entity: input_select.washing_machine_status
+#                  value: "Washing"
+#                  entity: input_select.washing_machine_status
+#                  value: "Drying"
                 row: true
                 card:
                   name: Washing Machine
