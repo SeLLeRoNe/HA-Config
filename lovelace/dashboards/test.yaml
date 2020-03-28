@@ -8,9 +8,9 @@
 #
 title: Test
 preload:
-  - alarm-panel
-  - conditional
   - markdown
+preload_rows:
+  - divider
 custom_header:
   compact_mode: true
   footer_mode: false
@@ -28,6 +28,3 @@ custom_header:
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/test.yaml
-  - !include lovelace/views/fitbit.yaml
-  - !include lovelace/views/transport.yaml
-  - !include lovelace/views/tablet.yaml

@@ -8,9 +8,9 @@
 #
 title: Management
 preload:
-  - alarm-panel
-  - conditional
   - markdown
+preload_rows:
+  - divider
 custom_header:
   compact_mode: true
   footer_mode: false
