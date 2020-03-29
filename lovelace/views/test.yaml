@@ -6,6 +6,29 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: entities
+        title: Hall Light Presets
+        show_header_toggle: false
+        entities:
+        ## USE THIS CONFIG TO HAVE IT MATCH YOUR THEME ##
+          - entity: light.studio_wall_light
+            type: custom:light-brightness-preset-row
+            name: Wall Light
+            customSetpoints: true
+            LowBrightness: 30
+            MedBrightness: 100
+            HiBrightness: 225
+            customTheme: true
+            IsOnLowColor: 'rgb(255, 0, 0)'
+            IsOnMedColor: '#888888'
+            IsOnHiColor: '#222222'
+            ButtonInactiveColor: '#aaaaaa'
+            IsOffColor: 'purple'
+          - entity: light.studio_wall_light
+            type: custom:light-brightness-preset-row
+            name: Wall Light
+            customTheme: false
+            customSetpoints: false
       - type: picture-entity
         entity: camera.tracker_andrea
         camera_view: live
