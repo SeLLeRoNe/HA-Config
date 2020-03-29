@@ -59,7 +59,11 @@
     type: module
   - url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
     type: module
-  - url: /hacsfiles/light-brightness-preset-row/light-brightness-preset-row.js	
+  - url: /hacsfiles/light-brightness-preset-row/light-brightness-preset-row.js
+    type: module
+  - url: /hacsfiles/binary-control-button-row/binary-control-button-row.js
+    type: module
+  - url: /hacsfiles/fan-control-entity-row/fan-control-entity-row.js
     type: module
 
   - url: /local/lovelace/cards/dark-sky-weather-card.js
