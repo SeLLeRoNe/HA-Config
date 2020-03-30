@@ -1,0 +1,9 @@
+---
+platform: generic
+name: ISS
+still_image_url: >-
+  {%- set c_longitude = state_attr('binary_sensor.iss', 'long') -%}
+  {%- set c_latitude = state_attr('binary_sensor.iss', 'lat') -%}
+  {%- set key = states('sensor.mapbox_key') -%}
+  https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-l+2ecc71({{o_longitude}},{{o_latitude}})/{{o_longitude}},{{o_latitude}},0,0,5/400x400?access_token={{key}}
+limit_refetch_to_url_change: true
