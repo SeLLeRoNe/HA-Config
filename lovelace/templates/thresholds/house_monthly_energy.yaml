@@ -1,8 +1,8 @@
 - color: '#039BE5'
   value: 0
 - color: '#0da035'
-  value: 75
+  value: 100
 - color: '#e0b400'
-  value: 150
-- color: '#e45e65'
   value: 250
+- color: '#e45e65'
+  value: 500
