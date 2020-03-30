@@ -52,33 +52,33 @@ cards:
             IsOnColor: 'rgb(255, 0, 0)'
             IsOffColor: 'purple'
             ButtonInactiveColor: '#aaaaaa'
-      - type: 'custom:config-template-card'
-        entities: sensor.dark_sky_alt_wind
-        variables:
-          - states['sensor.dark_sky_alt_wind'].state
-        card:
-          type: 'custom:hui-picture-entity-card'
-          entity: sensor.dark_sky_alt_wind
-          show_name: false
-          show_state: false
-          state_image:
-            CALM: /local/icons/wind/CALM.png 
-            E: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'E-blu.png' : vars[0] <= 20 ? 'E-grn.png' : vars[0] <= 30 ? 'E-yel.png' : 'E-red.png' ) }"
-            ENE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'ENE-blu.png' : vars[0] <= 20 ? 'ENE-grn.png' : vars[0] <= 30 ? 'ENE-yel.png' : 'ENE-red.png' ) }"
-            ESE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'ESE-blu.png' : vars[0] <= 20 ? 'ESE-grn.png' : vars[0] <= 30 ? 'ESE-yel.png' : 'ESE-red.png' ) }"
-            'N': "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'N-blu.png' : vars[0] <= 20 ? 'N-grn.png' : vars[0] <= 30 ? 'N-yel.png' : 'N-red.png' ) }"
-            NE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NE-blu.png' : vars[0] <= 20 ? 'NE-grn.png' : vars[0] <= 30 ? 'NE-yel.png' : 'NE-red.png' ) }"
-            NNE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NNE-blu.png' : vars[0] <= 20 ? 'NNE-grn.png' : vars[0] <= 30 ? 'NNE-yel.png' : 'NNE-red.png' ) }"
-            NNW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NNW-blu.png' : vars[0] <= 20 ? 'NNW-grn.png' : vars[0] <= 30 ? 'NNW-yel.png' : 'NNW-red.png' ) }"
-            NW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NW-blu.png' : vars[0] <= 20 ? 'NW-grn.png' : vars[0] <= 30 ? 'NW-yel.png' : 'NW-red.png' ) }"
-            S: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'S-blu.png' : vars[0] <= 20 ? 'S-grn.png' : vars[0] <= 30 ? 'S-yel.png' : 'S-red.png' ) }"
-            SE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SE-blu.png' : vars[0] <= 20 ? 'SE-grn.png' : vars[0] <= 30 ? 'SE-yel.png' : 'SE-red.png' ) }"
-            SSE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SSE-blu.png' : vars[0] <= 20 ? 'SSE-grn.png' : vars[0] <= 30 ? 'SSE-yel.png' : 'SSE-red.png' ) }"
-            SSW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SSW-blu.png' : vars[0] <= 20 ? 'SSW-grn.png' : vars[0] <= 30 ? 'SSW-yel.png' : 'SSW-red.png' ) }"
-            SW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SW-blu.png' : vars[0] <= 20 ? 'SW-grn.png' : vars[0] <= 30 ? 'SW-yel.png' : 'SW-red.png' ) }"
-            W: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'W-blu.png' : vars[0] <= 20 ? 'W-grn.png' : vars[0] <= 30 ? 'W-yel.png' : 'W-red.png' ) }"
-            WNW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WNW-blu.png' : vars[0] <= 20 ? 'WNW-grn.png' : vars[0] <= 30 ? 'WNW-yel.png' : 'WNw-red.png' ) }"
-            WSW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WSW-blu.png ': vars[0] <= 20 ? 'WSW-grn.png' : vars[0] <= 30 ? 'WSW-yel.png' : 'WSw-red.png' ) }"
+#      - type: 'custom:config-template-card'
+#        entities: sensor.dark_sky_alt_wind
+#        variables:
+#          - states['sensor.dark_sky_alt_wind'].state
+#        card:
+#          type: 'custom:hui-picture-entity-card'
+#          entity: sensor.dark_sky_alt_wind
+#          show_name: false
+#          show_state: false
+#          state_image:
+#            CALM: /local/icons/wind/CALM.png 
+#            E: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'E-blu.png' : vars[0] <= 20 ? 'E-grn.png' : vars[0] <= 30 ? 'E-yel.png' : 'E-red.png' ) }"
+#            ENE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'ENE-blu.png' : vars[0] <= 20 ? 'ENE-grn.png' : vars[0] <= 30 ? 'ENE-yel.png' : 'ENE-red.png' ) }"
+#            ESE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'ESE-blu.png' : vars[0] <= 20 ? 'ESE-grn.png' : vars[0] <= 30 ? 'ESE-yel.png' : 'ESE-red.png' ) }"
+#            'N': "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'N-blu.png' : vars[0] <= 20 ? 'N-grn.png' : vars[0] <= 30 ? 'N-yel.png' : 'N-red.png' ) }"
+#            NE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NE-blu.png' : vars[0] <= 20 ? 'NE-grn.png' : vars[0] <= 30 ? 'NE-yel.png' : 'NE-red.png' ) }"
+#            NNE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NNE-blu.png' : vars[0] <= 20 ? 'NNE-grn.png' : vars[0] <= 30 ? 'NNE-yel.png' : 'NNE-red.png' ) }"
+#            NNW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NNW-blu.png' : vars[0] <= 20 ? 'NNW-grn.png' : vars[0] <= 30 ? 'NNW-yel.png' : 'NNW-red.png' ) }"
+#            NW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'NW-blu.png' : vars[0] <= 20 ? 'NW-grn.png' : vars[0] <= 30 ? 'NW-yel.png' : 'NW-red.png' ) }"
+#            S: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'S-blu.png' : vars[0] <= 20 ? 'S-grn.png' : vars[0] <= 30 ? 'S-yel.png' : 'S-red.png' ) }"
+#            SE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SE-blu.png' : vars[0] <= 20 ? 'SE-grn.png' : vars[0] <= 30 ? 'SE-yel.png' : 'SE-red.png' ) }"
+#            SSE: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SSE-blu.png' : vars[0] <= 20 ? 'SSE-grn.png' : vars[0] <= 30 ? 'SSE-yel.png' : 'SSE-red.png' ) }"
+#            SSW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SSW-blu.png' : vars[0] <= 20 ? 'SSW-grn.png' : vars[0] <= 30 ? 'SSW-yel.png' : 'SSW-red.png' ) }"
+#            SW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'SW-blu.png' : vars[0] <= 20 ? 'SW-grn.png' : vars[0] <= 30 ? 'SW-yel.png' : 'SW-red.png' ) }"
+#            W: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'W-blu.png' : vars[0] <= 20 ? 'W-grn.png' : vars[0] <= 30 ? 'W-yel.png' : 'W-red.png' ) }"
+#            WNW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WNW-blu.png' : vars[0] <= 20 ? 'WNW-grn.png' : vars[0] <= 30 ? 'WNW-yel.png' : 'WNw-red.png' ) }"
+#            WSW: "${'/local/icons/wind/' + ( vars[0] <= 10 ? 'WSW-blu.png ': vars[0] <= 20 ? 'WSW-grn.png' : vars[0] <= 30 ? 'WSW-yel.png' : 'WSw-red.png' ) }"
       - break
       - type: entities
         show_header_toggle: false
@@ -471,59 +471,59 @@ cards:
       #       type: "custom:secondaryinfo-entity-row"
       #       secondary_info: "Next Dawn: [[ sun.sun.attributes.next_dawn ]]"
       - break
-      - type: custom:dual-gauge-card
-#        title: CPU/RAM
-        min: 0
-        max: 100
-        outer:
-          entity: sensor.processor_use
-          label: "CPU"
-          unit: "%"
-          colors:
-            - color: "var(--label-badge-green)"
-              value: 0
-            - color: "var(--label-badge-orange)"
-              value: 75
-            - color: "var(--label-badge-red)"
-              value: 90
-        inner:
-          entity: sensor.memory_use_percent
-          label: "RAM"
-          unit: "%"
-          colors:
-            - color: "var(--label-badge-green)"
-              value: 0
-            - color: "var(--label-badge-orange)"
-              value: 75
-            - color: "var(--label-badge-red)"
-              value: 90
-      - type: custom:dual-gauge-card
-#        title: CPU/RAM
-        min: 0
-        max: 100
-        outer:
-          entity: sensor.disk_use_percent
-          label: "HDD"
-          unit: "%"
-          colors:
-            - color: "var(--label-badge-green)"
-              value: 0
-            - color: "var(--label-badge-orange)"
-              value: 75
-            - color: "var(--label-badge-red)"
-              value: 90
-        inner:
-          entity: sensor.swap_use_percent
-          label: "SWAP"
-          unit: "%"
-          colors:
-            - color: "var(--label-badge-green)"
-              value: 0
-            - color: "var(--label-badge-orange)"
-              value: 75
-            - color: "var(--label-badge-red)"
-              value: 90
-      - break
+#      - type: custom:dual-gauge-card
+##        title: CPU/RAM
+#        min: 0
+#        max: 100
+#        outer:
+#          entity: sensor.processor_use
+#          label: "CPU"
+#          unit: "%"
+#          colors:
+#            - color: "var(--label-badge-green)"
+#              value: 0
+#            - color: "var(--label-badge-orange)"
+#              value: 75
+#            - color: "var(--label-badge-red)"
+#              value: 90
+#        inner:
+#          entity: sensor.memory_use_percent
+#          label: "RAM"
+#          unit: "%"
+#          colors:
+#            - color: "var(--label-badge-green)"
+#              value: 0
+#            - color: "var(--label-badge-orange)"
+#              value: 75
+#            - color: "var(--label-badge-red)"
+#              value: 90
+#      - type: custom:dual-gauge-card
+##        title: CPU/RAM
+#        min: 0
+#        max: 100
+#        outer:
+#          entity: sensor.disk_use_percent
+#          label: "HDD"
+#          unit: "%"
+#          colors:
+#            - color: "var(--label-badge-green)"
+#              value: 0
+#            - color: "var(--label-badge-orange)"
+#              value: 75
+#            - color: "var(--label-badge-red)"
+#              value: 90
+#        inner:
+#          entity: sensor.swap_use_percent
+#          label: "SWAP"
+#          unit: "%"
+#          colors:
+#            - color: "var(--label-badge-green)"
+#              value: 0
+#            - color: "var(--label-badge-orange)"
+#              value: 75
+#            - color: "var(--label-badge-red)"
+#              value: 90
+#      - break
 #      - type: horizontal-stack
 #        cards:
 #          - type: custom:decluttering-card
