@@ -10,6 +10,10 @@ trigger:
     entity_id: device_tracker.andrea_oneplus5
   - platform: state
     entity_id: device_tracker.life360_andrea_iannucci
+  - platform: state
+    entity_id: device_tracker.sonia_mi9tpro
+  - platform: state
+    entity_id: device_tracker.life360_sonia_espejo_brea
 action:
   - service: python_script.device_tracker_merge
     data_template:
@@ -21,3 +25,13 @@ action:
       force_update: 10
       accuracy: 1000
       distance: "{{ distance(states.device_tracker.andrea_oneplus5, states.device_tracker.life360_andrea_iannucci) }}"
+  - service: python_script.device_tracker_merge
+    data_template:
+      device_name: 'sonia_espejo_brea'
+      master_device: device_tracker.sonia_mi9tpro
+      slave_device: device_tracker.life360_sonia_espejo_brea
+      trigger_id: '{{trigger.entity_id}}'
+      time: 10
+      force_update: 10
+      accuracy: 1000
+      distance: "{{ distance(states.device_tracker.sonia_mi9tpro, states.device_tracker.life360_sonia_espejo_brea) }}"

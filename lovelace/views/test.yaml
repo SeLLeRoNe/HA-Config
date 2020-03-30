@@ -6,13 +6,29 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: picture-entity
+        entity: camera.tracker_andrea
+        name: Andrea
+        camera_view: live
+        show_state: false
+      - type: picture-entity
+        entity: camera.tracker_sonia
+        name: Sonia
+        camera_view: live
+        show_state: false
+      - type: picture-entity
+        entity: camera.iss
+        name: ISS
+        camera_view: live
+        show_state: false
+      - break
       - type: entities
-        title: Hall Light Presets
+        title: Studio
         show_header_toggle: false
         entities:
         ## USE THIS CONFIG TO HAVE IT MATCH YOUR THEME ##
-          - entity: light.studio_wall_light
-            type: custom:light-brightness-preset-row
+          - type: custom:light-brightness-preset-row
+            entity: light.studio_wall_light
             name: Wall Light
             customSetpoints: true
             LowBrightness: 30
@@ -24,14 +40,18 @@ cards:
             IsOnHiColor: '#222222'
             ButtonInactiveColor: '#aaaaaa'
             IsOffColor: 'purple'
-          - entity: light.studio_wall_light
-            type: custom:light-brightness-preset-row
+          - type: custom:light-brightness-preset-row
+            entity: light.studio_wall_light
             name: Wall Light
             customTheme: false
             customSetpoints: false
-      - type: picture-entity
-        entity: camera.tracker_andrea
-        camera_view: live
+          - type: custom:binary-control-button-row
+            entity: light.studio_wall_light
+            name: Wall Light
+            customTheme: true
+            IsOnColor: 'rgb(255, 0, 0)'
+            IsOffColor: 'purple'
+            ButtonInactiveColor: '#aaaaaa'
       - type: 'custom:config-template-card'
         entities: sensor.dark_sky_alt_wind
         variables:
