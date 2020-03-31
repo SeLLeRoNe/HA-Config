@@ -34,4 +34,4 @@ views:
   - !include lovelace/views/system.yaml
   - !include lovelace/views/homeassistant.yaml
   - !include lovelace/views/thermostat.yaml
-
+  - !include lovelace/views/debug.yaml
