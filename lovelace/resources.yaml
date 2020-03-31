@@ -65,6 +65,8 @@
     type: module
   - url: /hacsfiles/fan-control-entity-row/fan-control-entity-row.js
     type: module
+  - url: /hacsfiles/logbook-card/logbook-card.js	
+    type: module
 
   - url: /local/lovelace/cards/dark-sky-weather-card.js
     type: module
