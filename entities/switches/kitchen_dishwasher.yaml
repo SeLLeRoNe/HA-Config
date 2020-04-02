@@ -5,7 +5,7 @@
 # https://www.home-assistant.io/components/mqtt/
 #
 platform: mqtt
-name: "Dishwasher"
+name: "Kitchen Dishwasher Plug"
 icon: mdi:power-plug
 command_topic: "cmnd/dishwasher_plug/POWER"
 state_topic: "stat/dishwasher_plug/POWER"

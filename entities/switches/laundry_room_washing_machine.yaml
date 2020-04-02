@@ -5,7 +5,7 @@
 # https://www.home-assistant.io/components/mqtt/
 #
 platform: mqtt
-name: "Washing Machine"
+name: "Laundry Room Washing Machine Plug"
 icon: mdi:power-plug
 command_topic: "cmnd/washing_machine_plug/POWER"
 state_topic: "stat/washing_machine_plug/POWER"

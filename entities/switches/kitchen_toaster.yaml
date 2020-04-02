@@ -5,7 +5,7 @@
 # https://www.home-assistant.io/components/mqtt/
 #
 platform: mqtt
-name: "Toaster"
+name: "Kitchen Toaster Plug"
 icon: mdi:power-plug
 command_topic: "cmnd/toaster_plug/POWER"
 state_topic: "stat/toaster_plug/POWER"

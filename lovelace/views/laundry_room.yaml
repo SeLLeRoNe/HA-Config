@@ -104,7 +104,7 @@ cards:
                 row: true
                 card:
                   name: Washing Machine
-                  entity: switch.washing_machine
+                  entity: switch.laundry_room_washing_machine_plug
                   state_color: true
                   tap_action:
                     action: none

@@ -7,4 +7,4 @@ payload_on: true
 payload_off: false
 value_template: "{{ value_json.occupancy }}"
 device_class: "motion"
-off_delay: 90
+off_delay: 5

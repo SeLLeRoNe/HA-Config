@@ -98,7 +98,7 @@ cards:
                 row: true
                 card:
                   name: Fridge
-                  entity: switch.fridge
+                  entity: switch.kitchen_fridge_plug
                   state_color: true
                   tap_action:
                     action: none
@@ -115,7 +115,7 @@ cards:
                 row: true
                 card:
                   name: Dishwasher
-                  entity: switch.dishwasher
+                  entity: switch.kitchen_dishwasher_plug
                   state_color: true
                   tap_action:
                     action: none
@@ -125,7 +125,7 @@ cards:
                 row: true
                 card:
                   name: Toaster
-                  entity: switch.toaster
+                  entity: switch.kitchen_toaster_plug
                   state_color: true
                   tap_action:
                     action: none
