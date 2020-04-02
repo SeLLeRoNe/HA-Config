@@ -12,12 +12,16 @@ condition:
       after: '09:00:00'
       before: '23:00:00'
 action:
-  - service: notify.html5
+  - service: notify.mobile_app_andrea_oneplus_5
     data:
-      title: 'Alarm Notification'
-      message: "Guest Mode Activated"
+      title: "Home Alarm"
+      message: "Holiday Mode Activated."
+      data:
+        color: "#0066FF"
+        sticky: "false"
+        tag: tag
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Guest Mode Activated"
+      message: "Holiday Mode Activated"
       language: 'en'
