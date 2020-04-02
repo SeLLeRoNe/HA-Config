@@ -175,7 +175,7 @@ cards:
             show_header_toggle: false
             entities:
               - entity: sensor.master_bedroom_wxkg02lm_battery
-                name: "Master Bedroom - WXKG02LM"
+                name: "Master Bedroom - WXKG02LM Double Gangs Switch"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -198,7 +198,7 @@ cards:
                       {% endif %}
                     }
               - entity: sensor.studio_wsdcgq11lm_battery
-                name: "Studio - WSDCGQ11LM"
+                name: "Studio - WSDCGQ11LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -221,7 +221,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.studio_2ajz4kpbs_battery
-                name: "Studio - 2AJZ4KPBS"
+                name: "Studio - 2AJZ4KPBS Motion Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -244,7 +244,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.laundry_room_wxkg03lm_battery
-                name: "Laundry Room - WXKG03LM"
+                name: "Laundry Room - WXKG03LM Single Gang Switch"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -267,7 +267,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.washing_machine_djt11lm_battery
-                name: "Washing Machine - DJT11LM"
+                name: "Washing Machine - DJT11LM Vibration Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -290,7 +290,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.master_bedroom_wsdcgq01lm_battery
-                name: "Master Bedroom - WSDCGQ01LM"
+                name: "Master Bedroom - WSDCGQ01LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -313,7 +313,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.patio_wsdcgq11lm_battery
-                name: "Patio - WSDCGQ11LM"
+                name: "Patio - WSDCGQ11LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -336,7 +336,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.patio_mccgq01lm_battery
-                name: "Patio - MCCGQ01LM"
+                name: "Patio - MCCGQ01LM Door/Window Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -359,7 +359,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.master_bathroom_wsdcgq01lm_battery
-                name: "Master Bathroom - WSDCGQ01LM"
+                name: "Master Bathroom - WSDCGQ01LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -382,7 +382,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.master_bathroom_sjcgq11lm_battery
-                name: "Master Bathroom - SJCGQ11LM"
+                name: "Master Bathroom - SJCGQ11LM Leak Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -405,7 +405,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.bedroom_luca_wsdcgq11lm_battery
-                name: "Bedroom Luca - WSDCGQ11LM"
+                name: "Bedroom Luca - WSDCGQ11LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -428,7 +428,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.bathroom_wsdcgq01lm_battery
-                name: "Bathroom - WSDCGQ01LM"
+                name: "Bathroom - WSDCGQ01LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -451,7 +451,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.bathroom_mccgq01lm_battery
-                name: "Bathroom - MCCGQ01LM"
+                name: "Bathroom - MCCGQ01LM Door/Window Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -474,7 +474,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.bathroom_sjcgq11lm_battery
-                name: "Bathroom - SJCGQ11LM"
+                name: "Bathroom - SJCGQ11LM Leak Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -497,7 +497,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.living_room_wsdcgq01lm_battery
-                name: "Living Room - WSDCGQ01LM"
+                name: "Living Room - WSDCGQ01LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -520,7 +520,7 @@ cards:
                       {% endif %}
                   }
               - entity: sensor.kitchen_wsdcgq01lm_battery
-                name: "Kitchen - WSDCGQ01LM"
+                name: "Kitchen - WSDCGQ01LM Temperature Sensor"
                 style: |
                   :host {
                     --paper-item-icon-color:
