@@ -14,3 +14,24 @@ google_assistant:
     - switch
     - light
     - sensor
+  entity_config:
+    switch.studio_andrea_desk_plug:
+      expose: false
+    switch.studio_andrea_powerstrip_2:
+      expose: false
+    switch.studio_andrea_uk_powerstrip:
+      expose: false
+    switch.studio_sonia_desk_plug:
+      expose: false
+    switch.studio_table_plug:
+      expose: false
+    switch.living_room_tv_stand_plug:
+      expose: false
+    switch.kitchen_fridge_plug:
+      expose: false
+    switch.kitchen_dishwasher_plug:
+      expose: false
+    switch.kitchen_toaster_plug:
+      expose: false
+    switch.laundry_room_washing_machine_plug:
+      expose: false
