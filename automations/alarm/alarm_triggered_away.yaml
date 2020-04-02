@@ -81,6 +81,8 @@ action:
         color: "#FF3300"
         sticky: "true"
         tag: tag
+        ttl: 0
+        priority: high
   - service: notify.telegram_andrea
     data_template:
       title: "Home Alarm"

@@ -1,0 +1,15 @@
+---
+alias: Mobile - Andrea - Honor 8 - Location
+initial_state: on
+trigger:
+  - platform: time_pattern
+    minutes: '/30'
+condition:
+  condition: or
+  conditions:
+    - condition: template
+      value_template: '{% if states.device_tracker.andrea_honor8 is defined %} {{ (as_timestamp(now()) - as_timestamp(states.device_tracker.andrea_honor8.last_changed)) > 1800 }} {% endif %}'
+action:
+  - service: notify.mobile_app_andrea_honor_8
+    data:
+      message: "request_location_update"

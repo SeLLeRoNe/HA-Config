@@ -1,0 +1,12 @@
+---
+alias: Mobile - Push Notification - Studio Light Off
+trigger:
+  platform: event
+  event_type: mobile_app_notification_action
+  event_data:
+    action: studio_light_off
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_wall_light
+      brightness: 25

@@ -1,0 +1,15 @@
+---
+alias: Mobile - Sonia - Mi 9T Pro - Location
+initial_state: on
+trigger:
+  - platform: time_pattern
+    minutes: '/30'
+condition:
+  condition: or
+  conditions:
+    - condition: template
+      value_template: '{% if states.device_tracker.sonia_mi9tpro is defined %} {{ (as_timestamp(now()) - as_timestamp(states.device_tracker.sonia_mi9tpro.last_changed)) > 1800 }} {% endif %}'
+action:
+  - service: notify.mobile_app_sonia_mi_9t_pro
+    data:
+      message: "request_location_update"

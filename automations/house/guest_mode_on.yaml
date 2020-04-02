@@ -17,7 +17,7 @@ action:
       title: "Home Alarm"
       message: "Guest Mode Activated. Alarm Disarmed"
       data:
-        color: "#FF9900"
+        color: "#0066FF"
         sticky: "false"
         tag: tag
   - service: tts.google_translate_say
