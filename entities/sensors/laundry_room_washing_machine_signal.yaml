@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: 'Laundry Room Washing Machine Plug Wireless Signal'
+icon: mdi:signal-variant
+state_topic: 'tele/washing_machine_plug/STATE'
+value_template: "{{ value_json.Wifi.RSSI }}"
+unit_of_measurement: '%'
+availability_topic: "tele/washing_machine_plug/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"

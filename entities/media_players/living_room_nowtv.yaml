@@ -1,5 +1,0 @@
----
-platform: roku
-host:
-  - !secret nowtv_it
-  - !secret nowtv_uk
