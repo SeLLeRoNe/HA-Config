@@ -72,4 +72,11 @@ lovelace:
       icon: mdi:tune
       show_in_sidebar: true
       require_admin: true
+    lovelace-tocheck:
+      mode: yaml
+      filename: tocheck.yaml
+      title: Test
+      icon: mdi:tune
+      show_in_sidebar: true
+      require_admin: true
 scene: !include scenes.yaml
