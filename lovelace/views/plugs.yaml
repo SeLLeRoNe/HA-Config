@@ -554,11 +554,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_today_energy
+                  - entity: sensor.power_usage_desk_andrea_today_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_today_energy
+                  - entity: sensor.power_usage_studio_table_today_energy
                     name: Table Andrea
                     tap_action:
                       action: none
@@ -592,11 +592,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_yesterday_energy
+                  - entity: sensor.power_usage_desk_andrea_yesterday_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_yesterday_energy
+                  - entity: sensor.power_usage_studio_table_yesterday_energy
                     name: Table Andrea
                     tap_action:
                       action: none
@@ -630,11 +630,11 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_total_energy
+                  - entity: sensor.power_usage_desk_andrea_total_energy
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_table_total_energy
+                  - entity: sensor.power_usage_studio_table_total_energy
                     name: Table Andrea
                     tap_action:
                       action: none
