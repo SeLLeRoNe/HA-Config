@@ -40,7 +40,7 @@ coronavirus:
         hours_to_show: 168
         points_per_hour: 0.25
         aggregate_func: max
-        group_by: hour
+        group_by: date
         group: false
         hour24: true
         animate: false
