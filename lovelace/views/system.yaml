@@ -31,7 +31,7 @@ cards:
             aggregate_func: max
             group_by: hour
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             align_state: left
             show:
@@ -89,7 +89,7 @@ cards:
             points_per_hour: 0.25
             aggregate_func: max
             group_by: date
-            animate: true
+            animate: false
             decimals: 0
             align_state: left
             show:
@@ -129,7 +129,7 @@ cards:
             points_per_hour: 0.25
             aggregate_func: max
             group_by: hour
-            animate: true
+            animate: false
             decimals: 1
             align_state: left
             show:
@@ -161,7 +161,7 @@ cards:
             points_per_hour: 0.25
             aggregate_func: max
             group_by: hour
-            animate: true
+            animate: false
             decimals: 0
             align_state: left
             show:
@@ -191,7 +191,7 @@ cards:
             points_per_hour: 0.25
             aggregate_func: max
             group_by: hour
-            animate: true
+            animate: false
             decimals: 0
             align_state: left
             show:
@@ -228,7 +228,7 @@ cards:
           #   aggregate_func: max
           #   group_by: hour
           #   hour24: true
-          #   animate: true
+          #   animate: false
           #   decimals: 2
           #   align_state: left
           #   show:
@@ -299,7 +299,7 @@ cards:
             aggregate_func: max
             group_by: hour
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             align_state: left
             show:

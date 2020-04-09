@@ -18,7 +18,7 @@ house_cost:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -44,7 +44,7 @@ house_cost:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -72,7 +72,7 @@ house_cost:
             group_by: date
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -98,7 +98,7 @@ house_cost:
             group_by: date
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -126,7 +126,7 @@ house_cost:
             group_by: date
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -152,7 +152,7 @@ house_cost:
             group_by: date
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true

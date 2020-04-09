@@ -43,7 +43,7 @@ coronavirus:
         group_by: date
         group: false
         hour24: true
-        animate: true
+        animate: false
         decimals: 1
         font_size: 100
         font_size_header: 14

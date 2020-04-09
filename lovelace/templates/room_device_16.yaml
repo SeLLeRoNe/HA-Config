@@ -18,7 +18,7 @@ room_device_16:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -44,7 +44,7 @@ room_device_16:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 1
             show:
               name: true
@@ -72,7 +72,7 @@ room_device_16:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 2
             show:
               name: true
@@ -98,7 +98,7 @@ room_device_16:
             group_by: hour
             group: false
             hour24: true
-            animate: true
+            animate: false
             decimals: 1
             show:
               name: true

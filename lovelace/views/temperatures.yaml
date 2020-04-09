@@ -43,7 +43,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -88,7 +88,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -135,7 +135,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -182,7 +182,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -227,7 +227,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -274,7 +274,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -319,7 +319,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -366,7 +366,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -411,7 +411,7 @@ cards:
               points_per_hour: 0.25
               group: false
               hour24: true
-              animate: true
+              animate: false
               decimals: 1
               font_size: 100
               font_size_header: 14
@@ -452,7 +452,7 @@ cards:
         aggregate_func: max
         group_by: hour
         hour24: true
-        animate: true
+        animate: false
         decimals: 1
         font_size: 100
         font_size_header: 14
