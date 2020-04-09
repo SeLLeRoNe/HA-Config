@@ -39,9 +39,6 @@ recorder:
       - sensor.time_utc
       - sensor.sun_template
       - sensor.workday
-      - sensor.load_5m
-      - sensor.load_10m
-      - sensor.load_15m
       - sensor.processor_use
       - sensor.memory_use
       - sensor.memory_free
