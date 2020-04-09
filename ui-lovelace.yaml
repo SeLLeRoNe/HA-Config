@@ -9,6 +9,7 @@
 title: Home Control Panel
 preload:
   - markdown
+  - conditional
 preload_rows:
   - divider
 custom_header:
