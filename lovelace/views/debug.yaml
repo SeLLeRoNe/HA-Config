@@ -51,3 +51,19 @@ cards:
             title: "PIR - Luca's Bedroom"
             entity: binary_sensor.patio_pir
             max_items: 5
+      - break
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:logbook-card
+            title: "Load Average - 1 Minute"
+            entity: sensor.load_1m
+            max_items: 5
+          - type: custom:logbook-card
+            title: "Load Average - 5 Minutes"
+            entity: sensor.load_5m
+            max_items: 5
+          - type: custom:logbook-card
+            title: "Load Average - 15 Minutes"
+            entity: sensor.load_15m
+            max_items: 5
