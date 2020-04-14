@@ -7,7 +7,8 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
             template: darksky_card
@@ -21,6 +22,7 @@ cards:
             main_pollutant: sensor.u_s_main_pollutant
             temp: weather.dark_sky
             city: 'Pollution Levels'
+            icons: "/local/icons/aqi_icons"
           - type: entities
             show_header_toggle: false
             entities:
@@ -28,11 +30,15 @@ cards:
                 name: Meteo Alert - Safety Level
                 type: "custom:secondaryinfo-entity-row"
                 secondary_info: '[[ if(binary_sensor.meteoalarm.state == "on", binary_sensor.meteoalarm.attributes.description, "") ]]'
+              - entity: sensor.gdacs
+                name: Global Disaster Alerts (GDACS)
+                secondary_info: '[[ if(sensor.gdacs >= 1, sensor.gdacs.attributes.status, "") ]]'
           - type: iframe
             url: https://embed.windy.com/embed2.html
             aspect_ratio: 72%
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: horizontal-stack
             cards:
@@ -295,7 +301,8 @@ cards:
                   - entity: sensor.dark_sky_precip_intensity
                     name: Rain intensity
                     color: '#0040FF'
-#      - type: custom:vertical-stack-in-card
+#      - type: custom:stack-in-card
+#        mode: vertical
 #        cards:
           - type: horizontal-stack
             cards:
@@ -429,7 +436,7 @@ cards:
                     color: '#80FF00'
                   - entity: sensor.aemet_wind_speed
                     name: Wind Speed
-                    color: '#80FF00'
+                    color: '#66CC00'
               - type: custom:mini-graph-card
                 name: Pressure
                 icon: fas:tachometer-alt
@@ -577,11 +584,13 @@ cards:
                       show_legend: false
                       y_axis: secondary
       - break
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: "custom:sun-card"
             name: Sun
-          - type: custom:vertical-stack-in-card
+          - type: custom:stack-in-card
+            mode: vertical
             cards:
               - type: entities
                 entities:
@@ -623,10 +632,10 @@ cards:
                   - type: divider
                   - entity: sensor.co2_intensity_es
                     name: CO2 Intensity - Spain
-                  - entity: sensor.co2_intensity_it_cso
-                    name: CO2 Intensity - Italy - Centro Sud
-                  - entity: sensor.co2_intensity_gb
-                    name: CO2 Intensity - United Kingdom
+#                  - entity: sensor.co2_intensity_it_cso
+#                    name: CO2 Intensity - Italy - Centro Sud
+#                  - entity: sensor.co2_intensity_gb
+#                    name: CO2 Intensity - United Kingdom
 #  - type: markdown
 #    content: >
 #      ##
