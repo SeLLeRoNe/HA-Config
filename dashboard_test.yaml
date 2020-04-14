@@ -28,3 +28,4 @@ custom_header:
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/test.yaml
+  - !include lovelace/views/surveillance.yaml
