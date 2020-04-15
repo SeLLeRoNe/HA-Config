@@ -26,10 +26,10 @@ cards:
 #        aspect_ratio: 16:9
 #        default_zoom: 8
         entities:
-          - device_tracker.sonia_espejo_brea
-          - device_tracker.andrea_iannucci
+          - device_tracker.life360_andrea_iannucci
+          - device_tracker.life360_sonia_espejo_brea
 #          - zone.home
-        hours_to_show: 48
+        hours_to_show: 168
       - type: entities
         title: Studio
         show_header_toggle: false
