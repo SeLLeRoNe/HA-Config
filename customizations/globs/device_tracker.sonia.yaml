@@ -1,3 +1,4 @@
 ---
-"device_tracker.sonia_*":
+"device_tracker.*sonia*":
+  friendly_name: Sonia Espejo Brea
   entity_picture: /local/icons/family/sonia.png

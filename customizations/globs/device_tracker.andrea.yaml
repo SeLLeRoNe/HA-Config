@@ -1,3 +1,4 @@
 ---
-"device_tracker.andrea_*":
+"device_tracker.*andrea*":
+  friendly_name: Andrea Iannucci
   entity_picture: /local/icons/family/sellerone.png
