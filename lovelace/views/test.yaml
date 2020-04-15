@@ -26,11 +26,9 @@ cards:
 #        aspect_ratio: 16:9
 #        default_zoom: 8
         entities:
-#          - person.andrea
-#          - person.sonia
-#          - zone.home
           - device_tracker.sonia_espejo_brea
           - device_tracker.andrea_iannucci
+#          - zone.home
         hours_to_show: 48
       - type: entities
         title: Studio
