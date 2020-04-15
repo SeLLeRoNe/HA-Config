@@ -22,6 +22,16 @@ cards:
         camera_view: live
         show_state: false
       - break
+      - type: map
+#        aspect_ratio: 16:9
+#        default_zoom: 8
+        entities:
+#          - person.andrea
+#          - person.sonia
+#          - zone.home
+          - device_tracker.sonia_espejo_brea
+          - device_tracker.andrea_iannucci
+        hours_to_show: 48
       - type: entities
         title: Studio
         show_header_toggle: false

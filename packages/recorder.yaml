@@ -22,12 +22,11 @@ recorder:
       - updater
       - media_player
       - weather
-      - zone
       - switch
       - climate
       - camera
-      - device_tracker
       - script
+      - zone
     entities:
       - sun.sun
       - sensor.night
