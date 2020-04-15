@@ -1,0 +1,17 @@
+---
+alias: Master Bedroom - Lamp On
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: light.master_bedroom_lamp_top_light
+    from: 'unavailable'
+    to: 'on'
+  - platform: state
+    entity_id: light.master_bedroom_lamp_bottom_light
+    from: 'unavailable'
+    to: 'on'
+action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_lamp_top_light
+  - service: light.turn_off
+    entity_id: light.master_bedroom_lamp_bottom_light
