@@ -519,9 +519,19 @@ cards:
               - title: Network Services
           - type: glance
             show_state: false
-            columns: 2
+            columns: 3
             show_header_toggle: false
             entities:
+              - name: Pi Hole
+                entity: binary_sensor.pi_hole_status
+                tap_action:
+                  action: call-service
+                  service: pi_hole.enable
+                hold_action:
+                  action: call-service
+                  service: pi_hole.disable
+                  service_data:
+                    duration: "00:30"
               - name: Zigbee Server
                 entity: binary_sensor.zigbee_server
                 tap_action:
