@@ -12,32 +12,28 @@ studio_energy:
         template: room_cost
         variables:
           - area: studio
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_total
         variables:
           - area: studio
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:
           - device_name: Desk Andrea
           - device: desk_andrea
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:
           - device_name: Desk Sonia
           - device: desk_sonia
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:

@@ -154,9 +154,8 @@ cards:
               - title: TV
           - type: media-control
             entity: media_player.living_room_tv
-          - type: entities
-            entities:
-              - type: divider
+          - type: custom:hui-element
+            row_type: divider
           - type: custom:mini-media-player
             entity: media_player.living_room_tv
             artwork: cover
@@ -186,7 +185,8 @@ cards:
             entity: media_player.nowtv_uk
             artwork: cover
             source: icon
-#          - type: divider
+#          - type: custom:hui-element
+#            row_type: divider
 #          - type: custom:roku-card
 #            entity: media_player.nowtv_it
 #            name: NowTV IT

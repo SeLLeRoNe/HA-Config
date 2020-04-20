@@ -29,29 +29,29 @@ cards:
               - entity: sensor.potential_breaking_changes
                 tap_action:
                   action: none
-              - type: divider
+              - type: custom:hui-element
+                row_type: divider
               - entity: sensor.hacs
                 name: HACS Available Updates
                 tap_action:
                   action: none
-              - type: divider
+              - type: custom:hui-element
+                row_type: divider
               - entity: sensor.tasmota_current_version
                 tap_action:
                   action: none
               - entity: sensor.tasmota_available_version
                 tap_action:
                   action: none
-          - type: entities
-            entities:
-              - type: divider
+          - type: custom:hui-element
+            row_type: divider
           - type: custom:github-card
             show_github_icon: false
             show_extended: false
             entities:
               - sensor.ha_config
-          - type: entities
-            entities:
-              - type: divider
+          - type: custom:hui-element
+            row_type: divider
       - break
       - type: custom:stack-in-card
         mode: vertical

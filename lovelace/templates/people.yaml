@@ -10,13 +10,11 @@ people:
           - title: People
       - type: custom:decluttering-card
         template: andrea
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: sonia
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: luca

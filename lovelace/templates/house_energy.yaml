@@ -12,9 +12,8 @@ house_energy:
         template: house_cost
         variables:
           - area: house
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: house_total
         variables:

@@ -12,16 +12,14 @@ living_room_energy:
         template: room_cost
         variables:
           - area: living_room
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_total
         variables:
           - area: living_room
-      - type: entities
-        entities:
-          - type: divider
+      - type: custom:hui-element
+        row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:

@@ -57,6 +57,18 @@ custom_header:
   elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
   tab_indicator_color: var(--state-icon-active-color)
+animated_background:
+  default_url: /community_plugin/lovelace-animated-background/background-animations/sunny.html
+  included_users:
+    - Andrea Iannucci
+  entity: "weather.dark_sky"
+  state_url:
+    'sunny': /community_plugin/lovelace-animated-background/background-animations/sunny.html
+    'partlycloudy': /community_plugin/lovelace-animated-background/background-animations/cloudy.html
+    'cloudy': /community_plugin/lovelace-animated-background/background-animations/cloudy.html
+    'mostlycloudy': /community_plugin/lovelace-animated-background/background-animations/mostlycloudy.html
+    'clear-night': /community_plugin/lovelace-animated-background/background-animations/night.html
+    'fog': /community_plugin/lovelace-animated-background/background-animations/fog.html
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/house.yaml

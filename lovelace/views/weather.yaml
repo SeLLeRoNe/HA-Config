@@ -598,38 +598,45 @@ cards:
                     name: Day/Night
                   - entity: sensor.season
                     name: Season
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_temperature
                     name: Temperature
                   - entity: sensor.dark_sky_apparent_temperature
                     name: Apparent Temperature
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_daytime_high_temperature_0d
                     name: Maximum Temperature
                   - entity: sensor.dark_sky_overnight_low_temperature_0d
                     name: Minimum Temperature
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_humidity
                     name: Humidity
                   - entity: sensor.dark_sky_dew_point
                     name: Dew Point
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_visibility
                     name: Visibility
                   - entity: sensor.illuminance
                     name: Illuminance
                     icon: mdi:weather-sunny
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_precip_intensity
                     name: Precipitation Intensity
                   - entity: sensor.dark_sky_precip_probability
                     name: Precipitation Probability
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.dark_sky_pressure
                     name: Pressure
                   - entity: sensor.dark_sky_wind_speed
                     name: Wind Speed
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.co2_intensity_es
                     name: CO2 Intensity - Spain
 #                  - entity: sensor.co2_intensity_it_cso

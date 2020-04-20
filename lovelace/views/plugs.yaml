@@ -32,7 +32,8 @@ cards:
                   - entity: sensor.house_cost_yearly
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.living_room_cost_daily
                     tap_action:
                       action: none
@@ -42,7 +43,8 @@ cards:
                   - entity: sensor.living_room_cost_yearly
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.kitchen_cost_daily
                     tap_action:
                       action: none
@@ -52,7 +54,8 @@ cards:
                   - entity: sensor.kitchen_cost_yearly
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.laundry_room_cost_daily
                     tap_action:
                       action: none
@@ -62,7 +65,8 @@ cards:
                   - entity: sensor.laundry_room_cost_yearly
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.studio_cost_daily
                     tap_action:
                       action: none
@@ -72,7 +76,8 @@ cards:
                   - entity: sensor.studio_cost_yearly
                     tap_action:
                       action: none
-#                  - type: divider
+#                  - type: custom:hui-element
+#                    row_type: divider
 #                  - entity: sensor.studio_sonia_cost_daily
 #                    tap_action:
 #                      action: none
@@ -88,7 +93,8 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.living_room_electricity_daily_peak
                     name: Living Room (Peak)
                     type: custom:multiple-entity-row
@@ -113,7 +119,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.kitchen_electricity_daily_peak
                     name: Kitchen (Peak)
                     type: custom:multiple-entity-row
@@ -138,7 +145,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.laundry_room_electricity_daily_peak
                     name: Laundry Room (Peak)
                     type: custom:multiple-entity-row
@@ -163,7 +171,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.studio_electricity_daily_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
@@ -188,7 +197,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: divider
+#                  - type: custom:hui-element
+#                    row_type: divider
 #                  - entity: sensor.studio_sonia_electricity_daily_peak
 #                    name: Studio Sonia (Peak)
 #                    type: custom:multiple-entity-row
@@ -213,7 +223,8 @@ cards:
 #                      name: false
 #                    tap_action:
 #                      action: none
-#                  - type: divider
+#                  - type: custom:hui-element
+#                    row_type: divider
                   - entity: sensor.house_electricity_daily_peak
                     name: House (Peak)
                     type: custom:multiple-entity-row
@@ -268,7 +279,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.kitchen_electricity_monthly_peak
                     name: Kitchen (Peak)
                     type: custom:multiple-entity-row
@@ -293,7 +305,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.laundry_room_electricity_monthly_peak
                     name: Laundry Room (Peak)
                     type: custom:multiple-entity-row
@@ -318,7 +331,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.studio_electricity_monthly_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
@@ -343,7 +357,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: divider
+#                  - type: custom:hui-element
+#                    row_type: divider
 #                  - entity: sensor.studio_sonia_electricity_monthly_peak
 #                    name: Studio Sonia (Peak)
 #                    type: custom:multiple-entity-row
@@ -368,7 +383,8 @@ cards:
 #                      name: false
 #                    tap_action:
 #                      action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.house_electricity_monthly_peak
                     name: House (Peak)
                     type: custom:multiple-entity-row
@@ -423,7 +439,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.kitchen_electricity_yearly_peak
                     name: Kitchen (Peak)
                     type: custom:multiple-entity-row
@@ -448,7 +465,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.laundry_room_electricity_yearly_peak
                     name: Laundry Room (Peak)
                     type: custom:multiple-entity-row
@@ -473,7 +491,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.studio_electricity_yearly_peak
                     name: Studio Andrea (Peak)
                     type: custom:multiple-entity-row
@@ -498,7 +517,8 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: divider
+#                  - type: custom:hui-element
+#                    row_type: divider
 #                  - entity: sensor.studio_sonia_electricity_yearly_peak
 #                    name: Studio Sonia (Peak)
 #                    type: custom:multiple-entity-row
@@ -523,7 +543,8 @@ cards:
 #                      name: false
 #                    tap_action:
 #                      action: none
-                  - type: divider
+                  - type: custom:hui-element
+                    row_type: divider
                   - entity: sensor.house_electricity_yearly_peak
                     name: House (Peak)
                     type: custom:multiple-entity-row
