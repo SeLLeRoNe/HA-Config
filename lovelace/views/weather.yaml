@@ -2,7 +2,6 @@ title: Weather
 icon: mdi:weather-partly-cloudy
 panel: true
 path: weather
-#background: center / cover no-repeat url("/local/backgroundz/Purple-fractals.jpg") fixed
 cards:
   - type: custom:layout-card
     layout: vertical

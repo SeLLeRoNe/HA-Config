@@ -8,6 +8,7 @@
 #
 title: Home Control Panel
 preload:
+  - hui-element
   - markdown
   - conditional
 preload_rows:
