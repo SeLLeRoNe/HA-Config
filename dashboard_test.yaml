@@ -26,7 +26,7 @@ custom_header:
   active_tab_color: var(--state-icon-active-color)
   tab_indicator_color: var(--state-icon-active-color)
 animated_background:
-  default_url: /local/animated_backgrounds/management.html
+  default_url: /local/animated_backgrounds/test.html
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/test.yaml
