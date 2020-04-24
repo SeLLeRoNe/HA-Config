@@ -63,7 +63,7 @@ animated_background:
   included_users:
     - Andrea Iannucci
   included_devices:
-    - Windows
+    - windows
   entity: "weather.dark_sky"
   state_url:
     'sunny': /local/animated_backgrounds/sunny.html
