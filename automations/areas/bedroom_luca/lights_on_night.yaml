@@ -50,11 +50,7 @@ condition:
               entity_id: binary_sensor.workday_uk
               state: 'off'
 action:
-  - service: light.turn_on
-    data:
-      entity_id: light.bedroom_luca_lights
-      transition: 5
-  - delay:
-      seconds: 5
   - service: scene.turn_on
-    entity_id: scene.bedroom_luca_diaper_change
+    data:
+      entity_id: scene.bedroom_luca_diaper_change
+      transition: 5
