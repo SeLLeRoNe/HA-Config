@@ -479,58 +479,58 @@ cards:
       #       type: "custom:secondaryinfo-entity-row"
       #       secondary_info: "Next Dawn: [[ sun.sun.attributes.next_dawn ]]"
       - break
-#      - type: custom:dual-gauge-card
-##        title: CPU/RAM
-#        min: 0
-#        max: 100
-#        outer:
-#          entity: sensor.processor_use
-#          label: "CPU"
-#          unit: "%"
-#          colors:
-#            - color: "var(--label-badge-green)"
-#              value: 0
-#            - color: "var(--label-badge-orange)"
-#              value: 75
-#            - color: "var(--label-badge-red)"
-#              value: 90
-#        inner:
-#          entity: sensor.memory_use_percent
-#          label: "RAM"
-#          unit: "%"
-#          colors:
-#            - color: "var(--label-badge-green)"
-#              value: 0
-#            - color: "var(--label-badge-orange)"
-#              value: 75
-#            - color: "var(--label-badge-red)"
-#              value: 90
-#      - type: custom:dual-gauge-card
-##        title: CPU/RAM
-#        min: 0
-#        max: 100
-#        outer:
-#          entity: sensor.disk_use_percent
-#          label: "HDD"
-#          unit: "%"
-#          colors:
-#            - color: "var(--label-badge-green)"
-#              value: 0
-#            - color: "var(--label-badge-orange)"
-#              value: 75
-#            - color: "var(--label-badge-red)"
-#              value: 90
-#        inner:
-#          entity: sensor.swap_use_percent
-#          label: "SWAP"
-#          unit: "%"
-#          colors:
-#            - color: "var(--label-badge-green)"
-#              value: 0
-#            - color: "var(--label-badge-orange)"
-#              value: 75
-#            - color: "var(--label-badge-red)"
-#              value: 90
+      - type: custom:dual-gauge-card
+#        title: CPU/RAM
+        min: 0
+        max: 100
+        outer:
+          entity: sensor.processor_use
+          label: "CPU"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+        inner:
+          entity: sensor.memory_use_percent
+          label: "RAM"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+      - type: custom:dual-gauge-card
+#        title: CPU/RAM
+        min: 0
+        max: 100
+        outer:
+          entity: sensor.disk_use_percent
+          label: "HDD"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
+        inner:
+          entity: sensor.swap_use_percent
+          label: "SWAP"
+          unit: "%"
+          colors:
+            - color: "var(--label-badge-green)"
+              value: 0
+            - color: "var(--label-badge-orange)"
+              value: 75
+            - color: "var(--label-badge-red)"
+              value: 90
 #      - break
 #      - type: horizontal-stack
 #        cards:
