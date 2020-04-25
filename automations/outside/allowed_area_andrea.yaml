@@ -1,0 +1,17 @@
+---
+alias: Outside - Allowed Area Alert - Andrea
+initial_state: on
+trigger:
+  - platform: zone
+    entity_id: device_tracker.life360_andrea_iannucci
+    zone: zone.allowed_area
+    event: 'leave'
+  - platform: zone
+    entity_id: device_tracker.andrea_iannucci
+    zone: zone.allowed_area
+    event: 'leave'
+action:
+  - service: notify.mobile_app_andrea_oneplus_5
+    data:
+      title: "Alert"
+      message: "You are 1 KM away from home, get back in the range!"

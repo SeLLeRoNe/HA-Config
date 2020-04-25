@@ -1,0 +1,17 @@
+---
+alias: Outside - Allowed Area Alert - Sonia
+initial_state: on
+trigger:
+  - platform: zone
+    entity_id: device_tracker.life360_sonia_espejo_brea
+    zone: zone.allowed_area
+    event: 'leave'
+  - platform: zone
+    entity_id: device_tracker.sonia_espejo_brea
+    zone: zone.allowed_area
+    event: 'leave'
+action:
+  - service: notify.mobile_app_sonia_mi_9t_pro
+    data:
+      title: "Alert"
+      message: "You are 1 KM away from home, get back in the range!"
