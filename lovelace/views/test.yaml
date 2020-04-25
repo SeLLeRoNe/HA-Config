@@ -24,7 +24,8 @@ cards:
       - break
       - type: map
 #        aspect_ratio: 16:9
-#        default_zoom: 8
+#        default_zoom: 5
+        dark_mode: true
         entities:
           - device_tracker.life360_andrea_iannucci
           - device_tracker.life360_sonia_espejo_brea

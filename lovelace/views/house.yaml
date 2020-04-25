@@ -62,6 +62,14 @@ cards:
 #        camera_view: live
 #        entities:
 #          - switch.studio_wall_light  
+      - type: map
+        aspect_ratio: 16:9
+        default_zoom: 15
+        dark_mode: true
+        entities:
+          - person.andrea_iannucci
+          - person.sonia_espejo_brea
+          - zone.allowed_area
       - break
       - type: custom:stack-in-card
         mode: vertical
