@@ -3335,7 +3335,7 @@ let BarCardEditor = class BarCardEditor extends LitElement {
         </div>
         ${options.show
             ? html `
-              <div class="card-background">
+              <div class="card-background" style="max-height: 400px; overflow: auto;">
                 ${this._createEntitiesValues()}
                 <div class="sub-category" style="display: flex; flex-direction: column; align-items: flex-end;">
                   <ha-fab
@@ -3637,7 +3637,7 @@ let BarCardEditor = class BarCardEditor extends LitElement {
         </div>
         ${options.show
             ? html `
-              <div class="card-background">
+              <div class="card-background" style="overflow: auto; max-height: 420px;">
                 ${arrayLength > 0
                 ? html `
                       ${this._createSeverityValues(index)}
@@ -3688,51 +3688,87 @@ let BarCardEditor = class BarCardEditor extends LitElement {
                 @value-changed=${this._updateSeverity}
               ></paper-input>
             </div>
-            <paper-input
-              label="Color"
-              .value="${severity.color ? severity.color : ''}"
-              editable
-              .severityAttribute=${'color'}
+            <div style="display:flex;">
+              <paper-input
+                label="Color"
+                .value="${severity.color ? severity.color : ''}"
+                editable
+                .severityAttribute=${'color'}
+                .index=${index}
+                .severityIndex=${severityIndex}
+                @value-changed=${this._updateSeverity}
+              ></paper-input>
+              <paper-input
+                label="Icon"
+                .value="${severity.icon ? severity.icon : ''}"
+                editable
+                .severityAttribute=${'icon'}
+                .index=${index}
+                .severityIndex=${severityIndex}
+                @value-changed=${this._updateSeverity}
+              ></paper-input>
+            </div>
+            ${severity.hide
+                ? html `
+                  <ha-switch
+                    checked
+                    .severityAttribute=${'hide'}
+                    .index=${index}
+                    .severityIndex=${severityIndex}
+                    .value=${!severity.hide}
+                    @change=${this._updateSeverity}
+                    >Hide</ha-switch
+                  >
+                `
+                : html `
+                  <ha-switch
+                    unchecked
+                    .severityAttribute=${'hide'}
+                    .index=${index}
+                    .severityIndex=${severityIndex}
+                    .value=${!severity.hide}
+                    @change=${this._updateSeverity}
+                    >Hide</ha-switch
+                  >
+                `}
+          </div>
+          <div style="display: flex;">
+            ${severityIndex !== 0
+                ? html `
+                  <ha-icon
+                    class="ha-icon-large"
+                    icon="mdi:arrow-up"
+                    @click=${this._moveSeverity}
+                    .configDirection=${'up'}
+                    .index=${index}
+                    .severityIndex=${severityIndex}
+                  ></ha-icon>
+                `
+                : html `
+                  <ha-icon icon="mdi:arrow-up" style="opacity: 25%;" class="ha-icon-large"></ha-icon>
+                `}
+            ${severityIndex !== config.severity.length - 1
+                ? html `
+                  <ha-icon
+                    class="ha-icon-large"
+                    icon="mdi:arrow-down"
+                    @click=${this._moveSeverity}
+                    .configDirection=${'down'}
+                    .index=${index}
+                    .severityIndex=${severityIndex}
+                  ></ha-icon>
+                `
+                : html `
+                  <ha-icon icon="mdi:arrow-down" style="opacity: 25%;" class="ha-icon-large"></ha-icon>
+                `}
+            <ha-icon
+              class="ha-icon-large"
+              icon="mdi:close"
+              @click=${this._removeSeverity}
               .index=${index}
               .severityIndex=${severityIndex}
-              @value-changed=${this._updateSeverity}
-            ></paper-input>
+            ></ha-icon>
           </div>
-          ${severityIndex !== 0
-                ? html `
-                <ha-icon
-                  class="ha-icon-large"
-                  icon="mdi:arrow-up"
-                  @click=${this._moveSeverity}
-                  .configDirection=${'up'}
-                  .index=${index}
-                  .severityIndex=${severityIndex}
-                ></ha-icon>
-              `
-                : html `
-                <ha-icon icon="mdi:arrow-up" style="opacity: 25%;" class="ha-icon-large"></ha-icon>
-              `}
-          ${severityIndex !== config.severity.length - 1
-                ? html `
-                <ha-icon
-                  class="ha-icon-large"
-                  icon="mdi:arrow-down"
-                  @click=${this._moveSeverity}
-                  .configDirection=${'down'}
-                  .index=${index}
-                  .severityIndex=${severityIndex}
-                ></ha-icon>
-              `
-                : html `
-                <ha-icon icon="mdi:arrow-down" style="opacity: 25%;" class="ha-icon-large"></ha-icon>
-              `}
-          <ha-icon
-            class="ha-icon-large"
-            icon="mdi:close"
-            @click=${this._removeSeverity}
-            .index=${index}
-            .severityIndex=${severityIndex}
-          ></ha-icon>
         </div>
       `);
         }
@@ -4206,6 +4242,9 @@ let BarCardEditor = class BarCardEditor extends LitElement {
                 const clonedObject = Object.assign({}, severityArray[index]);
                 const newObject = { [target.severityAttribute]: target.value };
                 const mergedObject = Object.assign(clonedObject, newObject);
+                if (target.value == '') {
+                    delete mergedObject[target.severityAttribute];
+                }
                 newSeverityArray.push(mergedObject);
             }
             else {
@@ -4241,6 +4280,7 @@ let BarCardEditor = class BarCardEditor extends LitElement {
                 delete target.configObject[target.configAttribute];
             }
             else {
+                console.log(target.configObject);
                 target.configObject[target.configAttribute] = target.value;
             }
         }
@@ -4488,7 +4528,7 @@ const actionHandler = directive((options = {}) => (part) => {
     actionHandlerBind(part.committer.element, options);
 });
 
-const CARD_VERSION = '3.1.1';
+const CARD_VERSION = '3.1.2';
 
 var common = {
 	version: "Version",
@@ -4553,10 +4593,12 @@ const styles = html `
       padding: 8px;
     }
     #states {
-      flex: 1 1 0%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     #states > * {
-      margin: 8px 0px;
+      margin-bottom: 8px;
     }
     #states > :last-child {
       margin-top: 0px;
@@ -4565,12 +4607,20 @@ const styles = html `
     #states > :first-child {
       margin-top: 0px;
     }
+    ha-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
     bar-card-row {
       display: flex;
-      justify-content: stretch;
+      flex-grow: 1;
     }
     bar-card-row > div {
       flex-basis: 100%;
+    }
+    bar-card-row:empty {
+      display: none;
     }
     bar-card-card {
       display: flex;
@@ -4816,19 +4866,14 @@ let BarCard = class BarCard extends LitElement {
             return html ``;
         }
         return html `
-      ${this._config.entity_row
-            ? html `
-            <div id="states" class="card-content" style="padding: 0px;">
-              ${this._createBarArray()}
-            </div>
-          `
-            : html `
-            <ha-card .header=${this._config.title ? this._config.title : null}>
-              <div id="states" class="card-content" style="${this._config.entity_row ? 'padding: 0px;' : ''}">
-                ${this._createBarArray()}
-              </div>
-            </ha-card>
-          `}
+      <ha-card
+        .header=${this._config.title ? this._config.title : null}
+        style="${this._config.entity_row ? 'background: #0000;' : ''}"
+      >
+        <div id="states" class="card-content" style="${this._config.entity_row ? 'padding: 0px;' : ''}">
+          ${this._createBarArray()}
+        </div>
+      </ha-card>
       ${styles}
     `;
     }
@@ -4867,6 +4912,12 @@ let BarCard = class BarCard extends LitElement {
                 }
                 else {
                     entityState = state.state;
+                }
+                // Contine if severity hide is defined.
+                if (config.severity) {
+                    if (this._computeSeverityVisibility(entityState, index)) {
+                        continue;
+                    }
                 }
                 // If limit_value is defined limit the displayed value to min and max.
                 if (config.limit_value) {
@@ -4908,7 +4959,10 @@ let BarCard = class BarCard extends LitElement {
                 let iconOutside;
                 let iconInside;
                 let icon;
-                if (config.icon) {
+                if (this._computeSeverityIcon(entityState, index)) {
+                    icon = this._computeSeverityIcon(entityState, index);
+                }
+                else if (config.icon) {
                     icon = config.icon;
                 }
                 else if (state.attributes.icon) {
@@ -5075,7 +5129,8 @@ let BarCard = class BarCard extends LitElement {
                 // Set bar width if configured.
                 let barWidth = '';
                 if (config.width) {
-                    alignItems = 'center';
+                    if (config.direction == 'up')
+                        alignItems = 'center';
                     barWidth = `width: ${config.width}`;
                 }
                 // Set animation state inside array.
@@ -5091,7 +5146,10 @@ let BarCard = class BarCard extends LitElement {
                 // Add current bar to row array.
                 currentRowArray.push(html `
           <bar-card-card
-            style="flex-direction: ${flexDirection}; align-items: ${alignItems};"
+            style="flex-direction: ${flexDirection}; align-items: ${alignItems}; height: ${barHeight}${typeof barHeight ==
+                    'number'
+                    ? 'px'
+                    : ''};"
             @action=${this._handleAction}
             .config=${config}
             .actionHandler=${actionHandler({
@@ -5101,11 +5159,7 @@ let BarCard = class BarCard extends LitElement {
                 })}
           >
             ${iconOutside} ${indicatorOutside} ${nameOutside}
-            <bar-card-background
-              style="height: ${barHeight}${typeof barHeight == 'number'
-                    ? 'px'
-                    : ''}; margin: ${backgroundMargin}; ${barWidth}"
-            >
+            <bar-card-background style="margin: ${backgroundMargin}; ${barWidth}">
               <bar-card-backgroundbar style="--bar-color: ${barColor};"></bar-card-backgroundbar>
               ${config.animation.state == 'on'
                     ? html `
@@ -5162,7 +5216,7 @@ let BarCard = class BarCard extends LitElement {
         const config = this._configArray[index];
         let barColor;
         if (config.severity) {
-            barColor = this._computeSeverity(value, index);
+            barColor = this._computeSeverityColor(value, index);
         }
         else if (value == 'unavailable') {
             barColor = `var(--bar-card-disabled-color, ${config.color})`;
@@ -5172,7 +5226,7 @@ let BarCard = class BarCard extends LitElement {
         }
         return barColor;
     }
-    _computeSeverity(value, index) {
+    _computeSeverityColor(value, index) {
         const config = this._configArray[index];
         const numberValue = Number(value);
         const sections = config.severity;
@@ -5194,6 +5248,50 @@ let BarCard = class BarCard extends LitElement {
         if (color == undefined)
             color = config.color;
         return color;
+    }
+    _computeSeverityVisibility(value, index) {
+        const config = this._configArray[index];
+        const numberValue = Number(value);
+        const sections = config.severity;
+        let hide = false;
+        if (isNaN(numberValue)) {
+            sections.forEach(section => {
+                if (value == section.text) {
+                    hide = section.hide;
+                }
+            });
+        }
+        else {
+            sections.forEach(section => {
+                if (numberValue >= section.from && numberValue <= section.to) {
+                    hide = section.hide;
+                }
+            });
+        }
+        return hide;
+    }
+    _computeSeverityIcon(value, index) {
+        const config = this._configArray[index];
+        const numberValue = Number(value);
+        const sections = config.severity;
+        let icon = false;
+        if (!sections)
+            return false;
+        if (isNaN(numberValue)) {
+            sections.forEach(section => {
+                if (value == section.text) {
+                    icon = section.icon;
+                }
+            });
+        }
+        else {
+            sections.forEach(section => {
+                if (numberValue >= section.from && numberValue <= section.to) {
+                    icon = section.icon;
+                }
+            });
+        }
+        return icon;
     }
     _computePercent(value, index) {
         const config = this._configArray[index];
