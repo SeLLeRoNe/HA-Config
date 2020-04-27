@@ -7,10 +7,15 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: vertical-stack
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Phones
           - type: custom:hui-entities-card
-            title: Phones
+#            title: Phones
             show_header_toggle: false
             entities:
               - entity: sensor.andrea_oneplus5_battery
@@ -138,8 +143,15 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Tablets
           - type: custom:hui-entities-card
-            title: Tablets
+#            title: Tablets
             show_header_toggle: false
             entities:
               - entity: sensor.andrea_shield_battery
@@ -168,10 +180,15 @@ cards:
                       {% endif %}
                   }
       - break
-      - type: vertical-stack
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Zigbee Devices
           - type: custom:hui-entities-card
-            title: Zigbee Devices
+#            title: Zigbee Devices
             show_header_toggle: false
             entities:
               - entity: sensor.master_bedroom_wxkg02lm_battery
