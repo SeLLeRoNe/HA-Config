@@ -1,0 +1,14 @@
+---
+alias: House - Lights - Single User
+trigger:
+  - platform: state
+    entity_id: "light.patio_light"
+    to: 'on'
+condition:
+  - condition: template
+    value_template: "{{ states('sensor.people_home') | int == 1 }}"
+action:
+  - service: light.turn_off
+    data_template:
+      entity_id: >
+        {{ state.light | map(attribute='entity_id') | select('ne','trigger.entity_id') | join (', ') }}

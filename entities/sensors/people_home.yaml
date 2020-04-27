@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  people_home:
+    friendly_name: People at home
+    value_template: >-
+      {{ states.person | map(attribute='state') | select('eq','home') | list | length }}
