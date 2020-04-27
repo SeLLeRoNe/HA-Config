@@ -95,7 +95,7 @@ cards:
           - entity: sensor.andrea_oneplus5_gps
           - entity: sensor.sonia_mi9tpro_gps
           - entity: sensor.sonia_honor8_gps
-      - break
+#      - break
       - type: history-graph
         title:
         hours_to_show: 24
@@ -103,6 +103,33 @@ cards:
         entities:
           - person.andrea_iannucci
           - person.sonia_espejo_brea
+      - break
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Phones
+      - type: custom:battery-state-card
+        entities:
+          - entity: sensor.andrea_oneplus5_battery
+            name: "Andrea - OnePlus 5"
+          - entity: sensor.andrea_honor8_battery
+            name: "Andrea - Honor 8"
+          - entity: sensor.andrea_xt1032_battery
+            name: "Andrea - Motorola XT1032"
+          - entity: sensor.sonia_mi9tpro_battery
+            name: "Sonia - Mi 9T Pro"
+          - entity: sensor.sonia_honor8_battery
+            name: "Sonia - Honor 8"
+          - entity: sensor.sonia_honor8_battery
+            name: "Sonia - Honor 8"
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Tablets
+      - type: custom:battery-state-card
+        entities:
+          - entity: sensor.andrea_shield_battery
+            name: "Andrea - NVIDIA Shield K1"
 #      - type: custom:decluttering-card
 #        template: house_humidity
 #        variables:
