@@ -231,11 +231,11 @@ bedroom_luca_lights:
             service: scene.turn_on
             data:
               entity_id: scene.bedroom_luca_lights_on
-              transaction: 5
+              transition: 5
           - entity: scene.bedroom_luca_diaper_change
             name: "Diaper Change"
             tap_action: call-service
             service: scene.turn_on
             data:
               entity_id: scene.bedroom_luca_diaper_change
-              transaction: 5
+              transition: 5
