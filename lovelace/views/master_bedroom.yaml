@@ -28,7 +28,7 @@ cards:
                     entity: binary_sensor.master_bedroom_window
                     tap_action:
                       action: none
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
               - type: custom:decluttering-card
                 template: temperature

@@ -110,7 +110,7 @@ cards:
                     entity: binary_sensor.bathroom_mccgq01lm_window
                     tap_action:
                       action: none
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
               - type: custom:decluttering-card
                 template: temperature

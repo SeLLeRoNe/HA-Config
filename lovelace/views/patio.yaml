@@ -126,13 +126,13 @@ cards:
                     entity: binary_sensor.patio_mccgq01lm_door
                     tap_action:
                       action: none
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
               - type: custom:decluttering-card
                 template: temperature
                 variables:
                   - entity: sensor.patio_temperature
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
               - type: custom:decluttering-card
                 template: humidity
