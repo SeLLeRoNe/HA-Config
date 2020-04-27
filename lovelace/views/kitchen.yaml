@@ -84,6 +84,9 @@ cards:
                       - 0
 #                      brightness: 150
                       icon_color: '#FFFF00'
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
           - type: custom:decluttering-card
             template: title
             variables:
@@ -142,9 +145,8 @@ cards:
 #          - type: horizontal-stack
 #            cards:
               - type: glance
-#                title: Sensors
+                show_state: false
                 columns: 4
-                show_header_toggle: false
                 entities:
                   - name: Leak Sensor
                     entity: binary_sensor.kitchen_sjcgq11lm_leak

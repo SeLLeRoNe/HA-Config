@@ -120,8 +120,6 @@ cards:
             name: "Sonia - Mi 9T Pro"
           - entity: sensor.sonia_honor8_battery
             name: "Sonia - Honor 8"
-          - entity: sensor.sonia_honor8_battery
-            name: "Sonia - Honor 8"
       - type: custom:decluttering-card
         template: title
         variables:

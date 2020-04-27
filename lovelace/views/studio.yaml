@@ -97,6 +97,9 @@ cards:
 #               color_temp: false
 #               white_value: false
 #               color_picker: true
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
           - type: custom:decluttering-card
             template: title
             variables:
@@ -267,7 +270,6 @@ cards:
 #                  state_color: true
 #                tap_action:
 #                  action: none
-      - break
       - type: vertical-stack
         cards:
           - type: custom:stack-in-card
@@ -280,7 +282,6 @@ cards:
               - type: glance
                 show_state: false
                 columns: 2
-                show_header_toggle: false
                 entities:
                   - name: "Computer"
                     icon: mdi:desktop-tower
@@ -301,7 +302,6 @@ cards:
               - type: glance
                 show_state: false
                 columns: 2
-                show_header_toggle: false
                 entities:
                   - name: "Raspberry Pi"
                     icon: mdi:raspberry-pi
@@ -319,7 +319,6 @@ cards:
               - type: glance
                 show_state: false
                 columns: 3
-                show_header_toggle: false
                 entities:
                   - name: MEDIA01
                     icon: mdi:nas
@@ -354,6 +353,9 @@ cards:
                     hold_action:
                       action: call-service
                       service: shell_command.media03_off
+      - break
+      - type: vertical-stack
+        cards:
           - type: custom:stack-in-card
             mode: vertical
             cards:
@@ -364,8 +366,8 @@ cards:
               - type: horizontal-stack
                 cards:
                   - type: glance
+                    show_state: false
                     columns: 2
-                    show_header_toggle: false
                     entities:
                       - name: Motion Sensor
                         entity: binary_sensor.studio_2ajz4kpbs_pir

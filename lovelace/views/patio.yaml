@@ -114,9 +114,8 @@ cards:
                 variables:
                   - title: Sensors
               - type: glance
-#                title: Sensors
+                show_state: false
                 columns: 2
-                show_header_toggle: false
                 entities:
                   - name: Motion Sensor
                     entity: binary_sensor.patio_pir

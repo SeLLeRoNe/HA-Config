@@ -94,9 +94,8 @@ cards:
                 variables:
                   - title: Sensors
               - type: glance
-#                title: Sensors
+                show_state: false
                 columns: 3
-                show_header_toggle: false
                 entities:
                   - name: Leak Sensor
                     entity: binary_sensor.bathroom_sjcgq11lm_leak

@@ -84,6 +84,9 @@ cards:
                       - 0
 #                      brightness: 150
                       icon_color: '#FFFF00'
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
           - type: custom:decluttering-card
             template: title
             variables:
@@ -120,7 +123,7 @@ cards:
                 cards:
                   - type: glance
                     columns: 2
-                    show_header_toggle: false
+                    show_state: false
                     entities:
                       - name: Motion Sensor
                         entity: binary_sensor.living_room_pir
