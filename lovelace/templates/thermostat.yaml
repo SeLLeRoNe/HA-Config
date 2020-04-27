@@ -8,6 +8,10 @@ thermostat:
         template: title
         variables:
           - title: '[[title]]'
+      - type: custom:decluttering-card
+        template: thermostat_card
+        variables:
+          - area: '[[area]]'
       - type: thermostat
         icon: mdi:thermometer-lines
         entity: climate.[[area]]
