@@ -656,15 +656,21 @@ house_lights:
         entities:
           - entity: scene.bedroom_luca_lights_on
             name: "Lights On"
-            tap_action: call-service
-            service: scene.turn_on
-            data:
-              entity_id: scene.bedroom_luca_lights_on
-              transition: 5
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.bedroom_luca_lights_on
+                transition: 5
+            hold_action:
+              action: none
           - entity: scene.bedroom_luca_diaper_change
             name: "Diaper Change"
-            tap_action: call-service
-            service: scene.turn_on
-            data:
-              entity_id: scene.bedroom_luca_diaper_change
-              transition: 5
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.bedroom_luca_diaper_change
+                transition: 5
+            hold_action:
+              action: none

@@ -9,6 +9,7 @@ bedroom_luca_lights:
         variables:
           - title: Lights
           - type: conditional
+      - type: conditional
         conditions:
           - entity: light.bedroom_luca_light_1
             state: "off"
@@ -158,7 +159,7 @@ bedroom_luca_lights:
           entities:
             - type: 'custom:slider-entity-row'
               entity: light.bedroom_luca_light_3
-              name: Light 2
+              name: Light 3
               toggle: true
       - type: conditional
         conditions:
@@ -170,7 +171,7 @@ bedroom_luca_lights:
           entities:
             - type: 'custom:slider-entity-row'
               entity: light.bedroom_luca_light_3
-              name: Light 2
+              name: Light 3
               toggle: true
             - type: 'custom:rgb-light-card'
               entity: light.bedroom_luca_light_3
@@ -227,15 +228,21 @@ bedroom_luca_lights:
         entities:
           - entity: scene.bedroom_luca_lights_on
             name: "Lights On"
-            tap_action: call-service
-            service: scene.turn_on
-            data:
-              entity_id: scene.bedroom_luca_lights_on
-              transition: 5
+            tap_action: 
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.bedroom_luca_lights_on
+                transition: 5
+            hold_action:
+              action: none
           - entity: scene.bedroom_luca_diaper_change
             name: "Diaper Change"
-            tap_action: call-service
-            service: scene.turn_on
-            data:
-              entity_id: scene.bedroom_luca_diaper_change
-              transition: 5
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.bedroom_luca_diaper_change
+                transition: 5
+            hold_action:
+              action: none
