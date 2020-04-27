@@ -69,6 +69,8 @@
     type: module
   - url: /hacsfiles/dual-gauge-card/dual-gauge-card.js
     type: module
+  - url: /hacsfiles/battery-state-card/battery-state-card.js
+    type: module
 
   - url: /local/lovelace/cards/dark-sky-weather-card.js
     type: module
