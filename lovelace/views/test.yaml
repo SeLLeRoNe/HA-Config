@@ -6,31 +6,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: picture-entity
-        entity: camera.tracker_andrea
-        name: Andrea
-        camera_view: live
-        show_state: false
-      - type: picture-entity
-        entity: camera.tracker_sonia
-        name: Sonia
-        camera_view: live
-        show_state: false
-      - type: picture-entity
-        entity: camera.iss
-        name: ISS
-        camera_view: live
-        show_state: false
-      - break
-      - type: map
-#        aspect_ratio: 16:9
-#        default_zoom: 5
-        dark_mode: true
-        entities:
-          - device_tracker.life360_andrea_iannucci
-          - device_tracker.life360_sonia_espejo_brea
-#          - zone.home
-        hours_to_show: 168
       - type: entities
         title: Studio
         show_header_toggle: false
@@ -104,30 +79,78 @@ cards:
           - person.andrea_iannucci
           - person.sonia_espejo_brea
       - break
-      - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: Phones
-      - type: custom:battery-state-card
-        entities:
-          - entity: sensor.andrea_oneplus5_battery
-            name: "Andrea - OnePlus 5"
-          - entity: sensor.andrea_honor8_battery
-            name: "Andrea - Honor 8"
-          - entity: sensor.andrea_xt1032_battery
-            name: "Andrea - Motorola XT1032"
-          - entity: sensor.sonia_mi9tpro_battery
-            name: "Sonia - Mi 9T Pro"
-          - entity: sensor.sonia_honor8_battery
-            name: "Sonia - Honor 8"
-      - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: Tablets
-      - type: custom:battery-state-card
-        entities:
-          - entity: sensor.andrea_shield_battery
-            name: "Andrea - NVIDIA Shield K1"
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Phones
+          - type: custom:battery-state-card
+            color_thresholds:
+              - value: 100
+                color: "#009933"
+              - value: 80
+                color: "#009900"
+              - value: 60
+                color: "#FF8000"
+              - value: 40
+                color: "#C6600"
+              - value: 20
+                color: "#990000"
+              - value: "unknown"
+                color: "#808080"
+            entities:
+              - entity: sensor.andrea_oneplus5_battery
+                name: "Andrea - OnePlus 5"
+                charging_state:
+                  entity_id: sensor.andrea_oneplus5_charging
+                  state: "charging"
+              - entity: sensor.andrea_honor8_battery
+                name: "Andrea - Honor 8"
+                charging_state:
+                  entity_id: binary_sensor.andrea_honor8_charging
+                  state: "on"
+              - entity: sensor.andrea_xt1032_battery
+                name: "Andrea - Motorola XT1032"
+                charging_state:
+                  entity_id: input_boolean.andrea_xt1032_charging
+                  state: "on"
+              - entity: sensor.sonia_mi9tpro_battery
+                name: "Sonia - Mi 9T Pro"
+                charging_state:
+                  entity_id: input_boolean.sonia_mi9tpro_charging
+                  state: "on"
+              - entity: sensor.sonia_honor8_battery
+                name: "Sonia - Honor 8"
+                charging_state:
+                  entity_id: binary_sensor.sonia_honor8_charging
+                  state: "on"
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Tablets
+          - type: custom:battery-state-card
+            color_thresholds:
+              - value: 100
+                color: "#009933"
+              - value: 80
+                color: "#009900"
+              - value: 60
+                color: "#FF8000"
+              - value: 40
+                color: "#C6600"
+              - value: 20
+                color: "#990000"
+            entities:
+              - entity: sensor.andrea_shield_battery
+                name: "Andrea - NVIDIA Shield K1"
+                charging_state:
+                  entity_id: input_boolean.andrea_shield_charging
+                  state: "on"
 #      - type: custom:decluttering-card
 #        template: house_humidity
 #        variables:

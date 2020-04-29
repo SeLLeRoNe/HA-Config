@@ -1,0 +1,33 @@
+title: Test Map
+icon: mdi:tune
+panel: true
+path: test-map
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: picture-entity
+        entity: camera.tracker_andrea
+        name: Andrea
+        camera_view: live
+        show_state: false
+      - type: picture-entity
+        entity: camera.tracker_sonia
+        name: Sonia
+        camera_view: live
+        show_state: false
+      - type: picture-entity
+        entity: camera.iss
+        name: ISS
+        camera_view: live
+        show_state: false
+      - break
+      - type: map
+#        aspect_ratio: 16:9
+#        default_zoom: 5
+        dark_mode: true
+        entities:
+          - device_tracker.life360_andrea_iannucci
+          - device_tracker.life360_sonia_espejo_brea
+#          - zone.home
+        hours_to_show: 168
