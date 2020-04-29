@@ -52,6 +52,45 @@ cards:
               - sensor.ha_config
           - type: custom:hui-element
             row_type: divider
+          - type: custom:mini-graph-card
+            name: Database Size
+            icon: mdi:database
+            more_info: false
+            height: 150
+            line_width: 4
+            hours_to_show: 168
+            points_per_hour: 0.25
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            font_size: 100
+            font_size_header: 14
+            align_header: default
+            align_icon: right
+            align_state: center
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: false
+              extrema: false
+              labels: false
+              name_adaptive_color: true
+              icon_adaptive_color: true
+            style: |
+              ha-card {
+                padding: 16px !important;
+              }
+            entities:
+              - entity: sensor.database_size
+                name: Database Size
+                color: '#FF9900'
       - break
       - type: custom:stack-in-card
         mode: vertical
