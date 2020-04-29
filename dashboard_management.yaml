@@ -25,12 +25,6 @@ custom_header:
   elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
   tab_indicator_color: var(--state-icon-active-color)
-#animated_background:
-#  default_url: /local/animated_backgrounds/management.html
-#  included_users:
-#    - Andrea Iannucci
-#  included_devices:
-#    - windows
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/plugs.yaml
