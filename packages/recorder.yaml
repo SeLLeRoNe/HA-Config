@@ -5,8 +5,7 @@
 # https://www.home-assistant.io/components/recorder/
 #
 recorder:
-  # MySQL / MariaDB Connection
-  db_url: !secret recorder_mysql
+  db_url: !secret database_url
   auto_purge: true
   purge_keep_days: 15
   exclude:
