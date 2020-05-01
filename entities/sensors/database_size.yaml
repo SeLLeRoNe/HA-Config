@@ -1,0 +1,8 @@
+---
+platform: sql
+db_url: !secret database_url
+queries:
+  - name: Database Size
+    query: 'SELECT table_schema "ha", Round(Sum(data_length + index_length) / 1048576, 1) "value" FROM information_schema.tables WHERE table_schema="ha" GROUP BY table_schema;'
+    column: 'value'
+    unit_of_measurement: MB
