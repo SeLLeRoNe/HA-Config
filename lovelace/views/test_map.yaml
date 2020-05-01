@@ -1,5 +1,5 @@
 title: Test Map
-icon: mdi:tune
+icon: mdi:map
 panel: true
 path: test-map
 cards:

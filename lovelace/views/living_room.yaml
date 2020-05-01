@@ -123,7 +123,7 @@ cards:
                 cards:
                   - type: glance
                     columns: 2
-                    show_state: false
+                    show_state: true
                     entities:
                       - name: Motion Sensor
                         entity: binary_sensor.living_room_pir

@@ -366,7 +366,7 @@ cards:
               - type: horizontal-stack
                 cards:
                   - type: glance
-                    show_state: false
+                    show_state: true
                     columns: 2
                     entities:
                       - name: Motion Sensor

@@ -94,7 +94,7 @@ cards:
                 variables:
                   - title: Sensors
               - type: glance
-                show_state: false
+                show_state: true
                 columns: 3
                 entities:
                   - name: Leak Sensor
