@@ -9,7 +9,6 @@ house_humidity:
     line_width: 4
     hours_to_show: 168
     points_per_hour: 0.25
-    font_size: 75
     aggregate_func: max
     group_by: hour
     group: false
