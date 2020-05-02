@@ -11,6 +11,14 @@ condition:
   conditions:
     - condition: template
       value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'Spotify') }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: media_player.spotify
+          state: "paused"
+        - condition: state
+          entity_id: media_player.spotify
+          state: "idle"
 action:
   - service: media_player.volume_set
     data:

@@ -14,13 +14,6 @@ condition:
       state: "on"
     - condition: template
       value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'PC') }}"
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: media_player.spotify
-          state: "idle"
-        - condition: template
-          value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'Spotify') }}"
 action:
   - service: media_player.volume_set
     data:

@@ -33,12 +33,6 @@ action:
     entity_id: switch.studio_andrea_usb_hub
   - service: media_player.turn_on
     entity_id: media_player.studio_amplifier
-  - delay:
-      seconds: 5
-  - service: media_player.select_source
-    data:
-      entity_id: media_player.studio_amplifier
-      source: PC
   - service: mqtt.publish
     data:
       topic: "wled/001/fx"
