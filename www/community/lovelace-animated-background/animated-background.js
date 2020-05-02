@@ -1,27 +1,44 @@
-let root = document.querySelector("home-assistant");
-root = root && root.shadowRoot;
-root = root && root.querySelector("home-assistant-main");
-root = root && root.shadowRoot;
-root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
-root = (root && root.shadowRoot) || root;
-root = root && root.querySelector("ha-panel-lovelace");
-root = root && root.shadowRoot;
-root = root && root.querySelector("hui-root");
-const hui = root;
-const lovelace = root.lovelace;
-let animatedConfig = lovelace.config.animated_background;
-const viewLayout = root.shadowRoot.querySelector("ha-app-layout");
-if(viewLayout != null){
-  viewLayout.style.background = 'transparent';
-}
-let haobj = null;
+var root;
+var panel_resolver;
+var hui;
+var lovelace;
+var animatedConfig;
+var viewLayout;
+var haobj;
+var view;
 
+function get_vars() {
+  root = document.querySelector("home-assistant");
+  root = root && root.shadowRoot;
+  root = root && root.querySelector("home-assistant-main");
+  root = root && root.shadowRoot;
+  root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
+  panel_resolver = root;
+  root = (root && root.shadowRoot) || root;
+  root = root && root.querySelector("ha-panel-lovelace");
+  root = root && root.shadowRoot;
+  root = root && root.querySelector("hui-root");
+  hui = root;
+  lovelace = root.lovelace;
+  animatedConfig = lovelace.config.animated_background;
+  viewLayout = root.shadowRoot.getElementById("layout");
+  view = root.shadowRoot.getElementById("view");
+  if (viewLayout != null) {
+    viewLayout.style.background = 'transparent';
+  }
+  haobj = null;
+}
+
+var current_view_enabled = false;
 //Mutation observer logic to set the background of views to transparent each time a new tab is selected
 var viewObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.addedNodes.length > 0) {
-      renderBackgroundHTML(haobj);
+      renderBackgroundHTML();
+      if(current_view_enabled){
+        removeBackground();
       }
+    }
   });
 });
 
@@ -29,7 +46,25 @@ var viewObserver = new MutationObserver(function (mutations) {
 var huiObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.addedNodes.length > 0) {
-      renderBackgroundHTML(haobj);
+      renderBackgroundHTML();
+    }
+  });
+});
+
+var panelObserver = new MutationObserver(function (mutations) {
+  mutations.forEach(function (mutation) {
+    if (mutation.addedNodes.length > 0) {
+      if (mutation.addedNodes[0].nodeName.toLowerCase() == "ha-panel-lovelace") {
+        var wait = 0;
+        var wait_interval = setInterval(() => {
+          get_vars()
+          if (hui != null) {
+            run();
+            clearInterval(wait_interval);
+          }
+        }, 1000 / 60);
+      }
+
     }
   });
 });
@@ -40,6 +75,8 @@ let previous_url;
 
 //main function
 function run() {
+  get_vars();
+
   console.log("Animated Background: Starting");
   if (animatedConfig) {
 
@@ -52,17 +89,8 @@ function run() {
         }
       });
 
-      renderBackgroundHTML();
-
-      //render current view background transparent if it exists
-      let styleBlock = root.shadowRoot.getElementById("view");
-      styleBlock = styleBlock.querySelector('hui-view');
-      if (styleBlock != null) {
-        styleBlock.style.background = 'transparent';
-      }
-
       //start the observers
-      viewObserver.observe(viewLayout, {
+      viewObserver.observe(view, {
         characterData: true,
         childList: true,
         subtree: true,
@@ -75,6 +103,16 @@ function run() {
         subtree: true,
         characterDataOldValue: true
       });
+
+      panelObserver.observe(panel_resolver, {
+        characterData: true,
+        childList: true,
+        subtree: true,
+        characterDataOldValue: true
+      });
+
+      renderBackgroundHTML();
+
     }
     else {
       console.log("Animated Background: Not enabled in Lovelace configuration");
@@ -84,14 +122,14 @@ function run() {
 
 //return the currently selected lovelace view
 function currentView() {
-  return window.location.pathname.replace("/lovelace/", "");
+  return window.location.pathname.split('/')[2];
 }
 
 //logic for checking if Animated Background is enabled in configuration
 function enabled(hass) {
 
-  if(animatedConfig.display_user_agent){
-    if(animatedConfig.display_user_agent == true){
+  if (animatedConfig.display_user_agent) {
+    if (animatedConfig.display_user_agent == true) {
       alert(navigator.userAgent);
     }
   }
@@ -136,25 +174,49 @@ function device_included(element, index, array) {
   return navigator.userAgent.toLowerCase().includes(element.toLowerCase());
 }
 
+//remove background for 2 seconds because race condition memes.
+var memeRemover = null;
+var memeCount = 0;
+function removeBackground() {
+  if (memeRemover == null) {
+    memeRemover = setInterval(() => {
+      let viewNode = root.shadowRoot.getElementById("view");
+      viewNode = viewNode.querySelector('hui-view');
+      if (viewNode != null) {
+        viewNode.style.background = 'transparent';
+      }
+      memeCount++;
+      if (memeCount > 20) {
+        clearInterval(memeRemover);
+        memeRemover = null;
+        memeCount = 0;
+      }
+    }, 100);
+  }
+
+}
+
 function renderBackgroundHTML() {
+  current_view_enabled = false;
   var stateURL = "";
   var selectedConfig = animatedConfig;
   //check if current view has a separate config
-  if(animatedConfig.views){
+  if (animatedConfig.views) {
     animatedConfig.views.forEach(view => {
-      if(view.path == currentView()){
+      if (view.path == currentView()) {
         selectedConfig = view.config;
       }
     });
   }
-  
+
   //rerender background if entity has changed (to avoid no background refresh if the new entity happens to have the same state)
-  if(previous_entity != selectedConfig.entity){
+  if (previous_entity != selectedConfig.entity) {
     previous_state = null;
   }
 
   //get state of config object 
   if (selectedConfig.entity) {
+    current_view_enabled = true;
     var current_state = haobj.states[selectedConfig.entity].state;
     if (previous_state != current_state) {
       console.log("Animated Background: Configured entity " + selectedConfig.entity + " is now " + current_state);
@@ -177,18 +239,12 @@ function renderBackgroundHTML() {
     }
   }
 
-  //render current view background transparent
-  let viewNode = root.shadowRoot.getElementById("view");
-  viewNode = viewNode.querySelector('hui-view');
-  if(viewNode != null){
-    viewNode.style.background = 'transparent';
-  }
-
   var htmlToRender;
   if (stateURL != "") {
+    current_view_enabled = true;
     var bg = hui.shadowRoot.getElementById("background-video");
     if (bg == null) {
-      if(!selectedConfig.entity){
+      if (!selectedConfig.entity) {
         console.log("Animated Background: Applying default background");
       }
       htmlToRender = `<style>
@@ -211,11 +267,13 @@ function renderBackgroundHTML() {
     </div>`;
       viewLayout.insertAdjacentHTML("beforebegin", htmlToRender);
       previous_url = stateURL;
+      removeBackground();
     }
     else {
       htmlToRender = `<iframe class="bg-video" frameborder="0" src="${stateURL}"/>`;
       if (selectedConfig.entity || (previous_url != stateURL)) {
-        if(!selectedConfig.entity){
+        removeBackground();
+        if (!selectedConfig.entity) {
           console.log("Animated Background: Applying default background");
         }
         bg.innerHTML = htmlToRender;
