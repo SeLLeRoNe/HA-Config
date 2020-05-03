@@ -1,11 +1,10 @@
 ---
-# MQTT Device: Master Bedroom Lamp Bottom Light Link Quality
-#
-# https://www.home-assistant.io/components/mqtt/
-#
 platform: mqtt
-name: 'Bedroom Luca Light 2 Link Quality'
-icon: mdi:lightbulb
-state_topic: "zigbee2mqtt/bedroom_luca_light_2"
-availability_topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
-value_template: "{{ value_json.linkquality }}"
+name: 'Bedroom Luca Light 2 Wireless Signal'
+icon: mdi:signal-variant
+state_topic: 'tele/bedroom_luca_light_2/STATE'
+value_template: "{{ value_json.Wifi.RSSI }}"
+unit_of_measurement: '%'
+availability_topic: "tele/bedroom_luca_light_2/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"

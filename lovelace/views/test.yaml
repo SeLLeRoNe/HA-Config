@@ -36,6 +36,11 @@ cards:
             IsOnColor: 'rgb(255, 0, 0)'
             IsOffColor: 'purple'
             ButtonInactiveColor: '#aaaaaa'
+      - type: entities
+        title: Studio
+        show_header_toggle: false
+        entities:
+          - light.bedroom_luca_lights
 #      - type: 'custom:config-template-card'
 #        entities: sensor.dark_sky_alt_wind
 #        variables:
