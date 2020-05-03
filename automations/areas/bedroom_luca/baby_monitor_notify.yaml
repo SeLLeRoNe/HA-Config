@@ -1,5 +1,5 @@
 ---
-alias: Bedroom Luca - Baby Monitor Off
+alias: Bedroom Luca - Baby Monitor Notify
 trigger:
   - platform: state
     entity_id: binary_sensor.hallway_noise
