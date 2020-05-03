@@ -54,6 +54,10 @@ cards:
                   }
                 tap_action:
                   action: none
+      - type: picture-glance
+        title: Hallway
+        entities: []
+        camera_image: camera.hallway
 #      - type: picture-glance
 #        title: Hallway
 #        tap_action:
