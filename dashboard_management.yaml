@@ -27,11 +27,11 @@ custom_header:
   tab_indicator_color: var(--state-icon-active-color)
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
-  - !include lovelace/views/plugs.yaml
+  - !include lovelace/views/homeassistant.yaml
+  - !include lovelace/views/system.yaml
   - !include lovelace/views/batteries.yaml
   - !include lovelace/views/temperatures.yaml
   - !include lovelace/views/humidities.yaml
   - !include lovelace/views/system.yaml
-  - !include lovelace/views/homeassistant.yaml
   - !include lovelace/views/thermostat.yaml
   - !include lovelace/views/debug.yaml
