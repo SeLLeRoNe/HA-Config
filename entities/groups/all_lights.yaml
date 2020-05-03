@@ -2,8 +2,10 @@
 all_lights:
   name: All Lights
   entities:
+    - light.patio_light
     - light.studio_light
-    - light.bedroom_luca_light
+    - light.bedroom_luca_light_1
+    - light.bedroom_luca_light_2
+    - light.bedroom_luca_light_3
     - light.master_bedroom_lamp_top_light
     - light.master_bedroom_lamp_bottom_light
-
