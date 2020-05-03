@@ -1,0 +1,10 @@
+---
+# MQTT Device: Master Bedroom Lamp Bottom Light Firmware Update
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Master Bedroom Lamp Bottom Light Firmware Update'
+state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+availability_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
