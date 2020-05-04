@@ -6,6 +6,22 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: light
+        entity: light.master_bedroom_bed_led
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.master_bedroom_bed_led_estimated_current
+          - sensor.master_bedroom_bed_led_free_memory
+          - switch.master_bedroom_bed_led_nightlight
+          - switch.master_bedroom_bed_led_sync_receive
+          - switch.master_bedroom_bed_led_sync_send
+          - sensor.master_bedroom_bed_led_uptime
+          - sensor.master_bedroom_bed_led_wi_fi_bssid
+          - sensor.master_bedroom_bed_led_wi_fi_channel
+          - sensor.master_bedroom_bed_led_wi_fi_rssi
+          - sensor.master_bedroom_bed_led_wi_fi_signal
+      - break
       - type: entities
         title: Studio
         show_header_toggle: false
