@@ -60,7 +60,7 @@ house_temperature:
 #        }
       entities:
         - entity: sensor.house_temperature
-          name: Temperature
+          name: Inside
           color: '#FF5000'
           show_state: true
           show_fill: true

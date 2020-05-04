@@ -47,7 +47,7 @@ house_humidity:
       }
     entities:
       - entity: sensor.house_humidity
-        name: Humidity
+        name: Inside
         color: '#00BFFF'
         show_state: true
       - entity: sensor.dark_sky_humidity
