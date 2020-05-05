@@ -71,6 +71,8 @@
     type: module
   - url: /hacsfiles/battery-state-card/battery-state-card.js
     type: module
+  - url: /hacsfiles/lovelace-state-switch/state-switch.js
+    type: module
 
   - url: /local/lovelace/cards/dark-sky-weather-card.js
     type: module
