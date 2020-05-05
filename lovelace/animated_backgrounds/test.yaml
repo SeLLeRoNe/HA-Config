@@ -1,5 +1,4 @@
 ---
-debug: true
 groups:
   - name: test
     config:
