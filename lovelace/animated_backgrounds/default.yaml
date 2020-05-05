@@ -1,0 +1,15 @@
+---
+included_devices:
+  - windows
+groups:
+  - name: weather
+    config:
+      entity: "weather.dark_sky"
+      state_url:
+        'sunny': /local/animated_backgrounds/sunny.html
+        'partlycloudy': /local/animated_backgrounds/cloudy.html
+        'cloudy': /local/animated_backgrounds/cloudy.html
+        'mostlycloudy': /local/animated_backgrounds/mostlycloudy.html
+        'rainy': /local/animated_backgrounds/rainy.html
+        'clear-night': /local/animated_backgrounds/night.html
+        'fog': /local/animated_backgrounds/fog.html

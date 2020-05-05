@@ -1,0 +1,10 @@
+---
+debug: true
+groups:
+  - name: test
+    config:
+      default_url: /local/animated_backgrounds/test.html
+    included_users:
+      - Andrea Iannucci
+    included_devices:
+      - windows
