@@ -8,645 +8,151 @@ house_lights:
         template: title
         variables:
           - title: Lights
-      - type: entities    
-        show_header_toggle: false
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.living_room_lights
+          name: Living Room
+          toggle: true
         entities:
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.living_room_lights
-              name: Living Room
-              toggle: true
-            entities:
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.living_room_table_light
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.living_room_table_light
-                      name: "Lamp"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.living_room_table_light
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.living_room_table_light
-                      toggle: true
-                      name: "Lamp"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.living_room_table_light
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.kitchen_lights
-              name: Kitchen
-              toggle: true
-            entities:
-              - type: 'custom:slider-entity-row'
-                entity: light.kitchen_light
-                toggle: true
-                name: "Cealing Light"
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.studio_lights
-              name: Studio
-              toggle: true
-            entities:
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.studio_wall_light
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.studio_wall_light
-                      name: "Wall"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.studio_wall_light
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.studio_wall_light
-                      toggle: true
-                      name: "Wall"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.studio_wall_light
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.bedroom_luca_lights
-              name: Bedroom Luca
-              toggle: true
-            entities:
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_1
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_1
-                      name: "Light 1"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_1
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_1
-                      toggle: true
-                      name: "Light 1"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.bedroom_luca_light_1
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_2
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_2
-                      name: "Light 2"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_2
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_2
-                      toggle: true
-                      name: "Light 2"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.bedroom_luca_light_2
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_3
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_3
-                      name: "Light 3"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.bedroom_luca_light_3
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.bedroom_luca_light_3
-                      toggle: true
-                      name: "Light 3"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.bedroom_luca_light_3
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.bathroom_lights
-              name: Bathroom
-              toggle: true
-            entities:
-              - type: 'custom:slider-entity-row'
-                entity: light.bathroom_light
-                toggle: true
-                name: "Mirror Light"
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.master_bedroom_lights
-              name: Master Bedroom
-              toggle: true
-            entities:
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.master_bedroom_lamp_top_light
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.master_bedroom_lamp_top_light
-                      name: "Lamp Top"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.master_bedroom_lamp_top_light
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.master_bedroom_lamp_top_light
-                      toggle: true
-                      name: "Lamp Top"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.master_bedroom_lamp_top_light
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: 'custom:slider-entity-row'
-                entity: light.master_bedroom_lamp_bottom_light
-                toggle: true
-                name: "Lamp Bottom"
-              - type: 'custom:slider-entity-row'
-                entity: light.master_bedroom_andrea_bedside_lamp
-                toggle: true
-                name: "Bedside - Andrea"
-              - type: 'custom:slider-entity-row'
-                entity: light.master_bedroom_sonia_bedside_lamp
-                toggle: true
-                name: "Bedside - Sonia"
-              - type: custom:fold-entity-row
-                head:
-                  type: custom:slider-entity-row
-                  entity: light.master_bathroom_lights
-                  name: Master Bathroom
-                  toggle: true
-                entities:
-                  - type: 'custom:slider-entity-row'
-                    entity: light.master_bathroom_mirror_light
-                    toggle: true
-                    name: "Mirror Light"
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.laundry_room_lights
-              name: Laundry Room
-              toggle: true
-            entities:
-              - type: 'custom:slider-entity-row'
-                entity: light.laundry_room_light
-                toggle: true
-          - type: custom:fold-entity-row
-            head:
-              type: custom:slider-entity-row
-              entity: light.patio_lights
-              name: Patio
-              toggle: true
-            entities:
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.patio_light
-                    state: "off"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.patio_light
-                      name: "Light"
-                      toggle: true
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
-              - type: "custom:hui-conditional-card"
-                conditions:
-                  - entity: light.patio_light
-                    state: "on"
-                card:
-                  type: entities
-                  show_header_toggle: false
-                  entities:
-                    - type: 'custom:slider-entity-row'
-                      entity: light.patio_light
-                      toggle: true
-                      name: "Light"
-                    - type: 'custom:rgb-light-card'
-                      entity: light.patio_light
-                      size: 25
-                      colors:
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FFFFFF'
-                        - rgb_color:
-                          - 0
-                          - 00
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#0000FF'
-                        - rgb_color:
-                          - 0
-                          - 255
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#00FF00'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 0
-    #                      brightness: 255
-                          icon_color: '#FF0000'
-                        - rgb_color:
-                          - 255
-                          - 0
-                          - 255
-    #                      brightness: 255
-                          icon_color: '#FF00FF'
-                        - rgb_color:
-                          - 255
-                          - 102
-                          - 0
-                          brightness: 150
-                          icon_color: '#FF6600'
-                        - rgb_color:
-                          - 255
-                          - 255
-                          - 0
-    #                      brightness: 150
-                          icon_color: '#FFFF00'
-                  style: |
-                    ha-card {
-                      box-shadow: none;
-                    }
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light
+              - entity: light.living_room_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.kitchen_lights
+          name: Kitchen
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light
+              - entity: light.kitchen_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.studio_lights
+          name: Studio
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Wall Light
+              - entity: light.studio_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.bedroom_luca_lights
+          name: Bedroom Luca
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 1
+              - entity: light.bedroom_luca_light_1
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 2
+              - entity: light.bedroom_luca_light_2
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 3
+              - entity: light.bedroom_luca_light_3
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.bathroom_lights
+          name: Bathroom
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light
+              - entity: light.bathroom_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.master_bedroom_lights
+          name: Master Bedroom
+          toggle: true
+        entities:
+          - type: section
+            label: Lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Top
+              - entity: light.master_bedroom_lamp_top_light
+          - type: custom:decluttering-card
+            template: light_card
+            variables:
+              - name: Bottom
+              - entity: light.master_bedroom_lamp_bottom_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Ceiling Light
+              - entity: light.master_bedroom_ceiling_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Wardrobe
+              - entity: light.master_bedroom_wardrobe_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Andrea
+              - entity: light.andrea_bedside_lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Sonia
+              - entity: light.sonia_bedside_lamp
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.master_bathroom_lights
+          name: Master Bathroom
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Master Bathroom
+              - entity: light.master_bathroom_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.laundry_room_lights
+          name: Laundry Room
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Laundry Room
+              - entity: light.laundry_room_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.patio_lights
+          name: Patio
+          toggle: true
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light
+              - entity: light.patio_light
       - type: custom:decluttering-card
         template: title
         variables:

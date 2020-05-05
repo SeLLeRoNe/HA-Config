@@ -1,0 +1,45 @@
+---
+master_bedroom_lights:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Lights
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Top
+              - entity: light.master_bedroom_lamp_top_light
+          - type: custom:decluttering-card
+            template: light_card
+            variables:
+              - name: Bottom
+              - entity: light.master_bedroom_lamp_bottom_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Ceiling Light
+              - entity: light.master_bedroom_ceiling_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Wardrobe
+              - entity: light.master_bedroom_wardrobe_light
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Andrea
+              - entity: light.andrea_bedside_lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Sonia
+              - entity: light.sonia_bedside_lamp

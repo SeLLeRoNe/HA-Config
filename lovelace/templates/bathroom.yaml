@@ -1,0 +1,15 @@
+---
+patio_lights:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Lights
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
+          - name: Light
+          - entity: light.patio_light

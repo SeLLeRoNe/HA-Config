@@ -1,0 +1,61 @@
+---
+light_card_rgb:
+  card:
+    type: custom:state-switch
+    entity: '[[entity]]'
+    states:
+      "off":
+        type: entities
+        show_header_toggle: false
+        entities:
+          - type: 'custom:slider-entity-row'
+            entity: '[[entity]]'
+            name: '[[name]]'
+            toggle: true
+      "on":
+        type: entities
+        show_header_toggle: false
+        entities:
+          - type: 'custom:slider-entity-row'
+            entity: '[[entity]]'
+            name: '[[name]]'
+            toggle: true
+          - type: 'custom:rgb-light-card'
+            entity: '[[entity]]'
+            size: 25
+            colors:
+              - rgb_color:
+                - 255
+                - 255
+                - 255
+                icon_color: '#FFFFFF'
+              - rgb_color:
+                - 0
+                - 00
+                - 255
+                icon_color: '#0000FF'
+              - rgb_color:
+                - 0
+                - 255
+                - 0
+                icon_color: '#00FF00'
+              - rgb_color:
+                - 255
+                - 0
+                - 0
+                icon_color: '#FF0000'
+              - rgb_color:
+                - 255
+                - 0
+                - 255
+                icon_color: '#FF00FF'
+              - rgb_color:
+                - 255
+                - 102
+                - 0
+                icon_color: '#FF6600'
+              - rgb_color:
+                - 255
+                - 255
+                - 0
+                icon_color: '#FFFF00'

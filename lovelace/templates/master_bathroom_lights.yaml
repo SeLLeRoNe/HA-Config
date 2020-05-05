@@ -1,0 +1,18 @@
+---
+master_bathroom_lights:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Lights
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Ceiling Light
+              - entity: light.master_bedroom_ceiling_light
