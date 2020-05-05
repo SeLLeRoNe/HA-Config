@@ -7,10 +7,11 @@
 # the tabs of the view in the UI.
 #
 title: Home Control Panel
-preload:
+preload_cards:
+  - card-tools
   - hui-element
   - markdown
-  - conditional
+  - state-switch
 preload_rows:
   - divider
 custom_header:
@@ -58,20 +59,7 @@ custom_header:
   elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
   tab_indicator_color: var(--state-icon-active-color)
-animated_background:
-  default_url: /local/animated_backgrounds/sunny.html
-  included_users:
-    - Andrea Iannucci
-  included_devices:
-    - windows
-  entity: "weather.dark_sky"
-  state_url:
-    'sunny': /local/animated_backgrounds/sunny.html
-    'partlycloudy': /local/animated_backgrounds/cloudy.html
-    'cloudy': /local/animated_backgrounds/cloudy.html
-    'mostlycloudy': /local/animated_backgrounds/mostlycloudy.html
-    'clear-night': /local/animated_backgrounds/night.html
-    'fog': /local/animated_backgrounds/fog.html
+animated_background: !include lovelace/animated_backgrounds/default.yaml
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 views:
   - !include lovelace/views/house.yaml

@@ -7,7 +7,8 @@
 # the tabs of the view in the UI.
 #
 title: Management
-preload:
+preload_cards:
+  - card-tools
   - markdown
 preload_rows:
   - divider
