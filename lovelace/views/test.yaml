@@ -2,6 +2,7 @@ title: Test
 icon: mdi:tune
 panel: true
 path: test
+animated_background: test
 cards:
   - type: custom:layout-card
     layout: vertical
@@ -632,71 +633,6 @@ cards:
 #              - entity: light.sonia_bedside_lamp
 #              - name: Kitchen
 #              - icon: lightbulb
-      # - type: vertical-stack
-      #   cards:
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_salone
-      #           state: "off"
-      #       card:
-      #         type: entity-button
-      #         show_header_toggle: false
-      #         entity: switch.webcam_salone
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_cucina
-      #           state: "off"
-      #       card:
-      #         type: entity-button
-      #         show_header_toggle: false
-      #         entity: switch.webcam_cucina
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_letto
-      #           state: "off"
-      #       card:
-      #         type: entity-button
-      #         show_header_toggle: false
-      #         entity: switch.webcam_letto
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_salone
-      #           state: "on"
-      #       card:
-      #         type: picture-glance
-      #         title: Webcam Salone
-      #         tap_action:
-      #           action: toggle
-      #         camera_image: camera.salone
-      #         camera_view: live
-      #         entities:
-      #           - switch.webcam_salone
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_cucina
-      #           state: "on"
-      #       card:
-      #         type: picture-glance
-      #         title: Webcam Cucina
-      #         tap_action:
-      #           action: toggle
-      #         camera_image: camera.cucina
-      #         camera_view: live
-      #         entities:
-      #           - switch.webcam_cucina
-      #     - type: conditional
-      #       conditions:
-      #         - entity: switch.webcam_letto
-      #           state: "on"
-      #       card:
-      #         type: picture-glance
-      #         title: WebCam Camera
-      #         tap_action:
-      #           action: toggle
-      #         camera_image: camera.camera_letto
-      #         camera_view: live
-      #         entities:
-      #           - switch.webcam_letto
 #      - type: custom:calendar-card
 #        title: "Andrea's Calendar"
 #        numberOfDays: 15
