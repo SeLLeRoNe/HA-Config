@@ -3,12 +3,12 @@
 #
 # https://github.com/jaruba/ha-samsungtv-custom
 #
-platform: samsungtv_tizen
+platform: samsungtv_smart
 name: Living Room TV
 host: !secret living_room_tv_ip
 mac: !secret living_room_tv_mac
 port: !secret living_room_tv_port
-update_method: smartthings
-api_key: !secret living_room_tv_api_key
-device_id: !secret living_room_tv_device_id
-#app_list: '{"Netflix": "11101200001/org.tizen.netflix-app", "Prime Video": "3201512006785/org.tizen.ignition", "Spotify": "3201606009684"}'
+update_method: websockets
+#update_method: smartthings
+#api_key: !secret living_room_tv_api_key
+#device_id: !secret living_room_tv_device_id
