@@ -8,6 +8,7 @@ google_assistant:
   project_id: !secret google_assistant_project_id
   service_account: !secret google_token_file
   secure_devices_pin: !secret home_alarm_pin
+  expose_by_default: false
   report_state: true
   exposed_domains:
     - alarm_control_panel 
