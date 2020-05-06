@@ -60,21 +60,21 @@ lovelace:
   dashboards:
     lovelace-management:
       mode: yaml
-      filename: dashboard_management.yaml
+      filename: lovelace/dashboards/management.yaml
       title: Management
       icon: mdi:settings
       show_in_sidebar: true
       require_admin: true
     lovelace-test:
       mode: yaml
-      filename: dashboard_test.yaml
+      filename: lovelace/dashboards/test.yaml
       title: Test
       icon: mdi:tune
       show_in_sidebar: true
       require_admin: true
     lovelace-tocheck:
       mode: yaml
-      filename: tocheck.yaml
+      filename: lovelace/dashboards/tocheck.yaml
       title: Test
       icon: mdi:tune
       show_in_sidebar: true
