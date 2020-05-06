@@ -1,0 +1,725 @@
+custom_header:
+  chevrons: false
+  editor_warnings: false
+  exceptions:
+    - conditions:
+        user: martine
+      config:
+        compact_mode: true
+        disable_sidebar: true
+        disabled_mode: true
+        footer_mode: true
+        header_text: Welkom Martine
+        hide_config: true
+        hide_header: true
+        hide_help: true
+        hide_raw: true
+        hide_unused: true
+        kiosk_mode: true
+        menu_dropdown: true
+        menu_hide: true
+        options_hide: true
+        reverse_button_direction: true
+        split_mode: true
+        voice_dropdown: true
+        voice_hide: true
+    - conditions:
+        user: michael
+      config:
+        compact_mode: true
+        disable_sidebar: true
+        disabled_mode: true
+        footer_mode: true
+        header_text: Welkom Michael
+        hide_config: true
+        hide_header: true
+        hide_help: true
+        hide_raw: true
+        hide_unused: true
+        kiosk_mode: true
+        menu_dropdown: true
+        menu_hide: true
+        options_hide: true
+        reverse_button_direction: true
+        split_mode: true
+        voice_dropdown: true
+        voice_hide: true
+    - conditions:
+        user: danny
+      config:
+        compact_mode: true
+        default_tab: '1'
+        disable_sidebar: true
+        disabled_mode: true
+        footer_mode: true
+        header_text: Welkom Danny
+        hide_config: true
+        hide_header: true
+        hide_help: true
+        hide_raw: true
+        hide_unused: true
+        kiosk_mode: true
+        menu_hide: true
+        options_hide: true
+        show_tabs: '1,2,3,4,5'
+        split_mode: true
+        voice_hide: true
+  hidden_tab_redirect: false
+  shadow: false
+title: Thuis Mertens Geysen
+views:
+  - badges: []
+    cards:
+      - layout: vertical
+        type: 'custom:layout-card'
+      - heading:
+          - 'mdi:alarm-light'
+          - Huis status
+        style: |
+          ha-card {
+            background: {% if is_state('switch.alarm_aangezet', 'on') %} #E45F65 {% endif %};
+            background: {% if is_state('switch.alarm_aangezet', 'off') %} #3AA8F3 {% endif %};
+
+
+          }  
+        type: 'custom:banner-card'
+      - type: 'custom:state-switch'
+        entity: user
+        default: default
+        states:
+          Danny Mertens:
+            type: markdown
+            content: |
+              <font size="4"> {{ states('sensor.time_of_day') }}: Danny</font>
+              <font size="2"> [Lampen aan](/lovelace-iphone/verlichting) {% set
+                  lights = [
+                    states.light.lamp_wasruimte, states.light.ledstrip_keuken, states.light.lage_lamp,
+                    states.light.hoge_lamp, states.light.ledstrip_zetel, states.light.lamp_1_douche,
+                    states.light.lamp_2_douche, states.light.lamp_1_dressing, states.light.lamp_2_dressing,
+                    states.light.lamp_3_dressing, states.light.lamp_venster_hal, states.light.lamp_toilet,
+                    states.light.lamp_1_nachthal, states.light.lamp_2_nachthal, states.light.lamp_3_nachthal,
+                    states.light.lamp_4_nachthal, states.light.lamp_badkamer, states.light.lamp_1_bureau,
+                    states.light.lamp_1_master_slaapkamer, states.light.lamp_2_master_slaapkamer, states.light.lamp_3_master_slaapkamer,
+                    states.light.lamp_4_master_slaapkamer, states.light.lamp_1_terras_beneden, states.light.lamp_2_terras_beneden,
+                    states.light.lamp_1_terras_boven, states.light.lamp_2_terras_boven, states.light.lamp_3_terras_boven,
+                    states.light.lamp_4_terras_boven, states.light.lamp_5_terras_boven, states.light.lamp_6_terras_boven,
+                    states.light.lamp_2_bureau, states.light.lamp_3_bureau, states.light.lamp_4_bureau,
+                    states.light.ledstrip_bureau, states.light.lamp_michael,
+                    ] %} {{ lights | selectattr('state','eq','on') | list | count }} | [Deuren open](/lovelace-iphone/beveiliging) {% set Doors = [
+                    states.binary_sensor.achterdeur_contact_alarm,
+                    states.binary_sensor.voordeur_contact_alarm,
+                    states.binary_sensor.schuifdeur_contact_alarm,
+                    ] %} {{ Doors | selectattr('state','eq','on') | list | count }} | [Ramen open](/lovelace-iphone/beveiliging) {% set Windows = [
+                    states.binary_sensor.keukenraam_contact_alarm,
+                    states.binary_sensor.dubbel_raam_contact_alarm,
+                    states.binary_sensor.dressing_raam_contact_alarm,
+                    states.binary_sensor.nachthal_raam_sensor,
+                    states.binary_sensor.window_door_sensor,
+                    states.binary_sensor.badkamer_raam_sensor,
+                    states.binary_sensor.master_raam_sensor,
+                    states.binary_sensor.michael_raam_sensor,
+                    ] %} {{ Windows | selectattr('state','eq','on') | list | count }} </font>
+          Martine Geysen:
+            type: markdown
+            content: |
+              <font size="4">{{ states('sensor.time_of_day') }}: Martine</font>
+              <font size="2"> [Lampen aan](/lovelace-iphone/verlichting) {% set
+                  lights = [
+                    states.light.lamp_wasruimte, states.light.ledstrip_keuken, states.light.lage_lamp,
+                    states.light.hoge_lamp, states.light.ledstrip_zetel, states.light.lamp_1_douche,
+                    states.light.lamp_2_douche, states.light.lamp_1_dressing, states.light.lamp_2_dressing,
+                    states.light.lamp_3_dressing, states.light.lamp_venster_hal, states.light.lamp_toilet,
+                    states.light.lamp_1_nachthal, states.light.lamp_2_nachthal, states.light.lamp_3_nachthal,
+                    states.light.lamp_4_nachthal, states.light.lamp_badkamer, states.light.lamp_1_bureau,
+                    states.light.lamp_1_master_slaapkamer, states.light.lamp_2_master_slaapkamer, states.light.lamp_3_master_slaapkamer,
+                    states.light.lamp_4_master_slaapkamer, states.light.lamp_1_terras_beneden, states.light.lamp_2_terras_beneden,
+                    states.light.lamp_1_terras_boven, states.light.lamp_2_terras_boven, states.light.lamp_3_terras_boven,
+                    states.light.lamp_4_terras_boven, states.light.lamp_5_terras_boven, states.light.lamp_6_terras_boven,
+                    states.light.lamp_2_bureau, states.light.lamp_3_bureau, states.light.lamp_4_bureau,
+                    states.light.ledstrip_bureau, states.light.lamp_michael,
+                    ] %} {{ lights | selectattr('state','eq','on') | list | count }} | [Deuren open](/lovelace-iphone/beveiliging) {% set Doors = [
+                    states.binary_sensor.achterdeur_contact_alarm,
+                    states.binary_sensor.voordeur_contact_alarm,
+                    states.binary_sensor.schuifdeur_contact_alarm,
+                    ] %} {{ Doors | selectattr('state','eq','on') | list | count }} | [Ramen open](/lovelace-iphone/beveiliging) {% set Windows = [
+                    states.binary_sensor.keukenraam_contact_alarm,
+                    states.binary_sensor.dubbel_raam_contact_alarm,
+                    states.binary_sensor.dressing_raam_contact_alarm,
+                    states.binary_sensor.nachthal_raam_sensor,
+                    states.binary_sensor.window_door_sensor,
+                    states.binary_sensor.badkamer_raam_sensor,
+                    states.binary_sensor.master_raam_sensor,
+                    states.binary_sensor.michael_raam_sensor,
+                    ] %} {{ Windows | selectattr('state','eq','on') | list | count }} </font>
+          default:
+            type: markdown
+            content: |
+              {{ states('sensor.time_of_day') }}: gast
+      - dateColor: white
+        name: false
+        dateSize: 70
+        dayWrapperLineColor: white
+        descSize: 70
+        dimFinishedEvents: true
+        entities:
+          - entity: calendar.martine
+          - entity: calendar.michael
+          - entity: calendar.danny
+          - entity: calendar.mertens_geysen
+        eventBarColor: white
+        finishedEventFilter: grayscale(100%)
+        finishedEventOpacity: 0.6
+        fullDayEventText: Dag afspraak
+        hoursFormat: 24
+        language: nl
+        sortByStartTime: true
+        locationIconColor: 'rgb(230, 124, 115)'
+        locationLinkColor: white
+        locationTextSize: 80
+        maxDaysToShow: 0
+        maxEventCount: 0
+        noEventsForTodayText: Geen afspraken vandaag
+        progressBarColor: white
+        showColors: true
+        showCurrentEventLine: false
+        showDescription: true
+        showLoader: true
+        showLocation: true
+        showMonth: false
+        showNoEventsForToday: true
+        showProgressBar: true
+        timeColor: white
+        timeSize: 80
+        titleColor: white
+        titleSize: 90
+        type: 'custom:atomic-calendar-revive'
+        untilText: Tot
+        showDate: false
+        disableEventLink: true
+      - current: true
+        details: true
+        entity: weather.thuis_mertens_geysen
+        forecast: true
+        type: 'custom:weather-card'
+      - cards:
+          - color_stops:
+              '100': '#05AAF4'
+              '500': '#E45F65'
+            entities:
+              - area: Nu
+                decimals: 0
+                entity: sensor.sb_1_5_1vl_40_netvermogen
+                tap_action:
+                  action: more-info
+                unit: W
+            horseshoe_scale:
+              max: 1500
+              min: 0
+            layout:
+              areas:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 1.5em;
+                    - opacity: 0.8;
+                  xpos: 50
+                  ypos: 35
+              states:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 2.5em;
+                  xpos: 50
+                  ypos: 60
+            show:
+              horseshoe_style: lineargradient
+            type: 'custom:flex-horseshoe-card'
+          - color_stops:
+              '0': '#05AAF4'
+              '5': '#E45F65'
+            entities:
+              - area: Vandaag
+                decimals: 2
+                entity: sensor.sb_1_5_1vl_40_dagelijkse_opbrengst
+                tap_action:
+                  action: more-info
+                unit: KWh
+            horseshoe_scale:
+              max: 12
+              min: 0
+              width: 5
+            layout:
+              areas:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 1.5em;
+                    - opacity: 0.8;
+                  xpos: 50
+                  ypos: 35
+              states:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 2.5em;
+                  xpos: 50
+                  ypos: 60
+            show:
+              horseshoe_style: lineargradient
+            type: 'custom:flex-horseshoe-card'
+          - color_stops:
+              '0': '#05AAF4'
+              '5': '#E45F65'
+            entities:
+              - area: Totaal
+                decimals: 2
+                entity: sensor.sb_1_5_1vl_40_totale_opbrengst
+                tap_action:
+                  action: more-info
+                unit: MWh
+            horseshoe_scale:
+              max: 5
+              min: 0
+            layout:
+              areas:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 1.5em;
+                    - opacity: 0.8;
+                  xpos: 50
+                  ypos: 35
+              states:
+                - entity_index: 0
+                  id: 0
+                  styles:
+                    - font-size: 2.5em;
+                  xpos: 50
+                  ypos: 60
+            show:
+              horseshoe_style: lineargradient
+            type: 'custom:flex-horseshoe-card'
+        type: horizontal-stack
+      - cards:
+          - cards:
+              - entity: media_player.woonkamer
+                hide:
+                  controls: false
+                  icon: false
+                  name: false
+                  power: true
+                  progress: false
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+              - entity: media_player.sonos_one_badkamer
+                hide:
+                  controls: false
+                  icon: true
+                  name: false
+                  power: true
+                  progress: true
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+              - entity: media_player.sonos_bureau
+                hide:
+                  controls: false
+                  icon: true
+                  name: false
+                  power: true
+                  progress: true
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+              - entity: media_player.master_slaap
+                hide:
+                  controls: false
+                  icon: true
+                  name: false
+                  power: true
+                  progress: true
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+              - entity: media_player.sonos_michael
+                hide:
+                  controls: false
+                  icon: true
+                  name: false
+                  power: true
+                  progress: true
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+              - entity: media_player.kast_woonkamer
+                hide:
+                  controls: false
+                  icon: true
+                  name: false
+                  power: true
+                  progress: true
+                  show_tts: true
+                  shuffle: false
+                  source: true
+                  volume: false
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: ''
+                      id: JoeFM
+                      name: Joe
+                      type: source
+                    - icon: ''
+                      id: QMusic
+                      name: QMusic
+                      type: source
+                    - icon: ''
+                      id: Nostalgie
+                      name: Nostalgie
+                      type: source
+                    - icon: ''
+                      id: VRT1
+                      name: VRT 1
+                      type: source
+                    - icon: ''
+                      id: VRT2
+                      name: VRT 2
+                      type: source
+                    - icon: ''
+                      id: Danny
+                      name: Danny
+                      type: source
+                    - icon: ''
+                      id: Michael
+                      name: Michael
+                      type: source
+                    - icon: ''
+                      id: Martine
+                      name: Martine
+                      type: source
+                  columns: 5
+                speaker_group:
+                  entities:
+                    - entity_id: media_player.woonkamer
+                      name: Sonos woonkamer
+                    - entity_id: media_player.kast_woonkamer
+                      name: Sonos Woonkamer kast
+                    - entity_id: media_player.sonos_one_badkamer
+                      name: Sonos badkamer
+                    - entity_id: media_player.sonos_bureau
+                      name: Sonos Bureau
+                    - entity_id: media_player.master_slaap
+                      name: Sonos master slaapkamer
+                    - entity_id: media_player.sonos_michael
+                      name: Sonos Michael
+                  expanded: false
+                  platform: sonos
+                  sync_volume: true
+                type: 'custom:mini-media-player'
+            type: 'custom:swipe-card'
+        type: horizontal-stack
+      - entities:
+          - entity: sensor.trouw_jubileum
+            secondary_info: >-
+              [[ {entity}.attributes.date ]]  ( [[
+              {entity}.attributes.years_at_next_anniversary ]] Jaar )
+            type: 'custom:secondaryinfo-entity-row'
+          - type: divider
+          - entity: sensor.verjaardag_michael
+            secondary_info: >-
+              [[ {entity}.attributes.date ]]  ( [[
+              {entity}.attributes.years_at_next_anniversary ]] Jaar )
+            type: 'custom:secondaryinfo-entity-row'
+          - type: divider
+          - entity: sensor.verjaardag_martine
+            secondary_info: >-
+              [[ {entity}.attributes.date ]]  ( [[
+              {entity}.attributes.years_at_next_anniversary ]] Jaar )
+            type: 'custom:secondaryinfo-entity-row'
+          - type: divider
+          - entity: sensor.verjaardag_danny
+            secondary_info: >-
+              [[ {entity}.attributes.date ]]  ( [[
+              {entity}.attributes.years_at_next_anniversary ]] Jaar )
+            type: 'custom:secondaryinfo-entity-row'
+        show_header_toggle: false
+        type: entities
+    icon: 'mdi:home'
+    path: home
+    title: Home
