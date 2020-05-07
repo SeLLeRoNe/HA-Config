@@ -4,7 +4,7 @@ laundry_room_lights:
   head:
       type: custom:slider-entity-row
       entity: light.laundry_room_lights
-      name: Living Room
+      name: Laundry Room
       toggle: true
   entities:
       - type: custom:decluttering-card

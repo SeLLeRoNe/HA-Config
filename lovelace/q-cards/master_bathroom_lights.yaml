@@ -1,10 +1,10 @@
 ---
-master_bedroom_lights:
+master_bathroom_lights:
   type: custom:fold-entity-row
   head:
       type: custom:slider-entity-row
-      entity: light.master_bedroom_lights
-      name: Living Room
+      entity: light.master_bathroom_lights
+      name: Master Bathroom
       toggle: true
   entities:
       - type: custom:decluttering-card

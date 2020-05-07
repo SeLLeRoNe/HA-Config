@@ -9,15 +9,6 @@ house_lights:
         variables:
           - title: Lights
       - type: custom:state-switch
-        entity: light.bedroom_luca_light_1
-        states:
-          "on":
-            type: custom:q-card
-            card: light.bedroom_luca_light_1
-          "off":
-            type: custom:q-card
-            card: light.bedroom_luca_light_1
-      - type: custom:state-switch
         entity: light.living_room_lights
         states:
           "on":
@@ -45,24 +36,6 @@ house_lights:
             type: custom:q-card
             card: studio_lights
       - type: custom:state-switch
-        entity: light.bedroom_luca_lights
-        states:
-          "on":
-            type: custom:q-card
-            card: bedroom_luca_lights
-          "off":
-            type: custom:q-card
-            card: bedroom_luca_lights
-      - type: custom:state-switch
-        entity: light.bathroom_lights
-        states:
-          "on":
-            type: custom:q-card
-            card: bathroom_lights
-          "off":
-            type: custom:q-card
-            card: bathroom_lights
-      - type: custom:state-switch
         entity: light.master_bedroom_lights
         states:
           "on":
@@ -80,6 +53,24 @@ house_lights:
           "off":
             type: custom:q-card
             card: master_bathroom_lights
+      - type: custom:state-switch
+        entity: light.bedroom_luca_lights
+        states:
+          "on":
+            type: custom:q-card
+            card: bedroom_luca_lights
+          "off":
+            type: custom:q-card
+            card: bedroom_luca_lights
+      - type: custom:state-switch
+        entity: light.bathroom_lights
+        states:
+          "on":
+            type: custom:q-card
+            card: bathroom_lights
+          "off":
+            type: custom:q-card
+            card: bathroom_lights
       - type: custom:state-switch
         entity: light.laundry_room_lights
         states:

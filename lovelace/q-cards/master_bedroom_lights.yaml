@@ -1,5 +1,5 @@
 ---
-master_bathroom_lights:
+master_bedroom_lights:
   type: custom:fold-entity-row
   head:
       type: custom:slider-entity-row
