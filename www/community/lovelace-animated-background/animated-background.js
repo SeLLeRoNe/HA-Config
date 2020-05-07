@@ -4,7 +4,7 @@ const Log_Prefix = "Animated Background: "
 
 //globals
 var Root;
-var Panel_Resolver;
+var Panel_Holder;
 var Hui;
 var Lovelace;
 var Animated_Config;
@@ -16,7 +16,6 @@ var Loaded = false;
 var View_Loaded = false;
 var Meme_Remover = null;
 var Meme_Count = 0;
-var Meme_Logged = false;
 
 //state tracking variables
 let Previous_State;
@@ -53,9 +52,11 @@ function getVars() {
   Root = Root && Root.querySelector("home-assistant-main");
   Root = Root && Root.shadowRoot;
   Root = Root && Root.querySelector("app-drawer-layout partial-panel-resolver");
-  Panel_Resolver = Root;
   Root = (Root && Root.shadowRoot) || Root;
   Root = Root && Root.querySelector("ha-panel-lovelace");
+  if (Root) {
+    Panel_Holder = Root.shadowRoot;
+  }
   Root = Root && Root.shadowRoot;
   Root = Root && Root.querySelector("hui-root");
   Hui = Root;
@@ -73,7 +74,11 @@ function getVars() {
 var View_Observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.addedNodes.length > 0) {
+      if (!currentConfig() && View_Loaded) {
+        DEBUG_MESSAGE("No configuration found for this view");
+      }
       View_Loaded = false;
+      clearMemes();
       renderBackgroundHTML();
     }
   });
@@ -92,19 +97,9 @@ var Hui_Observer = new MutationObserver(function (mutations) {
 //Mutation observer to reload on dashboard change
 var Panel_Observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
-    if (mutation.addedNodes.length > 0) {
-      if (mutation.addedNodes[0].nodeName.toLowerCase() == "ha-panel-lovelace") {
-        var wait_interval = setInterval(() => {
-          getVars()
-          if (Hui) {
-            Previous_Entity = null;
-            Previous_State = null;
-            Previous_Url = null;
-            Loaded = false;
-            run();
-            clearInterval(wait_interval);
-          }
-        }, 1000 / 60);
+    if (mutation.removedNodes.length > 0) {
+      if (mutation.removedNodes[0].nodeName.toLowerCase() == "hui-editor") {
+        restart();
       }
     }
   });
@@ -144,6 +139,9 @@ function getGroupConfig(name) {
 function currentConfig() {
   var current_view_path = currentViewPath();
   var return_config = null;
+  if (current_view_path == undefined) {
+    return return_config;
+  }
   if (Animated_Config) {
     if (Animated_Config.entity || Animated_Config.default_url) {
       return_config = Animated_Config;
@@ -226,16 +224,9 @@ function enabled() {
     return false;
   }
 
+  //Root configuration exceptions
   if (Animated_Config.excluded_devices) {
     if (Animated_Config.excluded_devices.some(deviceIncluded)) {
-      if (temp_enabled) {
-        DEBUG_MESSAGE("Current device is excluded", null, true);
-        temp_enabled = false;
-      }
-    }
-  }
-  if (current_config.excluded_devices) {
-    if (current_config.excluded_devices.some(deviceIncluded)) {
       if (temp_enabled) {
         DEBUG_MESSAGE("Current device is excluded", null, true);
         temp_enabled = false;
@@ -245,14 +236,6 @@ function enabled() {
 
   if (Animated_Config.excluded_users) {
     if (Animated_Config.excluded_users.map(username => username.toLowerCase()).includes(Haobj.user.name.toLowerCase())) {
-      if (temp_enabled) {
-        DEBUG_MESSAGE("Current user: " + Haobj.user.name + " is excluded", null, true);
-        temp_enabled = false;
-      }
-    }
-  }
-  if (current_config.excluded_users) {
-    if (current_config.excluded_users.map(username => username.toLowerCase()).includes(Haobj.user.name.toLowerCase())) {
       if (temp_enabled) {
         DEBUG_MESSAGE("Current user: " + Haobj.user.name + " is excluded", null, true);
         temp_enabled = false;
@@ -271,17 +254,6 @@ function enabled() {
       }
     }
   }
-  if (current_config.included_users) {
-    if (current_config.included_users.map(username => username.toLowerCase()).includes(Haobj.user.name.toLowerCase())) {
-      temp_enabled = true;
-    }
-    else {
-      if (temp_enabled) {
-        DEBUG_MESSAGE("Current user: " + Haobj.user.name + " is not included", null, true);
-        temp_enabled = false;
-      }
-    }
-  }
 
   if (Animated_Config.included_devices) {
     if (Animated_Config.included_devices.some(deviceIncluded)) {
@@ -290,6 +262,37 @@ function enabled() {
     else {
       if (temp_enabled) {
         DEBUG_MESSAGE("Current device is not included", null, true);
+        temp_enabled = false;
+      }
+    }
+  }
+
+  //Current config overrides (only does anything if curre_config and Animated_Config are different)
+  if (current_config.excluded_devices) {
+    if (current_config.excluded_devices.some(deviceIncluded)) {
+      if (temp_enabled) {
+        DEBUG_MESSAGE("Current device is excluded", null, true);
+        temp_enabled = false;
+      }
+    }
+  }
+
+  if (current_config.excluded_users) {
+    if (current_config.excluded_users.map(username => username.toLowerCase()).includes(Haobj.user.name.toLowerCase())) {
+      if (temp_enabled) {
+        DEBUG_MESSAGE("Current user: " + Haobj.user.name + " is excluded", null, true);
+        temp_enabled = false;
+      }
+    }
+  }
+
+  if (current_config.included_users) {
+    if (current_config.included_users.map(username => username.toLowerCase()).includes(Haobj.user.name.toLowerCase())) {
+      temp_enabled = true;
+    }
+    else {
+      if (temp_enabled) {
+        DEBUG_MESSAGE("Current user: " + Haobj.user.name + " is not included", null, true);
         temp_enabled = false;
       }
     }
@@ -334,44 +337,45 @@ function renderBackgroundHTML() {
   var current_config = currentConfig();
   var state_url = "";
 
-  if (!current_config) {
-    DEBUG_MESSAGE("No configuration found for this view");
-    return;
-  }
-
   //rerender background if entity has changed (to avoid no background refresh if the new entity happens to have the same state)
-  if (current_config.entity && Previous_Entity != current_config.entity) {
+  if (current_config && current_config.entity && Previous_Entity != current_config.entity) {
     Previous_State = null;
   }
 
-  //get state of config object 
-  if (current_config.entity) {
-    var current_state = getEntityState(current_config.entity);
-    if (Previous_State != current_state) {
-      View_Loaded = false;
-      STATUS_MESSAGE("Configured entity " + current_config.entity + " is now " + current_state, true);
-      if (current_config.state_url) {
-        if (current_config.state_url[current_state]) {
-          state_url = current_config.state_url[current_state];
-        }
-        else {
-          if (current_config.default_url) {
-            state_url = current_config.default_url;
+  //get state of config object
+  if(current_config){
+    if (current_config.entity) {
+      var current_state = getEntityState(current_config.entity);
+      if (Previous_State != current_state) {
+        View_Loaded = false;
+        STATUS_MESSAGE("Configured entity " + current_config.entity + " is now " + current_state, true);
+        if (current_config.state_url) {
+          if (current_config.state_url[current_state]) {
+            state_url = current_config.state_url[current_state];
+          }
+          else {
+            if (current_config.default_url) {
+              state_url = current_config.default_url;
+            }
           }
         }
+        Previous_State = current_state;
+        Previous_Entity = current_config.entity;
       }
-      Previous_State = current_state;
-      Previous_Entity = current_config.entity;
     }
-  }
-  else {
-    if (current_config.default_url) {
-      state_url = current_config.default_url;
+    else {
+      if (current_config.default_url) {
+        state_url = current_config.default_url;
+      }
     }
   }
 
-  processDefaultBackground();
+  var temp_enabled = enabled();
+  processDefaultBackground(temp_enabled);
 
+  if(!temp_enabled || !current_config){
+    return;
+  }
   var html_to_render;
   if (state_url != "" && Hui) {
     var bg = Hui.shadowRoot.getElementById("background-video");
@@ -415,76 +419,56 @@ function renderBackgroundHTML() {
   }
 }
 
+//removes lovelace theme background
+function removeDefaultBackground(node) {
+  if (node.style.background != 'transparent' || View_Layout.style.background != 'transparent') {
+    node.style.background = 'transparent';
+    View_Layout.style.background = 'transparent';
+  }
+}
+
+//restores lovelace theme background
+function restoreDefaultBackground(node) {
+  View_Layout.style.background = null;
+  node.style.background = null;
+}
+
 //remove background every 100 milliseconds for 2 seconds because race condition memes
-function processDefaultBackground() {
+function processDefaultBackground(temp_enabled) {
   if (!Meme_Remover) {
-    Meme_Logged = false;
     Meme_Remover = setInterval(() => {
       getVars();
       var current_config = currentConfig();
 
+      var view_holder;
       var view_node = null;
-      var temp_enabled = enabled();
-      if (Root) {
-        view_node = Root.shadowRoot.getElementById("view");
-        view_node = view_node.querySelector('hui-view');
-        if (view_node) {
+      var view_node_panel = null;
 
+      if (Root) {
+        view_holder = Root.shadowRoot.getElementById("view");
+
+        if (view_holder) {
+          view_node_panel = view_holder.querySelector("hui-panel-view")
+          view_node = view_holder.querySelector('hui-view');
+        }
+
+        if (view_node || view_node_panel) {
           if (temp_enabled) {
-            view_node.style.background = 'transparent';
-            View_Layout.style.background = 'transparent';
-            if (!Meme_Logged) {
-              DEBUG_MESSAGE("Removing view background for configuration:", currentConfig());
-              Meme_Logged = true;
-            }
+            removeDefaultBackground(view_node ?? view_node_panel);
+            DEBUG_MESSAGE("Removing view background for configuration:", currentConfig(), true);
           }
           else {
-            if (!Meme_Logged) {
-              Meme_Logged = true;
-            }
-            View_Layout.style.background = null;
-            view_node.style.background = null;
-
+            restoreDefaultBackground(view_node ?? view_node_panel);
             if (current_config && current_config.reason) {
               DEBUG_MESSAGE("Current config is disabled because " + current_config.reason, null, true);
             }
           }
           View_Loaded = true;
         }
-        else {
-          view_node = Root.shadowRoot.getElementById("view");
-          view_node = view_node.querySelector("hui-panel-view");
-          if (view_node) {
-
-            if (temp_enabled) {
-              view_node.style.background = 'transparent';
-              View_Layout.style.background = 'transparent';
-              if (!Meme_Logged) {
-                DEBUG_MESSAGE("Panel mode detected");
-                DEBUG_MESSAGE("Removing view background for configuration:", currentConfig());
-                Meme_Logged = true;
-              }
-            }
-            else {
-              if (!Meme_Logged) {
-                Meme_Logged = true;
-              }
-              if (current_config && current_config.reason) {
-                DEBUG_MESSAGE("Current config is disabled because " + current_config.reason, null, true);
-              }
-              View_Layout.style.background = null;
-              if (view_node.style.background != "var(--lovelace-background)") {
-                view_node.style.background = "var(--lovelace-background)";
-              }
-            }
-            View_Loaded = true;
-          }
-        }
       }
       Meme_Count++;
       if (Meme_Count > 20) {
-        clearInterval(Meme_Remover);
-        Meme_Remover = null;
+        clearMemes();
         Meme_Count = 0;
       }
 
@@ -493,27 +477,42 @@ function processDefaultBackground() {
   }
 }
 
-//main function
-function run() {
-  STATUS_MESSAGE("Starting", true);
+function clearMemes(){
+  clearInterval(Meme_Remover);
+  Meme_Remover = null;
+}
 
-  getVars();
-
-  if (!Loaded) {
-    if (Animated_Config) {
-      if (Animated_Config.debug) {
-        Debug_Mode = Animated_Config.debug;
-        DEBUG_MESSAGE("Debug mode enabled");
-
-        if (Animated_Config.display_user_agent) {
-          if (Animated_Config.display_user_agent == true) {
-            alert(navigator.userAgent);
-          }
+function setDebugMode() {
+  if (Animated_Config) {
+    if (Animated_Config.debug) {
+      Debug_Mode = Animated_Config.debug;
+      if (Animated_Config.display_user_agent) {
+        if (Animated_Config.display_user_agent == true) {
+          alert(navigator.userAgent);
         }
       }
-      else {
-        Debug_Mode = false;
-      }
+    }
+    else {
+      Debug_Mode = false;
+    }
+  }
+  else {
+    Debug_Mode = false;
+  }
+}
+
+//main function
+function run() {
+  getVars();
+  setDebugMode();
+  STATUS_MESSAGE("Starting");
+  DEBUG_MESSAGE("Starting, Debug mode enabled");
+  if (!Loaded) {
+    if (!currentConfig() && Debug_Mode) {
+      DEBUG_MESSAGE("No configuration found for this view");
+    }
+    else {
+      STATUS_MESSAGE("No configuration found for this dashboard");
     }
   }
 
@@ -521,15 +520,20 @@ function run() {
   if (!Haobj) {
     document.querySelector("home-assistant").provideHass({
       set hass(value) {
+        if (Haobj && Haobj.panelUrl != value.panelUrl) {
+          restart();
+        }
         Haobj = value;
         var current_config = currentConfig();
         if (Loaded) {
-          if (current_config.entity) {
+          if (current_config && current_config.entity) {
             var current_state = getEntityState(current_config.entity);
             if (Previous_State != current_state) {
+              clearMemes();
               renderBackgroundHTML();
             }
           }
+
         }
         else {
           renderBackgroundHTML();
@@ -537,8 +541,12 @@ function run() {
       }
     });
   }
+  else {
+    if (!Loaded) {
+      renderBackgroundHTML();
+    }
+  }
 
-  View_Observer.disconnect();
   View_Observer.observe(View, {
     characterData: true,
     childList: true,
@@ -555,12 +563,28 @@ function run() {
   });
 
   Panel_Observer.disconnect();
-  Panel_Observer.observe(Panel_Resolver, {
+  Panel_Observer.observe(Panel_Holder, {
     characterData: true,
     childList: true,
     subtree: true,
     characterDataOldValue: true
   });
+}
+
+function restart() {
+  var wait_interval = setInterval(() => {
+    getVars()
+    if (Hui) {
+      Previous_Entity = null;
+      Previous_State = null;
+      Loaded = false;
+      View_Loaded = false;
+      clearMemes();
+      View_Observer.disconnect();
+      run();
+      clearInterval(wait_interval);
+    }
+  }, 200);
 }
 
 run();
