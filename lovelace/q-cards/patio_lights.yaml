@@ -4,7 +4,7 @@ patio_lights:
   head:
       type: custom:slider-entity-row
       entity: light.patio_lights
-      name: Living Room
+      name: Patio
       toggle: true
   entities:
       - type: custom:decluttering-card

@@ -3,8 +3,8 @@ master_bathroom_lights:
   type: custom:fold-entity-row
   head:
       type: custom:slider-entity-row
-      entity: light.living_room_lights
-      name: Living Room
+      entity: light.master_bedroom_lights
+      name: Master Bedroom
       toggle: true
   entities:
     - type: section

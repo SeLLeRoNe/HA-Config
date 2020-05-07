@@ -7,16 +7,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:state-switch
-        entity: light.bedroom_luca_light_1
-        default: "off"
-        states:
-          "on":
-            type: custom:q-card
-            card: card1
-          "off":
-            type: custom:q-card
-            card: card1
       - type: light
         entity: light.master_bedroom_bed_led
       - type: entities
