@@ -28,6 +28,11 @@ custom_header:
   tab_indicator_color: var(--state-icon-active-color)
 animated_background: !include lovelace/animated_backgrounds/test.yaml
 decluttering_templates: !include_dir_merge_named lovelace/templates/
+q-cards:
+  card1:
+    type: entities
+    entities:
+      - light.bedroom_luca_light_1
 views:
   - !include lovelace/views/test.yaml
   - !include lovelace/views/test_map.yaml

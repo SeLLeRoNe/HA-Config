@@ -74,5 +74,7 @@
   - url: /hacsfiles/lovelace-state-switch/state-switch.js
     type: module
 
-  - url: /local/lovelace/cards/dark-sky-weather-card.js
+  - url: /local/dark-sky-weather-card.js
+    type: module
+  - url: /local/q-card.js
     type: module
