@@ -31,8 +31,6 @@ action:
     entity_id: switch.studio_andrea_lg_monitor_1
   - service: switch.turn_on
     entity_id: switch.studio_andrea_usb_hub
-  - service: media_player.turn_on
-    entity_id: media_player.studio_amplifier
   - service: mqtt.publish
     data:
       topic: "wled/001/fx"

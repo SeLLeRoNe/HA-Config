@@ -1,0 +1,20 @@
+---
+alias: Studio - Andrea - Amplifier Off
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "21:30:00"
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '21:30:00'
+      before: '09:30:00'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+action:
+  - service: media_player.turn_off
+    entity_id: media_player.studio_amplifier
