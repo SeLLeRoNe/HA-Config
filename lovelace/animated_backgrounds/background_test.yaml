@@ -1,0 +1,41 @@
+---
+included_users:
+  - Andrea Iannucci
+included_devices:
+  - windows
+groups:
+  - name: background_test
+    config:
+      default_url:
+        - "/local/animated_backgrounds/test/Androm_Spin.mp4"
+        - "/local/animated_backgrounds/test/biostorm.mp4"
+        - "/local/animated_backgrounds/test/biostorm2.mp4"
+        - "/local/animated_backgrounds/test/Bubbles_Animation.mp4"
+        - "/local/animated_backgrounds/test/light_burst_animation.mp4"
+        - "/local/animated_backgrounds/test/scifi-spin-v4.mp4"
+        - "/local/animated_backgrounds/test/scifitunnel03.mp4"
+        - "/local/animated_backgrounds/test/scifitunnel04.mp4"
+        - "/local/animated_backgrounds/test/spin_cycle.mp4"
+        - "/local/animated_backgrounds/test/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+      entity: input_select.background_test
+      state_url:
+        'Background 1':
+          - "/local/animated_backgrounds/test/Androm_Spin.mp4"
+        'Background 2':
+          - "/local/animated_backgrounds/test/biostorm.mp4"
+        'Background 3':
+          - "/local/animated_backgrounds/test/biostorm2.mp4"
+        'Background 4':
+          - "/local/animated_backgrounds/test/Bubbles_Animation.mp4"
+        'Background 5':
+          - "/local/animated_backgrounds/test/light_burst_animation.mp4"
+        'Background 6':
+          - "/local/animated_backgrounds/test/scifi-spin-v4.mp4"
+        'Background 7':
+          - "/local/animated_backgrounds/test/scifitunnel03.mp4"
+        'Background 8':
+          - "/local/animated_backgrounds/test/scifitunnel04.mp4"
+        'Background 9':
+          - "/local/animated_backgrounds/test/spin_cycle.mp4"
+        'Background 10':
+          - "/local/animated_backgrounds/test/ypy8bw9fgw1zv2b4htp2.hd.mp4"
