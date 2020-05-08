@@ -7,6 +7,14 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
+      - type: 'custom:time-picker-card'
+        entity: climate_bedroom_luca_weekend_t1_start
+        name: 'Choose a time'
+        hour_mode: 24
+        hour_step: 1
+        minute_step: 1
+        hide:
+          name: false
       - type: light
         entity: light.master_bedroom_bed_led
       - type: entities
