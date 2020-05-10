@@ -9,10 +9,6 @@
     type: module
   - url: /hacsfiles/stack-in-card/stack-in-card.js
     type: module
-  - url: /hacsfiles/bar-card/bar-card.js
-    type: module
-  - url: /hacsfiles/calendar-card/calendar-card.js
-    type: module
   - url: /hacsfiles/favicon-counter/favicon-counter.js
     type: module
   - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
@@ -24,8 +20,6 @@
   - url: /hacsfiles/github-card/github-card.js
     type: module
   - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
-    type: module
-  - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
     type: module
   - url: /hacsfiles/config-template-card/config-template-card.js
     type: module
@@ -40,8 +34,6 @@
   - url: /hacsfiles/sun-card/sun-card.js
     type: module
   - url: /hacsfiles/search-card/search-card.js
-    type: module
-  - url: /hacsfiles/spotify-card/spotify-card.js
     type: module
   - url: /hacsfiles/lovelace-card-tools/card-tools.js
     type: module
@@ -66,8 +58,6 @@
   - url: /hacsfiles/lovelace-animated-background/animated-background.js
     type: module
   - url: /hacsfiles/lovelace-hui-element/hui-element.js
-    type: module
-  - url: /hacsfiles/dual-gauge-card/dual-gauge-card.js
     type: module
   - url: /hacsfiles/battery-state-card/battery-state-card.js
     type: module

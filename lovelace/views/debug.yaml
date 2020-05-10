@@ -172,6 +172,8 @@ cards:
               start_date: true
               icon: true
               separator: true
+            hiddenState:
+              - No Motion Detected
 #      - break
 #      - type: custom:stack-in-card
 #        mode: vertical
