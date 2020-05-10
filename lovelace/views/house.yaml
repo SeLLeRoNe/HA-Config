@@ -103,8 +103,8 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-      - type: custom:atomic-calendar
-        title: Calendar
+      - type: custom:atomic-calendar-revive
+        name: Calendar
         enableModeChange: true
         defaultMode: 2
         dateFormat: L
@@ -115,9 +115,8 @@ cards:
         CalEventHolidayColor: lime
         CalEventIcon1Filter: events
         CalEventIcon2Filter: birthday
-        CalEventIcon1: " "
-        CalEventIcon2: " "
-        CalEventIcon3: " "
+        CalEventIcon1Filter: birthday
+        CalEventIcon2Filter: waste,bills
         entities:
           - entity: calendar.personal_andrea
             type: icon2, holiday
