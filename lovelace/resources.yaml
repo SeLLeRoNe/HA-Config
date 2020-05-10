@@ -29,7 +29,7 @@
     type: module
   - url: /hacsfiles/config-template-card/config-template-card.js
     type: module
-  - url: /hacsfiles/atomic_calendar/atomic_calendar.js
+  - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
     type: module
   - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
