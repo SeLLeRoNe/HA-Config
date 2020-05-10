@@ -13,10 +13,13 @@ cards:
           - input_select.background_test
       - type: custom:time-picker-card
         entity: input_datetime.climate_bedroom_luca_weekend_t1_start
-        name: Weekend T1 Start
+        name: Bedroom Luca - Weekend T1 Start
         hour_mode: 24
         hour_step: 1
         minute_step: 1
+        layout:
+          name: inside
+          align_controls: right
         hide:
           name: false
       - type: light
