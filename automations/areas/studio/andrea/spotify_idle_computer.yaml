@@ -1,0 +1,27 @@
+---
+alias: Studio - Andrea - Spotify Idle to Computer
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: media_player.spotify
+    to: "paused"
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: media_player.spotify
+    to: "idle"
+    for:
+      minutes: 5
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: template
+      value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'Spotify') }}"
+action:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.studio_amplifier
+      source: PC
