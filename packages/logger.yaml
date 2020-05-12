@@ -22,6 +22,7 @@ logger:
     homeassistant.components.notify: error
     homeassistant.components.media_player: error
     homeassistant.components.mqtt: error
+    homeassistant.components.pi_hole: error
     homeassistant.components.python_script: error
     homeassistant.components.websocket_api: error
     homeassistant.helpers: error
