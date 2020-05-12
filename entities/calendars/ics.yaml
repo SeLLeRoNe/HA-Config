@@ -1,0 +1,24 @@
+---
+platform: ics
+calendars:
+  - name: UK Holidays
+    url: !secret ics_holiday_uk
+    includeAllDay: true
+  - name: IT Holidays
+    url: !secret ics_holiday_it
+    includeAllDay: true
+  - name: Motors
+    url: !secret ics_motors
+    includeAllDay: true
+  - name: Serie A
+    url: !secret ics_serie_a
+    includeAllDay: true
+  - name: UEFA Champions League
+    url: !secret ics_champions_league
+    includeAllDay: true
+  - name: UEFA Europa League
+    url: !secret ics_europa_league
+    includeAllDay: true
+  - name: EURO 2020
+    url: !secret ics_euro2020
+    includeAllDay: true

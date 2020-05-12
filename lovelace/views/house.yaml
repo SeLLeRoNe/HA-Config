@@ -125,6 +125,13 @@ cards:
             timeSize: 90
             firstDayOfWeek: 7
             titleSize: 100
+          - entity: calendar.uk_holidays
+            type: icon2, holiday
+            color: cyan
+            dateSize: 63
+            timeSize: 90
+            firstDayOfWeek: 7
+            titleSize: 100
       - break
       - type: custom:decluttering-card
         template: house_lights
