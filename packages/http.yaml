@@ -20,8 +20,8 @@ http:
   # The advantage of this method is that this allows me to access HA
   # without SSL on my internal network, thus avoiding SSL warning.
   #
-  ssl_certificate: !secret http_ssl_certificate
-  ssl_key: !secret http_ssl_key
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
 
   # A list of origin domain names to allow CORS requests from.
   cors_allowed_origins: !secret http_cors_allowed_origins
