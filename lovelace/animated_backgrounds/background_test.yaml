@@ -17,6 +17,10 @@ groups:
         - "/local/animated_backgrounds/test/scifitunnel04.mp4"
         - "/local/animated_backgrounds/test/spin_cycle.mp4"
         - "/local/animated_backgrounds/test/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+        - "/local/animated_backgrounds/test/DiscoLightsVidevo.mov"
+        - "/local/animated_backgrounds/test/MoonandSeaHDFInalRenderH264.mov"
+        - "/local/animated_backgrounds/test/Rain_Fire.mov"
+        - "/local/animated_backgrounds/test/Apocalyptic.mp4"
       entity: input_select.background_test
       state_url:
         'Background 1':
@@ -39,3 +43,12 @@ groups:
           - "/local/animated_backgrounds/test/spin_cycle.mp4"
         'Background 10':
           - "/local/animated_backgrounds/test/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+        'Background 11':
+          - "/local/animated_backgrounds/test/DiscoLightsVidevo.mov"
+        'Background 12':
+          "/local/animated_backgrounds/test/MoonandSeaHDFInalRenderH264.mov"
+        'Background 13':
+           - "/local/animated_backgrounds/test/Rain_Fire.mov"
+        'Background 14':
+          - "/local/animated_backgrounds/test/Apocalyptic.mp4"
+        'Background 15':
