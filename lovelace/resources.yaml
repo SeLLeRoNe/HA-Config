@@ -66,6 +66,9 @@
   - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
     type: module
 
+  - url: /hacsfiles/calendar-card/calendar-card.js
+    type: module
+
   - url: /local/dark-sky-weather-card.js
     type: module
   - url: /local/q-card.js

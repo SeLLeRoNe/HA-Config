@@ -3,7 +3,8 @@ import asyncio
 import logging
 import json
 import os
-from datetime import timedelta, datetime
+from datetime import timedelta
+from time import sleep
 from wakeonlan import send_magic_packet
 from websocket import WebSocketTimeoutException
 
@@ -17,6 +18,7 @@ from .api.smartthings import SmartThingsTV
 from .api.upnp import upnp
 
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.event import call_later
 from homeassistant.util import Throttle
 from homeassistant.util import dt as dt_util
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
@@ -87,14 +89,9 @@ MEDIA_TYPE_KEY = "send_key"
 MEDIA_TYPE_BROWSER = "browser"
 POWER_OFF_DELAY = 20
 POWER_ON_DELAY = 3
-PING_UPDATE_TIMEOUT = 1.5
 ST_APP_SEPARATOR = "/"
 ST_UPDATE_TIMEOUT = 5
-WS_CONN_TIMEOUT = 10
 
-MIN_TIME_BETWEEN_SCANS = timedelta(seconds=10)
-MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=1)
-MIN_TIME_BETWEEN_PING = timedelta(seconds=5)
 MIN_TIME_BETWEEN_APP_SCANS = timedelta(seconds=60)
 
 SUPPORT_SAMSUNGTV_SMART = (
@@ -197,7 +194,6 @@ class SamsungTVDevice(MediaPlayerDevice):
 
         self._source = None
         self._running_app = None
-        self._is_ws_connection = True if port in (8001, 8002) else False
         # Assume that the TV is not muted and volume is 0
         self._muted = False
         self._volume = 0
@@ -208,8 +204,6 @@ class SamsungTVDevice(MediaPlayerDevice):
         # sending the next command to avoid turning the TV back ON).
         self._end_of_power_off = None
         self._token_file = None
-
-        self._last_command_time = datetime.now()
 
         # Generate token file only for WS + SSL + Token connection
         if port == 8002:
@@ -326,37 +320,23 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._volume = int(await self._upnp.async_get_volume()) / 100
             self._muted = await self._upnp.async_get_mute()
 
-    @Throttle(MIN_TIME_BETWEEN_PING)
-    async def _async_ping_device(self, force_ping=False, **kwargs):
+    def _ping_device(self):
 
-        # HTTP ping
-        if self._is_ws_connection:
+        result = self._ws.ping_device()
+        if result and self._st:
+            if (
+                self._st.state == STATE_OFF and self._state == STATE_ON
+                and self._update_method == "smartthings"
+            ):
+                result = False
 
-            result = await self.hass.async_add_job(self._ws.ping_device)
-            if result and self._st:
-                if (
-                    self._st.state == STATE_OFF and self._state == STATE_ON
-                    and self._update_method == "smartthings"
-                ):
-                    result = False
-
-            if result:
-                await self.hass.async_add_job(self._ws.start_client)
-                await self.hass.async_add_job(self._ws.get_running_app)
-            else:
-                await self.hass.async_add_job(self._ws.stop_client)
-
-            self._state = STATE_ON if result else STATE_OFF
-
-        # SmartThings ping
-        # elif self._st and self._update_method == "smartthings":
-        #     self._state = st_state
-
-        # WS ping
+        if result:
+            self._ws.start_client()
+            self._ws.get_running_app()
         else:
-            await self.async_send_command("KEY", "send_key", 1, 0)
+            self._ws.stop_client()
 
-        await self._update_volume_info()
+        self._state = STATE_ON if result else STATE_OFF
 
     async def _get_running_app(self):
 
@@ -536,7 +516,6 @@ class SamsungTVDevice(MediaPlayerDevice):
                 if vol_lev.isdigit():
                     await self._st.async_send_command("setvolume", vol_lev)
 
-    @Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
     async def async_update(self, **kwargs):
         """Update state of device."""
 
@@ -558,9 +537,10 @@ class SamsungTVDevice(MediaPlayerDevice):
             _LOGGER.error("SamsungTV Smart - Error refreshing from SmartThings")
             self._st_error_count = 0
 
-        await self._async_ping_device()
+        await self.hass.async_add_executor_job(self._ping_device)
 
         if self._state == STATE_ON and not self._power_off_in_progress():
+            await self._update_volume_info()
             await self._get_running_app()
 
         if self._state == STATE_OFF:
@@ -573,35 +553,19 @@ class SamsungTVDevice(MediaPlayerDevice):
         if key_press_delay < 0:
             key_press_delay = None  # means "default" provided with constructor
 
-        call_time = datetime.now()
-        difference = (call_time - self._last_command_time).total_seconds()
-        if (
-            difference > WS_CONN_TIMEOUT
-        ):  # always close connection after WS_CONN_TIMEOUT (10 seconds)
-            self._ws.close()
-
-        self._last_command_time = call_time
-
         try:
-            # recreate connection if connection was dead
-            for _ in range(retry_count + 1):
-                try:
-                    if command_type == "run_app":
-                        # run_app(self, app_id, app_type='DEEP_LINK', meta_tag='')
-                        self._ws.run_app(payload)
-                    else:
-                        self._ws.send_key(payload, key_press_delay)
+            if command_type == "run_app":
+                # run_app(self, app_id, app_type='DEEP_LINK', meta_tag='')
+                self._ws.run_app(payload)
+            else:
+                self._ws.send_key(payload, key_press_delay)
 
-                    break
-                except (ConnectionResetError, AttributeError, BrokenPipeError):
-                    self._ws.close()
-                    _LOGGER.debug(
-                        "Error in send_command() -> ConnectionResetError/AttributeError/BrokenPipeError"
+        except (ConnectionResetError, AttributeError, BrokenPipeError):
+            _LOGGER.debug(
+                "Error in send_command() -> ConnectionResetError/AttributeError/BrokenPipeError"
                     )
 
         except WebSocketTimeoutException:
-            # We got a response so it's on.
-            self._ws.close()
             _LOGGER.debug(
                 "Failed sending payload %s command_type %s",
                 payload,
@@ -610,7 +574,6 @@ class SamsungTVDevice(MediaPlayerDevice):
             )
 
         except OSError:
-            self._ws.close()
             _LOGGER.debug("Error in send_command() -> OSError")
 
         return True
@@ -618,7 +581,7 @@ class SamsungTVDevice(MediaPlayerDevice):
     async def async_send_command(
         self, payload, command_type="send_key", retry_count=1, key_press_delay=0
     ):
-        return await self.hass.async_add_job(
+        return await self.hass.async_add_executor_job(
             self.send_command, payload, command_type, retry_count, key_press_delay
         )
 
@@ -718,9 +681,8 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._get_st_sources()
 
         if self._app_list is None:
-            if self._is_ws_connection:
-                if self._ws.installed_app:
-                    self._gen_installed_app_list()
+            if self._ws.installed_app:
+                self._gen_installed_app_list()
 
         if self._power_off_in_progress() or self._state == STATE_OFF:
             return None
@@ -751,10 +713,7 @@ class SamsungTVDevice(MediaPlayerDevice):
         """Turn the media player on."""
         if self._power_off_in_progress():
             self._end_of_power_off = None
-            if self._is_ws_connection:
-                self.send_command("KEY_POWER")
-            else:
-                self.send_command("KEY_POWEROFF")
+            self.send_command("KEY_POWER")
 
         elif self._state == STATE_OFF:
             if self._mac:
@@ -762,14 +721,13 @@ class SamsungTVDevice(MediaPlayerDevice):
                     send_magic_packet(self._mac, ip_address=self._broadcast)
                 else:
                     send_magic_packet(self._mac)
-            else:
-                self.send_command("KEY_POWERON")
 
     async def async_turn_on(self):
-        await self.hass.async_add_job(self._turn_on)
-        if self._state == STATE_OFF and self._mac:
+        """Turn the media player on."""
+        await self.hass.async_add_executor_job(self._turn_on)
+        if self._state == STATE_OFF:
             await asyncio.sleep(POWER_ON_DELAY)
-            await self._async_ping_device(force_ping=True, no_throttle=True)
+            self.async_schedule_update_ha_state(True)
 
     async def async_turn_off(self):
         """Turn off media player."""
@@ -778,17 +736,7 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._end_of_power_off = dt_util.utcnow() + timedelta(
                 seconds=POWER_OFF_DELAY
             )
-
-            if self._is_ws_connection:
-                await self.async_send_command("KEY_POWER")
-            else:
-                await self.async_send_command("KEY_POWEROFF")
-
-            # Force closing of remote session to provide instant UI feedback
-            # try:
-            #     self._ws.close()
-            # except OSError:
-            #     _LOGGER.debug("Could not establish connection.")
+            await self.async_send_command("KEY_POWER")
 
     @property
     def volume_level(self):
@@ -890,12 +838,14 @@ class SamsungTVDevice(MediaPlayerDevice):
                         await self._smartthings_keys(this_key)
                     else:
                         await self.async_send_command(this_key)
+
         elif source_key.startswith("ST_"):
             if self._st:
                 await self._smartthings_keys(source_key)
             else:
                 _LOGGER.error("Unsupported _ST source. You must configure SmartThings")
                 return False
+
         else:
             await self.async_send_command(source_key)
 
@@ -912,11 +862,12 @@ class SamsungTVDevice(MediaPlayerDevice):
                 _LOGGER.error("Media ID must be positive integer")
                 return
 
-            for digit in media_id:
-                await self.async_send_command("KEY_" + digit)
-                await asyncio.sleep(KEYPRESS_DEFAULT_DELAY)
-
-            await self.async_send_command("KEY_ENTER")
+            def send_digit():
+                for digit in media_id:
+                    self.send_command("KEY_" + digit)
+                    sleep(KEYPRESS_DEFAULT_DELAY)
+                self.send_command("KEY_ENTER")
+            await self.hass.async_add_executor_job(send_digit)
 
         # Launch an app
         elif media_type == MEDIA_TYPE_APP:
@@ -950,7 +901,9 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._playing = True
 
         elif media_type == MEDIA_TYPE_BROWSER:
-            self._ws.open_browser(media_id)
+            await self.hass.async_add_executor_job(
+                self._ws.open_browser, media_id
+            )
 
         else:
             _LOGGER.error("Unsupported media type")
@@ -996,7 +949,9 @@ class SamsungTVDevice(MediaPlayerDevice):
 
         return _device_info
 
+    def _will_remove_from_hass(self):
+        self._ws.stop_client()
+        self._delete_token_file()
+
     async def async_will_remove_from_hass(self):
-        if self._is_ws_connection:
-            await self.hass.async_add_job(self._ws.stop_client)
-            await self.hass.async_add_job(self._delete_token_file)
+        await self.hass.async_add_executor_job(self._will_remove_from_hass)

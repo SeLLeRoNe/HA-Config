@@ -73,7 +73,7 @@ class Ping:
                 "-n",
                 str(self._count),
                 "-w",
-                "1000",
+                "2000",
                 self._ip_address,
             ]
         else:
@@ -83,7 +83,7 @@ class Ping:
                 "-q",
                 "-c",
                 str(self._count),
-                "-W1",
+                "-W2",
                 self._ip_address,
             ]
 
