@@ -1,0 +1,59 @@
+---
+alias: Climate - House - Off
+initial_state: 'on'
+trigger:
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t1_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t2_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t3_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t4_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t5_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t6_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t7_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t8_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t9_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_workday_t10_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t1_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t2_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t3_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t4_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t5_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t6_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t7_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t8_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t9_end')[0:5] }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_house_weekend_t10_end')[0:5] }}"
+action:
+  - service: climate.turn_off
+    data:
+      entity_id: climate.house
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.house
+      temperature: "{{ states('input_number.climate_house_workday_t8') | float }}"
+      hvac_mode: heat
+  - service: homeassistant.turn_off
+    entity_id: group.climate_house_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate_house
+      option: "Off"
