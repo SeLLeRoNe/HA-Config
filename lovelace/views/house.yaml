@@ -109,6 +109,10 @@ cards:
         defaultMode: 2
         dateFormat: L
         maxDaysToShow: 30
+        startDaysAhead: 30
+        maxEventCount: 0
+        sortByStartTime: true
+        showDescription: true
         showLoader: true
         showColors: true
         showDate: true
@@ -119,19 +123,40 @@ cards:
         CalEventIcon2Filter: waste,bills
         entities:
           - entity: calendar.personal_andrea
-            type: icon2, holiday
-            color: cyan
-            dateSize: 63
-            timeSize: 90
-            firstDayOfWeek: 7
-            titleSize: 100
+#            type: icon2
           - entity: calendar.uk_holidays
-            type: icon2, holiday
-            color: cyan
-            dateSize: 63
-            timeSize: 90
-            firstDayOfWeek: 7
-            titleSize: 100
+            type: holiday
+      - type: custom:calendar-card
+        title: "Calendar"
+        progressBar: true
+        showMultiDay: true
+        numberOfDays: '30'
+        dateBottomFormat: DD
+        dateTopFormat: ddd
+        hideHeader: false
+        hideTime: false
+        highlightToday: true
+        showEventOrigin: false
+        showLocation: false
+        showLocationIcon: false
+        startFromToday: true
+        entities:
+          - name: Peronal
+            entity: calendar.personal_andrea
+          - name: UK Holidays
+            entity: calendar.uk_holidays
+          - name: IT Holidays
+            entity: calendar.it_holidays
+          - name: Motors
+            entity: calendar.motors
+#          - name: Serie A
+#            entity: calendar.serie_a
+          - name: UEFA Champions League
+            entity: calendar.uefa_champions_league
+          - name: UEFA Europa League
+            entity: calendar.uefa_europa_league
+          - name: EURO 2020
+            entity: calendar.euro_2020
       - break
       - type: custom:decluttering-card
         template: house_lights
