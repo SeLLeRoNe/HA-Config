@@ -109,23 +109,12 @@ cards:
         defaultMode: 2
         dateFormat: L
         maxDaysToShow: 30
-        startDaysAhead: 30
-        maxEventCount: 0
         sortByStartTime: true
         showDescription: true
-        showLoader: true
-        showColors: true
-        showDate: true
-        CalEventHolidayColor: lime
-        CalEventIcon1Filter: events
-        CalEventIcon2Filter: birthday
-        CalEventIcon1Filter: birthday
-        CalEventIcon2Filter: waste,bills
+        showNoEventsForToday: true
         entities:
           - entity: calendar.personal_andrea
-#            type: icon2
           - entity: calendar.uk_holidays
-            type: holiday
       - type: custom:calendar-card
         title: "Calendar"
         progressBar: true
