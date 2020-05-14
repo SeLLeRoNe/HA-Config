@@ -5,9 +5,6 @@
 # https://www.home-assistant.io/components/http/
 #
 http:
-  # Contains the URL that Home Assistant is available on the internet.
-  base_url: !secret http_base_url
-
   # Lets Home Assistant only listen on a specific IP/host.
   # THIS SHOULD NOT BE USED ON HASS.IO!
   #

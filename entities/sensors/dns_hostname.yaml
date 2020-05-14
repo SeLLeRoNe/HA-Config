@@ -1,5 +1,5 @@
 ---
 platform: dnsip
 name: Hostname IP
-hostname: !secret http_base_url
+hostname: !secret ha_hostname
 resolver: 1.1.1.1
