@@ -13,15 +13,15 @@ preload_cards:
   - markdown
 preload_rows:
   - divider
-custom_header:
-  compact_mode: true
-  footer_mode: false
-  hide_header: false
-  header_text: '{{ time }}' # See templates section for more on this.
-  hide_config: true
-  hide_raw: true
-  hide_unused: true
-  hide_help: true
+#custom_header:
+#  compact_mode: true
+#  footer_mode: false
+#  hide_header: false
+#  header_text: '{{ time }}' # See templates section for more on this.
+#  hide_config: true
+#  hide_raw: true
+#  hide_unused: true
+#  hide_help: true
 #  button_icons:
 #    menu: mdi:skull
 #    voice: mdi:home
@@ -34,12 +34,12 @@ custom_header:
 #    0: mdi:skull
 #    home: mdi:home
 #    7: mdi:death-star-variant
-  exceptions:
-    - conditions:
-        user: sonia
-      config:
-         hide_tabs:
-           - 9 to 20
+#  exceptions:
+#    - conditions:
+#        user: sonia
+#      config:
+#         hide_tabs:
+#           - 9 to 20
 #        menu_dropdown: true
 #    - conditions:
 #        user: maykar, Bram Kragten, Ludeeus
@@ -53,11 +53,11 @@ custom_header:
 #        query_string: kiosk
 #      config:
 #        kiosk_mode: true
-  # Add the below to theme the header
-  background: var(--app-header-background-color)
-  elements_color: var(--app-header-text-color)
-  active_tab_color: var(--state-icon-active-color)
-  tab_indicator_color: var(--state-icon-active-color)
+#  # Add the below to theme the header
+#  background: var(--app-header-background-color)
+#  elements_color: var(--app-header-text-color)
+#  active_tab_color: var(--state-icon-active-color)
+#  tab_indicator_color: var(--state-icon-active-color)
 animated_background: !include lovelace/animated_backgrounds/default.yaml
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 q_cards: !include_dir_merge_named lovelace/q-cards/
