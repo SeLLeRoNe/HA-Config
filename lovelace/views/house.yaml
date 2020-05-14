@@ -114,38 +114,11 @@ cards:
         showNoEventsForToday: true
         entities:
           - entity: calendar.personal_andrea
-          - entity: calendar.uk_holidays
-      - type: custom:calendar-card
-        title: "Calendar"
-        progressBar: true
-        showMultiDay: true
-        numberOfDays: '30'
-        dateBottomFormat: DD
-        dateTopFormat: ddd
-        hideHeader: false
-        hideTime: false
-        highlightToday: true
-        showEventOrigin: false
-        showLocation: false
-        showLocationIcon: false
-        startFromToday: true
-        entities:
-          - name: Peronal
-            entity: calendar.personal_andrea
-          - name: UK Holidays
-            entity: calendar.uk_holidays
-          - name: IT Holidays
-            entity: calendar.it_holidays
-          - name: Motors
-            entity: calendar.motors
-#          - name: Serie A
-#            entity: calendar.serie_a
-          - name: UEFA Champions League
-            entity: calendar.uefa_champions_league
-          - name: UEFA Europa League
-            entity: calendar.uefa_europa_league
-          - name: EURO 2020
-            entity: calendar.euro_2020
+            eventCalName: Personal
+            type: icon1
+#          - entity: calendar.uk_holidays
+#            eventCalName: Holidays
+#            type: holiday
       - break
       - type: custom:decluttering-card
         template: house_lights
