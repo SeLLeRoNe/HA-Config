@@ -7,6 +7,9 @@ calendars:
   - name: IT Holidays
     url: !secret ics_holiday_it
     includeAllDay: true
+  - name: ES Holidays
+    url: !secret ics_holiday_es
+    includeAllDay: true
   - name: Motors
     url: !secret ics_motors
     includeAllDay: true
