@@ -1,7 +1,7 @@
 ---
 darksky_card:
   card:
-    type: custom:dark-sky-weather-card
+    type: custom:lovelace-darksky-card
     locale: en
     static_icons: false
     tooltip_bg_color: 'rgb( 75,155,239)'
