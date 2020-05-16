@@ -116,9 +116,15 @@ cards:
           - entity: calendar.personal_andrea
             eventCalName: Personal
             type: icon1
-#          - entity: calendar.uk_holidays
-#            eventCalName: Holidays
-#            type: holiday
+          - entity: calendar.uk_holidays
+            eventCalName: UK Holidays
+            type: holiday
+          - entity: calendar.it_holidays
+            eventCalName: IT Holidays
+            type: holiday
+          - entity: calendar.es_holidays
+            eventCalName: ES Holidays
+            type: holiday
       - break
       - type: custom:decluttering-card
         template: house_lights
