@@ -1,7 +1,0 @@
----
-platform: group
-name: html5_andrea
-services:
-  - service: html5
-    data:
-      target: andrea_oneplus5

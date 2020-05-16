@@ -1,7 +1,0 @@
----
-platform: group
-name: html5_sonia
-services:
-  - service: html5
-    data:
-      target: sonia_mi9tpro

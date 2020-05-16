@@ -12,14 +12,14 @@ condition:
    - condition: numeric_state
      entity_id: sensor.dark_sky_precip_probability
      above: 50
-   - condition: state
-     entity_id: binary_sensor.workday_es
-     state: 'on'
-   - condition: state
-     entity_id: binary_sensor.workday_uk
-     state: 'off'
 action:
-  - service: notify.html5_andrea
+  - service: notify.mobile_app_andrea_oneplus_5
     data_template:
-      title: "Rain Alert!"
+      title: "Weather Alert"
       message: "Today will probably rain with {{ states('sensor.dark_sky_precip_probability') }} probability, get an umbrella!"
+      data:
+        color: "#0000FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low

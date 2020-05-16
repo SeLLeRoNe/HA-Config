@@ -17,7 +17,13 @@ condition:
     - condition: template
       value_template: "{{ states('sensor.tasmota_available_version') > states('sensor.tasmota_current_version') }}"
 action:
-  - service: notify.html5_andrea
+  - service: notify.mobile_app_andrea_oneplus_5
     data_template:
       title: "Updates Notification"
       message: "Tasmota {{ states('sensor.tasmota_available_version') }} update is now available."
+      data:
+        color: "#FF9933"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low

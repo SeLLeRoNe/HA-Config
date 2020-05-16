@@ -15,11 +15,13 @@ condition:
       entity_id: person.andrea_iannucci
       state: 'home'
 action:
-  - service: notify.html5_andrea_computer_studio
+  - service: notify.mobile_app_andrea_oneplus_5
     data_template:
-      title: "Battery Full"
+      title: "Battery Alert"
       message: "Battery Full on Motorola XT1032, please unplug it!"
-  - service: notify.html5_andrea_oneplus5
-    data_template:
-      title: "Battery Full"
-      message: "Battery Full on Motorola XT1032, please unplug it!"
+      data:
+        color: "#FF66FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low

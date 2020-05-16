@@ -43,7 +43,7 @@ trigger:
     for:
       minutes: 5
 action:
-  - service: notify.html5_andrea
+  - service: notify.alarm
     data_template:
       title: 'Mold Alert'
       message: >
@@ -57,6 +57,12 @@ action:
         {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( {{ sensor.studio_mold_indicator.state }} ) %)
         {% else %}from Unknown Sensor
         {% endif %}
+      data:
+        color: "#FF3300"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low
 #  - service: tts.google_translate_say
 #    data_template:
 #      entity_id: media_player.studio_google_mini

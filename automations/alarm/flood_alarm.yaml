@@ -13,28 +13,46 @@ action:
     data:
       topic: zigbee2mqtt/house_alarm_siren/set
       payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": true}}'
-  - service: notify.html5
-    data:
-      title: ''
+  - service: notify.alarm
+    data_template:
+      title: "Home Alarm"
       message: >
-        Flood detected in the 
-        {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} Master Bathroom 
-        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} Bathroom
-        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} Kitchen
-        {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} Patio
-        {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} Garage
-        {% else %} Unknown
+        Flood detected
+        {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
+        {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage
+        {% else %} from an Unknown Sensor
         {% endif %}
+      data:
+        color: "#FF3300"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: high
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
       message: >
-        Flood detected in the
-        {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} Master Bathroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} Bathroom
-        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} Kitchen
-        {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} Patio
-        {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} Garage
-        {% else %} Unknown
+        Flood detected
+        {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
+        {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage
+        {% else %} from an Unknown Sensor
         {% endif %}
       language: 'en'
+  - service: notify.telegram_andrea
+    data_template:
+      title: "Home Alarm"
+      message: >
+        Flood detected
+        {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
+        {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage
+        {% else %} from an Unknown Sensor
+        {% endif %}

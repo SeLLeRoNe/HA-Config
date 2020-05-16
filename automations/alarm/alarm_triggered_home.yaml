@@ -39,7 +39,7 @@ action:
         {% else %}from Unknown Sensor
         {% endif %}
       language: 'en'
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.alarm
     data_template:
       title: "Home Alarm"
       message: >
@@ -75,21 +75,6 @@ action:
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
-#  - service: notify.html5_andrea
-#    data_template:
-#      title: 'Alarm Notification'
-#      message: >
-#        Alarm triggered 
-#        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-#        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
-#        {% elif trigger.entity_id == "binary_sensor.studio_2ajz4kpbs_pir" %}in the Studio
-#        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-#        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
-#        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-#        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %}at the Patio Door
-#        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
-#        {% else %}from Unknown Sensor
-#        {% endif %}
   - service: homeassistant.turn_on
     data:
       entity_id:

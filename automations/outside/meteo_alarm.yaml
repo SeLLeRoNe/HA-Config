@@ -8,9 +8,9 @@ condition:
   - condition: template
     value_template: '{{trigger.from_state.state != trigger.to_state.state}}'
 action:
-  - service: notify.html5_andrea
+  - service: notify.alarm
     data_template:
-      title: 'Meteo Alarm'
+      title: 'Weather Alert'
       message: >-
         {%- if not is_state('sensor.meteo_alarm', '0') -%}
           {%- for s  in ['today', 'tomorrow'] -%}
@@ -24,3 +24,9 @@ action:
         {% else %}
           alert expired
         {% endif %}
+      data:
+        color: "#0000FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low

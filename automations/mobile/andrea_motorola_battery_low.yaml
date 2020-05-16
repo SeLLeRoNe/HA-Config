@@ -15,11 +15,13 @@ condition:
       entity_id: person.andrea_iannucci
       state: 'home'
 action:
-  - service: notify.html5_andrea_computer_studio
+  - service: notify.mobile_app_andrea_oneplus_5
     data_template:
-      title: "Low Battery"
+      title: "Battery Alert"
       message: "Low Battery on Motorola XT1032, please plug it!"
-  - service: notify.html5_andrea_oneplus5
-    data_template:
-      title: "Low Battery"
-      message: "Low Battery on Motorola XT1032, please plug it!"
+      data:
+        color: "#FF66FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low

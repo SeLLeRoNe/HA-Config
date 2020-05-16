@@ -14,7 +14,13 @@ condition:
       entity_id: input_boolean.baby_monitor_sonia
       state: "on"
 action:
-  - service: notify.html5_andrea
+  - service: notify.alarm
     data_template:
-      title: 'Baby Monitor'
-      message: "Luca is awake!"
+      title: "Baby Monitor"
+      message: "Luca is Awake!"
+      data:
+        color: "#66CCFF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
+        priority: low
