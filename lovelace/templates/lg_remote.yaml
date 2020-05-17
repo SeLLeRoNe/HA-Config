@@ -1,0 +1,101 @@
+---
+lg_remote:
+  card:
+    type: custom:lg-remote-control
+    entity: media_player.tv_lg
+    color_buttons: enable
+    colors:
+      buttons: var(--deactive-background-button-color)
+    dimensions:
+      scale: 0.75
+#      border_width: 3px
+    sources:
+      - name: Netflix
+        icon: 'mdi:netflix'
+      - name: Amazon Prime Video
+        icon: 'mdi:amazon'
+      - name: DAZN
+        icon: dazn
+      - name: YouTube
+        icon: 'mdi:youtube-tv'
+      - name: HDMI 1
+        icon: 'mdi:video-input-hdmi'
+      - name: HDMI 2
+        icon: 'mdi:video-input-hdmi'
+      - name: HDMI 3
+        icon: 'mdi:video-input-hdmi'
+      - name: HDMI 4
+        icon: 'mdi:video-input-hdmi'
+    channels:
+      - image: /local/images/tv_logos/Rai 1 HD.png
+        number: '501'
+      - image: /local/images/tv_logos/Rai 2 HD.png
+        number: '502'
+      - image: /local/images/tv_logos/Rai 3 HD.png
+        number: '503'
+      - image: /local/images/tv_logos/Rai 4.png
+        number: '521'
+      - image: /local/images/tv_logos/Rai Sport 1.png
+        number: '557'
+      - image: /local/images/tv_logos/Rai Sport 2.png
+        number: '58'
+      - image: /local/images/tv_logos/rainews24.png
+        number: '48'
+      - image: /local/images/tv_logos/Rai YoYo.png
+        number: '43'
+      - image: /local/images/tv_logos/Rai Movie.png
+        number: '24'
+      - image: /local/images/tv_logos/Rete4 HD.png
+        number: '504'
+      - image: /local/images/tv_logos/Canale5 HD.png
+        number: '505'
+      - image: /local/images/tv_logos/Italia1 HD.png
+        number: '506'
+      - image: /local/images/tv_logos/italia 2.png
+        number: '35'
+      - image: /local/images/tv_logos/La 5.png
+        number: '30'
+      - image: /local/images/tv_logos/LA7 HD.png
+        number: '507'
+      - image: /local/images/tv_logos/TV8.png
+        number: '508'
+      - image: /local/images/tv_logos/NOVE.png
+        number: '509'
+      - image: /local/images/tv_logos/DMAX.png
+        number: '52'
+      - image: /local/images/tv_logos/Boing.png
+        number: '40'
+      - image: /local/images/tv_logos/Cartoonito.png
+        number: '46'
+      - image: /local/images/tv_logos/frisbee.png
+        number: '44'
+      - image: /local/images/tv_logos/Rai Gulp.png
+        number: '42'
+      - image: /local/images/tv_logos/K2.png
+        number: '41'
+      - image: /local/images/tv_logos/Super!.png
+        number: '47'
+      - image: /local/images/tv_logos/TGCOM24.png
+        number: '551'
+      - image: /local/images/tv_logos/deejay.png
+        number: '569'
+      - image: /local/images/tv_logos/sportitalia.png
+        number: '60'
+      - image: /local/images/tv_logos/supertennis.png
+        number: '64'
+      - image: /local/images/tv_logos/EuroSport HD.png
+        number: '372'
+      - image: /local/images/tv_logos/Eurosport 2 HD.png
+        number: '373'
+      - image: /local/images/tv_logos/Focus.png
+        number: '35'
+      - image: /local/images/tv_logos/cielo.png
+        number: '26'
+      - image: /local/images/tv_logos/realtime.png
+        number: '31'
+      - image: /local/images/tv_logos/IRIS.png
+        number: '22'
+      - image: /local/images/tv_logos/paramount.png
+        number: '31'
+      - image: /local/images/tv_logos/teleradiostereo.png
+        number: '611'
