@@ -1,10 +1,9 @@
 ---
-platform: average
+platform: min_max
 name: House Temperature
-duration:
-  minutes: 1
-precision: 2
-entities:
+type: "mean"
+round_digits: 2
+entity_ids:
   - sensor.living_room_temperature
   - sensor.kitchen_temperature
   - sensor.studio_temperature

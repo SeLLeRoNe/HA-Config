@@ -1,10 +1,9 @@
 ---
-platform: average
+platform: min_max
 name: House Humidity
-duration:
-  minutes: 1
-precision: 2
-entities:
+type: "mean"
+round_digits: 2
+entity_ids:
   - sensor.living_room_humidity
   - sensor.kitchen_humidity
   - sensor.studio_humidity

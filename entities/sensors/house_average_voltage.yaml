@@ -1,10 +1,10 @@
 ---
 platform: min_max
 name: House Average Voltage
-type: max
+type: mean
 round_digits: 1
 entity_ids:
   - sensor.living_room_average_voltage
+  - sensor.kitchen_average_voltage
   - sensor.laundry_room_average_voltage
   - sensor.studio_average_voltage
-#  - sensor.studio_sonia_average_voltage
