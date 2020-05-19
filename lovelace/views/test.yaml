@@ -91,6 +91,8 @@ cards:
             variables:
               - title: Phones
           - type: custom:battery-state-card
+            secondary_info: charging
+            secondary_info_text:  "Charging"
             color_thresholds:
               - value: "unknown"
                 color: "#808080"
