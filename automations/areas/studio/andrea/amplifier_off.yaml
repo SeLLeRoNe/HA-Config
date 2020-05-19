@@ -5,12 +5,12 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: time
-    at: "21:30:00"
+    at: "22:00:00"
 condition:
   condition: and
   conditions:
     - condition: time
-      after: '21:30:00'
+      after: '22:00:00'
       before: '09:30:00'
     - condition: state
       entity_id: binary_sensor.studio_andrea_computer_ping
