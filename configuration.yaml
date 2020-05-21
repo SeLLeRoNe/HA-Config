@@ -31,6 +31,10 @@ homeassistant:
   # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret time_zone
 
+  # URL Definition
+  internal_url: !secret ha_url
+  external_url: !secret ha_url
+
   # Load packages
   packages: !include_dir_named packages/
 
