@@ -29,12 +29,15 @@ import ssl
 import subprocess
 import sys
 import time
+import uuid
 import websocket
 from datetime import datetime
+from enum import Enum
 from threading import Thread, Lock
 from yarl import URL
 from . import exceptions
 from . import shortcuts
+
 
 PING_MATCHER = re.compile(
     r"(?P<min>\d+.\d+)\/(?P<avg>\d+.\d+)\/(?P<max>\d+.\d+)\/(?P<mdev>\d+.\d+)"
@@ -51,11 +54,22 @@ MAX_WS_PING_INTERVAL = 10
 _LOGGING = logging.getLogger(__name__)
 
 
+def gen_uuid():
+    return str(uuid.uuid4())
+
+
 class App:
     def __init__(self, app_id, app_name, app_type):
         self.app_id = app_id
         self.app_name = app_name
         self.app_type = app_type
+
+
+class ArtModeStatus(Enum):
+    Unsupported = 0
+    Unavailable = 1
+    Off = 2
+    On = 3
 
 
 class Ping:
@@ -113,6 +127,7 @@ class SamsungTVWS:
 
     _WS_ENDPOINT_REMOTE_CONTROL = "/api/v2/channels/samsung.remote.control"
     _WS_ENDPOINT_APP_CONTROL = "/api/v2"
+    _WS_ENDPOINT_ART = "/api/v2/channels/com.samsung.art-app"
 
     _REST_URL_FORMAT = "http://{host}:8001/api/v2/{append}"
 
@@ -130,12 +145,13 @@ class SamsungTVWS:
         self.host = host
         self.token = token
         self.token_file = token_file
-        self._app_list = app_list
         self.port = port
         self.timeout = None if timeout == 0 else timeout
         self.key_press_delay = key_press_delay
         self.name = name
         self.connection = None
+        self._app_list = app_list
+        self._artmode_status = ArtModeStatus.Unsupported
 
         self._installed_app = {}
         self._running_app = None
@@ -146,8 +162,14 @@ class SamsungTVWS:
 
         self._ws_remote = None
         self._client_remote = None
+
         self._ws_control = None
         self._client_control = None
+
+        self._ws_art = None
+        self._client_art = None
+        self._client_art_supported = 2
+
         self._ping = Ping(self.host, 1)
 
     def __enter__(self):
@@ -211,7 +233,7 @@ class SamsungTVWS:
         else:
             self.token = token
 
-    def _ws_send(self, command, key_press_delay=None, use_control=False):
+    def _ws_send(self, command, key_press_delay=None, *, use_control=False, ws_socket=None):
         using_remote = False
         if not use_control:
             if self._ws_remote:
@@ -219,8 +241,8 @@ class SamsungTVWS:
                 using_remote = True
             else:
                 connection = self.open()
-        elif self._ws_control:
-            connection = self._ws_control
+        elif ws_socket:
+            connection = ws_socket
         else:
             return
 
@@ -285,6 +307,8 @@ class SamsungTVWS:
             sslopt=sslopt, ping_interval=3600, ping_timeout=2
         )
         self._is_connected = False
+        if self._ws_art:
+            self._ws_art.close()
         if self._ws_control:
             self._ws_control.close()
         self._ws_remote.close()
@@ -421,11 +445,95 @@ class SamsungTVWS:
             },
             key_press_delay=0,
             use_control=True,
+            ws_socket=self._ws_control,
         )
+
+    def _client_art_thread(self):
+        if self._ws_art:
+            return
+
+        is_ssl = self._is_ssl_connection()
+        url = self._format_websocket_url(
+            self._WS_ENDPOINT_ART,
+            is_ssl=is_ssl,
+            use_token=False
+        )
+        sslopt = {"cert_reqs": ssl.CERT_NONE} if is_ssl else {}
+
+        self._ws_art = websocket.WebSocketApp(
+            url,
+            on_message=self._on_message_art,
+        )
+        _LOGGING.debug("Thread SamsungArt started")
+        self._ws_art.run_forever(sslopt=sslopt)
+        self._ws_art.close()
+        self._ws_art = None
+        _LOGGING.debug("Thread SamsungArt terminated")
+
+    def _on_message_art(self, message):
+        response = self._process_api_response(message)
+        _LOGGING.info(response)
+        event = response.get("event")
+        if not event:
+            return
+        if event == "ms.channel.connect":
+            _LOGGING.debug("Message art: received connect")
+            self._client_art_supported = 1
+        elif event == "ms.channel.ready":
+            _LOGGING.debug("Message art: channel ready")
+            self._get_artmode_status()
+        elif event == "d2d_service_message":
+            _LOGGING.debug("Message art: d2d message")
+            self._handle_artmode_status(response)
+
+    def _get_artmode_status(self):
+        _LOGGING.debug("Sending get_art_status")
+        self._ws_send(
+            {
+                "method": "ms.channel.emit",
+                "params": {
+                    "event": "art_app_request",
+                    "to": "host",
+                    "data": {
+                        "request": "get_artmode_status",
+                        "id": gen_uuid(),
+                    },
+                },
+            },
+            key_press_delay=0,
+            use_control=True,
+            ws_socket=self._ws_art,
+        )
+
+    def _handle_artmode_status(self, response):
+        data = response.get("data")
+        if not data:
+            return
+        event = data.get("event", "")
+        if event == "art_mode_changed":
+            status = data.get("status", "")
+            if status == "on":
+                self._artmode_status = ArtModeStatus.On
+            else:
+                self._artmode_status = ArtModeStatus.Off
+        elif event == "artmode_status":
+            value = data.get("value", "")
+            if value == "on":
+                self._artmode_status = ArtModeStatus.On
+            else:
+                self._artmode_status = ArtModeStatus.Off
+        elif event == "go_to_standby":
+            self._artmode_status = ArtModeStatus.Unavailable
+        elif event == "wakeup":
+            self._get_artmode_status()
 
     @property
     def is_connected(self):
         return self._is_connected
+
+    @property
+    def artmode_status(self):
+        return self._artmode_status
 
     @property
     def installed_app(self):
@@ -445,6 +553,9 @@ class SamsungTVWS:
 
         if not result:
             self.stop_client()
+            if self._artmode_status != ArtModeStatus.Unsupported:
+                self._artmode_status = ArtModeStatus.Unavailable
+
         return result
 
     def get_running_app(self, *, force_scan=False):
@@ -472,17 +583,31 @@ class SamsungTVWS:
             self._get_app_status(app.app_id, app.app_type)
 
     def start_client(self, *, start_all=False):
+        """Start all thread that connect to the TV websocket"""
+
         if self._client_remote is None or not self._client_remote.is_alive():
             self._client_remote = Thread(target=self._client_remote_thread)
             self._client_remote.name = "SamsungRemote"
             self._client_remote.setDaemon(True)
             self._client_remote.start()
+
         if start_all:
             if self._client_control is None or not self._client_control.is_alive():
                 self._client_control = Thread(target=self._client_control_thread)
                 self._client_control.name = "SamsungControl"
                 self._client_control.setDaemon(True)
                 self._client_control.start()
+
+            if (
+                    self._client_art_supported > 0 and
+                    (self._client_art is None or not self._client_art.is_alive())
+               ):
+                if self._client_art_supported > 1:
+                    self._client_art_supported = 0
+                self._client_art = Thread(target=self._client_art_thread)
+                self._client_art.name = "SamsungArt"
+                self._client_art.setDaemon(True)
+                self._client_art.start()
 
     def stop_client(self):
         if self._ws_remote:
@@ -538,9 +663,9 @@ class SamsungTVWS:
         )
 
     def hold_key(self, key, seconds):
-        self.send_key(key, cmd="Press")
+        self.send_key(key, key_press_delay=0, cmd="Press")
         time.sleep(seconds)
-        self.send_key(key, cmd="Release")
+        self.send_key(key, key_press_delay=0, cmd="Release")
 
     def move_cursor(self, x, y, duration=0):
         self._ws_send(
@@ -579,7 +704,8 @@ class SamsungTVWS:
                     "params": {"id": app_id},
                 },
                 key_press_delay=0,
-                use_control=True
+                use_control=True,
+                ws_socket=self._ws_control,
             )
             return
 

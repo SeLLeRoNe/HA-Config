@@ -44,6 +44,8 @@ from .const import (
     CONF_UPDATE_METHOD,
     CONF_UPDATE_CUSTOM_PING_URL,
     CONF_SCAN_APP_HTTP,
+    CONF_USE_ST_CHANNEL_INFO,
+    DATA_LISTENER,
     DEFAULT_SOURCE_LIST,
     UPDATE_METHODS,
     WS_PREFIX,
@@ -284,7 +286,20 @@ async def async_setup(hass: HomeAssistantType, config: ConfigEntry):
 
 async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     """Set up the Samsung TV platform."""
-    hass.data.setdefault(DOMAIN, {}).setdefault(entry.unique_id, {})
+    hass.data.setdefault(DOMAIN, {}).setdefault(
+        entry.unique_id, {}
+    )  # unique_id = host
+    hass.data[DOMAIN].setdefault(
+        entry.entry_id,
+        {
+            "options": {
+                CONF_USE_ST_CHANNEL_INFO: entry.options.get(
+                    CONF_USE_ST_CHANNEL_INFO, False
+                )
+            },
+            DATA_LISTENER: [entry.add_update_listener(update_listener)],
+        }
+    )
 
     hass.async_create_task(
         hass.config_entries.async_forward_entry_setup(entry, MP_DOMAIN)
@@ -298,7 +313,28 @@ async def async_unload_entry(hass, config_entry):
     await asyncio.gather(
         *[hass.config_entries.async_forward_entry_unload(config_entry, MP_DOMAIN)]
     )
+    for listener in hass.data[DOMAIN][config_entry.entry_id][DATA_LISTENER]:
+        listener()
+    hass.data[DOMAIN].pop(config_entry.entry_id)
     hass.data[DOMAIN].pop(config_entry.unique_id)
     if not hass.data[DOMAIN]:
         hass.data.pop(DOMAIN)
     return True
+
+
+async def update_listener(hass, config_entry):
+    """Update when config_entry options update."""
+    entry_id = config_entry.entry_id
+    for key, old_value in hass.data[DOMAIN][entry_id][
+        "options"
+    ].items():
+        hass.data[DOMAIN][entry_id]["options"][
+            key
+        ] = new_value = config_entry.options.get(key)
+        if new_value != old_value:
+            _LOGGER.debug(
+                "Changing option %s from %s to %s",
+                key,
+                old_value,
+                hass.data[DOMAIN][entry_id]["options"][key],
+            )

@@ -51,5 +51,14 @@
             }
         },
         "title": "SamsungTV Smart"
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "use_st_channel_info": "Usa informazioni Canale TV da SmartThings"
+                }
+            }
+        }
     }
 }

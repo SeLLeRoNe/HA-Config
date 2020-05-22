@@ -91,14 +91,14 @@ class SmartThingsTV:
         self,
         api_key: str,
         device_id: str,
-        refresh_status: bool = True,
+        use_channel_info: bool = True,
         session: Optional[ClientSession] = None,
     ):
 
         """Initialize SmartThingsTV."""
         self._api_key = api_key
         self._device_id = device_id
-        self._refresh_status = refresh_status
+        self._use_channel_info = use_channel_info
         if session:
             self._session = session
             self._managed_session = False
@@ -175,7 +175,7 @@ class SmartThingsTV:
         return self._source_list
 
     def set_application(self, app_id):
-        if self._refresh_status:
+        if self._use_channel_info:
             self._channel = ""
             self._channel_name = app_id
             self._is_forced_val = True
@@ -184,7 +184,10 @@ class SmartThingsTV:
     def _set_source(self, source):
         if source != self._source:
             self._source = source
-            self.set_application("")
+            self._channel = ""
+            self._channel_name = ""
+            self._is_forced_val = True
+            self._forced_count = 0
 
     @staticmethod
     async def get_devices_list(api_key, session: ClientSession, device_label=""):
@@ -228,7 +231,7 @@ class SmartThingsTV:
         api_device = f"{API_DEVICES}/{device_id}"
         api_command = f"{api_device}/commands"
 
-        if self._refresh_status:
+        if self._use_channel_info:
             async with self._session.post(
                 api_command,
                 headers=_headers(self._api_key),
@@ -259,12 +262,15 @@ class SmartThingsTV:
             return True
         return False
 
-    async def async_device_update(self):
+    async def async_device_update(self, use_channel_info: bool = None):
         """Query device status on SmartThing"""
 
         device_id = self._device_id
         if not device_id:
             return
+
+        if use_channel_info is not None:
+            self._use_channel_info = use_channel_info
 
         api_device = f"{API_DEVICES}/{device_id}"
         api_device_status = f"{api_device}/states"
@@ -313,9 +319,12 @@ class SmartThingsTV:
         self._forced_count = 0
         self._source = device_source
         # if the status is not refreshed this info may become not reliable
-        if self._refresh_status:
+        if self._use_channel_info:
             self._channel = device_tv_chan
             self._channel_name = device_tv_chan_name
+        else:
+            self._channel = ""
+            self._channel_name = ""
 
     async def async_send_command(self, cmdtype, command=""):
         """Send a command too the device"""

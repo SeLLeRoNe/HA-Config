@@ -13,20 +13,16 @@ import voluptuous as vol
 from aiohttp import ClientConnectionError, ClientSession, ClientResponseError
 from async_timeout import timeout
 
-from .api.samsungws import SamsungTVWS
+from .api.samsungws import SamsungTVWS, ArtModeStatus
 from .api.smartthings import SmartThingsTV
 from .api.upnp import upnp
 
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.event import call_later
+from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
+from homeassistant.helpers.event import async_call_later
 from homeassistant.util import Throttle
 from homeassistant.util import dt as dt_util
-from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
-
-from homeassistant.components.media_player import (
-    MediaPlayerDevice,
-    DEVICE_CLASS_TV,
-)
+from homeassistant.components.media_player import DEVICE_CLASS_TV
 
 from homeassistant.components.media_player.const import (
     SUPPORT_PAUSE,
@@ -71,16 +67,22 @@ from .const import (
     CONF_DEVICE_MODEL,
     CONF_DEVICE_OS,
     CONF_LOAD_ALL_APPS,
+    CONF_SCAN_APP_HTTP,
     CONF_SHOW_CHANNEL_NR,
     CONF_SOURCE_LIST,
     CONF_UPDATE_METHOD,
     CONF_UPDATE_CUSTOM_PING_URL,
-    CONF_SCAN_APP_HTTP,
+    CONF_USE_ST_CHANNEL_INFO,
     STD_APP_LIST,
     WS_PREFIX,
 )
 
-HTTP_APPCHECK_TIMEOUT = 1
+try:
+    from homeassistant.components.media_player import MediaPlayerEntity
+except ImportError:
+    from homeassistant.components.media_player import MediaPlayerDevice as MediaPlayerEntity
+
+KEYHOLD_MAX_DELAY = 5.0
 KEYPRESS_DEFAULT_DELAY = 0.5
 KEYPRESS_MAX_DELAY = 2.0
 KEYPRESS_MIN_DELAY = 0.2
@@ -88,7 +90,7 @@ MAX_ST_ERROR_COUNT = 4
 MEDIA_TYPE_KEY = "send_key"
 MEDIA_TYPE_BROWSER = "browser"
 POWER_OFF_DELAY = 20
-POWER_ON_DELAY = 3
+POWER_ON_DELAY = 5
 ST_APP_SEPARATOR = "/"
 ST_UPDATE_TIMEOUT = 5
 
@@ -126,30 +128,31 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     # session used by aiohttp
     session = hass.helpers.aiohttp_client.async_get_clientsession()
 
-    host = config_entry.data[CONF_HOST]
+    entry_id = config_entry.entry_id
     config = config_entry.data.copy()
-    add_conf = hass.data[DOMAIN][host]
+    add_conf = hass.data[DOMAIN][config_entry.unique_id]
     for attr, value in add_conf.items():
         if value:
             config[attr] = value
     _LOGGER.debug(config)
 
-    async_add_entities([SamsungTVDevice(config, session)])
+    async_add_entities([SamsungTVDevice(config, entry_id, session)])
     _LOGGER.info(
         "Samsung TV %s:%d added as '%s'",
-        host,
+        config.get(CONF_HOST),
         config.get(CONF_PORT),
         config.get(CONF_NAME),
     )
 
 
-class SamsungTVDevice(MediaPlayerDevice):
+class SamsungTVDevice(MediaPlayerEntity):
     """Representation of a Samsung TV."""
 
-    def __init__(self, config, session: ClientSession):
+    def __init__(self, config, entry_id, session: ClientSession):
         """Initialize the Samsung device."""
 
         # Save a reference to the imported classes
+        self._entry_id = entry_id
         self._session = session
         self._host = config.get(CONF_HOST)
         self._name = config.get(CONF_NAME)
@@ -228,7 +231,7 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._st = SmartThingsTV(
                 api_key=api_key,
                 device_id=device_id,
-                refresh_status=True,  # may became a config option to limit write on the cloud???
+                use_channel_info=True,
                 session=session,
             )
 
@@ -333,6 +336,11 @@ class SamsungTVDevice(MediaPlayerDevice):
         if result:
             self._ws.start_client()
             self._ws.get_running_app()
+            if (
+                self._ws.artmode_status == ArtModeStatus.On or
+                self._ws.artmode_status == ArtModeStatus.Unavailable
+            ):
+                result = False
         else:
             self._ws.stop_client()
 
@@ -521,9 +529,12 @@ class SamsungTVDevice(MediaPlayerDevice):
 
         """Required to get source and media title"""
         if self._st:
+            use_channel_info = self.hass.data[DOMAIN][self._entry_id][
+                "options"
+            ][CONF_USE_ST_CHANNEL_INFO]
             try:
                 with timeout(ST_UPDATE_TIMEOUT):
-                    await self._st.async_device_update()
+                    await self._st.async_device_update(use_channel_info)
                 self._st_error_count = 0
             except (
                 asyncio.TimeoutError,
@@ -547,7 +558,7 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._end_of_power_off = None
 
     def send_command(
-        self, payload, command_type="send_key", retry_count=1, key_press_delay=0
+        self, payload, command_type="send_key", key_press_delay: float = 0, press=False
     ):
         """Send a key to the tv and handles exceptions."""
         if key_press_delay < 0:
@@ -558,7 +569,28 @@ class SamsungTVDevice(MediaPlayerDevice):
                 # run_app(self, app_id, app_type='DEEP_LINK', meta_tag='')
                 self._ws.run_app(payload)
             else:
-                self._ws.send_key(payload, key_press_delay)
+                hold_delay = 0
+                source_keys = payload.split(",")
+                key_code = source_keys[0]
+                if len(source_keys) > 1:
+
+                    def get_hold_time():
+                        hold_time = source_keys[1].replace(" ", "")
+                        if not hold_time:
+                            return 0
+                        if not hold_time.isdigit():
+                            return 0
+                        hold_time = int(hold_time)/1000
+                        return min(hold_time, KEYHOLD_MAX_DELAY)
+
+                    hold_delay = get_hold_time()
+
+                if hold_delay > 0:
+                    self._ws.hold_key(key_code, hold_delay)
+                else:
+                    self._ws.send_key(
+                        key_code, key_press_delay, "Press" if press else "Click"
+                    )
 
         except (ConnectionResetError, AttributeError, BrokenPipeError):
             _LOGGER.debug(
@@ -579,10 +611,10 @@ class SamsungTVDevice(MediaPlayerDevice):
         return True
 
     async def async_send_command(
-        self, payload, command_type="send_key", retry_count=1, key_press_delay=0
+        self, payload, command_type="send_key", key_press_delay: float = 0, press=False
     ):
         return await self.hass.async_add_executor_job(
-            self.send_command, payload, command_type, retry_count, key_press_delay
+            self.send_command, payload, command_type, key_press_delay, press
         )
 
     @property
@@ -715,6 +747,10 @@ class SamsungTVDevice(MediaPlayerDevice):
             self._end_of_power_off = None
             self.send_command("KEY_POWER")
 
+        elif self._ws.artmode_status == ArtModeStatus.On:
+            # power on from art mode
+            self.send_command("KEY_POWER")
+
         elif self._state == STATE_OFF:
             if self._mac:
                 if self._broadcast:
@@ -726,17 +762,25 @@ class SamsungTVDevice(MediaPlayerDevice):
         """Turn the media player on."""
         await self.hass.async_add_executor_job(self._turn_on)
         if self._state == STATE_OFF:
-            await asyncio.sleep(POWER_ON_DELAY)
-            self.async_schedule_update_ha_state(True)
+            def update_status(now):
+                self.async_schedule_update_ha_state(True)
+            async_call_later(self.hass, POWER_ON_DELAY, update_status)
 
-    async def async_turn_off(self):
+    def _turn_off(self):
         """Turn off media player."""
-        if (not self._power_off_in_progress()) and self._state != STATE_OFF:
+        if not self._power_off_in_progress() and self._state != STATE_OFF:
 
             self._end_of_power_off = dt_util.utcnow() + timedelta(
                 seconds=POWER_OFF_DELAY
             )
-            await self.async_send_command("KEY_POWER")
+            if self._ws.artmode_status == ArtModeStatus.Unsupported:
+                self.send_command("KEY_POWER")
+            else:
+                self.send_command("KEY_POWER", press=True)
+
+    async def async_turn_off(self):
+        """Turn the media player on."""
+        await self.hass.async_add_executor_job(self._turn_off)
 
     @property
     def volume_level(self):

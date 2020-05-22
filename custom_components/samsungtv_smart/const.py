@@ -28,10 +28,13 @@ CONF_APP_LIST = "app_list"
 CONF_SHOW_CHANNEL_NR = "show_channel_number"
 CONF_DEVICE_OS = "device_os"
 CONF_LOAD_ALL_APPS = "load_all_apps"
+CONF_USE_ST_CHANNEL_INFO = "use_st_channel_info"
 
 # obsolete
 CONF_UPDATE_CUSTOM_PING_URL = "update_custom_ping_url"
 CONF_SCAN_APP_HTTP = "scan_app_http"
+
+DATA_LISTENER = "listener"
 
 WS_PREFIX = "[Home Assistant]"
 
