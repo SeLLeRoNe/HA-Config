@@ -14,8 +14,10 @@ logger:
     custom_components: error
     custom_components.sensor.places: error
     custom_components.sensor.authenticated: error
+    homeassistant: error
     homeassistant.loader: error
     homeassistant.components: error
+    homeassistant.components.airvisual: error
     homeassistant.components.group: error
     homeassistant.components.automation: error
     homeassistant.components.device_tracker: error
@@ -24,6 +26,7 @@ logger:
     homeassistant.components.mqtt: error
     homeassistant.components.pi_hole: error
     homeassistant.components.python_script: error
+    homeassistant.setup: error
     homeassistant.components.websocket_api: error
     homeassistant.helpers: error
     custom_components.entity_controller: error
