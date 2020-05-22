@@ -4,7 +4,7 @@ hacs:
   sidepanel_title: HACS
   sidepanel_icon: "hacs:hacs"
   appdaemon: false
-  python_script: true
-  theme: true
-  options:
-    experimental: true
+  netdaemon: false
+  country: ES
+  release_limit: 5
+  experimental: true
