@@ -57,6 +57,7 @@ condition:
               state: 'on'
             - condition: or
               conditions:
+<<<<<<< HEAD
                 - condition: and
                   conditions:
                     - condition: template
@@ -147,6 +148,118 @@ condition:
                     - condition: state
                       entity_id: input_boolean.climate_studio_workday_t10
                       state: 'on'
+=======
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t1_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t1_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t1
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t2_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t2_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t1
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t3_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t3_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t3
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t4_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t4_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t4
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t5_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t5_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t5
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t6_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t6_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t6
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t7_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t7_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t7
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t8_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t8_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t8
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t9_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t9_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t9
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_workday_t10_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_workday_t10_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_workday_t10
+                          state: 'off'
+>>>>>>> c24ef57b6fd5ecc82a1e1ba26bc3b8cff1a656e8
         - condition: and
           conditions:
             - condition: state
@@ -154,6 +267,7 @@ condition:
               state: 'off'
             - condition: or
               conditions:
+<<<<<<< HEAD
                 - condition: and
                   conditions:
                     - condition: template
@@ -244,6 +358,118 @@ condition:
                     - condition: state
                       entity_id: input_boolean.climate_studio_weekend_t10
                       state: 'on'
+=======
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t1_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t1_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t1
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t2_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t2_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t1
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t3_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t3_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t3
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t4_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t4_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t4
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t5_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t5_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t5
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t6_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t6_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t6
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t7_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t7_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t7
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t8_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t8_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t8
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t9_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t9_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t9
+                          state: 'off'
+                - condition: or
+                  conditions:
+                    - condition: template
+                      value_template: "{{ states('sensor.time') != states('input_datetime.climate_studio_weekend_t10_start')[0:5] }}"
+                    - condition: and
+                      conditions:
+                        - condition: template
+                          value_template: "{{ states('sensor.time') == states('input_datetime.climate_studio_weekend_t10_start')[0:5] }}"
+                        - condition: state
+                          entity_id: input_boolean.climate_studio_weekend_t10
+                          state: 'off'
+>>>>>>> c24ef57b6fd5ecc82a1e1ba26bc3b8cff1a656e8
 action:
   - service: climate.turn_off
     data:
