@@ -22,38 +22,6 @@ custom_header:
   hide_raw: true
   hide_unused: true
   hide_help: true
-  button_icons:
-    menu: mdi:skull
-    voice: mdi:home
-    options: mdi:death-star-variant
-  hide_tabs:
-    - 5 to 9
-    - 0
-    - home
-  tab_icons:
-    0: mdi:skull
-    home: mdi:home
-    7: mdi:death-star-variant
-#  exceptions:
-#    - conditions:
-#        user: sonia
-#      config:
-#         hide_tabs:
-#           - 9 to 20
-#        menu_dropdown: true
-#    - conditions:
-#        user: maykar, Bram Kragten, Ludeeus
-#        user_agent: Mobile
-#        media_query: "(max-width: 600px)"
-#      config:
-#        footer_mode: true
-#        reverse_button_direction: true
-#        reverse_tab_direction: true
-#    - conditions:
-#        query_string: kiosk
-#      config:
-#        kiosk_mode: true
-  # Add the below to theme the header
   background: var(--app-header-background-color)
   elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
