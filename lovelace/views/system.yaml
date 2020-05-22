@@ -858,10 +858,6 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
                 - entity_id: sensor.bathroom_mccgq01lm_link_quality
                   options:
                     name: Bathroom - MCCGQ01LM - Link Quality
