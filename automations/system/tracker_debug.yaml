@@ -18,6 +18,7 @@ action:
   - service: python_script.device_tracker_merge
     data_template:
       device_name: 'andrea_iannucci'
+      friendly_name: "Andrea Iannucci"
       master_device: device_tracker.andrea_oneplus5
       slave_device: device_tracker.life360_andrea_iannucci
       trigger_id: '{{trigger.entity_id}}'
@@ -28,6 +29,7 @@ action:
   - service: python_script.device_tracker_merge
     data_template:
       device_name: 'sonia_espejo_brea'
+      friendly_name: "Sonia Espejo Brea"
       master_device: device_tracker.sonia_mi9tpro
       slave_device: device_tracker.life360_sonia_espejo_brea
       trigger_id: '{{trigger.entity_id}}'
