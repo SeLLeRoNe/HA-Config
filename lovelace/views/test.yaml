@@ -159,7 +159,61 @@ cards:
                 charging_state:
                   entity_id: input_boolean.andrea_shield_charging
                   state: "on"
-
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: "Device Trackers"
+#          - type: custom:logbook-card
+#            title: "Andrea - App"
+#            entity: device_tracker.andrea_iannucci
+#            max_items: 5
+#            date_format: dd/MM/YYYY hh:mm
+#            show:
+#              state: true
+#              duration: true
+#              end_date: false
+#              start_date: true
+#              icon: false
+#              separator: false
+          - type: custom:logbook-card
+            title: "Andrea - Life360"
+            entity: device_tracker.life360_andrea_iannucci
+            max_items: 5
+            date_format: dd/MM/YYYY hh:mm
+            show:
+              state: true
+              duration: true
+              end_date: false
+              start_date: true
+              icon: false
+              separator: false
+#          - type: custom:logbook-card
+#            title: "Sonia - App"
+#            entity: device_tracker.sonia_espejo_brea
+#            max_items: 5
+#            date_format: dd/MM/YYYY hh:mm
+#            show:
+#              state: true
+#              duration: true
+#              end_date: false
+#              start_date: true
+#              icon: false
+#              separator: false
+          - type: custom:logbook-card
+            title: "Sonia - Life360"
+            entity: device_tracker.life360_sonia_espejo_brea
+            max_items: 5
+            date_format: dd/MM/YYYY hh:mm
+            show:
+              state: true
+              duration: true
+              end_date: false
+              start_date: true
+              icon: false
+              separator: false
 #      - break
       # - type: vertical-stack
       #   cards:
