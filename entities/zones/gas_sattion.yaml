@@ -1,0 +1,7 @@
+---
+name: Gas Station
+latitude: !secret zone_gas_station_latitude
+longitude: !secret zone_gas_station_longitude
+radius: 25
+passive: false
+icon: mdi:gas-station
