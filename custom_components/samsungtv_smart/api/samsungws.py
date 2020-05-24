@@ -152,6 +152,8 @@ class SamsungTVWS:
         self.connection = None
         self._app_list = app_list
         self._artmode_status = ArtModeStatus.Unsupported
+        self._power_on_requested = False
+        self._power_on_requested_time = datetime.min
 
         self._installed_app = {}
         self._running_app = None
@@ -488,16 +490,17 @@ class SamsungTVWS:
 
     def _get_artmode_status(self):
         _LOGGING.debug("Sending get_art_status")
+        msg_data = {
+            "request": "get_artmode_status",
+            "id": gen_uuid(),
+        }
         self._ws_send(
             {
                 "method": "ms.channel.emit",
                 "params": {
                     "event": "art_app_request",
                     "to": "host",
-                    "data": {
-                        "request": "get_artmode_status",
-                        "id": gen_uuid(),
-                    },
+                    "data": str(msg_data),
                 },
             },
             key_press_delay=0,
@@ -506,26 +509,39 @@ class SamsungTVWS:
         )
 
     def _handle_artmode_status(self, response):
-        data = response.get("data")
-        if not data:
+        data_str = response.get("data")
+        if not data_str:
             return
+        data = self._process_api_response(data_str)
+        _LOGGING.info(data)
         event = data.get("event", "")
         if event == "art_mode_changed":
             status = data.get("status", "")
             if status == "on":
-                self._artmode_status = ArtModeStatus.On
+                artmode_status = ArtModeStatus.On
             else:
-                self._artmode_status = ArtModeStatus.Off
+                artmode_status = ArtModeStatus.Off
         elif event == "artmode_status":
             value = data.get("value", "")
             if value == "on":
-                self._artmode_status = ArtModeStatus.On
+                artmode_status = ArtModeStatus.On
             else:
-                self._artmode_status = ArtModeStatus.Off
+                artmode_status = ArtModeStatus.Off
         elif event == "go_to_standby":
-            self._artmode_status = ArtModeStatus.Unavailable
+            artmode_status = ArtModeStatus.Unavailable
         elif event == "wakeup":
             self._get_artmode_status()
+            return
+        else:
+            # Unknown message
+            return
+
+        if self._power_on_requested and artmode_status != ArtModeStatus.Unavailable:
+            if artmode_status == ArtModeStatus.On:
+                self.send_key("KEY_POWER", key_press_delay=0)
+            self._power_on_requested = False
+
+        self._artmode_status = artmode_status
 
     @property
     def is_connected(self):
@@ -546,8 +562,8 @@ class SamsungTVWS:
     def ping_device(self):
         result = self._ping.ping()
         # check ws ping/pong
+        call_time = datetime.now()
         if result and self._ws_remote:
-            call_time = datetime.now()
             difference = (call_time - self._last_ping).total_seconds()
             result = difference < MAX_WS_PING_INTERVAL
 
@@ -556,7 +572,16 @@ class SamsungTVWS:
             if self._artmode_status != ArtModeStatus.Unsupported:
                 self._artmode_status = ArtModeStatus.Unavailable
 
+        if self._power_on_requested:
+            difference = (call_time - self._power_on_requested_time).total_seconds()
+            if difference > 20:
+                self._power_on_requested = False
+
         return result
+
+    def set_power_on_request(self):
+        self._power_on_requested = True
+        self._power_on_requested_time = datetime.now()
 
     def get_running_app(self, *, force_scan=False):
 

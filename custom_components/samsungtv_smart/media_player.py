@@ -3,7 +3,7 @@ import asyncio
 import logging
 import json
 import os
-from datetime import timedelta
+from datetime import datetime, timedelta
 from time import sleep
 from wakeonlan import send_magic_packet
 from websocket import WebSocketTimeoutException
@@ -55,6 +55,7 @@ from homeassistant.const import (
     CONF_API_KEY,
     STATE_OFF,
     STATE_ON,
+    STATE_UNAVAILABLE,
 )
 
 from .const import (
@@ -136,7 +137,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             config[attr] = value
     _LOGGER.debug(config)
 
-    async_add_entities([SamsungTVDevice(config, entry_id, session)])
+    async_add_entities([SamsungTVDevice(config, entry_id, session)], True)
     _LOGGER.info(
         "Samsung TV %s:%d added as '%s'",
         config.get(CONF_HOST),
@@ -202,10 +203,12 @@ class SamsungTVDevice(MediaPlayerEntity):
         self._volume = 0
         # Assume that the TV is in Play mode
         self._playing = True
-        self._state = None
+        self._state = STATE_UNAVAILABLE
         # Mark the end of a shutdown command (need to wait 15 seconds before
         # sending the next command to avoid turning the TV back ON).
         self._end_of_power_off = None
+        self._set_update_forced = False
+        self._update_forced_time = None
         self._token_file = None
 
         # Generate token file only for WS + SSL + Token connection
@@ -312,8 +315,24 @@ class SamsungTVDevice(MediaPlayerEntity):
             and self._end_of_power_off > dt_util.utcnow()
         )
 
+    def _update_forced(self):
+        if self._set_update_forced:
+            self._update_forced_time = datetime.now()
+            self._set_update_forced = False
+            return False
+
+        if not self._update_forced_time:
+            return False
+
+        call_time = datetime.now()
+        difference = (call_time - self._update_forced_time).total_seconds()
+        if difference >= 10:
+            self._update_forced_time = None
+            return False
+        return True
+
     async def _update_volume_info(self):
-        if self._state != STATE_OFF:
+        if self._state == STATE_ON:
 
             # if self._st and self._setvolumebyst:
             # self._volume = self._st.volume
@@ -364,7 +383,7 @@ class SamsungTVDevice(MediaPlayerEntity):
         self._running_app = DEFAULT_APP
 
     def _get_st_sources(self):
-        if self._state == STATE_OFF or not self._st:
+        if self._state != STATE_ON or not self._st:
             _LOGGER.debug(
                 "Samsung TV is OFF or SmartThings not configured, _get_st_sources not executed"
             )
@@ -407,7 +426,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     @Throttle(MIN_TIME_BETWEEN_APP_SCANS)
     def _gen_installed_app_list(self, **kwargs):
-        if self._state == STATE_OFF:
+        if self._state != STATE_ON:
             _LOGGER.debug("Samsung TV is OFF, _gen_installed_app_list not executed")
             return
 
@@ -463,11 +482,11 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def _get_source(self):
         """Return the current input source."""
-        if self._state != STATE_OFF:
+        if self._state == STATE_ON:
 
             if self._st:
                 if self._st.state == STATE_OFF:
-                    self._source = None
+                    self._source = self._running_app
                 else:
                     if self._running_app == DEFAULT_APP:
 
@@ -524,8 +543,11 @@ class SamsungTVDevice(MediaPlayerEntity):
                 if vol_lev.isdigit():
                     await self._st.async_send_command("setvolume", vol_lev)
 
-    async def async_update(self, **kwargs):
+    async def async_update(self):
         """Update state of device."""
+
+        if self._update_forced():
+            return
 
         """Required to get source and media title"""
         if self._st:
@@ -634,7 +656,7 @@ class SamsungTVDevice(MediaPlayerEntity):
     @property
     def media_title(self):
         """Title of current playing media."""
-        if self._state == STATE_OFF:
+        if self._state != STATE_ON:
             return None
 
         if self._st:
@@ -716,7 +738,7 @@ class SamsungTVDevice(MediaPlayerEntity):
             if self._ws.installed_app:
                 self._gen_installed_app_list()
 
-        if self._power_off_in_progress() or self._state == STATE_OFF:
+        if self._power_off_in_progress() or self._state != STATE_ON:
             return None
 
         source_list = []
@@ -757,18 +779,23 @@ class SamsungTVDevice(MediaPlayerEntity):
                     send_magic_packet(self._mac, ip_address=self._broadcast)
                 else:
                     send_magic_packet(self._mac)
+                self._ws.set_power_on_request()
 
     async def async_turn_on(self):
         """Turn the media player on."""
         await self.hass.async_add_executor_job(self._turn_on)
         if self._state == STATE_OFF:
-            def update_status(now):
-                self.async_schedule_update_ha_state(True)
-            async_call_later(self.hass, POWER_ON_DELAY, update_status)
+            def update_status():
+                if self._state != STATE_ON:
+                    self.async_schedule_update_ha_state(True)
+                    self._set_update_forced = True
+
+            self.hass.loop.call_later(POWER_ON_DELAY, update_status)
+            # async_call_later(self.hass, POWER_ON_DELAY, update_status)
 
     def _turn_off(self):
         """Turn off media player."""
-        if not self._power_off_in_progress() and self._state != STATE_OFF:
+        if not self._power_off_in_progress() and self._state == STATE_ON:
 
             self._end_of_power_off = dt_util.utcnow() + timedelta(
                 seconds=POWER_OFF_DELAY
