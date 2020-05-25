@@ -20,6 +20,70 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_bedroom_luca_workday_t1
     to: 'on'
+  - platform: state
+    entity_id: input_datetime.climate_bedroom_luca_workday_t1_start
+  - platform: state
+    entity_id: input_datetime.climate_bedroom_luca_workday_t1_end
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t10
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_bedroom_luca_workday_t10
+    to: 'off'
 condition:
   condition: and
   conditions:
@@ -40,9 +104,9 @@ condition:
         - condition: and
           conditions:
             - condition: template
-              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_bedroom_luca_workday_t1_start')[0:5] }}"
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_bedroom_luca_workday_t2_start')[0:5] }}"
             - condition: template
-              value_template: "{{ states('input_datetime.climate_bedroom_luca_workday_t1_end')[0:5] == '00:00' }}"
+              value_template: "{{ states('input_datetime.climate_bedroom_luca_workday_t2_end')[0:5] == '00:00' }}"
         - condition: and
           conditions:
             - condition: template
@@ -61,6 +125,41 @@ condition:
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'on'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t1_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t2_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t2_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t3_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t4_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t5_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t6_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t7_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t8_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t9_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_bedroom_luca_workday_t0_active
+          state: 'off'
     - condition: state
       entity_id: group.workday
       state: 'on'

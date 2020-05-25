@@ -20,6 +20,70 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_house_weekend_t5
     to: 'on'
+  - platform: state
+    entity_id: input_datetime.climate_house_weekend_t5_start
+  - platform: state
+    entity_id: input_datetime.climate_house_weekend_t5_end
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_weekend_t10
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_workday_t10
+    to: 'off'
 condition:
   condition: and
   conditions:

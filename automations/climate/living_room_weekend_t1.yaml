@@ -20,6 +20,70 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_living_room_weekend_t1
     to: 'on'
+  - platform: state
+    entity_id: input_datetime.climate_living_room_weekend_t1_start
+  - platform: state
+    entity_id: input_datetime.climate_living_room_weekend_t1_end
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_weekend_t10
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_workday_t10
+    to: 'off'
 condition:
   condition: and
   conditions:
@@ -61,6 +125,41 @@ condition:
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'on'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t1_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t2_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t2_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t3_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t4_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t5_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t6_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t7_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t8_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t9_active
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.climate_living_room_weekend_t0_active
+          state: 'off'
     - condition: state
       entity_id: group.workday
       state: 'off'
