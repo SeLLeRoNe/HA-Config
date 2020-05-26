@@ -795,15 +795,21 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def _turn_off(self):
         """Turn off media player."""
-        if not self._power_off_in_progress() and self._state == STATE_ON:
+        if not self._power_off_in_progress():
+
+            if self._state == STATE_ON:
+                if self._ws.artmode_status == ArtModeStatus.Unsupported:
+                    self.send_command("KEY_POWER")
+                else:
+                    self.send_command("KEY_POWER,3000")
+            elif self._ws.artmode_status == ArtModeStatus.On:
+                self.send_command("KEY_POWER,3000")
+            else:
+                return
 
             self._end_of_power_off = dt_util.utcnow() + timedelta(
                 seconds=POWER_OFF_DELAY
             )
-            if self._ws.artmode_status == ArtModeStatus.Unsupported:
-                self.send_command("KEY_POWER")
-            else:
-                self.send_command("KEY_POWER", press=True)
 
     async def async_turn_off(self):
         """Turn the media player on."""

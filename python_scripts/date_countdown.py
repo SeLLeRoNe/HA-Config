@@ -12,7 +12,9 @@ today = datetime.datetime.now().date()
 name = data.get('name')
 eventType = data.get('type')
 countup = data.get('reverse' , False)
+appendYear = data.get('append_year' , False)
 defaultFriendlyName = ''
+friendlyName = ''
 numberOfDays = 0
 defaultIcon = "mdi:calendar-star"
 
@@ -87,12 +89,23 @@ safeName = rawName6.replace(" " , "_")
 sensorName = "sensor.{}".format(safeName)
 
 
+# Set friendly_name
+rawFriendlyName = data.get('friendly_name', defaultFriendlyName)
+
+if appendYear:
+    #add Years to the end of friendly_name
+    friendlyName = "{} ({})".format(rawFriendlyName , years)
+
+else:
+    friendlyName = "{}".format(rawFriendlyName)
+
+
 # Send the sensor to homeassistant
 hass.states.set(sensorName , numberOfDays ,
     {
         "icon" : data.get("icon", defaultIcon),
         "unit_of_measurement" : "days" ,
-        "friendly_name" : data.get('friendly_name', defaultFriendlyName),
+        "friendly_name" : "{}".format(friendlyName),
         "nextoccur" : "{}/{}/{}".format(nextOccur.day , nextOccur.month , nextOccur.year) ,
         "years" : years
     }

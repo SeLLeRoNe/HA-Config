@@ -498,9 +498,9 @@ class SamsungTVWS:
             {
                 "method": "ms.channel.emit",
                 "params": {
-                    "event": "art_app_request",
+                    "data": json.dumps(msg_data),
                     "to": "host",
-                    "data": str(msg_data),
+                    "event": "art_app_request",
                 },
             },
             key_press_delay=0,
@@ -513,7 +513,6 @@ class SamsungTVWS:
         if not data_str:
             return
         data = self._process_api_response(data_str)
-        _LOGGING.info(data)
         event = data.get("event", "")
         if event == "art_mode_changed":
             status = data.get("status", "")
