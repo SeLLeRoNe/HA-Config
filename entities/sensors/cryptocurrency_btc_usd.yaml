@@ -1,0 +1,5 @@
+---
+platform: cryptoinfo
+cryptocurrency_name: bitcoin
+currency_name: "usd"
+update_frequency: 60

@@ -1,0 +1,39 @@
+title: Currencies
+icon: mdi:cash-multiple
+panel: true
+path: patio
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: currency
+            variables:
+              - name: "Bitcoin / USD"
+              - entity: sensor.cryptoinfo_bitcoin_usd
+              - decimals: 2
+          - type: custom:decluttering-card
+            template: currency
+            variables:
+              - name: "Bitcoin / EUR"
+              - entity: sensor.cryptoinfo_bitcoin_eur
+              - decimals: 2
+      - break
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: currency
+            variables:
+              - name: "Ripple / USD"
+              - entity: sensor.cryptoinfo_ripple_usd
+              - decimals: 4
+          - type: custom:decluttering-card
+            template: currency
+            variables:
+              - name: "Ripple / EUR"
+              - entity: sensor.cryptoinfo_ripple_eur
+              - decimals: 4

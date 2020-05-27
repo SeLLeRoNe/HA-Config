@@ -1,0 +1,5 @@
+---
+platform: cryptoinfo
+cryptocurrency_name: bitcoin
+currency_name: "eur"
+update_frequency: 60
