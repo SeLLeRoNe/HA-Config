@@ -91,7 +91,7 @@ class CryptoinfoSensor(Entity):
         self.cryptocurrency_name = cryptocurrency_name
         self.currency_name = currency_name
         self.update = Throttle(update_frequency)(self._update)
-        self._name = SENSOR_PREFIX + "price"
+        self._name = SENSOR_PREFIX + cryptocurrency_name + " " + currency_name
         self._icon = "mdi:currency-usd"
         self._state = None
         self._last_update = None
