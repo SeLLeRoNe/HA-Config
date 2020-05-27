@@ -449,11 +449,6 @@ cards:
         align_state: center
         lower_bound: -5
         upper_bound: 40
-#        state_map:
-#          - value: "off"
-#            label: "Day"
-#          - value: "on"
-#            label: "Night"
         show:
           name: false
           icon: false
@@ -467,6 +462,11 @@ cards:
           labels_secondary: false
           name_adaptive_color: false
           icon_adaptive_color: false
+        state_map:
+          - value: "off"
+            label: "Day"
+          - value: "on"
+            label: "Night"
 #        style: |
 #        ha-icon {
 #          color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
@@ -508,7 +508,7 @@ cards:
             name: Bathroom
             color: '#FF6666'
             show_fill: false
-          - entity: input_number.night_time
+          - entity: binary_sensor.night_time
             color: '#B3B3B3'
             name: Night Time
             show_fill: true

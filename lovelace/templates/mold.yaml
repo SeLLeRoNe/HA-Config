@@ -5,7 +5,6 @@ mold:
     entities:
       - [[entity]]
       - binary_sensor.night_time
-      - input_number.night_time
     variables:
       - states['[[entity]]'].state
     card:
@@ -43,11 +42,11 @@ mold:
         labels_secondary: false
         name_adaptive_color: true
         icon_adaptive_color: true
-#      state_map:
-#        - value: "off"
-#          label: "Day"
-#        - value: "on"
-#          label: "Night"
+      state_map:
+        - value: "off"
+          label: "Day"
+        - value: "on"
+          label: "Night"
       color_thresholds: !include thresholds/mold.yaml
       style: |
         ha-card {
@@ -61,7 +60,7 @@ mold:
           name: Mold Indicator
           color: '#33CC33'
           show_fill: false
-        - entity: input_number.night_time
+        - entity: binary_sensor.night_time
           color: '#B3B3B3'
           name: Night Time
           show_fill: true

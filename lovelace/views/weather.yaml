@@ -181,17 +181,12 @@ cards:
                 labels_secondary: false
                 name_adaptive_color: true
                 icon_adaptive_color: true
-              color_thresholds:
-                - value: 5
-                  color: "#0055FF"
-                - value: 15
-                  color: "#FF6600"
-                - value: 20
-                  color: "#FFAA00"
-                - value: 22.5
-                  color: "#FF7700"
-                - value: 25
-                  color: "#FF3700"
+              state_map:
+                - value: "off"
+                  label: "Day"
+                - value: "on"
+                  label: "Night"
+              color_thresholds: !include ../templates/thresholds/temperature.yaml
               style: |
                 ha-card {
                   padding: 16px !important;
@@ -212,7 +207,7 @@ cards:
 #                - entity: sensor.dark_sky_temperature
 #                  name: Temperature
 #                  color: '#FF5000'
-                - entity: input_number.night_time
+                - entity: binary_sensor.night_time
                   color: '#B3B3B3'
                   name: Night Time
                   show_fill: true
@@ -566,6 +561,11 @@ cards:
                     labels_secondary: false
                     name_adaptive_color: true
                     icon_adaptive_color: true
+                  state_map:
+                    - value: "off"
+                      label: "Day"
+                    - value: "on"
+                      label: "Night"
                   style: |
                     ha-card {
                       padding: 16px !important;
@@ -574,7 +574,7 @@ cards:
                     - entity: sensor.dark_sky_dew_point
                       name: Dew Point
                       color: '#CC99FF'
-                    - entity: input_number.night_time
+                    - entity: binary_sensor.night_time
                       color: '#B3B3B3'
                       name: Night Time
                       show_fill: true
