@@ -570,7 +570,7 @@ cards:
                 tap_action:
                   action: none
               - entity: sensor.studio_wall_light_wireless_signal
-                name: "Studio - Light"
+                name: "Studio - Wall Light"
                 tap_action:
                   action: none
               - entity: sensor.studio_andrea_desk_plug_wireless_signal
@@ -678,8 +678,6 @@ cards:
                   state: "un*"
                   options:
                     secondary_info: last-changed
-#                  attributes:
-#                    last-changed: "{{ (as_timestamp(now()) - as_timestamp(states.light.patio_light.last_changed)) > 60 }} = True"
               exclude:
                 - entity_id: "sensor.*dark_sky*"
                 - entity_id: "sensor.*aemet*"
@@ -715,6 +713,15 @@ cards:
                 - entity_id: sensor.patio_light_link_quality
                   options:
                     name: Patio - Light - Link Quality
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.studio_wall_light_link_quality
+                  options:
+                    name: Studio - Wall Light - Link Quality
                     tap_action:
                       action: none
                   not 1:

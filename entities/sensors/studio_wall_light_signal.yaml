@@ -1,10 +1,11 @@
 ---
+# MQTT Device: Master Bedroom Lamp Bottom Light Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
 platform: mqtt
-name: 'Studio Wall Light Wireless Signal'
-icon: mdi:signal-variant
-state_topic: 'tele/studio_wall_light/STATE'
-value_template: "{{ value_json.Wifi.RSSI }}"
-unit_of_measurement: '%'
-availability_topic: "tele/studio_wall_light/LWT"
-payload_available: "Online"
-payload_not_available: "Offline"
+name: 'Studio Wall Light Link Quality'
+icon: mdi:lightbulb
+state_topic: "zigbee2mqtt/studio_wall_light"
+availability_topic: "zigbee2mqtt/studio_wall_light/availability"
+value_template: "{{ value_json.linkquality }}"
