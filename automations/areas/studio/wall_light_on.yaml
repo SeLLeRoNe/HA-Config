@@ -1,0 +1,13 @@
+---
+alias: Studio - Wall Light On
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: light.studio_wall_light
+    from: 'unavailable'
+    to: 'on'
+action:
+  - service: light.turn_on
+    entity_id: light.studio_wall_light
+  - service: light.turn_off
+    entity_id: light.studio_wall_light
