@@ -569,10 +569,10 @@ cards:
                 name: "Luca's Bedroom - Light 3"
                 tap_action:
                   action: none
-              - entity: sensor.studio_wall_light_wireless_signal
-                name: "Studio - Wall Light"
-                tap_action:
-                  action: none
+#              - entity: sensor.studio_wall_light_wireless_signal
+#                name: "Studio - Wall Light"
+#                tap_action:
+#                  action: none
               - entity: sensor.studio_andrea_desk_plug_wireless_signal
                 name: "Studio - Desk Andrea Plug"
                 tap_action:
