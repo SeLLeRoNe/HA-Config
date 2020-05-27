@@ -12,6 +12,12 @@ light_card:
             entity: '[[entity]]'
             name: '[[name]]'
             toggle: true
+            hide_state: true
+            hide_when_off: false
+            full_row: false
+            min: 0
+            max: 100
+            step: 1
       "on":
         type: entities
         show_header_toggle: false
@@ -20,6 +26,12 @@ light_card:
             entity: '[[entity]]'
             name: '[[name]]'
             toggle: true
+            hide_state: true
+            hide_when_off: false
+            full_row: false
+            min: 0
+            max: 100
+            step: 1
           - type: 'custom:rgb-light-card'
             entity: '[[entity]]'
             size: 25

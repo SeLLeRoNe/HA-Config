@@ -6,6 +6,12 @@ master_bedroom_lights:
       entity: light.master_bedroom_lights
       name: Master Bedroom
       toggle: true
+      hide_state: true
+      hide_when_off: false
+      full_row: false
+      min: 0
+      max: 100
+      step: 1
   entities:
     - type: section
       label: Lamp

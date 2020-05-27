@@ -6,9 +6,15 @@ master_bathroom_lights:
       entity: light.master_bathroom_lights
       name: Master Bathroom
       toggle: true
+      hide_state: true
+      hide_when_off: false
+      full_row: false
+      min: 0
+      max: 100
+      step: 1
   entities:
       - type: custom:decluttering-card
         template: light_card_rgb
         variables:
           - name: Light
-          - entity: light.master_bedroom_light
+          - entity: light.master_bathroom_light

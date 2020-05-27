@@ -12,4 +12,4 @@ studio_lights:
         template: light_card_rgb
         variables:
           - name: Wall Light
-          - entity: light.studio_light
+          - entity: light.studio_wall_light

@@ -6,6 +6,12 @@ bedroom_luca_lights:
       entity: light.bedroom_luca_lights
       name: Bedroom Luca
       toggle: true
+      hide_state: true
+      hide_when_off: false
+      full_row: false
+      min: 0
+      max: 100
+      step: 1
   entities:
     - type: custom:decluttering-card
       template: light_card_rgb

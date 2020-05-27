@@ -6,9 +6,15 @@ studio_lights:
       entity: light.studio_lights
       name: Studio
       toggle: true
+      hide_state: true
+      hide_when_off: false
+      full_row: false
+      min: 0
+      max: 100
+      step: 1
   entities:
       - type: custom:decluttering-card
         template: light_card_rgb
         variables:
           - name: Wall Light
-          - entity: light.studio_light
+          - entity: light.studio_wall_light
