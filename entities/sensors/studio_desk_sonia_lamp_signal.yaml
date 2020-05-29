@@ -1,0 +1,10 @@
+---
+platform: mqtt
+name: 'Studio Sonia Desk Lamp Wireless Signal'
+icon: mdi:signal-variant
+state_topic: 'tele/studio_sonia_desk_lamp/STATE'
+value_template: "{{ value_json.Wifi.RSSI }}"
+unit_of_measurement: '%'
+availability_topic: "tele/studio_sonia_desk_lamp/LWT"
+payload_available: "Online"
+payload_not_available: "Offline"

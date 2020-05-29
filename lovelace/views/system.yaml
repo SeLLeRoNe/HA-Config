@@ -573,6 +573,10 @@ cards:
 #                name: "Studio - Wall Light"
 #                tap_action:
 #                  action: none
+              - entity: sensor.studio_sonia_desk_lamp_wireless_signal
+                name: "Studio - Sonia Desk Lamp"
+                tap_action:
+                  action: none
               - entity: sensor.studio_andrea_desk_plug_wireless_signal
                 name: "Studio - Desk Andrea Plug"
                 tap_action:
