@@ -91,6 +91,8 @@ cards:
                     - entity: sensor.dark_sky_overnight_low_temperature_0d
                       name: Min Temperature
                       color: '#0040FF'
+                  tap_action:
+                    action: none
               - type: custom:config-template-card
                 entities:
                   - sensor.dark_sky_daytime_high_temperature_0d
@@ -139,6 +141,8 @@ cards:
                     - entity: sensor.dark_sky_daytime_high_temperature_0d
                       name: Max Temperature
                       color: '#FF0000'
+                  tap_action:
+                    action: none
           - type: custom:config-template-card
             entities:
               - sensor.dark_sky_temperature
@@ -215,6 +219,8 @@ cards:
                   show_points: false
                   show_legend: false
                   y_axis: secondary
+              tap_action:
+                action: none
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -256,6 +262,8 @@ cards:
                   - entity: sensor.dark_sky_precip_probability
                     name: Rain Probability
                     color: '#0040FF'
+                tap_action:
+                  action: none
               - type: custom:mini-graph-card
                 name: Rain Intesity
                 icon: fas:umbrella
@@ -295,6 +303,8 @@ cards:
                   - entity: sensor.dark_sky_precip_intensity
                     name: Rain intensity
                     color: '#0040FF'
+                tap_action:
+                  action: none
 #      - type: custom:stack-in-card
 #        mode: vertical
 #        cards:
@@ -344,6 +354,8 @@ cards:
                   - entity: sensor.aemet_visibility
                     name: Visibility
                     color: '#0099CC'
+                tap_action:
+                  action: none
               - type: custom:mini-graph-card
                 name: Illuminance
                 icon: fas:sun
@@ -385,6 +397,8 @@ cards:
                   - entity: sensor.illuminance
                     name: Illuminance
                     color: '#FFDD00'
+                tap_action:
+                  action: none
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -431,6 +445,8 @@ cards:
                   - entity: sensor.aemet_wind_speed
                     name: Wind Speed
                     color: '#66CC00'
+                tap_action:
+                  action: none
               - type: custom:mini-graph-card
                 name: Pressure
                 icon: fas:tachometer-alt
@@ -475,6 +491,8 @@ cards:
                   - entity: sensor.aemet_pressure
                     name: Pressure
                     color: '#BF00FF'
+                tap_action:
+                  action: none
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -521,6 +539,8 @@ cards:
                   - entity: sensor.aemet_humidity
                     name: Humidity
                     color: '#00BFFF'
+                tap_action:
+                  action: none
               - type: custom:config-template-card
                 entities:
                   - sensor.dark_sky_dew_point
