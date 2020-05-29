@@ -4,5 +4,13 @@ light_card:
     type: entities
     show_header_toggle: false
     entities:
-      - entity: '[[entity]]'
+      - type: 'custom:slider-entity-row'
+        entity: '[[entity]]'
         name: '[[name]]'
+        toggle: true
+        hide_state: true
+        hide_when_off: false
+        full_row: false
+        min: 0
+        max: 100
+        step: 1

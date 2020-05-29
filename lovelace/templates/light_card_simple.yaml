@@ -1,0 +1,8 @@
+---
+light_card_simple:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: '[[entity]]'
+        name: '[[name]]'
