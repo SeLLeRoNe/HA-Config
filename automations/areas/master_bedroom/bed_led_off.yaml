@@ -1,0 +1,9 @@
+---
+alias: Master Bedroom - Bed LED Off
+initial_state: on
+trigger:
+  - platform: time
+    at: '22:00:00'
+action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_bed_led
