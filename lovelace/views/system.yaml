@@ -675,6 +675,18 @@ cards:
             card:
               type: entities
               show_header_toggle: false
+              title: Update Available for ZigBee Devices
+            filter:
+              include:
+                - entity_id: "binary_sensor.*firmware_update"
+                  state: "on"
+                  options:
+                    secondary_info: last-changed
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
               title: Unavailable ZigBee Devices
             filter:
               include:
