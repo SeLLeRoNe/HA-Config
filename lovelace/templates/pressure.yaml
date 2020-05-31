@@ -20,11 +20,11 @@ pressure:
     align_header: default
     align_icon: right
     align_state: center
-#    state_map:
-#      - value: "off"
-#        label: "Day"
-#      - value: "on"
-#        label: "Night"
+    state_map:
+      - value: "off"
+        label: "Day"
+      - value: "on"
+        label: "Night"
     show:
       name: true
       icon: true

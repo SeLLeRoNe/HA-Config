@@ -467,10 +467,6 @@ cards:
             label: "Day"
           - value: "on"
             label: "Night"
-#        style: |
-#        ha-icon {
-#          color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#        }
         entities:
           - entity: sensor.dark_sky_temperature
             name: Outside
