@@ -3,7 +3,7 @@ alias: Utility Meter - Daily Energy Report
 initial_state: on
 trigger:
   platform: time
-  at: '23:59:50'
+  at: '23:59:59'
 action:
   - service: notify.mobile_app_andrea_oneplus_5
     data_template:
@@ -14,8 +14,7 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
-        priority: low
-#  - service: input_number.set_value
+#   - service: input_number.set_value
 #    data_template:
 #      entity_id: input_number.cumulative_energy_cost
 #      value: "{{ states('input_number.cumulative_energy_cost')|float + states('sensor.total_cost_today')|float }}"

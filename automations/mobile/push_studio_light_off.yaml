@@ -7,6 +7,4 @@ trigger:
     action: studio_light_off
 action:
   - service: light.turn_off
-    data:
-      entity_id: light.studio_wall_light
-      brightness: 25
+    entity_id: light.studio_wall_light

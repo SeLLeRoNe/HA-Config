@@ -24,4 +24,3 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
-        priority: low
