@@ -1,8 +1,11 @@
 ---
-platform: "mqtt"
-name: "Patio GZCGQ01LM Link Quality"
-icon: "mdi:signal"
+# MQTT Device: Patio GZCGQ01LM Link Quality
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+platform: mqtt
+name: 'Patio GZCGQ01LM Link Quality'
+icon: mdi:white-balance-sunny
 state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
 availability_topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
-unit_of_measurement: "lqi"
 value_template: "{{ value_json.linkquality }}"
