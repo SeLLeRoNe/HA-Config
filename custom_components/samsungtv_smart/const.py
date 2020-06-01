@@ -1,4 +1,18 @@
 """Constants for the samsungtv_smart integration."""
+from enum import Enum
+
+
+class AppLoadMethod(Enum):
+    All = 1
+    Default = 2
+    NotLoad = 3
+
+
+APP_LOAD_METHODS = {
+    AppLoadMethod.All.value: "All Apps",
+    AppLoadMethod.Default.value: "Default Apps",
+    AppLoadMethod.NotLoad.value: "Not Load",
+}
 
 DOMAIN = "samsungtv_smart"
 
@@ -20,21 +34,25 @@ DEFAULT_NAME = "Samsung TV Remote"
 DEFAULT_PORT = 8001
 DEFAULT_TIMEOUT = 5
 DEFAULT_UPDATE_METHOD = UPDATE_METHODS["Ping"]
+CONF_APP_LIST = "app_list"
+CONF_APP_LOAD_METHOD = "app_load_method"
 CONF_DEVICE_NAME = "device_name"
 CONF_DEVICE_MODEL = "device_model"
-CONF_UPDATE_METHOD = "update_method"
 CONF_SOURCE_LIST = "source_list"
-CONF_APP_LIST = "app_list"
 CONF_SHOW_CHANNEL_NR = "show_channel_number"
 CONF_DEVICE_OS = "device_os"
 CONF_LOAD_ALL_APPS = "load_all_apps"
+CONF_POWER_ON_DELAY = "power_on_delay"
 CONF_USE_ST_CHANNEL_INFO = "use_st_channel_info"
+CONF_USE_ST_STATUS_INFO = "use_st_status_info"
 
 # obsolete
+CONF_UPDATE_METHOD = "update_method"
 CONF_UPDATE_CUSTOM_PING_URL = "update_custom_ping_url"
 CONF_SCAN_APP_HTTP = "scan_app_http"
 
 DATA_LISTENER = "listener"
+DEFAULT_POWER_ON_DELAY = 30.0
 
 WS_PREFIX = "[Home Assistant]"
 

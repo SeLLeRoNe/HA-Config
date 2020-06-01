@@ -36,16 +36,20 @@ from .const import (
     DEFAULT_TIMEOUT,
     DEFAULT_UPDATE_METHOD,
     CONF_APP_LIST,
+    CONF_APP_LOAD_METHOD,
     CONF_DEVICE_NAME,
     CONF_DEVICE_MODEL,
     CONF_LOAD_ALL_APPS,
+    CONF_POWER_ON_DELAY,
     CONF_SOURCE_LIST,
     CONF_SHOW_CHANNEL_NR,
+    CONF_USE_ST_CHANNEL_INFO,
+    CONF_USE_ST_STATUS_INFO,
     CONF_UPDATE_METHOD,
     CONF_UPDATE_CUSTOM_PING_URL,
     CONF_SCAN_APP_HTTP,
-    CONF_USE_ST_CHANNEL_INFO,
     DATA_LISTENER,
+    DEFAULT_POWER_ON_DELAY,
     DEFAULT_SOURCE_LIST,
     UPDATE_METHODS,
     WS_PREFIX,
@@ -54,6 +58,7 @@ from .const import (
     RESULT_ST_DEVICE_NOT_FOUND,
     RESULT_SUCCESS,
     RESULT_WRONG_APIKEY,
+    AppLoadMethod,
 )
 
 SAMSMART_SCHEMA = {
@@ -61,10 +66,10 @@ SAMSMART_SCHEMA = {
     vol.Optional(CONF_SOURCE_LIST, default=DEFAULT_SOURCE_LIST): cv.string,
     vol.Optional(CONF_APP_LIST): cv.string,
     vol.Optional(CONF_TIMEOUT, default=DEFAULT_TIMEOUT): cv.positive_int,
-    vol.Optional(CONF_UPDATE_METHOD): vol.In(UPDATE_METHODS.values()),
     vol.Optional(CONF_SHOW_CHANNEL_NR, default=False): cv.boolean,
     vol.Optional(CONF_BROADCAST_ADDRESS): cv.string,
     vol.Optional(CONF_LOAD_ALL_APPS, default=True): cv.boolean,
+    vol.Optional(CONF_UPDATE_METHOD): vol.In(UPDATE_METHODS.values()),
     vol.Optional(CONF_UPDATE_CUSTOM_PING_URL): cv.string,
     vol.Optional(CONF_SCAN_APP_HTTP, default=True): cv.boolean,
 }
@@ -83,7 +88,9 @@ CONFIG_SCHEMA = vol.Schema(
         DOMAIN: vol.All(
             cv.ensure_list,
             [
+                cv.deprecated(CONF_LOAD_ALL_APPS),
                 cv.deprecated(CONF_PORT),
+                cv.deprecated(CONF_UPDATE_METHOD),
                 cv.deprecated(CONF_UPDATE_CUSTOM_PING_URL),
                 cv.deprecated(CONF_SCAN_APP_HTTP),
                 vol.Schema(
@@ -293,9 +300,18 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
         entry.entry_id,
         {
             "options": {
+                CONF_APP_LOAD_METHOD: entry.options.get(
+                    CONF_APP_LOAD_METHOD, AppLoadMethod.All.value
+                ),
+                CONF_USE_ST_STATUS_INFO: entry.options.get(
+                    CONF_USE_ST_STATUS_INFO, True
+                ),
                 CONF_USE_ST_CHANNEL_INFO: entry.options.get(
                     CONF_USE_ST_CHANNEL_INFO, False
-                )
+                ),
+                CONF_POWER_ON_DELAY: entry.options.get(
+                    CONF_POWER_ON_DELAY, DEFAULT_POWER_ON_DELAY
+                ),
             },
             DATA_LISTENER: [entry.add_update_listener(update_listener)],
         }

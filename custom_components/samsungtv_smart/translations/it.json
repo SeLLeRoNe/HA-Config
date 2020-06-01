@@ -56,7 +56,10 @@
         "step": {
             "init": {
                 "data": {
-                    "use_st_channel_info": "Usa informazioni Canale TV da SmartThings"
+                    "app_load_method": "Modalità caricamento lista applicazioni all'avvio",
+                    "use_st_status_info": "Usa informazioni Stato TV da SmartThings",
+                    "use_st_channel_info": "Usa informazioni Canale TV da SmartThings",
+                    "power_on_delay": "Secondi di ritardo per passaggio allo stato ON (0-60)"
                 }
             }
         }

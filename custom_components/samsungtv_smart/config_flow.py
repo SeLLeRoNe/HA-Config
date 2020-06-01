@@ -29,20 +29,27 @@ from homeassistant.const import (
 
 # pylint:disable=unused-import
 from . import SamsungTVInfo
+
 from .const import (
     DOMAIN,
     CONF_DEVICE_NAME,
     CONF_DEVICE_MODEL,
-    CONF_UPDATE_METHOD,
     CONF_DEVICE_OS,
+    CONF_APP_LOAD_METHOD,
+    CONF_POWER_ON_DELAY,
     CONF_USE_ST_CHANNEL_INFO,
-    UPDATE_METHODS,
+    CONF_USE_ST_STATUS_INFO,
+    DEFAULT_POWER_ON_DELAY,
     RESULT_NOT_SUCCESSFUL,
     RESULT_ST_DEVICE_NOT_FOUND,
     RESULT_ST_DEVICE_USED,
     RESULT_ST_MULTI_DEVICES,
     RESULT_SUCCESS,
     RESULT_WRONG_APIKEY,
+    APP_LOAD_METHODS,
+    AppLoadMethod,
+    CONF_UPDATE_METHOD,
+    UPDATE_METHODS,
 )
 
 CONFIG_RESULTS = {
@@ -86,7 +93,7 @@ class SamsungTVConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self._device_id = None
         self._name = None
         self._mac = None
-        self._update_method = None
+        # self._update_method = None
 
         self._st_devices_schema = None
 
@@ -102,7 +109,7 @@ class SamsungTVConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             CONF_DEVICE_NAME: self._tvinfo._device_name,
             CONF_DEVICE_MODEL: self._tvinfo._device_model,
             CONF_PORT: self._tvinfo._port,
-            CONF_UPDATE_METHOD: self._update_method,
+            # CONF_UPDATE_METHOD: self._update_method,
         }
 
         title = self._tvinfo._name
@@ -200,13 +207,13 @@ class SamsungTVConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._name = user_input.get(CONF_NAME)
             self._device_id = user_input.get(CONF_DEVICE_ID) if self._api_key else None
             self._mac = user_input.get(CONF_MAC, "")
-            update_method = user_input.get(CONF_UPDATE_METHOD, "")
-            if update_method:
-                self._update_method = update_method
-            elif self._api_key:
-                self._update_method = UPDATE_METHODS["SmartThings"]
-            else:
-                self._update_method = UPDATE_METHODS["Ping"]
+            # update_method = user_input.get(CONF_UPDATE_METHOD, "")
+            # if update_method:
+            #     self._update_method = update_method
+            # elif self._api_key:
+            #     self._update_method = UPDATE_METHODS["SmartThings"]
+            # else:
+            #     self._update_method = UPDATE_METHODS["Ping"]
             st_device_label = user_input.get(CONF_DEVICE_NAME, "")
             is_import = user_input.get(SOURCE_IMPORT, False)
 
@@ -362,11 +369,29 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         data_schema = vol.Schema(
             {
                 vol.Optional(
+                    CONF_APP_LOAD_METHOD,
+                    default=self.config_entry.options.get(
+                        CONF_APP_LOAD_METHOD, AppLoadMethod.All.value
+                    ),
+                ): vol.In(APP_LOAD_METHODS),
+                vol.Optional(
+                    CONF_USE_ST_STATUS_INFO,
+                    default=self.config_entry.options.get(
+                        CONF_USE_ST_STATUS_INFO, True
+                    ),
+                ): bool,
+                vol.Optional(
                     CONF_USE_ST_CHANNEL_INFO,
                     default=self.config_entry.options.get(
                         CONF_USE_ST_CHANNEL_INFO, False
                     ),
-                ): bool
+                ): bool,
+                vol.Optional(
+                    CONF_POWER_ON_DELAY,
+                    default=self.config_entry.options.get(
+                        CONF_POWER_ON_DELAY, DEFAULT_POWER_ON_DELAY
+                    ),
+                ): vol.All(vol.Coerce(float), vol.Clamp(min=0, max=60))
             }
         )
         return self.async_show_form(step_id="init", data_schema=data_schema)

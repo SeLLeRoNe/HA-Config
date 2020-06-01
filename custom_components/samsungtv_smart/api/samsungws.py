@@ -474,7 +474,7 @@ class SamsungTVWS:
 
     def _on_message_art(self, message):
         response = self._process_api_response(message)
-        _LOGGING.info(response)
+        _LOGGING.debug(response)
         event = response.get("event")
         if not event:
             return
