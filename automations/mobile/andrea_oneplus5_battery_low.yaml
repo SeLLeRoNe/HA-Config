@@ -10,7 +10,7 @@ condition:
   conditions:
     - condition: state
       entity_id: binary_sensor.andrea_oneplus5_charging
-      state: 'on'
+      state: 'off'
     - condition: state
       entity_id: person.andrea_iannucci
       state: 'home'
