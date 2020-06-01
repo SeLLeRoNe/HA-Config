@@ -1,0 +1,53 @@
+---
+illuminance:
+  card:
+    type: custom:config-template-card
+    entities:
+      - [[entity]]
+      - binary_sensor.night_time
+    variables:
+      - states['[[entity]]'].state
+    card:
+      type: custom:mini-graph-card
+      name: Illuminance
+      icon: fas:sun
+      more_info: false
+      height: 150
+      line_width: 4
+      hours_to_show: 168
+      points_per_hour: 0.25
+      aggregate_func: max
+      group_by: hour
+      group: false
+      hour24: true
+      animate: false
+      decimals: 0
+      font_size: 100
+      font_size_header: 14
+      align_header: default
+      align_icon: right
+      align_state: center
+      lower_bound: 0
+      upper_bound: 10000
+      show:
+        name: true
+        icon: true
+        state: true
+        graph: bar
+        fill: true
+        points: false
+        legend: false
+        extrema: false
+        labels: false
+        name_adaptive_color: true
+        icon_adaptive_color: true
+      style: |
+        ha-card {
+          padding: 16px !important;
+        }
+      entities:
+        - entity:  '[[entity]]'
+          name: Illuminance
+          color: '#FFDD00'
+      tap_action:
+        action: none

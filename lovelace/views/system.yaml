@@ -726,15 +726,6 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.patio_light_link_quality
-                  options:
-                    name: Patio - Light - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
                 - entity_id: sensor.studio_wall_light_link_quality
                   options:
                     name: Studio - Wall Light - Link Quality
@@ -941,6 +932,26 @@ cards:
                     name: Washing Machine - DJT11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: 'Battery Level: [[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", sensor.washing_machine_djt11lm_battery.state , "Not Available") ]][[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", sensor.washing_machine_djt11lm_voltage.state, "Not Available") ]][[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", "mV", "") ]]'
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.patio_light_link_quality
+                  options:
+                    name: Patio - Light - Link Quality
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.patio_gzcgq01lm_link_quality
+                  options:
+                    name: Patio - GZCGQ01LM - Link Quality
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: 'Battery Level: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.gzcgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.gzcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

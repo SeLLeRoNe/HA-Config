@@ -25,7 +25,7 @@ currency:
       state: true
       graph: bar
       fill: false
-      points: false
+      points: true
       legend: false
       extrema: false
       labels: false

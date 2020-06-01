@@ -2,7 +2,7 @@
 name: Home
 latitude: !secret zone_home_latitude
 longitude: !secret zone_home_longitude
-radius: 25
+radius: 30
 passive: false
 #icon: mdi:home
 icon: mdi:castle

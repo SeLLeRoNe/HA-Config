@@ -1,0 +1,8 @@
+---
+platform: "mqtt"
+name: "Patio GZCGQ01LM Link Quality"
+icon: "mdi:signal"
+state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
+availability_topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
+unit_of_measurement: "lqi"
+value_template: "{{ value_json.linkquality }}"
