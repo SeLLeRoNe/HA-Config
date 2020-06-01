@@ -134,9 +134,6 @@ cards:
                     ha-card {
                       padding: 16px !important;
                     }
-#                    ha-icon {
-#                      color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                    }
                   entities:
                     - entity: sensor.dark_sky_daytime_high_temperature_0d
                       name: Max Temperature
@@ -146,7 +143,6 @@ cards:
           - type: custom:config-template-card
             entities:
               - sensor.dark_sky_temperature
-#              - sensor.dark_sky_apparent_temperature
 #              - sensor.aemet_temperature
             variables:
               - states['sensor.dark_sky_temperature'].state
@@ -350,49 +346,10 @@ cards:
                     color: '#0099CC'
                 tap_action:
                   action: none
-              - type: custom:mini-graph-card
-                name: Illuminance
-                icon: fas:sun
-                more_info: false
-                height: 150
-                line_width: 4
-                hours_to_show: 168
-                points_per_hour: 0.25
-                aggregate_func: max
-                group_by: hour
-                group: false
-                hour24: true
-                animate: false
-                decimals: 0
-                font_size: 100
-                font_size_header: 14
-                align_header: default
-                align_icon: right
-                align_state: center
-                lower_bound: 0
-                upper_bound: 10000
-                show:
-                  name: true
-                  icon: true
-                  state: true
-                  graph: bar
-                  fill: true
-                  points: false
-                  legend: false
-                  extrema: false
-                  labels: false
-                  name_adaptive_color: true
-                  icon_adaptive_color: true
-                style: |
-                  ha-card {
-                    padding: 16px !important;
-                  }
-                entities:
+              - type: custom:decluttering-card
+                template: illuminance
+                variables:
                   - entity: sensor.illuminance
-                    name: Illuminance
-                    color: '#FFDD00'
-                tap_action:
-                  action: none
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
