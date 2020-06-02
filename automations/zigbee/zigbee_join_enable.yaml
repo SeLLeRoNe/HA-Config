@@ -1,6 +1,6 @@
 ---
 alias: ZigBee - Allow Device Join
-initial_state: 'on'
+initial_state: on
 trigger:
   - platform: state
     entity_id: switch.zigbee_device_join

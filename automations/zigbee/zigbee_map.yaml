@@ -1,5 +1,5 @@
 ---
-alias: 'System - Zigbee Map Update'
+alias: Zigbee - Map Update
 initial_state: on
 trigger:
   - platform: homeassistant
