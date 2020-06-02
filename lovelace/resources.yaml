@@ -63,8 +63,6 @@
     type: module
   - url: /hacsfiles/lovelace-state-switch/state-switch.js
     type: module
-  - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
-    type: module
   - url: /hacsfiles/lovelace-darksky-card/lovelace-darksky-card.js
     type: module
 
