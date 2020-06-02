@@ -2,26 +2,10 @@ title: Test
 icon: mdi:tune
 panel: true
 path: test
-animated_background: background_test
 cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - input_select.background_test
-      - type: custom:time-picker-card
-        entity: input_datetime.climate_bedroom_luca_weekend_t1_start
-        name: Bedroom Luca - Weekend T1 Start
-        hour_mode: 24
-        hour_step: 1
-        minute_step: 1
-        layout:
-          name: inside
-          align_controls: right
-        hide:
-          name: false
       - type: light
         entity: light.master_bedroom_bed_led
       - type: entities
@@ -42,32 +26,20 @@ cards:
         title: Studio
         show_header_toggle: false
         entities:
-        ## USE THIS CONFIG TO HAVE IT MATCH YOUR THEME ##
           - type: custom:light-brightness-preset-row
             entity: light.studio_wall_light
             name: Wall Light
             customSetpoints: true
-            LowBrightness: 30
-            MedBrightness: 100
-            HiBrightness: 225
+            LowBrightness: 50
+            MedBrightness: 125
+            HiBrightness: 255
             customTheme: true
-            IsOnLowColor: 'rgb(255, 0, 0)'
-            IsOnMedColor: '#888888'
-            IsOnHiColor: '#222222'
-            ButtonInactiveColor: '#aaaaaa'
-            IsOffColor: 'purple'
-          - type: custom:light-brightness-preset-row
-            entity: light.studio_wall_light
-            name: Wall Light
-            customTheme: false
-            customSetpoints: false
-          - type: custom:binary-control-button-row
-            entity: light.studio_wall_light
-            name: Wall Light
-            customTheme: true
-            IsOnColor: 'rgb(255, 0, 0)'
-            IsOffColor: 'purple'
-            ButtonInactiveColor: '#aaaaaa'
+            IsOffColor: '#B30000'
+            IsOnColor: '#FFFF00'
+            IsOnLowColor: '#248F24'
+            IsOnMedColor: '#248F24'
+            IsOnHiColor: '#248F24'
+            ButtonInactiveColor: '#000000'
       - break
       - type: entities
         show_header_toggle: false
@@ -166,18 +138,6 @@ cards:
             template: title
             variables:
               - title: "Device Trackers"
-#          - type: custom:logbook-card
-#            title: "Andrea - App"
-#            entity: device_tracker.andrea_iannucci
-#            max_items: 5
-#            date_format: dd/MM/YYYY hh:mm
-#            show:
-#              state: true
-#              duration: true
-#              end_date: false
-#              start_date: true
-#              icon: false
-#              separator: false
           - type: custom:logbook-card
             title: "Andrea - Life360"
             entity: device_tracker.life360_andrea_iannucci
@@ -190,18 +150,6 @@ cards:
               start_date: true
               icon: false
               separator: false
-#          - type: custom:logbook-card
-#            title: "Sonia - App"
-#            entity: device_tracker.sonia_espejo_brea
-#            max_items: 5
-#            date_format: dd/MM/YYYY hh:mm
-#            show:
-#              state: true
-#              duration: true
-#              end_date: false
-#              start_date: true
-#              icon: false
-#              separator: false
           - type: custom:logbook-card
             title: "Sonia - Life360"
             entity: device_tracker.life360_sonia_espejo_brea
@@ -215,47 +163,3 @@ cards:
               icon: false
               separator: false
 #      - break
-      # - type: vertical-stack
-      #   cards:
-      #     - type: 'custom:config-template-card'
-      #       variables:
-      #         - states['sensor.andrea_bedside_lamp_status'].attributes['MqttCount']
-      #         - states['sensor.andrea_bedside_lamp_status'].attributes['WiFi LinkCount']
-      #         - states['sensor.andrea_bedside_lamp_status'].state
-      #         - states['sensor.sonia_bedside_lamp_status'].attributes['MqttCount']
-      #         - states['sensor.sonia_bedside_lamp_status'].attributes['WiFi LinkCount']
-      #         - states['sensor.sonia_bedside_lamp_status'].state
-      #         - states['sensor.desk_lamp_status'].attributes['MqttCount']
-      #         - states['sensor.desk_lamp_status'].attributes['WiFi LinkCount']
-      #         - states['sensor.desk_lamp_status'].state
-      #         - states['sensor.rf_bridge_status'].attributes['MqttCount']
-      #         - states['sensor.rf_bridge_status'].attributes['WiFi LinkCount']
-      #         - states['sensor.rf_bridge_status'].state
-      #       entities:
-      #         - sensor.andrea_bedside_lamp_status
-      #         - sensor.sonia_bedside_lamp_status
-      #         - sensor.desk_lamp_status
-      #         - sensor.rf_bridge_status
-      #       card:
-      #         type: 'custom:hui-entities-card'
-      #         title: MQTT & Wifi Connections
-      #         show_header_toggle: false
-      #         entities:
-      #           - entity: sensor.andrea_bedside_lamp_status
-      #             name: "${'Coffee' + '\xa0'.repeat(16) + 'MQTT ' + states['vars[0]'].state + '\xa0'.repeat(4) + 'WiFi ' + vars[1] + '\xa0'.repeat(3) + ((parseInt(vars[2]) / 2) - 100 ) + '\xa0' + 'dBm' + '\xa0'.repeat(3) + ( vars[2] >= 100 ? 'Excellent' : vars[2] >= 80 ? 'Good' : vars[2] >= 60 ? 'Fair' : 'Weak' )}"
-      #             icon: "${vars[2] >= 100 ? 'mdi:wifi' : vars[2] >= 80 ? 'mdi:wifi-strength-3' : vars[2] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-      #           - entity: sensor.sonia_bedside_lamp_status
-      #             name: "${'Toothbrush' + '\xa0'.repeat(7) + 'MQTT ' + vars[3] + '\xa0'.repeat(4) + 'WiFi ' + vars[4] + '\xa0'.repeat(3) + ((parseInt(vars[5]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[5] >= 100 ? 'Excellent' : vars[5] >= 80 ? 'Good' : vars[5] >= 60 ? 'Fair' : 'Weak' )}"
-      #             icon: "${vars[5] >= 100 ? 'mdi:wifi' : vars[5] >= 80 ? 'mdi:wifi-strength-3' : vars[5] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-      #           - entity: sensor.desk_lamp_status
-      #             name: "${'Garage' + '\xa0'.repeat(15) + 'MQTT ' + vars[6] + '\xa0'.repeat(4) + 'WiFi ' + vars[7] + '\xa0'.repeat(3) + ((parseInt(vars[8]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[8] >= 100 ? 'Excellent' : vars[8] >= 80 ? 'Good' : vars[8] >= 60 ? 'Fair' : 'Weak' )}"
-      #             icon: "${vars[8] >= 100 ? 'mdi:wifi' : vars[8] >= 80 ? 'mdi:wifi-strength-3' : vars[8] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-      #           - entity: sensor.rf_bridge_status
-      #             name: "${'Alarm' + '\xa0'.repeat(17) + 'MQTT ' + vars[9] + '\xa0'.repeat(4) + 'WiFi ' + vars[10] + '\xa0'.repeat(3) + ((parseInt(vars[11]) / 2) - 100 ) + '\xa0' +  'dBm' + '\xa0'.repeat(3) + ( vars[11] >= 100 ? 'Excellent' : vars[11] >= 80 ? 'Good' : vars[11] >= 60 ? 'Fair' : 'Weak' )}"
-      #             icon: "${vars[11] >= 100 ? 'mdi:wifi' : vars[11] >= 80 ? 'mdi:wifi-strength-3' : vars[11] >= 60 ? 'mdi:wifi-strength-2' : 'mdi:wifi-strength-1' }"
-      # - type: horizontal-stack
-      #   cards:
-      #     - type: custom:garbage-collection-card
-      #       entity: sensor.waste
-      #     - type: custom:garbage-collection-card
-      #       entity: sensor.bio_waste

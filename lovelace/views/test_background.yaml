@@ -1,0 +1,13 @@
+title: Test Background
+icon: mdi:folder-multiple-image
+panel: true
+path: test_background
+animated_background: background_test
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - input_select.background_test

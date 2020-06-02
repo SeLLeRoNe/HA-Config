@@ -187,378 +187,54 @@ cards:
             template: title
             variables:
               - title: Zigbee Devices
-          - type: custom:hui-entities-card
-#            title: Zigbee Devices
-            show_header_toggle: false
+          - type: custom:battery-state-card
+            color_thresholds:
+              - value: "unknown"
+                color: "#808080"
+              - value: 20
+                color: "#990000"
+              - value: 40
+                color: "#CC6600"
+              - value: 60
+                color: "#FF8000"
+              - value: 80
+                color: "#009900"
+              - value: 100
+                color: "#009933"
             entities:
-              - entity: sensor.master_bedroom_wxkg02lm_battery
-                name: "Master Bedroom - WXKG02LM Double Gangs Switch"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                    }
-              - entity: sensor.studio_wsdcgq11lm_battery
-                name: "Studio - WSDCGQ11LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                    {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.studio_2ajz4kpbs_battery
-                name: "Studio - 2AJZ4KPBS Motion Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                    {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.laundry_room_wxkg03lm_battery
-                name: "Laundry Room - WXKG03LM Single Gang Switch"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.washing_machine_djt11lm_battery
-                name: "Washing Machine - DJT11LM Vibration Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.master_bedroom_wsdcgq01lm_battery
-                name: "Master Bedroom - WSDCGQ01LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.patio_wsdcgq11lm_battery
-                name: "Patio - WSDCGQ11LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.patio_mccgq01lm_battery
-                name: "Patio - MCCGQ01LM Door/Window Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.master_bathroom_wsdcgq01lm_battery
-                name: "Master Bathroom - WSDCGQ01LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.master_bathroom_sjcgq11lm_battery
-                name: "Master Bathroom - SJCGQ11LM Leak Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.bedroom_luca_wsdcgq11lm_battery
-                name: "Bedroom Luca - WSDCGQ11LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.bathroom_wsdcgq01lm_battery
-                name: "Bathroom - WSDCGQ01LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.bathroom_mccgq01lm_battery
-                name: "Bathroom - MCCGQ01LM Door/Window Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-              - entity: sensor.bathroom_sjcgq11lm_battery
-                name: "Bathroom - SJCGQ11LM Leak Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
               - entity: sensor.living_room_wsdcgq01lm_battery
                 name: "Living Room - WSDCGQ01LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
               - entity: sensor.kitchen_wsdcgq01lm_battery
                 name: "Kitchen - WSDCGQ01LM Temperature Sensor"
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'unknown') %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int > 100 %}
-                        rgb(128, 128, 128);
-                      {% elif states(config.entity)|int >= 80 %}
-                        rgb(0, 153, 51);
-                      {% elif states(config.entity)|int >= 60 %}
-                        rgb(0, 153, 0);
-                      {% elif states(config.entity)|int >= 40 %}
-                        rgb(255, 128, 0);
-                      {% elif states(config.entity)|int >= 20 %}
-                        rgb(204, 102, 0);
-                      {% elif states(config.entity)|int >= 0 %}
-                        rgb(153, 0, 0);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-#              - entity: SENSOR-NAME
-#                name: ""
-      - break
+              - entity: sensor.studio_wsdcgq11lm_battery
+                name: "Studio - WSDCGQ11LM Temperature Sensor"
+              - entity: sensor.studio_2ajz4kpbs_battery
+                name: "Studio - 2AJZ4KPBS Motion Sensor"
+              - entity: sensor.laundry_room_wxkg03lm_battery
+                name: "Laundry Room - WXKG03LM Single Gang Switch"
+              - entity: sensor.washing_machine_djt11lm_battery
+                name: "Washing Machine - DJT11LM Vibration Sensor"
+              - entity: sensor.master_bedroom_wxkg02lm_battery
+                name: "Master Bedroom - WXKG02LM Double Gangs Switch"
+              - entity: sensor.master_bedroom_wsdcgq01lm_battery
+                name: "Master Bedroom - WSDCGQ01LM Temperature Sensor"
+              - entity: sensor.master_bathroom_wsdcgq01lm_battery
+                name: "Master Bathroom - WSDCGQ01LM Temperature Sensor"
+              - entity: sensor.master_bathroom_sjcgq11lm_battery
+                name: "Master Bathroom - SJCGQ11LM Leak Sensor"
+              - entity: sensor.bedroom_luca_wsdcgq11lm_battery
+                name: "Bedroom Luca - WSDCGQ11LM Temperature Sensor"
+              - entity: sensor.bathroom_wsdcgq01lm_battery
+                name: "Bathroom - WSDCGQ01LM Temperature Sensor"
+              - entity: sensor.bathroom_mccgq01lm_battery
+                name: "Bathroom - MCCGQ01LM Door/Window Sensor"
+              - entity: sensor.bathroom_sjcgq11lm_battery
+                name: "Bathroom - SJCGQ11LM Leak Sensor"
+              - entity: sensor.patio_gzcgq01lm_battery
+                name: "Patio - GZCGQ01LM Illuminance Sensor"
+              - entity: sensor.patio_wsdcgq11lm_battery
+                name: "Patio - WSDCGQ11LM Temperature Sensor"
+              - entity: sensor.patio_mccgq01lm_battery
+                name: "Patio - MCCGQ01LM Door/Window Sensor"
+#      - break
+
