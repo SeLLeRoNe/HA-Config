@@ -92,9 +92,10 @@ class CryptoinfoSensor(Entity):
         self.currency_name = currency_name
         self.update = Throttle(update_frequency)(self._update)
         self._name = SENSOR_PREFIX + cryptocurrency_name + " " + currency_name
-        self._icon = "mdi:currency-usd"
+        self._icon = "mdi:bitcoin"
         self._state = None
         self._last_update = None
+        self._unit_of_measurement = ""
 
     @property
     def name(self):
@@ -107,6 +108,10 @@ class CryptoinfoSensor(Entity):
     @property
     def state(self):
         return self._state
+
+    @property
+    def unit_of_measurement(self):
+        return self._unit_of_measurement
 
     @property
     def device_state_attributes(self):

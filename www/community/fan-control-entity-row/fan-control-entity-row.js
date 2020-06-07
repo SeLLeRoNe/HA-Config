@@ -31,25 +31,25 @@ class CustomFanRow extends Polymer.Element {
 			style='[[_lowOnColor]]'
 			toggles name="low"
 			on-click='setSpeed'
-                        disabled='[[_isOnLow]]'>LOW</button>
+                        disabled='[[_isOnLow]]'>[[_lowText]]</button>
                     <button
 			class='speed'
                         style='[[_medOnColor]]'
                         toggles name="medium"
                         on-click='setSpeed'
-                        disabled='[[_isOnMed]]'>MED</button>
+                        disabled='[[_isOnMed]]'>[[_medText]]</button>
                     <button
 			class='speed'
                         style='[[_highOnColor]]'
                         toggles name="high"
                         on-click='setSpeed'
-                        disabled='[[_isOnHigh]]'>HIGH</button>
+                        disabled='[[_isOnHigh]]'>[[_hiText]]</button>
 		    <button
 			class='speed'
                         style='[[_offColor]]'
                         toggles name="off"
                         on-click='setSpeed'
-                        disabled='[[_isOffState]]'>OFF</button>
+                        disabled='[[_isOffState]]'>[[_offText]]</button>
                   </div>
                 </hui-generic-entity-row>
         `;
@@ -63,11 +63,15 @@ class CustomFanRow extends Polymer.Element {
             },
                 _config: Object,
                 _stateObj: Object,
-				_lowOnColor: String,
-				_medOnColor: String,
-				_highOnColor: String,
-				_offColor: String,
-				_isOffState: Boolean,
+		_lowOnColor: String,
+		_medOnColor: String,
+		_highOnColor: String,
+		_offColor: String,
+		_lowText: String,
+		_medText: String,
+		_hiText: String,
+		_offText: String,
+		_isOffState: Boolean,
             	_isOnState: Boolean,
             	_isOnLow: Boolean,
 				_isOnMed: Boolean,
@@ -80,12 +84,16 @@ class CustomFanRow extends Polymer.Element {
 		
 	this._config = {
             customTheme: false,
-			sendStateWithSpeed: false,
-			customIsOffColor: '#f44c09',
-			customIsOnLowColor: '#43A047',
-			customIsOnMedColor: '#43A047',
-			customIsOnHiColor: '#43A047',
-			customIsOffSpdColor: '#759aaa',
+            sendStateWithSpeed: false,
+            customIsOffColor: '#f44c09',
+            customIsOnLowColor: '#43A047',
+            customIsOnMedColor: '#43A047',
+            customIsOnHiColor: '#43A047',
+            customIsOffSpdColor: '#759aaa',
+            customOffText: 'OFF',
+            customLowText: 'LOW',
+            customMedText: 'MED',
+            customHiText: 'HIGH',
             ...config
         };
     }
@@ -94,13 +102,17 @@ class CustomFanRow extends Polymer.Element {
 
         const config = this._config;
         const stateObj = hass.states[config.entity];
-		const custTheme = config.customTheme;
-		const sendStateWithSpeed = config.sendStateWithSpeed;
-		const custOnLowClr = config.customIsOnLowColor;
-		const custOnMedClr = config.customIsOnMedColor;
-		const custOnHiClr = config.customIsOnHiColor;
-		const custOffSpdClr = config.customIsOffSpdColor;
-		const custOffClr = config.customIsOffColor;
+        const custTheme = config.customTheme;
+        const sendStateWithSpeed = config.sendStateWithSpeed;
+        const custOnLowClr = config.customIsOnLowColor;
+        const custOnMedClr = config.customIsOnMedColor;
+        const custOnHiClr = config.customIsOnHiColor;
+        const custOffSpdClr = config.customIsOffSpdColor;
+        const custOffClr = config.customIsOffColor;
+        const custOffTxt = config.customOffText;
+        const custLowTxt = config.customLowText;
+        const custMedTxt = config.customMedText;
+        const custHiTxt = config.customHiText;
 		
 						
 		
@@ -126,7 +138,7 @@ class CustomFanRow extends Polymer.Element {
 		}
 	}
 		
-    let lowcolor;
+        let lowcolor;
 	let medcolor;
 	let hicolor;
 	let offcolor;
@@ -184,17 +196,25 @@ class CustomFanRow extends Polymer.Element {
 		}
 	}
 	
+	let offtext = custOffTxt;
+	let lowtext = custLowTxt;
+	let medtext = custMedTxt;
+	let hitext = custHiTxt;
 			
 	this.setProperties({
         _stateObj: stateObj,
-		_isOffState: stateObj.state == 'off',
+        _isOffState: stateObj.state == 'off',
         _isOnLow: low === 'on',
-		_isOnMed: med === 'on',
-		_isOnHigh: high === 'on',
-		_lowOnColor: lowcolor,
-		_medOnColor: medcolor,
-		_highOnColor: hicolor,
-		_offColor: offcolor,
+        _isOnMed: med === 'on',
+        _isOnHigh: high === 'on',
+        _lowOnColor: lowcolor,
+        _medOnColor: medcolor,
+        _highOnColor: hicolor,
+        _offColor: offcolor,
+        _offText: offtext,
+        _lowText: lowtext,
+        _medText: medtext,
+        _hiText: hitext,
 	});
     }
 
@@ -206,6 +226,7 @@ class CustomFanRow extends Polymer.Element {
         const speed = e.currentTarget.getAttribute('name');
         if( speed == 'off' ){
 		  this.hass.callService('fan', 'turn_off', {entity_id: this._config.entity});
+		  this.hass.callService('fan', 'set_speed', {entity_id: this._config.entity, speed: speed});
 	    } else {
 		  if(this._config.sendStateWithSpeed){
 		    this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
@@ -217,4 +238,3 @@ class CustomFanRow extends Polymer.Element {
 }
 	
 customElements.define('fan-control-entity-row', CustomFanRow);
-

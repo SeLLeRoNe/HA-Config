@@ -8,19 +8,19 @@ class CustomLightBrightnessRow extends Polymer.Element {
 					line-height: inherit;
 				}
 				.brightness {
-					min-width: 30px;
-					max-width: 30px;
-					height: 30px;
-					margin-left: 2px;
-					margin-right: 2px;
-					background-color: #759aaa;
-					border: 1px solid lightgrey; 
-					border-radius: 4px;
-					font-size: 10px !important;
-					color: inherit;
-					text-align: center;
-					float: right !important;
-					padding: 1px;
+				min-width: 30px;
+				max-width: 30px;
+				height: 30px;
+				margin-left: 2px;
+				margin-right: 2px;
+				background-color: #759aaa;
+				border: 1px solid lightgrey; 
+				border-radius: 4px;
+				font-size: 10px !important;
+				color: inherit;
+				text-align: center;
+				float: right !important;
+				padding: 1px;
 				}
 				
 				</style>
@@ -31,25 +31,25 @@ class CustomLightBrightnessRow extends Polymer.Element {
 							style='[[_lowOnColor]]'
 							toggles name="low"
 							on-click='setBrightness'
-							disabled='[[_isOnLow]]'>LOW</button>
+							disabled='[[_isOnLow]]'>[[_lowText]]</button>
 						<button
 							class='brightness'
 							style='[[_medOnColor]]'
 							toggles name="medium"
 							on-click='setBrightness'
-							disabled='[[_isOnMed]]'>MED</button>
+							disabled='[[_isOnMed]]'>[[_medText]]</button>
 						<button
 							class='brightness'
 							style='[[_highOnColor]]'
 							toggles name="high"
 							on-click='setBrightness'
-							disabled='[[_isOnHigh]]'>HIGH</button>
+							disabled='[[_isOnHigh]]'>[[_hiText]]</button>
 						<button
 							class='brightness'
 							style='[[_offColor]]'
 							toggles name="off"
 							on-click='setBrightness'
-							disabled='[[_isOffState]]'>OFF</button>
+							disabled='[[_isOffState]]'>[[_offText]]</button>
 						</div>
 					</hui-generic-entity-row>
 		`;
@@ -67,6 +67,10 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				_medOnColor: String,
 				_highOnColor: String,
 				_offColor: String,
+				_lowText: String,
+				_medText: String,
+				_hiText: String,
+				_offText: String,
 				_isOffState: Boolean,
 				_isOnState: Boolean,
 				_isOnLow: Boolean,
@@ -92,6 +96,10 @@ class CustomLightBrightnessRow extends Polymer.Element {
 			IsOnMedColor: '#43A047',
 			IsOnHiColor: '#43A047',
 			ButtonInactiveColor: '#759aaa',
+			customOffText: 'OFF',
+			customLowText: 'LOW',
+			customMedText: 'MED',
+			customHiText: 'HIGH',
 			...config
 		};
 	}
@@ -110,6 +118,10 @@ class CustomLightBrightnessRow extends Polymer.Element {
 		const LowSetpoint = config.LowBrightness;
 		const MedSetpoint = config.MedBrightness;
 		const HiSetpoint = config.HiBrightness;
+		const custOffTxt = config.customOffText;
+		const custLowTxt = config.customLowText;
+		const custMedTxt = config.customMedText;
+		const custHiTxt = config.customHiText;
 						
 		
 		let lowSetpoint;
@@ -218,7 +230,11 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				offcolor = 'background-color: var(--switch-unchecked-color)';
 			}
 		}
-	
+
+		let offtext = custOffTxt;
+		let lowtext = custLowTxt;
+		let medtext = custMedTxt;
+		let hitext = custHiTxt;	
 			
 		this.setProperties({
 			_stateObj: stateObj,
@@ -233,6 +249,10 @@ class CustomLightBrightnessRow extends Polymer.Element {
 			_lowSP: lowSetpoint,
 			_medSP: medSetpoint,
 			_highSP: hiSetpoint,
+			_offText: offtext,
+			_lowText: lowtext,
+			_medText: medtext,
+			_hiText: hitext,
 		});
 	}
 

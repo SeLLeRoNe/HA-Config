@@ -1,13 +1,12 @@
 """Support for ICS Calendar."""
-import aiohttp
-import asyncio
 import copy
 import logging
-from datetime import datetime, timedelta
+from datetime import timedelta
 from urllib.error import ContentTooShortError, HTTPError, URLError
 from urllib.request import urlopen
 
-from icalevents import icalparser
+import arrow
+from ics import Calendar
 import voluptuous as vol
 from homeassistant.components.calendar import (ENTITY_ID_FORMAT,
                                                PLATFORM_SCHEMA,
@@ -115,10 +114,10 @@ class ICSCalendarData:
         self.include_all_day = device_data[CONF_INCLUDE_ALL_DAY]
         self.event = None
 
-
     def _downloadAndParseCalendar(self):
+        calendar = None
         try:
-            calendar_data = urlopen(self.url).read().decode().replace('\0', '')
+            calendar = Calendar(urlopen(self.url).read().decode().replace('\0', ''))
         except HTTPError as http_error:
             _LOGGER.error("%s: Failed to open url: %s",
                           self.name, http_error.reason)
@@ -132,25 +131,27 @@ class ICSCalendarData:
         except Error as error:
             _LOGGER.error("%s: Failed to parse iCalendar: %s",
                           self.name, error.reason)
-        return calendar_data
+        return calendar
 
     async def async_get_events(self, hass, start_date, end_date):
         """Get all events in a specific time frame."""
         event_list = []
-        calendar_data = await hass.async_add_job(self._downloadAndParseCalendar)
-        events = icalparser.parse_events(content=calendar_data, start=start_date, end=end_date)
-        if events is not None:
-            for event in events:
+        calendar = await hass.async_add_job(self._downloadAndParseCalendar)
+        if calendar is not None:
+            ar_start = arrow.get(start_date)
+            ar_end = arrow.get(end_date)
+
+            for event in calendar.timeline.included(ar_start, ar_end):
                 if event.all_day and not self.include_all_day:
                     continue
                 uid = None
-                if hasattr(event, 'uid') and event.uid != -1:
+                if hasattr(event, 'uid'):
                     uid = event.uid
                 data = {
                     'uid': uid,
-                    'title': event.summary,
-                    'start': self.get_date_formatted(event.start.astimezone(), event.all_day),
-                    'end': self.get_date_formatted(event.end.astimezone(), event.all_day),
+                    'title': event.name,
+                    'start': self.get_date_formatted(event.begin, event.all_day),
+                    'end': self.get_date_formatted(event.end, event.all_day),
                     'location': event.location,
                     'description': event.description
                 }
@@ -163,23 +164,12 @@ class ICSCalendarData:
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         """Get the latest data."""
-        now = datetime.now().astimezone()
-        calendar_data = self._downloadAndParseCalendar()
-        events = icalparser.parse_events(content=calendar_data, end=now)
-        if events is not None:
+        calendar = self._downloadAndParseCalendar()
+        if calendar is not None:
             temp_event = None
-            for event in events:
+            for event in calendar.timeline.at(arrow.utcnow()):
                 if event.all_day and not self.include_all_day:
                     continue
-                else:
-                    event.start = event.start.astimezone()
-                    event.end = event.end.astimezone()
-                    # This first case probably isn't needed; when writing this
-                    # code, I noticed that if an event hasn't started yet, it
-                    # won't be returned at all.  I've left the condition in,
-                    # just in case that changes in the future.
-                    if event.start > now or event.end < now:
-                        continue
                 if temp_event is None:
                     temp_event = event
                 elif temp_event.end > event.end:
@@ -190,29 +180,33 @@ class ICSCalendarData:
                 return True
 
             self.event = {
-                'summary': temp_event.summary,
-                'start': self.get_hass_date(temp_event.start, temp_event.all_day),
+                'summary': temp_event.name,
+                'start': self.get_hass_date(temp_event.begin, temp_event.all_day),
                 'end': self.get_hass_date(temp_event.end, temp_event.all_day),
                 'location': temp_event.location,
                 'description': temp_event.description
             }
+            # Note that we use get_hass_date for start and end, not just a plain formatted date!
             return True
 
         return False
 
     @staticmethod
-    def get_date_formatted(dt, is_all_day):
+    def get_date_formatted(arw, is_all_day):
         """Return the formatted date"""
         # Note that all day events should have a time of 0, and the timezone
-        # must be local.
+        # must be local.  The server probably has the timezone erroneously set
+        # to UTC!
         if is_all_day:
-            return dt.strftime("%Y-%m-%d")
+            arw = arw.replace(hour=0, minute=0, second=0,
+                              microsecond=0, tzinfo='local')
+            return arw.format('YYYY-MM-DD')
 
-        return dt.strftime("%Y-%m-%dT%H:%M:%S.%f%z")
+        return arw.isoformat()
 
     @staticmethod
-    def get_hass_date(dt, is_all_day):
+    def get_hass_date(arw, is_all_day):
         """Return the wrapped and formatted date"""
         if is_all_day:
-            return {'date': ICSCalendarData.get_date_formatted(dt, is_all_day)}
-        return {'dateTime': ICSCalendarData.get_date_formatted(dt, is_all_day)}
+            return {'date': ICSCalendarData.get_date_formatted(arw, is_all_day)}
+        return {'dateTime': ICSCalendarData.get_date_formatted(arw, is_all_day)}

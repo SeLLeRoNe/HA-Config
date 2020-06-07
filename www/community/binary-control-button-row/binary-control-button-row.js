@@ -9,36 +9,36 @@ class CustomBinaryRow extends Polymer.Element {
 				}
                 .switch {
                     min-width: 30px;
-					max-width: 30px;
-					height: 30px;
-					margin-left: 2px;
+                    max-width: 30px;
+                    height: 30px;
+                    margin-left: 2px;
                     margin-right: 2px;
     	            background-color: #759aaa;
-					border: 1px solid lightgrey; 
-					border-radius: 4px;
-					font-size: 10px !important;
-					color: inherit;
-					text-align: center;
-					float: right !important;
-					padding: 1px;
-				}
+                    border: 1px solid lightgrey; 
+                    border-radius: 4px;
+                    font-size: 10px !important;
+                    color: inherit;
+                    text-align: center;
+                    float: right !important;
+                    padding: 1px;
+                 }
 				
             </style>
             	<hui-generic-entity-row hass="[[hass]]" config="[[_config]]">
                     <div class='horizontal justified layout' on-click="stopPropagation">
-						<button
-							class='switch'
-							style='[[_onColor]]'
-							toggles name="on"
-							on-click='setState'
-							disabled='[[_isOnState]]'>ON</button>
-						<button
-							class='switch'
-							style='[[_offColor]]'
-							toggles name="off"
-							on-click='setState'
-							disabled='[[_isOffState]]'>OFF</button>
-					</div>
+			<button
+			class='switch'
+			style='[[_onColor]]'
+			toggles name="on"
+			on-click='setState'
+			disabled='[[_isOnState]]'>[[_onText]]</button>
+			<button
+			class='switch'
+			style='[[_offColor]]'
+			toggles name="off"
+			on-click='setState'
+			disabled='[[_isOffState]]'>[[_offText]]</button>
+			</div>
                 </hui-generic-entity-row>
         `;
     }
@@ -51,9 +51,11 @@ class CustomBinaryRow extends Polymer.Element {
             },
                 _config: Object,
                 _stateObj: Object,
-				_onColor: String,
-				_offColor: String,
-				_isOffState: Boolean,
+		_onColor: String,
+		_offColor: String,
+		_onText: String,
+		_offText: String,
+		_isOffState: Boolean,
             	_isOnState: Boolean,
         }
     }
@@ -62,11 +64,13 @@ class CustomBinaryRow extends Polymer.Element {
         this._config = config;
 		
 	this._config = {
-            customTheme: false,
-			IsOnColor: '#43A047',
-			IsOffColor: '#f44c09',
-			ButtonInactiveColor: '#759aaa',
-            ...config
+		customTheme: false,
+		IsOnColor: '#43A047',
+		IsOffColor: '#f44c09',
+		ButtonInactiveColor: '#759aaa',
+		customOffText: 'OFF',
+		customOnText: 'ON',
+            	...config
         };
     }
 
@@ -74,70 +78,75 @@ class CustomBinaryRow extends Polymer.Element {
 
         const config = this._config;
         const stateObj = hass.states[config.entity];
-		const custTheme = config.customTheme;
-		const custOnClr = config.IsOnColor;
-		const custOffClr = config.IsOffColor;
-		const custInactiveClr = config.ButtonInactiveColor;
+	const custTheme = config.customTheme;
+	const custOnClr = config.IsOnColor;
+	const custOffClr = config.IsOffColor;
+	const custInactiveClr = config.ButtonInactiveColor;
+	const custOffTxt = config.customOffText;
+	const custOnTxt = config.customOnText;
 		
 		
 						
 		
-		let state;
-			if (stateObj) {
-				state = stateObj.state;
-			}
-		
-		let onstate;
-		let offstate;
-		
+	let state;
 		if (stateObj) {
-			if (stateObj.state == 'on') {
-				onstate = 'on';
-			} else {
-				offstate = 'on';
-			}
-		}
-		
-		let oncolor;
-		let offcolor;
-				
-		if (custTheme) {
-
-			if (onstate == 'on') {
-				oncolor = 'background-color:' + custOnClr;
-			} else {
-				oncolor = 'background-color:' + custInactiveClr;
-			}
-
-			if (offstate == 'on') {
-				offcolor = 'background-color:'  + custOffClr;
-			} else {
-				offcolor = 'background-color:' + custInactiveClr;
-			}
-
-		} else {
-
-			if (onstate == 'on') {
-				oncolor = 'background-color: var(--primary-color)';
-			} else {
-				oncolor = 'background-color: var(--disabled-text-color)';
-			}
-		
-			if (offstate == 'on') {
-				offcolor = 'background-color: var(--primary-color)';
-			} else {
-				offcolor = 'background-color: var(--disabled-text-color)';
-			}
+			state = stateObj.state;
 		}
 	
+	let onstate;
+	let offstate;
+	
+	if (stateObj) {
+		if (stateObj.state == 'on') {
+			onstate = 'on';
+		} else {
+			offstate = 'on';
+		}
+	}
+	
+	let oncolor;
+	let offcolor;
 			
-		this.setProperties({
-			_stateObj: stateObj,
-			_isOffState: stateObj.state == 'off',
-			_isOnState: stateObj.state === 'on',
-			_onColor: oncolor,
-			_offColor: offcolor,
-		});
+	if (custTheme) {
+
+		if (onstate == 'on') {
+			oncolor = 'background-color:' + custOnClr;
+		} else {
+			oncolor = 'background-color:' + custInactiveClr;
+		}
+
+		if (offstate == 'on') {
+			offcolor = 'background-color:'  + custOffClr;
+		} else {
+			offcolor = 'background-color:' + custInactiveClr;
+		}
+
+	} else {
+		if (onstate == 'on') {
+			oncolor = 'background-color: var(--primary-color)';
+		} else {
+			oncolor = 'background-color: var(--disabled-text-color)';
+		}
+	
+		if (offstate == 'on') {
+			offcolor = 'background-color: var(--primary-color)';
+		} else {
+			offcolor = 'background-color: var(--disabled-text-color)';
+		}
+	}
+	
+        let offtext = custOffTxt;
+        let ontext = custOnTxt;
+			
+	this.setProperties({
+		_stateObj: stateObj,
+		_isOffState: stateObj.state == 'off',
+		_isOnState: stateObj.state === 'on',
+		_onColor: oncolor,
+		_offColor: offcolor,
+		_offText: offtext,
+		_onText: ontext,
+	});
     }
 
     stopPropagation(e) {
