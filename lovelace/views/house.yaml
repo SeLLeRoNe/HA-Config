@@ -138,16 +138,16 @@ cards:
               - title: Weather
           - type: custom:decluttering-card
             template: darksky_card
+      - type: custom:decluttering-card
+        template: thermostat_card
+        variables:
+          - area: house
       - type: vertical-stack
         cards:
           - type: custom:decluttering-card
             template: house_temperature
           - type: custom:decluttering-card
             template: house_humidity 
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - area: house
       - break
       - type: custom:decluttering-card
         template: house_energy_small

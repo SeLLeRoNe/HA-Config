@@ -58,6 +58,10 @@ cards:
                         entity: binary_sensor.bedroom_luca_window
                         tap_action:
                           action: none
+          - type: custom:decluttering-card
+            template: thermostat_card
+            variables:
+              - area: bedroom_luca
           - type: vertical-stack
             cards:
              - type: custom:decluttering-card
@@ -74,10 +78,6 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.bedroom_luca_pressure
-          - type: custom:decluttering-card
-            template: thermostat_card
-            variables:
-              - area: bedroom_luca
 #      - break
 #      - type: custom:decluttering-card
 #        template: bedroom_luca_energy_small

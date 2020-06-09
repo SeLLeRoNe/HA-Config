@@ -61,6 +61,10 @@ cards:
                         entity: binary_sensor.living_room_window
                         tap_action:
                           action: none
+          - type: custom:decluttering-card
+            template: thermostat_card
+            variables:
+              - area: living_room
           - type: vertical-stack
             cards:
               - type: custom:decluttering-card
@@ -71,10 +75,6 @@ cards:
                 template: humidity
                 variables:
                   - entity: sensor.living_room_humidity
-          - type: custom:decluttering-card
-            template: thermostat_card
-            variables:
-              - area: living_room
       - break
       - type: custom:stack-in-card
         mode: vertical
