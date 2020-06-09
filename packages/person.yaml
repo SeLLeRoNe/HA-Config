@@ -10,8 +10,8 @@ person:
     id: !secret sonia_id
     user_id: !secret sonia_user_id
     device_trackers:
-      - device_tracker.life360_sonia_espejo_brea
-#      - device_tracker.sonia_mi9tpro
+#      - device_tracker.life360_sonia_espejo_brea
+      - device_tracker.sonia_mi9tpro
   - name: Luca
     id: !secret luca_id
     device_trackers:
