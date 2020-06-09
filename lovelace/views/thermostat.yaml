@@ -27,5 +27,11 @@ cards:
       - type: custom:decluttering-card
         template: thermostat
         variables:
+          - title: Master Bedroom
+          - area: master_bedroom
+      - break
+      - type: custom:decluttering-card
+        template: thermostat
+        variables:
           - title: Bedroom Luca
           - area: bedroom_luca

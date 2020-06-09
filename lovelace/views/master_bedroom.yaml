@@ -27,6 +27,10 @@ cards:
                     entity: binary_sensor.master_bedroom_window
                     tap_action:
                       action: none
+          - type: custom:decluttering-card
+            template: thermostat_card
+            variables:
+              - area: master_bedroom
           - type: vertical-stack
             cards:
               - type: custom:decluttering-card

@@ -1,0 +1,151 @@
+---
+alias: Climate - T5 - Master Bedroom - Workday
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: template
+    value_template: "{{ states('sensor.time') == states('input_datetime.climate_master_bedroom_workday_t5_start')[0:5] }}"
+  - platform: state
+    entity_id: group.family
+    to: 'home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_heating_push
+    to: 'off'
+  - platform: state
+    entity_id: input_number.climate_master_bedroom_workday_t5
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t5
+    to: 'on'
+  - platform: state
+    entity_id: input_datetime.climate_master_bedroom_workday_t5_start
+  - platform: state
+    entity_id: input_datetime.climate_master_bedroom_workday_t5_end
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t10
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t1
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t2
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t3
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t4
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t5
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t6
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t7
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t8
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t9
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_workday_t10
+    to: 'off'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.climate_master_bedroom_workday_t5
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.climate_master_bedroom_heating_push
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_master_bedroom_workday_t5_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('sensor.time') < states('input_datetime.climate_master_bedroom_workday_t5_end')[0:5] }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_master_bedroom_workday_t5_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_master_bedroom_workday_t5_end')[0:5] == '00:00' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ states('sensor.time') >= states('input_datetime.climate_master_bedroom_workday_t5_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_master_bedroom_workday_t5_end')[0:5] < states('input_datetime.climate_master_bedroom_workday_t5_start')[0:5] }}"
+            - condition: template
+              value_template: "{{ states('input_datetime.climate_master_bedroom_workday_t5_end')[0:5] >= '00:00' }}"
+            - condition: template
+              value_template: "{{ states('sensor.time') <= states('input_datetime.climate_master_bedroom_workday_t5_end')[0:5] }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
+    - condition: state
+      entity_id: group.workday
+      state: 'on'
+action:
+  - service: climate.turn_on
+    data:
+      entity_id: climate.master_bedroom
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.master_bedroom
+      preset_mode: none
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.master_bedroom
+      temperature: "{{ states('input_number.climate_master_bedroom_workday_t5') | float }}"
+      hvac_mode: heat
+  - service: homeassistant.turn_off
+    entity_id: group.climate_master_bedroom_active
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.climate_master_bedroom_workday_t5_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate_master_bedroom
+      option: "T5"

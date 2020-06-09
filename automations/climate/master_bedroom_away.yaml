@@ -1,0 +1,23 @@
+---
+alias: Climate - Master Bedroom - Away Mode On
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: template
+    value_template: "{{ states.climate.master_bedroom.attributes.preset_mode == 'away' }}"
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ states.climate.master_bedroom.attributes.preset_mode == 'away' }}"
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: input_boolean.climate_master_bedroom_heating_push
+  - service: homeassistant.turn_off
+    entity_id: group.climate_master_bedroom_active
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.climate_master_bedroom
+      option: "Away"
