@@ -19,7 +19,7 @@ do
 	sed -i "s/House/$ROOM_NAME/g" $new_file
 done
 
-for file in `find . -name heater_push_* | grep house`
+for file in `find . -name heat*_push_* | grep house`
 do
 	new_file=$(sed "s/house/$ENTITY_NAME/g" <<< $file)
 	echo "Copying $file to $new_file"
