@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: Bedroom Luca
-heater: switch.heater_bedroom_luca
+heater: switch.heating_bedroom_luca
 target_sensor: sensor.bedroom_luca_temperature
 min_temp: 18
 max_temp: 25

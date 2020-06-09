@@ -1,10 +1,10 @@
 ---
 platform: mqtt
-name: "Heater Bedroom Luca"
+name: "Heating Bedroom Luca"
 icon: mdi:fire
-command_topic: "cmnd/bedroom_luca_heater/POWER"
-state_topic: "stat/bedroom_luca_heater/POWER"
-availability_topic: "tele/bedroom_luca_heater/LWT"
+command_topic: "cmnd/bedroom_luca_heating/POWER"
+state_topic: "stat/bedroom_luca_heating/POWER"
+availability_topic: "tele/bedroom_luca_heating/LWT"
 #payload_available: "Online"
 #payload_not_available: "Offline"
 payload_on: "ON"

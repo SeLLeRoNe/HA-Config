@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: House
-heater: switch.heater_house
+heater: switch.heating_house
 target_sensor: sensor.house_temperature
 min_temp: 18
 max_temp: 25

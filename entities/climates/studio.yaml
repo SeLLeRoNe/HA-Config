@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: Studio
-heater: switch.heater_studio
+heater: switch.heating_studio
 target_sensor: sensor.studio_temperature
 min_temp: 18
 max_temp: 25

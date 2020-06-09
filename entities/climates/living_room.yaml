@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: Living Room
-heater: switch.heater_living_room
+heater: switch.heating_living_room
 target_sensor: sensor.living_room_temperature
 min_temp: 18
 max_temp: 25

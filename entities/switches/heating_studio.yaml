@@ -1,10 +1,10 @@
 ---
 platform: mqtt
-name: "Heater Studio"
+name: "Heating Studio"
 icon: mdi:fire
-command_topic: "cmnd/studio_heater/POWER"
-state_topic: "stat/studio_heater/POWER"
-availability_topic: "tele/studio_heater/LWT"
+command_topic: "cmnd/studio_heating/POWER"
+state_topic: "stat/studio_heating/POWER"
+availability_topic: "tele/studio_heating/LWT"
 #payload_available: "Online"
 #payload_not_available: "Offline"
 payload_on: "ON"

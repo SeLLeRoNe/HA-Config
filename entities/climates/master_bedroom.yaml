@@ -1,7 +1,7 @@
 ---
 platform: generic_thermostat
 name: Master Bedroom
-heater: switch.heater_master_bedroom
+heater: switch.heating_master_bedroom
 target_sensor: sensor.master_bedroom_temperature
 min_temp: 18
 max_temp: 25

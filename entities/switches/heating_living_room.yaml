@@ -1,10 +1,10 @@
 ---
 platform: mqtt
-name: "Heater Living Room"
+name: "Heating Living Room"
 icon: mdi:fire
-command_topic: "cmnd/living_room_heater/POWER"
-state_topic: "stat/living_room_heater/POWER"
-availability_topic: "tele/living_room_heater/LWT"
+command_topic: "cmnd/living_room_heating/POWER"
+state_topic: "stat/living_room_heating/POWER"
+availability_topic: "tele/living_room_heating/LWT"
 #payload_available: "Online"
 #payload_not_available: "Offline"
 payload_on: "ON"
