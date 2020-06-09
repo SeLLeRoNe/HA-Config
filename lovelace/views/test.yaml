@@ -49,11 +49,21 @@ cards:
           - entity: sensor.sonia_honor8_gps
       - type: history-graph
         title:
-        hours_to_show: 24
+        hours_to_show: 168
         refresh_interval: 15
         entities:
-          - person.andrea_iannucci
-          - person.sonia_espejo_brea
+          - entity: person.andrea_iannucci
+            name: Andrea
+          - entity: device_tracker.andrea_oneplus5
+            name: HA App
+          - entity: device_tracker.life360_andrea_iannucci
+            name: Life360
+          - entity: person.sonia_espejo_brea
+            name: Sonia
+          - entity: device_tracker.sonia_mi9tpro
+            name: HA App
+          - entity: device_tracker.life360_sonia_espejo_brea
+            name: Life360
       - break
       - type: custom:stack-in-card
         mode: vertical
