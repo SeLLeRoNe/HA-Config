@@ -28,7 +28,6 @@ illuminance:
       align_icon: right
       align_state: center
       lower_bound: 0
-      upper_bound: 10000
       show:
         name: true
         icon: true
