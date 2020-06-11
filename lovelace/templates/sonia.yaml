@@ -12,7 +12,7 @@ sonia:
       - entity: sensor.sonia_mi9tpro_battery
         name: "Mi 9T Pro"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(binary_sensor.sonia_mi9tpro_wifi == 'on', 'Connected', if(binary_sensor.sonia_mi9tpro_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.sonia_mi9tpro_charging == 'on', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.sonia_mi9tpro_wifi.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi9tpro_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi9tpro_charging == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
