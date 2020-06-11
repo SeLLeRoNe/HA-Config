@@ -25,7 +25,7 @@ action:
   - service: mqtt.publish
     data:
       topic: 'hasp/plates/command/p[3].b[5].txt'
-      payload: '"Andrea"'
+      payload: '"Studio"'
   - service: mqtt.publish
     data:
       topic: 'hasp/plates/command/p[3].b[6].font'
@@ -33,7 +33,7 @@ action:
   - service: mqtt.publish
     data:
       topic: 'hasp/plates/command/p[3].b[6].txt'
-      payload: '"Sonia"'
+      payload: '"Luca"'
   - service: mqtt.publish
     data:
       topic: 'hasp/plates/command/p[3].b[7].font'

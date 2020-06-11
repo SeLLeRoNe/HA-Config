@@ -8,4 +8,4 @@ trigger:
     payload: 'ON'
 action:
   - service: homeassistant.toggle
-    entity_id: light.andrea_bedside_lamp
+    entity_id: light.studio_lights

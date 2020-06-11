@@ -8,4 +8,4 @@ trigger:
     payload: 'ON'
 action:
   - service: homeassistant.toggle
-    entity_id: light.patio_light
+    entity_id: light.patio_lights
