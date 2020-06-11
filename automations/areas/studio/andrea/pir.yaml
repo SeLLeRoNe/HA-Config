@@ -32,8 +32,9 @@ action:
   - service: light.turn_on
     data:
       entity_id: light.studio_wall_light
+      transition: 30
       brightness: 25
-#      rgb_color: [102,204,255]
+      rgb_color: [102,204,255]
   - service: notify.mobile_app_andrea_oneplus_5
     data:
       title: "Home Alarm"

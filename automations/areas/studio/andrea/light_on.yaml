@@ -8,9 +8,6 @@ trigger:
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.studio_2ajz4kpbs_pir
-    to: 'off'
-  - platform: state
     entity_id: light.studio_wall_light
     to: 'on'
     for:
@@ -31,4 +28,6 @@ condition:
           state: 'on'
 action:
   - service: light.turn_off
-    entity_id: light.studio_wall_light
+    data:
+      entity_id: light.studio_wall_light
+      transition: 30
