@@ -2,15 +2,6 @@
 alias: Bedroom Luca - PIR Night
 initial_state: on
 trigger:
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_1
-#    to: 'on'
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_2
-#    to: 'on'
-#  - platform: state
-#    entity_id: light.bedroom_luca_light_3
-#    to: 'on'
   - platform: state
     entity_id: binary_sensor.bedroom_luca_pir
     to: 'on'
@@ -53,4 +44,4 @@ action:
   - service: scene.turn_on
     data:
       entity_id: scene.bedroom_luca_diaper_change
-      transition: 5
+      transition: 30

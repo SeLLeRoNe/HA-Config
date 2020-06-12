@@ -44,4 +44,4 @@ action:
   - service: scene.turn_on
     data:
       entity_id: scene.bedroom_luca_lights_on
-      transition: 5
+      transition: 30
