@@ -26,8 +26,11 @@ condition:
         - condition: state
           entity_id: binary_sensor.studio_andrea_computer_ping
           state: 'on'
+        - condition: state
+          entity_id: binary_sensor.studio_sonia_computer
+          state: 'on'
 action:
   - service: light.turn_off
     data:
       entity_id: light.studio_wall_light
-      transition: 30
+      transition: 15
