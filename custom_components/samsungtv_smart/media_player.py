@@ -14,7 +14,7 @@ from aiohttp import ClientConnectionError, ClientSession, ClientResponseError
 from async_timeout import timeout
 
 from .api.samsungws import SamsungTVWS, ArtModeStatus
-from .api.smartthings import SmartThingsTV
+from .api.smartthings import SmartThingsTV, STStatus
 from .api.upnp import upnp
 
 import homeassistant.helpers.config_validation as cv
@@ -378,7 +378,7 @@ class SamsungTVDevice(MediaPlayerEntity):
                 "options"
             ][CONF_USE_ST_STATUS_INFO]
             if (
-                self._st.state == STATE_OFF and self._state == STATE_ON
+                self._st.state == STStatus.STATE_OFF and self._state == STATE_ON
                 and use_st_status
             ):
                 result = False
@@ -525,7 +525,7 @@ class SamsungTVDevice(MediaPlayerEntity):
         if self._state == STATE_ON:
 
             if self._st:
-                if self._st.state == STATE_OFF:
+                if self._st.state != STStatus.STATE_ON:
                     self._source = self._running_app
                 else:
                     if self._running_app == DEFAULT_APP:
@@ -701,7 +701,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
         if self._st:
 
-            if self._st.state == STATE_OFF:
+            if self._st.state == STStatus.STATE_OFF:
                 return None
             elif self._running_app == DEFAULT_APP:
                 if self._st.source in ["digitalTv", "TV"]:

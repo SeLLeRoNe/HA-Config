@@ -344,10 +344,11 @@ class SamsungTVWS:
                 self._set_token(token)
             self._is_connected = True
             self._request_apps_list()
+            self.start_client(start_all=True)
         elif event == "ed.installedApp.get":
             _LOGGING.debug("Message remote: received installedApp")
             self._handle_installed_app(response)
-            self.start_client(start_all=True)
+            # self.start_client(start_all=True)
         elif event == "ed.edenTV.update":
             _LOGGING.debug("Message remote: received edenTV")
             self.get_running_app(force_scan=True)

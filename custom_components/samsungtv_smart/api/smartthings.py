@@ -1,16 +1,14 @@
 """ Smartthings TV integration """
 
 from datetime import timedelta
+from enum import Enum
 import logging
 from typing import Dict, Optional
-from aiohttp import ClientSession
+from aiohttp import ClientSession, ClientConnectionError, ClientResponseError
+from asyncio import TimeoutError as AsyncTimeoutError
 import json
 
 from homeassistant.util import Throttle
-from homeassistant.const import (
-    STATE_OFF,
-    STATE_ON,
-)
 
 API_BASEURL = "https://api.smartthings.com/v1"
 API_DEVICES = f"{API_BASEURL}/devices"
@@ -86,6 +84,12 @@ def _headers(api_key: str) -> Dict[str, str]:
     }
 
 
+class STStatus(Enum):
+    STATE_OFF = 0
+    STATE_ON = 1
+    STATE_UNKNOWN = 2
+
+
 class SmartThingsTV:
     def __init__(
         self,
@@ -107,7 +111,7 @@ class SmartThingsTV:
             self._managed_session = True
 
         self._device_name = None
-        self._state = STATE_OFF
+        self._state = STStatus.STATE_UNKNOWN
         self._muted = False
         self._volume = 10
         self._source_list = None
@@ -277,11 +281,20 @@ class SmartThingsTV:
         # not used, just for reference
         api_device_main_status = f"{api_device}/components/main/status"
 
-        is_online = await self.async_device_health()
+        try:
+            is_online = await self.async_device_health()
+        except (
+            AsyncTimeoutError,
+            ClientConnectionError,
+            ClientResponseError,
+        ):
+            self._state = STStatus.STATE_UNKNOWN
+            return
+
         if is_online:
-            self._state = STATE_ON
+            self._state = STStatus.STATE_ON
         else:
-            self._state = STATE_OFF
+            self._state = STStatus.STATE_OFF
             return
 
         await self._device_refresh()
