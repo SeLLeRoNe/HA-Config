@@ -1,24 +1,24 @@
 ---
-alias: Mobile - Sonia - Honor 8 - Battery Full
+alias: Mobile - Test - Motorola XT1032 - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.sonia_honor8_battery
+    entity_id: sensor.test_xt1032_battery
     above: 99
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.sonia_honor8_charging
+      entity_id: binary_sensor.test_xt1032_charging
       state: 'on'
     - condition: state
-      entity_id: person.sonia_espejo_brea
+      entity_id: person.test_iannucci
       state: 'home'
 action:
-  - service: notify.mobile_app_sonia_mi9tpro
+  - service: notify.mobile_app_test_oneplus_5
     data_template:
       title: "Battery Alert"
-      message: "Battery Full on Honor 8, please unplug it!"
+      message: "Battery Full on Motorola XT1032, please unplug it!"
       data:
         color: "#FF66FF"
         sticky: "true"

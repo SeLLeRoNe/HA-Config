@@ -1,7 +1,0 @@
----
-platform: template
-sensors:
-  sonia_honor8_gps:
-    friendly_name: Honor 8 GPS
-    device_class: battery
-    value_template: "Latitude: {{ state_attr('device_tracker.sonia_honor8', 'latitude') }} Longitude: {{ state_attr('device_tracker.sonia_honor8', 'longitude') }}"

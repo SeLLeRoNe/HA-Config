@@ -1,24 +1,24 @@
 ---
-alias: Mobile - Andrea - Honor 8 - Battery Low
+alias: Mobile - Test - Motorola XT1032 - Battery Low
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.andrea_honor8_battery
+    entity_id: sensor.test_xt1032_battery
     below: 20
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.andrea_honor8_charging
+      entity_id: binary_sensor.test_xt1032_charging
       state: 'off'
     - condition: state
-      entity_id: person.andrea_iannucci
+      entity_id: person.test_iannucci
       state: 'home'
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_test_oneplus_5
     data_template:
       title: "Battery Alert"
-      message: "Low Battery on Honor 8, please plug it!"
+      message: "Low Battery on Motorola XT1032, please plug it!"
       data:
         color: "#FF66FF"
         sticky: "true"

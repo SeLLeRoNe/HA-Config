@@ -1,0 +1,25 @@
+---
+platform: template
+sensors:
+  test_xt1032_wifi:
+    friendly_name: Motorola XT1032 WiFi
+    value_template: >-
+      {% if state_attr('device_tracker.test_xt1032', 'wifi_on') %}
+        {{ state_attr('device_tracker.test_xt1032', 'wifi_on') }}
+      {% elif is_state('input_boolean.test_xt1032_wifi', 'on') %}
+        True
+      {% elif is_state('input_boolean.test_xt1032_wifi', 'off') %}
+        False
+      {% elif not is_state('input_boolean.test_xt1032_wifi', 'unknown') %}
+        unknown
+      {% else %}
+        False
+      {% endif %}
+    icon_template: >-
+      {% if is_state('binary_sensor.test_xt1032_wifi', 'on') %}
+        mdi:wifi
+      {% elif is_state('input_boolean.test_xt1032_wifi', 'on') %}
+        mdi:wifi
+      {% else %}
+        mdi:wifi-off
+      {% endif %}

@@ -1,0 +1,22 @@
+---
+alias: Mobile - Test - Motorola XT1032 - Battery
+initial_state: on
+trigger:
+  - platform: time_pattern
+    minutes: '*'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: '{% if states.input_text.test_xt1032_battery is defined %} {{(as_timestamp(now()) - as_timestamp(states.input_text.test_xt1032_battery.last_changed)) > 43200 }} {% endif %}'
+action:
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.test_xt1032_battery
+      value: "unknown"
+  - service: input_boolean.turn_off
+    data_template:
+      entity_id: input_boolean.test_xt1032_charging
+  - service: input_boolean.turn_off
+    data_template:
+      entity_id: input_boolean.test_xt1032_wifi
