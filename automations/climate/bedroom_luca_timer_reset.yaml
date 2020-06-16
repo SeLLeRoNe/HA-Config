@@ -14,10 +14,10 @@ condition:
       entity_id: input_boolean.climate_bedroom_luca_heating_push
       state: 'on'
     - condition: template
-      value_template: "{{ states('input_number.heating_push_bedroom_luca') < states('sensor.temperature') }}"
+      value_template: "{{ states('input_number.heating_push_bedroom_luca') < states('sensor.bedroom_luca_temperature') }}"
 action:
   - delay:
-      seconds: 1
+      seconds: 2
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.climate_bedroom_luca_heating_push
