@@ -1,0 +1,11 @@
+---
+alias: House - Night Time
+initial_state: on
+trigger:
+  - platform: time
+    at: '21:30:00'
+action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.studio_google_mini
+      volume_level: '0.25'
