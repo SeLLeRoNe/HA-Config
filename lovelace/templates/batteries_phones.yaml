@@ -1,0 +1,45 @@
+---
+batteries_phones:
+  card:
+    type: custom:battery-state-card
+    secondary_info: charging
+    secondary_info_text:  "Charging"
+    color_thresholds:
+      - value: 20
+        color: "#990000"
+      - value: 40
+        color: "#CC6600"
+      - value: 60
+        color: "#FF8000"
+      - value: 80
+        color: "#009900"
+      - value: 100
+        color: "#009933"
+    entities:
+      - entity: sensor.andrea_oneplus5_battery
+        name: "Andrea - OnePlus 5"
+        charging_state:
+          entity_id: sensor.andrea_oneplus5_charging
+          state: "charging"
+      - entity: sensor.sonia_mi9tpro_battery
+        name: "Sonia - Mi 9T Pro"
+        charging_state:
+          entity_id: input_boolean.sonia_mi9tpro_charging
+          state: "on"
+      - entity: sensor.test_honor8_battery
+        name: "Test - Honor 8"
+        charging_state:
+          entity_id: binary_sensor.test_honor8_charging
+          state: "on"
+      - entity: sensor.test_xt1032_battery
+        name: "Test - Motorola XT1032"
+        charging_state:
+          entity_id: input_boolean.test_xt1032_charging
+          state: "on"
+    style: |
+      .entity-row.non-numeric-state .icon {
+        color: #808080;
+      }
+      .entity-row .secondary {
+        color: #808080;
+      }

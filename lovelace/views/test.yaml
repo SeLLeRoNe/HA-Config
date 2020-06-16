@@ -27,7 +27,7 @@ cards:
               separator: false
           - type: custom:logbook-card
             title: "Andrea - HA App"
-            entity: device_tracker.andrea_iannucci
+            entity: device_tracker.andrea_oneplus5
             max_items: 5
             date_format: dd/MM/YYYY hh:mm
             show:
@@ -52,7 +52,7 @@ cards:
               separator: false
           - type: custom:logbook-card
             title: "Sonia - HA App"
-            entity: device_tracker.sonia_espejo_brea
+            entity: device_tracker.sonia_mi9tpro
             max_items: 5
             date_format: dd/MM/YYYY hh:mm
             show:
@@ -68,7 +68,6 @@ cards:
         entities:
           - entity: sensor.andrea_oneplus5_gps
           - entity: sensor.sonia_mi9tpro_gps
-          - entity: sensor.sonia_honor8_gps
       - type: history-graph
         title:
         hours_to_show: 168
@@ -86,83 +85,6 @@ cards:
             name: HA App
           - entity: device_tracker.life360_sonia_espejo_brea
             name: Life360
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Phones
-          - type: custom:battery-state-card
-            secondary_info: charging
-            secondary_info_text:  "Charging"
-            color_thresholds:
-              - value: "unknown"
-                color: "#808080"
-              - value: 20
-                color: "#990000"
-              - value: 40
-                color: "#CC6600"
-              - value: 60
-                color: "#FF8000"
-              - value: 80
-                color: "#009900"
-              - value: 100
-                color: "#009933"
-            entities:
-              - entity: sensor.andrea_oneplus5_battery
-                name: "Andrea - OnePlus 5"
-                charging_state:
-                  entity_id: sensor.andrea_oneplus5_charging
-                  state: "charging"
-              - entity: sensor.andrea_honor8_battery
-                name: "Andrea - Honor 8"
-                charging_state:
-                  entity_id: binary_sensor.andrea_honor8_charging
-                  state: "on"
-              - entity: sensor.andrea_xt1032_battery
-                name: "Andrea - Motorola XT1032"
-                charging_state:
-                  entity_id: input_boolean.andrea_xt1032_charging
-                  state: "on"
-              - entity: sensor.sonia_mi9tpro_battery
-                name: "Sonia - Mi 9T Pro"
-                charging_state:
-                  entity_id: input_boolean.sonia_mi9tpro_charging
-                  state: "on"
-              - entity: sensor.sonia_honor8_battery
-                name: "Sonia - Honor 8"
-                charging_state:
-                  entity_id: binary_sensor.sonia_honor8_charging
-                  state: "on"
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Tablets
-          - type: custom:battery-state-card
-            color_thresholds:
-              - value: "unknown"
-                color: "#808080"
-              - value: 20
-                color: "#990000"
-              - value: 40
-                color: "#CC6600"
-              - value: 60
-                color: "#FF8000"
-              - value: 80
-                color: "#009900"
-              - value: 100
-                color: "#009933"
-            entities:
-              - entity: sensor.andrea_shield_battery
-                name: "Andrea - NVIDIA Shield K1"
-                charging_state:
-                  entity_id: input_boolean.andrea_shield_charging
-                  state: "on"
       - break
       - type: light
         entity: light.master_bedroom_bed_led

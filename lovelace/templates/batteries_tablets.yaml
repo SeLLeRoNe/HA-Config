@@ -1,0 +1,28 @@
+---
+batteries_tablets:
+  card:
+    type: custom:battery-state-card
+    color_thresholds:
+      - value: 20
+        color: "#990000"
+      - value: 40
+        color: "#CC6600"
+      - value: 60
+        color: "#FF8000"
+      - value: 80
+        color: "#009900"
+      - value: 100
+        color: "#009933"
+    entities:
+      - entity: sensor.andrea_shield_battery
+        name: "Andrea - NVIDIA Shield K1"
+        charging_state:
+          entity_id: input_boolean.andrea_shield_charging
+          state: "on"
+    style: |
+      .entity-row.non-numeric-state .icon {
+        color: #808080;
+      }
+      .entity-row .secondary {
+        color: #808080;
+      }
