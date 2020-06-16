@@ -1,0 +1,26 @@
+---
+alias: Climate - House - Timer Reset
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.climate_house_heating_push
+    to: 'on'
+  - platform: state
+    entity_id: input_number.heating_push_house
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.climate_house_heating_push
+      state: 'on'
+    - condition: template
+      value_template: "{{ states('input_number.heating_push_house') < states('sensor.temperature') }}"
+action:
+  - delay:
+      seconds: 1
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.climate_house_heating_push
+  - service: timer.finish
+    data:
+      entity_id: timer.heating_push_house
