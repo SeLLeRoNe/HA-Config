@@ -457,7 +457,8 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
           class="${this.classesForItem(this._config.name,!0)}"
           .value="${this.config.name}"
           .configValue="${"[name]"}"
-          @value-changed="${this._valueChanged}">
+          @value-changed="${this._valueChanged}"
+        >
         </paper-input>
         <div class="side-by-side control">
           <div class="label">
@@ -471,7 +472,8 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
               id="meridiem"
               .configValue="${"[meridiem]"}"
               ?checked="${!0===this.config.meridiem}"
-              @change="${this._valueChanged}">
+              @change="${this._valueChanged}"
+            >
               12h
             </ha-switch>
           </div>
@@ -488,7 +490,8 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
               id="animation"
               .configValue="${"[animation]"}"
               ?checked="${!0===this.config.animation}"
-              @change="${this._valueChanged}">
+              @change="${this._valueChanged}"
+            >
               on
             </ha-switch>
           </div>
@@ -560,7 +563,7 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
       </div>
     `:B``}_entityDropdown(e,a){const n=this._getAvailableEntities(a);return B`
       <paper-listbox
-        slot='dropdown-content'
+        slot="dropdown-content"
         .selected="${n.indexOf(this.config.entities[e])}"
       >
         ${n.map(e=>this._entityItem(this._hass.states[e]))}
@@ -578,7 +581,7 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
         line-height: var(--paper-font-body1_-_line-height);
       }
       .label .heading {
-        font-size: var(--paper-input-container-shared-input-style_-_font-size)
+        font-size: var(--paper-input-container-shared-input-style_-_font-size);
       }
       .label .description {
         color: var(--disabled-text-color);
@@ -598,42 +601,60 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
       ha-switch {
         min-width: 80px;
       }
-      #name.default, #time.default, #elevation.default {
+      #name.default,
+      #time.default,
+      #elevation.default {
         --paper-input-container-input-color: var(--disabled-text-color);
       }
-      #meridiem.default, #animation.default {
+      #meridiem.default,
+      #animation.default {
         --switch-checked-track-color: var(--disabled-text-color);
         --switch-checked-button-color: var(--disabled-text-color);
         --switch-unchecked-track-color: var(--disabled-text-color);
         --switch-unchecked-button-color: var(--disabled-text-color);
       }
-    `}};e([K()],a.prototype,"_hass",void 0),e([K()],a.prototype,"_config",void 0),a=e([G("sun-card-editor")],a)})();function Se(e){return function(a,n,t){const i=t.value;if(i&&"function"==typeof i)return t.value=function(...a){const n=i.apply(this,a);return e.call(this,n)},t}}class we{constructor(e){this._entity=e}state(){return this._entity.state}attr(e){return this._entity.attributes[e]}mutator(){return e=>{this._entity=e}}}class ve extends we{read(){return se.utc(this.state(),"h:mm A").local()}static accepts(e){return e&&se.utc(e.state,"h:mm A").isValid()}}class Xe{read(){return se(new Date)}}const Be=e=>se.utc(e).local(),He=e=>se(e.state).isValid()?e=>se(e):e=>se(e,"h:m a");function Ee(a,n){return(()=>{class t extends we{read(){return n?this.attr(n):this.state()}}return e([Se(a)],t.prototype,"read",null),t})()}const Ce=e=>{const a=new class extends we{read(){return this.attr("icon")}}(e);return[a,a.mutator()]};class Pe{constructor(e,a,n,t,i,r,s){this._currentTime=e,this._elevation=a,this._max_elevation=n,this._solar_noon=t,this._sunrise=i,this._sunset=r,this._moon_phase=s}get current_time(){return this._currentTime.read()}get elevation(){return this._elevation.read()}get max_elevation(){return this._max_elevation.read()}get solar_noon(){var e;return null===(e=this._solar_noon)||void 0===e?void 0:e.read()}get sunrise(){if(!this._sunrise)return;let e=this._sunrise.read();return this.current_time.date()!==e.date()&&(e=se.invalid()),e}get sunset(){if(!this._sunset)return;let e=this._sunset.read();return this.current_time.date()!==e.date()&&(e=se.invalid()),e}get daylight(){if(this.sunrise&&this.sunset)return se.duration(this.sunset.diff(this.sunrise))}get to_sunset(){if(this.sunset)return se.duration(this.sunset.diff(this.current_time))}get moon_phase(){var e;return null===(e=this._moon_phase)||void 0===e?void 0:e.read()}}class xe{constructor(){this._directory={}}add(e,a){return e?(this._directory[e]=this._directory[e]||[],this._directory[e].push(a),this):this}create(){return e=>{this._directory[e.entity_id].forEach(a=>a(e))}}}let je;console.info("%c SUN-CARD %c 4.4.0 ","color: white; background: coral; font-weight: 700;","color: coral; background: white; font-weight: 700;");(()=>{let a=class extends ne{constructor(){super(...arguments),this.svgViewBoxW=1440,this.svgViewBoxH=432,this.yScale=this.svgViewBoxH/180,this.humanizer=new ce(new oe)}static async getConfigElement(){return document.createElement("sun-card-editor")}static getStubConfig(){return{}}setConfig(e){const a=Object.assign({time:"sensor.time_utc",elevation:"sun.sun"},e.entities);if(!(null==e?void 0:e.type)||""===a.time||""===a.elevation)throw new Error('Invalid configuration: missing entities for "time" or "elevation"!');this._config=Object.assign(Object.assign({},e),{entities:a})}get hass(){return this._hass}set hass(e){this._hass=e,e&&(se.locale(e.language),se.tz.setDefault(e.config.time_zone),this.humanizer.setOptions({language:e.language.split("-")[0],delimiter:" ",units:["h","m"],round:!0}))}shouldUpdate(e){if(e.has("_config"))return!0;const a=e.get("_hass");return!!a&&Object.values(this._config.entities).some(e=>a.states[e]!==this.hass.states[e])}update(e){var a;try{e.has("_config")&&(null===(a=this.hass)||void 0===a?void 0:a.states)&&(this._error=void 0,[this._provider,je]=class{static create(e,a){this.validatePresence(a.entities,e);const n=new xe,[t,i]=(e=>{if(!ve.accepts(e))return[new Xe,()=>{}];const a=new ve(e);return[a,a.mutator()]})(e[a.entities.time]);n.add(a.entities.time,i);const[r,s]=(e=>{const a=new(Ee(parseFloat,"sun.sun"===e.entity_id?"elevation":void 0))(e);return[a,a.mutator()]})(e[a.entities.elevation]);n.add(a.entities.elevation,s);const[o,c]=(e=>{if(!e||"sun.sun"===e.entity_id&&!Object.prototype.hasOwnProperty.call(e.attributes,"max_elevation"))return[new class{read(){return 90}},()=>{}];const a=new(Ee(parseFloat,"sun.sun"===e.entity_id?"max_elevation":void 0))(e);return[a,a.mutator()]})(a.entities.max_elevation?e[a.entities.max_elevation]:void 0);let d,M,u,_,l,m,p,L;n.add(a.entities.max_elevation,c),a.entities.noon&&([d,M]=(e=>{const a=new(Ee(He(e)))(e);return[a,a.mutator()]})(e[a.entities.noon]),n.add(a.entities.noon,M)),a.entities.sunrise&&([u,_]=(e=>{let a,n=Be;"sun.sun"===e.entity_id?(a="sunrise",Object.prototype.hasOwnProperty.call(e.attributes,"sunrise")||(a="next_rising")):n=He(e);const t=new(Ee(n,a))(e);return[t,t.mutator()]})(e[a.entities.sunrise]),n.add(a.entities.sunrise,_)),a.entities.sunset&&([l,m]=(e=>{let a,n=Be;"sun.sun"===e.entity_id?(a="sunset",Object.prototype.hasOwnProperty.call(e.attributes,"sunset")||(a="next_setting")):n=He(e);const t=new(Ee(n,a))(e);return[t,t.mutator()]})(e[a.entities.sunset]),n.add(a.entities.sunset,m)),a.entities.moon_phase&&([p,L]=Ce(e[a.entities.moon_phase]),n.add(a.entities.moon_phase,L));return[new Pe(t,r,o,d,u,l,p),n.create()]}static getEntity(e,a){return a?e[a]:void 0}static validatePresence(e,a){Object.entries(e).forEach(([e,n])=>{if(!Object.hasOwnProperty.call(a,n))throw new Error(`Entity ${n} set for config entry "${e}" not found. Check your configuration.`)})}}.create(this.hass.states,this._config));const n=e.get("_hass");n&&this._provider&&Object.values(this._config.entities).forEach(e=>{n.states[e]!==this.hass.states[e]&&je(this.hass.states[e])})}catch(e){this._error=e,console.error(e)}return super.update(e)}getCardSize(){return 6}render(){var e;if(this._error)return B`
+    `}};e([K()],a.prototype,"_hass",void 0),e([K()],a.prototype,"_config",void 0),a=e([G("sun-card-editor")],a)})();function Se(e){return function(a,n,t){const i=t.value;if(i&&"function"==typeof i)return t.value=function(...a){const n=i.apply(this,a);return e.call(this,n)},t}}class we{constructor(e){this._entity=e}state(){return this._entity.state}attr(e){return this._entity.attributes[e]}mutator(){return e=>{this._entity=e}}}class ve extends we{read(){return se.utc(this.state(),"h:mm A").local()}static accepts(e){return e&&se.utc(e.state,"h:mm A").isValid()}}class Xe{read(){return se(new Date)}}const Be=e=>se.utc(e).local(),He=e=>se(e.state).isValid()?e=>se(e):e=>se(e,"h:m a");function Ee(a,n){return(()=>{class t extends we{read(){return n?this.attr(n):this.state()}}return e([Se(a)],t.prototype,"read",null),t})()}const Ce=e=>{const a=new class extends we{read(){return this.attr("icon")}}(e);return[a,a.mutator()]};class Pe{constructor(e,a,n,t,i,r,s){this._currentTime=e,this._elevation=a,this._max_elevation=n,this._solar_noon=t,this._sunrise=i,this._sunset=r,this._moon_phase=s}get currentTime(){return this._currentTime.read()}get elevation(){return this._elevation.read()}get maxElevation(){return this._max_elevation.read()}get solarNoon(){var e;return null===(e=this._solar_noon)||void 0===e?void 0:e.read()}get sunrise(){if(!this._sunrise)return;let e=this._sunrise.read();return this.currentTime.date()!==e.date()&&(e=se.invalid()),e}get sunset(){if(!this._sunset)return;let e=this._sunset.read();return this.currentTime.date()!==e.date()&&(e=se.invalid()),e}get daylight(){if(this.sunrise&&this.sunset)return se.duration(this.sunset.diff(this.sunrise))}get toSunset(){if(this.sunset)return se.duration(this.sunset.diff(this.currentTime))}get moonPhase(){var e;return null===(e=this._moon_phase)||void 0===e?void 0:e.read()}}class xe{constructor(){this._directory={}}add(e,a){return e?(this._directory[e]=this._directory[e]||[],this._directory[e].push(a),this):this}create(){return e=>{this._directory[e.entity_id].forEach(a=>a(e))}}}let je;console.info("%c SUN-CARD %c 5.0.0 ","color: white; background: coral; font-weight: 700;","color: coral; background: white; font-weight: 700;");let Re=(()=>{let a=class extends ne{constructor(){super(),this.svgViewBoxW=1440,this.svgViewBoxH=432,this.yScale=this.svgViewBoxH/180,this.humanizer=new ce(new oe),this.themeOverrides={};const{style:e}=document.documentElement;for(let a=0;a<e.length;a+=1)e[a].startsWith("--sc-")&&(this.themeOverrides[e[a]]=e.getPropertyValue(e[a]))}static async getConfigElement(){return document.createElement("sun-card-editor")}static getStubConfig(){return{}}setConfig(e){const a=Object.assign({time:"sensor.time_utc",elevation:"sun.sun"},e.entities);if(!(null==e?void 0:e.type)||""===a.time||""===a.elevation)throw new Error('Invalid configuration: missing entities for "time" or "elevation"!');this._config=Object.assign(Object.assign({},e),{entities:a})}get hass(){return this._hass}set hass(e){this._hass=e,e&&(se.locale(e.language),se.tz.setDefault(e.config.time_zone),this.humanizer.setOptions({language:e.language.split("-")[0],delimiter:" ",units:["h","m"],round:!0}))}shouldUpdate(e){if(e.has("_config"))return!0;const a=e.get("_hass");return!!a&&Object.values(this._config.entities).some(e=>a.states[e]!==this.hass.states[e])}update(e){var a;try{e.has("_config")&&(null===(a=this.hass)||void 0===a?void 0:a.states)&&(this._error=void 0,[this._provider,je]=class{static create(e,a){this.validatePresence(a.entities,e);const n=new xe,[t,i]=(e=>{if(!ve.accepts(e))return[new Xe,()=>{}];const a=new ve(e);return[a,a.mutator()]})(e[a.entities.time]);n.add(a.entities.time,i);const[r,s]=(e=>{const a=new(Ee(parseFloat,"sun.sun"===e.entity_id?"elevation":void 0))(e);return[a,a.mutator()]})(e[a.entities.elevation]);n.add(a.entities.elevation,s);const[o,c]=(e=>{if(!e||"sun.sun"===e.entity_id&&!Object.prototype.hasOwnProperty.call(e.attributes,"max_elevation"))return[new class{read(){return 90}},()=>{}];const a=new(Ee(parseFloat,"sun.sun"===e.entity_id?"max_elevation":void 0))(e);return[a,a.mutator()]})(a.entities.max_elevation?e[a.entities.max_elevation]:void 0);let d,M,u,_,l,m,p,L;n.add(a.entities.max_elevation,c),a.entities.noon&&([d,M]=(e=>{const a=new(Ee(He(e)))(e);return[a,a.mutator()]})(e[a.entities.noon]),n.add(a.entities.noon,M)),a.entities.sunrise&&([u,_]=(e=>{let a,n=Be;"sun.sun"===e.entity_id?(a="sunrise",Object.prototype.hasOwnProperty.call(e.attributes,"sunrise")||(a="next_rising")):n=He(e);const t=new(Ee(n,a))(e);return[t,t.mutator()]})(e[a.entities.sunrise]),n.add(a.entities.sunrise,_)),a.entities.sunset&&([l,m]=(e=>{let a,n=Be;"sun.sun"===e.entity_id?(a="sunset",Object.prototype.hasOwnProperty.call(e.attributes,"sunset")||(a="next_setting")):n=He(e);const t=new(Ee(n,a))(e);return[t,t.mutator()]})(e[a.entities.sunset]),n.add(a.entities.sunset,m)),a.entities.moon_phase&&([p,L]=Ce(e[a.entities.moon_phase]),n.add(a.entities.moon_phase,L));return[new Pe(t,r,o,d,u,l,p),n.create()]}static getEntity(e,a){return a?e[a]:void 0}static validatePresence(e,a){Object.entries(e).forEach(([e,n])=>{if(!Object.hasOwnProperty.call(a,n))throw new Error(`Entity ${n} set for config entry "${e}" not found. Check your configuration.`)})}}.create(this.hass.states,this._config));const n=e.get("_hass");n&&this._provider&&Object.values(this._config.entities).forEach(e=>{n.states[e]!==this.hass.states[e]&&je(this.hass.states[e])})}catch(e){this._error=e,console.error(e)}return super.update(e)}getCardSize(){return 6}render(){var e;if(this._error)return B`
         <hui-warning>
           ${this._error.message}
         </hui-warning>
-      `;if(!this._config||!this.hass||!this._provider)return B``;const a=this.renderSun(this._provider.current_time,this._provider.elevation),n=this._config.animation||void 0===this._config.animation?this.renderSunbeam(this._provider.current_time,this._provider.elevation):null,t=this._provider.sunrise?this.renderSunrise(this._provider.sunrise):null,i=this._provider.sunset?this.renderSunset(this._provider.sunset):null,r=this._provider.solar_noon?this.renderNoon(this._provider.solar_noon):null,s=this._provider.moon_phase?this.renderMoon(this._provider.moon_phase):null,o=this._provider.to_sunset?this.renderTimeToSunset(this._provider.to_sunset):null,c=this._provider.daylight?this.renderDaylight(this._provider.daylight):null;let d=this._config.name;return void 0===d&&(d=(null===(e=this.hass.states["sun.sun"])||void 0===e?void 0:e.attributes.friendly_name)||this.hass.localize("domain.sun")),B`
-      <ha-card .header=${d}>
+      `;if(!this._config||!this.hass||!this._provider)return B``;const a=this.renderSun(this._provider.currentTime,this._provider.elevation),n=this._config.animation||void 0===this._config.animation?this.renderSunbeam(this._provider.currentTime,this._provider.elevation):null,t=this._provider.sunrise?this.renderSunrise(this._provider.sunrise):null,i=this._provider.sunset?this.renderSunset(this._provider.sunset):null,r=this._provider.solarNoon?this.renderNoon(this._provider.solarNoon):null,s=this.renderHorizon(),o=this._provider.moonPhase?this.renderMoon(this._provider.moonPhase):null,c=this._provider.toSunset?this.renderTimeToSunset(this._provider.toSunset):null,d=this._provider.daylight?this.renderDaylight(this._provider.daylight):null;let M=this._config.name;return void 0===M&&(M=(null===(e=this.hass.states["sun.sun"])||void 0===e?void 0:e.attributes.friendly_name)||this.hass.localize("domain.sun")),B`
+      <ha-card
+        .header=${M}
+        style=${this.computeRootStyle(this._provider.elevation/this._provider.maxElevation)}
+      >
         <div class="content">
-          <svg class="top" preserveAspectRatio="xMinYMin slice" viewBox="0 -${this.svgViewBoxH/2} ${this.svgViewBoxW} ${this.svgViewBoxH/2}" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            ${t}
-            ${i}
-            ${n}
-            ${a}
-          </svg>
-          <svg class="bottom" preserveAspectRatio="xMinYMax slice" viewBox="0 0 ${this.svgViewBoxW} ${this.svgViewBoxH/2}" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <line x1="0" y1="0" x2="${this.svgViewBoxW}" y2="0" class="horizon" />
-            ${r}
-            ${a}
-          </svg>
+          <div class="bg-primary">
+            <div class="bg-secondary">
+              <svg
+                class="top"
+                preserveAspectRatio="xMinYMin slice"
+                viewBox="0 -${this.svgViewBoxH/2} ${this.svgViewBoxW} ${this.svgViewBoxH/2}"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+              >
+                ${t} ${i} ${n} ${a}
+              </svg>
+              <svg
+                class="bottom"
+                preserveAspectRatio="xMinYMax slice"
+                viewBox="0 0 ${this.svgViewBoxW} ${this.svgViewBoxH/2}"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+              >
+                ${s} ${r} ${a}
+              </svg>
+            </div>
+          </div>
           <div class="moon-icon">
-            ${s}
+            ${o}
           </div>
         </div>
         <div class="info">
-          ${o}
-          ${c}
+          ${c} ${d}
         </div>
       </ha-card>
+    `}renderHorizon(){return H`
+      <line class="horizon" x1="0" y1="0" x2="${this.svgViewBoxW}" y2="0" />
     `}renderSun(e,a){const n=this.metric(e,a);return H`
       <line class="sun" x1="${n.x}" x2="${n.x}" y1="${n.y}" y2="${n.y}" />
     `}renderSunbeam(e,a){const n=this.metric(e,a);return H`
@@ -678,23 +699,32 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
         <ha-icon slot="item-icon" icon="mdi:weather-sunny"></ha-icon>
         <span class="item-text">: ${this.humanizer.humanize(e.asMilliseconds())}</span>
       </div>
-    `:B``}renderMoon(e){return e?B`
-      <ha-icon icon=${e}></ha-icon>
-    `:B``}metric(e,a){return{x:60*e.hour()+e.minute(),y:-a*this.yScale}}static get styles(){return ee`
+    `:B``}renderMoon(e){return e?B`<ha-icon icon=${e}></ha-icon>`:B``}computeRootStyle(e){return`--sc-elevation: ${e};`.concat(...Object.entries(this.themeOverrides).map(e=>e.join(": ")+";"))}metric(e,a){return{x:60*e.hour()+e.minute(),y:-a*this.yScale}}static get styles(){return ee`
       .warning {
         display: block;
-        color: black;
+        color: var(--primary-text-color);
         background-color: #fce588;
         padding: 8px;
       }
       .content {
-        background: var(--sc-background, linear-gradient(hsla(205, 86%, 100%, 0%)   0%,
-                                                         hsla(200, 91%,  90%)      46%,
-                                                         hsla( 74, 75%,  50%)      54%,
-                                                         hsla( 76, 72%,  50%, 0%) 100%));
+        filter: var(--sc-background-filter, brightness(calc((2 + var(--sc-elevation)) / 3)));
         display: flex;
         flex-flow: column nowrap;
         position: relative;
+      }
+      .bg-primary {
+        background: var(
+          --sc-background,
+          linear-gradient(
+            hsla(205, 86%, 100%, 0%) 0%,
+            hsla(200, 91%, 90%) 46%,
+            hsla(74, 75%, 50%) 54%,
+            hsla(76, 72%, 50%, 0%) 100%
+          )
+        );
+      }
+      .bg-secondary {
+        background: var(--sc-background-auxilary, transparent);
       }
       .moon-icon {
         position: absolute;
@@ -717,7 +747,7 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
         font-size: 22px;
       }
       svg .event-line {
-        stroke: var(--sc-event-line-color, #212121);
+        stroke: var(--sc-event-line-color, var(--primary-color));
       }
       svg .sun {
         stroke: var(--sc-sun-color, #ffe160);
@@ -725,8 +755,14 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
         stroke-linecap: round;
       }
       @keyframes beam {
-        from { opacity: 1; stroke-width: var(--sc-sun-size, 60px); }
-        to   { opacity: 0; stroke-width: calc(2 * var(--sc-sun-size, 60px)); }
+        from {
+          opacity: 1;
+          stroke-width: var(--sc-sun-size, 60px);
+        }
+        to {
+          opacity: 0;
+          stroke-width: calc(2 * var(--sc-sun-size, 60px));
+        }
       }
       svg .sunbeam {
         stroke: var(--sc-sunbeam-color, #fbec5d);
@@ -751,4 +787,4 @@ var a,n;a=te,n=function(e){void 0===e.version&&e.default&&(e=e.default);var a,n=
       .info span {
         vertical-align: middle;
       }
-    `}};e([K()],a.prototype,"_hass",void 0),e([K()],a.prototype,"_config",void 0),a=e([G("sun-card")],a)})();
+    `}};return e([K()],a.prototype,"_hass",void 0),e([K()],a.prototype,"_config",void 0),a=e([G("sun-card")],a),a})();export default Re;

@@ -95,7 +95,7 @@ class CryptoinfoSensor(Entity):
         self._icon = "mdi:bitcoin"
         self._state = None
         self._last_update = None
-        self._unit_of_measurement = ""
+        self._unit_of_measurement = "\u200b"
 
     @property
     def name(self):
@@ -125,7 +125,7 @@ class CryptoinfoSensor(Entity):
             if price_data:
                 # Set the values of the sensor
                 self._last_update = datetime.today().strftime("%d-%m-%Y %H:%M")
-                self._state = price_data
+                self._state = float(price_data)
             else:
                 raise ValueError()
         except ValueError:
