@@ -1,2 +1,2 @@
-var webhook_trigger_update_url = 'https://casa.andrea.iannucci.net/api/webhook/b5e91b6dd34a4a5844b8cc04410b72f3daeefefdf4908889a783ec07014efb19';
-var webhook_check_update_url = 'https://casa.andrea.iannucci.net/api/webhook/aa15f4b39e83876e5eee8bf0638f814c89af82adf82f1ad259460757c1f131ce';
+var webhook_trigger_update_url = 'https://casa.andrea.iannucci.net/api/webhook/67df938382c274babdd3422c0f6e9bb1e5f15add947579431ba993d5b979dd1b';
+var webhook_check_update_url = 'https://casa.andrea.iannucci.net/api/webhook/7e0ca3d0bb3fcf31784d4495cabbf4c3fd7068b0026fa4e0f53bd341fc80535a';
