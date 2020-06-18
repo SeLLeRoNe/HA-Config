@@ -17,8 +17,8 @@ batteries_tablets:
       - entity: sensor.andrea_shield_battery
         name: "Andrea - NVIDIA Shield K1"
         charging_state:
-          entity_id: input_boolean.andrea_shield_charging
-          state: "on"
+          entity_id: sensor.andrea_shield_charging
+          state: "charging"
     style: |
       .entity-row.non-numeric-state .icon {
         color: #808080;

@@ -24,13 +24,13 @@ batteries_phones:
       - entity: sensor.sonia_mi9tpro_battery
         name: "Sonia - Mi 9T Pro"
         charging_state:
-          entity_id: input_boolean.sonia_mi9tpro_charging
-          state: "on"
+          entity_id: sensor.sonia_mi9tpro_charging
+          state: "charging"
       - entity: sensor.test_honor8_battery
         name: "Test - Honor 8"
         charging_state:
-          entity_id: binary_sensor.test_honor8_charging
-          state: "on"
+          entity_id: sensor.test_honor8_charging
+          state: "charging"
       - entity: sensor.test_xt1032_battery
         name: "Test - Motorola XT1032"
         charging_state:
