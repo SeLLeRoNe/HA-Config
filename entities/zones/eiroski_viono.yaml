@@ -1,0 +1,7 @@
+---
+name: Eiroski Viono
+latitude: !secret zone_eiroski_viono_latitude
+longitude: !secret zone_eiroski_viono_longitude
+radius: 35
+passive: false
+icon: mdi:cart
