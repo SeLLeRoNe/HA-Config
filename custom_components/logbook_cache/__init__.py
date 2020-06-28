@@ -110,6 +110,17 @@ class MonkeyClass:
         _LOGGER.debug(
             f"wrap_get_events(start_day={start_day}, end_day={end_day}, entity_id={entity_id})"
         )
+
+        new_start_day = start_day.replace(
+            minute=start_day.minute - start_day.minute % 15, second=0, microsecond=0
+        )
+
+        if new_start_day != start_day:
+            start_day = new_start_day
+            _LOGGER.debug(
+                f" => (start_day={start_day}, end_day={end_day}, entity_id={entity_id})"
+            )
+
         only_cache = self.config_entry.options.get(ONLY_CACHE, DEFAULT_ONLY_CACHE)
 
         if entity_id is not None:
