@@ -1,9 +1,9 @@
 ---
-alias: Laundry Room - Laundry Room WXKG03LM Switch Hold
+alias: Studio - WXKG03LM Switch Hold
 initial_state: on
 trigger:
   - platform: mqtt
-    topic: 'zigbee2mqtt/laundry_room_WXKG03LM'
+    topic: 'zigbee2mqtt/studio_WXKG03LM'
 condition:
   condition: and
   conditions:
@@ -16,9 +16,7 @@ condition:
 #      entity_id: sensor.illuminance
 #      below: 2500
 action:
-  - service: light.turn_on
+  - service: light.turn_off
     data:
-      entity_id: light.patio_light
-      color_name: green
-      brightness: 100
-      transition: 5
+      entity_id: group.all_lights
+      transition: 10

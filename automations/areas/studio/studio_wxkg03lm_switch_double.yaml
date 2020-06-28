@@ -1,9 +1,9 @@
 ---
-alias: Laundry Room - Laundry Room WXKG03LM Switch Double
+alias: Studio - WXKG03LM Switch Double
 initial_state: on
 trigger:
   - platform: mqtt
-    topic: 'zigbee2mqtt/laundry_room_WXKG03LM'
+    topic: 'zigbee2mqtt/studio_WXKG03LM'
 condition:
   condition: and
   conditions:

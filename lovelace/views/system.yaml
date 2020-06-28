@@ -905,11 +905,11 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.laundry_room_wxkg03lm_link_quality
+                - entity_id: sensor.studio_wxkg03lm_link_quality
                   options:
-                    name: Laundry Room - WXKG03LM - Link Quality
+                    name: Studio - WXKG03LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.laundry_room_wxkg03lm_link_quality.state != "unknown", sensor.laundry_room_wxkg03lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_wxkg03lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_wxkg03lm_link_quality.state != "unknown", sensor.laundry_room_wxkg03lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_wxkg03lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_battery.state , "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

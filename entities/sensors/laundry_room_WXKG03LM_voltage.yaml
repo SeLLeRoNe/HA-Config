@@ -4,9 +4,9 @@
 # https://www.home-assistant.io/components/mqtt/
 #
 platform: mqtt
-name: "Laundry Room WXKG03LM Voltage"
-state_topic: "zigbee2mqtt/laundry_room_WXKG03LM"
-availability_topic: "zigbee2mqtt/laundry_room_WXKG03LM/availability"
+name: "Studio WXKG03LM Voltage"
+state_topic: "zigbee2mqtt/studio_WXKG03LM"
+availability_topic: "zigbee2mqtt/studio_WXKG03LM/availability"
 icon: mdi:flash
 unit_of_measurement: "mV"
 value_template: "{{ value_json.voltage }}"
