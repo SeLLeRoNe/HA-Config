@@ -49,6 +49,10 @@ action:
     entity_id: alarm_control_panel.home_alarm
     data_template:
       code: !secret home_alarm_pin
+#  - service: alarm_control_panel.alarm_arm_home
+#    entity_id: alarm_control_panel.home_alarm_mqtt
+#    data_template:
+#      code: !secret home_alarm_pin
 #  - service: tts.google_translate_say
 #    data:
 #      entity_id: media_player.studio_google_mini

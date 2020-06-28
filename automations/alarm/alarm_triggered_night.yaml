@@ -35,6 +35,8 @@ condition:
 action:
   - service: alarm_control_panel.alarm_trigger
     entity_id: alarm_control_panel.home_alarm
+#  - service: alarm_control_panel.alarm_trigger
+#    entity_id: alarm_control_panel.home_alarm_mqtt
   - service: notify.alarm
     data_template:
       title: "Home Alarm"

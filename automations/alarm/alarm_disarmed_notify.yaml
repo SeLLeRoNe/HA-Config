@@ -19,3 +19,7 @@ action:
     data_template:
       title: "Alarm Notification"
       message: "Alarm Deactivated while no one is at home!"
+#  - service: alarm_control_panel.alarm_disarm
+#    entity_id: alarm_control_panel.home_alarm_mqtt
+#    data_template:
+#      code: !secret home_alarm_pin
