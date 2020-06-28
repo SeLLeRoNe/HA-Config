@@ -1,0 +1,7 @@
+---
+name: Studio Alarm
+entities:
+  light.studio_wall_light:
+    state: on
+    rgb_color: [255,0,0]
+    brightness: 150
