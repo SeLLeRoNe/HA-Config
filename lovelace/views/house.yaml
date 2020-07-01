@@ -148,6 +148,8 @@ cards:
             template: house_temperature
           - type: custom:decluttering-card
             template: house_humidity 
+          - type: custom:decluttering-card
+            template: house_pressure
       - break
       - type: custom:decluttering-card
         template: house_energy_small

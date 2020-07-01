@@ -35,6 +35,7 @@ views:
   - !include lovelace/views/batteries.yaml
   - !include lovelace/views/temperatures.yaml
   - !include lovelace/views/humidities.yaml
+  - !include lovelace/views/pressures.yaml
   - !include lovelace/views/plugs.yaml
   - !include lovelace/views/thermostat.yaml
   - !include lovelace/views/debug.yaml

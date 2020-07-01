@@ -1,0 +1,13 @@
+---
+platform: min_max
+name: House Pressure
+type: "mean"
+round_digits: 2
+entity_ids:
+  - sensor.living_room_pressure
+  - sensor.kitchen_pressure
+  - sensor.studio_pressure
+  - sensor.bedroom_luca_pressure
+  - sensor.bathroom_pressure
+  - sensor.master_bedroom_pressure
+  - sensor.master_bathroom_pressure
