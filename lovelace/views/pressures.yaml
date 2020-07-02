@@ -95,8 +95,8 @@ cards:
         align_header: default
         align_icon: right
         align_state: center
-        lower_bound: 0
-        upper_bound: 100
+        lower_bound: 850
+        upper_bound: 1100
         state_map:
           - value: "off"
             label: "Day"

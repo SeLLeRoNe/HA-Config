@@ -20,6 +20,13 @@ house_pressure:
     align_header: default
     align_icon: right
     align_state: center
+    lower_bound: 850
+    upper_bound: 1100
+    state_map:
+      - value: "off"
+        label: "Day"
+      - value: "on"
+        label: "Night"
     show:
       name: true
       icon: true
@@ -33,11 +40,6 @@ house_pressure:
       labels_secondary: false
       name_adaptive_color: true
       icon_adaptive_color: true
-      state_map:
-        - value: "off"
-          label: "Day"
-        - value: "on"
-          label: "Night"
       color_thresholds: !include thresholds/pressure.yaml
     style: |
       ha-card {

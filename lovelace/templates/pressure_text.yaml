@@ -24,6 +24,13 @@ pressure_text:
       align_header: default
       align_icon: right
       align_state: center
+      lower_bound: 850
+      upper_bound: 1100
+      state_map:
+        - value: "off"
+          label: "Day"
+        - value: "on"
+          label: "Night"
       show:
         name: true
         icon: true
