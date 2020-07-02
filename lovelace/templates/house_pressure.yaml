@@ -3,7 +3,7 @@ house_pressure:
   card:
     type: custom:mini-graph-card
     name: Pressure
-    icon: fas:tint
+    icon: fas:tachometer-alt
     more_info: false
     height: 150
     line_width: 4
@@ -20,8 +20,6 @@ house_pressure:
     align_header: default
     align_icon: right
     align_state: center
-    lower_bound: 0
-    upper_bound: 100
     show:
       name: true
       icon: true

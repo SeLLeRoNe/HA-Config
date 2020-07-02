@@ -15,421 +15,70 @@ cards:
               - title: Temperatures
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.dark_sky_temperature
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.dark_sky_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Outside
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.dark_sky_temperature
-                  color: '#FF8000'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.patio_temperature
+              - name: Outside
+              - entity: sensor.dark_sky_temperature
+              - color: '#FF8000'
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.patio_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Patio
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.patio_temperature
-                  color: '#FF3333'
-                  show_indicator: true
+              - name: Patio
+              - entity: sensor.patio_temperature
+              - color: '#FF3333'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.living_room_temperature
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.living_room_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Living Room
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.living_room_temperature
-                  color: '#FF3333'
-                  show_indicator: true
+              - name: Living Room
+              - entity: sensor.living_room_temperature
+              - color: '#FF3333'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.kitchen_temperature
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.kitchen_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Kitchen
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.kitchen_temperature
-                  color: '#FF6666'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.bathroom_temperature
+              - name: Kitchen
+              - entity: sensor.kitchen_temperature
+              - color: '#FF6666'
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.bathroom_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Bathroom
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.bathroom_temperature
-                  color: '#FF33FF'
-                  show_indicator: true
+              - name: Bathroom
+              - entity: sensor.bathroom_temperature
+              - color: '#FF33FF'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.studio_temperature
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.studio_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Studio
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.studio_temperature
-                  color: '#7F00FF'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.bedroom_luca_temperature
+              - name: Studio
+              - entity: sensor.studio_temperature
+              - color: '#7F00FF'
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.bedroom_luca_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Bedroom Luca
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.bedroom_luca_temperature
-                  color: '#00FF00'
-                  show_indicator: true
+              - name: Bedroom Luca
+              - entity: sensor.bedroom_luca_temperature
+              - color: '#00FF00'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.master_bedroom_temperature
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.master_bedroom_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Master Bedroom
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.master_bedroom_temperature
-                  color: '#0080FF'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.master_bathroom_temperature
+              - name: Master Bedroom
+              - entity: sensor.master_bedroom_temperature
+              - color: '#0080FF'
+          - type: custom:decluttering-card
+            template: temperature_text
             variables:
-              - states['sensor.master_bathroom_temperature'].state
-            card:
-              type: custom:mini-graph-card
-              name: Master Bathroom
-              icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              lower_bound: -5
-              upper_bound: 40
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-#              style: |
-#                ha-icon {
-#                  color: [[ if(vars[0] >= 30, "rgb(255, 0, 0);", if(vars[0] >= 22, "rgb(255, 153, 0);", if(vars[0] >= 16, "rgb(255, 204, 102);", "rgb(153, 204, 255);"))) ]]
-#                }
-              entities:
-                - entity: sensor.master_bathroom_temperature
-                  color: '#33FF99'
-                  show_indicator: true
+              - name: Master Bathroom
+              - entity: sensor.master_bathroom_temperature
+              - color: '#33FF99'
       - type: custom:mini-graph-card
-        name: Temperature 48h
+        name: Temperature
         icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
         more_info: false
         group: false
@@ -480,6 +129,10 @@ cards:
             name: Master Bedroom
             color: '#0080FF'
             show_fill: false
+          - entity: sensor.master_bathroom_temperature
+            name: Master Bathroom
+            color: '#33FF99'
+            show_fill: false
           - entity: sensor.living_room_temperature
             name: Living Room
             color: '#FF3333'
@@ -492,16 +145,12 @@ cards:
             name: Bedroom Luca
             color: '#00FF00'
             show_fill: false
-          - entity: sensor.master_bathroom_temperature
-            name: Master Bathroom
-            color: '#33FF99'
-            show_fill: false
           - entity: sensor.bathroom_temperature
             name: Bathroom
             color: '#FF33FF'
             show_fill: false
           - entity: sensor.kitchen_temperature
-            name: Bathroom
+            name: Kitchen
             color: '#FF6666'
             show_fill: false
           - entity: binary_sensor.night_time

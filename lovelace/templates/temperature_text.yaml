@@ -1,0 +1,45 @@
+---
+temperature_text:
+  card:
+    type: custom:config-template-card
+    entities:
+      - [[entity]]
+      - binary_sensor.night_time
+    variables:
+      - states['[[entity]]'].state
+    card:
+      type: custom:mini-graph-card
+      name: '[[name]]'
+      icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+      more_info: false
+      height: 150
+      line_width: 4
+      hours_to_show: 168
+      points_per_hour: 0.25
+      group: false
+      hour24: true
+      animate: false
+      decimals: 1
+      font_size: 100
+      font_size_header: 14
+      align_header: default
+      align_icon: right
+      align_state: center
+      lower_bound: -5
+      upper_bound: 40
+      show:
+        name: true
+        icon: true
+        state: true
+        graph: false
+        fill: false
+        points: false
+        legend: false
+        extrema: false
+        labels: false
+        name_adaptive_color: true
+        icon_adaptive_color: true
+      entities:
+        - entity: '[[entity]]'
+          color: '[[color]]'
+          show_indicator: true

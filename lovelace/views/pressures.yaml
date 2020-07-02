@@ -14,365 +14,68 @@ cards:
               - title: Pressures
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.dark_sky_pressure
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.dark_sky_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Outside
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.dark_sky_pressure
-                  color: '#FF8000'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.patio_pressure
+              - name: Outside
+              - entity: sensor.dark_sky_pressure
+              - color: '#FF8000'
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.patio_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Patio
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.patio_pressure
-                  color: '#FF3333'
-                  show_indicator: true
+              - name: Patio
+              - entity: sensor.patio_pressure
+              - color: '#FF3333'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.living_room_pressure
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.living_room_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Living Room
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.living_room_pressure
-                  color: '#FF3333'
-                  show_indicator: true
+              - name: Living Room
+              - entity: sensor.living_room_pressure
+              - color: '#FF3333'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.kitchen_pressure
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.kitchen_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Kitchen
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.kitchen_pressure
-                  color: '#FF6666'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.bathroom_pressure
+              - name: Kitchen
+              - entity: sensor.kitchen_pressure
+              - color: '#FF6666'
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.bathroom_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Bathroom
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.bathroom_pressure
-                  color: '#FF33FF'
-                  show_indicator: true
+              - name: Bathroom
+              - entity: sensor.bathroom_pressure
+              - color: '#FF33FF'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.studio_pressure
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.studio_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Studio
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.studio_pressure
-                  color: '#7F00FF'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.bedroom_luca_pressure
+              - name: Studio
+              - entity: sensor.studio_pressure
+              - color: '#7F00FF'
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.bedroom_luca_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Bedroom Luca
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.bedroom_luca_pressure
-                  color: '#00FF00'
-                  show_indicator: true
+              - name: Bedroom Luca
+              - entity: sensor.bedroom_luca_pressure
+              - color: '#00FF00'
       - type: horizontal-stack
         cards:
-          - type: custom:config-template-card
-            entities:
-              - sensor.master_bedroom_pressure
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.master_bedroom_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Master Bedroom
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.master_bedroom_pressure
-                  color: '#0080FF'
-                  show_indicator: true
-          - type: custom:config-template-card
-            entities:
-              - sensor.master_bathroom_pressure
+              - name: Master Bedroom
+              - entity: sensor.master_bedroom_pressure
+              - color: '#0080FF'
+          - type: custom:decluttering-card
+            template: pressure_text
             variables:
-              - states['sensor.master_bathroom_pressure'].state
-            card:
-              type: custom:mini-graph-card
-              name: Master Bathroom
-              icon: fas:tachometer-alt
-              more_info: false
-              height: 150
-              line_width: 4
-              hours_to_show: 168
-              points_per_hour: 0.25
-              group: false
-              hour24: true
-              animate: false
-              decimals: 1
-              font_size: 100
-              font_size_header: 14
-              align_header: default
-              align_icon: right
-              align_state: center
-              show:
-                name: true
-                icon: true
-                state: true
-                graph: false
-                fill: false
-                points: false
-                legend: false
-                extrema: false
-                labels: false
-                name_adaptive_color: true
-                icon_adaptive_color: true
-              entities:
-                - entity: sensor.master_bathroom_pressure
-                  color: '#33FF99'
-                  show_indicator: true
+              - name: Master Bathroom
+              - entity: sensor.master_bathroom_pressure
+              - color: '#33FF99'
       - type: custom:mini-graph-card
         name: pressure 48h
         icon: fas:tachometer-alt
