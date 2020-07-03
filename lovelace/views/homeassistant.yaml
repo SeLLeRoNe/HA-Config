@@ -26,9 +26,9 @@ cards:
               - entity: sensor.home_assistant_available_beta_version
                 tap_action:
                   action: none
-              - entity: sensor.potential_breaking_changes
-                tap_action:
-                  action: none
+#              - entity: sensor.potential_breaking_changes
+#                tap_action:
+#                  action: none
               - type: custom:hui-element
                 row_type: divider
               - entity: sensor.hacs
