@@ -6,7 +6,7 @@ binary_sensor:
     payload_on: 'active'
     payload_off: 'inactive'
 
-sensor:
+switch:
   - platform: mqtt
     name: "ZigBee Device Join"
     state_topic: "zigbee2mqtt/bridge/config/permit_join"
@@ -18,6 +18,8 @@ sensor:
     icon: mdi:cellphone-wireless
     qos: 1
     retain: true
+
+sensor:
   - platform: mqtt
     name: ZigBee Networkmap
     state_topic: zigbee2mqtt/bridge/networkmap/raw

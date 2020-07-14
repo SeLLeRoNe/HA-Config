@@ -9,4 +9,4 @@ light:
     brightness: true
     xy: true
     schema: "json"
-    com mand_topic: "zigbee2mqtt/master_bathroom_mirror_light/set"
+    command_topic: "zigbee2mqtt/master_bathroom_mirror_light/set"
