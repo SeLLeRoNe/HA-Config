@@ -1,9 +1,0 @@
----
-platform: "mqtt"
-name: "Studio Wall Light"
-state_topic: "zigbee2mqtt/studio_wall_light"
-availability_topic: "zigbee2mqtt/studio_wall_light/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/studio_wall_light/set"

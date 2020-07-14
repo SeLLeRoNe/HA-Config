@@ -1,0 +1,50 @@
+---
+# MQTT Device: Master Bedroom Lamp
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+light:
+  - platform: "mqtt"
+    name: "Master Bedroom Lamp Top Light"
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+    brightness: true
+    xy: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/set"
+  - platform: "mqtt"
+    name: "Master Bedroom Lamp Bottom Light"
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+    brightness: true
+    color_temp: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/set"
+
+sensor:
+  - platform: mqtt
+    name: 'Master Bedroom Lamp Top Light Link Quality'
+    icon: mdi:lightbulb
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: 'Master Bedroom Lamp Bottom Light Link Quality'
+    icon: mdi:lightbulb
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+    value_template: "{{ value_json.linkquality }}"
+
+binary_sensor:
+  - platform: mqtt
+    name: 'Master Bedroom Lamp Top Light Firmware Update'
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+    value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
+    payload_on: true
+  - platform: mqtt
+    name: 'Master Bedroom Lamp Bottom Light Firmware Update'
+    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    availability_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+    value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
+    payload_on: true

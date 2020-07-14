@@ -1,9 +1,0 @@
----
-platform: "mqtt"
-name: "Laundry Room Light"
-state_topic: "zigbee2mqtt/laundry_room_light"
-availability_topic: "zigbee2mqtt/laundry_room_light/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/laundry_room_light/set"

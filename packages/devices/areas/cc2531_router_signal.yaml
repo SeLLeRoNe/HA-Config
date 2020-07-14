@@ -1,0 +1,12 @@
+---
+# MQTT Device: CC2531 Router
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+sensor:
+  - platform: mqtt
+    name: "CC2531 Router Link Quality"
+    icon: mdi:router-wireless
+    state_topic: "zigbee2mqtt/CC2531_Router"
+    availability_topic: "zigbee2mqtt/CC2531_Router/availability"
+    value_template: "{{ value_json.linkquality }}"

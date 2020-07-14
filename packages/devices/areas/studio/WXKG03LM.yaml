@@ -1,0 +1,32 @@
+---
+# MQTT Device: Studio WXKG03LM
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+sensor:
+  - platform: mqtt
+    name: "Studio WXKG03LM Switch"
+    state_topic: "zigbee2mqtt/studio_WXKG03LM"
+    availability_topic: "zigbee2mqtt/studio_WXKG03LM/availability"
+    icon: "mdi:toggle-switch"
+    value_template: "{{ value_json.click }}"
+  - platform: mqtt
+    name: "Studio WXKG03LM Battery"
+    state_topic: "zigbee2mqtt/studio_WXKG03LM"
+    availability_topic: "zigbee2mqtt/studio_WXKG03LM/availability"
+    unit_of_measurement: "%"
+    device_class: "battery"
+    value_template: "{{ value_json.battery | int }}"
+  - platform: mqtt
+    name: "Studio WXKG03LM Link Quality"
+    icon: mdi:light-switch
+    state_topic: "zigbee2mqtt/studio_WXKG03LM"
+    availability_topic: "zigbee2mqtt/studio_WXKG03LM/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: "Studio WXKG03LM Voltage"
+    state_topic: "zigbee2mqtt/studio_WXKG03LM"
+    availability_topic: "zigbee2mqtt/studio_WXKG03LM/availability"
+    icon: mdi:flash
+    unit_of_measurement: "mV"
+    value_template: "{{ value_json.voltage }}"

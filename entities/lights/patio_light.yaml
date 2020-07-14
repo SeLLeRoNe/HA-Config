@@ -1,9 +1,0 @@
----
-platform: "mqtt"
-name: "Patio Light"
-state_topic: "zigbee2mqtt/patio_light"
-availability_topic: "zigbee2mqtt/patio_light/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/patio_light/set"

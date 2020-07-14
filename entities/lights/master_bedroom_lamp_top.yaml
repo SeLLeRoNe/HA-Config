@@ -1,9 +1,0 @@
----
-platform: "mqtt"
-name: "Master Bedroom Lamp Top Light"
-state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
-availability_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/set"

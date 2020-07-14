@@ -1,0 +1,36 @@
+---
+# MQTT Device: Patio MCCGQ01LM
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+binary_sensor:
+  - platform: mqtt
+    name: "Patio MCCGQ01LM Door"
+    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+    payload_on: false
+    payload_off: true
+    value_template: "{{ value_json.contact }}"
+    device_class: door
+
+sensor:
+  - platform: mqtt
+    name: "Patio MCCGQ01LM Battery"
+    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+    unit_of_measurement: "%"
+    device_class: "battery"
+    value_template: "{{ value_json.battery | int }}"
+  - platform: mqtt
+    name: 'Patio MCCGQ01LM Link Quality'
+    icon: mdi:door-closed
+    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: "Patio MCCGQ01LM Voltage"
+    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+    icon: mdi:flash
+    unit_of_measurement: "mV"
+    value_template: "{{ value_json.voltage }}"

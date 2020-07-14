@@ -1,9 +1,0 @@
----
-platform: "mqtt"
-name: "Master Bedroom Lamp Bottom Light"
-state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
-availability_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
-brightness: true
-color_temp: true
-schema: "json"
-command_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/set"

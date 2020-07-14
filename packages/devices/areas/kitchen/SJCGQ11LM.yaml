@@ -1,0 +1,36 @@
+---
+# MQTT Device: Kitchen SJCGQ11LM
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+sensor:
+  - platform: mqtt
+    name: "Kitchen SJCGQ11LM Battery"
+    state_topic: "zigbee2mqtt/kitchen_SJCGQ11LM"
+    availability_topic: "zigbee2mqtt/kitchen_SJCGQ11LM/availability"
+    unit_of_measurement: "%"
+    device_class: "battery"
+    value_template: "{{ value_json.battery | int }}"
+  - platform: mqtt
+    name: 'Kitchen SJCGQ11LM Link Quality'
+    icon: mdi:water
+    state_topic: "zigbee2mqtt/kitchen_SJCGQ11LM"
+    availability_topic: "zigbee2mqtt/kitchen_SJCGQ11LM/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: "Kitchen SJCGQ11LM Voltage"
+    state_topic: "zigbee2mqtt/kitchen_SJCGQ11LM"
+    availability_topic: "zigbee2mqtt/kitchen_SJCGQ11LM/availability"
+    icon: mdi:flash
+    unit_of_measurement: "mV"
+    value_template: "{{ value_json.voltage }}"
+
+binary_sensor:
+  - platform: "mqtt"
+    name: "Kitchen SJCGQ11LM Leak"
+    state_topic: "zigbee2mqtt/kitchen_SJCGQ11LM"
+    availability_topic: "zigbee2mqtt/kitchen_SJCGQ11LM/availability"
+    payload_on: true
+    payload_off: false
+    value_template: "{{ value_json.water_leak }}"
+    device_class: "moisture"

@@ -1,8 +1,0 @@
----
-platform: "mqtt"
-name: "Patio GZCGQ01LM Illuminance"
-state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
-availability_topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
-unit_of_measurement: "lx"
-device_class: "illuminance"
-value_template: "{{ value_json.illuminance }}"

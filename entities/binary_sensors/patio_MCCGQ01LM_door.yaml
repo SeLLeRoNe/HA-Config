@@ -1,9 +1,0 @@
----
-platform: mqtt
-name: "Patio MCCGQ01LM Door"
-state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
-availability_topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
-payload_on: false
-payload_off: true
-value_template: "{{ value_json.contact }}"
-device_class: door
