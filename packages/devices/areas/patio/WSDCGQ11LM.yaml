@@ -8,7 +8,9 @@ sensor:
     name: 'Patio Temperature'
     icon: mdi:thermometer
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
     unit_of_measurement: "°C"
     device_class: "temperature"
     value_template: "{{ value_json.temperature }}"
@@ -16,21 +18,27 @@ sensor:
     name: 'Patio Humidity'
     icon: mdi:water-percent
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
     unit_of_measurement: "%"
     device_class: "humidity"
     value_template: "{{ value_json.humidity }}"
   - platform: mqtt
     name: 'Patio Pressure'
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
     unit_of_measurement: "mbar"
     device_class: "pressure"
     value_template: "{{ value_json.pressure }}"
   - platform: mqtt
     name: "Patio WSDCGQ11LM Battery"
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
@@ -38,11 +46,15 @@ sensor:
     name: 'Patio WSDCGQ11LM Link Quality'
     icon: mdi:home-thermometer
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
   - platform: mqtt
     name: "Patio WSDCGQ11LM Voltage"
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"
-    availability_topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
     icon: mdi:flash
     unit_of_measurement: "mV"
     value_template: "{{ value_json.voltage }}"

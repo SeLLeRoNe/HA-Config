@@ -7,7 +7,9 @@ sensor:
   - platform: mqtt
     name: "Laundry Room SJCGQ11LM Battery"
     state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
-    availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
@@ -15,12 +17,16 @@ sensor:
     name: 'Laundry Room SJCGQ11LM Link Quality'
     icon: mdi:water
     state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
-    availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
     value_template: "{{ value_json.linkquality }}"
   - platform: mqtt
     name: "Laundry Room SJCGQ11LM Voltage"
     state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
-    availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
     icon: mdi:flash
     unit_of_measurement: "mV"
     value_template: "{{ value_json.voltage }}"
@@ -29,7 +35,9 @@ binary_sensor:
   - platform: "mqtt"
     name: "Laundry Room SJCGQ11LM Leak"
     state_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM"
-    availability_topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_SJCGQ11LM/availability"
     payload_on: true
     payload_off: false
     value_template: "{{ value_json.water_leak }}"

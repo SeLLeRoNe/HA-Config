@@ -6,25 +6,31 @@ a---
 light:
   - platform: "mqtt"
     name: "Laundry Room Light"
-    state_topic: "zigbee2mqtt/Laundry Room_light"
-    availability_topic: "zigbee2mqtt/Laundry Room_light/availability"
+    state_topic: "zigbee2mqtt/laundry_room_light"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_light/availability"
     brightness: true
     xy: true
     schema: "json"
-    command_topic: "zigbee2mqtt/Laundry Room_light/set"
+    command_topic: "zigbee2mqtt/laundry_room_light/set"
 
 sensor:
   - platform: mqtt
     name: 'Laundry Room Light Link Quality'
     icon: mdi:lightbulb
-    state_topic: "zigbee2mqtt/Laundry Room_light"
-    availability_topic: "zigbee2mqtt/Laundry Room_light/availability"
+    state_topic: "zigbee2mqtt/laundry_room_light"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_light/availability"
     value_template: "{{ value_json.linkquality }}"
 
 binary_sensor:
   - platform: mqtt
     name: 'Laundry Room Light Firmware Update'
-    state_topic: "zigbee2mqtt/Laundry Room_light"
-    availability_topic: "zigbee2mqtt/Laundry Room_light/availability"
+    state_topic: "zigbee2mqtt/laundry_room_light"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/laundry_room_light/availability"
     value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
     payload_on: true

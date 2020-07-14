@@ -7,7 +7,9 @@ light:
   - platform: "mqtt"
     name: "Studio Wall Light"
     state_topic: "zigbee2mqtt/studio_wall_light"
-    availability_topic: "zigbee2mqtt/studio_wall_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/studio_wall_light/availability"
     brightness: true
     xy: true
     schema: "json"
@@ -18,13 +20,17 @@ sensor:
     name: 'Studio Wall Light Link Quality'
     icon: mdi:lightbulb
     state_topic: "zigbee2mqtt/studio_wall_light"
-    availability_topic: "zigbee2mqtt/studio_wall_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/studio_wall_light/availability"
     value_template: "{{ value_json.linkquality }}"
 
 binary_sensor:
   - platform: mqtt
     name: 'Studio Wall Light Firmware Update'
     state_topic: "zigbee2mqtt/studio_wall_light"
-    availability_topic: "zigbee2mqtt/studio_wall_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/studio_wall_light/availability"
     value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
     payload_on: true

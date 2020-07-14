@@ -1,8 +1,0 @@
----
-sensor:
-  - platform: mqtt
-    name: ZigBee Networkmap
-    state_topic: zigbee2mqtt/bridge/networkmap/raw
-    value_template: >-
-      {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
-    json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw

@@ -7,7 +7,9 @@ sensor:
   - platform: "mqtt"
     name: "Patio GZCGQ01LM Illuminance"
     state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
-    availability_topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
     unit_of_measurement: "lx"
     device_class: "illuminance"
     value_template: "{{ value_json.illuminance }}"
@@ -24,5 +26,7 @@ sensor:
     name: 'Patio GZCGQ01LM Link Quality'
     icon: mdi:white-balance-sunny
     state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
-    availability_topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
     value_template: "{{ value_json.linkquality }}"

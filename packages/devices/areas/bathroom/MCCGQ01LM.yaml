@@ -6,8 +6,10 @@
 binary_sensor:
   - platform: mqtt
     name: "Bathroom MCCGQ01LM Window"
-    state_topic: "zigbee2mqtt/bathroomMCCGQ01LM"
-    availability_topic: "zigbee2mqtt/bathroomMCCGQ01LM/availability"
+    state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bathroom_MCCGQ01LM/availability"
     payload_on: false
     payload_off: true
     value_template: "{{ value_json.contact }}"
@@ -16,21 +18,27 @@ binary_sensor:
 sensor:
   - platform: mqtt
     name: "Bathroom MCCGQ01LM Battery"
-    state_topic: "zigbee2mqtt/bathroomMCCGQ01LM"
-    availability_topic: "zigbee2mqtt/bathroomMCCGQ01LM/availability"
+    state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bathroom_MCCGQ01LM/availability"
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
   - platform: mqtt
     name: 'Bathroom MCCGQ01LM Link Quality'
     icon: mdi:window-closed
-    state_topic: "zigbee2mqtt/bathroomMCCGQ01LM"
-    availability_topic: "zigbee2mqtt/bathroomMCCGQ01LM/availability"
+    state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bathroom_MCCGQ01LM/availability"
     value_template: "{{ value_json.linkquality }}"
   - platform: mqtt
     name: "Bathroom MCCGQ01LM Voltage"
-    state_topic: "zigbee2mqtt/bathroomMCCGQ01LM"
-    availability_topic: "zigbee2mqtt/bathroomMCCGQ01LM/availability"
+    state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bathroom_MCCGQ01LM/availability"
     icon: mdi:flash
     unit_of_measurement: "mV"
     value_template: "{{ value_json.voltage }}"

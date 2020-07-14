@@ -7,7 +7,9 @@ light:
   - platform: "mqtt"
     name: "Patio Light"
     state_topic: "zigbee2mqtt/patio_light"
-    availability_topic: "zigbee2mqtt/patio_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_light/availability"
     brightness: true
     xy: true
     schema: "json"
@@ -18,13 +20,17 @@ sensor:
     name: 'Patio Light Link Quality'
     icon: mdi:lightbulb
     state_topic: "zigbee2mqtt/patio_light"
-    availability_topic: "zigbee2mqtt/patio_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_light/availability"
     value_template: "{{ value_json.linkquality }}"
 
 binary_sensor:
   - platform: mqtt
     name: 'Patio Light Firmware Update'
     state_topic: "zigbee2mqtt/patio_light"
-    availability_topic: "zigbee2mqtt/patio_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_light/availability"
     value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
     payload_on: true

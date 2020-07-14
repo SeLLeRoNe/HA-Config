@@ -1,9 +1,16 @@
 ---
-platform: "mqtt"
-name: "Master Bedroom Andrea Bedside Lamp"
-state_topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp"
-availability_topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp/availability"
-brightness: true
-xy: true
-schema: "json"
-command_topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp/set"
+# MQTT Device: Master Bedroom Andrea Bedside Lamp
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+light:
+  - platform: "mqtt"
+    name: "Master Bedroom Andrea Bedside Lamp"
+    state_topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp/availability"
+    brightness: true
+    xy: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/master_bedroom_andrea_bedside_lamp/set"

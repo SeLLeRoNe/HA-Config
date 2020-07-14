@@ -3,7 +3,9 @@ light:
   - platform: "mqtt"
     name: "Living Room Light"
     state_topic: "zigbee2mqtt/living_room_light"
-    availability_topic: "zigbee2mqtt/living_room_light/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_light/availability"
     brightness: true
     xy: true
     schema: "json"

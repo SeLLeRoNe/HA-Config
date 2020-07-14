@@ -8,12 +8,16 @@ sensor:
     name: "Washing Machine DJT11LM Action"
     icon: "mdi:gesture-double-tap"
     state_topic: "zigbee2mqtt/washing_machine_DJT11LM"
-    availability_topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
     value_template: "{{ value_json.action }}"
   - platform: mqtt
     name: "Washing Machine DJT11LM Battery"
     state_topic: "zigbee2mqtt/washing_machine_DJT11LM"
-    availability_topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
@@ -21,12 +25,16 @@ sensor:
     name: "Washing Machine DJT11LM Link Quality"
     icon: mdi:vibrate
     state_topic: "zigbee2mqtt/washing_machine_DJT11LM"
-    availability_topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
     value_template: "{{ value_json.linkquality }}"
   - platform: mqtt
     name: "Washing Machine DJT11LM Voltage"
     icon: mdi:flash
     state_topic: "zigbee2mqtt/washing_machine_DJT11LM"
-    availability_topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/washing_machine_DJT11LM/availability"
     unit_of_measurement: "mV"
     value_template: "{{ value_json.voltage }}"
