@@ -13,6 +13,7 @@ sensor:
       - topic: "zigbee2mqtt/kitchen_WSDCGQ01LM/availability"
     unit_of_measurement: "°C"
     device_class: "temperature"
+    value_template: "{{ value_json.temperature }}"
   - platform: mqtt
     name: 'Kitchen Humidity'
     icon: mdi:water-percent
