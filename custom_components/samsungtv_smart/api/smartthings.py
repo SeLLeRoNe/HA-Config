@@ -115,7 +115,7 @@ class SmartThingsTV:
         self._muted = False
         self._volume = 10
         self._source_list = None
-        self._source = None
+        self._source = ""
         self._channel = ""
         self._channel_name = ""
 
@@ -144,7 +144,7 @@ class SmartThingsTV:
         return self._device_name
 
     @property
-    def state(self) -> str:
+    def state(self):
         """Return currently state."""
         return self._state
 
@@ -170,12 +170,12 @@ class SmartThingsTV:
 
     @property
     def channel_name(self) -> str:
-        """Return currently channel_name."""
+        """Return currently channel name."""
         return self._channel_name
 
     @property
     def source_list(self):
-        """Return currently channel_name."""
+        """Return currently source list."""
         return self._source_list
 
     def set_application(self, app_id):
@@ -240,9 +240,15 @@ class SmartThingsTV:
                 api_command,
                 headers=_headers(self._api_key),
                 data=COMMAND_REFRESH,
-                raise_for_status=True,
+                raise_for_status=False,
             ) as resp:
+                if resp.status == 409:
+                    self._state = STStatus.STATE_OFF
+                    return
+                resp.raise_for_status()
                 await resp.json()
+
+        return
 
     async def async_device_health(self):
         """Check device availability"""
@@ -298,6 +304,8 @@ class SmartThingsTV:
             return
 
         await self._device_refresh()
+        if self._state == STStatus.STATE_OFF:
+            return
 
         async with self._session.get(
             api_device_status, headers=_headers(self._api_key), raise_for_status=True,

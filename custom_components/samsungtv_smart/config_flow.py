@@ -383,7 +383,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 vol.Optional(
                     CONF_USE_ST_CHANNEL_INFO,
                     default=self.config_entry.options.get(
-                        CONF_USE_ST_CHANNEL_INFO, False
+                        CONF_USE_ST_CHANNEL_INFO, True
                     ),
                 ): bool,
                 vol.Optional(

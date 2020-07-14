@@ -597,8 +597,11 @@ class SamsungTVWS:
 
         if self._app_list is not None:
             app_to_check = {}
-            for app_id in self._app_list.values():
-                app = self._installed_app.get(app_id)
+            for app_name, app_id in self._app_list.items():
+                if self._installed_app:
+                    app = self._installed_app.get(app_id)
+                else:
+                    app = App(app_id, app_name, 2)
                 if app:
                     app_to_check[app_id] = app
         else:
@@ -712,7 +715,7 @@ class SamsungTVWS:
             if app:
                 action_type = "DEEP_LINK" if app.app_type == 2 else "NATIVE_LAUNCH"
             else:
-                action_type = "NATIVE_LAUNCH"
+                action_type = "DEEP_LINK"
 
         _LOGGING.debug(
             "Sending run app app_id: %s app_type: %s meta_tag: %s",

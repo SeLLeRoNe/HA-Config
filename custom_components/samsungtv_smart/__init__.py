@@ -307,7 +307,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
                     CONF_USE_ST_STATUS_INFO, True
                 ),
                 CONF_USE_ST_CHANNEL_INFO: entry.options.get(
-                    CONF_USE_ST_CHANNEL_INFO, False
+                    CONF_USE_ST_CHANNEL_INFO, True
                 ),
                 CONF_POWER_ON_DELAY: entry.options.get(
                     CONF_POWER_ON_DELAY, DEFAULT_POWER_ON_DELAY
