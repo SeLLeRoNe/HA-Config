@@ -16,7 +16,7 @@ google_assistant:
 #    - light
 #    - sensor
   entity_config:
-    switch.studio_andrea_lg_monitor_2:
+    switch.studio_andrea_lg_monitor_1:
       name: "Monitor 1"
     switch.studio_andrea_lg_monitor_2:
       name: "Monitor 2"
