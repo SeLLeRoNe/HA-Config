@@ -15,14 +15,15 @@ sensor:
     device_class: "temperature"
     value_template: "{{ value_json.temperature }}"
   - platform: mqtt
-    name: "Living Room WSDCGQ01LM Battery"
+    name: 'Living Room Humidity'
+    icon: mdi:water-percent
     state_topic: "zigbee2mqtt/living_room_WSDCGQ01LM"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/living_room_WSDCGQ01LM/availability"
     unit_of_measurement: "%"
-    device_class: "battery"
-    value_template: "{{ value_json.battery | int }}"
+    device_class: "humidity"
+    value_template: "{{ value_json.humidity }}"
   - platform: mqtt
     name: "Living Room WSDCGQ01LM Battery"
     state_topic: "zigbee2mqtt/living_room_WSDCGQ01LM"

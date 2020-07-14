@@ -5,14 +5,14 @@
 #
 sensor:
   - platform: mqtt
-    name: "Kitchen WSDCGQ01LM Battery"
+    name: 'Kitchen Temperature'
+    icon: mdi:thermometer
     state_topic: "zigbee2mqtt/kitchen_WSDCGQ01LM"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/kitchen_WSDCGQ01LM/availability"
-    unit_of_measurement: "%"
-    device_class: "battery"
-    value_template: "{{ value_json.battery | int }}"
+    unit_of_measurement: "°C"
+    device_class: "temperature"
   - platform: mqtt
     name: 'Kitchen Humidity'
     icon: mdi:water-percent
@@ -24,6 +24,15 @@ sensor:
     device_class: "humidity"
     value_template: "{{ value_json.humidity }}"
   - platform: mqtt
+    name: "Kitchen WSDCGQ01LM Battery"
+    state_topic: "zigbee2mqtt/kitchen_WSDCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/kitchen_WSDCGQ01LM/availability"
+    unit_of_measurement: "%"
+    device_class: "battery"
+    value_template: "{{ value_json.battery | int }}"
+  - platform: mqtt
     name: 'Kitchen WSDCGQ01LM Link Quality'
     icon: mdi:home-thermometer
     state_topic: "zigbee2mqtt/kitchen_WSDCGQ01LM"
@@ -31,16 +40,6 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/kitchen_WSDCGQ01LM/availability"
     value_template: "{{ value_json.linkquality }}"
-  - platform: mqtt
-    name: 'Kitchen Temperature'
-    icon: mdi:thermometer
-    state_topic: "zigbee2mqtt/kitchen_WSDCGQ01LM"
-    availability:
-      - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/kitchen_WSDCGQ01LM/availability"
-    unit_of_measurement: "°C"
-    device_class: "temperature"
-    value_template: "{{ value_json.temperature }}"
   - platform: mqtt
     name: "Kitchen WSDCGQ01LM Voltage"
     state_topic: "zigbee2mqtt/kitchen_WSDCGQ01LM"

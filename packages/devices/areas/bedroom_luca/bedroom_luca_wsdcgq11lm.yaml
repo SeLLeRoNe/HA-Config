@@ -14,7 +14,6 @@ sensor:
     unit_of_measurement: "°C"
     device_class: "temperature"
     value_template: "{{ value_json.temperature }}"
-
   - platform: mqtt
     name: 'Bedroom Luca Humidity'
     icon: mdi:water-percent
@@ -25,7 +24,6 @@ sensor:
     unit_of_measurement: "%"
     device_class: "humidity"
     value_template: "{{ value_json.humidity }}"
-
   - platform: mqtt
     name: 'Bedroom Luca Pressure'
     state_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM"
@@ -35,7 +33,6 @@ sensor:
     unit_of_measurement: "mbar"
     device_class: "pressure"
     value_template: "{{ value_json.pressure }}"
-
   - platform: mqtt
     name: "Bedroom Luca WSDCGQ11LM Battery"
     state_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM"
@@ -45,7 +42,6 @@ sensor:
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
-
   - platform: mqtt
     name: 'Bedroom Luca WSDCGQ11LM Link Quality'
     icon: mdi:home-thermometer
@@ -54,7 +50,6 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM/availability"
     value_template: "{{ value_json.linkquality }}"
-
   - platform: mqtt
     name: "Bedroom Luca WSDCGQ11LM Voltage"
     state_topic: "zigbee2mqtt/bedroom_luca_WSDCGQ11LM"
