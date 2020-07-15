@@ -27,6 +27,15 @@ condition:
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'on'
+        - condition: state
+          entity_id: person.andrea_iannucci
+          state: 'Garage'
+        - condition: state
+          entity_id: person.sonia_espejo_brea
+          state: 'Garage'
+        - condition: state
+          entity_id: person.luca_ianuncci_espejo
+          state: 'Garage'
     - condition: or
       conditions:
         - condition: time

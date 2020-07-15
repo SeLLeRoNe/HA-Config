@@ -21,6 +21,17 @@ condition:
     - condition: state
       entity_id: group.family
       state: 'not_home'
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: person.andrea_iannucci
+          state: 'Garage'
+        - condition: state
+          entity_id: person.sonia_espejo_brea
+          state: 'Garage'
+        - condition: state
+          entity_id: person.luca_ianuncci_espejo
+          state: 'Garage'
 action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
