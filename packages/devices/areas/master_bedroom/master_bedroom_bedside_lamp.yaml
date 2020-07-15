@@ -60,3 +60,4 @@ binary_sensor:
       - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
     value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
     payload_on: true
+    payload_off: false

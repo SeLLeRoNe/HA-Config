@@ -34,3 +34,4 @@ binary_sensor:
       - topic: "zigbee2mqtt/bedroom_luca_light_1/availability"
     value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
     payload_on: true
+    payload_off: false
