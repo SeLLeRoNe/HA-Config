@@ -49,6 +49,7 @@ sensor:
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/patio_WSDCGQ11LM/availability"
+    value_template: "{{ value_json.linkquality }}"
   - platform: mqtt
     name: "Patio WSDCGQ11LM Voltage"
     state_topic: "zigbee2mqtt/patio_WSDCGQ11LM"

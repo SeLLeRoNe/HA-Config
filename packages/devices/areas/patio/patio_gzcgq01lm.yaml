@@ -13,7 +13,6 @@ sensor:
     unit_of_measurement: "lx"
     device_class: "illuminance"
     value_template: "{{ value_json.illuminance }}"
-
   - platform: "mqtt"
     name: "Patio GZCGQ01LM Battery"
     state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
@@ -23,7 +22,6 @@ sensor:
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery }}"
-
   - platform: mqtt
     name: "Patio GZCGQ01LM Link Quality"
     icon: mdi:white-balance-sunny
@@ -32,3 +30,12 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
     value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: "Patio GZCGQ01LM Voltage"
+    state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
+    icon: mdi:flash
+    unit_of_measurement: "mV"
+    value_template: "{{ value_json.voltage }}"

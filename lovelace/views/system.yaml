@@ -951,7 +951,7 @@ cards:
                   options:
                     name: Patio - GZCGQ01LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.gzcgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.gzcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:
