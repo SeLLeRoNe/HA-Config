@@ -39,7 +39,7 @@ andrea:
       - entity: sensor.andrea_shield_battery
         name: "NVIDIA Shield K1"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(input_boolean.andrea_shield_wifi == 'on', 'Connected', if(input_boolean.andrea_shield_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(input_boolean.andrea_shield_charging == 'on', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.andrea_shield_wifi.attributes.bssid != 'null', 'Connected', if(sensor.andrea_shield_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_shield_charging == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
