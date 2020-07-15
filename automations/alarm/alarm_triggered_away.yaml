@@ -47,7 +47,7 @@ action:
       entity_id:
         - light.studio_wall_light
         - light.patio_light
-        - light.master_bedroom_lamp_top_light
+#        - light.master_bedroom_lamp_top_light
   - service: tts.google_translate_say
     data_template:
       entity_id: media_player.studio_google_mini
@@ -112,12 +112,12 @@ action:
       rgb_color: [255,0,0]
       brightness: 255
       transition: 1
-  - service: homeassistant.turn_on
-    data:
-      entity_id: light.master_bedroom_lamp_top_light
-      color_name: red
-      brightness: 255
-      transition: 1
+#  - service: homeassistant.turn_on
+#    data:
+#      entity_id: light.master_bedroom_lamp_top_light
+#      color_name: red
+#      brightness: 255
+#      transition: 1
   - delay:
       seconds: 60
   - service: python_script.light_store
@@ -129,4 +129,4 @@ action:
      entity_id:
         - light.patio_light
         - light.studio_wall_light
-        - light.master_bedroom_lamp_top_light
+#        - light.master_bedroom_lamp_top_light
