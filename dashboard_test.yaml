@@ -32,6 +32,5 @@ decluttering_templates: !include_dir_merge_named lovelace/templates/
 q_cards: !include_dir_merge_named lovelace/q-cards/
 views:
   - !include lovelace/views/test.yaml
-  - !include lovelace/views/test_map.yaml
   - !include lovelace/views/test_background.yaml
   - !include lovelace/views/currencies.yaml

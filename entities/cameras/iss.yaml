@@ -1,5 +1,0 @@
----
-platform: generic
-name: ISS
-still_image_url: https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/static/pin-s-l+2ecc71({{state_attr('binary_sensor.iss', 'long')}},{{state_attr('binary_sensor.iss', 'lat')}})/{{state_attr('binary_sensor.iss', 'long')}},{{state_attr('binary_sensor.iss', 'lat')}},0,0,5/400x400?access_token={{states('sensor.mapbox_key')}}
-limit_refetch_to_url_change: true
