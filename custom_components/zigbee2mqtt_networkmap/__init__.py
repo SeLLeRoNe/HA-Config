@@ -44,18 +44,15 @@ async def async_setup(hass, config):
     webhook_trigger_update_id = hass.components.webhook.async_generate_id()
     hass.components.webhook.async_register(
         DOMAIN, 'zigbee2mqtt_networkmap-webhook_trigger_update', webhook_trigger_update_id, handle_webhook_trigger_update)
-    webhook_trigger_update_url = hass.components.webhook.async_generate_url(webhook_trigger_update_id)
 
     # Register the Webhook for trigger update
     webhook_check_update_id = hass.components.webhook.async_generate_id()
     hass.components.webhook.async_register(
         DOMAIN, 'zigbee2mqtt_networkmap-webhook_check_update', webhook_check_update_id, handle_webhook_check_update)
-    webhook_check_update_url = hass.components.webhook.async_generate_url(webhook_check_update_id)
 
     f = open(hass.config.path('www', 'community', 'zigbee2mqtt_networkmap', 'settings.js'), "w")
-    f.write("var webhook_trigger_update_url = '"+webhook_trigger_update_url+"';")
-    f.write("\n")
-    f.write("var webhook_check_update_url = '"+webhook_check_update_url+"';")
+    f.write("var webhook_trigger_update_id = '{}';\n".format(webhook_trigger_update_id))
+    f.write("var webhook_check_update_id = '{}';".format(webhook_check_update_id))
     f.close()
 
 
@@ -91,7 +88,7 @@ async def async_setup(hass, config):
         tmpVar.received_update = False
         tmpVar.update_data = None
         tmpVar.last_update = None
-        mqtt.async_publish(topic+'/bridge/networkmap', 'graphviz')
+        mqtt.async_publish(topic+'/bridge/networkmap/routes', 'graphviz')
 
     hass.services.async_register(DOMAIN, 'update', update_service)
     return True

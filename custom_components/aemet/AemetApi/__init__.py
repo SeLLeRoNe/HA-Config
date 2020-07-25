@@ -71,7 +71,7 @@ class AemetApi:
                             self.API_STATION_ENDPOINT.format(self._station_id)
                         )
         params = {'api_key': self._api_key}
-        main_rsp = requests.get(endpoint_url, params=params)
+        main_rsp = requests.get(endpoint_url, params=params, verify=False)
         if main_rsp.status_code != HTTP_OK:
             _LOGGER.error("Invalid response: %s", main_rsp.status_code)
             return
@@ -79,7 +79,7 @@ class AemetApi:
         main_result = main_rsp.json()
         if main_result['estado'] == HTTP_OK:
             hashed_endpoint = main_result["datos"]
-            data_rsp = requests.get(hashed_endpoint)
+            data_rsp = requests.get(hashed_endpoint, verify=False)
             if data_rsp.status_code != HTTP_OK:
                 _LOGGER.error("Invalid response: %s", data_rsp.status_code)
             data_result = data_rsp.json()
