@@ -1,0 +1,22 @@
+---
+zigbee_device_batteries:
+  card:
+    type: custom:auto-entities
+    show_empty: true
+    card:
+      type: entities
+      show_header_toggle: false
+      title: ZigBee Devices Status
+    filter:
+      include:
+        - entity_id: sensor.'[[device]]'_link_quality
+          options:
+            name: "'[[room]]' - '[[device_name]]' - Link Quality"
+            type: "custom:secondaryinfo-entity-row"
+            secondary_info: "Battery Level: [[ if(sensor.'[[device]]'_link_quality.state != 'unknown', sensor.'[[device]]'_battery.state , 'Not Available') ]][[ if(sensor.'[[device]]'_link_quality.state != 'unknown', '%' , '') ]] - Voltage: [[ if(sensor.'[[device]]'_link_quality.state != 'unknown', sensor.'[[device]]'_voltage.state, 'Not Available') ]][[ if(sensor.'[[device]]'_link_quality.state != 'unknown', 'mV', '') ]]"
+            tap_action:
+              action: none
+          not 1:
+            state: "unavailable"
+          not 2:
+            state: "unknown"

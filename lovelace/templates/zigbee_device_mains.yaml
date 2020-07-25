@@ -1,0 +1,20 @@
+---
+zigbee_device_mains:
+  card:
+    type: custom:auto-entities
+    show_empty: true
+    card:
+      type: entities
+      show_header_toggle: false
+      title: ZigBee Devices Status
+    filter:
+      include:
+        - entity_id: sensor.'[[device]]'_link_quality
+          options:
+            name: "'[[room]]' - '[[device_name]]' - Link Quality"
+            tap_action:
+              action: none
+          not 1:
+            state: "unavailable"
+          not 2:
+            state: "unknown"
