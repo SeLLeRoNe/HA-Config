@@ -8,7 +8,7 @@ entities:
   light.bedroom_luca_light_2:
     state: on
     rgb_color: [0,0,255]
-    brightness: 255
+    brightness: 150
   light.bedroom_luca_light_3:
     state: on
     rgb_color: [0,255,0]
