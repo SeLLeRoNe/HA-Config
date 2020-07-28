@@ -21,6 +21,7 @@ class CustomBinaryRow extends Polymer.Element {
                     text-align: center;
                     float: right !important;
                     padding: 1px;
+                    cursor: pointer;
                  }
 				
             </style>
