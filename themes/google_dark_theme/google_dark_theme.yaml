@@ -47,7 +47,8 @@ Google Dark Theme:
   label-badge-gray: "#5F6267"
 
   # Cards
-  card-background-color: "#202124"
+  #card-background-color: "#202124"
+  card-background-color: "rgba(32,33,36,0.75)"
   ha-card-border-radius: "10px"
   ha-card-box-shadow: 1px 1px 5px 0px rgb(12, 12, 14)
   paper-dialog-background-color: var(--card-background-color)
@@ -74,4 +75,3 @@ Google Dark Theme:
   hacs-chip-background-color: var(--primary-color)
   # Pre/Code
   markdown-code-background-color: '#171717'
-  
