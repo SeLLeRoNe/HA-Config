@@ -2,7 +2,6 @@
 zigbee2mqtt_networkmap:
   topic: zigbee2mqtt
 
-# Input select for Zigbee2mqtt debug level
 input_select:
   zigbee2mqtt_log_level:
     name: Zigbee2mqtt Log Level
@@ -13,33 +12,6 @@ input_select:
       - error
     icon: mdi:format-list-bulleted
 
-# Sensor for monitoring the bridge state
-#sensor:
-#  - platform: mqtt
-#    name: ZigBee2mqtt Status
-#    state_topic: "zigbee2mqtt/bridge/state"
-#    availability_topic: "zigbee2mqtt/bridge/state"
-#    payload_available: "online"
-#    payload_not_available: "offline"
-#    icon: mdi:router-wireless
-#  - platform: mqtt
-#    name: ZigBee2mqtt Log Level
-#    state_topic: "zigbee2mqtt/bridge/config"
-#    value_template: "{{ value_json.log_level }}"
-#    availability_topic: "zigbee2mqtt/bridge/state"
-#    payload_available: "online"
-#    payload_not_available: "offline"
-#    icon: mdi:cellphone-text
-#  - platform: mqtt
-#    name: ZigBee2mqtt Allow Device Join
-#    state_topic: "zigbee2mqtt/bridge/config"
-#    value_template: "{{ value_json.permit_join }}"
-#    availability_topic: "zigbee2mqtt/bridge/state"
-#    payload_available: "online"
-#    payload_not_available: "offline"
-#    icon: mdi:cellphone-wireless
-
-# Automations
 automation:
   - id : zigbee_log_level
     alias: ZigBee - Log Level
