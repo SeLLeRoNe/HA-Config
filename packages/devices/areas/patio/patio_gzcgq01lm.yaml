@@ -12,7 +12,7 @@ sensor:
       - topic: "zigbee2mqtt/patio_GZCGQ01LM/availability"
     unit_of_measurement: "lx"
     device_class: "illuminance"
-    value_template: "{{ value_json.illuminance }}"
+    value_template: "{{ value_json.illuminance_lux }}"
   - platform: "mqtt"
     name: "Patio GZCGQ01LM Battery"
     state_topic: "zigbee2mqtt/patio_GZCGQ01LM"
