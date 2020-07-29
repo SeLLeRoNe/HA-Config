@@ -21,12 +21,3 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/house_alarm_siren/availability"
     value_template: "{{ value_json.linkquality }}"
-  - platform: mqtt
-    name: "House Alarm Siren Voltage"
-    icon: mdi:flash
-    state_topic: "zigbee2mqtt/house_alarm_siren"
-    availability:
-      - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/house_alarm_siren/availability"
-    unit_of_measurement: "mV"
-    value_template: "{{ value_json.voltage }}"
