@@ -52,7 +52,7 @@ house_pressure:
         show_state: true
       - entity: sensor.dark_sky_pressure
         name: Outside
-        color: '#BF00FF'
+        color: '#CC00CC'
         show_state: true
 #      - entity: binary_sensor.night_time
 #        color: '#B3B3B3'
