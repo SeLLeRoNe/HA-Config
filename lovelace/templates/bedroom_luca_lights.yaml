@@ -37,7 +37,17 @@ bedroom_luca_lights:
               service: scene.turn_on
               service_data:
                 entity_id: scene.bedroom_luca_lights_on
-                transition: 5
+                transition: 15
+            hold_action:
+              action: none
+          - entity: scene.bedroom_luca_diaper_change
+            name: "Dimmed Lights"
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.bedroom_luca_lights_on_guest
+                transition: 15
             hold_action:
               action: none
           - entity: scene.bedroom_luca_diaper_change
@@ -47,6 +57,6 @@ bedroom_luca_lights:
               service: scene.turn_on
               service_data:
                 entity_id: scene.bedroom_luca_diaper_change
-                transition: 5
+                transition: 15
             hold_action:
               action: none

@@ -19,7 +19,7 @@ condition:
   conditions:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: 'on'
     - condition: or
       conditions:
         - condition: state
@@ -59,5 +59,5 @@ action:
       transition: 15
   - service: scene.turn_on
     data:
-      entity_id: scene.bedroom_luca_diaper_change
+      entity_id: scene.bedroom_luca_lights_on_guest
       transition: 15
