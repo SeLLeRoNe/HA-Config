@@ -19,10 +19,10 @@ Google Dark Theme:
   primary-text-color: "#BDC1C6"
   secondary-text-color: "#BDC1C6"
   text-primary-color: "#FFFFFF"
-  disabled-text-color: "#717171"
+  disabled-text-color: "#000000"
   # Sidebar Menu
   sidebar-icon-color: var(--app-header-text-color)
-  sidebar-text-color: '#BDC1C6'
+  sidebar-text-color: "#BDC1C6"
   sidebar-background-color: "#202124"
   sidebar-selected-background-color: var(--primary-background-color)
   sidebar-selected-icon-color: "#5F9BEA"
@@ -45,7 +45,6 @@ Google Dark Theme:
   label-badge-blue: "#5F9BEA"
   label-badge-yellow: "#DFC271"
   label-badge-gray: "#5F6267"
-
   # Cards
   #card-background-color: "#202124"
   card-background-color: "rgba(32,33,36,0.75)"
@@ -53,6 +52,7 @@ Google Dark Theme:
   ha-card-box-shadow: 1px 1px 5px 0px rgb(12, 12, 14)
   paper-dialog-background-color: var(--card-background-color)
   paper-listbox-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
   # Switches
   switch-checked-button-color: "#5F9BEA"
   switch-checked-track-color: "#404D64"

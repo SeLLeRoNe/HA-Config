@@ -356,7 +356,7 @@ function renderBackgroundHTML() {
       if (current_config.state_url[current_state]) {
         if (Previous_State != current_state) {
           View_Loaded = false;
-          STATUS_MESSAGE("Configured entity " + current_config.entity + " is now " + current_state, true);
+          DEBUG_MESSAGE("Configured entity " + current_config.entity + " is now " + current_state, true);
           if (current_config.state_url) {
             var url = current_config.state_url[current_state];
             if (Array.isArray(url)) {
@@ -429,11 +429,11 @@ function renderBackgroundHTML() {
     var bg = Hui.shadowRoot.getElementById("background-iframe");
     var video_type = urlIsVideo(state_url);
     var doc_body;
-    if(video_type){
+    if (video_type) {
       doc_body = `<video id='cinemagraph' autoplay='' loop='' preload='' playsinline='' muted='' poster=''><source src='${state_url}' type='video/${video_type}'></video>`
     }
-    else{
-      doc_body = `<img src='${state_url}'>`      
+    else {
+      doc_body = `<img src='${state_url}'>`
     }
     var source_doc = `
     <html>
@@ -480,7 +480,8 @@ function renderBackgroundHTML() {
       if (!current_config.entity) {
         STATUS_MESSAGE("Applying default background", true);
       }
-      html_to_render = `<style>
+      var style = document.createElement("style");
+      style.innerHTML = `
       .bg-video{
           min-width: 100vw; 
           min-height: 100vh;
@@ -493,12 +494,15 @@ function renderBackgroundHTML() {
           min-width: 100vw; 
           min-height: 100vh;
           z-index: -10;
-      }    
-    </style>
-    <div id="background-video" class="bg-wrap">
+      }`;
+      var div = document.createElement("div");
+      div.id = "background-video";
+      div.className = "bg-wrap"
+      div.innerHTML = `
      <iframe id="background-iframe" class="bg-video" frameborder="0" srcdoc="${source_doc}"/> 
-    </div>`;
-      View_Layout.insertAdjacentHTML("beforebegin", html_to_render);
+    `;
+      Root.shadowRoot.appendChild(style);
+      Root.shadowRoot.appendChild(div)
       Previous_Url = state_url;
     }
     else {
@@ -515,11 +519,11 @@ function renderBackgroundHTML() {
   }
 }
 
-function urlIsVideo(url){
-  if(url.slice(url.length - 3).toLowerCase() == "mp4" || url.slice(url.length - 4).toLowerCase() == "webm"){
+function urlIsVideo(url) {
+  if (url.slice(url.length - 3).toLowerCase() == "mp4" || url.slice(url.length - 4).toLowerCase() == "webm") {
     return url.slice(url.length - 3).toLowerCase();
   }
-  if(url.slice(url.length - 4).toLowerCase() == "webm"){
+  if (url.slice(url.length - 4).toLowerCase() == "webm") {
     return url.slice(url.length - 4).toLowerCase();
   }
   return false;
@@ -528,7 +532,7 @@ function urlIsVideo(url){
 //removes lovelace theme background
 function removeDefaultBackground(node, current_config) {
   var background = 'transparent';
-  if(current_config.background){
+  if (current_config.background) {
     background = current_config.background;
   }
   if (node.style.background != background || View_Layout.style.background != 'transparent') {
@@ -623,11 +627,13 @@ function run() {
   STATUS_MESSAGE("Starting");
   DEBUG_MESSAGE("Starting, Debug mode enabled");
   if (!Loaded) {
-    if (!currentConfig() && Debug_Mode) {
-      DEBUG_MESSAGE("No configuration found for this view");
-    }
-    else {
-      STATUS_MESSAGE("No configuration found for this dashboard");
+    if (!currentConfig()) {
+      if (Debug_Mode) {
+        DEBUG_MESSAGE("No configuration found");
+      }
+      else {
+        STATUS_MESSAGE("No configuration found");
+      }
     }
   }
 
