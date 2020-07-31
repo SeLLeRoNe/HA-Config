@@ -39,7 +39,7 @@ homeassistant:
   packages: !include_dir_named packages/
 
   # Whitelist External Directories
-  whitelist_external_dirs: !secret whitelist_external_dirs
+  allowlist_external_dirs: !secret whitelist_external_dirs
 
   # Auth Providerrs
   auth_providers:
