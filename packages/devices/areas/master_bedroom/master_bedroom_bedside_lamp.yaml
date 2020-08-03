@@ -50,14 +50,13 @@ binary_sensor:
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-    value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
-    payload_on: true
+    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
+    payload_on: available
   - platform: mqtt
     name: 'Master Bedroom Lamp Bottom Light Firmware Update'
     state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-    value_template: "{% if value_json.update_available is defined %}{{ value_json.update_available }}{% endif %}"
-    payload_on: true
-    payload_off: false
+    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
+    payload_on: available
