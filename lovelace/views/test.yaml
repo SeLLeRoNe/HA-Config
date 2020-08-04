@@ -87,6 +87,22 @@ cards:
             name: Life360
       - break
       - type: light
+        entity: light.xmas_tree
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.xmas_tree_estimated_current
+          - sensor.xmas_tree_free_memory
+          - switch.xmas_tree_nightlight
+          - switch.xmas_tree_sync_receive
+          - switch.xmas_tree_sync_send
+          - sensor.xmas_tree_uptime
+          - sensor.xmas_tree_wi_fi_bssid
+          - sensor.xmas_tree_wi_fi_channel
+          - sensor.xmas_tree_wi_fi_rssi
+          - sensor.xmas_tree_wi_fi_signal
+      - break
+      - type: light
         entity: light.master_bedroom_bed_led
       - type: entities
         show_header_toggle: false
