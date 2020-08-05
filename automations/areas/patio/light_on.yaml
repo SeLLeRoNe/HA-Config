@@ -36,3 +36,4 @@ condition:
 action:
   - service: light.turn_off
     entity_id: light.patio_light
+      transition: 15

@@ -28,7 +28,7 @@ action:
   - service: notify.alarm
     data_template:
       title: "Home Alarm"
-      message: "Patio Door has been open for 10 minutes."
+      message: "Patio Door has been open for 15 minutes."
       data:
         color: "#FF3300"
         sticky: "true"
@@ -37,5 +37,5 @@ action:
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "The patio door has been opened for 10 minutes."
+      message: "The patio door has been opened for 15 minutes."
       language: 'en'
