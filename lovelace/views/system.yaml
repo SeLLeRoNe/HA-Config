@@ -523,15 +523,17 @@ cards:
             show_header_toggle: false
             entities:
               - name: Pi Hole
-                entity: binary_sensor.pi_hole_status
+                entity: switch.pi_hole
                 tap_action:
                   action: call-service
-                  service: pi_hole.enable
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.pi_hole
                 hold_action:
                   action: call-service
-                  service: pi_hole.disable
+                  service: switch.turn_off
                   service_data:
-                    duration: "00:30"
+                    entity_id: switch.pi_hole
               - name: Zigbee Server
                 entity: binary_sensor.zigbee_server
                 tap_action:
