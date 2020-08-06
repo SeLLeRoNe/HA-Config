@@ -24,7 +24,7 @@ condition:
 action:
 #  - service: light.turn_on
 #    data:
-#      entity_id: light.patio_light
+#      entity_id: light.studio_wall_light
   - service: notify.alarm
     data_template:
       title: "Home Alarm"

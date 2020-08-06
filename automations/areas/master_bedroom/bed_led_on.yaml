@@ -1,6 +1,6 @@
 ---
 alias: Master Bedroom - Bed LED On
-initial_state: on
+initial_state: off
 trigger:
   - platform: time
     at: '21:30:00'
