@@ -3,13 +3,13 @@ alias: Mobile - Andrea - NVIDIA Shield K1 - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.andrea_shield_battery
+    entity_id: sensor.andrea_shield_battery_level
     above: 99
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.andrea_shield_charging
+      entity_id: binary_sensor.andrea_shield_battery_state
       state: 'on'
     - condition: state
       entity_id: person.andrea_iannucci

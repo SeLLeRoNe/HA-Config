@@ -8,15 +8,15 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: '{% if states.input_text.sonia_mi9tpro_battery is defined %} {{(as_timestamp(now()) - as_timestamp(states.input_text.sonia_mi9tpro_battery.last_changed)) > 43200 }} {% endif %}'
+      value_template: '{% if states.input_text.sonia_mi9tpro_battery_level is defined %} {{(as_timestamp(now()) - as_timestamp(states.input_text.sonia_mi9tpro_battery_level.last_changed)) > 43200 }} {% endif %}'
 action:
   - service: input_text.set_value
     data_template:
-      entity_id: input_text.sonia_mi9tpro_battery
+      entity_id: input_text.sonia_mi9tpro_battery_level
       value: "unknown"
   - service: input_boolean.turn_off
     data_template:
-      entity_id: input_boolean.andrea_mi9tpro_charging
+      entity_id: input_boolean.andrea_mi9tpro_battery_state
   - service: input_boolean.turn_off
     data_template:
-      entity_id: input_boolean.andrea_mi9tpro_wifi
+      entity_id: input_boolean.andrea_mi9tpro_wifi_connection

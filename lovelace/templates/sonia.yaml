@@ -9,10 +9,10 @@ sonia:
         secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
         tap_action:
           action: none
-      - entity: sensor.sonia_mi9tpro_battery
+      - entity: sensor.sonia_mi9tpro_battery_level
         name: "Mi 9T Pro"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(sensor.sonia_mi9tpro_wifi.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi9tpro_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi9tpro_charging == 'charging', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.sonia_mi9tpro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi9tpro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi9tpro_battery_state == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
@@ -36,30 +36,3 @@ sonia:
                 rgb(128, 128, 128);
               {% endif %}
           }
-#      - entity: sensor.sonia_honor8_battery
-#        name: "Honor 8"
-#        type: "custom:secondaryinfo-entity-row"
-#        secondary_info: "WiFi: [[ if(binary_sensor.sonia_honor8_wifi == 'on', 'Connected', if(binary_sensor.sonia_honor8_wifi == 'off', 'Disconnected', 'Unknown')) ]] [[ if(binary_sensor.sonia_honor8_charging == 'on', ' - Charging', '' ) ]]"
-#        tap_action:
-#          action: none
-#        style: |
-#          :host {
-#            --paper-item-icon-color:
-#              {% if is_state(config.entity, 'unknown') %}
-#                rgb(128, 128, 128);
-#              {% elif states(config.entity)|int > 100 %}
-#                rgb(128, 128, 128);
-#              {% elif states(config.entity)|int >= 80 %}
-#                rgb(0, 153, 51);
-#              {% elif states(config.entity)|int >= 60 %}
-#                rgb(0, 153, 0);
-#              {% elif states(config.entity)|int >= 40 %}
-#                rgb(255, 128, 0);
-#              {% elif states(config.entity)|int >= 20 %}
-#                rgb(204, 102, 0);
-#              {% elif states(config.entity)|int >= 0 %}
-#                rgb(153, 0, 0);
-#              {% else %}
-#                rgb(128, 128, 128);
-#              {% endif %}
-#          }

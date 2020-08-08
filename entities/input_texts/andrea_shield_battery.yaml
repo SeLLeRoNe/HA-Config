@@ -1,4 +1,4 @@
 ---
-andrea_shield_battery:
+andrea_shield_battery_level:
   name: NVIDIA Shield K1 Battery
   icon: mdi:battery

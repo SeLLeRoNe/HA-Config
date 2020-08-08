@@ -8,8 +8,8 @@ condition:
   condition: or
   conditions:
     - condition: template
-      value_template: '{% if states.input_text.sonia_mi9tpro_battery is defined %} {{ (as_timestamp(now()) - as_timestamp(states.sensor.sonia_mi9tpro_battery.last_changed)) > 43200 }} {% endif %}'
+      value_template: '{% if states.input_text.sonia_mi9tpro_battery_level is defined %} {{ (as_timestamp(now()) - as_timestamp(states.sensor.sonia_mi9tpro_battery_level.last_changed)) > 43200 }} {% endif %}'
 action:
   - service: input_boolean.turn_off
     data:
-      entity_id: input_boolean.sonia_mi9tpro_charging
+      entity_id: input_boolean.sonia_mi9tpro_battery_state

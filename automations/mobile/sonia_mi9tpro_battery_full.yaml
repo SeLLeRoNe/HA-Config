@@ -3,13 +3,13 @@ alias: Mobile - Sonia - Mi 9T Pro - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.sonia_mi9tpro_battery
+    entity_id: sensor.sonia_mi9tpro_battery_level
     above: 99
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.sonia_mi9tpro_charging
+      entity_id: binary_sensor.sonia_mi9tpro_battery_state
       state: 'on'
     - condition: state
       entity_id: person.sonia_espejo_brea

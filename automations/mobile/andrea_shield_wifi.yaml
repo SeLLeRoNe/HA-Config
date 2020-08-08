@@ -8,8 +8,8 @@ condition:
   condition: or
   conditions:
     - condition: template
-      value_template: '{% if states.input_text.andrea_shield_battery is defined %} {{ (as_timestamp(now()) - as_timestamp(states.sensor.andrea_shield_battery.last_changed)) > 43200 }} {% endif %}'
+      value_template: '{% if states.input_text.andrea_shield_battery_level is defined %} {{ (as_timestamp(now()) - as_timestamp(states.sensor.andrea_shield_battery_level.last_changed)) > 43200 }} {% endif %}'
 action:
   - service: input_boolean.turn_off
     data:
-      entity_id: input_boolean.andrea_shield_wifi
+      entity_id: input_boolean.andrea_shield_wifi_connection

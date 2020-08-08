@@ -27,7 +27,7 @@ cards:
               separator: false
           - type: custom:logbook-card
             title: "Andrea - HA App"
-            entity: device_tracker.andrea_oneplus5
+            entity: device_tracker.andrea_oneplus_nord
             max_items: 5
             date_format: dd/MM/YYYY hh:mm
             show:
@@ -66,7 +66,7 @@ cards:
       - type: entities
         show_header_toggle: false
         entities:
-          - entity: sensor.andrea_oneplus5_gps
+          - entity: sensor.andrea_oneplus_nord_gps
           - entity: sensor.sonia_mi9tpro_gps
       - type: history-graph
         title:
@@ -75,7 +75,7 @@ cards:
         entities:
           - entity: person.andrea_iannucci
             name: Andrea
-          - entity: device_tracker.andrea_oneplus5
+          - entity: device_tracker.andrea_oneplus_nord
             name: HA App
           - entity: device_tracker.life360_andrea_iannucci
             name: Life360

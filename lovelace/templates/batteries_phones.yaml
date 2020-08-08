@@ -16,26 +16,16 @@ batteries_phones:
       - value: 100
         color: "#009933"
     entities:
-      - entity: sensor.andrea_oneplus5_battery
-        name: "Andrea - OnePlus 5"
+      - entity: sensor.andrea_oneplus_nord_battery_level
+        name: "Andrea - OnePlus Nord"
         charging_state:
-          entity_id: sensor.andrea_oneplus5_charging
+          entity_id: sensor.andrea_oneplus_nord_battery_state
           state: "charging"
-      - entity: sensor.sonia_mi9tpro_battery
+      - entity: sensor.sonia_mi9tpro_battery_level
         name: "Sonia - Mi 9T Pro"
         charging_state:
-          entity_id: sensor.sonia_mi9tpro_charging
+          entity_id: sensor.sonia_mi9tpro_battery_state
           state: "charging"
-      - entity: sensor.test_honor8_battery
-        name: "Test - Honor 8"
-        charging_state:
-          entity_id: sensor.test_honor8_charging
-          state: "charging"
-      - entity: sensor.test_xt1032_battery
-        name: "Test - Motorola XT1032"
-        charging_state:
-          entity_id: input_boolean.test_xt1032_charging
-          state: "on"
     style: |
       .entity-row.non-numeric-state .icon {
         color: #808080;

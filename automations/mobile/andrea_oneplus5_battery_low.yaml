@@ -1,15 +1,15 @@
 ---
-alias: Mobile - Andrea - OnePlus 5 - Battery Low
+alias: Mobile - Andrea - OnePlus Nord - Battery Low
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.andrea_oneplus5_battery
+    entity_id: sensor.andrea_oneplus_nord_battery_level
     below: 20
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.andrea_oneplus5_charging
+      entity_id: binary_sensor.andrea_oneplus_nord_battery_state
       state: 'off'
     - condition: state
       entity_id: person.andrea_iannucci
@@ -18,7 +18,7 @@ action:
   - service: notify.mobile_app_andrea_oneplus_5
     data_template:
       title: "Battery Alert"
-      message: "Low Battery on OnePlus 5, please plug it!"
+      message: "Low Battery on OnePlus Nord, please plug it!"
       data:
         color: "#FF66FF"
         sticky: "true"

@@ -9,10 +9,10 @@ andrea:
         secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
         tap_action:
           action: none
-      - entity: sensor.andrea_oneplus5_battery
-        name: "OnePlus 5"
+      - entity: sensor.andrea_oneplus_nord_battery_level
+        name: "OnePlus Nord"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(sensor.andrea_oneplus5_wifi.attributes.bssid != 'null', 'Connected', if(sensor.andrea_oneplus5_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_oneplus5_charging == 'charging', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.andrea_oneplus_nord_wifi.attributes.bssid != 'null', 'Connected', if(sensor.andrea_oneplus_nord_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_oneplus_nord_battery_state == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
@@ -36,10 +36,10 @@ andrea:
                 rgb(128, 128, 128);
             {% endif %}
           }
-      - entity: sensor.andrea_shield_battery
+      - entity: sensor.andrea_shield_battery_level
         name: "NVIDIA Shield K1"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(sensor.andrea_shield_wifi.attributes.bssid != 'null', 'Connected', if(sensor.andrea_shield_wifi.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_shield_charging == 'charging', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.andrea_shield_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.andrea_shield_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.andrea_shield_battery_state == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
