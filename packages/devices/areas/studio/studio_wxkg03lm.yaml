@@ -11,7 +11,7 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/studio_WXKG03LM/availability"
     icon: "mdi:toggle-switch"
-    value_template: "{{ value_json.click }}"
+    value_template: "{{ value_json.action }}"
   - platform: mqtt
     name: "Studio WXKG03LM Battery"
     state_topic: "zigbee2mqtt/studio_WXKG03LM"
