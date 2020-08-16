@@ -3,19 +3,19 @@ alias: Mobile - Sonia - Mi 9T Pro - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.sonia_mi9tpro_battery_level
+    entity_id: sensor.sonia_mi_9t_pro_battery_level
     above: 99
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.sonia_mi9tpro_battery_state
+      entity_id: binary_sensor.sonia_mi_9t_pro_battery_state
       state: 'on'
     - condition: state
       entity_id: person.sonia_espejo_brea
       state: 'home'
 action:
-  - service: notify.mobile_app_sonia_mi9tpro
+  - service: notify.mobile_app_sonia_mi_9t_pro
     data_template:
       title: "Battery Alert"
       message: "Battery Full on Mi 9T Pro, please unplug it!"

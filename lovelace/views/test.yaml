@@ -52,7 +52,7 @@ cards:
               separator: false
           - type: custom:logbook-card
             title: "Sonia - HA App"
-            entity: device_tracker.sonia_mi9tpro
+            entity: device_tracker.sonia_mi_9t_pro
             max_items: 5
             date_format: dd/MM/YYYY hh:mm
             show:
@@ -67,7 +67,7 @@ cards:
         show_header_toggle: false
         entities:
           - entity: sensor.andrea_oneplus_nord_gps
-          - entity: sensor.sonia_mi9tpro_gps
+          - entity: sensor.sonia_mi_9t_pro_gps
       - type: history-graph
         title:
         hours_to_show: 168
@@ -81,7 +81,7 @@ cards:
             name: Life360
           - entity: person.sonia_espejo_brea
             name: Sonia
-          - entity: device_tracker.sonia_mi9tpro
+          - entity: device_tracker.sonia_mi_9t_pro
             name: HA App
           - entity: device_tracker.life360_sonia_espejo_brea
             name: Life360

@@ -13,7 +13,7 @@ condition:
      entity_id: sensor.dark_sky_precip_probability
      above: 50
 action:
-  - service: notify.mobile_app_sonia_mi9tpro
+  - service: notify.mobile_app_sonia_mi_9t_pro
     data_template:
       title: "Weather Alert"
       message: "Today will probably rain with {{ states('sensor.dark_sky_precip_probability') }} probability, get an umbrella!"

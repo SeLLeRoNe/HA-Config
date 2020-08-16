@@ -3,4 +3,4 @@ platform: group
 name: Alarm
 services:
   - service: mobile_app_andrea_oneplus_5
-  - service: mobile_app_sonia_mi9tpro
+  - service: mobile_app_sonia_mi_9t_pro

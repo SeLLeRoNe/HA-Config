@@ -9,10 +9,10 @@ sonia:
         secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
         tap_action:
           action: none
-      - entity: sensor.sonia_mi9tpro_battery_level
+      - entity: sensor.sonia_mi_9t_pro_battery_level
         name: "Mi 9T Pro"
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(sensor.sonia_mi9tpro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi9tpro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi9tpro_battery_state == 'charging', ' - Charging', '' ) ]]"
+        secondary_info: "WiFi: [[ if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi_9t_pro_battery_state == 'charging', ' - Charging', '' ) ]]"
         tap_action:
           action: none
         style: |
