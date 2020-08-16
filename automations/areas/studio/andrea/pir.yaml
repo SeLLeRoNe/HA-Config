@@ -36,16 +36,16 @@ action:
     data:
       entity_id: scene.studio_alarm
       transition: 15
-  - service: notify.mobile_app_andrea_oneplus_5
-    data:
-      title: "Home Alarm"
-      message: "Motion detected in the Studio"
-      data:
-        color: "#0066FF"
-        sticky: false
-        tag: tag
-        actions:
-          - action: "studio_wall_light_on"
-            title: "Turn On Light"
-          - action: "studio_wall_light_off"
-            title: "Turn Off Light"
+#  - service: notify.mobile_app_andrea_oneplus_5
+#    data:
+#      title: "Home Alarm"
+#      message: "Motion detected in the Studio"
+#      data:
+#        color: "#0066FF"
+#        sticky: false
+#        tag: tag
+#        actions:
+#          - action: "studio_wall_light_on"
+#            title: "Turn On Light"
+#          - action: "studio_wall_light_off"
+#            title: "Turn Off Light"
