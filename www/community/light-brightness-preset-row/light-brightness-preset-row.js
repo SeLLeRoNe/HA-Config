@@ -242,29 +242,6 @@ class CustomLightBrightnessRow extends Polymer.Element {
 		if (revButtons) {
 			this.setProperties({
 				_stateObj: stateObj,
-				_leftState: high == 'on',
-				_midLeftState: med === 'on',
-				_midRightState: low === 'on',
-				_rightState: offstate === 'on',
-				_leftColor: hicolor,
-				_midLeftColor: medcolor,
-				_midRightColor: lowcolor,
-				_rightColor: offcolor,
-				_lowSP: lowSetpoint,
-				_medSP: medSetpoint,
-				_highSP: hiSetpoint,
-				_leftText: hitext,
-				_midLeftText: medtext,
-				_midRightText: lowtext,
-				_rightText: offtext,
-				_leftName: hiname,
-				_midLeftName: medname,
-				_midRightName: lowname,
-				_rightName: offname,
-			});
-		} else {
-			this.setProperties({
-				_stateObj: stateObj,
 				_leftState: offstate == 'on',
 				_midLeftState: low === 'on',
 				_midRightState: med === 'on',
@@ -284,6 +261,30 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				_midLeftName: lowname,
 				_midRightName: medname,
 				_rightName: hiname,
+
+			});
+		} else {
+			this.setProperties({
+				_stateObj: stateObj,
+				_leftState: high == 'on',
+				_midLeftState: med === 'on',
+				_midRightState: low === 'on',
+				_rightState: offstate === 'on',
+				_leftColor: hicolor,
+				_midLeftColor: medcolor,
+				_midRightColor: lowcolor,
+				_rightColor: offcolor,
+				_lowSP: lowSetpoint,
+				_medSP: medSetpoint,
+				_highSP: hiSetpoint,
+				_leftText: hitext,
+				_midLeftText: medtext,
+				_midRightText: lowtext,
+				_rightText: offtext,
+				_leftName: hiname,
+				_midLeftName: medname,
+				_midRightName: lowname,
+				_rightName: offname,
 			});
 		}
 				
