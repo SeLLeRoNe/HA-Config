@@ -1,9 +1,0 @@
----
-platform: places
-name: Maurizio
-devicetracker_id: device_tracker.life360_maurizio_iannucci
-options: formatted_address
-map_provider: google
-map_zoom: 18
-home_zone: zone.maurizio_home
-api_key: !secret mail_maurizio
