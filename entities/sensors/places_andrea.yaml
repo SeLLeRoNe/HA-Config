@@ -1,7 +1,7 @@
 ---
 platform: places
 name: Andrea
-devicetracker_id: device_tracker.life360_andrea_iannucci
+devicetracker_id: device_tracker.andrea_oneplus_nord
 options: formatted_address
 map_provider: google
 map_zoom: 18

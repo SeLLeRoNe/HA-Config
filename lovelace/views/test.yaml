@@ -13,18 +13,18 @@ cards:
             template: title
             variables:
               - title: "Device Trackers"
-          - type: custom:logbook-card
-            title: "Andrea - Life360"
-            entity: device_tracker.life360_andrea_iannucci
-            max_items: 5
-            date_format: dd/MM/YYYY hh:mm
-            show:
-              state: true
-              duration: true
-              end_date: false
-              start_date: true
-              icon: false
-              separator: false
+#          - type: custom:logbook-card
+#            title: "Andrea - Life360"
+#            entity: device_tracker.life360_andrea_iannucci
+#            max_items: 5
+#            date_format: dd/MM/YYYY hh:mm
+#            show:
+#              state: true
+#              duration: true
+#              end_date: false
+#              start_date: true
+#              icon: false
+#              separator: false
           - type: custom:logbook-card
             title: "Andrea - HA App"
             entity: device_tracker.andrea_oneplus_nord
@@ -37,19 +37,19 @@ cards:
               start_date: true
               icon: false
               separator: false
-          - type: custom:logbook-card
-            title: "Sonia - Life360"
-            entity: device_tracker.life360_sonia_espejo_brea
-            max_items: 5
-            date_format: dd/MM/YYYY hh:mm
-            show:
-              state: true
-              duration: true
-              end_date: false
-              start_date: true
-              icon: false
-              separator: false
-              separator: false
+#          - type: custom:logbook-card
+#            title: "Sonia - Life360"
+#            entity: device_tracker.life360_sonia_espejo_brea
+#            max_items: 5
+#            date_format: dd/MM/YYYY hh:mm
+#            show:
+#              state: true
+#              duration: true
+#              end_date: false
+#              start_date: true
+#              icon: false
+#              separator: false
+#              separator: false
           - type: custom:logbook-card
             title: "Sonia - HA App"
             entity: device_tracker.sonia_mi_9t_pro
@@ -77,14 +77,14 @@ cards:
             name: Andrea
           - entity: device_tracker.andrea_oneplus_nord
             name: HA App
-          - entity: device_tracker.life360_andrea_iannucci
-            name: Life360
+#          - entity: device_tracker.life360_andrea_iannucci
+#            name: Life360
           - entity: person.sonia_espejo_brea
             name: Sonia
           - entity: device_tracker.sonia_mi_9t_pro
             name: HA App
-          - entity: device_tracker.life360_sonia_espejo_brea
-            name: Life360
+#          - entity: device_tracker.life360_sonia_espejo_brea
+#            name: Life360
       - break
       - type: light
         entity: light.xmas_tree

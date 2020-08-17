@@ -17,6 +17,6 @@ person:
   - name: Maurizio
     id: !secret maurizio_id
     device_trackers:
-      - device_tracker.life360_maurizio_iannucci
+#      - device_tracker.life360_maurizio_iannucci
 #      - device_tracker.maurizio_huaweip40
 #      - device_tracker.maurizio_honor10
