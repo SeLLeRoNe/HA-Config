@@ -35,7 +35,7 @@ action:
   - service: scene.turn_on
     data:
       entity_id: scene.studio_alarm
-      transition: 15
+      transition: 30
 #  - service: notify.mobile_app_andrea_oneplus_5
 #    data:
 #      title: "Home Alarm"

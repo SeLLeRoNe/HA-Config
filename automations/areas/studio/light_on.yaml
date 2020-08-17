@@ -33,4 +33,4 @@ action:
   - service: light.turn_off
     data:
       entity_id: light.studio_wall_light
-      transition: 15
+      transition: 30

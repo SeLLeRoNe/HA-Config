@@ -8,4 +8,4 @@ action:
   - service: media_player.volume_set
     data:
       entity_id: media_player.studio_google_mini
-      volume_level: '0.70'
+      volume_level: '0.45'
