@@ -20,7 +20,7 @@ condition:
     - condition: template
       value_template: "{{ states('sensor.home_assistant_available_stable_version') > states('sensor.home_assistant_current_version') }}"
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Updates Notification"
       message: "Home Assistant Version {{ states('sensor.home_assistant_available_stable_version') }} (STABLE) update is now available"

@@ -13,7 +13,7 @@ condition:
     - condition: template
       value_template: "{{ states('sensor.hacs') > 0 }}"
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Updates Notification"
       message: "There are {{ states('sensor.hacs') }} new update(s) available in HACS."

@@ -13,7 +13,7 @@ condition:
      entity_id: sensor.dark_sky_precip_probability
      above: 50
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data_template:
       title: "Weather Alert"
       message: "Today will probably rain with {{ states('sensor.dark_sky_precip_probability') }} probability, get an umbrella!"

@@ -15,7 +15,7 @@ condition:
       entity_id: person.andrea_iannucci
       state: 'home'
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data_template:
       title: "Battery Alert"
       message: "Low Battery on NVIDIA Shield K1, please plug it!"

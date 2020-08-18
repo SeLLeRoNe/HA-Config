@@ -25,7 +25,7 @@ condition:
       value_template: "{{ states('sensor.home_assistant_available_beta_version') > states('sensor.home_assistant_available_stable_version') }}"
 
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Updates Notification"
       message: "Home Assistant Version {{ states('sensor.home_assistant_available_beta_version') }} (BETA) update is now available"

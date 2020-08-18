@@ -16,7 +16,7 @@ action:
 #    data_template:
 #      title: "{{state_attr('binary_sensor.meteoalarm', 'headline')}}"
 #      message: "{{state_attr('binary_sensor.meteoalarm', 'description')}} is effective on {{state_attr('binary_sensor.meteoalarm', 'effective')}}"
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data_template:
 #      title: "Weather Alert"
       title: "{{state_attr('binary_sensor.meteoalarm', 'headline')}}"

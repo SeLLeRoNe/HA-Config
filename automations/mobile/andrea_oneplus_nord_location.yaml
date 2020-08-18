@@ -10,6 +10,6 @@ condition:
     - condition: template
       value_template: '{% if states.device_tracker.andrea_oneplus_nord is defined %} {{ (as_timestamp(now()) - as_timestamp(states.device_tracker.andrea_oneplus_nord.last_changed)) > 1800 }} {% endif %}'
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data:
       message: "request_location_update"

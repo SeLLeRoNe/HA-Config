@@ -12,7 +12,7 @@ condition:
       after: '09:00:00'
       before: '23:00:00'
 action:
-  - service: notify.mobile_app_andrea_oneplus_5
+  - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Home Alarm"
       message: "Guest Mode Activated. Alarm Disarmed"
