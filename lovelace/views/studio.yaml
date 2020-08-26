@@ -340,6 +340,10 @@ cards:
               shuffle: true
             tap_action:
               action: none
+          - type: custom:spotify-card
+            client_id: !secret spotify_client_id
+            limit: 10
+            device: YAMAHA-RXV779
 #          - type: entities
 #            entities:
 #              - input_select.spotify_playlist
