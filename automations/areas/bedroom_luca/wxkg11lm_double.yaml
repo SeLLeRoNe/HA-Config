@@ -1,0 +1,19 @@
+---
+alias: Bedroom Luca - WXKG02LM Button Double
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/bedroom_luca_WXKG11LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'double' }}"
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.bedroom_luca_lights
+      transition: 15
