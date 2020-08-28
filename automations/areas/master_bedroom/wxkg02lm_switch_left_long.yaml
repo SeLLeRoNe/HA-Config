@@ -8,7 +8,7 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'left_long' }}"
+      value_template: "{{ trigger.payload_json['action'] == 'left_long' }}"
 action:
   - service: light.turn_on
     data:
