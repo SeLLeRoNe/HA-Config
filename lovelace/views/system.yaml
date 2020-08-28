@@ -770,11 +770,22 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.studio_sonia_wsdcgq11lm_link_quality
+                - entity_id: sensor.bedroom_luca_wsdcgq11lm_link_quality
                   options:
                     name: Sonia's Studio - WSDCGQ11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_sonia_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_sonia_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_sonia_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_sonia_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_sonia_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_sonia_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.bedroom_luca_wxkg11lm_link_quality
+                  options:
+                    name: Bedroom Luca - WXKG11LM - Link Quality
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:
@@ -912,6 +923,17 @@ cards:
                     name: Studio - WXKG03LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: 'Battery Level: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_battery.state , "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "mV", "") ]]'
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.studio_andrea_wxkg01lm_link_quality
+                  options:
+                    name: Studio Andrea - WXKG01LM - Link Quality
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: 'Battery Level: [[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

@@ -22,6 +22,8 @@ batteries_zigbee:
         name: "Studio - WSDCGQ11LM Temperature Sensor"
       - entity: sensor.studio_2ajz4kpbs_battery
         name: "Studio - 2AJZ4KPBS Motion Sensor"
+      - entity: sensor.studio_andrea_wxkg01lm_battery
+        name: "Studio - WXKG01LM Button"
       - entity: sensor.studio_wxkg03lm_battery
         name: "Studio - WXKG03LM Single Gang Switch"
       - entity: sensor.washing_machine_djt11lm_battery
@@ -36,6 +38,8 @@ batteries_zigbee:
         name: "Master Bathroom - SJCGQ11LM Leak Sensor"
       - entity: sensor.bedroom_luca_wsdcgq11lm_battery
         name: "Bedroom Luca - WSDCGQ11LM Temperature Sensor"
+      - entity: sensor.bedroom_luca_wxkg11lm_battery
+        name: "Bedroom Luca - WXKG11LM Button"
       - entity: sensor.bathroom_wsdcgq01lm_battery
         name: "Bathroom - WSDCGQ01LM Temperature Sensor"
       - entity: sensor.bathroom_mccgq01lm_battery
