@@ -13,6 +13,6 @@ action:
   - service: light.toggle
     data:
       entity_id: light.patio_light
-      color_name: white
-      brightness: 150
-      transition: 5
+      brightness: 10
+      rgb_color: [255,255,255]
+      transition: 15
