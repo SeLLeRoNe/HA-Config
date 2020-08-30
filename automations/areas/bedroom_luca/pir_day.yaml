@@ -27,7 +27,7 @@ condition:
         - condition: and
           conditions:
             - condition: time
-              after: '10:00:00'
+              after: '19:00:00'
               before: '21:30:00'
             - condition: state
               entity_id: binary_sensor.workday_uk
