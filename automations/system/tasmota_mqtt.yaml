@@ -24,7 +24,7 @@ action:
       retain: true
   - service: mqtt.publish
     data:
-      topic: cmnd/tasmotas/otaurl
+      topic: cmnd/tasmotas/OTAURL
       payload: "http://thehackbox.org/tasmota/tasmota.bin.gz"
       retain: true
   - service: mqtt.publish
@@ -112,5 +112,5 @@ action:
   - service: mqtt.publish
     data:
       topic: "cmnd/tasmotas/WifiConfig"
-      payload: "2"
+      payload: "5"
       retain: true
