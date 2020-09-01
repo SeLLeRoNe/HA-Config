@@ -112,5 +112,5 @@ action:
   - service: mqtt.publish
     data:
       topic: "cmnd/tasmotas/WifiConfig"
-      payload: "5"
+      payload: "2"
       retain: true
