@@ -34,6 +34,11 @@ action:
       retain: true
   - service: mqtt.publish
     data:
+      topic: cmnd/ZBBridge01/otaurl
+      payload: "http://thehackbox.org/tasmota/tasmota-zbbridge.bin.gz"
+      retain: true
+  - service: mqtt.publish
+    data:
       topic: "cmnd/tasmotas/Backlog"
       payload: "POWER1 ;POWER2 ;POWER3 ;POWER4 ;POWER5; DIMMER; STATE;"
       retain: true
