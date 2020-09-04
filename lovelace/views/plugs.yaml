@@ -174,7 +174,7 @@ cards:
                   - type: custom:hui-element
                     row_type: divider
                   - entity: sensor.studio_electricity_daily_peak
-                    name: Studio Andrea (Peak)
+                    name: Studio (Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_daily_peak
@@ -182,7 +182,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_electricity_daily_offpeak
-                    name: Studio Andrea (Off Peak)
+                    name: Studio (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_daily_offpeak
@@ -190,7 +190,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_daily_energy_usage
-                    name: Studio Andrea (Total)
+                    name: Studio (Total)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_daily
@@ -334,7 +334,7 @@ cards:
                   - type: custom:hui-element
                     row_type: divider
                   - entity: sensor.studio_electricity_monthly_peak
-                    name: Studio Andrea (Peak)
+                    name: Studio (Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_monthly_peak
@@ -342,7 +342,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_electricity_monthly_offpeak
-                    name: Studio Andrea (Off Peak)
+                    name: Studio (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_monthly_offpeak
@@ -350,7 +350,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_monthly_energy_usage
-                    name: Studio Andrea (Total)
+                    name: Studio (Total)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_monthly
@@ -494,7 +494,7 @@ cards:
                   - type: custom:hui-element
                     row_type: divider
                   - entity: sensor.studio_electricity_yearly_peak
-                    name: Studio Andrea (Peak)
+                    name: Studio (Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_yearly_peak
@@ -502,7 +502,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_electricity_yearly_offpeak
-                    name: Studio Andrea (Off Peak)
+                    name: Studio (Off Peak)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_yearly_offpeak
@@ -510,7 +510,7 @@ cards:
                     tap_action:
                       action: none
                   - entity: sensor.studio_yearly_energy_usage
-                    name: Studio Andrea (Total)
+                    name: Studio (Total)
                     type: custom:multiple-entity-row
                     primary:
                       entity: sensor.studio_cost_yearly
