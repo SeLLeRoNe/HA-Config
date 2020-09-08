@@ -30,12 +30,12 @@ action:
   - service: mqtt.publish
     data:
       topic: cmnd/tasmotas/otaurl
-      payload: "https://ota.tasmota.com/tasmota/tasmota.bin.gz"
+      payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge01/otaurl
-      payload: "https://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
+      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
       retain: true
   - service: mqtt.publish
     data:
