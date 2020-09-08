@@ -9,8 +9,8 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.andrea_shield_battery_state
-      state: 'on'
+      entity_id: sensor.andrea_shield_battery_state
+      state: 'charging'
     - condition: state
       entity_id: person.andrea_iannucci
       state: 'home'

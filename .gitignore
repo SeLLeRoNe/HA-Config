@@ -6,6 +6,7 @@ ssl/
 .storage/
 .spotify-token-cache
 .vscode/
+automations/system/tasmota_security.yaml
 custom_components/samsungtv_tizen/token-*.txt
 commands.txt
 getLatestConfs.sh

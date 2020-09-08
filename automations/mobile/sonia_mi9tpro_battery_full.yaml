@@ -9,8 +9,8 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.sonia_mi_9t_pro_battery_state
-      state: 'on'
+      entity_id: sensor.sonia_mi_9t_pro_battery_state
+      state: 'charging'
     - condition: state
       entity_id: person.sonia_espejo_brea
       state: 'home'
