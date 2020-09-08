@@ -38,7 +38,7 @@ action:
 #  - service: alarm_control_panel.alarm_trigger
 #    entity_id: alarm_control_panel.home_alarm_mqtt
   - service: notify.alarm
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Alarm triggered
@@ -59,7 +59,7 @@ action:
         ttl: 0
         priority: high
   - service: notify.telegram_andrea
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Alarm triggered

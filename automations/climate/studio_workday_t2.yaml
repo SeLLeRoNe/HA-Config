@@ -137,7 +137,7 @@ action:
       entity_id: climate.studio
       preset_mode: none
   - service: climate.set_temperature
-    data_template:
+    data:
       entity_id: climate.studio
       temperature: "{{ states('input_number.climate_studio_workday_t2') | float }}"
       hvac_mode: heat

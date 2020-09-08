@@ -6,7 +6,7 @@ trigger:
   webhook_id: state
 action:
   service_template: python_script.hass_entities
-  data_template:
+  data:
     action: set_state
     entity_id: '{{ trigger.json.entity_id }}'
     state: '{{ trigger.json.state }}'

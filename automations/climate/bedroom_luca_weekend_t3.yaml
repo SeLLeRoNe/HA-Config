@@ -137,7 +137,7 @@ action:
       entity_id: climate.bedroom_luca
       preset_mode: none
   - service: climate.set_temperature
-    data_template:
+    data:
       entity_id: climate.bedroom_luca
       temperature: "{{ states('input_number.climate_bedroom_luca_weekend_t3') | float }}"
       hvac_mode: heat

@@ -7,5 +7,5 @@ trigger:
 action:
   - service: media_player.select_source
     entity_id: media_player.spotify
-    data_template:
+    data:
       source: "{{ states('input_select.spotify_device') }}"

@@ -16,7 +16,7 @@ condition:
       state: 'home'
 action:
   - service: notify.mobile_app_sonia_mi_9t_pro
-    data_template:
+    data:
       title: "Battery Alert"
       message: "Low Battery on Mi 9T Pro, please plug it!"
       data:

@@ -35,13 +35,13 @@ condition:
 action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
-    data_template:
+    data:
       code: !secret home_alarm_pin
 #  - service: alarm_control_panel.alarm_arm_away
 #    entity_id: alarm_control_panel.home_alarm_mqtt
-#    data_template:
+#    data:
 #      code: !secret home_alarm_pin
 #  - service: notify.alarm
-#    data_template:
+#    data:
 #      title: "Home Alarm Activated"
 #      message: "Alarm automatically activated - Away mode"

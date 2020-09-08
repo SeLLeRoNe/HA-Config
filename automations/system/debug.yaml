@@ -6,7 +6,7 @@ trigger:
     minutes: '*'
 action:
   - service: input_text.set_value
-    data_template:
+    data:
       entity_id: input_text.debug
       value: Output - None
 #      value: Output - '{{ states.person.maurizio.state }}'

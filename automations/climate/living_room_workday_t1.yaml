@@ -137,7 +137,7 @@ action:
       entity_id: climate.living_room
       preset_mode: none
   - service: climate.set_temperature
-    data_template:
+    data:
       entity_id: climate.living_room
       temperature: "{{ states('input_number.climate_living_room_workday_t1') | float }}"
       hvac_mode: heat

@@ -24,7 +24,7 @@ trigger:
     below: 20
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
-    data_template:
+    data:
       title: "Battery Alert"
       message: "Battery low on Zigbee Device {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}"
       data:

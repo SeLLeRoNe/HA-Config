@@ -12,7 +12,7 @@ action:
   - service: homeassistant.turn_off
     entity_id: automation.media_player_spotify_set_volume
   - service: input_number.set_value
-    data_template:
+    data:
       entity_id: input_number.spotify_volume
       value: "{{ states('sensor.spotify_volume') | float | round(2) * 100 | default('{{ (1.0)*100.0 | int }}', True) }}"
   - service: homeassistant.turn_on

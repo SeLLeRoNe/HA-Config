@@ -22,14 +22,14 @@ action:
       entity_id: climate.living_room
       preset_mode: none
   - service: timer.start
-    data_template:
+    data:
       entity_id: timer.heating_push_living_room
       duration: '{{ states("input_datetime.heating_push_living_room") }}'
   - service: climate.turn_on
     data:
       entity_id: climate.living_room
   - service: climate.set_temperature
-    data_template:
+    data:
       entity_id: climate.living_room
       temperature: "{{ states('input_number.heating_push_living_room') | float }}"
       hvac_mode: heat

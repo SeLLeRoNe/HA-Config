@@ -56,11 +56,11 @@ action:
       payload: '{"warning": {"duration": 1, "mode": "stop", "strobe": false}}'
   - service: alarm_control_panel.alarm_arm_home
     entity_id: alarm_control_panel.home_alarm
-    data_template:
+    data:
       code: !secret home_alarm_pin
 #  - service: alarm_control_panel.alarm_arm_home
 #    entity_id: alarm_control_panel.home_alarm_mqtt
-#    data_template:
+#    data:
 #      code: !secret home_alarm_pin
 #  - service: tts.google_translate_say
 #    data:
@@ -68,6 +68,6 @@ action:
 #      message: "Switched to Home Mode" 
 #      language: 'en'
 #  - service: notify.alarm
-#    data_template:
+#    data:
 #      title: "Home Alarm Activated"
 #      message: "Alarm automatically activated - Home mode"

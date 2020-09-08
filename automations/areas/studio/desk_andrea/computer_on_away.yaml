@@ -15,7 +15,7 @@ action:
   - service: switch.turn_on
     entity_id: switch.studio_andrea_usb_hub
   - service: notify.andrea_oneplus_nord
-    data_template:
+    data:
       title: "Studio Andrea"
       message: "Computer has been turned on!"
   - service: switch.turn_off

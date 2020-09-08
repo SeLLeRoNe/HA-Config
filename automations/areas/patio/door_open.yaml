@@ -26,7 +26,7 @@ action:
 #    data:
 #      entity_id: light.studio_wall_light
   - service: notify.alarm
-    data_template:
+    data:
       title: "Home Alarm"
       message: "Patio Door has been open for 15 minutes."
       data:

@@ -6,5 +6,5 @@ trigger:
   webhook_id: input_boolean
 action:
   service_template: '{{ trigger.json.service }}'
-  data_template:
+  data:
     entity_id: '{{ trigger.json.entity_id }}'

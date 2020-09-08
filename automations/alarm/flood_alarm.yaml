@@ -14,7 +14,7 @@ action:
       topic: zigbee2mqtt/house_alarm_siren/set
       payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": true}}'
   - service: notify.alarm
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Flood detected
@@ -45,7 +45,7 @@ action:
         {% endif %}
       language: 'en'
   - service: notify.telegram_andrea
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Flood detected

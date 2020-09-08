@@ -15,7 +15,7 @@ condition:
       state: 'off'
 action:
   - service: tts.google_translate_say
-    data_template:
+    data:
       entity_id: media_player.studio_google_mini
       message: "The humidity in the master bathroom is too high, please open the window"
       language: "en"

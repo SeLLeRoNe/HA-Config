@@ -11,6 +11,6 @@ condition:
       value_template: "{{ not is_state('input_number.spotify_volume', '0.0') }}"
 action:
   - service: media_player.volume_set
-    data_template:
+    data:
       entity_id: media_player.spotify
       volume_level: "{{ states('input_number.spotify_volume') | int / 100 }}"

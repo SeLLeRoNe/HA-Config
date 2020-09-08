@@ -49,7 +49,7 @@ action:
         - light.patio_light
 #        - light.master_bedroom_lamp_top_light
   - service: tts.google_translate_say
-    data_template:
+    data:
       entity_id: media_player.studio_google_mini
       message: >
         Alarm triggered
@@ -65,7 +65,7 @@ action:
         {% endif %}
       language: 'en'
   - service: notify.alarm
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Alarm triggered
@@ -86,7 +86,7 @@ action:
         ttl: 0
         priority: high
   - service: notify.telegram_andrea
-    data_template:
+    data:
       title: "Home Alarm"
       message: >
         Alarm triggered

@@ -16,7 +16,7 @@ condition:
       state: 'home'
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
-    data_template:
+    data:
       title: "Battery Alert"
       message: "Battery Full on OnePlus Nord, please unplug it!"
       data:

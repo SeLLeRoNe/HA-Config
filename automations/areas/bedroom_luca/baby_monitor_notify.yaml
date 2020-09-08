@@ -15,7 +15,7 @@ condition:
       state: "on"
 action:
   - service: notify.alarm
-    data_template:
+    data:
       title: "Baby Monitor"
       message: "Luca is Awake!"
       data:

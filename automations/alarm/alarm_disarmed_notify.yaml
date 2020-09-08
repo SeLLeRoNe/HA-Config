@@ -16,10 +16,10 @@ condition:
       state: 'not_home'
 action:
   - service: notify.alarm
-    data_template:
+    data:
       title: "Alarm Notification"
       message: "Alarm Deactivated while no one is at home!"
 #  - service: alarm_control_panel.alarm_disarm
 #    entity_id: alarm_control_panel.home_alarm_mqtt
-#    data_template:
+#    data:
 #      code: !secret home_alarm_pin

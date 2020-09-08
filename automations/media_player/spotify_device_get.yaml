@@ -13,7 +13,7 @@ action:
     entity_id: automation.media_player_spotify_set_device
   - service: input_select.select_option
     entity_id: input_select.spotify_device
-    data_template:
+    data:
       option: "{{ state_attr('media_player.spotify', 'source') | default('Spotify not running', True) }}"
   - service: homeassistant.turn_on
     entity_id: automation.media_player_spotify_set_device

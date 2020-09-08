@@ -7,7 +7,7 @@ trigger:
 action:
   - service: media_player.shuffle_set
     entity_id: media_player.spotify
-    data_template:
+    data:
       shuffle: >
         {% if is_state('input_boolean.spotify_shuffle', 'off') %}
         false

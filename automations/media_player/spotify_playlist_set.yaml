@@ -6,7 +6,7 @@ trigger:
   entity_id: input_select.spotify_playlist
 action:
   - service: media_player.play_media
-    data_template:
+    data:
       entity_id: media_player.spotify
       media_content_type: playlist
       media_content_id: >

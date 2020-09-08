@@ -16,7 +16,7 @@ condition:
       state: 'home'
 action:
   - service: notify.mobile_app_test_oneplus_5
-    data_template:
+    data:
       title: "Battery Alert"
       message: "Low Battery on Motorola XT1032, please plug it!"
       data:

@@ -44,7 +44,7 @@ trigger:
       minutes: 5
 action:
   - service: notify.alarm
-    data_template:
+    data:
       title: 'Mold Alert'
       message: >
         Mold alert
@@ -63,7 +63,7 @@ action:
         tag: tag
         ttl: 0
 #  - service: tts.google_translate_say
-#    data_template:
+#    data:
 #      entity_id: media_player.studio_google_mini
 #      message: >
 #        Mold Alert
