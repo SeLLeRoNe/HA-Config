@@ -24,6 +24,7 @@ logger:
     homeassistant.components.notify: error
     homeassistant.components.media_player: error
     homeassistant.components.mqtt: error
+    homeassistant.components.ping: critical
     homeassistant.components.pi_hole: error
     homeassistant.components.python_script: error
     homeassistant.setup: error
