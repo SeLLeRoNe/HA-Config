@@ -342,6 +342,7 @@ cards:
               action: none
           - type: custom:spotify-card
             client_id: !secret spotify_client_id
+            hide_top_header: true
             limit: 10
             device: YAMAHA-RXV779
 #          - type: entities
