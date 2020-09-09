@@ -406,3 +406,13 @@ cards:
         template: studio_energy_small
         variables:
           - title: Energy Consumption
+      - break
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Video Surveillance
+      - type: picture-glance
+        camera_image: camera.studio_camera_mediaprofile_channel1_mainstream
+        camera_view: live
+        entities: 
+          - entity: binary_sensor.000_cell_motion_detection
