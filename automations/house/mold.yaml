@@ -48,13 +48,13 @@ action:
       title: 'Mold Alert'
       message: >
         Mold alert
-        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ( {{ sensor.living_room_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ( {{ sensor.kitchen_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ( {{ sensor.bedroom_luca_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ( {{ sensor.bathroom_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ( {{ sensor.master_bedroom_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ( {{ sensor.master_bathroom_mold_indicator.state }} ) %)
-        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ( {{ sensor.studio_mold_indicator.state }} ) %)
+        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ({{ states.sensor.living_room_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ({{ states.sensor.kitchen_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ({{ states.sensor.bedroom_luca_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ({{ states.sensor.bathroom_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ({{ states.sensor.master_bedroom_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ({{ states.sensor.master_bathroom_mold_indicator.state }}%) )
+        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio ({{ states.sensor.studio_mold_indicator.state }}%) )
         {% else %}from Unknown Sensor
         {% endif %}
       data:
@@ -62,18 +62,18 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
-#  - service: tts.google_translate_say
-#    data:
-#      entity_id: media_player.studio_google_mini
-#      message: >
-#        Mold Alert
-#        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room
-#        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room
-#        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom
-#        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom
-#        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom
-#        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom
-#        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio
-#        {% else %}from Unknown Sensor
-#        {% endif %}
-#      language: 'en'
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.studio_google_mini
+      message: >
+        Mold Alert
+        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room, it's at {{ states.sensor.living_room_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room, it's at {{ states.sensor.kitchen_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom, it's at {{ states.sensor.bedroom_luca_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom, it's at {{ states.sensor.bathroom_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom, it's at {{ states.sensor.master_bedroom_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom, it's at {{ states.sensor.master_bathroom_mold_indicator.state }}%
+        {% elif trigger.entity_id == "sensor.studio_mold_indicator" %}in the Studio, it's at {{ states.sensor.studio_mold_indicator.state }}%
+        {% else %}from Unknown Sensor
+        {% endif %}
+      language: 'en'
