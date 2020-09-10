@@ -65,7 +65,9 @@
     type: module
   - url: /hacsfiles/lovelace-darksky-card/lovelace-darksky-card.js
     type: module
-  - url: /local/community/spotify-card/spotify-card.js
+  - url: /hacsfiles/spotify-card/spotify-card.js
+    type: module
+  - url: /hacsfiles/kb-steam-card/kb-steam-card.js
     type: module
 
   - url: /local/q-card.js
