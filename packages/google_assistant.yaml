@@ -9,7 +9,7 @@ google_assistant:
   service_account: !secret google_token_file
   secure_devices_pin: !secret home_alarm_pin
   expose_by_default: true
-  report_state: true
+  report_state: fase
 #  exposed_domains:
 #    - alarm_control_panel 
 #    - switch
