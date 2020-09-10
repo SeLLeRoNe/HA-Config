@@ -1,4 +1,0 @@
----
-platform: co2signal
-token: !secret co2signal_api_key
-country_code: ES
