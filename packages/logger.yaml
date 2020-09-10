@@ -21,6 +21,7 @@ logger:
     homeassistant.components.group: error
     homeassistant.components.automation: error
     homeassistant.components.device_tracker: error
+    homeassistant.components.google_assistant: critical
     homeassistant.components.notify: error
     homeassistant.components.media_player: error
     homeassistant.components.mqtt: error
