@@ -34,3 +34,4 @@ views:
   - !include lovelace/views/test.yaml
   - !include lovelace/views/test_background.yaml
   - !include lovelace/views/currencies.yaml
+  - !include lovelace/views/alarm.yaml
