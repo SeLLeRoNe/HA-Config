@@ -69,6 +69,8 @@
     type: module
   - url: /hacsfiles/kb-steam-card/kb-steam-card.js
     type: module
+  - url: /hacsfiles/button-card/button-card.js
+    type: module
 
   - url: /local/q-card.js
     type: module
