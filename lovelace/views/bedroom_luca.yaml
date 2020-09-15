@@ -78,6 +78,12 @@ cards:
                 template: pressure
                 variables:
                   - entity: sensor.bedroom_luca_pressure
+          - type: vertical-stack
+            cards:
+              - type: custom:decluttering-card
+                template: illuminance
+                variables:
+                  - entity: sensor.bedroom_luca_gzcgq01lm_illuminance
 #      - break
 #      - type: custom:decluttering-card
 #        template: bedroom_luca_energy_small

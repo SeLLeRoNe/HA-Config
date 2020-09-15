@@ -8,6 +8,9 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: numeric_state
+      entity_id: sensor.bedroom_luca_gzcgq01lm_illuminance
+      below: 1000
     - condition: and
       conditions:
         - condition: state
