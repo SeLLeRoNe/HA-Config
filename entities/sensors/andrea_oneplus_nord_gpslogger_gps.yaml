@@ -1,0 +1,7 @@
+---
+platform: template
+sensors:
+  andrea_oneplus_nord_gpslogger_gps:
+    friendly_name: OnePlus Nord GPSLogger GPS
+    device_class: battery
+    value_template: "Latitude: {{ state_attr('device_tracker.andrea_oneplus_nord_gpslogger', 'latitude') }} Longitude: {{ state_attr('device_tracker.andrea_oneplus_nord_gpslogger', 'longitude') }}"

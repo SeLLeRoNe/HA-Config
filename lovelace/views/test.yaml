@@ -26,6 +26,18 @@ cards:
 #              icon: false
 #              separator: false
           - type: custom:logbook-card
+            title: "Andrea - GPSLogger"
+            entity: device_tracker.andrea_oneplus_nord_gpslogger
+            max_items: 5
+            date_format: dd/MM/YYYY hh:mm
+            show:
+              state: true
+              duration: true
+              end_date: false
+              start_date: true
+              icon: false
+              separator: false
+          - type: custom:logbook-card
             title: "Andrea - HA App"
             entity: device_tracker.andrea_oneplus_nord
             max_items: 5
@@ -67,6 +79,7 @@ cards:
         show_header_toggle: false
         entities:
           - entity: sensor.andrea_oneplus_nord_gps
+          - entity: sensor.andrea_oneplus_nord_gpslogger_gps
           - entity: sensor.sonia_mi_9t_pro_gps
       - type: history-graph
         title:
@@ -77,6 +90,8 @@ cards:
             name: Andrea
           - entity: device_tracker.andrea_oneplus_nord
             name: HA App
+          - entity: device_tracker.andrea_oneplus_nord_gpslogger
+            name: GPSLogger
 #          - entity: device_tracker.life360_andrea_iannucci
 #            name: Life360
           - entity: person.sonia_espejo_brea
