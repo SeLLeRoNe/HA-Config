@@ -439,4 +439,4 @@ cards:
         camera_image: camera.studio_camera_mediaprofile_channel1_mainstream
         camera_view: live
         entities: 
-          - entity: binary_sensor.000_cell_motion_detection
+          - entity: binary_sensor.00000_cell_motion_detection
