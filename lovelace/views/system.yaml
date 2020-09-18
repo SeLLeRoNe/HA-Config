@@ -1,5 +1,5 @@
 title: Maintenance
-icon: mdi:settings
+icon: mdi:cog
 panel: true
 path: system
 cards:
