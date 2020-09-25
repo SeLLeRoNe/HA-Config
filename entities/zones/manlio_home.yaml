@@ -1,5 +1,5 @@
 ---
-name: Manlio Home
+name: Manlio's Home
 latitude: !secret zone_manlio_home_latitude
 longitude: !secret zone_manlio_home_longitude
 radius: 25

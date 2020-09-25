@@ -1,5 +1,5 @@
 ---
-name: Alessandra Home
+name: Alessandra's Home
 latitude: !secret zone_alessandra_home_latitude
 longitude: !secret zone_alessandra_home_longitude
 radius: 10

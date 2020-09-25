@@ -1,5 +1,5 @@
 ---
-name: Martina Home
+name: Martina's Home
 latitude: !secret zone_martina_home_latitude
 longitude: !secret zone_martina_home_longitude
 radius: 10

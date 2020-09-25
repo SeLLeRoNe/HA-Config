@@ -1,5 +1,5 @@
 ---
-name: Sarah Home
+name: Sarah's Home
 latitude: !secret zone_sarah_home_latitude
 longitude: !secret zone_sarah_home_longitude
 radius: 10

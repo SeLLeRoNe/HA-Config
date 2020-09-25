@@ -1,5 +1,5 @@
 ---
-name: Sonia Home
+name: Sonia's Home
 latitude: !secret zone_sonia_home_latitude
 longitude: !secret zone_sonia_home_longitude
 radius: 15

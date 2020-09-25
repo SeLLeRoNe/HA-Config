@@ -1,5 +1,5 @@
 ---
-name: DrZzs Home
+name: DrZzs's Home
 latitude: !secret zone_drzzs_home_latitude
 longitude: !secret zone_drzzs_home_longitude
 radius: 25

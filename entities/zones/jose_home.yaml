@@ -1,5 +1,5 @@
 ---
-name: Jose Home
+name: Jose's Home
 latitude: !secret zone_jose_home_latitude
 longitude: !secret zone_jose_home_longitude
 radius: 15
