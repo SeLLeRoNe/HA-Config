@@ -1,0 +1,7 @@
+---
+name: Martina Home
+latitude: !secret zone_martina_home_latitude
+longitude: !secret zone_martina_home_longitude
+radius: 10
+passive: false
+icon: mdi:home-heart
