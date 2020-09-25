@@ -1,8 +1,0 @@
-{
-    "domain": "custom_icons",
-    "name": "Custom Icons Loader",
-    "documentation": "",
-    "dependencies": ["frontend"],
-    "codeowners": [],
-    "requirements": []
-}
