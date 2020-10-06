@@ -5,17 +5,14 @@ entities:
     state: on
     color_temp: 153
     hs_color: [0,0]
-#    rgb_color: [255,255,255]
     brightness: 150
   light.bedroom_luca_light_2:
     state: on
     color_temp: 153
-#    hs_color: [0,0]
-#    rgb_color: [255,255,255]
+    hs_color: [0,0]
     brightness: 150
   light.bedroom_luca_light_3:
     state: on
     color_temp: 153
-#    hs_color: [0,0]
-#    rgb_color: [255,255,255]
+    hs_color: [0,0]
     brightness: 150

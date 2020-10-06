@@ -571,10 +571,10 @@ cards:
                 name: "Luca's Bedroom - Light 3"
                 tap_action:
                   action: none
-#              - entity: sensor.studio_wall_light_wireless_signal
-#                name: "Studio - Wall Light"
-#                tap_action:
-#                  action: none
+              - entity: sensor.studio_wall_light_wireless_signal
+                name: "Studio - Wall Light"
+                tap_action:
+                  action: none
               - entity: sensor.studio_sonia_desk_lamp_wireless_signal
                 name: "Studio - Sonia Desk Lamp"
                 tap_action:
@@ -728,15 +728,6 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.studio_wall_light_link_quality
-                  options:
-                    name: Studio - Wall Light - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
                 - entity_id: sensor.studio_wsdcgq11lm_link_quality
                   options:
                     name: Studio - WSDCGQ11LM - Link Quality
@@ -825,15 +816,6 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.master_bedroom_lamp_top_light_link_quality
-                  options:
-                    name: Master Bedroom - Lamp Top Light - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
                 - entity_id: sensor.master_bedroom_lamp_bottom_light_link_quality
                   options:
                     name: Master Bedroom - Lamp Bottom Light - Link Quality
@@ -879,6 +861,24 @@ cards:
                 - entity_id: sensor.bedroom_luca_light_1_link_quality
                   options:
                     name: Bedroom Luca - Light 1 - Link Quality
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.bedroom_luca_light_2_link_quality
+                  options:
+                    name: Bedroom Luca - Light 2 - Link Quality
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.bedroom_luca_light_3_link_quality
+                  options:
+                    name: Bedroom Luca - Light 3 - Link Quality
                     tap_action:
                       action: none
                   not 1:

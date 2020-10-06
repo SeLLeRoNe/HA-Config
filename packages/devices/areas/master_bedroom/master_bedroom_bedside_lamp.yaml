@@ -5,16 +5,6 @@
 #
 light:
   - platform: "mqtt"
-    name: "Master Bedroom Lamp Top Light"
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
-    availability:
-      - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-    brightness: true
-    xy: true
-    schema: "json"
-    command_topic: "zigbee2mqtt/master_bedroom_lamp_top_light/set"
-  - platform: "mqtt"
     name: "Master Bedroom Lamp Bottom Light"
     state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
     availability:
@@ -27,14 +17,6 @@ light:
 
 sensor:
   - platform: mqtt
-    name: 'Master Bedroom Lamp Top Light Link Quality'
-    icon: mdi:lightbulb
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
-    availability:
-      - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-    value_template: "{{ value_json.linkquality }}"
-  - platform: mqtt
     name: 'Master Bedroom Lamp Bottom Light Link Quality'
     icon: mdi:lightbulb
     state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
@@ -44,14 +26,6 @@ sensor:
     value_template: "{{ value_json.linkquality }}"
 
 binary_sensor:
-  - platform: mqtt
-    name: 'Master Bedroom Lamp Top Light Firmware Update'
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_top_light"
-    availability:
-      - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
-    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
-    payload_on: available
   - platform: mqtt
     name: 'Master Bedroom Lamp Bottom Light Firmware Update'
     state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
