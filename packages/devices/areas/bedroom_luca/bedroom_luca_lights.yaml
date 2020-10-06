@@ -1,0 +1,88 @@
+---
+# MQTT Device: Bedroom Luca Light 1
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+light:
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 1"
+    state_topic: "zigbee2mqtt/bedroom_luca_light_1"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_1/availability"
+    brightness: true
+    xy: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/bedroom_luca_light_1/set"
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 2"
+    state_topic: "zigbee2mqtt/bedroom_luca_light_2"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
+    brightness: true
+    xy: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/bedroom_luca_light_2/set"
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 3"
+    state_topic: "zigbee2mqtt/bedroom_luca_light_3"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_3/availability"
+    brightness: true
+    xy: true
+    schema: "json"
+    command_topic: "zigbee2mqtt/bedroom_luca_light_3/set"
+
+sensor:
+  - platform: mqtt
+    name: 'Bedroom Luca Light 1 Link Quality'
+    icon: mdi:lightbulb
+    state_topic: "zigbee2mqtt/bedroom_luca_light_1"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_1/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: 'Bedroom Luca Light 2 Link Quality'
+    icon: mdi:lightbulb
+    state_topic: "zigbee2mqtt/bedroom_luca_light_2"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
+    value_template: "{{ value_json.linkquality }}"
+  - platform: mqtt
+    name: 'Bedroom Luca Light 3 Link Quality'
+    icon: mdi:lightbulb
+    state_topic: "zigbee2mqtt/bedroom_luca_light_3"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_3/availability"
+    value_template: "{{ value_json.linkquality }}"
+
+binary_sensor:
+  - platform: mqtt
+    name: 'Bedroom Luca Light 1 Firmware Update'
+    state_topic: "zigbee2mqtt/bedroom_luca_light_1"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_1/availability"
+    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
+    payload_on: available
+  - platform: mqtt
+    name: 'Bedroom Luca Light 2 Firmware Update'
+    state_topic: "zigbee2mqtt/bedroom_luca_light_2"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
+    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
+    payload_on: available
+  - platform: mqtt
+    name: 'Bedroom Luca Light 3 Firmware Update'
+    state_topic: "zigbee2mqtt/bedroom_luca_light_3"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_3/availability"
+    value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
+    payload_on: available
