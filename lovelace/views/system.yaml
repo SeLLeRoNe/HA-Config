@@ -563,14 +563,6 @@ cards:
                 name: "Sonoff RF Bridge"
                 tap_action:
                   action: none
-              - entity: sensor.bedroom_luca_light_2_wireless_signal
-                name: "Luca's Bedroom - Light 2"
-                tap_action:
-                  action: none
-              - entity: sensor.bedroom_luca_light_3_wireless_signal
-                name: "Luca's Bedroom - Light 3"
-                tap_action:
-                  action: none
               - entity: sensor.studio_wall_light_wireless_signal
                 name: "Studio - Wall Light"
                 tap_action:
