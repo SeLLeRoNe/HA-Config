@@ -3,7 +3,7 @@ name: Bedroom Luca Diaper Change
 entities:
   light.bedroom_luca_light_1:
     state: on
-    rgb_color: [255,0,0]
+    rgb_color: [255,102,0]
     brightness: 100
   light.bedroom_luca_light_2:
     state: on
