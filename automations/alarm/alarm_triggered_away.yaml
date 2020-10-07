@@ -41,29 +41,6 @@ action:
 #    data:
 #      topic: zigbee2mqtt/house_alarm_siren/set
 #      payload: '{"warning": {"duration": 2, "mode": "emergency", "strobe": true}}'
-  - service: python_script.light_store
-    data:
-      store_name: alarm_store
-      entity_id:
-        - light.studio_wall_light
-        - light.patio_light
-#        - light.master_bedroom_lamp_top_light
-  - service: tts.google_translate_say
-    data:
-      entity_id: media_player.studio_google_mini
-      message: >
-        Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_2ajz4kpbs_pir" %}in the Studio
-        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_door" %}at the Patio Door
-        {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
-        {% else %}from Unknown Sensor
-        {% endif %}
-      language: 'en'
   - service: notify.alarm
     data:
       title: "Home Alarm"
@@ -100,33 +77,3 @@ action:
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
-  - service: homeassistant.turn_on
-    data:
-      entity_id: light.patio_light
-      rgb_color: [255,0,0]
-      brightness: 255
-      transition: 1
-  - service: homeassistant.turn_on
-    data:
-      entity_id: light.studio_wall_light
-      rgb_color: [255,0,0]
-      brightness: 255
-      transition: 1
-#  - service: homeassistant.turn_on
-#    data:
-#      entity_id: light.master_bedroom_lamp_top_light
-#      color_name: red
-#      brightness: 255
-#      transition: 1
-  - delay:
-      seconds: 60
-  - service: python_script.light_store
-    data:
-      store_name: alarm_store
-      operation: restore
-  - service: homeassistant.turn_off
-    data:
-     entity_id:
-        - light.patio_light
-        - light.studio_wall_light
-#        - light.master_bedroom_lamp_top_light

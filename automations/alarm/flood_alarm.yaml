@@ -9,10 +9,10 @@ trigger:
     entity_id: binary_sensor.bathroom_sjcgq11lm_leak
     to: 'on'
 action:
-  - service: mqtt.publish
-    data:
-      topic: zigbee2mqtt/house_alarm_siren/set
-      payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": true}}'
+#  - service: mqtt.publish
+#    data:
+#      topic: zigbee2mqtt/house_alarm_siren/set
+#      payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": true}}'
   - service: notify.alarm
     data:
       title: "Home Alarm"

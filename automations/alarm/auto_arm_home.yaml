@@ -3,6 +3,9 @@ alias: Alarm - Auto Arm - Home
 initial_state: on
 trigger:
   - platform: state
+    entity_id: input_boolean.holiday_mode
+    to: 'off'
+  - platform: state
     entity_id: input_boolean.guest_mode
     to: 'on'
   - platform: time_pattern

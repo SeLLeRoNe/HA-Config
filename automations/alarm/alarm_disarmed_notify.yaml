@@ -10,12 +10,16 @@ condition:
   conditions:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'armed_away'
+      state: 'disarmed'
     - condition: state
       entity_id: group.family
       state: 'not_home'
 action:
   - service: notify.alarm
+    data:
+      title: "Alarm Notification"
+      message: "Alarm Deactivated while no one is at home!"
+  - service: notify.telegram_andrea
     data:
       title: "Alarm Notification"
       message: "Alarm Deactivated while no one is at home!"

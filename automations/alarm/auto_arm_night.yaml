@@ -5,6 +5,9 @@ trigger:
   - platform: time
     at: '00:00:00'
   - platform: state
+    entity_id: input_boolean.holiday_mode
+    to: 'off'
+  - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'
   - platform: state
@@ -37,6 +40,9 @@ condition:
         - condition: state
           entity_id: group.family
           state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
         - condition: state
           entity_id: person.andrea_iannucci
           state: 'Garage'
