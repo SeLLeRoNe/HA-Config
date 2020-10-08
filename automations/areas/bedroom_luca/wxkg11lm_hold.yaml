@@ -1,5 +1,5 @@
 ---
-alias: Bedroom Luca - WXKG02LM Button Single
+alias: Bedroom Luca - WXKG02LM Button Hold
 initial_state: on
 trigger:
   - platform: mqtt
@@ -8,12 +8,12 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: "{{ trigger.payload_json['action'] == 'single' }}"
+      value_template: "{{ trigger.payload_json['action'] == 'hold' }}"
     - condition: state
       entity_id: group.family
       state: 'home'
 action:
   - service: scene.turn_on
     data:
-      entity_id: scene.bedroom_luca_lights_on
+      entity_id: scene.bedroom_luca_diaper_change
       transition: 15
