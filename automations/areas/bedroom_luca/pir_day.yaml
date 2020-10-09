@@ -26,7 +26,7 @@ condition:
       entity_id: group.family
       state: 'home'
     - condition: time
-      after: '17:30:00'
+      after: '19:00:00'
       before: '21:30:00'
 action:
   - service: light.turn_on
