@@ -29,8 +29,6 @@
     type: module
   - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
     type: module
-  - url: /hacsfiles/custom-header/custom-header.js
-    type: module
   - url: /hacsfiles/sun-card/sun-card.js
     type: module
   - url: /hacsfiles/search-card/search-card.js
