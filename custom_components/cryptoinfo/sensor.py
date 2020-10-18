@@ -18,6 +18,7 @@ from .const.const import (
     _LOGGER,
     CONF_CRYPTOCURRENCY_NAME,
     CONF_CURRENCY_NAME,
+    CONF_MULTIPLIER,
     CONF_UPDATE_FREQUENCY,
     SENSOR_PREFIX,
     ATTR_LAST_UPDATE,
@@ -34,6 +35,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_CRYPTOCURRENCY_NAME, default="bitcoin"): cv.string,
         vol.Required(CONF_CURRENCY_NAME, default="usd"): cv.string,
+        vol.Required(CONF_MULTIPLIER, default=1): cv.string,
         vol.Required(CONF_UPDATE_FREQUENCY, default=60): cv.string,
     }
 )
@@ -44,6 +46,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     cryptocurrency_name = config.get(CONF_CRYPTOCURRENCY_NAME).lower().strip()
     currency_name = config.get(CONF_CURRENCY_NAME).strip()
+    multiplier = config.get(CONF_MULTIPLIER).strip()
     update_frequency = timedelta(minutes=(int(config.get(CONF_UPDATE_FREQUENCY))))
 
     entities = []
@@ -51,7 +54,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     try:
         data = CryptoinfoData(cryptocurrency_name, currency_name, update_frequency)
         entities.append(
-            CryptoinfoSensor(data, cryptocurrency_name, currency_name, update_frequency)
+            CryptoinfoSensor(
+                data, cryptocurrency_name, currency_name, multiplier, update_frequency
+            )
         )
     except urllib.error.HTTPError as error:
         _LOGGER.error(error.reason)
@@ -86,10 +91,13 @@ class CryptoinfoData(object):
 
 
 class CryptoinfoSensor(Entity):
-    def __init__(self, data, cryptocurrency_name, currency_name, update_frequency):
+    def __init__(
+        self, data, cryptocurrency_name, currency_name, multiplier, update_frequency
+    ):
         self.data = data
         self.cryptocurrency_name = cryptocurrency_name
         self.currency_name = currency_name
+        self.multiplier = multiplier
         self.update = Throttle(update_frequency)(self._update)
         self._name = SENSOR_PREFIX + cryptocurrency_name + " " + currency_name
         self._icon = "mdi:bitcoin"
@@ -119,7 +127,7 @@ class CryptoinfoSensor(Entity):
 
     def _update(self):
         self.data.update()
-        price_data = self.data.data
+        price_data = self.data.data * float(self.multiplier)
 
         try:
             if price_data:
