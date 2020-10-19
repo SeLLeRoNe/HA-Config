@@ -10,7 +10,7 @@ condition:
   conditions:
     - condition: numeric_state
       entity_id: sensor.bedroom_luca_gzcgq01lm_illuminance
-      below: 10
+      below: 5
     - condition: and
       conditions:
         - condition: state
@@ -26,7 +26,7 @@ condition:
       entity_id: group.family
       state: 'home'
     - condition: time
-      after: '19:00:00'
+      after: '10:30:00'
       before: '21:30:00'
 action:
   - service: light.turn_on
