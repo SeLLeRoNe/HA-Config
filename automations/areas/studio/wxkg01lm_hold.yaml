@@ -1,0 +1,19 @@
+---
+alias: Studio - WXKG02LM Button Hold
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/studio_WXKG01LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'hold' }}"
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.studio_alarm
+      transition: 15

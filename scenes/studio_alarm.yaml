@@ -3,6 +3,5 @@ name: Studio Alarm
 entities:
   light.studio_wall_light:
     state: on
-    hs_color: [0,0]
-#    rgb_color: [255,0,0]
-    brightness: 100
+    rgb_color: [255,0,0]
+    brightness: 150
