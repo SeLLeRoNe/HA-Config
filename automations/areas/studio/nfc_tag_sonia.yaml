@@ -1,0 +1,27 @@
+---
+alias: Studio - Andrea - PIR
+initial_state: on
+trigger:
+  - platform: event
+    event_type: tag_scanned
+    event_data:
+      device_id: df03e51f5bd84b2b
+      tag_id: cd60f958-4a93-415e-a188-83df8ed9da8f
+condition:
+  condition: and
+  conditions:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'armed_home'
+action:
+  - service: light.toggle
+    data:
+      entity_id: light.studio_wall_light
+      transition: 30
+      color_name: green
+      brightness: 150
