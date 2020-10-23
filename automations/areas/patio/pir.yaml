@@ -8,12 +8,9 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
     - condition: numeric_state
       entity_id: sensor.patio_gzcgq01lm_illuminance
-      below: 1000
+      below: 5
     - condition: state
       entity_id: light.patio_light
       state: 'off'
