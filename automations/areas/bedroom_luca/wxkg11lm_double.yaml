@@ -13,7 +13,7 @@ condition:
       entity_id: group.family
       state: 'home'
 action:
-  - service: light.turn_off
+  - service: light.turn_on
     data:
-      entity_id: light.bedroom_luca_lights
+      entity_id: light.master_bedroom_lights
       transition: 15
