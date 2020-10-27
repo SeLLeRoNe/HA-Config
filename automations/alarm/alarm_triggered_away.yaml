@@ -77,3 +77,21 @@ action:
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
+  - service: camera.snapshot
+    data:
+      entity_id: camera.hallway
+      filename: /home/ha/webcam/hallway.jpg
+  - service: camera.snapshot
+    data:
+      entity_id: camera.studio_camera_mediaprofile_channel1_mainstream
+      filename: /home/ha/webcam/studio.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: !secret telegram_andrea_id
+      caption: Hallway
+      file: /home/ha/webcam/hallway.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: !secret telegram_andrea_id
+      caption: Studio
+      file: /home/ha/webcam/studio.jpg
