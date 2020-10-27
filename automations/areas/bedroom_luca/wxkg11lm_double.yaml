@@ -15,5 +15,5 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.master_bedroom_lights
+      entity_id: light.master_bedroom_lamp_top_light
       transition: 15
