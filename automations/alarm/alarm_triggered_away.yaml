@@ -83,8 +83,8 @@ action:
       filename: /home/ha/webcam/hallway.jpg
   - service: camera.snapshot
     data:
-      entity_id: camera.studio_camera_mediaprofile_channel1_mainstream
-      filename: /home/ha/webcam/studio.jpg
+      entity_id: camera.living_room_camera_mediaprofile_channel1_mainstream
+      filename: /home/ha/webcam/living_room.jpg
   - service: telegram_bot.send_photo
     data:
       target: !secret telegram_andrea_id
@@ -93,5 +93,5 @@ action:
   - service: telegram_bot.send_photo
     data:
       target: !secret telegram_andrea_id
-      caption: Studio
-      file: /home/ha/webcam/studio.jpg
+      caption: Living Room
+      file: /home/ha/webcam/living_room.jpg
