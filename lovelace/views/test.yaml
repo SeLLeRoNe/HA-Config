@@ -113,7 +113,7 @@ cards:
             name: OnePlus Nord
             styles:
               card:
-                - background-color: '#2b374e'
+#                - background-color: '#2b374e'
                 - border-radius: 10%
                 - padding: 7%
                 - color: ivory
@@ -147,25 +147,25 @@ cards:
                   - align-self: middle
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states['binary_sensor.andrea_oneplus_nord_bluetooth_state'].state
-                      !== 'on') return "red"; ]]] 
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states['binary_sensor.andrea_oneplus_nord_bluetooth_state'].state
+#                      !== 'on') return "red"; ]]] 
                 wifi:
                   - padding-bottom: 2px
                   - align-self: middle
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states["binary_sensor.andrea_oneplus_nord_wifi_state"].state !==
-                      'on') return "red"; ]]] 
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states["binary_sensor.andrea_oneplus_nord_wifi_state"].state !==
+#                      'on') return "red"; ]]] 
                 charging:
                   - align-self: middle
                   - padding-bottom: 2px
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states['sensor.andrea_oneplus_nord_battery_state'].state == 'discharging')
-                      return "red"; ]]]          
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states['sensor.andrea_oneplus_nord_battery_state'].state == 'discharging')
+#                      return "red"; ]]]          
             custom_fields:
               temp: |
                 [[[
@@ -193,7 +193,7 @@ cards:
                   return `<ha-icon
                     icon="mdi:battery-charging"
                     style="width: 20px; height: 20px; color: white;">
-                    </ha-icon><span>  Charging: <span style="color: var(--text-color-sensor);">${states['sensor.andrea_oneplus_nord_battery_state'].state}</span></span>`
+                    </ha-icon><span>  Battery Status: <span style="color: var(--text-color-sensor);">${states['sensor.andrea_oneplus_nord_battery_state'].state}</span></span>`
                 ]]]
         ####################################
         ####    == Mi 9T Pro Card    == ####
@@ -206,7 +206,7 @@ cards:
             name: Mi 9T Pro
             styles:
               card:
-                - background-color: '#2b374e'
+#                - background-color: '#2b374e'
                 - border-radius: 10%
                 - padding: 7%
                 - color: ivory
@@ -240,25 +240,25 @@ cards:
                   - align-self: middle
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states['binary_sensor.sonia_mi_9t_pro_bluetooth_state'].state
-                      !== 'on') return "red"; ]]] 
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states['binary_sensor.sonia_mi_9t_pro_bluetooth_state'].state
+#                      !== 'on') return "red"; ]]] 
                 wifi:
                   - padding-bottom: 2px
                   - align-self: middle
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states["binary_sensor.sonia_mi_9t_pro_wifi_state"].state !== 'on') return "red";
-                      ]]] 
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states["binary_sensor.sonia_mi_9t_pro_wifi_state"].state !== 'on') return "red";
+#                      ]]] 
                 charging:
                   - align-self: middle
                   - padding-bottom: 2px
                   - justify-self: start
                   - font-size: 11px
-                  - '--text-color-sensor': >-
-                      [[[ if (states['sensor.sonia_mi_9t_pro_battery_state'].state !== 'charging')
-                      return "red"; ]]]          
+#                  - '--text-color-sensor': >-
+#                      [[[ if (states['sensor.sonia_mi_9t_pro_battery_state'].state !== 'charging')
+#                      return "red"; ]]]          
             custom_fields:
               temp: |
                 [[[
@@ -286,7 +286,7 @@ cards:
                   return `<ha-icon
                     icon="mdi:battery-charging"
                     style="width: 20px; height: 20px; color: white;">
-                    </ha-icon><span>  Charging: <span style="color: var(--text-color-sensor);">${states['sensor.sonia_mi_9t_pro_battery_state'].state}</span></span>`
+                    </ha-icon><span>  Battery Status: <span style="color: var(--text-color-sensor);">${states['sensor.sonia_mi_9t_pro_battery_state'].state}</span></span>`
                 ]]]
 
       - break
