@@ -9,30 +9,57 @@ sonia:
         secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
         tap_action:
           action: none
-      - entity: sensor.sonia_mi_9t_pro_battery_level
-        name: "Mi 9T Pro"
-        type: "custom:secondaryinfo-entity-row"
-        secondary_info: "WiFi: [[ if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi_9t_pro_battery_state == 'charging', ' - Charging', '' ) ]]"
-        tap_action:
-          action: none
+      - type: custom:battery-state-card
+        secondary_info: charging
+        secondary_info_text:  "Charging"
+        color_thresholds:
+          - value: 20
+            color: "#990000"
+          - value: 40
+            color: "#CC6600"
+          - value: 60
+            color: "#FF8000"
+          - value: 80
+            color: "#009900"
+          - value: 100
+            color: "#009933"
+        entities:
+          - entity: sensor.sonia_mi_9t_pro_battery_level
+            name: "Mi 9T Pro"
+            charging_state:
+              entity_id: sensor.sonia_mi_9t_pro_battery_state
+              state: "charging"
         style: |
-          :host {
-            --paper-item-icon-color:
-              {% if is_state(config.entity, 'unknown') %}
-                rgb(128, 128, 128);
-              {% elif states(config.entity)|int > 100 %}
-                rgb(128, 128, 128);
-              {% elif states(config.entity)|int >= 80 %}
-                rgb(0, 153, 51);
-              {% elif states(config.entity)|int >= 60 %}
-                rgb(0, 153, 0);
-              {% elif states(config.entity)|int >= 40 %}
-                rgb(255, 128, 0);
-              {% elif states(config.entity)|int >= 20 %}
-                rgb(204, 102, 0);
-              {% elif states(config.entity)|int >= 0 %}
-                rgb(153, 0, 0);
-              {% else %}
-                rgb(128, 128, 128);
-              {% endif %}
+          .entity-row.non-numeric-state .icon {
+            color: #808080;
           }
+          .entity-row .secondary {
+            color: #808080;
+          }
+#      - entity: sensor.sonia_mi_9t_pro_battery_level
+#        name: "Mi 9T Pro"
+#        type: "custom:secondaryinfo-entity-row"
+#        secondary_info: "WiFi: [[ if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi_9t_pro_battery_state == 'charging', ' - Charging', '' ) ]]"
+#        tap_action:
+#          action: none
+#        style: |
+#          :host {
+#            --paper-item-icon-color:
+#              {% if is_state(config.entity, 'unknown') %}
+#                rgb(128, 128, 128);
+#              {% elif states(config.entity)|int > 100 %}
+#                rgb(128, 128, 128);
+#              {% elif states(config.entity)|int >= 80 %}
+#                rgb(0, 153, 51);
+#              {% elif states(config.entity)|int >= 60 %}
+#                rgb(0, 153, 0);
+#              {% elif states(config.entity)|int >= 40 %}
+#                rgb(255, 128, 0);
+#              {% elif states(config.entity)|int >= 20 %}
+#                rgb(204, 102, 0);
+#              {% elif states(config.entity)|int >= 0 %}
+#                rgb(153, 0, 0);
+#              {% else %}
+#                rgb(128, 128, 128);
+#              {% endif %}
+#          }
