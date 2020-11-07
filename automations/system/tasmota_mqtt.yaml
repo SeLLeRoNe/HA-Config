@@ -29,21 +29,6 @@ action:
       retain: true
   - service: mqtt.publish
     data:
-      topic: cmnd/tasmotas/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
-      retain: true
-  - service: mqtt.publish
-    data:
-      topic: cmnd/ZBBridge01/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
-      retain: true
-  - service: mqtt.publish
-    data:
-      topic: cmnd/Citroen_Cactus/otaurl
-      payload: "https://github.com/Jason2866/Merge/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
-      retain: true
-  - service: mqtt.publish
-    data:
       topic: "cmnd/tasmotas/Backlog"
       payload: "POWER1 ;POWER2 ;POWER3 ;POWER4 ;POWER5; DIMMER; STATE;"
       retain: true
@@ -128,4 +113,23 @@ action:
     data:
       topic: "cmnd/tasmotas/WifiConfig"
       payload: "4"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: cmnd/tasmotas/otaurl
+      payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
+      retain: true
+  - delay:
+      seconds: 30
+  - service: mqtt.publish
+    data:
+      topic: cmnd/ZBBridge01/otaurl
+      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
+      retain: true
+  - delay:
+      seconds: 30
+  - service: mqtt.publish
+    data:
+      topic: cmnd/Citroen_Cactus/otaurl
+      payload: "https://github.com/Jason2866/Merge/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
       retain: true
