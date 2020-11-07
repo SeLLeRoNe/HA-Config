@@ -3,7 +3,7 @@ alias: Mobile - Andrea - OnePlus Nord - Location
 initial_state: on
 trigger:
   - platform: time_pattern
-    minutes: '/30'
+    minutes: '/15'
 condition:
   condition: or
   conditions:
