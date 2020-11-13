@@ -1,4 +1,0 @@
----
-cast:
-  media_player: 
-    - host: !secret studio_google_mini_ip
