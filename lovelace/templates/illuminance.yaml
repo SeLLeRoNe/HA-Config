@@ -45,7 +45,7 @@ illuminance:
           padding: 16px !important;
         }
       entities:
-        - entity:  '[[entity]]'
+        - entity: '[[entity]]'
           name: Illuminance
           color: '#FFDD00'
       tap_action:
