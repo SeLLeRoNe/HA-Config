@@ -7,11 +7,14 @@ initial_state: on
 trigger:
   - platform: homeassistant
     event: start
+  - platform: numeric_state
+    entity_id: sensor.hacs
+    above: 0
 condition:
   condition: and
   conditions:
     - condition: template
-      value_template: "{{ states('sensor.hacs') > 0 }}"
+      value_template: "{{ states('sensor.hacs') | int > 0 }}"
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
