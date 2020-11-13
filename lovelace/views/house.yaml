@@ -59,6 +59,11 @@ cards:
         title: Hallway
         entities: []
         camera_image: camera.hallway
+      - type: picture-glance
+        camera_image: camera.living_room_camera_mediaprofile_channel1_mainstream
+        camera_view: live
+        entities:
+          - entity: binary_sensor.00000_cell_motion_detection
 #      - type: picture-glance
 #        title: Hallway
 #        tap_action:
@@ -138,21 +143,37 @@ cards:
               - title: Weather
           - type: custom:decluttering-card
             template: darksky_card
-      - type: custom:decluttering-card
-        template: thermostat_card
-        variables:
-          - area: house
-      - type: vertical-stack
+#      - break
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
           - type: custom:decluttering-card
-            template: house_temperature
+            template: title
+            variables:
+              - title: Thermostat
           - type: custom:decluttering-card
-            template: house_humidity 
-          - type: custom:decluttering-card
-            template: house_pressure
-#          - type: custom:decluttering-card
-#            template: house_illuminance
+            template: thermostat_card
+            variables:
+              - area: house
       - break
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Sensors
+          - type: vertical-stack
+            cards:
+              - type: custom:decluttering-card
+                template: house_temperature
+              - type: custom:decluttering-card
+                template: house_humidity 
+              - type: custom:decluttering-card
+                template: house_pressure
+              - type: custom:decluttering-card
+                template: house_illuminance
+#      - break
       - type: custom:decluttering-card
         template: house_energy_small
         variables:
