@@ -35,12 +35,12 @@ house_humidity:
       labels_secondary: false
       name_adaptive_color: true
       icon_adaptive_color: true
-      state_map:
-        - value: "off"
-          label: "Day"
-        - value: "on"
-          label: "Night"
-      color_thresholds: !include thresholds/humidity.yaml
+    state_map:
+      - value: "off"
+        label: "Day"
+      - value: "on"
+        label: "Night"
+    color_thresholds: !include thresholds/humidity.yaml
     style: |
       ha-card {
         padding: 16px !important;
