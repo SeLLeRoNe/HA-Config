@@ -45,11 +45,25 @@ cards:
                   action: none
           - type: custom:hui-element
             row_type: divider
-          - type: custom:github-card
-            show_github_icon: false
-            show_extended: false
+          - type: 'custom:github-flexi-card'
+            title: Github
+#            secondary_info: 'Released {latest_release_tag}'
+            url: true
+            attribute_urls: true
+            attributes:
+              - views
+              - stargazers
+              - open_issues
+              - clones
+              - forks
+              - open_pull_requests
             entities:
               - sensor.ha_config
+#          - type: custom:github-card
+#            show_github_icon: false
+#            show_extended: false
+#            entities:
+#              - sensor.ha_config
           - type: custom:hui-element
             row_type: divider
           - type: custom:mini-graph-card

@@ -26,5 +26,6 @@ views:
   - !include lovelace/views/bathroom.yaml
   - !include lovelace/views/laundry_room.yaml
   - !include lovelace/views/patio.yaml
+  - !include lovelace/views/surveillance.yaml
   - !include lovelace/views/health.yaml
   - !include lovelace/views/weather.yaml

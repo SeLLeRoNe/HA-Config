@@ -1,0 +1,17 @@
+title: Surveillance
+icon: mdi:cctv
+panel: true
+path: surveiilance
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:surveillance-card
+        thumb_interval: 15
+        update_interval: 5
+        show_capture_buttons: false
+        recording_duration: 10
+        focus_motion: true
+        cameras:
+          - entity: camera.hallway
+          - entity: camera.living_room_camera_mediaprofile_channel1_mainstream
+            motion_entity: binary_sensor.00000_cell_motion_detection

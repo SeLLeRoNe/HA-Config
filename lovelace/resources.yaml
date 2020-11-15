@@ -69,6 +69,10 @@
     type: module
   - url: /hacsfiles/button-card/button-card.js
     type: module
+  - url: /hacsfiles/surveillance-card/surveillance-card.js?v=0
+    type: module
+  - url: /hacsfiles/github-flexi-card/github-flexi-card.js
+    type: module
 
   - url: /local/q-card.js
     type: module
