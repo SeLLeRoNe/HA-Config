@@ -55,15 +55,15 @@ cards:
                   }
                 tap_action:
                   action: none
-      - type: picture-glance
-        title: Hallway
-        entities: []
-        camera_image: camera.hallway
-      - type: picture-glance
-        camera_image: camera.living_room_camera_mediaprofile_channel1_mainstream
-        camera_view: live
-        entities:
-          - entity: binary_sensor.00000_cell_motion_detection
+#      - type: picture-glance
+#        title: Hallway
+#        entities: []
+#        camera_image: camera.hallway
+#      - type: picture-glance
+#        camera_image: camera.living_room_camera_mediaprofile_channel1_mainstream
+#        camera_view: live
+#        entities:
+#          - entity: binary_sensor.00000_cell_motion_detection
 #      - type: picture-glance
 #        title: Hallway
 #        tap_action:
