@@ -12,6 +12,21 @@ cards:
           - type: custom:decluttering-card
             template: title
             variables:
+              - title: "LEELKO Power Strip"
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: switch.leelki_power_strip_switch_1
+              - entity: switch.leelki_power_strip_switch_2
+              - entity: switch.leelki_power_strip_switch_3
+              - entity: switch.leelki_power_strip_switch_4
+              - entity: sensor.leeki_power_strip_link_quality
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
               - title: "Device Trackers"
 #          - type: custom:logbook-card
 #            title: "Andrea - Life360"

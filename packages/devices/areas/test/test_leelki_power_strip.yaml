@@ -1,0 +1,61 @@
+---
+# MQTT Device: Test TuYa TS0201
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+switch:
+  - platform: "mqtt"
+    name: 'LEELKI Power Strip Switch #1'
+    icon: mdi:power-plug
+    state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
+    payload_off: "OFF"
+    payload_on: "ON"
+    value_template: "{{ value_json.state_l1 }}"
+    command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l1/set"
+  - platform: "mqtt"
+    name: 'LEELKI Power Strip Switch #2'
+    icon: mdi:power-plug
+    state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
+    payload_off: "OFF"
+    payload_on: "ON"
+    value_template: "{{ value_json.state_l2 }}"
+    command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l2/set"
+  - platform: "mqtt"
+    name: 'LEELKI Power Strip Switch #3'
+    icon: mdi:power-plug
+    state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
+    payload_off: "OFF"
+    payload_on: "ON"
+    value_template: "{{ value_json.state_l3 }}"
+    command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l3/set"
+  - platform: "mqtt"
+    name: 'LEELKI Power Strip Switch #4'
+    icon: mdi:power-plug
+    state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
+    payload_off: "OFF"
+    payload_on: "ON"
+    value_template: "{{ value_json.state_l4 }}"
+    command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l4/set"
+
+sensor:
+  - platform: "mqtt"
+    name: 'LEEKI Power Strip Link Quality'
+    icon: mdi:power-plug
+    state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
+    unit_of_measurement: "lqi"
+    value_template: "{{ value_json.linkquality }}"
