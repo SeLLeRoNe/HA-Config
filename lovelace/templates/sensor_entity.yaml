@@ -1,0 +1,44 @@
+---
+sensor_entity:
+  card:
+    type: 'custom:button-card'
+    name: '[[name]]'
+    entity: '[[entity]]'
+    show_state: true
+    state:
+      - value: 'Done'
+        color: red
+        styles:
+          card:
+            - height: 115px
+          icon:
+            - width: 45%
+            - padding-top: 10px
+            - color: green
+          name:
+            - padding: 10px
+            - color: red
+            - font-weight: bold
+            - font-size: 12px
+            - text-overflow: unset
+            - white-space: unset
+            - word-break: break-word
+      - value: 'off'
+        color: white
+        operator: default
+        styles:
+          card:
+            - height: 115px
+          icon:
+            - width: 45%
+            - opacity: 0.5
+            - padding-top: 10px
+          name:
+            - padding: 10px
+            - font-size: 12px
+            - text-overflow: unset
+            - white-space: unset
+            - word-break: break-word
+
+    tap_action:
+      action: none

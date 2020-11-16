@@ -1,0 +1,60 @@
+---
+sensor_entity_alert:
+  card:
+    type: 'custom:button-card'
+    name: '[[name]]'
+    entity: '[[entity]]'
+    show_state: true
+    extra_styles: |
+      @keyframes pulse {
+        0% {
+          -moz-box-shadow: 0 0 0 0 rgba(255,0,0, 0.7);
+          box-shadow: 0 0 0 0 rgba(255,0,0, 0.7);
+        }
+        70% {
+          -moz-box-shadow: 0 0 0 10px rrgba(240,52,52, 0.9);
+          box-shadow: 0 0 0 10px rgba(240,52,52, 0.7);
+        }
+        100% {
+          -moz-box-shadow: 0 0 0 0 rgba(240,52,52, 0);
+          box-shadow: 0 0 0 0 rgba(240,52,52, 0);
+        }
+      }
+    state:
+      - value: 'on'
+        color: red
+        styles:
+          card:
+            - height: 115px
+            - animation: pulse 1s infinite
+          icon:
+            - width: 45%
+            - padding-top: 10px
+            - color: red
+          name:
+            - padding: 10px
+            - color: red
+            - font-weight: bold
+            - font-size: 12px
+            - text-overflow: unset
+            - white-space: unset
+            - word-break: break-word
+      - value: 'off'
+        color: white
+        operator: default
+        styles:
+          card:
+            - height: 115px
+          icon:
+            - width: 45%
+            - opacity: 0.5
+            - padding-top: 10px
+          name:
+            - padding: 10px
+            - font-size: 12px
+            - text-overflow: unset
+            - white-space: unset
+            - word-break: break-word
+
+    tap_action:
+      action: none

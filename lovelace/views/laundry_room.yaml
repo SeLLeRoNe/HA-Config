@@ -46,38 +46,54 @@ cards:
                 template: title
                 variables:
                   - title: Sensors
-              - type: custom:hui-glance-card
-                columns: 3
-                entities:
-                  - name: Leak Sensor
-                    entity: binary_sensor.laundry_room_sjcgq11lm_leak
-                    tap_action:
-                      action: none
-                  - name: Washing Machine
-                    entity: input_select.washing_machine_status
-                    icon: "mdi:washing-machine"
-                    tap_action:
-                      action: none
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state(config.entity, 'Done') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state(config.entity, 'Running') %}
-                            rgb(51, 127, 255);
-                          {% else %}
-                            rgb(128, 128, 128);
-                          {% endif %}
-                      }
-#                  - name: Washing Machine
-#                    entity: binary_sensor.washing_machine_djt11lm_vibration
-#                    icon: "mdi:washing-machine"
+#              - type: custom:hui-glance-card
+#                columns: 3
+#                entities:
+#                  - name: Leak Sensor
+#                    entity: binary_sensor.laundry_room_sjcgq11lm_leak
 #                    tap_action:
 #                      action: none
-                  - name: Window Status
-                    entity: binary_sensor.bathroom_mccgq01lm_window
-                    tap_action:
-                      action: none
+#                  - name: Washing Machine
+#                    entity: input_select.washing_machine_status
+#                    tap_action:
+#                      action: none
+#                    style: |
+#                      :host {
+#                        --paper-item-icon-color:
+#                          {% if is_state(config.entity, 'Done') %}
+#                            rgb(51, 204, 51);
+#                          {% elif is_state(config.entity, 'Running') %}
+#                            rgb(51, 127, 255);
+#                          {% else %}
+#                            rgb(128, 128, 128);
+#                          {% endif %}
+#                      }
+##                  - name: Washing Machine
+##                    entity: binary_sensor.washing_machine_djt11lm_vibration
+##                    icon: "mdi:washing-machine"
+##                    tap_action:
+##                      action: none
+#                  - name: Window Status
+#                    entity: binary_sensor.bathroom_mccgq01lm_window
+#                    tap_action:
+#                      action: none
+              - type: horizontal-stack
+                cards:
+                  - type: custom:decluttering-card
+                    template: sensor_entity_alert
+                    variables:
+                      - name: Leak Sensor
+                      - entity: binary_sensor.laundry_room_sjcgq11lm_leak
+                  - type: custom:decluttering-card
+                    template: sensor_entity
+                    variables:
+                      - name: Washing Machine
+                      - entity: input_select.washing_machine_status
+                  - type: custom:decluttering-card
+                    template: sensor_entity_alert
+                    variables:
+                      - name: Window Status
+                      - entity: binary_sensor.bathroom_mccgq01lm_window
           - type: vertical-stack
             cards:
               - type: custom:decluttering-card
