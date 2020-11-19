@@ -14,10 +14,12 @@ trigger:
   - platform: state
     entity_id: person.patrizia_borzone
     to: 'home'
-conditions:
-  - condition: state
-    entity_id: input_boolean.guest_mode
-    state: 'off'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
 action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.guest_mode
