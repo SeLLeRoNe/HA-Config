@@ -18,4 +18,4 @@ action:
       entity_id: light.studio_lights
       transition: 15
       color_name: cyan
-      brightness: 150
+      brightness_pct: 50

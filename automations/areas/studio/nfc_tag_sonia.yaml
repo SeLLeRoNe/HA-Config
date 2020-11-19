@@ -24,4 +24,4 @@ action:
       entity_id: light.studio_wall_light
       transition: 30
       color_name: green
-      brightness: 150
+      brightness_pct: 50

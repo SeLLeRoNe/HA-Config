@@ -20,5 +20,5 @@ action:
     data:
       entity_id: light.patio_light
       color_name: cyan
-      brightness: 100
+      brightness_pct: 25
       transition: 5

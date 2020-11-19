@@ -13,5 +13,5 @@ action:
   - service: light.toggle
     data:
       entity_id: light.master_bedroom_lamp_top_light
-      brightness: 150
+      brightness_pct: 50
       rgb_color: [255,0,0]

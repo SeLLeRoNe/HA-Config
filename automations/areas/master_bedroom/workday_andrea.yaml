@@ -17,7 +17,7 @@ action:
   - service: light.turn_on
     data:
       entity_id: light.master_bedroom_lamp_top_light
-      brightness: 255
+      brightness_pct: 100
       rgb_color: [0,0,255]
   - delay: 00:15:00
   - service: light.turn_off

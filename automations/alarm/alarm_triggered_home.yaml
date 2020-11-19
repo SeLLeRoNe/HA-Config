@@ -83,7 +83,7 @@ action:
         - light.patio_light
         - light.studio_wall_light
       rgb_color: [255,0,0]
-      brightness: 255
+      brightness_pct: 100
       transition: 1
   - delay:
       seconds: 30
