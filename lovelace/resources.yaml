@@ -73,6 +73,8 @@
     type: module
   - url: /hacsfiles/github-flexi-card/github-flexi-card.js
     type: module
+  - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+    type: module
 
   - url: /local/q-card.js
     type: module
