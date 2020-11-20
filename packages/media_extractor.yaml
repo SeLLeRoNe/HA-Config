@@ -1,0 +1,6 @@
+---
+# This loads up the media extractor integration
+#
+# https://www.home-assistant.io/integrations/media_extractor/
+#
+media_extractor:
