@@ -15,6 +15,9 @@ preload_rows:
   - divider
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 q_cards: !include_dir_merge_named lovelace/q-cards/
+kiosk_mode:
+  non_admin_settings:
+    hide_sidebar: true
 views:
   - !include lovelace/views/homeassistant.yaml
   - !include lovelace/views/system.yaml
