@@ -28,6 +28,12 @@ cards:
               - arm_home
               - arm_away
               - arm_night
+          - type: alarm-panel
+            entity: alarm_control_panel.alarmo
+            states:
+              - arm_home
+              - arm_away
+              - arm_night
           - type: entities
             show_header_toggle: false
             entities:
@@ -108,28 +114,40 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
-      - type: custom:atomic-calendar-revive
-        name: Calendar
-        enableModeChange: true
-        defaultMode: 2
-        dateFormat: L
-        maxDaysToShow: 30
-        sortByStartTime: true
-        showDescription: true
-        showNoEventsForToday: true
+      - type: calendar
+        initial_view: dayGridMonth
         entities:
-          - entity: calendar.personal_andrea
-            eventCalName: Personal
-            type: icon1
-          - entity: calendar.uk_holidays
-            eventCalName: UK Holidays
-            type: holiday
-          - entity: calendar.it_holidays
-            eventCalName: IT Holidays
-            type: holiday
-          - entity: calendar.es_holidays
-            eventCalName: ES Holidays
-            type: holiday
+          - calendar.personal_andrea
+          - calendar.uk_holidays
+          - calendar.it_holidays
+          - calendar.es_holidays
+          - calendar.motors
+          - calendar.serie_a
+          - calendar.uefa_champions_league
+          - calendar.uefa_europa_league
+          - calendar.euro_2020
+#      - type: custom:atomic-calendar-revive
+#        name: Calendar
+#        enableModeChange: true
+#        defaultMode: 2
+#        dateFormat: L
+#        maxDaysToShow: 30
+#        sortByStartTime: true
+#        showDescription: true
+#        showNoEventsForToday: true
+#        entities:
+#          - entity: calendar.personal_andrea
+#            eventCalName: Personal
+#            type: icon1
+#          - entity: calendar.uk_holidays
+#            eventCalName: UK Holidays
+#            type: holiday
+#          - entity: calendar.it_holidays
+#            eventCalName: IT Holidays
+#            type: holiday
+#          - entity: calendar.es_holidays
+#            eventCalName: ES Holidays
+#            type: holiday
       - break
       - type: custom:decluttering-card
         template: house_lights
