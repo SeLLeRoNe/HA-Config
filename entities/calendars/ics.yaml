@@ -13,9 +13,9 @@ calendars:
   - name: Motors
     url: !secret ics_motors
     includeAllDay: true
-#  - name: Serie A
-#    url: !secret ics_serie_a
-#    includeAllDay: true
+  - name: Serie A
+    url: !secret ics_serie_a
+    includeAllDay: true
   - name: UEFA Champions League
     url: !secret ics_champions_league
     includeAllDay: true
