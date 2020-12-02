@@ -29,6 +29,11 @@ andrea:
             charging_state:
               entity_id: sensor.andrea_oneplus_nord_battery_state
               state: "charging"
+          - entity: sensor.andrea_samsung_galaxy_tab_7_battery_level
+            name: "Samsung Galaxy Tab 7+"
+            charging_state:
+              entity_id: sensor.andrea_samsung_galaxy_tab_7_battery_state
+              state: "charging"
           - entity: sensor.andrea_shield_battery_level
             name: "NVIDIA Shield K1"
             charging_state:
