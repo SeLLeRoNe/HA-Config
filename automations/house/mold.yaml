@@ -1,4 +1,5 @@
 ---
+id: '2152045805703'
 alias: House - Mold Alert
 initial_state: on
 trigger:

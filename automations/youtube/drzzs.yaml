@@ -1,4 +1,5 @@
 ---
+id: '6601151396886'
 alias: YouTube Notification - DrZzs
 trigger:
   - platform: state

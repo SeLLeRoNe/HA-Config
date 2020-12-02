@@ -1,4 +1,5 @@
 ---
+id: '0420800586524'
 alias: House - Guest Arrived
 initial_state: on
 trigger:

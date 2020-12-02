@@ -1,4 +1,5 @@
 ---
+id: '1679507404875'
 alias: Alarm - Auto Arm - Night
 initial_state: on
 trigger:

@@ -1,4 +1,5 @@
 ---
+id: '4402442974046'
 alias: Media Player - Spotify Set Playlist
 initial_state: on
 trigger:

@@ -1,4 +1,5 @@
 ---
+id: '6498492866276'
 # When power is detected, and the dish washer is not in 
 # the Running state, change the status of the washing machine
 # to Running. 

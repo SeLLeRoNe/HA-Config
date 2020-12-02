@@ -1,4 +1,5 @@
 ---
+id: '4030442615850'
 alias: ZigBee - Allow Device Join
 initial_state: on
 trigger:

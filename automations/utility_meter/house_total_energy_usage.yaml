@@ -1,4 +1,5 @@
 ---
+id: '3565344161321'
 alias: Utility Meter - Update House Total Energy Usage
 initial_state: on
 trigger:

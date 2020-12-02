@@ -1,4 +1,5 @@
 ---
+id: '2497388509899'
 alias: Alarm - Auto Arm - Away
 initial_state: on
 trigger:

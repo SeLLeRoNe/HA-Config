@@ -1,4 +1,5 @@
 ---
+id: '0179154356395'
 alias: Zigbee - Battery Low
 initial_state: on
 trigger:

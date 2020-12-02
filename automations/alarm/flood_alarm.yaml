@@ -1,4 +1,5 @@
 ---
+id: '5263115271079'
 alias: Alarm - Flood Alert
 initial_state: on
 trigger:

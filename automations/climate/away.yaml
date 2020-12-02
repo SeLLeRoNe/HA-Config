@@ -1,4 +1,5 @@
 ---
+id: '7847750338567'
 alias: Climate - Away Mode On
 initial_state: 'on'
 trigger:

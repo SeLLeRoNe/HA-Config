@@ -1,4 +1,5 @@
 ---
+id: '8004104070932'
 alias: Alarm - Triggered - Away
 initial_state: on
 trigger:

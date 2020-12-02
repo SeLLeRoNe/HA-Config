@@ -1,4 +1,5 @@
 ---
+id: '4137820089276'
 alias: Bedroom Luca - Baby Monitor On
 trigger:
   - platform: state

@@ -1,4 +1,5 @@
 ---
+id: '3641894765835'
 alias: Alarm - Guest Mode Activated
 initial_state: on
 trigger:

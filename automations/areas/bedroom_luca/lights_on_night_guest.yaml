@@ -1,4 +1,5 @@
 ---
+id: '8088080341209'
 alias: Bedroom Luca - Lights On Night Guest
 initial_state: on
 trigger:

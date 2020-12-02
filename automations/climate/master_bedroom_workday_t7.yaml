@@ -1,4 +1,5 @@
 ---
+id: '7055263273905'
 alias: Climate - T7 - Master Bedroom - Workday
 initial_state: 'on'
 trigger:

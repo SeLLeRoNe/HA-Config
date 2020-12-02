@@ -1,4 +1,5 @@
 ---
+id: '0935772664713'
 alias: Climate - Living Room - Timer Stop
 initial_state: 'on'
 trigger:

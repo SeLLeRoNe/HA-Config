@@ -1,4 +1,5 @@
 ---
+id: '0347160573841'
 alias: Climate - Bedroom Luca - Timer Start
 initial_state: 'on'
 trigger:

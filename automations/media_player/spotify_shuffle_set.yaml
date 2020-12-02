@@ -1,4 +1,5 @@
 ---
+id: '5191401954274'
 alias: Media Player - Spotify Set Shuffle
 initial_state: on
 trigger:

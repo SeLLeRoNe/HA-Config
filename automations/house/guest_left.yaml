@@ -1,4 +1,5 @@
 ---
+id: '6510432137039'
 alias: House - Guest Left
 initial_state: on
 trigger:

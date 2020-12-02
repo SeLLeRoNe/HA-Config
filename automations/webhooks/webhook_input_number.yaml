@@ -1,4 +1,5 @@
 ---
+id: '9335703757652'
 alias: System - Incoming Webhook - input_boolean
 initial_state: on
 trigger:

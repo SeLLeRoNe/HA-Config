@@ -1,4 +1,5 @@
 ---
+id: '1202805989352'
 alias: Bedroom Luca - PIR Day
 initial_state: on
 trigger:

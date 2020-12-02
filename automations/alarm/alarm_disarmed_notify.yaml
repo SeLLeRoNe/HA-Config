@@ -1,4 +1,5 @@
 ---
+id: '9919810885928'
 alias: Alarm - Disarmed Notification
 initial_state: on
 trigger:

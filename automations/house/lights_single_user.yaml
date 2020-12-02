@@ -1,4 +1,5 @@
 ---
+id: '6179951092301'
 alias: House - Lights - Single User
 trigger:
   - platform: state

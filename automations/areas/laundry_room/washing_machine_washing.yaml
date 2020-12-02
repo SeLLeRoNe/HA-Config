@@ -1,4 +1,5 @@
 ---
+id: '3878141093485'
 # When power is detected, and the washing machine is not in 
 # the Washing state, change the status of the washing machine
 # to Washing. 

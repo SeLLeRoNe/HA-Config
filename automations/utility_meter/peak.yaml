@@ -1,4 +1,5 @@
 ---
+id: '5221563482844'
 alias: Utility Meter - Meter Tariff Change - Peak
 initial_state: on
 trigger:

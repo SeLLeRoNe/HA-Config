@@ -1,4 +1,5 @@
 ---
+id: '8285888123905'
 alias: Alarm - Triggered - Night
 initial_state: on
 trigger:

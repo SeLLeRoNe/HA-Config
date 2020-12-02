@@ -1,4 +1,5 @@
 ---
+id: '2267429579067'
 alias: Utility Meter - Daily Energy Report
 initial_state: on
 trigger:

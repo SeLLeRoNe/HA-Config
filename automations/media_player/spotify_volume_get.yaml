@@ -1,4 +1,5 @@
 ---
+id: '4510308632115'
 alias: Media Player - Get Spotify Volume Status
 initial_state: on
 trigger:

@@ -1,4 +1,5 @@
 ---
+id: '9020727474147'
 alias: Bathroom - Humidity Alert
 initial_state: on
 trigger:

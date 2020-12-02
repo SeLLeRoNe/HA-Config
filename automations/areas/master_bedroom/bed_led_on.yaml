@@ -1,4 +1,5 @@
 ---
+id: '1066141346666'
 alias: Master Bedroom - Bed LED On
 initial_state: off
 trigger:

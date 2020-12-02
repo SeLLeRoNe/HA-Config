@@ -1,4 +1,5 @@
 ---
+id: '8299598713357'
 alias: Media Player - Spotify Set Device
 initial_state: on
 trigger:

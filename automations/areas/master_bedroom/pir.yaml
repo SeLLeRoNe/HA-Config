@@ -1,4 +1,5 @@
 ---
+id: '6869048997821'
 alias: Master Bedroom - PIR
 initial_state: on
 trigger:

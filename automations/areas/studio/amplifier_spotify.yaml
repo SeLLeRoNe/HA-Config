@@ -1,4 +1,5 @@
 ---
+id: '8138002361695'
 alias: Studio - Set Amplifier Volume for Spotify
 initial_state: on
 trigger:

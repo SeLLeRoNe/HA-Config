@@ -1,4 +1,5 @@
 ---
+id: '6895632866996'
 alias: Patio - Door Left Open for 10 Minutes
 initial_state: on
 trigger:

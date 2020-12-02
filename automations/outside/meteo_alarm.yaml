@@ -1,4 +1,5 @@
 ---
+id: '5005324571334'
 alias: Outside - Meteo Alarm
 initial_state: on
 trigger:

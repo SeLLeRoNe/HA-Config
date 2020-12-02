@@ -1,4 +1,5 @@
 ---
+id: '8925657190164'
 alias: Mobile - Push Notification - Studio Light On
 trigger:
   platform: event

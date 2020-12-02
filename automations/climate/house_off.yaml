@@ -1,4 +1,5 @@
 ---
+id: '7645773357713'
 alias: Climate - House - Off
 initial_state: 'on'
 trigger:

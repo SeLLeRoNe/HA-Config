@@ -1,4 +1,5 @@
 ---
+id: '1128979597283'
 alias: Master Bedroom - Lamp Bottom On
 initial_state: on
 trigger:

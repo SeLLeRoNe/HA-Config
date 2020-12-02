@@ -1,4 +1,5 @@
 ---
+id: '6607479413825'
 alias: Alarm - Holiday Mode Activated
 initial_state: on
 trigger:

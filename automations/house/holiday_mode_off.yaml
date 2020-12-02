@@ -1,4 +1,5 @@
 ---
+id: '0455012792686'
 alias: Alarm - Holiday Mode Deactivated
 initial_state: on
 trigger:
