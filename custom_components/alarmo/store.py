@@ -47,7 +47,9 @@ class MqttConfig:
 
     enabled = attr.ib(type=bool, default=False)
     state_topic = attr.ib(type=str, default="alarmo/state")
+    state_payload = attr.ib(type=dict, default={})
     command_topic = attr.ib(type=str, default="alarmo/command")
+    command_payload = attr.ib(type=dict, default={})
     require_code = attr.ib(type=bool, default=False)
 
 
@@ -84,6 +86,7 @@ class SensorEntry:
     always_on = attr.ib(type=bool, default=False)
     arm_on_close = attr.ib(type=bool, default=False)
     allow_open = attr.ib(type=bool, default=False)
+    trigger_unavailable = attr.ib(type=bool, default=False)
 
 
 @attr.s(slots=True, frozen=True)
@@ -96,6 +99,7 @@ class UserEntry:
     is_admin = attr.ib(type=bool, default=False)
     can_arm = attr.ib(type=bool, default=False)
     can_disarm = attr.ib(type=bool, default=False)
+    is_override_code = attr.ib(type=bool, default=False)
 
 
 @attr.s(slots=True, frozen=True)
@@ -149,7 +153,8 @@ class AlarmoStorage:
         automations: "OrderedDict[str, AutomationEntry]" = OrderedDict()
 
         if data is not None:
-            config = attr.evolve(config, **data["config"])
+            config = Config(**data["config"])
+            config = attr.evolve(config, **{"mqtt": MqttConfig(**data["config"]["mqtt"])})
 
             if "sensors" in data:
                 for sensor in data["sensors"]:

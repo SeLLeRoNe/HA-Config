@@ -51,23 +51,25 @@ from .const import (
     ATTR_CODE_DISARM_REQUIRED,
     ATTR_ENABLED,
     ATTR_REQUIRE_CODE,
+    ATTR_IS_OVERRIDE_CODE,
     ATTR_DISARM_AFTER_TRIGGER,
     PUSH_EVENTS,
     EVENT_CATEGORIES,
     EVENT_ACTION_FORCE_ARM,
     EVENT_ACTION_RETRY_ARM,
+    COMMAND_ARM_NIGHT,
+    COMMAND_ARM_AWAY,
+    COMMAND_ARM_HOME,
+    COMMAND_ARM_CUSTOM_BYPASS,
+    COMMAND_DISARM,
+    COMMANDS,
+    ATTR_STATE_PAYLOAD,
+    ATTR_COMMAND_PAYLOAD,
 )
 from homeassistant.components.mqtt import (
     DOMAIN as ATTR_MQTT,
     CONF_STATE_TOPIC,
     CONF_COMMAND_TOPIC,
-)
-from homeassistant.components.mqtt.alarm_control_panel import (
-    DEFAULT_ARM_NIGHT as COMMAND_ARM_NIGHT,
-    DEFAULT_ARM_AWAY as COMMAND_ARM_AWAY,
-    DEFAULT_ARM_HOME as COMMAND_ARM_HOME,
-    DEFAULT_ARM_CUSTOM_BYPASS as COMMAND_ARM_CUSTOM_BYPASS,
-    DEFAULT_DISARM as COMMAND_DISARM,
 )
 
 import homeassistant.components.mqtt as mqtt
@@ -224,10 +226,12 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         old_config = self._config
         self._config = self.coordinator.store.async_get_config()
 
-        if old_config[ATTR_MQTT] != self._config[ATTR_MQTT]:
-            await self._unsubscribe_topics()
+        if old_config[ATTR_MQTT][CONF_COMMAND_TOPIC] != self._config[ATTR_MQTT][CONF_COMMAND_TOPIC]:
+            self._unsubscribe_topics()
             if self._config[ATTR_MQTT][ATTR_ENABLED]:
                 await self._subscribe_topics()
+        elif old_config[ATTR_MQTT][ATTR_ENABLED] != self._config[ATTR_MQTT][ATTR_ENABLED]:
+            self._unsubscribe_topics()
 
         self.async_write_ha_state()
 
@@ -249,7 +253,7 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         else:
             self._changed_by = res[ATTR_NAME]
 
-        return True
+        return res
 
     async def async_alarm_disarm(self, code=None, skip_code=False):
         """Send disarm command."""
@@ -275,15 +279,20 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         elif self._state != STATE_ALARM_DISARMED:
             _LOGGER.warning("Cannot go to state {} from state {}.".format(arm_mode, self._state))
             return
-        elif not self._validate_code(code, arm_mode) and not skip_code:
-            _LOGGER.warning("Wrong code provided.")
-            return
         else:
+            bypass_open_sensors = False
+            if not skip_code:
+                res = self._validate_code(code, arm_mode)
+                if not res:
+                    _LOGGER.warning("Wrong code provided.")
+                    return
+                elif type(res) is dict and res[ATTR_IS_OVERRIDE_CODE]:
+                    bypass_open_sensors = True
+            else:
+                self._changed_by = None
             self.sensors.open_sensors = None
             self.sensors.bypassed_sensors = None
-            if skip_code:
-                self._changed_by = None
-            await self.async_arm(arm_mode)
+            await self.async_arm(arm_mode, bypass_open_sensors=bypass_open_sensors)
 
     async def async_alarm_arm_away(self, code=None, skip_code=False):
         """Send arm away command."""
@@ -388,7 +397,11 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         self._state = state
 
         if self._config[ATTR_MQTT][ATTR_ENABLED]:
-            mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], state)
+            payload_config = self._config[ATTR_MQTT][ATTR_STATE_PAYLOAD]
+            if state in payload_config and payload_config[state]:
+                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], payload_config[state])
+            elif state not in payload_config:
+                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], state)
 
         await self.automations.async_handle_state_update(state=state, last_state=last_state)
 
@@ -502,37 +515,63 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
     async def _subscribe_topics(self):
         @callback
         async def async_message_received(msg):
-
+            command = None
+            code = None
             try:
                 payload = json.loads(msg.payload)
-                command = payload["command"] if "command" in payload else None
-                code = payload["code"] if "code" in payload else None
+                payload = {k.lower(): v for k, v in payload.items()}
+
+                if "command" in payload:
+                    command = payload["command"]
+                elif "cmd" in payload:
+                    command = payload["cmd"]
+                elif "action" in payload:
+                    command = payload["action"]
+                elif "state" in payload:
+                    command = payload["state"]
+
+                if "code" in payload:
+                    code = payload["code"]
+                elif "pin" in payload:
+                    code = payload["pin"]
+                elif "password" in payload:
+                    code = payload["password"]
+                elif "pincode" in payload:
+                    code = payload["pincode"]
+
             except ValueError:
+                # no JSON structure found
                 command = msg.payload
                 code = None
 
-            if command not in (
-                COMMAND_DISARM,
-                COMMAND_ARM_AWAY,
-                COMMAND_ARM_NIGHT,
-                COMMAND_ARM_HOME,
-                COMMAND_ARM_CUSTOM_BYPASS,
-            ):
-                _LOGGER.warning("Received unexpected payload: %s", payload)
+            if type(command) is str:
+                command = command.lower()
+            else:
+                _LOGGER.warning("Received unexpected command")
                 return
 
+            payload_config = self._config[ATTR_MQTT][ATTR_COMMAND_PAYLOAD]
             skip_code = not self._config[ATTR_MQTT][ATTR_REQUIRE_CODE]
 
-            if command == COMMAND_DISARM:
+            command_payloads = {}
+            for item in COMMANDS:
+                if item in payload_config and payload_config[item]:
+                    command_payloads[item] = payload_config[item]
+                elif item not in payload_config:
+                    command_payloads[item] = item
+
+            if command == command_payloads[COMMAND_DISARM]:
                 await self.async_alarm_disarm(code, skip_code)
-            elif command == COMMAND_ARM_AWAY:
+            elif command == command_payloads[COMMAND_ARM_AWAY]:
                 await self.async_alarm_arm_away(code, skip_code)
-            elif command == COMMAND_ARM_NIGHT:
+            elif command == command_payloads[COMMAND_ARM_NIGHT]:
                 await self.async_alarm_arm_night(code, skip_code)
-            elif command == COMMAND_ARM_HOME:
+            elif command == command_payloads[COMMAND_ARM_HOME]:
                 await self.async_alarm_arm_home(code, skip_code)
-            elif command == COMMAND_ARM_CUSTOM_BYPASS:
+            elif command == command_payloads[COMMAND_ARM_CUSTOM_BYPASS]:
                 await self.async_alarm_arm_custom_bypass(code, skip_code)
+            else:
+                _LOGGER.warning("Received unexpected command: %s", command)
 
         subscription = await mqtt.async_subscribe(
             self._hass,

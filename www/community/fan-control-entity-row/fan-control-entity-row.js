@@ -34,13 +34,13 @@ class CustomFanRow extends Polymer.Element {
 						disabled='[[_leftState]]'>[[_leftText]]</button>
 					<button
 						class='speed'
-						style='[[_midLeftColor]]'
+						style='[[_midLeftColor]];[[_hideMidLeft]]'
 						toggles name="[[_midLeftName]]"
 						on-click='setSpeed'
 						disabled='[[_midLeftState]]'>[[_midLeftText]]</button>
 					<button
 						class='speed'
-						style='[[_midRightColor]]'
+						style='[[_midRightColor]];[[_hideMidRight]]'
 						toggles name="[[_midRightName]]"
 						on-click='setSpeed'
 						disabled='[[_midRightState]]'>[[_midRightText]]</button>
@@ -75,6 +75,8 @@ class CustomFanRow extends Polymer.Element {
 			_midLeftName: String,
 			_midRightName: String,
 			_rightName: String,
+			_hideMidLeft: String,
+			_hideMidRight: String,
 			_leftState: Boolean,
 			_midLeftState: Boolean,
 			_midRightState: Boolean,
@@ -90,6 +92,7 @@ class CustomFanRow extends Polymer.Element {
 			customTheme: false,
 			sendStateWithSpeed: false,
 			reverseButtons: false,
+			isTwoSpeedFan: false,
 			isOffColor: '#f44c09',
 			isOnLowColor: '#43A047',
 			isOnMedColor: '#43A047',
@@ -110,6 +113,7 @@ class CustomFanRow extends Polymer.Element {
 		const custTheme = config.customTheme;
 		const sendStateWithSpeed = config.sendStateWithSpeed;
 		const revButtons = config.reverseButtons;
+		const twoSpdFan = config.isTwoSpeedFan;
 		const custOnLowClr = config.isOnLowColor;
 		const custOnMedClr = config.isOnMedColor;
 		const custOnHiClr = config.isOnHiColor;
@@ -209,6 +213,15 @@ class CustomFanRow extends Polymer.Element {
 		let lowname = 'low';
 		let offname = 'off';
 		
+		let hidemedium = 'display:block';
+		let nohide = 'display:block';
+		
+		if (twoSpdFan) {
+			hidemedium = 'display:none';
+		} else {
+			hidemedium = 'display:block';
+		}
+		
 			
 		if (revButtons) {
 			this.setProperties({
@@ -229,6 +242,8 @@ class CustomFanRow extends Polymer.Element {
 				_midLeftName: lowname,
 				_midRightName: medname,
 				_rightName: hiname,
+				_hideMidLeft: nohide,
+				_hideMidRight: hidemedium,
 			});
 		} else {
 			this.setProperties({
@@ -249,6 +264,8 @@ class CustomFanRow extends Polymer.Element {
 				_midLeftName: medname,
 				_midRightName: lowname,
 				_rightName: offname,
+				_hideMidRight: nohide,
+				_hideMidLeft: hidemedium,
 			});
 		}
     }
