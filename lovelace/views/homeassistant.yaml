@@ -17,6 +17,9 @@ cards:
             title: Version Checks
             show_header_toggle: false
             entities:
+              - entity: sensor.uptime
+                tap_action:
+                  action: none
               - entity: sensor.home_assistant_current_version
                 tap_action:
                   action: none
