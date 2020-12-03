@@ -1,0 +1,3 @@
+---
+sensor.uptime:
+  friendly_name: Home Assistant Last Restart
