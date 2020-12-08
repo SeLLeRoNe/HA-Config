@@ -10,7 +10,7 @@ trigger:
     at: '21:00:00'
   - platform: state
     entity_id: input_boolean.guest_mode
-    to: off
+    to: 'off'
 condition:
   condition: and
   conditions:
@@ -20,7 +20,7 @@ condition:
         {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: off
+      state: 'off'
     - condition: numeric_state
       entity_id: sensor.illuminance
       above: 1000

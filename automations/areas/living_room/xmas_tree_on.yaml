@@ -8,7 +8,7 @@ trigger:
     below: 1000
   - platform: state
     entity_id: input_boolean.guest_mode
-    to: on
+    to: 'on'
 condition:
   condition: and
   conditions:
