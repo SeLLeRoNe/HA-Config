@@ -1,0 +1,21 @@
+---
+id: '5695234262517'
+alias: 'XMAS Tree On'
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.illuminance
+    below: 1000
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: on
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: >
+        {% set n = now() %}
+        {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+action:
+  - service: light.turn_on
+    entity_id: light.xmas_tree
