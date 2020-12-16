@@ -78,6 +78,16 @@ cards:
                 icon: mdi:ip-network
               - entity: sensor.hostname_ip
                 icon: mdi:dns
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: Router Download
+                entity: sensor.technicolor_tc7230_kib_s_received
+                max: 62500
+              - type: gauge
+                name: Router Upload
+                entity: sensor.technicolor_tc7230_kib_s_sent
+                max: 6250
           - type: custom:mini-graph-card
             name: Speed Test
             more_info: false
