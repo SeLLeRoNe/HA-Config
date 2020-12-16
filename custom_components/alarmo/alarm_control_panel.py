@@ -277,8 +277,10 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
             _LOGGER.warning("Mode {} is not enabled, ignoring.".format(arm_mode))
             return
         elif self._state != STATE_ALARM_DISARMED:
-            _LOGGER.warning("Cannot go to state {} from state {}.".format(arm_mode, self._state))
-            return
+            if self._state not in ARM_MODES:
+                _LOGGER.warning("Cannot go to state {} from state {}.".format(arm_mode, self._state))
+                return
+            await self.async_arm(arm_mode, skip_delay=True, bypass_open_sensors=False)
         else:
             bypass_open_sensors = False
             if not skip_code:
@@ -399,11 +401,13 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         if self._config[ATTR_MQTT][ATTR_ENABLED]:
             payload_config = self._config[ATTR_MQTT][ATTR_STATE_PAYLOAD]
             if state in payload_config and payload_config[state]:
-                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], payload_config[state])
+                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], payload_config[state], retain=True)
             elif state not in payload_config:
-                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], state)
+                mqtt.async_publish(self._hass, self._config[ATTR_MQTT][CONF_STATE_TOPIC], state, retain=True)
 
         await self.automations.async_handle_state_update(state=state, last_state=last_state)
+        if last_state == STATE_ALARM_ARMING:
+            self.sensors.stop_arm_timer()
 
         self.async_cancel_timer()
 
@@ -415,16 +419,18 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
         leave_delay = self.get_delay_config(EVENT_LEAVE)
 
         # ARM request
-
         if self._state != STATE_ALARM_DISARMED or skip_delay:  # immediate arm event
 
             res = self.sensors.validate_event(event=EVENT_ARM, bypass_open_sensors=bypass_open_sensors)
 
             if not res:
                 # there where errors -> abort the arm
-                _LOGGER.info("Cannot arm right now, there are open sensors")
+                _LOGGER.info("Cannot transition from state {} to state {}, there are open sensors".format(self._state, arm_mode))
                 await self.automations.async_handle_event(event=EVENT_ARM_FAILURE)
-                await self.async_update_state(STATE_ALARM_DISARMED)
+
+                # Go to Disarmed state in an Unknown state or Arming state
+                if not self._state or self._state == STATE_ALARM_ARMING:
+                    await self.async_update_state(STATE_ALARM_DISARMED)
             else:
                 # proceed the arm
                 await self.async_update_state(arm_mode)
@@ -489,7 +495,9 @@ class AlarmoEntity(AlarmControlPanelEntity, RestoreEntity):
             await self.async_update_state(STATE_ALARM_DISARMED)
             self.sensors.bypassed_sensors = None
         else:
-            await self.async_arm(self.arm_mode)
+            self.sensors.open_sensors = None
+            self.sensors.bypassed_sensors = None
+            await self.async_arm(self.arm_mode, bypass_open_sensors=True)
 
     @callback
     async def async_entry_timer_finished(self, now):

@@ -15,7 +15,7 @@ from homeassistant.const import (
 
 from homeassistant.components.alarm_control_panel import DOMAIN as PLATFORM
 
-VERSION = "1.3.2"
+VERSION = "1.4.0"
 NAME = "Alarmo"
 MANUFACTURER = "@nielsfaber"
 
@@ -35,6 +35,7 @@ PANEL_NAME = "alarm-panel"
 
 
 INITIALIZATION_TIME = datetime.timedelta(seconds=30)
+SENSOR_ARM_TIME = datetime.timedelta(seconds=5)
 
 STATES = [
     STATE_ALARM_ARMED_AWAY,
