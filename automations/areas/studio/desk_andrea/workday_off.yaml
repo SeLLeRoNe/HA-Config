@@ -24,6 +24,9 @@ condition:
       state: 'on'
     - condition: time
       after: '19:00:00'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
 action:
   - service: tts.google_translate_say
     data:
