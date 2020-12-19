@@ -29,15 +29,15 @@ condition:
         - condition: and
           conditions:
             - condition: template
-              value_template: "{{ states('sensor.time') >= '21:00' }}"
+              value_template: "{{ states('sensor.time') >= '21:00:00' }}"
             - condition: template
-              value_template: "{{ states('sensor.time') < '00:00' }}"
+              value_template: "{{ states('sensor.time') < '00:00:00' }}"
         - condition: and
           conditions:
             - condition: template
-              value_template: "{{ states('sensor.time') >= '00:00' }}"
+              value_template: "{{ states('sensor.time') >= '00:00:00' }}"
             - condition: template
-              value_template: "{{ states('sensor.time') < '02:00' }}"
+              value_template: "{{ states('sensor.time') < '02:00:00' }}"
 action:
   - service: light.turn_off
     entity_id: light.xmas_tree
