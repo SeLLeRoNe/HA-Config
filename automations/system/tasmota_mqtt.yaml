@@ -132,5 +132,5 @@ action:
   - service: mqtt.publish
     data:
       topic: cmnd/Citroen_Cactus/otaurl
-      payload: "https://github.com/Jason2866/Merge/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
+      payload: "https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
       retain: true
