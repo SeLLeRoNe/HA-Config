@@ -9,9 +9,14 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: numeric_state
-      entity_id: sensor.bedroom_luca_gzcgq01lm_illuminance
-      below: 5
+    - condition: or
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.bedroom_luca_gzcgq01lm_illuminance
+          below: 5
+        - condition: state
+          entity_id: sensor.bedroom_luca_gzcgq01lm_illuminance
+          state: 'unavailable'
     - condition: and
       conditions:
         - condition: state
