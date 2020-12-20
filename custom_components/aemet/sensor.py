@@ -5,26 +5,28 @@ Sensor support for AEMET (Agencia Estatal de Metereología) data service.
 DOMAIN='aemet'
 
 from logging import getLogger
+from datetime import timedelta
 import voluptuous as vol
 
 _LOGGER = getLogger(__name__)
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.components.weather import (
-    ATTR_WEATHER_HUMIDITY, 
-    ATTR_WEATHER_PRESSURE, 
+    ATTR_WEATHER_HUMIDITY,
+    ATTR_WEATHER_PRESSURE,
     ATTR_WEATHER_TEMPERATURE,
     ATTR_WEATHER_VISIBILITY,
 )
 from homeassistant.const import (
-    ATTR_ATTRIBUTION, 
-    ATTR_LATITUDE, 
-    ATTR_LONGITUDE, 
+    ATTR_ATTRIBUTION,
+    ATTR_LATITUDE,
+    ATTR_LONGITUDE,
+    CONF_SCAN_INTERVAL,
     CONF_API_KEY,
-    CONF_MONITORED_CONDITIONS, 
-    CONF_NAME, 
+    CONF_MONITORED_CONDITIONS,
+    CONF_NAME,
     LENGTH_CENTIMETERS,
-    LENGTH_KILOMETERS, 
+    LENGTH_KILOMETERS,
     TEMP_CELSIUS
 )
 import homeassistant.helpers.config_validation as cv
@@ -32,20 +34,20 @@ from homeassistant.helpers.entity import Entity
 
 from .AemetApi import (
     AemetApi,
-    ATTR_ELEVATION, 
-    ATTR_LAST_UPDATE, 
-    ATTR_STATION_NAME, 
-    ATTR_WEATHER_PRECIPITATION, 
-    ATTR_WEATHER_SNOW, 
-    ATTR_WEATHER_WIND_SPEED, 
-    ATTR_WEATHER_WIND_MAX_SPEED, 
+    ATTR_ELEVATION,
+    ATTR_LAST_UPDATE,
+    ATTR_STATION_NAME,
+    ATTR_WEATHER_PRECIPITATION,
+    ATTR_WEATHER_SNOW,
+    ATTR_WEATHER_WIND_SPEED,
+    ATTR_WEATHER_WIND_MAX_SPEED,
     ATTR_WEATHER_WIND_BEARING,
-    CONF_ATTRIBUTION, 
+    CONF_ATTRIBUTION,
     CONF_STATION_ID,
 )
 
 DEFAULT_NAME = 'AEMET'
-
+SCAN_INTERVAL = timedelta(minutes=60)
 SENSOR_TYPES = {
     ATTR_WEATHER_TEMPERATURE: ['Temperature', TEMP_CELSIUS, 'mdi:thermometer'],
     ATTR_WEATHER_HUMIDITY: ['Humidity', '%', 'mdi:water-percent'],
@@ -62,6 +64,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_API_KEY): cv.string,
     vol.Required(CONF_STATION_ID): cv.string,
+    vol.Optional(CONF_SCAN_INTERVAL): cv.time_period,
     vol.Optional(CONF_MONITORED_CONDITIONS, default=list(SENSOR_TYPES)):
     vol.All(cv.ensure_list, vol.Length(min=1), [vol.In(SENSOR_TYPES)]),
 })
@@ -71,7 +74,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     name = config.get(CONF_NAME)
     api_key = config.get(CONF_API_KEY)
     station_id = config.get(CONF_STATION_ID)
-
+    if CONF_SCAN_INTERVAL in config:
+        _LOGGER.debug("Configurando SCAN_INTERVAL a %s", config[CONF_SCAN_INTERVAL])
+        global SCAN_INTERVAL
+        SCAN_INTERVAL = config[CONF_SCAN_INTERVAL]
     aemetApi = AemetApi(api_key=api_key, station_id=station_id)
     try:
         aemetApi.update()
