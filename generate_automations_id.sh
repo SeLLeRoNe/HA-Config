@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd automations/
+cd /home/ha/.homeassistant/automations/
 for FILE in `find ./ -name *.yaml`
 	do
 	if [ "`head -2 $FILE | grep \"id: \"`" = "" ]; then
@@ -9,6 +9,6 @@ for FILE in `find ./ -name *.yaml`
 	fi
 done
 
-cd ..
+cd /home/ha/.homeassistant/
 
 exit 0;
