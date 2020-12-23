@@ -127,6 +127,8 @@ cards:
               artwork_border: true
               power_state: false
               shuffle: true
+#            tts:
+#              platform: google_translate
             tap_action:
               action: none
           - type: custom:mini-media-player
