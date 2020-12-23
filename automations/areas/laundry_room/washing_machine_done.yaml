@@ -39,3 +39,14 @@ action:
     data:
       title: "Laundry Room"
       message: "Washing Machine is now done"
+  - condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ not is_state('media_player.living_room_google_tv', 'unavailable') }}"
+      - condition: template
+        value_template: "{{ not is_state('media_player.living_room_google_tv', 'off') }}"
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.living_room_google_tv
+      message: "Washing Machine is now done"
+      language: "en"
