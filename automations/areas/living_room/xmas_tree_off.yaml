@@ -11,13 +11,16 @@ trigger:
   - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'
+  - platform: state
+    entity_id: media_player.living_room_tv
+    to: 'on'
 condition:
   condition: and
   conditions:
-    - condition: template
-      value_template: >
-        {% set n = now() %}
-        {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+#    - condition: template
+#      value_template: >
+#        {% set n = now() %}
+#        {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
     - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'
