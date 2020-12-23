@@ -4,7 +4,7 @@ alias: House - Day Time
 initial_state: on
 trigger:
   - platform: time
-    at: '21:30:00'
+    at: '09:30:00'
 action:
   - service: media_player.volume_set
     data:
