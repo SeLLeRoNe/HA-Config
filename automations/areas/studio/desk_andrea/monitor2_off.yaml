@@ -5,6 +5,9 @@ initial_state: on
 trigger:
   - condition: state
     entity_id: media_player.living_room_google_tv
+    state: 'standby'
+  - condition: state
+    entity_id: switch.studio_andrea_lg_monitor_2
     state: 'on'
 condition:
   - condition: state
