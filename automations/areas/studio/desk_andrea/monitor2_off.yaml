@@ -3,12 +3,12 @@ id: '3324797870617'
 alias: Studio - Andrea - Monitor #2 Off - Home
 initial_state: on
 trigger:
-  - condition: state
+  - platform: state
     entity_id: media_player.living_room_google_tv
-    state: 'standby'
-  - condition: state
+    to: 'standby'
+  - platform: state
     entity_id: switch.studio_andrea_lg_monitor_2
-    state: 'on'
+    to: 'on'
 condition:
   - condition: state
     entity_id: binary_sensor.studio_andrea_computer_ping
