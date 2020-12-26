@@ -1,0 +1,286 @@
+---
+binary_sensor:
+  - platform: mqtt
+    name: "Computer Andrea - Connected"
+    state_topic: "iotlink/casa/pc-sellerone/lwt"
+    value_template: "{{ value }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: "connectivity"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Charging"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/power/status"
+    value_template: "{{ value }}"
+    payload_on: "Online"
+    payload_off: "Offline"
+    device_class: "plug"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Battery Status"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/status"
+    value_template: "{{ value }}"
+    payload_on: "Online"
+    payload_off: "Offline"
+    device_class: "plug"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+sensor:
+  - platform: mqtt
+    name: "Computer Andrea - Current User"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/system/current-user"
+    unit_of_measurement: ''
+    icon: mdi:account
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Idle Time"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/system/idle-time"
+    unit_of_measurement: 'seconds'
+    icon: mdi:timer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - CPU Usage"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/cpu/usage"
+    unit_of_measurement: '%'
+    icon: mdi:speedometer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - RAM Usage"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/usage"
+    unit_of_measurement: '%'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - RAM Available"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/available"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - RAM Used"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/used"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - RAM Total"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/total"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Remaining Battery"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/remaining-percent"
+    unit_of_measurement: '%'
+    device_class: battery
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Remaining Battery Time"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/remaining-time"
+    unit_of_measurement: 'minutes'
+    icon: mdi:timer
+    value_template: "{{ ( value | float / 60 ) | int }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Predicted Lifetime"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/full-lifetime"
+    unit_of_measurement: 'minutes'
+    icon: mdi:timer
+    value_template: "{{ ( value | float / 60 ) | int }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Usage (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/drive-usage"
+    unit_of_measurement: '%'
+    icon: mdi:chart-donut
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Total Size (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/total-size"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Total Free Space (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/total-free-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Free Space (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/available-free-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Used Space (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/used-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Format (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/drive-format"
+    unit_of_measurement: ''
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - HDD Label (C)"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/volume-label"
+    unit_of_measurement: ''
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Network IPv4"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/ipv4"
+    unit_of_measurement: ''
+    icon: mdi:lan
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Network IPv6"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/ipv6"
+    unit_of_measurement: ''
+    icon: mdi:lan
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Network Speed"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/speed"
+    unit_of_measurement: 'Mbps'
+    icon: mdi:speedometer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
+    name: "Computer Andrea - Network Wired"
+    state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/wired"
+    unit_of_measurement: ''
+    icon: mdi:ethernet
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+camera:
+  - platform: mqtt
+    name: "Computer Andrea - Screen 0"
+    topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/display/0/screen"
+  - platform: mqtt
+    name: "Computer Andrea - Screen 1"
+    topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/display/1/screen"
+
+#switch:
+#  - platform: template
+#    switches:
+#      my_computer:
+#        friendly_name: "Computer Andrea"
+#        value_template: "{{ is_state('binary_sensor.my_computer_connected', 'on') }}"
+#        turn_on:
+#          service: script.my_computer_wake
+#        turn_off:
+#          service: script.my_computer_shutdown
+#        icon_template: mdi:laptop
