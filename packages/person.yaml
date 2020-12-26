@@ -4,7 +4,7 @@ person:
     id: !secret andrea_id
     user_id: !secret andrea_user_id
     device_trackers:
-#      - device_tracker.andrea_oneplus_nord
+      - device_tracker.andrea_oneplus_nord
       - device_tracker.andrea_oneplus_nord_gpslogger
   - name: Sonia
     id: !secret sonia_id
