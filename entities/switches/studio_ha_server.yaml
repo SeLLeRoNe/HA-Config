@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Home Assistant Server"
 icon: mdi:home-assistant
-command_topic: "cmnd/desk_andrea_powerstrip_1/POWER1"
-state_topic: "stat/desk_andrea_powerstrip_1/POWER1"
-availability_topic: "tele/desk_andrea_powerstrip_1/LWT"
+command_topic: "cmnd/desk_andrea_power_strip_1/POWER1"
+state_topic: "stat/desk_andrea_power_strip_1/POWER1"
+availability_topic: "tele/desk_andrea_power_strip_1/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

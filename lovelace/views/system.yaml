@@ -594,11 +594,11 @@ cards:
                 name: "Studio - Table Plug"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_powerstrip_1_wireless_signal
+              - entity: sensor.studio_andrea_power_strip_1_wireless_signal
                 name: "Studio - Desk Andrea PowerStrip #1"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_powerstrip_2_wireless_signal
+              - entity: sensor.studio_andrea_power_strip_2_wireless_signal
                 name: "Studio - Desk Andrea PowerStrip #2"
                 tap_action:
                   action: none

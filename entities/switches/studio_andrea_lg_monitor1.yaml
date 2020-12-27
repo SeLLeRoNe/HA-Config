@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Andrea LG Monitor #1"
 icon: mdi:monitor
-command_topic: "cmnd/desk_andrea_powerstrip_1/POWER2"
-state_topic: "stat/desk_andrea_powerstrip_1/POWER2"
-availability_topic: "tele/desk_andrea_powerstrip_1/LWT"
+command_topic: "cmnd/desk_andrea_power_strip_1/POWER2"
+state_topic: "stat/desk_andrea_power_strip_1/POWER2"
+availability_topic: "tele/desk_andrea_power_strip_1/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

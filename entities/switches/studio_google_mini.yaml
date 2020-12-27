@@ -7,9 +7,9 @@
 platform: mqtt
 name: "Studio Google Mini"
 icon: mdi:google-home
-command_topic: "cmnd/desk_andrea_powerstrip_2/POWER3"
-state_topic: "stat/desk_andrea_powerstrip_2/POWER3"
-availability_topic: "tele/desk_andrea_powerstrip_2/LWT"
+command_topic: "cmnd/desk_andrea_power_strip_2/POWER3"
+state_topic: "stat/desk_andrea_power_strip_2/POWER3"
+availability_topic: "tele/desk_andrea_power_strip_2/LWT"
 payload_available: "Online"
 payload_not_available: "Offline"
 payload_on: "ON"

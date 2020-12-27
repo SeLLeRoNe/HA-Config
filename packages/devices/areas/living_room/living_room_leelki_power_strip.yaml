@@ -1,11 +1,11 @@
 ---
-# MQTT Device: Test TuYa TS0201
+# MQTT Device: Living Room LEELKI Power Strip
 #
 # https://www.home-assistant.io/components/mqtt/
 #
 switch:
   - platform: "mqtt"
-    name: 'LEELKI Power Strip Switch #1'
+    name: 'Living Room Power Strip Plug #1'
     icon: mdi:power-plug
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:
@@ -16,7 +16,7 @@ switch:
     value_template: "{{ value_json.state_l1 }}"
     command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l1/set"
   - platform: "mqtt"
-    name: 'LEELKI Power Strip Switch #2'
+    name: 'Living Room Power Strip Plug #2'
     icon: mdi:power-plug
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:
@@ -27,7 +27,7 @@ switch:
     value_template: "{{ value_json.state_l2 }}"
     command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l2/set"
   - platform: "mqtt"
-    name: 'LEELKI Power Strip Switch #3'
+    name: 'Living Room Power Strip Plug #3'
     icon: mdi:power-plug
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:
@@ -38,7 +38,7 @@ switch:
     value_template: "{{ value_json.state_l3 }}"
     command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l3/set"
   - platform: "mqtt"
-    name: 'LEELKI Power Strip Switch #4'
+    name: 'Living Room Power Strip Plug #4'
     icon: mdi:power-plug
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:
@@ -51,7 +51,7 @@ switch:
 
 sensor:
   - platform: "mqtt"
-    name: 'LEEKI Power Strip Link Quality'
+    name: 'Living Room Power Strip Link Quality'
     icon: mdi:power-plug
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:

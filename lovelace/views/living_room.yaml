@@ -33,10 +33,10 @@ cards:
                   state_color: true
                   tap_action:
                     action: none
-#              - entity: switch.living_room_powerstrip_1
-#              - entity: switch.living_room_powerstrip_2
-#              - entity: switch.living_room_powerstrip_3
-#              - entity: switch.living_room_powerstrip_4
+              - entity: switch.living_room_power_strip_plug_1
+              - entity: switch.living_room_power_strip_plug_2
+              - entity: switch.living_room_power_strip_plug_3
+              - entity: switch.living_room_power_strip_plug_4
       - break
       - type: vertical-stack
         cards:

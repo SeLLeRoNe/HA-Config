@@ -133,8 +133,8 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  name: UK Powerstrip
-                  entity: switch.studio_andrea_uk_powerstrip
+                  name: UK Power Strip
+                  entity: switch.studio_andrea_uk_power_strip
                   state_color: true
                   tap_action:
                     action: none
@@ -152,8 +152,8 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
-                  name: "Powerstrip #2"
-                  entity: switch.studio_andrea_powerstrip_2
+                  name: "Power Strip #2"
+                  entity: switch.studio_andrea_power_strip_2
                   state_color: true
                   tap_action:
                     action: none
@@ -167,7 +167,7 @@ cards:
 #            show_header_toggle: false
 ##            state_color: true
 #            entities:
-#              - entity: switch.studio_andrea_powerstrip_2_plug_3
+#              - entity: switch.studio_andrea_power_strip_2_plug_3
 #                state_color: true
 #                name: "Google Mini"
 #                style: |
