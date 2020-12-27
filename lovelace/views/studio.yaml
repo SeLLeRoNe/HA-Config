@@ -277,39 +277,39 @@ cards:
                 template: title
                 variables:
                   - title: Sensors
-              - type: horizontal-stack
-                cards:
-                  - type: custom:decluttering-card
-                    template: sensor_entity_alert
-                    variables:
-                      - name: Motion Sensor
-                      - entity: binary_sensor.studio_2ajz4kpbs_pir
-                  - type: custom:decluttering-card
-                    template: sensor_entity_alert
-                    variables:
-                      - name: Window Status
-                      - entity:  binary_sensor.studio_window
 #              - type: horizontal-stack
 #                cards:
-#                  - type: glance
-#                    show_state: true
-#                    columns: 2
-#                    entities:
+#                  - type: custom:decluttering-card
+#                    template: sensor_entity_alert
+#                    variables:
 #                      - name: Motion Sensor
-#                        entity: binary_sensor.studio_2ajz4kpbs_pir
-#                        tap_action:
-#                          action: none
+#                      - entity: binary_sensor.studio_2ajz4kpbs_pir
+#                  - type: custom:decluttering-card
+#                    template: sensor_entity_alert
+#                    variables:
 #                      - name: Window Status
-#                        entity: binary_sensor.studio_window
-#                        tap_action:
-#                          action: none
-          - type: 'custom:kb-steam-card'
-            game_background: true
-#            entity: sensor.steam_76561198052829771
-            friendly_name: Steam
-            game_background: true
-            entities:
-              - sensor.steam_76561198052829771
+#                      - entity:  binary_sensor.studio_window
+              - type: horizontal-stack
+                cards:
+                  - type: glance
+                    show_state: true
+                    columns: 2
+                    entities:
+                      - name: Motion Sensor
+                        entity: binary_sensor.studio_2ajz4kpbs_pir
+                        tap_action:
+                          action: none
+                      - name: Window Status
+                        entity: binary_sensor.studio_window
+                        tap_action:
+                          action: none
+#          - type: 'custom:kb-steam-card'
+#            game_background: true
+##            entity: sensor.steam_76561198052829771
+#            friendly_name: Steam
+#            game_background: true
+#            entities:
+#              - sensor.steam_76561198052829771
 #                friendly_name: SeLLeRoNe
 #              - sensor.steam_76561198116208864
 ##                friendly_name: Sciapo (Sciapo)
