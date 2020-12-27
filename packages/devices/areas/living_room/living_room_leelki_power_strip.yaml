@@ -38,8 +38,8 @@ switch:
     value_template: "{{ value_json.state_l3 }}"
     command_topic: "zigbee2mqtt/living_room_leelki_power_strip/l3/set"
   - platform: "mqtt"
-    name: 'Living Room Power Strip Plug #4'
-    icon: mdi:power-plug
+    name: 'Nintendo Wii'
+    icon: mdi:nintendo-wii
     state_topic: "zigbee2mqtt/living_room_leelki_power_strip"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
