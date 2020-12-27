@@ -36,7 +36,7 @@ cards:
               - entity: switch.living_room_power_strip_plug_1
               - entity: switch.living_room_power_strip_plug_2
               - entity: switch.living_room_power_strip_plug_3
-              - entity: switch.living_room_power_strip_plug_4
+              - entity: switch.nintendo_wii
       - break
       - type: vertical-stack
         cards:

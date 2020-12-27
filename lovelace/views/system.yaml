@@ -78,16 +78,16 @@ cards:
                 icon: mdi:ip-network
               - entity: sensor.hostname_ip
                 icon: mdi:dns
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: Router Download
-                entity: sensor.technicolor_tc7230_kib_s_received
-                max: 62500
-              - type: gauge
-                name: Router Upload
-                entity: sensor.technicolor_tc7230_kib_s_sent
-                max: 6250
+#          - type: horizontal-stack
+#            cards:
+#              - type: gauge
+#                name: Router Download
+#                entity: sensor.technicolor_tc7230_kib_s_received
+#                max: 62500
+#              - type: gauge
+#                name: Router Upload
+#                entity: sensor.technicolor_tc7230_kib_s_sent
+#                max: 6250
           - type: custom:mini-graph-card
             name: Speed Test
             more_info: false
@@ -784,6 +784,15 @@ cards:
                     name: Bedroom Luca - WXKG11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "mV", "") ]]'
+                    tap_action:
+                      action: none
+                  not 1:
+                    state: "unavailable"
+                  not 2:
+                    state: "unknown"
+                - entity_id: sensor.living_room_power_strip_link_quality
+                  options:
+                    name: Living Room - LEELKI Power Strip - Link Quality
                     tap_action:
                       action: none
                   not 1:
