@@ -278,9 +278,130 @@ camera:
 #    switches:
 #      my_computer:
 #        friendly_name: "Computer Andrea"
-#        value_template: "{{ is_state('binary_sensor.my_computer_connected', 'on') }}"
+#        value_template: "{{ is_state('binary_sensor.computer_andrea_connected', 'on') }}"
 #        turn_on:
-#          service: script.my_computer_wake
+#          service: script.computer_andrea_wake
 #        turn_off:
-#          service: script.my_computer_shutdown
+#          service: script.computer_andrea_shutdown
 #        icon_template: mdi:laptop
+
+script:
+  computer_andrea_wake:
+    # To enable see https://www.home-assistant.io/components/wake_on_lan/
+    alias: "Computer Andrea - Wake"
+    sequence:
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: "70:85:C2:63:9F:11"
+
+  computer_andrea_shutdown:
+    alias: "Computer Andrea - Shutdown"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/shutdown"
+          payload: ""
+
+  computer_andrea_suspend:
+    alias: "Computer Andrea - Suspend"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/suspend"
+          payload: ""
+
+  computer_andrea_hibernate:
+    alias: "Computer Andrea - Hibernate"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/hibernate"
+          payload: ""
+
+  computer_andrea_reboot:
+    alias: "Computer Andrea - Reboot"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/reboot"
+          payload: ""
+
+  computer_andrea_lock:
+    alias: "Computer Andrea - Lock"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/lock"
+          payload: ""
+
+  computer_andrea_logoff:
+    alias: "Computer Andrea - Logoff"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/logoff"
+          payload: ""
+
+  computer_andrea_vol_mute:
+    alias: "Computer Andrea - Toggle Mute"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/volume/mute"
+          payload: ""
+
+  computer_andrea_vol_max:
+    alias: "Computer Andrea - Vol Max"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/volume/set"
+          payload: "100"
+
+  computer_andrea_displays_on:
+    alias: "Computer Andrea - Displays ON"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/displays/on"
+          payload: ""
+
+  computer_andrea_displays_off:
+    alias: "Computer Andrea - Displays OFF"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/displays/off"
+          payload: ""
+
+  computer_andrea_refresh:
+    alias: "Computer Andrea - Refresh"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/refresh"
+          payload: ""
+
+  computer_andrea_notify:
+    alias: "Computer Andrea - Notify"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/notify"
+          payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
+
+  computer_andrea_run_chrome:
+    alias: "Computer Andrea - Run Chrome"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/run"
+          payload: '{ "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "args": "https://iotlink.gitlab.io", "path": "C:\\Program Files (x86)\\Google\\Chrome\\Application", "user": "", "visible": true, "fallback": true }'
+
+  computer_andrea_run_ccleaner:
+    alias: "Computer Andrea - Run CCleaner"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/casa/pc-sellerone/commands/run"
+          payload: '{ "command": "C:\\Program Files\\CCleaner\\CCleaner64.exe", "args": "/AUTO", "path": "C:\\Program Files\\CCleaner\\", "user": "", "visible": true, "fallback": true }'
