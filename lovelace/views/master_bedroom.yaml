@@ -46,6 +46,29 @@ cards:
         cards:
           - type: custom:decluttering-card
             template: master_bedroom_lights
+      - type: custom:mini-media-player
+        entity: media_player.master_bedroom_echo_dot
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: true
+          source: true
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: true
+          shuffle: true
+        tts:
+          platform: alexa
+        tap_action:
+          action: none
       - break
       - type: vertical-stack
         cards:
