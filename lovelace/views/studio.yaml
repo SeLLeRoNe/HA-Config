@@ -205,6 +205,11 @@ cards:
                       service: switch.turn_on
                       service_data:
                         entity_id: switch.studio_andrea_computer_wol
+                    hold_action:
+                      action: call-service
+                      service: switch.turn_off
+                      service_data:
+                        entity_id: switch.studio_andrea_computer_wol
                   - name: "Laptop"
                     icon: mdi:laptop
                     entity: binary_sensor.studio_andrea_laptop_ping
