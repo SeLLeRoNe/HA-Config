@@ -20,7 +20,11 @@ google_assistant:
       name: "Monitor 1"
     switch.studio_andrea_lg_monitor_2:
       name: "Monitor 2"
+    switch.studio_andrea_computer_wol
+      name: "Computer Andrea"
     switch.studio_andrea_desk_plug:
+      expose: false
+    switch.studio_andrea_computer_plug
       expose: false
     switch.studio_andrea_powerstrip_2:
       expose: false
