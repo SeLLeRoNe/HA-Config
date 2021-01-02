@@ -25,3 +25,4 @@ action:
         color: "#FF9900"
         sticky: "false"
         tag: tag
+        clickAction: !secret hacs_url
