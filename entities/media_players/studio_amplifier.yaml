@@ -10,7 +10,6 @@ host: !secret studio_amplifier_ip
 #source_ignore:
 source_names:
   HDMI1: "PC"
-  V-AUX: "NowTV"
 zone_ignore:
   "Zone_2"
 #zone_names:
