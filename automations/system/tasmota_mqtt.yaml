@@ -121,14 +121,17 @@ action:
       payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
       retain: true
   - delay:
-      seconds: 30
+      seconds: 60
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge01/otaurl
       payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
       retain: true
-  - delay:
-      seconds: 30
+  - service: mqtt.publish
+    data:
+      topic: cmnd/ZBBridge01/Rule1
+      payload: "ON System#Boot do TCPStart 8888 endon"
+      retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/Citroen_Cactus/otaurl
