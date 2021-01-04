@@ -27,9 +27,11 @@ cards:
                   block: true
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Desk Andrea
                   entity: switch.studio_andrea_desk_plug
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
@@ -37,9 +39,11 @@ cards:
 #                 block: true
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Desk Sonia
                   entity: switch.studio_sonia_desk_plug
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
@@ -47,9 +51,11 @@ cards:
                   block: true
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Table
                   entity: switch.studio_table_plug
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
           - type: custom:hui-element
@@ -63,41 +69,51 @@ cards:
                   block: true
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Home Assistant Server
                   entity: switch.studio_home_assistant_server
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Google Mini
                   entity: switch.studio_google_mini
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Computer
                   entity: switch.studio_andrea_computer_plug
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: "LG Monitor #1"
                   entity: switch.studio_andrea_lg_monitor_1
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: "LG Monitor #2"
                   entity: switch.studio_andrea_lg_monitor_2
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
           - type: custom:hui-element
@@ -111,17 +127,21 @@ cards:
                   block: true
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: USB Ports
                   entity: switch.studio_andrea_usb_ports
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: USB Hub
                   entity: switch.studio_andrea_usb_hub
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
           - type: custom:hui-element
@@ -133,9 +153,11 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: UK Power Strip
                   entity: switch.studio_andrea_uk_power_strip
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
 #                style: |
@@ -152,9 +174,11 @@ cards:
               - type: "custom:restriction-card"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: "Power Strip #2"
                   entity: switch.studio_andrea_power_strip_2
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
 #          - type: custom:hui-element

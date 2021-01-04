@@ -31,9 +31,11 @@ cards:
 #                  value: "Drying"
                 row: true
                 card:
+                  type: custom:toggle-control-button-row
                   name: Washing Machine
                   entity: switch.laundry_room_washing_machine_plug
                   state_color: true
+                  customTheme: true
                   tap_action:
                     action: none
       - break

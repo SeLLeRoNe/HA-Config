@@ -75,6 +75,8 @@
     type: module
   - url: /hacsfiles/kiosk-mode/kiosk-mode.js
     type: module
+  - url: /hacsfiles/toggle-control-button-row/toggle-control-button-row.js
+    type: js
 
   - url: /local/q-card.js
     type: module

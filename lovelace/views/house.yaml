@@ -37,7 +37,8 @@ cards:
           - type: entities
             show_header_toggle: false
             entities:
-              - entity: input_boolean.guest_mode
+              - type: custom:toggle-control-button-row
+                entity: input_boolean.guest_mode
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -47,9 +48,11 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
+                customTheme: true
                 tap_action:
                   action: none
-              - entity: input_boolean.holiday_mode
+              - type: custom:toggle-control-button-row
+                entity: input_boolean.holiday_mode
                 style: |
                   :host {
                     --paper-item-icon-color:
@@ -59,6 +62,7 @@ cards:
                         rgb(128, 128, 128);
                       {% endif %}
                   }
+                customTheme: true
                 tap_action:
                   action: none
 #      - type: picture-glance
