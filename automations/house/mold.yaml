@@ -60,10 +60,10 @@ action:
         {% endif %}
       data:
         color: "#FF3300"
-        sticky: "true"
+        sticky: false
         tag: tag
         ttl: 0
-        clickAction: !secret humidity_url
+        clickAction: /lovelace-management/humidity
 #  - service: tts.google_translate_say
 #    data:
 #      entity_id: media_player.studio_google_mini

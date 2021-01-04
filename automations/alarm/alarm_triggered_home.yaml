@@ -59,8 +59,9 @@ action:
         {% endif %}
       data:
         color: "#FF3300"
-        sticky: "true"
-        tag: tag
+        sticky: true
+        persistent: true
+        tag: persistent
         ttl: 0
         priority: high
   - service: notify.telegram_andrea
