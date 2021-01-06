@@ -84,25 +84,31 @@ class CustomToggleRow extends Polymer.Element {
 	
 		let color;
 			
-		if (custTheme) {
-			if (state == 'on') {
-				color = 'background-color:' + custOnClr;
+		if (state == 'on' || state == 'off') {
+			if (custTheme) {
+				if (state == 'on') {
+					color = 'background-color:' + custOnClr;
+				} else {
+					color = 'background-color:' + custOffClr;
+				}
 			} else {
-				color = 'background-color:' + custOffClr;
+				if (state == 'on') {
+					color = 'background-color: var(--primary-color)';
+				} else {
+					color = 'background-color: var(--disabled-text-color)';
+				}
 			}
 		} else {
-			if (state == 'on') {
-				color = 'background-color: var(--primary-color)';
-			} else {
-				color = 'background-color: var(--disabled-text-color)';
-			}
+			color = '#cfccc6';
 		}
 	
 		let offtext = custOffTxt;
 		let ontext = custOnTxt;
+		let unavailtext = 'unav';
 	
 		let offname = 'off';
 		let onname = 'on';
+		let unavailname = 'unavailable';
 	
 		if (state == 'off') {
 			this.setProperties({
@@ -112,14 +118,22 @@ class CustomToggleRow extends Polymer.Element {
 			_buttonColor: color,
 			_buttonText: offtext,
 			});
-		} else {
+		} else if (state == 'on') {
 			this.setProperties({
 			_stateObj: stateObj,
 			_buttonState: state,
 			_buttonName: offname,
 			_buttonColor: color,
 			_buttonText: ontext,
-		});
+			});
+		} else {
+			this.setProperties({
+			_stateObj: stateObj,
+			_buttonState: state,
+			_buttonName: unavailname,
+			_buttonColor: color,
+			_buttonText: unavailtext,
+			});
 		}
 	}
 	
@@ -132,7 +146,7 @@ class CustomToggleRow extends Polymer.Element {
 		const state = e.currentTarget.getAttribute('name');
 		if( state == 'on' ){
 			this.hass.callService('homeassistant', 'turn_on', {entity_id: this._config.entity});
-		} else {
+		} else if (state == 'off' ) {
 			this.hass.callService('homeassistant', 'turn_off', {entity_id: this._config.entity});
 		}
 	}
