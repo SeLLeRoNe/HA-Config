@@ -46,11 +46,12 @@ room_total:
             hour24: true
             animate: false
             decimals: 1
+            logarithmic: true
             show:
               name: true
               icon: true
               state: true
-              graph: bar
+              graph: line
               fill: false
               points: false
               legend: true
@@ -74,11 +75,12 @@ room_total:
             hour24: true
             animate: false
             decimals: 2
+            logarithmic: true
             show:
               name: true
               icon: true
               state: true
-              graph: bar
+              graph: line
               fill: false
               points: false
               legend: true
@@ -100,11 +102,12 @@ room_total:
             hour24: true
             animate: false
             decimals: 1
+            logarithmic: true
             show:
               name: true
               icon: true
               state: true
-              graph: bar
+              graph: line
               fill: false
               points: false
               legend: true

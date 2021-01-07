@@ -51,6 +51,7 @@ coronavirus:
         align_icon: right
         align_state: center
         lower_bound: 0
+        logarithmic: false
         show:
           name: false
           icon: false

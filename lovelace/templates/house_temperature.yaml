@@ -30,6 +30,7 @@ house_temperature:
       align_state: center
       lower_bound: -5
       upper_bound: 40
+      logarithmic: false
       show:
         name: true
         icon: true

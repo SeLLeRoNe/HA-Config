@@ -21,12 +21,13 @@ house_illuminance:
     align_icon: right
     align_state: center
     lower_bound: 0
-    upper_bound: 10000
+    upper_bound: 65000
+    logarithmic: true
     show:
       name: true
       icon: true
       state: true
-      graph: bar
+      graph: line
       fill: true
       points: false
       legend: true

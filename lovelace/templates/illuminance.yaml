@@ -28,11 +28,12 @@ illuminance:
       align_icon: right
       align_state: center
       lower_bound: 0
+      logarithmic: true
       show:
         name: true
         icon: true
         state: true
-        graph: bar
+        graph: line
         fill: true
         points: false
         legend: false
