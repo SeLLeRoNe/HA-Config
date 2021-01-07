@@ -9,7 +9,7 @@ trigger:
     entity_id: light.master_bedroom_lamp_top_light
     to: 'on'
     for:
-      hours: 12
+      hours: 2
 condition:
   condition: and
   conditions:
@@ -17,7 +17,7 @@ condition:
       entity_id: light.master_bedroom_lamp_top_light
       state: "on"
       for:
-        hours: 12
+        hours: 2
 action:
   - service: light.turn_off
     entity_id: light.master_bedroom_lamp_top_light
