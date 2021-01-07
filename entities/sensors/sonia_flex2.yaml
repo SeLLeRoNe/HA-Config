@@ -1,0 +1,8 @@
+---
+platform: mqtt
+name: "Sonia Flex 2"
+state_topic: "room-assistant/sensor/ble-f201e173c053/state"
+availability_topic: "room-assistant/sensor/studio-status-cluster-size/status"
+payload_available: "online"
+payload_not_available: "offline"
+qos: 2
