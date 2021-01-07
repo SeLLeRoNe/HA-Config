@@ -312,9 +312,15 @@ cards:
         entities:
           - sensor.christmas_tree_estimated_current
           - sensor.christmas_tree_free_memory
-          - switch.christmas_tree_nightlight
-          - switch.christmas_tree_sync_receive
-          - switch.christmas_tree_sync_send
+          - type: custom:toggle-control-button-row
+            entity: switch.christmas_tree_nightlight
+            customTheme: true
+          - type: custom:toggle-control-button-row
+            entity: switch.christmas_tree_sync_receive
+            customTheme: true
+          - type: custom:toggle-control-button-row
+            entity: switch.christmas_tree_sync_send
+            customTheme: true
           - sensor.christmas_tree_uptime
           - sensor.christmas_tree_wi_fi_bssid
           - sensor.christmas_tree_wi_fi_channel

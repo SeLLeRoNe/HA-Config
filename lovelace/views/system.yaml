@@ -102,6 +102,7 @@ cards:
             animate: false
             decimals: 0
             align_state: left
+            logarithmic: true
             show:
               name: true
               icon: true
@@ -142,6 +143,7 @@ cards:
             animate: false
             decimals: 1
             align_state: left
+            logarithmic: true
             show:
               name: false
               icon: false
@@ -174,6 +176,7 @@ cards:
             animate: false
             decimals: 0
             align_state: left
+            logarithmic: true
             show:
               name: false
               icon: false
@@ -204,6 +207,7 @@ cards:
             animate: false
             decimals: 0
             align_state: left
+            logarithmic: true
             show:
               name: false
               icon: false

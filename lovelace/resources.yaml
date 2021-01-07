@@ -53,8 +53,8 @@
     type: module
   - url: /hacsfiles/logbook-card/logbook-card.js
     type: module
-  - url: /hacsfiles/lovelace-animated-background/animated-background.js
-    type: module
+#  - url: /hacsfiles/lovelace-animated-background/animated-background.js
+#    type: module
   - url: /hacsfiles/lovelace-hui-element/hui-element.js
     type: module
   - url: /hacsfiles/battery-state-card/battery-state-card.js

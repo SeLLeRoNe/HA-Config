@@ -1,7 +1,7 @@
 title: Currencies
 icon: mdi:cash-multiple
 panel: true
-path: patio
+path: currencies
 cards:
   - type: custom:layout-card
     layout: vertical

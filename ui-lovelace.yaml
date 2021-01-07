@@ -13,7 +13,7 @@ preload_cards:
   - markdown
 preload_rows:
   - divider
-animated_background: !include lovelace/animated_backgrounds/default.yaml
+#animated_background: !include lovelace/animated_backgrounds/default.yaml
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 q_cards: !include_dir_merge_named lovelace/q-cards/
 kiosk_mode:

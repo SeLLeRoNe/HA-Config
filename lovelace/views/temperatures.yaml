@@ -98,6 +98,7 @@ cards:
         align_state: center
         lower_bound: -5
         upper_bound: 40
+        logarithmic: true
         show:
           name: false
           icon: false

@@ -19,13 +19,14 @@ currency:
     align_header: default
     align_icon: right
     align_state: center
+    logarithmic: false
     show:
       name: true
       icon: false
       state: true
       graph: bar
       fill: false
-      points: true
+      points: false
       legend: false
       extrema: false
       labels: false
