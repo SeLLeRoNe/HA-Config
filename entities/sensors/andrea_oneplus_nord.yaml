@@ -1,8 +1,8 @@
 ---
 platform: mqtt
 name: "Andrea OnePlus Nord"
-state_topic: "room-assistant/sensor/ble-5c17cf21527c/state"
-availability_topic: "room-assistant/sensor/studio-status-cluster-size/status"
+state_topic: "room-assistant/sensor/bluetooth-classic-5c-17-cf-21-52-7c/state"
+availability_topic: "room-assistant/switch/studio-bluetooth-classic-inquiries-switch/status"
 payload_available: "online"
 payload_not_available: "offline"
 qos: 2

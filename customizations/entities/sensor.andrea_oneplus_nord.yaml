@@ -1,0 +1,4 @@
+---
+sensor.andrea_oneplus_nord:
+  friendly_name: Andrea
+  entity_picture: /local/icons/family/sellerone.png

@@ -1,0 +1,4 @@
+---
+sensor.sonia_mi_9t_pro:
+  friendly_name: Sonia
+  entity_picture: /local/icons/family/sonia.png
