@@ -4,11 +4,38 @@ sonia:
     type: entities
     show_header_toggle: false
     entities:
-      - entity: person.sonia_espejo_brea
-        type: "custom:secondaryinfo-entity-row"
-        secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
-        tap_action:
-          action: none
+      - type: custom:state-switch
+        entity: person.sonia_espejo_brea
+        default: default
+        states:
+          "home":
+            type: custom:state-switch
+            entity: sensor.sonia_mi_9t_pro
+            default: default
+            states:
+              "not_home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: person.sonia_espejo_brea
+                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
+                tap_action:
+                  action: none
+              "default":
+                type: "custom:secondaryinfo-entity-row"
+                entity: sensor.sonia_mi_9t_pro
+                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
+                tap_action:
+                  action: none
+          "not_home":
+            type: "custom:secondaryinfo-entity-row"
+            entity: person.sonia_espejo_brea
+            secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
+            tap_action:
+              action: none
+#      - type: "custom:secondaryinfo-entity-row"
+#        entity: person.sonia_espejo_brea
+#        secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
+#        tap_action:
+#          action: none
       - type: custom:battery-state-card
         secondary_info: charging
         secondary_info_text:  "Charging"

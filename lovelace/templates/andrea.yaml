@@ -4,11 +4,37 @@ andrea:
     type: custom:hui-entities-card
     show_header_toggle: false
     entities:
-      - entity: person.andrea_iannucci
-        type: "custom:secondaryinfo-entity-row"
-        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-        tap_action:
-          action: none
+      - type: custom:state-switch
+        entity: person.andrea_iannucci
+        states:
+          "home":
+            type: custom:state-switch
+            entity: sensor.andrea_oneplus_nord
+            default: default
+            states:
+              "not_home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: person.andrea_iannucci
+                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                tap_action:
+                  action: none
+              "default":
+                type: "custom:secondaryinfo-entity-row"
+                entity: sensor.andrea_oneplus_nord
+                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                tap_action:
+                  action: none
+          "not_home":
+            type: "custom:secondaryinfo-entity-row"
+            entity: person.andrea_iannucci
+            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+            tap_action:
+              action: none
+#      - type: "custom:secondaryinfo-entity-row"
+#        entity: person.andrea_iannucci
+#        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+#        tap_action:
+#          action: none
       - type: custom:battery-state-card
         secondary_info: charging
         secondary_info_text:  "Charging"
