@@ -104,7 +104,7 @@ class CustomToggleRow extends Polymer.Element {
 	
 		let offtext = custOffTxt;
 		let ontext = custOnTxt;
-		let unavailtext = 'unav';
+		let unavailtext = 'N/A';
 	
 		let offname = 'off';
 		let onname = 'on';
