@@ -99,6 +99,7 @@ cards:
             row_type: divider
           - type: custom:mini-media-player
             entity: media_player.living_room_tv
+            icon: mdi:television
             artwork: cover
             source: icon
             hide:
@@ -120,6 +121,7 @@ cards:
               action: none
           - type: custom:mini-media-player
             entity: media_player.living_room_google_tv
+            icon: mdi:cast
             artwork: cover
             source: icon
             hide:
