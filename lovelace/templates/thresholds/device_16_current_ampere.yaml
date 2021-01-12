@@ -1,8 +1,6 @@
-- color: '#039BE5'
-  value: 0
 - color: '#0da035'
-  value: 5
-- color: '#e0b400'
-  value: 10
+  value: 0.1
+- color: '#0da035'
+  value: 14
 - color: '#e45e65'
   value: 16

@@ -1,7 +1,11 @@
 - color: '#039BE5'
   value: 0
-- color: '#0DA035'
+- color: '#E45E65'
   value: 220
+- color: '#E0B400'
+  value: 225
+- color: '#0DA035'
+  value: 235
 - color: '#E0B400'
   value: 240
 - color: '#E45E65'
