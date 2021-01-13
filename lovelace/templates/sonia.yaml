@@ -6,12 +6,12 @@ sonia:
     entities:
       - type: custom:state-switch
         entity: person.sonia_espejo_brea
-        default: default
+        default: not_home
         states:
           "home":
             type: custom:state-switch
             entity: sensor.sonia_mi_9t_pro
-            default: default
+            default: home
             states:
               "not_home":
                 type: "custom:secondaryinfo-entity-row"
@@ -19,7 +19,7 @@ sonia:
                 secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
                 tap_action:
                   action: none
-              "default":
+              "home":
                 type: "custom:secondaryinfo-entity-row"
                 entity: sensor.sonia_mi_9t_pro
                 secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"

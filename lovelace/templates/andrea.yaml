@@ -6,11 +6,12 @@ andrea:
     entities:
       - type: custom:state-switch
         entity: person.andrea_iannucci
+        default: not_home
         states:
           "home":
             type: custom:state-switch
             entity: sensor.andrea_oneplus_nord
-            default: default
+            default: home
             states:
               "not_home":
                 type: "custom:secondaryinfo-entity-row"
@@ -18,7 +19,7 @@ andrea:
                 secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                 tap_action:
                   action: none
-              "default":
+              "home":
                 type: "custom:secondaryinfo-entity-row"
                 entity: sensor.andrea_oneplus_nord
                 secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
