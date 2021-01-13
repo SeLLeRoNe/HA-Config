@@ -18,3 +18,7 @@ people:
         row_type: divider
       - type: custom:decluttering-card
         template: luca
+#      - type: custom:hui-element
+#        row_type: divider
+#      - type: custom:decluttering-card
+#        template: maurizio

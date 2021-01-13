@@ -100,24 +100,7 @@ cards:
         mode: vertical
         cards:
           - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Cars
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - entity: device_tracker.citroen_cactus
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'home') %}
-                        rgb(51, 204, 51);
-                      {% elif is_state(config.entity, 'Garage') %}
-                        rgb(51, 204, 51);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
+            template: cars
       - type: calendar
         initial_view: dayGridMonth
         entities:
@@ -130,28 +113,6 @@ cards:
           - calendar.uefa_champions_league
           - calendar.uefa_europa_league
           - calendar.euro_2020
-#      - type: custom:atomic-calendar-revive
-#        name: Calendar
-#        enableModeChange: true
-#        defaultMode: 2
-#        dateFormat: L
-#        maxDaysToShow: 30
-#        sortByStartTime: true
-#        showDescription: true
-#        showNoEventsForToday: true
-#        entities:
-#          - entity: calendar.personal_andrea
-#            eventCalName: Personal
-#            type: icon1
-#          - entity: calendar.uk_holidays
-#            eventCalName: UK Holidays
-#            type: holiday
-#          - entity: calendar.it_holidays
-#            eventCalName: IT Holidays
-#            type: holiday
-#          - entity: calendar.es_holidays
-#            eventCalName: ES Holidays
-#            type: holiday
       - break
       - type: custom:decluttering-card
         template: house_lights
@@ -165,7 +126,6 @@ cards:
               - title: Weather
           - type: custom:decluttering-card
             template: darksky_card
-#      - break
       - type: custom:stack-in-card
         mode: vertical
         cards:
@@ -195,7 +155,6 @@ cards:
                 template: house_pressure
               - type: custom:decluttering-card
                 template: house_illuminance
-#      - break
       - type: custom:decluttering-card
         template: house_energy_small
         variables:

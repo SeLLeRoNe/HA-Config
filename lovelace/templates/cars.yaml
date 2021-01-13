@@ -1,0 +1,20 @@
+---
+cars:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Cars
+      - type: custom:decluttering-card
+        template: car
+        variables:
+          - car: citroen_cactus
+#      - type: custom:hui-element
+#        row_type: divider
+#      - type: custom:decluttering-card
+#        template: car
+#        variables:
+#          - car: peogeut

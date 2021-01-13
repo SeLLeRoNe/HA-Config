@@ -1,0 +1,65 @@
+---
+maurizio:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:state-switch
+        entity: person.maurizio_iannucci
+        default: not_home
+        states:
+          "home":
+            type: custom:state-switch
+            entity: sensor.maurizio_samsung_galaxy_s20
+            default: home
+            states:
+              "not_home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: person.maurizio_iannucci
+                secondary_info: "Next Birthday in [[ sensor.birthday_maurizio ]] Days ([[ sensor.birthday_maurizio.attributes.years ]])"
+                tap_action:
+                  action: none
+              "home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: sensor.maurizio_samsung_galaxy_s20
+                secondary_info: "Next Birthday in [[ sensor.birthday_maurizio ]] Days ([[ sensor.birthday_maurizio.attributes.years ]])"
+                tap_action:
+                  action: none
+          "not_home":
+            type: "custom:secondaryinfo-entity-row"
+            entity: person.maurizio_iannucci
+            secondary_info: "Next Birthday in [[ sensor.birthday_maurizio ]] Days ([[ sensor.birthday_maurizio.attributes.years ]])"
+            tap_action:
+              action: none
+      - type: custom:battery-state-card
+        secondary_info: charging
+        secondary_info_text:  "Charging"
+        color_thresholds:
+          - value: 20
+            color: "#990000"
+          - value: 40
+            color: "#CC6600"
+          - value: 60
+            color: "#FF8000"
+          - value: 80
+            color: "#009900"
+          - value: 100
+            color: "#009933"
+        entities:
+          - entity: sensor.maurizio_galaxy_s20_livello_della_batteria
+            name: "Samsung Galaxy S20+"
+            charging_state:
+              entity_id: sensor.maurizio_galaxy_s20_stato_della_batteria
+              state: "charging"
+          - entity: sensor.samsung_galaxy_tab_a_livello_della_batteria
+            name: "Samsung Galaxy Tab A"
+            charging_state:
+              entity_id: sensor.samsung_galaxy_tab_a_stato_della_batteria
+              state: "charging"
+        style: |
+          .entity-row.non-numeric-state .icon {
+            color: #808080;
+          }
+          .entity-row .secondary {
+            color: #808080;
+          }

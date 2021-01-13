@@ -1,0 +1,19 @@
+---
+car:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.[[car]]
+        name: "Citroen Cactus"
+        style: |
+          :host {
+            --paper-item-icon-color:
+              {% if is_state(config.entity, 'home') %}
+              rgb(51, 204, 51);
+              {% elif is_state(config.entity, 'Garage') %}
+                rgb(51, 204, 51);
+              {% else %}
+                rgb(128, 128, 128);
+              {% endif %}
+          }

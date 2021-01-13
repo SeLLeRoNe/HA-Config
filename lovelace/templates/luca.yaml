@@ -10,7 +10,7 @@ luca:
         states:
           "home":
             type: custom:state-switch
-            entity: sensor.luca_fitbit
+            entity: person.luca_iannucci_espejo
             default: home
             states:
               "not_home":
@@ -21,7 +21,7 @@ luca:
                   action: none
               "home":
                 type: "custom:secondaryinfo-entity-row"
-                entity: sensor.luca_fitbit
+                entity: person.luca_iannucci_espejo
                 secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
                 tap_action:
                   action: none
