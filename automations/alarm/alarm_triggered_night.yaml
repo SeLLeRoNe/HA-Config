@@ -56,8 +56,8 @@ action:
       data:
         color: "FF3300"
         sticky: true
-        persistent: true
-        tag: persistent
+        persistent: false
+        tag: alarm
         ttl: 0
         priority: high
   - service: notify.telegram_andrea
