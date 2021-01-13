@@ -1,5 +1,5 @@
 ---
-name: Maria's Home
+name: Maria Home
 latitude: !secret zone_maria_home_latitude
 longitude: !secret zone_maria_home_longitude
 radius: 5

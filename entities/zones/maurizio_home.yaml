@@ -1,5 +1,5 @@
 ---
-name: Maurizio's Home
+name: Maurizio Home
 latitude: !secret zone_maurizio_home_latitude
 longitude: !secret zone_maurizio_home_longitude
 radius: 25

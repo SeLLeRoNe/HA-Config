@@ -1,5 +1,5 @@
 ---
-name: Fabio's Home
+name: Fabio Home
 latitude: !secret zone_fabio_home_latitude
 longitude: !secret zone_fabio_home_longitude
 radius: 25

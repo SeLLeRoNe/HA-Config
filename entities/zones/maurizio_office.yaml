@@ -1,7 +1,0 @@
----
-name: Maurizio's Office
-latitude: !secret zone_maurizio_office_latitude
-longitude: !secret zone_maurizio_office_longitude
-radius: 10
-passive: false
-icon: mdi:briefcase

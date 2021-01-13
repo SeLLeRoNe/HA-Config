@@ -1,7 +1,0 @@
----
-name: Allowed Area
-latitude: !secret zone_home_latitude
-longitude: !secret zone_home_latitude
-radius: 1000
-passive: true
-icon: mdi:cancel

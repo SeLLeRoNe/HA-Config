@@ -1,5 +1,5 @@
 ---
-name: Patrizia's Home
+name: Patrizia Home
 latitude: !secret zone_patrizia_home_latitude
 longitude: !secret zone_patrizia_home_longitude
 radius: 25
