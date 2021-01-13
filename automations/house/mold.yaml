@@ -61,7 +61,7 @@ action:
       data:
         color: "#FF3300"
         sticky: false
-        tag: tag
+        tag: house
         ttl: 0
         clickAction: /lovelace-management/humidity
 #  - service: tts.google_translate_say
