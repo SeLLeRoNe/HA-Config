@@ -40,5 +40,3 @@ action:
     entity_id: switch.studio_andrea_computer_wol
   - service: switch.turn_on
     entity_id: switch.studio_andrea_lg_monitor_1
-  - service: switch.turn_on
-    entity_id: switch.studio_andrea_lg_monitor_2
