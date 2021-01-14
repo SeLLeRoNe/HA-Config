@@ -3,9 +3,9 @@ batteries_zigbee:
   card:
     type: custom:battery-state-card
     color_thresholds:
-      - value: 20
+      - value: 25
         color: "#990000"
-      - value: 40
+      - value: 35
         color: "#CC6600"
       - value: 60
         color: "#FF8000"
