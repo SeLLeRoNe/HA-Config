@@ -21,7 +21,7 @@ luca:
                   action: none
               "home":
                 type: "custom:secondaryinfo-entity-row"
-                entity: sensor.sonia_mi_9t_pro
+                entity: sensor.luca_mi_9t_pro
                 secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
                 tap_action:
                   action: none
