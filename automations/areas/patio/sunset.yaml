@@ -1,0 +1,35 @@
+---
+id: '9924523477437'
+alias: Patio - Sunset
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.patio_gzcgq01lm_illuminance
+    below: 5
+condition:
+  condition: and
+  conditions:
+    - condition: numeric_state
+      entity_id: sensor.patio_gzcgq01lm_illuminance
+      below: 5
+    - condition: state
+      entity_id: binary_sensor.patio_mccgq01lm_door
+      state: 'on'
+    - condition: state
+      entity_id: light.patio_light
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: 'armed_home'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.patio_light
+      brightness_pct: 5
+      rgb_color: [255,255,255]
+      transition: 15
