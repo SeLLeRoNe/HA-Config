@@ -18,9 +18,9 @@ person:
     id: !secret luca_id
     device_trackers:
       - device_tracker.sonia_mi_9t_pro
+      - device_tracker.sonia_mi_9t_pro_bt
   - name: Maurizio
     id: !secret maurizio_id
     user_id: !secret maurizio_user_id
     device_trackers:
       - device_tracker.maurizio_galaxy_s20
-      - device_tracker.sonia_mi_9t_pro_bt
