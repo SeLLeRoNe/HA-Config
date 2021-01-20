@@ -610,6 +610,18 @@ cards:
                 name: "Studio - Desk Sonia Plug"
                 tap_action:
                   action: none
+              - entity: sensor.living_room_table_light_1_wireless_signal
+                name: "Living Room - Table Light 1"
+                tap_action:
+                  action: none
+              - entity: sensor.living_room_table_light_2_wireless_signal
+                name: "Living Room - Table Light 2"
+                tap_action:
+                  action: none
+              - entity: sensor.living_room_table_light_3_wireless_signal
+                name: "Living Room - Table Light 3"
+                tap_action:
+                  action: none
               - entity: sensor.living_room_tv_stand_plug_wireless_signal
                 name: "Living Room - TV Stand Plug"
                 tap_action:

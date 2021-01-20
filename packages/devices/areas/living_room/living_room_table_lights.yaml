@@ -6,16 +6,22 @@
 light:
   - platform: mqtt
     name: "Living Room Table Light 1"
-    command_topic: "cmnd/living_room_table_light_1/POWER"
-    state_topic: "stat/living_room_table_light_1/POWER"
+    command_topic: "cmnd/living_room_table_light_1/POWER1"
+    state_topic: "stat/living_room_table_light_1/RESULT"
+    state_value_template: "{{value_json.POWER}}"
     payload_on: "ON"
     payload_off: "OFF"
-    brightness_command_topic: "cmnd/living_room_table_light_1/DIMMER"
-    brightness_scale: 100
+    brightness_command_topic:  "cmnd/living_room_table_light_1/DIMMER"
     brightness_state_topic: "stat/living_room_table_light_1/RESULT"
     brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+    brightness_scale: 100
     rgb_command_topic: "cmnd/living_room_table_light_1/COLOR"
-    rgb_command_template: "{{ '%02X%02X%02X0000' | format(red, green, blue) }}"
+    rgb_command_template: >
+      {% if red==green and red==blue %}
+        0,0,0,{{ red }}
+      {% else %}
+        {{ red }},{{ green }},{{ blue  }},0
+      {% endif %}
     rgb_state_topic: "stat/living_room_table_light_1/RESULT"
     rgb_value_template: "{% if value_json.Color is defined %}{{ value_json.Color[0:2]|int(base=16) }},{{ value_json.Color[2:4]|int(base=16) }},{{ value_json.Color[4:6]|int(base=16) }}{% endif %}"
     color_temp_command_topic: "cmnd/living_room_table_light_1/CT"
@@ -37,16 +43,22 @@ light:
     retain: false
   - platform: mqtt
     name: "Living Room Table Light 2"
-    command_topic: "cmnd/living_room_table_light_2/POWER"
-    state_topic: "stat/living_room_table_light_2/POWER"
+    command_topic: "cmnd/living_room_table_light_2/POWER1"
+    state_topic: "stat/living_room_table_light_2/RESULT"
+    state_value_template: "{{value_json.POWER}}"
     payload_on: "ON"
     payload_off: "OFF"
-    brightness_command_topic: "cmnd/living_room_table_light_2/DIMMER"
-    brightness_scale: 100
+    brightness_command_topic:  "cmnd/living_room_table_light_2/DIMMER"
     brightness_state_topic: "stat/living_room_table_light_2/RESULT"
     brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+    brightness_scale: 100
     rgb_command_topic: "cmnd/living_room_table_light_2/COLOR"
-    rgb_command_template: "{{ '%02X%02X%02X0000' | format(red, green, blue) }}"
+    rgb_command_template: >
+      {% if red==green and red==blue %}
+        0,0,0,{{ red }}
+      {% else %}
+        {{ red }},{{ green }},{{ blue  }},0
+      {% endif %}
     rgb_state_topic: "stat/living_room_table_light_2/RESULT"
     rgb_value_template: "{% if value_json.Color is defined %}{{ value_json.Color[0:2]|int(base=16) }},{{ value_json.Color[2:4]|int(base=16) }},{{ value_json.Color[4:6]|int(base=16) }}{% endif %}"
     color_temp_command_topic: "cmnd/living_room_table_light_2/CT"
@@ -68,16 +80,22 @@ light:
     retain: false
   - platform: mqtt
     name: "Living Room Table Light 3"
-    command_topic: "cmnd/living_room_table_light_3/POWER"
-    state_topic: "stat/living_room_table_light_3/POWER"
+    command_topic: "cmnd/living_room_table_light_3/POWER1"
+    state_topic: "stat/living_room_table_light_3/RESULT"
+    state_value_template: "{{value_json.POWER}}"
     payload_on: "ON"
     payload_off: "OFF"
-    brightness_command_topic: "cmnd/living_room_table_light_3/DIMMER"
-    brightness_scale: 100
+    brightness_command_topic:  "cmnd/living_room_table_light_3/DIMMER"
     brightness_state_topic: "stat/living_room_table_light_3/RESULT"
     brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
+    brightness_scale: 100
     rgb_command_topic: "cmnd/living_room_table_light_3/COLOR"
-    rgb_command_template: "{{ '%02X%02X%02X0000' | format(red, green, blue) }}"
+    rgb_command_template: >
+      {% if red==green and red==blue %}
+        0,0,0,{{ red }}
+      {% else %}
+        {{ red }},{{ green }},{{ blue  }},0
+      {% endif %}
     rgb_state_topic: "stat/living_room_table_light_3/RESULT"
     rgb_value_template: "{% if value_json.Color is defined %}{{ value_json.Color[0:2]|int(base=16) }},{{ value_json.Color[2:4]|int(base=16) }},{{ value_json.Color[4:6]|int(base=16) }}{% endif %}"
     color_temp_command_topic: "cmnd/living_room_table_light_3/CT"
@@ -120,7 +138,7 @@ sensor:
   - platform: mqtt
     name: 'Living Room Table Light 3 Wireless Signal'
     icon: mdi:signal-variant
-    state_topic: 'tele/living_room_table_light_31/STATE'
+    state_topic: 'tele/living_room_table_light_3/STATE'
     value_template: "{{ value_json.Wifi.RSSI }}"
     unit_of_measurement: '%'
     availability_topic: "tele/living_room_table_light_3/LWT"

@@ -7,7 +7,8 @@ light:
   - platform: mqtt
     name: "Studio Wall Light"
     command_topic: "cmnd/studio_wall_light/POWER"
-    state_topic: "stat/studio_wall_light/POWER"
+    state_topic: "stat/studio_wall_light/RESULT"
+    state_value_template: "{{value_json.POWER}}"
     payload_on: "ON"
     payload_off: "OFF"
     brightness_command_topic: "cmnd/studio_wall_light/DIMMER"
@@ -15,7 +16,12 @@ light:
     brightness_state_topic: "stat/studio_wall_light/RESULT"
     brightness_value_template: "{% if value_json.Dimmer is defined %}{{ value_json.Dimmer }}{% endif %}"
     rgb_command_topic: "cmnd/studio_wall_light/COLOR"
-    rgb_command_template: "{{ '%02X%02X%02X0000' | format(red, green, blue) }}"
+    rgb_command_template: >
+      {% if red==green and red==blue %}
+        0,0,0,{{ red }}
+      {% else %}
+        {{ red }},{{ green }},{{ blue  }},0
+      {% endif %}
     rgb_state_topic: "stat/studio_wall_light/RESULT"
     rgb_value_template: "{% if value_json.Color is defined %}{{ value_json.Color[0:2]|int(base=16) }},{{ value_json.Color[2:4]|int(base=16) }},{{ value_json.Color[4:6]|int(base=16) }}{% endif %}"
     color_temp_command_topic: "cmnd/studio_wall_light/CT"
