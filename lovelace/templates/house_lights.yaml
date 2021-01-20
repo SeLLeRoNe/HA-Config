@@ -93,59 +93,7 @@ house_lights:
         template: title
         variables:
           - title: Scenes
-      - type: glance
-        show_state: false
-        entities:
-          - entity: scene.living_room_table_lights_on
-            name: "Lights On"
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.living_room_table_lights_on
-                transition: 15
-            hold_action:
-              action: none
-          - entity: scene.living_room_table_mood
-            name: "Table Mood"
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.living_room_table_mood
-                transition: 15
-            hold_action:
-              action: none
-      - type: glance
-        show_state: false
-        entities:
-          - entity: scene.bedroom_luca_lights_on
-            name: "Lights On"
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.bedroom_luca_lights_on
-                transition: 15
-            hold_action:
-              action: none
-          - entity: scene.bedroom_luca_diaper_change
-            name: "Dimmed Lights"
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.bedroom_luca_lights_on_guest
-                transition: 15
-            hold_action:
-              action: none
-          - entity: scene.bedroom_luca_diaper_change
-            name: "Diaper Change"
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.bedroom_luca_diaper_change
-                transition: 15
-            hold_action:
-              action: none
+      - type: custom:decluttering-card
+        template: living_room_scenes
+      - type: custom:decluttering-card
+        template: bedroom_luca_scenes

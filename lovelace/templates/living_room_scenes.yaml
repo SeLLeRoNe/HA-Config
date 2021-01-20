@@ -1,0 +1,39 @@
+---
+living_room_scenes:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: glance
+        show_state: false
+        entities:
+          - entity: scene.living_room_table_lights_on
+            name: "Lights On"
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.living_room_table_lights_on
+                transition: 15
+            hold_action:
+              action: none
+          - entity: scene.living_room_table_game
+            name: "Table Game"
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.living_room_table_game
+                transition: 15
+            hold_action:
+              action: none
+          - entity: scene.living_room_table_mood
+            name: "Table Mood"
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.living_room_table_mood
+                transition: 15
+            hold_action:
+              action: none
