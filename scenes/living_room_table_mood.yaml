@@ -1,5 +1,5 @@
 ---
-name: Living Room - Table Mood
+name: Living Room Table Mood
 entities:
   light.living_room_table_light_1:
     state: on
