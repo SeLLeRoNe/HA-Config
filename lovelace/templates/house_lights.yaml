@@ -94,7 +94,6 @@ house_lights:
         variables:
           - title: Scenes
       - type: glance
-        name: "Luca's Bedroom"
         show_state: false
         entities:
           - entity: scene.living_room_table_lights_on
@@ -118,7 +117,6 @@ house_lights:
             hold_action:
               action: none
       - type: glance
-        name: "Luca's Bedroom"
         show_state: false
         entities:
           - entity: scene.bedroom_luca_lights_on

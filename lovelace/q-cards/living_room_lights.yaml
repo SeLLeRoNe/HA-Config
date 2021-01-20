@@ -13,6 +13,8 @@ living_room_lights:
     max: 100
     step: 1
   entities:
+    - type: section
+      label: Table
     - type: custom:decluttering-card
       template: light_card_rgb
       variables:
