@@ -41,7 +41,7 @@ living_room_lights:
               action: call-service
               service: scene.turn_on
               service_data:
-                entity_id: scene.living_room_table_table_mood
+                entity_id: scene.living_room_table_mood
                 transition: 15
             hold_action:
               action: none
