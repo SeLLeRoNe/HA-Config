@@ -1,5 +1,4 @@
 ---
-sensor.luca_mi_9t_pro:
-  friendly_name: Luca
+person.luca_iannucci_espejo:
   icon: mdi:baby
 #  entity_picture: /local/icons/family/sonia.png
