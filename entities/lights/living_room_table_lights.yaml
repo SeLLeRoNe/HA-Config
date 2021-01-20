@@ -1,6 +1,6 @@
 ---
 platform: group
-name: Living Room Lights
+name: Living Room Table Lights
 entities:
   - light.living_room_table_light_1
   - light.living_room_table_light_2
