@@ -1,4 +1,5 @@
 ---
+id: '8298153596081'
 alias: House - Night Mode Activated
 initial_state: on
 trigger:
