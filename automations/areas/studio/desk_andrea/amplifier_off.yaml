@@ -5,8 +5,9 @@ initial_state: on
 trigger:
   - platform: homeassistant
     event: start
-  - platform: time
-    at: "22:00:00"
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'on'
   - platform: state
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'off'
@@ -19,9 +20,9 @@ condition:
       conditions:
         - condition: and
           conditions:
-            - condition: time
-              after: '22:00:00'
-              before: '09:30:00'
+            - condition: state
+              entity_id: input_boolean.night_mode
+              state: 'on'
             - condition: state
               entity_id: binary_sensor.studio_andrea_computer_ping
               state: 'on'

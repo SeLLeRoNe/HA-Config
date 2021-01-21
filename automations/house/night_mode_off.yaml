@@ -1,0 +1,26 @@
+---
+alias: House - Night Mode Deactivated
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "10:30:00"
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '10:30:00'
+      before: '21:00:00'
+action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.night_mode
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: "Night Mode"
+      message: "House no longer in night mode"
+      data:
+        color: "#FF66FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0

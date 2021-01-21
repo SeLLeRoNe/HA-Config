@@ -1,0 +1,26 @@
+---
+alias: House - Night Mode Activated
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "21:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '21:00:00'
+      before: '10:30:00'
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.night_mode
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: "Night Mode"
+      message: "House entering night mode, quitely..."
+      data:
+        color: "#FF66FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0

@@ -15,9 +15,9 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: time
-      after: '09:30:00'
-      before: '21:30:00'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
     - condition: state
       entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'on'

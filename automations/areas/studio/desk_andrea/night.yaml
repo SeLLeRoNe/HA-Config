@@ -8,11 +8,17 @@ trigger:
   - platform: state
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'off'
-  - platform: time_pattern
-    minutes: '*'
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'on'
+#  - platform: time_pattern
+#    minutes: '*'
 condition:
   condition: and
   conditions:
+    - cibdutuib: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
     - condition: time
       after: '00:00:00'
       before: '09:30:00'

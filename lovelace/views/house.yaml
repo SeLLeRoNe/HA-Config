@@ -38,6 +38,20 @@ cards:
             show_header_toggle: false
             entities:
               - type: custom:toggle-control-button-row
+                entity: input_boolean.night_mode
+                style: |
+                  :host {
+                    --paper-item-icon-color:
+                      {% if is_state(config.entity, 'on') %}
+                        rgb(51, 204, 51);
+                      {% else %}
+                        rgb(128, 128, 128);
+                      {% endif %}
+                  }
+                customTheme: true
+                tap_action:
+                  action: none
+              - type: custom:toggle-control-button-row
                 entity: input_boolean.guest_mode
                 style: |
                   :host {
