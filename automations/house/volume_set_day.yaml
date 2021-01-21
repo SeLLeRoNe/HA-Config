@@ -1,6 +1,6 @@
 ---
 id: '4029069700947'
-alias: House - Volume Set Day
+alias: House - Volume Set - Day
 initial_state: on
 trigger:
   - platform: state

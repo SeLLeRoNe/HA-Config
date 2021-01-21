@@ -1,6 +1,6 @@
 ---
 id: '5054252398489'
-alias: House - Volume Set - Night Mode
+alias: House - Volume Set - Night
 initial_state: on
 trigger:
   - platform: state
