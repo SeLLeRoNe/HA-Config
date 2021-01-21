@@ -16,7 +16,7 @@ trigger:
 condition:
   condition: and
   conditions:
-    - cibdutuib: state
+    - condition: state
       entity_id: input_boolean.night_mode
       state: 'on'
     - condition: time
