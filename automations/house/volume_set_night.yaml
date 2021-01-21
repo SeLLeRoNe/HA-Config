@@ -1,16 +1,17 @@
 ---
-id: '4029069700947'
-alias: House - Day Time
+id: '5054252398489'
+alias: House - Volume Set - Night Mode
 initial_state: on
 trigger:
-  - platform: time
-    at: '09:30:00'
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'on'
 action:
   - service: media_player.volume_set
     data:
       entity_id: media_player.studio_google_mini
-      volume_level: '0.45'
+      volume_level: '0.20'
   - service: media_player.volume_set
     data:
       entity_id: media_player.master_bedroom_echo_dot
-      volume_level: '0.25'
+      volume_level: '0.05'
