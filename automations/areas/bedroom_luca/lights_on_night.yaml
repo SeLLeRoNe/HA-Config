@@ -35,24 +35,9 @@ condition:
     - condition: state
       entity_id: group.family
       state: 'home'
-    - condition: or
-      conditions:
-        - condition: and
-          conditions:
-            - condition: time
-              after: '21:30:00'
-              before: '10:30:00'
-            - condition: state
-              entity_id: binary_sensor.workday_uk
-              state: 'on'
-        - condition: and
-          conditions:
-            - condition: time
-              after: '21:30:00'
-              before: '11:30:00'
-            - condition: state
-              entity_id: binary_sensor.workday_uk
-              state: 'off'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
 action:
   - service: light.turn_on
     data:
