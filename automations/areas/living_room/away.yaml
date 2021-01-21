@@ -25,3 +25,9 @@ action:
     entity_id: media_player.living_room_tv
 #  - service: switch.turn_off
 #    entity_id: switch.living_room_tv_stand_plug
+  - service: homeassistant.turn_off
+    entity_id: group.all_lights
+  - service: mqtt.publish
+    data:
+      topic: "wled/all"
+      payload: "OFF"
