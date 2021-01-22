@@ -4,12 +4,12 @@ entities:
   light.living_room_table_light_1:
     state: on
     rgb_color: [255,102,0]
-    brightness: 25
+    brightness: 150
   light.living_room_table_light_2:
     state: on
     rgb_color: [0,0,255]
-    brightness: 25
+    brightness: 150
   light.living_room_table_light_3:
     state: on
     rgb_color: [255,0,255]
-    brightness: 25
+    brightness: 150
