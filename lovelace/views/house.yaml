@@ -34,51 +34,64 @@ cards:
               - arm_home
               - arm_away
               - arm_night
-          - type: entities
-            show_header_toggle: false
+          - type: glance
+            show_state: false
+            columns: 3
             entities:
-              - type: custom:toggle-control-button-row
-                entity: input_boolean.night_mode
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(51, 204, 51);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-                customTheme: true
+              - entity: input_boolean.night_mode
                 tap_action:
-                  action: none
-              - type: custom:toggle-control-button-row
-                entity: input_boolean.guest_mode
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(51, 204, 51);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-                customTheme: true
+                  action: toggle
+              - entity: input_boolean.guest_mode
                 tap_action:
-                  action: none
-              - type: custom:toggle-control-button-row
-                entity: input_boolean.holiday_mode
-                style: |
-                  :host {
-                    --paper-item-icon-color:
-                      {% if is_state(config.entity, 'on') %}
-                        rgb(51, 204, 51);
-                      {% else %}
-                        rgb(128, 128, 128);
-                      {% endif %}
-                  }
-                customTheme: true
+                  action: toggle
+              - entity: input_boolean.holiday_mode
                 tap_action:
-                  action: none
+                  action: toggle
+#          - type: entities
+#            show_header_toggle: false
+#            entities:
+#              - type: custom:toggle-control-button-row
+#                entity: input_boolean.night_mode
+#                style: |
+#                  :host {
+#                    --paper-item-icon-color:
+#                      {% if is_state(config.entity, 'on') %}
+#                        rgb(51, 204, 51);
+#                      {% else %}
+#                        rgb(128, 128, 128);
+#                      {% endif %}
+#                  }
+#                customTheme: true
+#                tap_action:
+#                  action: toggle
+#              - type: custom:toggle-control-button-row
+#                entity: input_boolean.guest_mode
+#                style: |
+#                  :host {
+#                    --paper-item-icon-color:
+#                      {% if is_state(config.entity, 'on') %}
+#                        rgb(51, 204, 51);
+#                      {% else %}
+#                        rgb(128, 128, 128);
+#                      {% endif %}
+#                  }
+#                customTheme: true
+#                tap_action:
+#                  action: toggle
+#              - type: custom:toggle-control-button-row
+#                entity: input_boolean.holiday_mode
+#                style: |
+#                  :host {
+#                    --paper-item-icon-color:
+#                      {% if is_state(config.entity, 'on') %}
+#                        rgb(51, 204, 51);
+#                      {% else %}
+#                        rgb(128, 128, 128);
+#                      {% endif %}
+#                  }
+#                customTheme: true
+#                tap_action:
+#                  action: toggle
 #      - type: picture-glance
 #        title: Hallway
 #        entities: []
