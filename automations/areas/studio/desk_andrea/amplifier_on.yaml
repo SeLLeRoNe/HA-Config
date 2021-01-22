@@ -5,9 +5,9 @@ initial_state: on
 trigger:
   - platform: homeassistant
     event: start
-#  - platform: state
-#    entity_id: input_boolean.night_mode
-#    to: 'off'
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'off'
   - platform: state
     entity_id: media_player.studio_amplifier
     to: "on"
