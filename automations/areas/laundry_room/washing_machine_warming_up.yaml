@@ -11,7 +11,7 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 2000
+    above: 5
     for:
       seconds: 5
 condition:
@@ -25,3 +25,7 @@ action:
     data:
       entity_id: input_select.washing_machine_status
       option: 'Warming Up'
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.washing_machine_current_energy
+      value: "{{ states('sensor.power_usage_washing_machine_today_energy') }}"

@@ -25,3 +25,7 @@ action:
     data:
       entity_id: input_select.dishwasher_status
       option: 'Warming Up'
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.dishwasher_current_energy
+      value: "{{ states('sensor.power_usage_dishwasher_today_energy') }}"

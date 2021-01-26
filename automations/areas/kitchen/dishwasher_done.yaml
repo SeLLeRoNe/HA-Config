@@ -1,7 +1,7 @@
 ---
 id: '6498492866276'
 # When power is detected, and the dish washer is not in 
-# the Running state, change the status of the washing machine
+# the Running state, change the status of the dishwasher
 # to Running. 
 # The status check will ensure we don't try to put the state 
 # to Running each time the power level changes, and we're already
@@ -36,7 +36,7 @@ action:
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
-      message: "Dishwasher is now done"
+      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float }}kWh"
   - condition: and
     conditions:
       - condition: template
@@ -48,3 +48,7 @@ action:
       entity_id: media_player.living_room_google_tv
       message: "Dishwasher is now done"
       language: "en"
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.dishwasher_current_energy
+      value: "0"
