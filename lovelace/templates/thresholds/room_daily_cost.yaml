@@ -1,8 +1,8 @@
-- color: '#039BE5'
-  value: 0.1
-- color: '#0da035'
-  value: 0.25
-- color: '#e0b400'
+- color: '#404040'
+  value: 0
+- color: '#0DA035'
+  value: 0.01
+- color: '#E0B400'
   value: 1
-- color: '#e45e65'
+- color: '#E45E65'
   value: 2.5
