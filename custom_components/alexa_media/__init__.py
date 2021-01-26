@@ -11,7 +11,6 @@ import asyncio
 from datetime import datetime, timedelta
 from json import JSONDecodeError
 import logging
-import random
 import time
 from typing import Optional, Text
 
@@ -19,6 +18,7 @@ from alexapy import (
     AlexaAPI,
     AlexaLogin,
     AlexapyLoginError,
+    AlexapyConnectionError,
     WebsocketEchoClient,
     __version__ as alexapy_version,
     hide_email,
@@ -33,6 +33,7 @@ from homeassistant.const import (
     CONF_PASSWORD,
     CONF_SCAN_INTERVAL,
     CONF_URL,
+    EVENT_HOMEASSISTANT_STARTED,
     EVENT_HOMEASSISTANT_STOP,
 )
 from homeassistant.data_entry_flow import UnknownFlow
@@ -182,6 +183,15 @@ async def async_setup_entry(hass, config_entry):
             for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
                 await close_connections(hass, email)
 
+    async def complete_startup(event=None) -> None:
+        """Run final tasks after startup."""
+        _LOGGER.debug("Completing remaining startup tasks.")
+        await asyncio.sleep(10)
+        if hass.data[DATA_ALEXAMEDIA].get("notify_service"):
+            notify = hass.data[DATA_ALEXAMEDIA].get("notify_service")
+            _LOGGER.debug("Refreshing notify targets")
+            await notify.async_register_services()
+
     async def relogin(event=None) -> None:
         """Relogin to Alexa."""
         if hide_email(email) == event.data.get("email"):
@@ -290,6 +300,7 @@ async def async_setup_entry(hass, config_entry):
     hass.data[DATA_ALEXAMEDIA]["accounts"][email]["login_obj"] = login
     if not hass.data[DATA_ALEXAMEDIA]["accounts"][email]["second_account_index"]:
         hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, close_alexa_media)
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, complete_startup)
     hass.bus.async_listen("alexa_media_relogin_required", relogin)
     hass.bus.async_listen("alexa_media_relogin_success", login_success)
     await login.login(cookies=await login.load_cookie())
@@ -373,6 +384,9 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                     if bluetooth is not None
                     else "",
                 )
+            await process_notifications(login_obj, raw_notifications)
+            # Process last_called data to fire events
+            await update_last_called(login_obj)
         except (AlexapyLoginError, JSONDecodeError):
             _LOGGER.debug(
                 "%s: Alexa API disconnected; attempting to relogin : status %s",
@@ -387,10 +401,6 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
             return
         except BaseException as err:
             raise UpdateFailed(f"Error communicating with API: {err}")
-
-        await process_notifications(login_obj, raw_notifications)
-        # Process last_called data to fire events
-        await update_last_called(login_obj)
 
         new_alexa_clients = []  # list of newly discovered device names
         exclude_filter = []
@@ -746,13 +756,17 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                     "serialNumber": serial,
                     "timestamp": json_payload["timestamp"],
                 }
-                if serial and serial in existing_serials:
-                    await update_last_called(login_obj, last_called)
-                async_dispatcher_send(
-                    hass,
-                    f"{DOMAIN}_{hide_email(email)}"[0:32],
-                    {"push_activity": json_payload},
-                )
+                try:
+                    if serial and serial in existing_serials:
+                        await update_last_called(login_obj, last_called)
+                    async_dispatcher_send(
+                        hass,
+                        f"{DOMAIN}_{hide_email(email)}"[0:32],
+                        {"push_activity": json_payload},
+                    )
+                except (AlexapyConnectionError):
+                    # Catch case where activities doesn't report valid json
+                    pass
             elif command in (
                 "PUSH_AUDIO_PLAYER_STATE",
                 "PUSH_MEDIA_CHANGE",
