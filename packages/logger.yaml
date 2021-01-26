@@ -12,8 +12,6 @@ logger:
     pyupdate: error
     hacs: error
     custom_components: error
-    custom_components.sensor.places: error
-    custom_components.sensor.authenticated: error
     homeassistant: error
     homeassistant.loader: error
     homeassistant.components: error
