@@ -38,3 +38,5 @@ action:
     entity_id: media_player.studio_amplifier
 #  - service: switch.turn_off
 #    entity_id: switch.studio_andrea_computer_plug
+  - service: switch.turn_off
+    entity_id: switch.studio_usb_relay_01

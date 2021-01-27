@@ -1,0 +1,26 @@
+---
+id: '4580432665563'
+alias: Studio - Andrea - Phone Charger On
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: numeric_state
+    entity_id: sensor.andrea_oneplus_nord_battery_level
+    below: 20
+  - platform: zone
+    entity_id: person.andrea_iannucci
+    zone: zone.home
+    event: enter
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.andrea_iannucci
+      state: 'home'
+    - condition: numeric_state
+      entity_id: sensor.andrea_oneplus_nord_battery_level
+      below: 20
+action:
+  - service: switch.turn_on
+    entity_id: switch.studio_usb_relay_01
