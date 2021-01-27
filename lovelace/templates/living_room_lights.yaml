@@ -21,7 +21,7 @@ living_room_lights:
         template: wled_card
         variables:
           - name: Christmas Tree
-          - entity: light.christmas_tree
+          - entity: christmas_tree
       - type: custom:decluttering-card
         template: title
         variables:
