@@ -129,6 +129,9 @@ condition:
     - condition: state
       entity_id: group.workday
       state: 'on'
+    - condition: state
+      entity_id: climate.house
+      state: 'on'
 action:
   - service: climate.turn_on
     data:

@@ -1,5 +1,5 @@
 ---
-id: '5311403417478'
+id: '1208836214629'
 alias: Climate - T2 - Studio - Weekend
 initial_state: 'on'
 trigger:
@@ -129,6 +129,9 @@ condition:
     - condition: state
       entity_id: group.workday
       state: 'off'
+    - condition: state
+      entity_id: climate.studio
+      state: 'on'
 action:
   - service: climate.turn_on
     data:

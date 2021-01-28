@@ -1,5 +1,5 @@
 ---
-id: '0083300279615'
+id: '1800309213689'
 alias: Climate - T5 - Bedroom Luca - Weekend
 initial_state: 'on'
 trigger:
@@ -129,6 +129,9 @@ condition:
     - condition: state
       entity_id: group.workday
       state: 'off'
+    - condition: state
+      entity_id: climate.bedroom_luca
+      state: 'on'
 action:
   - service: climate.turn_on
     data:
