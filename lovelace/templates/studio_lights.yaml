@@ -14,7 +14,7 @@ studio_lights:
           - name: Wall Light
           - entity: light.studio_wall_light
       - type: custom:decluttering-card
-        template: light_card_simple
+        template: light_card_rgb
         variables:
           - name: Sonia Desk Lamp
           - entity: light.studio_sonia_desk_lamp

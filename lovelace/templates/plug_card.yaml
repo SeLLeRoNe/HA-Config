@@ -1,18 +1,15 @@
 ---
 plug_card:
   card:
-    type: entities
-    show_header_toggle: false
-    entities:
-      - type: "custom:restriction-card"
-        restrictions:
-          block: '[[block]]'
-        row: true
-        card:
-          type: custom:toggle-control-button-row
-          name: '[[name]]'
-          entity: '[[entity]]'
-          state_color: true
-          customTheme: true
-          tap_action:
-            action: none
+    type: "custom:restriction-card"
+    restrictions:
+      block: '[[block]]'
+    row: true
+    card:
+      type: custom:toggle-control-button-row
+      name: '[[name]]'
+      entity: '[[entity]]'
+      state_color: true
+      customTheme: true
+      tap_action:
+      action: none
