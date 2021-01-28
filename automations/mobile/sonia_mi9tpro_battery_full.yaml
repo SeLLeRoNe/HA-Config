@@ -9,9 +9,14 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: sensor.sonia_mi_9t_pro_battery_state
-      state: 'charging'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sensor.sonia_mi_9t_pro_battery_state
+          state: 'charging'
+        - condition: state
+          entity_id: sensor.sonia_mi_9t_pro_battery_state
+          state: 'full'
     - condition: state
       entity_id: person.sonia_espejo_brea
       state: 'home'
