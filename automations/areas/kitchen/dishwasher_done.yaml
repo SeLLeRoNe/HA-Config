@@ -36,7 +36,7 @@ action:
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
-      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float }}kWh"
+      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float }}kWh"
   - condition: and
     conditions:
       - condition: template

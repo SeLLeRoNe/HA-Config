@@ -38,7 +38,7 @@ action:
   - service: notify.telegram_andrea
     data:
       title: "Laundry Room"
-      message: "Washing Machine is now done. Energy consumed: {{ states('sensor.sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float }}kWh"
+      message: "Washing Machine is now done. Energy consumed: {{ states('sensor.power_usage_washing_machine_today_energy')|float - states('input_number.washing_machine_current_energy')|float }}kWh"
   - condition: and
     conditions:
       - condition: template
