@@ -7,65 +7,10 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: kitchen_lights
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plugs
-          - type: entities
-            show_header_toggle: false
-#            state_color: true
-            entities:
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: true
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Fridge
-                  entity: switch.kitchen_fridge_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: true
-#                condition:
-#                  entity: input_select.dishwasher_status
-#                  value: "Warming Up"
-#                  entity: input_select.dishwasher_status
-#                  value: "Washing"
-#                  entity: input_select.dishwasher_status
-#                  value: "Drying"
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Dishwasher
-                  entity: switch.kitchen_dishwasher_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: false
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Toaster
-                  entity: switch.kitchen_toaster_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
+      - type: custom:decluttering-card
+        template: kitchen_lights
+      - type: custom:decluttering-card
+        template: kitchen_plugs
       - break
       - type: vertical-stack
         cards:

@@ -6,34 +6,10 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: bedroom_luca_lights
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plugs
-#          - type: entities
-#            show_header_toggle: false
-##            state_color: true
-#            entities:
-#              - type: "custom:restriction-card"
-#                row: true
-#                card:
-#                  name: Desk Plug
-#                  entity: switch.bedroom_luca_desk_plug
-#                  state_color: true
-#                  tap_action:
-#                    action: none
-#              - entity: switch.bedroom_luca_power_strip_1
-#              - entity: switch.bedroom_luca_power_strip_2
-#              - entity: switch.bedroom_luca_power_strip_3
-#              - entity: switch.bedroom_luca_power_strip_4
+      - type: custom:decluttering-card
+        template: bedroom_luca_lights
+      - type: custom:decluttering-card
+        template: bedroom_luca_plugs
       - break
       - type: vertical-stack
         cards:

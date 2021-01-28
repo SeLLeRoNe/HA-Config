@@ -6,38 +6,10 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: laundry_room_lights
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plugs
-          - type: entities
-            show_header_toggle: false
-#            state_color: true
-            entities:
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: true
-#                condition:
-#                  entity: input_select.washing_machine_status
-#                  value: "Warming Up"
-#                  entity: input_select.washing_machine_status
-#                  value: "Washing"
-#                  entity: input_select.washing_machine_status
-#                  value: "Drying"
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Washing Machine
-                  entity: switch.laundry_room_washing_machine_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
+      - type: custom:decluttering-card
+        template: laundry_room_lights
+      - type: custom:decluttering-card
+        template: laundry_room_plugs
       - break
       - type: vertical-stack
         cards:

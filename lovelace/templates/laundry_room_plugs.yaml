@@ -1,0 +1,20 @@
+---
+laundry_room_plugs:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plugs
+      - type: entities
+        show_header_toggle: false
+#        state_color: true
+        entities:
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "Washing Machine"
+              - entity: switch.laundry_room_washing_machine_plug
+              - block: true
