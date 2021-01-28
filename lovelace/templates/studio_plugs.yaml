@@ -1,0 +1,30 @@
+---
+studio_plugs:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plugs
+      - type: custom:decluttering-card
+        template: plug_card
+        variables:
+          - name: Desk Andrea
+          - entity: switch.studio_andrea_desk_plug
+          - block: true
+      - type: custom:decluttering-card
+        template: plug_card
+        variables:
+          - name: Desk Sonia
+          - entity: switch.studio_sonia_desk_plug
+          - block: true
+      - type: custom:decluttering-card
+        template: plug_card
+        variables:
+          - name: Table
+          - entity: switch.studio_table_plug
+          - block: true
+      - type: custom:hui-element
+        row_type: divider

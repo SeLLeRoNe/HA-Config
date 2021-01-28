@@ -15,51 +15,7 @@ cards:
         mode: vertical
         cards:
           - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plugs
-          - type: entities
-            show_header_toggle: false
-#            state_color: true
-            entities:
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: true
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Desk Andrea
-                  entity: switch.studio_andrea_desk_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
-              - type: "custom:restriction-card"
-#               restrictions:
-#                 block: true
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Desk Sonia
-                  entity: switch.studio_sonia_desk_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
-              - type: "custom:restriction-card"
-                restrictions:
-                  block: true
-                row: true
-                card:
-                  type: custom:toggle-control-button-row
-                  name: Table
-                  entity: switch.studio_table_plug
-                  state_color: true
-                  customTheme: true
-                  tap_action:
-                    action: none
-          - type: custom:hui-element
-            row_type: divider
+            template: studio_plugs
           - type: entities
             show_header_toggle: false
 #            state_color: true
@@ -122,6 +78,18 @@ cards:
             show_header_toggle: false
 #            state_color: true
             entities:
+              - type: "custom:restriction-card"
+                restrictions:
+                  block: true
+                row: true
+                card:
+                  type: custom:toggle-control-button-row
+                  name: OnePlus USB Charger
+                  entity: switch.studio_usb_relay_01
+                  state_color: true
+                  customTheme: true
+                  tap_action:
+                    action: none
               - type: "custom:restriction-card"
                 restrictions:
                   block: true
