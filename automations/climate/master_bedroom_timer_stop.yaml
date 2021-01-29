@@ -1,5 +1,4 @@
 ---
-id: '1801618345199'
 alias: Climate - Master Bedroom - Timer Stop
 initial_state: 'on'
 trigger:

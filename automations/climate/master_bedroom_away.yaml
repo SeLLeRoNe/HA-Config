@@ -1,5 +1,4 @@
 ---
-id: '4027834240686'
 alias: Climate - Master Bedroom - Away Mode On
 initial_state: 'on'
 trigger:

@@ -1,5 +1,4 @@
 ---
-id: '4027834240686'
 alias: Climate - Studio - Away Mode On
 initial_state: 'on'
 trigger:
