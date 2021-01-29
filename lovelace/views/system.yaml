@@ -58,7 +58,7 @@ cards:
             cards:
               - type: gauge
                 name: CPU
-                entity: sensor.processor_use
+                entity: sensor.processor_use_percent
               - type: gauge
                 name: HDD
                 entity: sensor.disk_use_percent
