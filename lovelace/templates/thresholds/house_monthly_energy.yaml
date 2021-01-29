@@ -1,8 +1,8 @@
-- color: '#404040'
-  value: 0
-- color: '#0DA035'
-  value: 0.01
-- color: '#E0B400'
-  value: 250
-- color: '#E45E65'
-  value: 500
+- value: 0
+  color: '#404040'
+- value: 0.01
+  color: '#0DA035'
+- value: 250
+  color: '#E0B400'
+- value: 500
+  color: '#E45E65'
