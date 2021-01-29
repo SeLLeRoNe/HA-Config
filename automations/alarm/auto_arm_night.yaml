@@ -51,7 +51,7 @@ condition:
           entity_id: person.sonia
           state: 'Garage'
         - condition: state
-          entity_id: person.luca_ianuncci_espejo
+          entity_id: person.luca
           state: 'Garage'
     - condition: time
       after: '01:00:00'
