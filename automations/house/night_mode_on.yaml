@@ -13,6 +13,9 @@ condition:
     - condition: time
       after: '21:00:00'
       before: '10:30:00'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
 action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.night_mode
