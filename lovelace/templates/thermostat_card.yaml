@@ -4,6 +4,10 @@ thermostat_card:
     type: custom:stack-in-card
     mode: vertical
     cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Thermostat
       - type: entities
         show_header_toggle: false
         entities:
