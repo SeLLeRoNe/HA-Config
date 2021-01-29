@@ -114,8 +114,8 @@ cards:
 #        default_zoom: 15
 #        dark_mode: true
 #        entities:
-#          - person.andrea_iannucci
-#          - person.sonia_espejo_brea
+#          - person.andrea
+#          - person.sonia
 #          - zone.allowed_area
       - break
       - type: custom:stack-in-card

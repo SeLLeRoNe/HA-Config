@@ -2,5 +2,5 @@
 family:
   name: Family
   entities:
-    - person.andrea_iannucci
-    - person.sonia_espejo_brea
+    - person.andrea
+    - person.sonia

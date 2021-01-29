@@ -5,7 +5,7 @@ home:
 #    - office_andrea
 #    - office_sonia
   devices:
-    - person.andrea_iannucci
-    - person.sonia_espejo_brea
+    - person.andrea
+    - person.sonia
   tolerance: 50
   unit_of_measurement: m

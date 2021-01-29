@@ -9,14 +9,14 @@ trigger:
     entity_id: sensor.andrea_oneplus_nord_battery_level
     below: 20
   - platform: zone
-    entity_id: person.andrea_iannucci
+    entity_id: person.andrea
     zone: zone.home
     event: enter
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: person.andrea_iannucci
+      entity_id: person.andrea
       state: 'home'
     - condition: numeric_state
       entity_id: sensor.andrea_oneplus_nord_battery_level

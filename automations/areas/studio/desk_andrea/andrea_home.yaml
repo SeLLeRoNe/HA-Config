@@ -4,7 +4,7 @@ alias: Studio - Andrea is back home
 initial_state: on
 trigger:
   - platform: zone
-    entity_id: person.andrea_iannucci
+    entity_id: person.andrea
     zone: zone.home
     event: enter
 condition:

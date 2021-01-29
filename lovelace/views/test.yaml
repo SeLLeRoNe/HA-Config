@@ -101,7 +101,7 @@ cards:
         hours_to_show: 168
         refresh_interval: 15
         entities:
-          - entity: person.andrea_iannucci
+          - entity: person.andrea
             name: Andrea
           - entity: device_tracker.andrea_oneplus_nord
             name: HA App
@@ -109,7 +109,7 @@ cards:
             name: GPSLogger
 #          - entity: device_tracker.life360_andrea_iannucci
 #            name: Life360
-          - entity: person.sonia_espejo_brea
+          - entity: person.sonia
             name: Sonia
           - entity: device_tracker.sonia_mi_9t_pro
             name: HA App

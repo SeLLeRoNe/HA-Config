@@ -5,7 +5,7 @@ sonia:
     show_header_toggle: false
     entities:
       - type: custom:state-switch
-        entity: person.sonia_espejo_brea
+        entity: person.sonia
         default: not_home
         states:
           "home":
@@ -15,7 +15,7 @@ sonia:
             states:
               "not_home":
                 type: "custom:secondaryinfo-entity-row"
-                entity: person.sonia_espejo_brea
+                entity: person.sonia
                 secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
                 tap_action:
                   action: none
@@ -27,12 +27,12 @@ sonia:
                   action: none
           "not_home":
             type: "custom:secondaryinfo-entity-row"
-            entity: person.sonia_espejo_brea
+            entity: person.sonia
             secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
             tap_action:
               action: none
 #      - type: "custom:secondaryinfo-entity-row"
-#        entity: person.sonia_espejo_brea
+#        entity: person.sonia
 #        secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
 #        tap_action:
 #          action: none

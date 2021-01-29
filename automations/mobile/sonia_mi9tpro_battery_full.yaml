@@ -18,7 +18,7 @@ condition:
           entity_id: sensor.sonia_mi_9t_pro_battery_state
           state: 'full'
     - condition: state
-      entity_id: person.sonia_espejo_brea
+      entity_id: person.sonia
       state: 'home'
 action:
   - service: notify.mobile_app_sonia_mi_9t_pro

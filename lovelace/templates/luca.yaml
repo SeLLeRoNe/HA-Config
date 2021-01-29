@@ -5,7 +5,7 @@ luca:
     show_header_toggle: false
     entities:
       - type: custom:state-switch
-        entity: person.luca_iannucci_espejo
+        entity: person.luca
         default: not_home
         states:
           "home":
@@ -15,7 +15,7 @@ luca:
             states:
               "not_home":
                 type: "custom:secondaryinfo-entity-row"
-                entity: person.luca_iannucci_espejo
+                entity: person.luca
                 secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
                 tap_action:
                   action: none
@@ -27,11 +27,11 @@ luca:
                   action: none
           "not_home":
             type: "custom:secondaryinfo-entity-row"
-            entity: person.luca_iannucci_espejo
+            entity: person.luca
             secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
             tap_action:
               action: none
-#      - entity: person.luca_iannucci_espejo
+#      - entity: person.luca
 #        type: "custom:secondaryinfo-entity-row"
 #        secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
 #        tap_action:

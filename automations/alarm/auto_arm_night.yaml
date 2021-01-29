@@ -45,10 +45,10 @@ condition:
           entity_id: input_boolean.guest_mode
           state: 'on'
         - condition: state
-          entity_id: person.andrea_iannucci
+          entity_id: person.andrea
           state: 'Garage'
         - condition: state
-          entity_id: person.sonia_espejo_brea
+          entity_id: person.sonia
           state: 'Garage'
         - condition: state
           entity_id: person.luca_ianuncci_espejo

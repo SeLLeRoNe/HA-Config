@@ -18,7 +18,7 @@ condition:
           entity_id: sensor.andrea_oneplus_nord_battery_state
           state: 'full'
     - condition: state
-      entity_id: person.andrea_iannucci
+      entity_id: person.andrea
       state: 'home'
 action:
   - service: notify.mobile_app_andrea_oneplus_nord

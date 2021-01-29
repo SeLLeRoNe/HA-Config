@@ -6,7 +6,7 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: zone
-    entity_id: person.andrea_iannucci
+    entity_id: person.andrea
     zone: zone.home
     event: leave
 condition:
@@ -18,7 +18,7 @@ condition:
       for:
         seconds: 60
     - condition: state
-      entity_id: person.andrea_iannucci
+      entity_id: person.andrea
       state: 'not_home'
       for:
         hours: 12
