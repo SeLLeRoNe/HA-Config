@@ -12,6 +12,7 @@ do
 	new_file=$(sed "s/house/$ENTITY_NAME/g" <<< $file)
 	echo "Copying $file to $new_file"
 	\cp $file $new_file
+	sed -i '/^id: /d' $new_file
 	sed -i "s/- House/- $ROOM_NAME/g" $new_file
 	sed -i 's/house_/'$ENTITY_NAME'_/g' $new_file
 	sed -i "s/_house/_$ENTITY_NAME/g" $new_file
@@ -24,6 +25,7 @@ do
 	new_file=$(sed "s/house/$ENTITY_NAME/g" <<< $file)
 	echo "Copying $file to $new_file"
 	\cp $file $new_file
+	sed -i '/^id: /d' $new_file
 	sed -i "s/- House/- $ROOM_NAME/g" $new_file
 	sed -i 's/house_/'$ENTITY_NAME'_/g' $new_file
 	sed -i "s/_house/_$ENTITY_NAME/g" $new_file
@@ -37,6 +39,7 @@ for file in `ls automations/climate/house_*.yaml`
 	new_file=$(sed "s/house/$ENTITY_NAME/g" <<< $file)
 	echo "Copying $file to $new_file"
 	\cp $file $new_file
+	sed -i '/^id: /d' $new_file
 	sed -i "s/- House/- $ROOM_NAME/g" $new_file
 	sed -i 's/house_/'$ENTITY_NAME'_/g' $new_file
 	sed -i "s/_house/_$ENTITY_NAME/g" $new_file
