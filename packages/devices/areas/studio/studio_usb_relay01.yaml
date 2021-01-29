@@ -6,6 +6,7 @@
 switch:
   - platform: mqtt
     name: "Studio USB Relay 01"
+    icon: mdi:usb
     state_topic: "stat/usb_relay01/RESULT"  
     value_template: "{{ value_json.POWER }}"
     command_topic: "cmnd/usb_relay01/POWER"
