@@ -1,5 +1,4 @@
 ---
-id: '695097871386863'
 alias: Climate - Studio - Active Off
 initial_state: 'on'
 trigger:

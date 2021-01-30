@@ -1,5 +1,4 @@
 ---
-id: '578185791531042'
 alias: Climate - Living Room - Timer Start
 initial_state: 'on'
 trigger:

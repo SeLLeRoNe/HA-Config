@@ -1,8 +1,11 @@
 ---
-id: '7645773357713'
+id: '7645773357714'
 alias: Climate - House - Off
 initial_state: 'on'
 trigger:
+  - platform: state
+    entity_id: climate.house
+    to: 'off'
   - platform: state
     entity_id: input_boolean.climate_house_heating_push
     to: 'off'
@@ -105,6 +108,9 @@ trigger:
     to: 'off'
   - platform: state
     entity_id: input_boolean.climate_house_workday_t10
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_heating_push
     to: 'off'
 condition:
   condition: and
