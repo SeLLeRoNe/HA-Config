@@ -12,9 +12,9 @@ condition:
     - condition: state
       entity_id: sun.sun
       state: below_horizon
-    - condition: numeric_state
-      entity_id: sensor.patio_gzcgq01lm_illuminance
-      below: 1000
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
     - condition: state
       entity_id: light.studio_wall_light
       state: 'off'
@@ -35,7 +35,7 @@ condition:
 action:
   - service: scene.turn_on
     data:
-      entity_id: scene.studio_alarm
+      entity_id: scene.studio_night
       transition: 30
 #  - service: notify.mobile_app_andrea_oneplus_nord
 #    data:

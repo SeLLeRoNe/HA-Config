@@ -16,6 +16,9 @@ condition:
     - condition: state
       entity_id: binary_sensor.workday_es
       state: 'on'
+    - condition: time
+      after: '07:00:00'
+      before: '19:30:00'
 action:
   - service: switch.turn_on
     entity_id: switch.studio_sonia_desk_plug
