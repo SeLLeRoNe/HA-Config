@@ -1,5 +1,5 @@
 ---
-name: Studio Alarm
+name: Studio Night
 entities:
   light.studio_wall_light:
     state: on
