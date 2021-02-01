@@ -1,0 +1,24 @@
+---
+# Plant component lets you merge moisture, conductivity, light intensity, temperature and battery level for a plant into a single UI element.
+#
+# https://www.home-assistant.io/integrations/plant/
+#
+#plant: !include_dir_list ../entities/plants
+plant:
+  parsely:
+    sensors:
+      moisture: sensor.parsely_moisture
+      battery: sensor.parsely_battery
+      temperature: sensor.parsely_temperature
+      conductivity: sensor.parsely_conductivity
+      brightness: sensor.parsely_light_intensity
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 20
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_temperature: 15
+    max_temperature: 32
+    min_brightness: 2000
+    max_brightness: 30000
+    check_days: 3
