@@ -21,10 +21,12 @@ thermostat:
         entities:
           - type: custom:multiple-entity-row
             entity: input_boolean.climate_[[area]]_heating_push
+            name: Push
             icon: mdi:timer
             toggle: true
             entities:
               - entity: input_datetime.heating_push_[[area]]
+                name: Duration
                 tap_action:
                   action: call-service
                   service: browser_mod.popup
@@ -41,6 +43,7 @@ thermostat:
                           entity: input_number.heating_push_[[area]]
                           full_row: true
               - entity: input_number.heating_push_[[area]]
+                name: Temperature
                 tap_action:
                   action: call-service
                   service: browser_mod.popup
