@@ -11,7 +11,6 @@ from homeassistant.const import (
     ATTR_SERVICE,
     ATTR_SERVICE_DATA,
     ATTR_ENTITY_ID,
-    ATTR_NAME,
     # STATE_UNKNOWN,
     # STATE_OPEN,
     # STATE_CLOSED,
@@ -23,6 +22,9 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
 from . import const
 from .alarm_control_panel import AlarmoBaseEntity
+from .helpers import (
+    friendly_name_for_entity_id,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -62,7 +64,7 @@ class AutomationHandler:
             for automation_id, config in self._config.items():
                 if (
                     not config[const.ATTR_ENABLED]
-                    or config[const.ATTR_AREA] != area_id
+                    or (config[const.ATTR_AREA] != area_id and len(self.hass.data[const.DOMAIN]["areas"]) > 1)
                 ):
                     continue
                 elif (
@@ -78,7 +80,9 @@ class AutomationHandler:
         async_dispatcher_connect(self.hass, "alarmo_state_updated", async_alarm_state_changed)
 
         @callback
-        async def async_failed_to_arm(area_id: str):
+        async def async_handle_event(event: str, area_id: str, args: dict = {}):
+            if event != const.EVENT_FAILED_TO_ARM:
+                return
             if area_id:
                 alarm_entity = self.hass.data[const.DOMAIN]["areas"][area_id]
             else:
@@ -87,7 +91,10 @@ class AutomationHandler:
             _LOGGER.debug("{} has failed to arm".format(alarm_entity.entity_id))
 
             for automation_id, config in self._config.items():
-                if not config[const.ATTR_ENABLED]:
+                if (
+                    not config[const.ATTR_ENABLED]
+                    or (config[const.ATTR_AREA] != area_id and len(self.hass.data[const.DOMAIN]["areas"]) > 1)
+                ):
                     continue
                 elif (
                     len(config[const.ATTR_MODES]) and alarm_entity.arm_mode
@@ -99,7 +106,7 @@ class AutomationHandler:
                         if const.ATTR_EVENT in trigger and trigger[const.ATTR_EVENT] == EVENT_ARM_FAILURE:
                             await self.async_execute_automation(automation_id, alarm_entity)
 
-        async_dispatcher_connect(self.hass, "alarmo_failed_to_arm", async_failed_to_arm)
+        async_dispatcher_connect(self.hass, "alarmo_event", async_handle_event)
 
     async def async_execute_automation(self, automation_id: str, alarm_entity: AlarmoBaseEntity):
         # automation is a dict of AutomationEntry
@@ -125,7 +132,7 @@ class AutomationHandler:
                     if alarm_entity.open_sensors:
                         parts = []
                         for (entity_id, status) in alarm_entity.open_sensors.items():
-                            name = self.get_friendly_name_for_sensor(entity_id)
+                            name = friendly_name_for_entity_id(entity_id, self.hass)
                             parts.append("{} is {}".format(name, status))
                         open_sensors = ", ".join(parts)
 
@@ -136,7 +143,7 @@ class AutomationHandler:
                     if alarm_entity.bypassed_sensors and len(alarm_entity.bypassed_sensors):
                         parts = []
                         for entity_id in alarm_entity.sensors.bypassed_sensors:
-                            name = self.get_friendly_name_for_sensor(entity_id)
+                            name = friendly_name_for_entity_id(entity_id, self.hass)
                             parts.append(name)
                         bypassed_sensors = ", ".join(parts)
 
@@ -160,15 +167,3 @@ class AutomationHandler:
                 self.hass,
                 service_call
             )
-
-    def get_friendly_name_for_sensor(self, entity_id):
-        state = self.hass.states.get(entity_id)
-        sensor_config = self.hass.data[const.DOMAIN]["coordinator"].store.async_get_sensors()
-
-        if entity_id in sensor_config and sensor_config[entity_id][ATTR_NAME]:
-            name = sensor_config[entity_id][ATTR_NAME]
-        elif state and state.attributes["friendly_name"]:
-            name = state.attributes["friendly_name"]
-        else:
-            name = entity_id
-        return name

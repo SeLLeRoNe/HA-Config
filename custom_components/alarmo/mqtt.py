@@ -13,12 +13,17 @@ from homeassistant.components.mqtt import (
 )
 
 import homeassistant.components.mqtt as mqtt
+from homeassistant.helpers.json import JSONEncoder
 
 from homeassistant.util import slugify
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from . import const
+from .helpers import (
+    friendly_name_for_entity_id,
+)
 
 _LOGGER = logging.getLogger(__name__)
+CONF_EVENT_TOPIC = "event_topic"
 
 
 class MqttHandler:
@@ -71,6 +76,69 @@ class MqttHandler:
             _LOGGER.debug("Published state '{}' on topic '{}'".format(message, topic))
 
         async_dispatcher_connect(self.hass, "alarmo_state_updated", async_alarm_state_changed)
+
+        @callback
+        def async_handle_event(event: str, area_id: str, args: dict = {}):
+
+            if not self._config[ATTR_MQTT][const.ATTR_ENABLED]:
+                return
+
+            topic = self._config[ATTR_MQTT][CONF_EVENT_TOPIC]
+            if area_id and len(self.hass.data[const.DOMAIN]["areas"]) > 1:
+                # handle the sending of a state update for a specific area
+                area = self.hass.data[const.DOMAIN]["areas"][area_id]
+                topic = topic.rsplit('/', 1)
+                topic.insert(1, slugify(area.name))
+                topic = "/".join(topic)
+
+            if event == const.EVENT_ARM:
+                payload = {
+                    "event": "{}_{}".format(
+                        event.upper(),
+                        args["arm_mode"].split("_", 1).pop(1).upper()
+                    ),
+                    "delay": args["delay"],
+                }
+            elif event == const.EVENT_TRIGGER:
+                payload = {
+                    "event": event.upper(),
+                    "delay": args["delay"],
+                    "sensors": [
+                        {
+                            "entity_id": entity,
+                            "name": friendly_name_for_entity_id(entity, self.hass),
+                        }
+                        for (entity, state) in args["open_sensors"].items()
+                    ]
+                }
+            elif event == const.EVENT_FAILED_TO_ARM:
+                payload = {
+                    "event": event.upper(),
+                    "sensors": [
+                        {
+                            "entity_id": entity,
+                            "name": friendly_name_for_entity_id(entity, self.hass),
+                        }
+                        for (entity, state) in args["open_sensors"].items()
+                    ]
+                }
+            elif event == const.EVENT_COMMAND_NOT_ALLOWED:
+                payload = {
+                    "event": event.upper(),
+                    "state": args["state"],
+                    "command": args["command"].upper()
+                }
+            elif event in [const.EVENT_INVALID_CODE_PROVIDED, const.EVENT_NO_CODE_PROVIDED]:
+                payload = {
+                    "event": event.upper()
+                }
+            else:
+                return
+
+            payload = json.dumps(payload, cls=JSONEncoder)
+            mqtt.async_publish(self.hass, topic, payload)
+
+        async_dispatcher_connect(self.hass, "alarmo_event", async_handle_event)
 
         # @callback
         # def async_failed_to_arm(area_id: str):
@@ -164,7 +232,7 @@ class MqttHandler:
             if self._config[const.ATTR_MASTER][const.ATTR_ENABLED] and len(self.hass.data[const.DOMAIN]["areas"]) > 1:
                 entity = self.hass.data[const.DOMAIN]["master"]
             elif len(self.hass.data[const.DOMAIN]["areas"]) == 1:
-                entity = self.hass.data[const.DOMAIN]["areas"][0]
+                entity = list(self.hass.data[const.DOMAIN]["areas"].values())[0]
             else:
                 _LOGGER.warning("No area specified")
                 return

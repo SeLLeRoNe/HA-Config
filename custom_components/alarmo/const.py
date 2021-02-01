@@ -21,7 +21,7 @@ from homeassistant.components.alarm_control_panel import (
     SUPPORT_ALARM_ARM_CUSTOM_BYPASS,
 )
 
-VERSION = "1.5.0"
+VERSION = "1.5.2"
 NAME = "Alarmo"
 MANUFACTURER = "@nielsfaber"
 
@@ -79,6 +79,10 @@ EVENT_LEAVE = "leave"
 EVENT_ARM = "arm"
 EVENT_ENTRY = "entry"
 EVENT_TRIGGER = "trigger"
+EVENT_FAILED_TO_ARM = "failed_to_arm"
+EVENT_COMMAND_NOT_ALLOWED = "command_not_allowed"
+EVENT_INVALID_CODE_PROVIDED = "invalid_code_provided"
+EVENT_NO_CODE_PROVIDED = "no_code_provided"
 
 ATTR_MODES = "modes"
 ATTR_CODE_DISARM_REQUIRED = "code_disarm_required"
