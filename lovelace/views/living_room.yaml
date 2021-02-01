@@ -103,28 +103,34 @@ cards:
               artwork_border: true
               power_state: false
               shuffle: true
+            tts:
+              platform: google_translate
+            tap_action:
+              action: none
+          - type: custom:mini-media-player
+            entity: media_player.living_room_mundo_r
+            icon: mdi:cast
+            artwork: cover
+            source: icon
+            hide:
+              info: true
+              power: false
+              source: false
+              sound_mode: true
+              controls: true
+              play_pause: true
+              play_stop: true
+              volume: false
+              mute: false
+              progress: true
+              runtime: true
+              artwork_border: true
+              power_state: false
+              shuffle: true
 #            tts:
 #              platform: google_translate
             tap_action:
               action: none
-          - type: custom:mini-media-player
-            entity: media_player.nowtv_it
-            artwork: cover
-            source: icon
-          - type: custom:mini-media-player
-            entity: media_player.nowtv_uk
-            artwork: cover
-            source: icon
-#          - type: custom:hui-element
-#            row_type: divider
-#          - type: custom:roku-card
-#            entity: media_player.nowtv_it
-#            name: NowTV IT
-#            tv: true
-#          - type: custom:roku-card
-#            entity: media_player.nowtv_uk
-#            name: NowTV UK
-#            tv: true
       - break
       - type: custom:decluttering-card
         template: living_room_energy_small
