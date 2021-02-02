@@ -16,12 +16,22 @@ trigger:
     to: 'on'
     for:
       seconds: 60
+  - platform: state
+    entity_id: light.studio_sonia_desk_lamp
+    to: 'on'
+    for:
+      seconds: 60
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: light.studio_wall_light
-      state: "on"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: light.studio_wall_light
+          state: "on"
+        - condition: state
+          entity_id: light.studio_sonia_desk_lamp
+          state: "on"
     - condition: or
       conditions:
         - condition: state
