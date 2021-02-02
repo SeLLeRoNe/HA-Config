@@ -3,5 +3,9 @@ name: Studio Night
 entities:
   light.studio_wall_light:
     state: on
-    rgb_color: [255,0,0]
+    rgb_color: [0,0,255]
+    brightness: 150
+  light.studio_sonia_desk_lamp:
+    state: on
+    rgb_color: [0,255,0]
     brightness: 150
