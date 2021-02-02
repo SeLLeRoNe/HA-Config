@@ -24,7 +24,7 @@ condition:
         hours: 12
 action:
   - service: light.turn_off
-    entity_id: light.studio_wall_light
+    entity_id: light.studio_lights
   - service: shell_command.media01_off
   - service: shell_command.media02_off
   - service: shell_command.media03_off

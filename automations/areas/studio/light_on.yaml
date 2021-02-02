@@ -14,13 +14,9 @@ trigger:
   - platform: state
     entity_id: light.studio_wall_light
     to: 'on'
-    for:
-      seconds: 60
   - platform: state
     entity_id: light.studio_sonia_desk_lamp
     to: 'on'
-    for:
-      seconds: 60
 condition:
   condition: and
   conditions:
@@ -29,9 +25,13 @@ condition:
         - condition: state
           entity_id: light.studio_wall_light
           state: "on"
+          for:
+            seconds: 60
         - condition: state
           entity_id: light.studio_sonia_desk_lamp
           state: "on"
+          for:
+            seconds: 60
     - condition: or
       conditions:
         - condition: state
@@ -47,4 +47,8 @@ action:
   - service: light.turn_off
     data:
       entity_id: light.studio_wall_light
+      transition: 30
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_sonia_desk_lamp
       transition: 30

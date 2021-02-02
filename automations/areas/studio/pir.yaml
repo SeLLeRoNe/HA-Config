@@ -15,9 +15,14 @@ condition:
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'on'
-    - condition: state
-      entity_id: light.studio_wall_light
-      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: light.studio_wall_light
+          state: 'off'
+        - condition: state
+          entity_id: light.studio_sonia_desk_lamp
+          state: "off"
     - condition: state
       entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'off'
