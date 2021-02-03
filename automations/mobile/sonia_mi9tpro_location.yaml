@@ -9,7 +9,7 @@ condition:
   condition: or
   conditions:
     - condition: template
-      value_template: '{% if states.device_tracker.sonia_mi_9t_pro is defined %} {{ (as_timestamp(now()) - as_timestamp(states.device_tracker.sonia_mi_9t_pro.last_changed)) > 1800 }} {% endif %}'
+      value_template: '{% if states.device_tracker.sonia_mi_9t_pro is defined %} {{ (as_timestamp(now()) - as_timestamp(states.device_tracker.sonia_mi_9t_pro.last_changed)) > 3600 }} {% endif %}'
 action:
   - service: notify.mobile_app_sonia_mi_9t_pro
     data:
