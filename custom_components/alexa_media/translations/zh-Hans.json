@@ -82,7 +82,7 @@
       },
       "user": {
         "data": {
-          "cookies_txt": "config::step::user::data::cookies_txt",
+          "cookies_txt": "Cookie.txt数据",
           "debug": "高级调试",
           "email": "电子邮件地址",
           "exclude_devices": "Excluded device (comma separated)",
