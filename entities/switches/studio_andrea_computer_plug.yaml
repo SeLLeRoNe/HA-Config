@@ -6,7 +6,7 @@
 #
 platform: mqtt
 name: "Studio Andrea Computer Plug"
-icon: mdi:power-plug
+icon: mdi:desktop-tower
 command_topic: "cmnd/desk_andrea_power_strip_2/POWER4"
 state_topic: "stat/desk_andrea_power_strip_2/POWER4"
 availability_topic: "tele/desk_andrea_power_strip_2/LWT"
