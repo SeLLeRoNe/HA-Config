@@ -1,5 +1,4 @@
 ---
-id: '701349464784643'
 alias: Climate - Bedroom Luca - Off
 initial_state: 'on'
 trigger:
@@ -835,9 +834,14 @@ condition:
                               entity_id: input_boolean.climate_bedroom_luca_weekend_t10
                               state: 'on'
 action:
-  - service: climate.turn_off
+#  - service: climate.turn_off
+#    data:
+#      entity_id: climate.bedroom_luca
+  - service: climate.set_temperature
     data:
       entity_id: climate.bedroom_luca
+      temperature: "{{ states.climate.bedroom_luca.attributes.min_temp | float }}"
+      hvac_mode: heat
   - service: homeassistant.turn_off
     entity_id: group.climate_bedroom_luca_active
   - service: input_select.select_option

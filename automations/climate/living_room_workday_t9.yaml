@@ -1,5 +1,4 @@
 ---
-id: '678886293932986'
 alias: Climate - T9 - Living Room - Workday
 initial_state: 'on'
 trigger:
@@ -129,9 +128,11 @@ condition:
     - condition: state
       entity_id: group.workday
       state: 'on'
-    - condition: state
-      entity_id: climate.living_room
-      state: 'on'
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: climate.living_room
+          state: 'off'
 action:
   - service: climate.turn_on
     data:

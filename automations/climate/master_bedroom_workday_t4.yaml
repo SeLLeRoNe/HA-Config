@@ -1,5 +1,4 @@
 ---
-id: '438043495723564'
 alias: Climate - T4 - Master Bedroom - Workday
 initial_state: 'on'
 trigger:
@@ -129,9 +128,11 @@ condition:
     - condition: state
       entity_id: group.workday
       state: 'on'
-    - condition: state
-      entity_id: climate.master_bedroom
-      state: 'on'
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: climate.master_bedroom
+          state: 'off'
 action:
   - service: climate.turn_on
     data:

@@ -1,5 +1,4 @@
 ---
-id: '898349869099951'
 alias: Climate - Master Bedroom - Off
 initial_state: 'on'
 trigger:
@@ -835,9 +834,14 @@ condition:
                               entity_id: input_boolean.climate_master_bedroom_weekend_t10
                               state: 'on'
 action:
-  - service: climate.turn_off
+#  - service: climate.turn_off
+#    data:
+#      entity_id: climate.master_bedroom
+  - service: climate.set_temperature
     data:
       entity_id: climate.master_bedroom
+      temperature: "{{ states.climate.master_bedroom.attributes.min_temp | float }}"
+      hvac_mode: heat
   - service: homeassistant.turn_off
     entity_id: group.climate_master_bedroom_active
   - service: input_select.select_option

@@ -835,9 +835,14 @@ condition:
                               entity_id: input_boolean.climate_house_weekend_t10
                               state: 'on'
 action:
-  - service: climate.turn_off
+#  - service: climate.turn_off
+#    data:
+#      entity_id: climate.house
+  - service: climate.set_temperature
     data:
       entity_id: climate.house
+      temperature: "{{ states.climate.house.attributes.min_temp | float }}"
+      hvac_mode: heat
   - service: homeassistant.turn_off
     entity_id: group.climate_house_active
   - service: input_select.select_option
