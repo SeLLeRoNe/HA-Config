@@ -21,10 +21,10 @@ batteries_tablets:
         charging_state:
           entity_id: sensor.andrea_samsung_galaxy_tab_7_battery_state
           state: "charging"
-      - entity: sensor.andrea_nvidia_shield_k1_battery_level
+      - entity: sensor.andrea_shield_battery_level
         name: "Andrea - NVIDIA Shield K1"
         charging_state:
-          entity_id: sensor.andrea_nvidia_shield_k1_battery_state
+          entity_id: sensor.andrea_shield_battery_state
           state: "charging"
     style: |
       .entity-row.non-numeric-state .icon {
