@@ -2,8 +2,10 @@
 id: '6601151396886'
 alias: YouTube Notification - DrZzs
 trigger:
-  - platform: state
-    entity_id: sensor.drzzs
+#  - platform: state
+#    entity_id: sensor.drzzs
+  - platform: template
+    value_template: "{{ state_attr('sensor.drzzs','published') }}"
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
