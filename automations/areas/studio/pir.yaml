@@ -12,9 +12,14 @@ condition:
     - condition: state
       entity_id: sun.sun
       state: below_horizon
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'on'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.night_mode
+          state: 'on'
+        - condition: numeric_state
+          entity_id: sensor.patio_gzcgq01lm_illuminance
+          below: 5
     - condition: or
       conditions:
         - condition: state
