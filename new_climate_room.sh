@@ -3,8 +3,10 @@
 if [ "$1" = "" ]; then
 	echo -n "Please enter the new room name: ";
 	read ROOM_NAME
-else
+elif [ "$2" = "" ]; then
 	ROOM_NAME=$1
+else
+	ROOM_NAME="$1 $2"
 fi
 
 ROOM_NAME_LOWER=`echo $ROOM_NAME | tr A-Z a-z`
@@ -14,6 +16,9 @@ OLD_PWD=$PWD
 HA_PATH=/home/ha/.homeassistant/
 GITHUB_HA_PATH=/home/ha/HA-Config/
 cd $HA_PATH
+
+git add $HA_PATH/new_climate_room.sh
+git commit -m "Updated and improved Climate Config creation script"
 
 echo "Processing Climate file..."
 FILE=entities/climates/house.yaml
@@ -80,6 +85,7 @@ git commit -m "Updated $ROOM_NAME Climate related Entities"
 echo "Processing Automations..."
 for FILE in `ls automations/climate/house_*.yaml`
 	do
+	RANDOM_ID=`</dev/urandom tr -dc 0-9 | head -c15`
 	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 	echo "Copying $FILE to $NEW_FILE"
 	\cp $FILE $NEW_FILE
@@ -89,6 +95,7 @@ for FILE in `ls automations/climate/house_*.yaml`
 	sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
 	sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
 	sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
+	sed -i "2 i id: '$RANDOM_ID'" $NEW_FILE
 	git add $NEW_FILE
 done
 git commit -m "Updated $ROOM_NAME Climate Automations"
@@ -141,9 +148,13 @@ done
 git commit -m "Updated $ROOM_NAME Climate related Entities"
 for FILE in `ls automations/climate/house_*.yaml`
 	do
+	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 	git add $NEW_FILE
 done
 git commit -m "Updated $ROOM_NAME Climate Automations"
+
+git add $GITHUB_HA_PATH/new_climate_room.sh
+git commit -m "Updated and improved Climate Config creation script"
 
 
 cd $OLD_PWD
