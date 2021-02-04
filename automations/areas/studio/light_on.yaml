@@ -9,6 +9,9 @@ trigger:
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'on'
   - platform: state
+    entity_id: binary_sensor.studio_sonia_computer_ping
+    to: 'on'
+  - platform: state
     entity_id: binary_sensor.studio_2ajz4kpbs_pir
     to: 'off'
   - platform: state
@@ -41,7 +44,7 @@ condition:
           entity_id: binary_sensor.studio_andrea_computer_ping
           state: 'on'
         - condition: state
-          entity_id: binary_sensor.studio_sonia_computer
+          entity_id: binary_sensor.studio_sonia_computer_ping
           state: 'on'
 action:
   - service: light.turn_off

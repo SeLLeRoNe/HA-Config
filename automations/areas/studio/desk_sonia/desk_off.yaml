@@ -4,7 +4,7 @@ alias: Studio - Sonia - Desk Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_sonia_computer
+    entity_id: binary_sensor.studio_sonia_computer_ping
     to: 'off'
     for:
       seconds: 300

@@ -9,9 +9,6 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
     - condition: or
       conditions:
         - condition: state
@@ -20,19 +17,14 @@ condition:
         - condition: numeric_state
           entity_id: sensor.patio_gzcgq01lm_illuminance
           below: 5
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: light.studio_wall_light
-          state: 'off'
-        - condition: state
-          entity_id: light.studio_sonia_desk_lamp
-          state: "off"
+    - condition: state
+      entity_id: light.studio_lights
+      state: 'off'
     - condition: state
       entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'off'
     - condition: state
-      entity_id: binary_sensor.studio_sonia_computer
+      entity_id: binary_sensor.studio_sonia_computer_pint
       state: 'off'
     - condition: or
       conditions:
