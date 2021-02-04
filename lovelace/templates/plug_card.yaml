@@ -12,4 +12,4 @@ plug_card:
       state_color: true
       customTheme: true
       tap_action:
-      action: none
+        action: none
