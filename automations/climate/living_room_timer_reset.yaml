@@ -1,4 +1,5 @@
 ---
+id: '264556126382662'
 alias: Climate - Living Room - Timer Reset
 initial_state: 'on'
 trigger:
