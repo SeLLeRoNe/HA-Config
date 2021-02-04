@@ -1,27 +1,29 @@
 ---
-id: '5032227797934'
+id: '5708782140671'
 # When power is detected, and the dish washer is not in 
 # the Running state, change the status of the dish washer
 # to Running. 
 # The status check will ensure we don't try to put the state 
 # to Running each time the power level changes, and we're already
 # in the Running state.
-alias: Kitchen - Dishwasher - Drying
+alias: Kitchen - Dishwasher - Starting
 initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_dishwasher_power
-    above: 2000
-    for:
-      minutes: 5
+    above: 1
 condition:
   condition: or
   conditions:
     - condition: state
       entity_id: input_select.dishwasher_status
-      state: 'Washing'
+      state: 'Idle'
 action:
   - service: input_select.select_option
     data:
       entity_id: input_select.dishwasher_status
-      option: 'Drying'
+      option: 'Starting'
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.dishwasher_current_energy
+      value: "{{ states('sensor.power_usage_dishwasher_today_energy') }}"
