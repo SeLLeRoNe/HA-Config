@@ -1,4 +1,5 @@
 ---
+id: '096439963304494'
 alias: Climate - Master Bedroom - Active Off
 initial_state: 'on'
 trigger:
