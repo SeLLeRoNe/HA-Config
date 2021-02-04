@@ -4,7 +4,11 @@ trigger:
   - platform: state
     entity_id: light.hasp_desk_display
     to: 'off'
+  - platform: homeassistant
+    event: start
 action:
+  - service: light.turn_off
+    entity_id: light.hasp_desk_display
   - service: timer.finish
     data:
       entity_id: 'timer.desk01_screen_low'
