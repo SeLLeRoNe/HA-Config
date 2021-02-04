@@ -1,4 +1,5 @@
 ---
+id: '726822580980936'
 alias: Climate - Studio - Timer Reset
 initial_state: 'on'
 trigger:
