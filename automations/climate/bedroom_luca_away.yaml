@@ -1,4 +1,5 @@
 ---
+id: '959929224508330'
 alias: Climate - Bedroom Luca - Away Mode On
 initial_state: 'on'
 trigger:
