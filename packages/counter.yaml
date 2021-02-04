@@ -1,0 +1,14 @@
+---
+# This file load up my counters
+#
+# https://www.home-assistant.io/integrations/counter/
+#
+counter:
+  dishwasher_pods:
+    initial: 0
+    step: 1
+    icon: mdi:dishwasher
+  washing_machine_pods:
+    initial: 0
+    step: 1
+    icon: mdi:washing-machine
