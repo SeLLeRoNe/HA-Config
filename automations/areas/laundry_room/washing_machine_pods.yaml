@@ -1,0 +1,13 @@
+---
+# Alert for when the Washing Machine Pods are running out
+alias: Kitchen - Washing Machine - Pods
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: counter.washing_machine_pods
+    below: 15
+action:
+  - service: notify.telegram_andrea
+    data:
+      title: "Laundry Room"
+      message: "Washing Machine pods are running out. Please remember to buy them!"

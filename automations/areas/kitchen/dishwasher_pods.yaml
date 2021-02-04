@@ -1,0 +1,13 @@
+---
+# Alert for when the Dishwasher Pods are running out
+alias: Kitchen - Dishwasher - Pods
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: counter.dishwasher_pods
+    below: 10
+action:
+  - service: notify.telegram_andrea
+    data:
+      title: "Kitchen"
+      message: "Dishwasher pods are running out. Please remember to buy them!"
