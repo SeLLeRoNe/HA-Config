@@ -1,6 +1,6 @@
 ---
 platform: ping
-name: Studio Sonia Computer
+name: Studio Sonia Computer Ping
 host: !secret studio_sonia_computer_ip
 count: 2
 scan_interval: 30
