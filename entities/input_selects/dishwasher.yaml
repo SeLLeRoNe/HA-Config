@@ -3,6 +3,7 @@ dishwasher_status:
   name: Dishwasher
   options:
     - Idle
+    - Starting
     - Warming Up
     - Washing
     - Drying
