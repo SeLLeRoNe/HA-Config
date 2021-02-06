@@ -24,7 +24,7 @@ condition:
       entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'off'
     - condition: state
-      entity_id: binary_sensor.studio_sonia_computer_pint
+      entity_id: binary_sensor.studio_sonia_computer_ping
       state: 'off'
     - condition: or
       conditions:
