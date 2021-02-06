@@ -7,7 +7,7 @@ trigger:
     event: start
   - platform: numeric_state
     entity_id: sensor.andrea_oneplus_nord_battery_level
-    above: 95
+    above: 85
 condition:
   condition: and
   conditions:
@@ -16,7 +16,7 @@ condition:
       state: 'home'
     - condition: numeric_state
       entity_id: sensor.andrea_oneplus_nord_battery_level
-      above: 95
+      above: 85
 action:
   - service: switch.turn_off
     entity_id: switch.studio_usb_relay_01

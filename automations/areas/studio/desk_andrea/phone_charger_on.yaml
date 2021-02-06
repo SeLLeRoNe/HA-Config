@@ -7,7 +7,7 @@ trigger:
     event: start
   - platform: numeric_state
     entity_id: sensor.andrea_oneplus_nord_battery_level
-    below: 20
+    below: 70
   - platform: zone
     entity_id: person.andrea
     zone: zone.home
@@ -20,7 +20,7 @@ condition:
       state: 'home'
     - condition: numeric_state
       entity_id: sensor.andrea_oneplus_nord_battery_level
-      below: 20
+      below: 70
 action:
   - service: switch.turn_on
     entity_id: switch.studio_usb_relay_01
