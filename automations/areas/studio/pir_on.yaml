@@ -1,6 +1,6 @@
 ---
 id: '8857948807317'
-alias: Studio - Andrea - PIR
+alias: Studio - Andrea - PIR On
 initial_state: on
 trigger:
   - platform: state

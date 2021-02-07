@@ -1,6 +1,6 @@
 ---
-id: '8199208031783'
-alias: Bedroom Luca - PIR Night
+id: '1202805989352'
+alias: Bedroom Luca - PIR On Day
 initial_state: on
 trigger:
   - platform: state
@@ -9,9 +9,6 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'on'
     - condition: or
       conditions:
         - condition: numeric_state
@@ -34,8 +31,15 @@ condition:
     - condition: state
       entity_id: group.family
       state: 'home'
+    - condition: time
+      after: '10:30:00'
+      before: '21:30:00'
 action:
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom_luca_lights
+      transition: 15
   - service: scene.turn_on
     data:
-      entity_id: scene.bedroom_luca_diaper_change
+      entity_id: scene.bedroom_luca_lights_on
       transition: 15

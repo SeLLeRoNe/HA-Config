@@ -3,22 +3,13 @@ id: '1720110542926'
 alias: Studio - Andrea - Light On
 initial_state: on
 trigger:
-  - platform: homeassistant
-    event: start
-  - platform: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.studio_sonia_computer_ping
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.studio_2ajz4kpbs_pir
-    to: 'off'
   - platform: state
     entity_id: light.studio_wall_light
+    from: 'unavailable'
     to: 'on'
   - platform: state
     entity_id: light.studio_sonia_desk_lamp
+    from: 'unavailable'
     to: 'on'
 condition:
   condition: and
@@ -27,31 +18,22 @@ condition:
       conditions:
         - condition: state
           entity_id: light.studio_wall_light
-          state: "on"
-          for:
-            seconds: 60
+          state: "off"
         - condition: state
           entity_id: light.studio_sonia_desk_lamp
-          state: "on"
-          for:
-            seconds: 60
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: binary_sensor.studio_2ajz4kpbs_pir
-          state: 'off'
-        - condition: state
-          entity_id: binary_sensor.studio_andrea_computer_ping
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.studio_sonia_computer_ping
-          state: 'on'
+          state: "off"
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
 action:
   - service: light.turn_off
     data:
       entity_id: light.studio_wall_light
-      transition: 30
+      transition: 15
   - service: light.turn_off
     data:
       entity_id: light.studio_sonia_desk_lamp
-      transition: 30
+      transition: 15

@@ -1,6 +1,6 @@
 ---
 id: '3347976259556'
-alias: Bedroom Luca - Lights Off
+alias: Bedroom Luca - PIR Off
 initial_state: on
 trigger:
   - platform: state

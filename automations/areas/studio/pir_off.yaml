@@ -1,0 +1,15 @@
+---
+id: '3347797456625'
+alias: Studio - PIR Off
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_2ajz4kpbs_pir
+    to: 'off'
+    for:
+      seconds: 30
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_lights
+      transition: 15
