@@ -1,5 +1,5 @@
 ---
-id: '836839620460715'
+id: '114241676012747'
 alias: Climate - Bedroom Luca - Idle
 initial_state: 'on'
 trigger:
@@ -117,6 +117,14 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
     - condition: state
       entity_id: input_boolean.climate_bedroom_luca_heating_push
       state: 'off'
