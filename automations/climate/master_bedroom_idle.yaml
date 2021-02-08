@@ -1,5 +1,5 @@
 ---
-id: '091113195115945'
+id: '582396910851814'
 alias: Climate - Master Bedroom - Idle
 initial_state: 'on'
 trigger:
@@ -845,9 +845,10 @@ condition:
                               entity_id: input_boolean.climate_master_bedroom_weekend_t10
                               state: 'on'
 action:
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.master_bedroom
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.master_bedroom
+      preset_mode: none
   - service: climate.set_temperature
     data:
       entity_id: climate.master_bedroom

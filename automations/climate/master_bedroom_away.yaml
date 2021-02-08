@@ -1,23 +1,38 @@
 ---
-id: '997938597929403'
+id: '169948944665540'
 alias: Climate - Master Bedroom - Away Mode On
 initial_state: 'on'
 trigger:
   - platform: homeassistant
     event: start
-  - platform: template
-    value_template: "{{ states.climate.master_bedroom.attributes.preset_mode == 'away' }}"
+  - platform: state
+    entity_id: group.family
+    to: 'not_home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_master_bedroom_heating_push
+    to: 'off'
 condition:
   condition: and
   conditions:
-    - condition: template
-      value_template: "{{ states.climate.master_bedroom.attributes.preset_mode == 'away' }}"
+    - condition: state
+      entity_id: input_boolean.climate_master_bedroom_heating_push
+      state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
 action:
   - service: homeassistant.turn_off
-    data:
-      entity_id: input_boolean.climate_master_bedroom_heating_push
-  - service: homeassistant.turn_off
     entity_id: group.climate_master_bedroom_active
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.master_bedroom
+      preset_mode: away
   - service: input_select.select_option
     data:
       entity_id: input_select.climate_master_bedroom
