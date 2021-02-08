@@ -1,7 +1,7 @@
-title: Plugs
+title: Energy
 icon: mdi:power-plug
 panel: true
-path: plugs
+path: energy
 cards:
   - type: custom:layout-card
     layout: vertical
@@ -708,8 +708,6 @@ cards:
       - break
       - type: custom:decluttering-card
         template: house_energy
-        variables:
-          - title: House
       - break
       - type: custom:decluttering-card
         template: living_room_energy
