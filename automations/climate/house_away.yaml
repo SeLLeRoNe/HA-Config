@@ -5,19 +5,34 @@ initial_state: 'on'
 trigger:
   - platform: homeassistant
     event: start
-  - platform: template
-    value_template: "{{ states.climate.house.attributes.preset_mode == 'away' }}"
+  - platform: state
+    entity_id: group.family
+    to: 'not_home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_house_heating_push
+    to: 'off'
 condition:
   condition: and
   conditions:
-    - condition: template
-      value_template: "{{ states.climate.house.attributes.preset_mode == 'away' }}"
+    - condition: state
+      entity_id: input_boolean.climate_house_heating_push
+      state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
 action:
   - service: homeassistant.turn_off
-    data:
-      entity_id: input_boolean.climate_house_heating_push
-  - service: homeassistant.turn_off
     entity_id: group.climate_house_active
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.house
+      preset_mode: away
   - service: input_select.select_option
     data:
       entity_id: input_select.climate_house

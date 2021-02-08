@@ -845,9 +845,10 @@ condition:
                               entity_id: input_boolean.climate_house_weekend_t10
                               state: 'on'
 action:
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.house
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.house
+      preset_mode: none
   - service: climate.set_temperature
     data:
       entity_id: climate.house
