@@ -9,9 +9,9 @@ cards:
       - type: custom:decluttering-card
         template: house_humidity_apex
       - break
-#      - type: custom:decluttering-card
-#        template: house_energy_apex
-#      - break
+      - type: custom:decluttering-card
+        template: house_energy_apex
+      - break
 #      - type: custom:decluttering-card
 #        template: house_energy
 #      - break
