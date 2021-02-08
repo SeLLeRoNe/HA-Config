@@ -117,6 +117,14 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
     - condition: state
       entity_id: input_boolean.climate_house_heating_push
       state: 'off'
