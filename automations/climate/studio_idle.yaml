@@ -1,5 +1,5 @@
 ---
-id: '841657560575202'
+id: '494752922516024'
 alias: Climate - Studio - Idle
 initial_state: 'on'
 trigger:
@@ -845,9 +845,10 @@ condition:
                               entity_id: input_boolean.climate_studio_weekend_t10
                               state: 'on'
 action:
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.studio
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.studio
+      preset_mode: none
   - service: climate.set_temperature
     data:
       entity_id: climate.studio
