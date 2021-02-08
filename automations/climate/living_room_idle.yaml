@@ -1,5 +1,5 @@
 ---
-id: '175691016824097'
+id: '183179282998717'
 alias: Climate - Living Room - Idle
 initial_state: 'on'
 trigger:
@@ -845,9 +845,10 @@ condition:
                               entity_id: input_boolean.climate_living_room_weekend_t10
                               state: 'on'
 action:
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.living_room
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living_room
+      preset_mode: none
   - service: climate.set_temperature
     data:
       entity_id: climate.living_room

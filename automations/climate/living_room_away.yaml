@@ -1,23 +1,38 @@
 ---
-id: '545656801101504'
+id: '006870930850944'
 alias: Climate - Living Room - Away Mode On
 initial_state: 'on'
 trigger:
   - platform: homeassistant
     event: start
-  - platform: template
-    value_template: "{{ states.climate.living_room.attributes.preset_mode == 'away' }}"
+  - platform: state
+    entity_id: group.family
+    to: 'not_home'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.climate_living_room_heating_push
+    to: 'off'
 condition:
   condition: and
   conditions:
-    - condition: template
-      value_template: "{{ states.climate.living_room.attributes.preset_mode == 'away' }}"
+    - condition: state
+      entity_id: input_boolean.climate_living_room_heating_push
+      state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
 action:
   - service: homeassistant.turn_off
-    data:
-      entity_id: input_boolean.climate_living_room_heating_push
-  - service: homeassistant.turn_off
     entity_id: group.climate_living_room_active
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living_room
+      preset_mode: away
   - service: input_select.select_option
     data:
       entity_id: input_select.climate_living_room
