@@ -1,22 +1,35 @@
 #!/bin/bash
 
+OLD_PWD=$PWD
+HA_PATH=/home/ha/.homeassistant/
+GITHUB_HA_PATH=/home/ha/HA-Config/
+ALL=0
+
 if [ "$1" = "" ]; then
 	echo -n "Please enter the new room name: ";
 	read ROOM_NAME
 elif [ "$2" = "" ]; then
-	ROOM_NAME=$1
+	if [ "$1" != "all" ]; then
+		ROOM_NAME=$1
+	else
+		ALL=1
+	fi
 else
 	ROOM_NAME="$1 $2"
+fi
+
+if [ $ALL -eq 1 ]; then
+	$HA_PATH/new_climate_room.sh Living Room
+	$HA_PATH/new_climate_room.sh Studio
+	$HA_PATH/new_climate_room.sh Master Bedroom
+	$HA_PATH/new_climate_room.sh Bedroom Luca
+	exit 0;
 fi
 
 ROOM_NAME_LOWER=`echo $ROOM_NAME | tr A-Z a-z`
 ENTITY_NAME=$(sed "s/ /_/g" <<< $ROOM_NAME_LOWER)
 
-OLD_PWD=$PWD
-HA_PATH=/home/ha/.homeassistant/
-GITHUB_HA_PATH=/home/ha/HA-Config/
 cd $HA_PATH
-
 git add $HA_PATH/new_climate_room.sh
 git commit -m "Updated and improved Climate Config creation script"
 
