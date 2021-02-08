@@ -13,7 +13,7 @@ trigger:
     entity_id: sensor.power_usage_dishwasher_power
     below: 1
     for:
-      seconds: 30
+      seconds: 15
 condition:
   condition: or
   conditions:
