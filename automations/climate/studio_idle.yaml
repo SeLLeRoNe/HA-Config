@@ -1,5 +1,5 @@
 ---
-id: '802883450463670'
+id: '841657560575202'
 alias: Climate - Studio - Idle
 initial_state: 'on'
 trigger:
@@ -117,6 +117,14 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.family
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
     - condition: state
       entity_id: input_boolean.climate_studio_heating_push
       state: 'off'
