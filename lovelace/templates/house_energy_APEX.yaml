@@ -1,0 +1,20 @@
+---
+house_energy_apex:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: House
+      - type: custom:decluttering-card
+        template: house_cost_apex
+        variables:
+          - area: house
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:decluttering-card
+        template: house_total_apex
+        variables:
+          - area: house

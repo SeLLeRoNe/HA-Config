@@ -1,0 +1,120 @@
+---
+house_total_apex:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: markdown
+        content: >
+          ## Total
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Today Energy
+            icon: mdi:flash
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: bar
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds: !include thresholds/house_today_energy.yaml
+            entities:
+              - entity: sensor.[[area]]_today_energy_usage
+            tap_action:
+              action: none
+          - type: custom:mini-graph-card
+            name: Current Power
+            icon: mdi:flash
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 1
+            logarithmic: true
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: line
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds: !include thresholds/house_current_power.yaml
+            entities:
+              - entity: sensor.[[area]]_total_power_usage
+            tap_action:
+              action: none
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Current Ampere
+            icon: mdi:flash
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 2
+            logarithmic: true
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: line
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds: !include thresholds/house_current_ampere.yaml
+            entities:
+              - entity: sensor.[[area]]_total_ampere_usage
+            tap_action:
+              action: none
+          - type: custom:mini-graph-card
+            name: Average Voltage
+            icon: mdi:flash
+            hours_to_show: 24
+            points_per_hour: 0.5
+            aggregate_func: max
+            group_by: hour
+            group: false
+            hour24: true
+            animate: false
+            decimals: 1
+            logarithmic: true
+            show:
+              name: true
+              icon: true
+              state: true
+              graph: line
+              fill: false
+              points: false
+              legend: true
+              extrema: false
+              labels: false
+            color_thresholds: !include thresholds/voltage.yaml
+            entities:
+              - entity: sensor.[[area]]_average_voltage
+            tap_action:
+              action: none

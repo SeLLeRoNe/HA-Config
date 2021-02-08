@@ -1,0 +1,22 @@
+---
+house_humidity_apex:
+  card:
+    type: custom:apexcharts-card
+    graph_span: 168h
+    header:
+      show: true
+    series:
+      - entity: sensor.house_humidity
+        type: line
+        name: Inside
+        color: '#00BFFF'
+        group_by:
+          func: avg
+          duration: 30min
+      - entity: sensor.dark_sky_humidity
+        type: column
+        name: Outside
+        color: '#59B300'
+        group_by:
+           func: avg
+           duration: 30min

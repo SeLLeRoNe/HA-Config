@@ -6,21 +6,15 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: "LEELKO Power Strip"
-#          - type: entities
-#            show_header_toggle: false
-#            entities:
-#              - entity: switch.leelki_power_strip_switch_1
-#              - entity: switch.leelki_power_strip_switch_2
-#              - entity: switch.leelki_power_strip_switch_3
-#              - entity: switch.leelki_power_strip_switch_4
-#              - entity: sensor.leeki_power_strip_link_quality
+      - type: custom:decluttering-card
+        template: house_humidity_apex
+      - break
+#      - type: custom:decluttering-card
+#        template: house_energy_apex
+#      - break
+#      - type: custom:decluttering-card
+#        template: house_energy
+#      - break
       - type: custom:stack-in-card
         mode: vertical
         cards:
@@ -69,23 +63,27 @@ cards:
         show_header_toggle: false
         entities:
           - entity: sensor.andrea_oneplus_nord_gps
-          - entity: sensor.andrea_oneplus_nord_gpslogger_gps
+#          - entity: sensor.andrea_oneplus_nord_gpslogger_gps
           - entity: sensor.sonia_mi_9t_pro_gps
       - type: history-graph
         title:
-        hours_to_show: 168
+        hours_to_show: 24
         refresh_interval: 15
         entities:
           - entity: person.andrea
             name: Andrea
           - entity: device_tracker.andrea_oneplus_nord
             name: HA App
-          - entity: device_tracker.andrea_oneplus_nord_gpslogger
-            name: GPSLogger
+          - entity: device_tracker.andrea_oneplus_nord_bt
+            name: Bluetooth
+#          - entity: device_tracker.andrea_oneplus_nord_gpslogger
+#            name: GPSLogger
           - entity: person.sonia
             name: Sonia
           - entity: device_tracker.sonia_mi_9t_pro
             name: HA App
+          - entity: device_tracker.sonia_mi_9t_pro_bt
+            name: Bluetooth
       - type: horizontal-stack
         cards:
         ####################################
@@ -276,47 +274,24 @@ cards:
                 ]]]
 
       - break
-      - type: light
-        entity: light.christmas_tree
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - sensor.christmas_tree_estimated_current
-          - sensor.christmas_tree_free_memory
-          - type: custom:toggle-control-button-row
-            entity: switch.christmas_tree_nightlight
-            customTheme: true
-          - type: custom:toggle-control-button-row
-            entity: switch.christmas_tree_sync_receive
-            customTheme: true
-          - type: custom:toggle-control-button-row
-            entity: switch.christmas_tree_sync_send
-            customTheme: true
-          - sensor.christmas_tree_uptime
-          - sensor.christmas_tree_wi_fi_bssid
-          - sensor.christmas_tree_wi_fi_channel
-          - sensor.christmas_tree_wi_fi_rssi
-          - sensor.christmas_tree_wi_fi_signal
-      - break
-#      - type: light
-#        entity: light.master_bedroom_bed_led
-#      - type: entities
-#        show_header_toggle: false
-#        entities:
-#          - sensor.master_bedroom_bed_led_estimated_current
-#          - sensor.master_bedroom_bed_led_free_memory
-#          - switch.master_bedroom_bed_led_nightlight
-#          - switch.master_bedroom_bed_led_sync_receive
-#          - switch.master_bedroom_bed_led_sync_send
-#          - sensor.master_bedroom_bed_led_uptime
-#          - sensor.master_bedroom_bed_led_wi_fi_bssid
-#          - sensor.master_bedroom_bed_led_wi_fi_channel
-#          - sensor.master_bedroom_bed_led_wi_fi_rssi
-#          - sensor.master_bedroom_bed_led_wi_fi_signal
       - type: entities
         title: Studio
         show_header_toggle: false
         entities:
+          - type: custom:light-brightness-preset-row
+            entity: light.studio_sonia_desk_lamp
+            name: Sonia Desk Lamp
+            customSetpoints: true
+            LowBrightness: 50
+            MedBrightness: 125
+            HiBrightness: 255
+            customTheme: true
+            IsOffColor: '#B30000'
+            IsOnColor: '#FFFF00'
+            IsOnLowColor: '#248F24'
+            IsOnMedColor: '#248F24'
+            IsOnHiColor: '#248F24'
+            ButtonInactiveColor: '#000000'
           - type: custom:light-brightness-preset-row
             entity: light.studio_wall_light
             name: Wall Light
@@ -331,4 +306,3 @@ cards:
             IsOnMedColor: '#248F24'
             IsOnHiColor: '#248F24'
             ButtonInactiveColor: '#000000'
-#      - break
