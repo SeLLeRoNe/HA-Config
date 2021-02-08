@@ -18,6 +18,25 @@ wled_card:
             min: 0
             max: 100
             step: 1
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: '[[name]]'
+                card:
+                  type: entities
+                  entities:
+                    - sensor.[[entity]]_estimated_current
+                    - sensor.[[entity]]_free_memory
+                    - switch.[[entity]]_nightlight
+                    - switch.[[entity]]_sync_receive
+                    - switch.[[entity]]_sync_send
+                    - sensor.[[entity]]_uptime
+                    - sensor.[[entity]]_wi_fi_bssid
+                    - sensor.[[entity]]_wi_fi_channel
+                    - sensor.[[entity]]_wi_fi_rssi
+                    - sensor.[[entity]]_wi_fi_signal
+                  deviceID:
       "on":
         type: entities
         show_header_toggle: false
@@ -32,6 +51,25 @@ wled_card:
             min: 0
             max: 100
             step: 1
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: '[[name]]'
+                card:
+                  type: entities
+                  entities:
+                    - sensor.[[entity]]_estimated_current
+                    - sensor.[[entity]]_free_memory
+                    - switch.[[entity]]_nightlight
+                    - switch.[[entity]]_sync_receive
+                    - switch.[[entity]]_sync_send
+                    - sensor.[[entity]]_uptime
+                    - sensor.[[entity]]_wi_fi_bssid
+                    - sensor.[[entity]]_wi_fi_channel
+                    - sensor.[[entity]]_wi_fi_rssi
+                    - sensor.[[entity]]_wi_fi_signal
+                  deviceID:
           - type: 'custom:rgb-light-card'
             entity: light.[[entity]]
             size: 25
@@ -71,13 +109,3 @@ wled_card:
                 - 255
                 - 0
                 icon_color: '#FFFF00'
-          - sensor.[[entity]]_estimated_current
-          - sensor.[[entity]]_free_memory
-          - switch.[[entity]]_nightlight
-          - switch.[[entity]]_sync_receive
-          - switch.[[entity]]_sync_send
-          - sensor.[[entity]]_uptime
-          - sensor.[[entity]]_wi_fi_bssid
-          - sensor.[[entity]]_wi_fi_channel
-          - sensor.[[entity]]_wi_fi_rssi
-          - sensor.[[entity]]_wi_fi_signal
