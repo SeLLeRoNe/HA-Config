@@ -1,5 +1,5 @@
 ---
-id: '114241676012747'
+id: '366875752498755'
 alias: Climate - Bedroom Luca - Idle
 initial_state: 'on'
 trigger:
@@ -845,9 +845,10 @@ condition:
                               entity_id: input_boolean.climate_bedroom_luca_weekend_t10
                               state: 'on'
 action:
-#  - service: climate.turn_off
-#    data:
-#      entity_id: climate.bedroom_luca
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.bedroom_luca
+      preset_mode: none
   - service: climate.set_temperature
     data:
       entity_id: climate.bedroom_luca
