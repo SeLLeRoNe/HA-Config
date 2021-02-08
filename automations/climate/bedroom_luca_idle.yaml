@@ -1,8 +1,13 @@
 ---
-id: '131436093170901'
+id: '836839620460715'
 alias: Climate - Bedroom Luca - Idle
 initial_state: 'on'
 trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: group.family
+    to: 'home'
   - platform: state
     entity_id: input_boolean.climate_bedroom_luca_heating_push
     to: 'off'
