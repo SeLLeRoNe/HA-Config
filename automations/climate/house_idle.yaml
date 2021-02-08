@@ -3,6 +3,11 @@ id: '7645773357712'
 alias: Climate - House - Idle
 initial_state: 'on'
 trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: group.family
+    to: 'home'
   - platform: state
     entity_id: input_boolean.climate_house_heating_push
     to: 'off'
