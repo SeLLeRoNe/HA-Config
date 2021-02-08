@@ -9,112 +9,165 @@ house_total_apex:
           ## Total
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            name: Today Energy
-            icon: mdi:flash
-            hours_to_show: 24
-            points_per_hour: 0.5
-            aggregate_func: max
-            group_by: hour
-            group: false
-            hour24: true
-            animate: false
-            decimals: 2
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: bar
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            color_thresholds: !include thresholds/house_today_energy.yaml
-            entities:
-              - entity: sensor.[[area]]_today_energy_usage
-            tap_action:
-              action: none
-          - type: custom:mini-graph-card
-            name: Current Power
-            icon: mdi:flash
-            hours_to_show: 24
-            points_per_hour: 0.5
-            aggregate_func: max
-            group_by: hour
-            group: false
-            hour24: true
-            animate: false
-            decimals: 1
-            logarithmic: true
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            color_thresholds: !include thresholds/house_current_power.yaml
-            entities:
-              - entity: sensor.[[area]]_total_power_usage
-            tap_action:
-              action: none
+          - type: 'custom:apexcharts-card'
+            graph_span: 7d1s
+            span:
+              end: day
+            header:
+              show: true
+              title: Kosten energie per dag in .
+            apex_config:
+              chart:
+                type: area
+                height: 400
+              stroke:
+                show: true
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              dataLabels:
+                enabled: false
+              xaxis:
+                labels:
+                  format: dd-MM
+              fill:
+                type: gradient
+                gradient:
+                  shadeIntensity: 0.1
+                  opacityFrom: 0.25
+                  opacityTo: 1
+                  inverseColors: true
+                  stops:
+                    - 0
+                    - 90
+                    - 100
+            series:
+              - color: 'rgb(138,43,226)'
+                entity: sensor.[[area]]_today_energy_usage
+                type: column
+                group_by:
+                  func: max
+                  duration: 24h
+          - type: 'custom:apexcharts-card'
+            graph_span: 7d1s
+            span:
+              end: day
+            header:
+              show: true
+              title: Kosten energie per dag in .
+            apex_config:
+              chart:
+                type: area
+                height: 400
+              stroke:
+                show: true
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              dataLabels:
+                enabled: false
+              xaxis:
+                labels:
+                  format: dd-MM
+              fill:
+                type: gradient
+                gradient:
+                  shadeIntensity: 0.1
+                  opacityFrom: 0.25
+                  opacityTo: 1
+                  inverseColors: true
+                  stops:
+                    - 0
+                    - 90
+                    - 100
+            series:
+              - color: 'rgb(235,10,104)'
+                entity: sensor.[[area]]_total_power_usage
+                type: line
+                group_by:
+                  func: max
+                  duration: 24h
       - type: horizontal-stack
         cards:
-          - type: custom:mini-graph-card
-            name: Current Ampere
-            icon: mdi:flash
-            hours_to_show: 24
-            points_per_hour: 0.5
-            aggregate_func: max
-            group_by: hour
-            group: false
-            hour24: true
-            animate: false
-            decimals: 2
-            logarithmic: true
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            color_thresholds: !include thresholds/house_current_ampere.yaml
-            entities:
-              - entity: sensor.[[area]]_total_ampere_usage
-            tap_action:
-              action: none
-          - type: custom:mini-graph-card
-            name: Average Voltage
-            icon: mdi:flash
-            hours_to_show: 24
-            points_per_hour: 0.5
-            aggregate_func: max
-            group_by: hour
-            group: false
-            hour24: true
-            animate: false
-            decimals: 1
-            logarithmic: true
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            color_thresholds: !include thresholds/voltage.yaml
-            entities:
-              - entity: sensor.[[area]]_average_voltage
-            tap_action:
-              action: none
+          - type: 'custom:apexcharts-card'
+            graph_span: 7d1s
+            span:
+              end: day
+            header:
+              show: true
+              title: Kosten energie per dag in .
+            apex_config:
+              chart:
+                type: area
+                height: 400
+              stroke:
+                show: true
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              dataLabels:
+                enabled: false
+              xaxis:
+                labels:
+                  format: dd-MM
+              fill:
+                type: gradient
+                gradient:
+                  shadeIntensity: 0.1
+                  opacityFrom: 0.25
+                  opacityTo: 1
+                  inverseColors: true
+                  stops:
+                    - 0
+                    - 90
+                    - 100
+            series:
+              - color: 'rgb(128,128,128)'
+                entity: sensor.[[area]]_total_ampere_usage
+                type: column
+                group_by:
+                  func: max
+                  duration: 24h
+          - type: 'custom:apexcharts-card'
+            graph_span: 7d1s
+            span:
+              end: day
+            header:
+              show: true
+              title: Kosten energie per dag in .
+            apex_config:
+              chart:
+                type: area
+                height: 400
+              stroke:
+                show: true
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              dataLabels:
+                enabled: false
+              xaxis:
+                labels:
+                  format: dd-MM
+              fill:
+                type: gradient
+                gradient:
+                  shadeIntensity: 0.1
+                  opacityFrom: 0.25
+                  opacityTo: 1
+                  inverseColors: true
+                  stops:
+                    - 0
+                    - 90
+                    - 100
+            series:
+              - color: 'rgb(138,43,226)'
+                entity: sensor.[[area]]_average_voltage
+                type: line
+                group_by:
+                  func: max
+                  duration: 24h

@@ -9,22 +9,28 @@ house_cost_apex:
           ## Usage/Costs
       - type: horizontal-stack
         cards:
-          - type: custom:apexcharts-card
-            graph_span: 1d
+          - type: 'custom:apexcharts-card'
+            graph_span: 7d1s
+            span:
+              end: day
             header:
-              show: false
+              show: true
+              title: Kosten energie per dag in .
             apex_config:
               chart:
                 type: area
-                height: 250
+                height: 400
               stroke:
                 show: true
                 width: 1
                 curve: smooth
               legend:
-                show: true
+                show: false
               dataLabels:
-                enabled: true
+                enabled: false
+              xaxis:
+                labels:
+                  format: dd-MM
               fill:
                 type: gradient
                 gradient:
@@ -37,189 +43,21 @@ house_cost_apex:
                     - 90
                     - 100
             series:
-              - entity: sensor.[[area]]_daily_energy_usage
+              - color: 'rgb(138,43,226)'
+                entity: sensor.house_cost_daily
                 type: column
-                name: Daily Energy
-                color: '#0DA035'
                 group_by:
                   func: max
-                  duration: 30m
-          - type: custom:apexcharts-card
-            graph_span: 1d
-            header:
-              show: false
-            apex_config:
-              chart:
-                type: area
-                height: 250
-              stroke:
-                show: true
-                width: 1
-                curve: smooth
-              legend:
-                show: true
-              dataLabels:
-                enabled: true
-              fill:
-                type: gradient
-                gradient:
-                  shadeIntensity: 0.1
-                  opacityFrom: 0.25
-                  opacityTo: 1
-                  inverseColors: true
-                  stops:
-                    - 0
-                    - 90
-                    - 100
-            series:
-              - entity: sensor.[[area]]_cost_daily
+                  duration: 24h
+              - color: 'rgb(235,10,104)'
+                entity: sensor.living_room_cost_daily
                 type: column
-                name: Daily Cost
-                color: '#0DA035'
                 group_by:
                   func: max
-                  duration: 30m
-      - type: horizontal-stack
-        cards:
-          - type: custom:apexcharts-card
-            graph_span: 7d
-            header:
-              show: false
-            apex_config:
-              chart:
-                type: area
-                height: 250
-              stroke:
-                show: true
-                width: 1
-                curve: smooth
-              legend:
-                show: true
-              dataLabels:
-                enabled: true
-              fill:
-                type: gradient
-                gradient:
-                  shadeIntensity: 0.1
-                  opacityFrom: 0.25
-                  opacityTo: 1
-                  inverseColors: true
-                  stops:
-                    - 0
-                    - 90
-                    - 100
-            series:
-              - entity: sensor.[[area]]_monthly_energy_usage
+                  duration: 24h
+              - color: 'rgb(128,128,128)'
+                entity: sensor.studio_cost_daily
                 type: column
-                name: Monthly Energ
-                color: '#0DA035'
                 group_by:
                   func: max
-                  duration: 30m
-          - type: custom:apexcharts-card
-            graph_span: 7d
-            header:
-              show: false
-            apex_config:
-              chart:
-                type: area
-                height: 250
-              stroke:
-                show: true
-                width: 1
-                curve: smooth
-              legend:
-                show: true
-              dataLabels:
-                enabled: true
-              fill:
-                type: gradient
-                gradient:
-                  shadeIntensity: 0.1
-                  opacityFrom: 0.25
-                  opacityTo: 1
-                  inverseColors: true
-                  stops:
-                    - 0
-                    - 90
-                    - 100
-            series:
-              - entity: sensor.[[area]]_cost_monthly
-                type: column
-                name: Monthly Cost
-                color: '#0DA035'
-                group_by:
-                  func: max
-                  duration: 30m
-      - type: horizontal-stack
-        cards:
-          - type: custom:apexcharts-card
-            graph_span: 15d
-            header:
-              show: false
-            apex_config:
-              chart:
-                type: area
-                height: 250
-              stroke:
-                show: true
-                width: 1
-                curve: smooth
-              legend:
-                show: true
-              dataLabels:
-                enabled: true
-              fill:
-                type: gradient
-                gradient:
-                  shadeIntensity: 0.1
-                  opacityFrom: 0.25
-                  opacityTo: 1
-                  inverseColors: true
-                  stops:
-                    - 0
-                    - 90
-                    - 100
-            series:
-              - entity: sensor.[[area]]_yearly_energy_usage
-                type: column
-                name: Yearly Energ
-                color: '#0DA035'
-                group_by:
-                  func: max
-                  duration: 30m
-          - type: custom:apexcharts-card
-            graph_span: 15d
-            header:
-              show: false
-            apex_config:
-              chart:
-                type: area
-                height: 250
-              stroke:
-                show: true
-                width: 1
-                curve: smooth
-              legend:
-                show: true
-              dataLabels:
-                enabled: true
-              fill:
-                type: gradient
-                gradient:
-                  shadeIntensity: 0.1
-                  opacityFrom: 0.25
-                  opacityTo: 1
-                  inverseColors: true
-                  stops:
-                    - 0
-                    - 90
-                    - 100
-            series:
-              - entity: sensor.[[area]]_cost_yearly
-                type: column
-                name: Yearly Cost
-                color: '#0DA035'
-                group_by:
-                  func: max
-                  duration: 30m
+                  duration: 24h
