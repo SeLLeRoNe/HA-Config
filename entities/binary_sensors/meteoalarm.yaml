@@ -1,5 +1,4 @@
 ---
-platform: meteoalarm
+platform: meteoalarmeu
 country: "ES"
-province: "Noroeste de A Coruña"
-language: "en"
+region: "Noroeste de A Coruña"
