@@ -26,16 +26,18 @@ wled_card:
                 card:
                   type: entities
                   entities:
-                    - sensor.[[entity]]_estimated_current
-                    - sensor.[[entity]]_free_memory
-                    - switch.[[entity]]_nightlight
-                    - switch.[[entity]]_sync_receive
-                    - switch.[[entity]]_sync_send
-                    - sensor.[[entity]]_uptime
-                    - sensor.[[entity]]_wi_fi_bssid
-                    - sensor.[[entity]]_wi_fi_channel
-                    - sensor.[[entity]]_wi_fi_rssi
-                    - sensor.[[entity]]_wi_fi_signal
+                    - type: 'custom:more-info-card'
+                      entity: light.[[entity]]
+                    - entity: sensor.[[entity]]_estimated_current
+                    - entity: sensor.[[entity]]_free_memory
+                    - entity: switch.[[entity]]_nightlight
+                    - entity: switch.[[entity]]_sync_receive
+                    - entity: switch.[[entity]]_sync_send
+                    - entity: sensor.[[entity]]_uptime
+                    - entity: sensor.[[entity]]_wi_fi_bssid
+                    - entity: sensor.[[entity]]_wi_fi_channel
+                    - entity: sensor.[[entity]]_wi_fi_rssi
+                    - entity: sensor.[[entity]]_wi_fi_signal
                   deviceID:
       "on":
         type: entities
@@ -59,16 +61,18 @@ wled_card:
                 card:
                   type: entities
                   entities:
-                    - sensor.[[entity]]_estimated_current
-                    - sensor.[[entity]]_free_memory
-                    - switch.[[entity]]_nightlight
-                    - switch.[[entity]]_sync_receive
-                    - switch.[[entity]]_sync_send
-                    - sensor.[[entity]]_uptime
-                    - sensor.[[entity]]_wi_fi_bssid
-                    - sensor.[[entity]]_wi_fi_channel
-                    - sensor.[[entity]]_wi_fi_rssi
-                    - sensor.[[entity]]_wi_fi_signal
+                    - type: 'custom:more-info-card'
+                      entity: light.[[entity]]
+                    - entity: sensor.[[entity]]_estimated_current
+                    - entity: sensor.[[entity]]_free_memory
+                    - entity: switch.[[entity]]_nightlight
+                    - entity: switch.[[entity]]_sync_receive
+                    - entity: switch.[[entity]]_sync_send
+                    - entity: sensor.[[entity]]_uptime
+                    - entity: sensor.[[entity]]_wi_fi_bssid
+                    - entity: sensor.[[entity]]_wi_fi_channel
+                    - entity: sensor.[[entity]]_wi_fi_rssi
+                    - entity: sensor.[[entity]]_wi_fi_signal
                   deviceID:
           - type: 'custom:rgb-light-card'
             entity: light.[[entity]]
