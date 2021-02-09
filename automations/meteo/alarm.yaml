@@ -1,4 +1,5 @@
 ---
+id: '268782847155244'
 alias: Alert me about weather warnings
 trigger:
   - platform: state
