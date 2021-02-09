@@ -1,0 +1,10 @@
+{
+  "version": "2021.2.3",
+  "domain": "meteoalarmeu",
+  "name": "Weather Alerts from meteoalarm.eu",
+  "documentation": "https://github.com/xlcnd/meteoalarmeu",
+  "issue_tracker": "https://github.com/xlcnd/meteoalarmeu/issues",
+  "requirements": ["meteoalarm_rssapi==0.2.3"],
+  "dependencies": [],
+  "codeowners": ["@xlcnd"]
+}
