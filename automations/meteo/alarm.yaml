@@ -1,0 +1,41 @@
+---
+alias: Alert me about weather warnings
+trigger:
+  - platform: state
+    entity_id: binary_sensor.meteoalarmeu
+    attribute: message_id
+condition:
+  - condition: state
+    entity_id: binary_sensor.meteoalarmeu
+    state: 'on'
+action:
+  - service: notify.notify
+    data_template:
+      title: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
+      message: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
+
+        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
+  - service: persistent_notification.create
+    data:
+      title: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
+      message: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
+        \n\n
+        Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until') }}**
+      notification_id: "meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
+      message: >
+        {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
+        \n\n
+        Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until') }}**
+      data:
+        color: "#0000FF"
+        sticky: "true"
+        tag: tag
+        ttl: 0
