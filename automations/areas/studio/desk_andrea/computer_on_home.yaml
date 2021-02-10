@@ -3,6 +3,8 @@ id: '5219767528180'
 alias: Studio - Andrea - Computer On - Home
 initial_state: on
 trigger:
+  - platform: homeassistant
+    event: start
   - platform: state
     entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'on'
