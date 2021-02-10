@@ -13,13 +13,13 @@ trigger:
     entity_id: sensor.power_usage_dishwasher_power
     below: 1
     for:
-      seconds: 15
-condition:
-  condition: or
-  conditions:
-    - condition: state
-      entity_id: input_select.dishwasher_status
-      state: 'Done'
+      seconds: 30
+#condition:
+#  condition: or
+#  conditions:
+#    - condition: state
+#      entity_id: input_select.dishwasher_status
+#      state: 'Done'
 action:
   - service: input_select.select_option
     data:
