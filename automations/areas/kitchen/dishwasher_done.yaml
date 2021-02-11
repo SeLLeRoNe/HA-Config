@@ -14,13 +14,13 @@ trigger:
     above: 1
     below: 2
     for:
-      seconds: 15
+      seconds: 5
 condition:
   condition: or
   conditions:
-    - condition: state
-      entity_id: input_select.dishwasher_status
-      state: 'Washing'
+#    - condition: state
+#      entity_id: input_select.dishwasher_status
+#      state: 'Washing'
     - condition: state
       entity_id: input_select.dishwasher_status
       state: 'Drying'
