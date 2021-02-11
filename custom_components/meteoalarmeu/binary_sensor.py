@@ -144,5 +144,5 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
             self._attributes = alarms
             self._state = True
         else:
-            self._attributes = {}
+            self._attributes = {"alerts": 0}
             self._state = False
