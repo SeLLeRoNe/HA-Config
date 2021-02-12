@@ -1,0 +1,14 @@
+---
+alias: hasp_desk01_pir_activation_disarmed
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+    to: 'off'
+    for:
+      seconds: 30
+action:
+  - service: light.turn_off
+    entity_id: light.hasp_desk_display
