@@ -9,6 +9,8 @@ trigger:
   - platform: time_pattern
     hours: '*'
     minutes: '0'
+  - platform: homeassistant
+    event: start
 action:
   - service: light.turn_off
     entity_id: light.hasp_desk_display
