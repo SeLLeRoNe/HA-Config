@@ -18,6 +18,7 @@ from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from meteoalarm_rssapi import (
     MeteoAlarm,
     MeteoAlarmException,
+    MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedRegionError,
     awareness_types,
 )
@@ -30,9 +31,11 @@ _LOGGER = logging.getLogger(__name__)
 ATTRIBUTION = "Information provided by meteoalarm.eu"
 CONF_COUNTRY = "country"
 CONF_REGION = "region"
+CONF_LANGUAGE = "language"
 CONF_AWARENESS_TYPES = "awareness_types"
+DEFAULT_LANGUAGE = ""
 DEFAULT_NAME = "meteoalarmeu"
-DEFAULT_AWARENESS_TYPES = list(awareness_types)
+DEFAULT_AWARENESS_TYPES = awareness_types
 
 SCAN_INTERVAL = timedelta(minutes=30)
 
@@ -40,10 +43,11 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_COUNTRY): cv.string,
         vol.Required(CONF_REGION): cv.string,
+        vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-        vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
-            cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
-        ),
+        vol.Optional(
+            CONF_AWARENESS_TYPES, default=list(DEFAULT_AWARENESS_TYPES)
+        ): vol.All(cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]),
     },
 )
 
@@ -52,14 +56,17 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the MeteoAlarmEU binary sensor platform."""
     country = config[CONF_COUNTRY]
     region = config[CONF_REGION]
+    language = config[CONF_LANGUAGE]
     name = config[CONF_NAME]
 
-    awareness_types = config[CONF_AWARENESS_TYPES] or DEFAULT_AWARENESS_TYPES
+    awareness_types = config[CONF_AWARENESS_TYPES] or list(DEFAULT_AWARENESS_TYPES)
 
     try:
-        api = MeteoAlarm(country, region)
+        api = MeteoAlarm(country, region, language)
     except MeteoAlarmUnrecognizedRegionError:
         _LOGGER.error("Wrong region name (check 'meteoalarm.eu' for the EXACT name)")
+    except MeteoAlarmUnavailableLanguageError:
+        _LOGGER.error("'%s' language is unavailable for country '%s'", language, country)
     except (KeyError, MeteoAlarmException):
         _LOGGER.error("Wrong country code or region name")
         return
