@@ -10,25 +10,28 @@ andrea:
         states:
           "home":
             type: custom:state-switch
-            entity: sensor.andrea_oneplus_nord
+            entity: device_tracker.andrea_oneplus_nord_bt
             default: home
             states:
               "not_home":
-                type: "custom:secondaryinfo-entity-row"
                 entity: person.andrea
-                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                type: "custom:secondaryinfo-entity-row"
+#                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                secondary_info: "[[ device_tracker.andrea_oneplus_nord.last_changed ]]"
                 tap_action:
                   action: none
               "home":
-                type: "custom:secondaryinfo-entity-row"
                 entity: sensor.andrea_oneplus_nord
-                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                type: "custom:secondaryinfo-entity-row"
+#                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                secondary_info: "[[ sensor.andrea_oneplus_nord.last_changed ]]"
                 tap_action:
                   action: none
           "not_home":
-            type: "custom:secondaryinfo-entity-row"
             entity: person.andrea
-            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+            type: "custom:secondaryinfo-entity-row"
+#            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+            secondary_info: "[[ device_tracker.andrea_oneplus_nord.last_changed ]]"
             tap_action:
               action: none
 #      - type: "custom:secondaryinfo-entity-row"
