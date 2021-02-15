@@ -31,7 +31,7 @@ action:
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Dishwasher is now done"
+      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
