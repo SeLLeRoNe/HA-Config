@@ -1,0 +1,7 @@
+---
+name: Association
+latitude: !secret zone_association_latitude
+longitude: !secret zone_association_longitude
+radius: 25
+passive: false
+icon: mdi:cannabis
