@@ -17,9 +17,6 @@ trigger:
 condition:
   condition: or
   conditions:
-#    - condition: state
-#      entity_id: input_select.dishwasher_status
-#      state: 'Washing'
     - condition: state
       entity_id: input_select.dishwasher_status
       state: 'Drying'
@@ -37,12 +34,6 @@ action:
     data:
       title: "Kitchen"
       message: "Dishwasher is now done. Energy consumed: {{ states('sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float | round(3) }}kWh"
-  - condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ not is_state('media_player.living_room_google_tv', 'unavailable') }}"
-      - condition: template
-        value_template: "{{ not is_state('media_player.living_room_google_tv', 'off') }}"
   - service: tts.google_translate_say
     data:
       entity_id: media_player.living_room_google_tv

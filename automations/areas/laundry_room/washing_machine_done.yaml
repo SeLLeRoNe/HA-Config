@@ -11,17 +11,12 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 0
-    below: 3
+    below: 5
     for:
-      minutes: 2
-      seconds: 30
+      seconds: 15
 condition:
   condition: or
   conditions:
-    - condition: state
-      entity_id: input_select.washing_machine_status
-      state: 'Washing'
     - condition: state
       entity_id: input_select.washing_machine_status
       state: 'Spinning'
@@ -33,18 +28,12 @@ action:
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Washing Machine is now done"
+      message: "Washing Machine is now done. Energy consumed was {{ states('sensor.power_usage_washing_machine_today_energy')|float - states('input_number.washing_machine_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
       title: "Laundry Room"
       message: "Washing Machine is now done. Energy consumed: {{ states('sensor.power_usage_washing_machine_today_energy')|float - states('input_number.washing_machine_current_energy')|float | round(3) }}kWh"
-  - condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ not is_state('media_player.living_room_google_tv', 'unavailable') }}"
-      - condition: template
-        value_template: "{{ not is_state('media_player.living_room_google_tv', 'off') }}"
   - service: tts.google_translate_say
     data:
       entity_id: media_player.living_room_google_tv

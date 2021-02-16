@@ -11,17 +11,14 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_washing_machine_power
-    above: 10
-    below: 2000
+    above: 500
+    below: 2250
 condition:
   condition: or
   conditions:
     - condition: state
       entity_id: input_select.washing_machine_status
       state: 'Warming Up'
-    - condition: state
-      entity_id: input_select.washing_machine_status
-      state: 'Spinning'
 action:
   - service: input_select.select_option
     data:
