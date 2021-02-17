@@ -11,9 +11,8 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.power_usage_dishwasher_power
+    above: 0
     below: 2
-    for:
-      seconds: 5
 condition:
   condition: or
   conditions:
