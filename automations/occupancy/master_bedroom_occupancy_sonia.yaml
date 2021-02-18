@@ -1,10 +1,10 @@
 ---
-id: '245858314077965'
-alias: Occupancy Sonia - Studio
+id: '245158314077965'
+alias: Occupancy Sonia - Master Bedroom
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.studio_occupancy_confidence_sonia_mi_9t_pro
+    entity_id: sensor.master_bedroom_occupancy_confidence_sonia_mi_9t_pro
     above: 10
     for:
       seconds: 10
@@ -14,10 +14,10 @@ condition:
   condition: or
   conditions:
     - condition: numeric_state
-      entity_id: sensor.studio_occupancy_confidence_sonia_mi_9t_pro
+      entity_id: sensor.master_bedroom_occupancy_confidence_sonia_mi_9t_pro
       above: 10
 action:
   - service: input_select.select_option
     data:
       entity_id: input_select.occupancy_sonia
-      option: 'Studio'
+      option: 'Master Bedroom'

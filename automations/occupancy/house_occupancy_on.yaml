@@ -6,11 +6,17 @@ trigger:
   - platform: state
     entity_id: input_boolean.studio_occupancy
     to: 'on'
+  - platform: state
+    entity_id: input_boolean.master_bedroom_occupancy
+    to: 'on'
 condition:
   condition: or
   conditions:
     - condition: state
       entity_id: input_boolean.studio_occupancy
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.master_bedroom_occupancy
       state: 'on'
 action:
   - service: input_boolean.turn_on
