@@ -16,22 +16,19 @@ andrea:
               "not_home":
                 entity: person.andrea
                 type: "custom:secondaryinfo-entity-row"
-#                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                secondary_info: "[[ device_tracker.andrea_oneplus_nord.last_changed ]]"
+                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                 tap_action:
                   action: none
               "home":
                 entity: sensor.andrea_oneplus_nord
                 type: "custom:secondaryinfo-entity-row"
-#                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                secondary_info: "[[ sensor.andrea_oneplus_nord.last_changed ]]"
+                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                 tap_action:
                   action: none
           "not_home":
             entity: person.andrea
             type: "custom:secondaryinfo-entity-row"
-#            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-            secondary_info: "[[ device_tracker.andrea_oneplus_nord.last_changed ]]"
+            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
             tap_action:
               action: none
 #      - type: "custom:secondaryinfo-entity-row"

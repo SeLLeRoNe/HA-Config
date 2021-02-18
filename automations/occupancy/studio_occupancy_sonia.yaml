@@ -1,0 +1,23 @@
+---
+id: '245858314077965'
+alias: Occupancy Sonia
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.studio_occupancy_confidence_sonia_mi_9t_pro
+    above: 10
+    for:
+      seconds: 10
+  - platform: homeassistant
+    event: start
+condition:
+  condition: or
+  conditions:
+    - condition: numeric_state
+      entity_id: sensor.studio_occupancy_confidence_sonia_mi_9t_pro
+      above: 10
+action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.occupancy_sonia
+      option: 'Studio'

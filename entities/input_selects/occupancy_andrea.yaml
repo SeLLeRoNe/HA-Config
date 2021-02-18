@@ -1,0 +1,15 @@
+---
+occupancy_andrea:
+  name: Occupancy Andrea
+  options:
+    - Home
+    - Living Room
+    - Kitchen
+    - Studio
+    - Master Bedroom
+    - Master Bathroom
+    - Bedroom Luca
+    - Bathroom
+    - Patio
+    - Garage
+  initial: Home

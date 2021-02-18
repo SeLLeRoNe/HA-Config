@@ -1,0 +1,9 @@
+---
+platform: mqtt
+name: 'Studio - Occupancy Confidence - Andrea OnePlus Nord'
+state_topic: 'monitor/studio/andrea_oneplus_nord'
+value_template: '{{ value_json.confidence }}'
+unit_of_measurement: '%'
+availability_topic: 'monitor/studio/status'
+payload_available: "online"
+payload_not_available: "offline"

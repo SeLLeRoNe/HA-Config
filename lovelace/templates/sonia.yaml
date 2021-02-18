@@ -16,22 +16,19 @@ sonia:
               "not_home":
                 entity: person.sonia
                 type: "custom:secondaryinfo-entity-row"
-#                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
-                secondary_info: "[[ device_tracker.sonia_mi_9t_pro.last_changed ]]"
+                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
                 tap_action:
                   action: none
               "home":
                 entity: sensor.sonia_mi_9t_pro
                 type: "custom:secondaryinfo-entity-row"
-#                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
-                secondary_info: "[[ sensor.sonia_mi_9t_pro.last_changed ]]"
+                secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
                 tap_action:
                   action: none
           "not_home":
             entity: person.sonia
             type: "custom:secondaryinfo-entity-row"
-#            secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
-            secondary_info: "[[ device_tracker.sonia_mi_9t_pro.last_changed ]]"
+            secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
             tap_action:
               action: none
 #      - type: "custom:secondaryinfo-entity-row"
