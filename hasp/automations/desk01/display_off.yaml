@@ -1,11 +1,10 @@
 ---
 alias: hasp_desk01_display_off
 trigger:
-  - platform: state
-    entity_id: light.hasp_desk_display
-    to: 'off'
   - platform: homeassistant
     event: start
+  - platform: time_pattern
+    minutes: '/30'
 action:
   - service: light.turn_on
     entity_id: light.hasp_desk_display
