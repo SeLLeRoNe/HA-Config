@@ -9,7 +9,6 @@ trigger:
   - platform: state
     entity_id: input_boolean.master_bedroom_occupancy
     to: 'off'
-    condition:
 condition:
   condition: and
   conditions:

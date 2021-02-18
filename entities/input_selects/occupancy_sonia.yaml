@@ -12,4 +12,5 @@ occupancy_sonia:
     - Bathroom
     - Patio
     - Garage
-  initial: Home
+    - Not Home
+  initial: Not Home
