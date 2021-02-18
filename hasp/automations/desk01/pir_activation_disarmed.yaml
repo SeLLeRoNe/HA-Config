@@ -17,6 +17,9 @@ condition:
       entity_id: light.hasp_desk_display
       state: 'off'
     - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'off'
+    - condition: state
       entity_id: alarm_control_panel.home_alarm
       state: 'disarmed'
     - condition: state
