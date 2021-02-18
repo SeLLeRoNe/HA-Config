@@ -7,7 +7,7 @@ trigger:
     event: start
   - platform: numeric_state
     entity_id: sensor.andrea_oneplus_nord_battery_level
-    above: 85
+    above: 95
 condition:
   condition: and
   conditions:
