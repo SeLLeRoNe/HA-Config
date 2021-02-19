@@ -68,6 +68,17 @@ sensor:
     qos: 1
 
   - platform: mqtt
+    name: "Computer Andrea - CPU Temperature"
+    state_topic: "iotlink/casa/pc-sellerone/temperatures-monitor/stats/cpu/temperature"
+    unit_of_measurement: '°C'
+    icon: mdi:thermometer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/casa/pc-sellerone/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - platform: mqtt
     name: "Computer Andrea - RAM Usage"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/usage"
     unit_of_measurement: '%'
