@@ -1,10 +1,18 @@
 {
-  "version": "2021.3.0",
+  "version": "2021.4.1",
   "domain": "meteoalarmeu",
-  "name": "Weather Alerts from meteoalarm.eu",
+  "name": "meteoalarmeu",
+  "config_flow": true,
   "documentation": "https://github.com/xlcnd/meteoalarmeu",
   "issue_tracker": "https://github.com/xlcnd/meteoalarmeu/issues",
-  "requirements": ["meteoalarm-rssapi==0.3.0"],
+  "requirements": [
+    "meteoalarm-rssapi==0.3.1"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
   "dependencies": [],
-  "codeowners": ["@xlcnd"]
+  "codeowners": [
+    "@xlcnd"
+  ]
 }

@@ -1,0 +1,25 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Device is already configured"
+        },
+        "error": {
+            "unrecognized_country": "Unrecognized country code",
+            "unrecognized_region": "Unrecognized region for country",
+            "not_available_language": "Language not available for country",
+            "unknown": "Unexpected error"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "country": "Country",
+                    "region": "Region",
+                    "language": "Language",
+                    "awareness_types": "Events"
+
+                }
+            }
+        }
+    },
+    "title": "meteoalarmeu"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "meteoalarmeu",
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "country": "[%key:common::config_flow::data::country%]",
+          "region": "[%key:common::config_flow::data::region%]",
+          "language": "[%key:common::config_flow::data::language%]",
+          "awareness_types": "[%key:common::config_flow::data::awareness_types%]"
+        }
+      }
+    },
+    "error": {
+      "unrecognized_country": "[%key:common::config_flow::error::unrecognized_country%]",
+      "unrecognized_region": "[%key:common::config_flow::error::unrecognized_region%]",
+      "not_available_language": "[%key:common::config_flow::error::not_available_language%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]"
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+    }
+  }
+}
