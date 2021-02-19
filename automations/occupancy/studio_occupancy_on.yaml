@@ -1,6 +1,6 @@
 ---
 id: '661842773418611'
-alias: Studio Occupancy Andrea On
+alias: Studio Occupancy On
 initial_state: on
 trigger:
   - platform: numeric_state

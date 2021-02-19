@@ -1,0 +1,23 @@
+---
+id: '224072115954635'
+alias: Occupancy Andrea - Bedroom Luca
+initial_state: on
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.bedroom_luca_occupancy_confidence_andrea_oneplus_nord
+    above: 10
+    for:
+      seconds: 10
+  - platform: homeassistant
+    event: start
+condition:
+  condition: or
+  conditions:
+    - condition: numeric_state
+      entity_id: sensor.bedroom_luca_occupancy_confidence_andrea_oneplus_nord
+      above: 10
+action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.occupancy_andrea
+      option: 'Bedroom Luca'

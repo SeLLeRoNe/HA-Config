@@ -9,6 +9,9 @@ trigger:
   - platform: state
     entity_id: input_boolean.master_bedroom_occupancy
     to: 'off'
+  - platform: state
+    entity_id: input_boolean.bedroom_luca_occupancy
+    to: 'off'
 condition:
   condition: and
   conditions:
@@ -17,6 +20,9 @@ condition:
       state: 'off'
     - condition: state
       entity_id: input_boolean.master_bedroom_occupancy
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.bedroom_luca_occupancy
       state: 'off'
 action:
   - service: input_boolean.turn_off
