@@ -70,7 +70,7 @@ sensor:
   - platform: mqtt
     name: "Computer Andrea - CPU Temperature"
     state_topic: "iotlink/casa/pc-sellerone/temperatures-monitor/stats/cpu/temperature"
-    unit_of_measurement: '°C'
+    unit_of_measurement: 'Â°C'
     icon: mdi:thermometer
     value_template: "{{ value }}"
     availability_topic: "iotlink/casa/pc-sellerone/lwt"
