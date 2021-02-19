@@ -5,18 +5,25 @@ initial_state: on
 trigger:
   - platform: homeassistant
     event: start
-  - platform: numeric_state
+  - platform: state
     entity_id: sensor.andrea_oneplus_nord_battery_level
-    above: 95
+#    above: 95
+  - platform: zone
+    entity_id: person.andrea
+    zone: zone.home
+    event: leave
 condition:
   condition: and
   conditions:
+    - condition: state
+      entity_id: switch.studio_usb_relay_01
+      state: 'on'
     - condition: state
       entity_id: person.andrea
       state: 'home'
     - condition: numeric_state
       entity_id: sensor.andrea_oneplus_nord_battery_level
-      above: 85
+      above: 95
 action:
   - service: switch.turn_off
     entity_id: switch.studio_usb_relay_01
