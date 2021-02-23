@@ -1,13 +1,13 @@
-#---
-#platform: miflora
-#mac: !secret miflora_parsely_mac
-#name: Parsely
-#force_update: true
-#median: 1
-#go_unavailable_timeout: 43200
-#monitored_conditions:
-#  - moisture
-#  - light
-#  - temperature
-#  - conductivity
-#  - battery
+---
+platform: miflora
+mac: !secret miflora_parsely_mac
+name: Parsely
+force_update: true
+median: 3
+go_unavailable_timeout: 43200
+monitored_conditions:
+  - moisture
+  - light
+  - temperature
+  - conductivity
+  - battery

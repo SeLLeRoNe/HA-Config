@@ -1,7 +1,6 @@
 title: Home
 icon: mdi:home
 panel: true
-animated_background: weather
 cards:
   - type: custom:layout-card
     layout: vertical
@@ -40,12 +39,18 @@ cards:
             entities:
               - entity: input_boolean.night_mode
                 tap_action:
+                  action: none
+                hold_action:
                   action: toggle
               - entity: input_boolean.guest_mode
                 tap_action:
+                  action: none
+                hold_action:
                   action: toggle
               - entity: input_boolean.holiday_mode
                 tap_action:
+                  action: none
+                hold_action:
                   action: toggle
 #          - type: entities
 #            show_header_toggle: false
@@ -153,6 +158,16 @@ cards:
               - title: Weather
           - type: custom:decluttering-card
             template: darksky_card
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Plants
+          - type: plant-status
+            entity: plant.parsely
+            name: "Parsely"
       - type: custom:decluttering-card
         template: thermostat_card
         variables:
