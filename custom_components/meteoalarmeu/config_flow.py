@@ -5,18 +5,19 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant import config_entries, core, exceptions
 from homeassistant.const import CONF_NAME
-from meteoalarm_rssapi import (
+
+from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
+from .client import COUNTRIES as COUNTRIES_API
+from .client import LANGUAGES as LANGUAGES_API
+from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
     MeteoAlarmUnrecognizedRegionError,
-    awareness_types,
+    get_languages,
+    get_regions,
 )
-from meteoalarm_rssapi import countries_list as countries
-from meteoalarm_rssapi import get_languages, get_regions
-from meteoalarm_rssapi import languages_list as languages
-
-from .const import CONF_AWARENESS_TYPES  # pylint:disable=unused-import
 from .const import (
+    CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
     CONF_REGION,
@@ -25,10 +26,10 @@ from .const import (
     DOMAIN,
 )
 
-COUNTRIES = countries
+COUNTRIES = COUNTRIES_API
 LANGUAGES = [DEFAULT_LANGUAGE]
-LANGUAGES.extend(languages)
-DEFAULT_AWARENESS_TYPES = sorted(list(awareness_types))
+LANGUAGES.extend(LANGUAGES_API)
+DEFAULT_AWARENESS_TYPES = sorted(list(AWARENESS_TYPES_API))
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 await self.async_set_unique_id(self._name)
                 self._abort_if_unique_id_configured()
 
-                return self.async_create_entry(title=info[CONF_NAME], data=info,)
+                return self.async_create_entry(title=info[CONF_NAME], data=info)
             except MeteoAlarmUnrecognizedCountryError:
                 errors["country"] = "unrecognized_country"
             except MeteoAlarmUnrecognizedRegionError:
@@ -101,7 +102,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             raise MeteoAlarmUnavailableLanguageError
 
         for awt in data[CONF_AWARENESS_TYPES]:
-            if awt not in awareness_types:
+            if awt not in DEFAULT_AWARENESS_TYPES:
                 raise InvalidAwarenessType
 
         # Add 'name'

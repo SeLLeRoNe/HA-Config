@@ -7,18 +7,13 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
 )
 from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
-from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
-from homeassistant.helpers.template import timestamp_local
-from homeassistant.util import slugify
-from meteoalarm_rssapi import (
-    MeteoAlarm,
+
+from .client import (
+    Client,
     MeteoAlarmException,
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedRegionError,
-    awareness_types,
 )
-
 from .const import (
     ATTRIBUTION,
     CONF_AWARENESS_TYPES,
@@ -29,8 +24,6 @@ from .const import (
     DOMAIN,
     SCAN_INTERVAL_MINUTES,
 )
-
-DEFAULT_AWARENESS_TYPES = list(awareness_types)
 
 SCAN_INTERVAL = timedelta(minutes=SCAN_INTERVAL_MINUTES)
 
@@ -44,10 +37,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     region = config_entry.data.get(CONF_REGION)
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
-    atypes = config_entry.data.get(CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES)
+    awareness_types = config_entry.data.get(CONF_AWARENESS_TYPES)
 
     try:
-        api = MeteoAlarm(country, region, language)
+        api = Client(country, region, language, awareness_types)
     except MeteoAlarmUnrecognizedRegionError:
         _LOGGER.error("Wrong region name (check 'meteoalarm.eu' for the EXACT name)")
     except MeteoAlarmUnavailableLanguageError:
@@ -58,22 +51,19 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         _LOGGER.error("Wrong country code or region name")
         return
 
-    entities = [MeteoAlarmBinarySensor(api, name, atypes)]
+    entities = [MeteoAlarmBinarySensor(api, name)]
 
     if entities:
         async_add_entities(entities)
-    pass
 
 
 class MeteoAlarmBinarySensor(BinarySensorEntity):
     """Representation of a MeteoAlarmEU binary sensor."""
 
-    def __init__(self, api, name, awareness_types):
+    def __init__(self, api, name):
         """Initialize the MeteoAlarmEU binary sensor."""
         self._name = name
         self._attributes = {"alerts": 0}
-        #self._attributes = {}
-        self._awareness_types = awareness_types
         self._state = None
         self._api = api
         self._available = True
@@ -110,36 +100,21 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         """Return true if the device is available."""
         return self._available
 
-    # @property
-    # def meteoalarmbinarysensor_id(self):
-    #     return self._name.lower()
-
     def update(self):
         """Update device state."""
         try:
-            msgs = self._api.alerts()
-            alerts = [m for m in msgs if m["awareness_type"] in self._awareness_types]
+            alerts = self._api.alerts()
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
             self._state = False
             return
         if not self._available:
-            _LOGGER.info("meteoalarm.eu server is now OK")
+            _LOGGER.info("Server meteoalarm.eu is now OK")
         self._available = True
         alarms = {}
         alarms["alerts"] = 0
         if alerts:
-            for alert in alerts:
-                try:
-                    # change to local date/time (drop the seconds)
-                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
-                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    alert["published"] = timestamp_local(
-                        as_timestamp(alert["published"])
-                    )[:-3]
-                except ValueError:
-                    _LOGGER.error("Not possible to convert to local time")
             nalerts = len(alerts)
             alarms = alerts[0]
             if nalerts > 1:
