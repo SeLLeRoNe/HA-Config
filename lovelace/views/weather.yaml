@@ -11,10 +11,6 @@ cards:
         cards:
           - type: custom:decluttering-card
             template: darksky_card
-#          - type: custom:custom-weather-animated
-#            entity: weather.aemet
-#          - type: custom:custom-weather-animated
-#            entity: weather.dark_sky
           - type: custom:air-visual-card
             air_pollution_level: sensor.u_s_air_pollution_level
             air_quality_index: sensor.u_s_air_quality_index
@@ -36,9 +32,6 @@ cards:
                 name: Meteo Alert - Safety Level
                 type: "custom:secondaryinfo-entity-row"
                 secondary_info: '[[ if(binary_sensor.meteoalarmeu.state == "on", binary_sensor.meteoalarmeu.attributes.description, "") ]]'
-#              - entity: sensor.gdacs
-#                name: Global Disaster Alerts (GDACS)
-#                secondary_info: '[[ if(sensor.gdacs >= 1, sensor.gdacs.attributes.status, "") ]]'
           - type: iframe
             url: https://embed.windy.com/embed2.html
             aspect_ratio: 72%
