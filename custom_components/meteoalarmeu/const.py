@@ -1,6 +1,4 @@
 """Constants for the meteoalarmeu integration."""
-from homeassistant.components.binary_sensor import DOMAIN
-
 DOMAIN = "meteoalarmeu"
 
 ATTRIBUTION = "Information provided by meteoalarm.eu"

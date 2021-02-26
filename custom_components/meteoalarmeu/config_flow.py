@@ -16,6 +16,7 @@ from .client import (
     get_languages,
     get_regions,
 )
+from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
@@ -23,7 +24,6 @@ from .const import (
     CONF_REGION,
     DEFAULT_LANGUAGE,
     DEFAULT_NAME,
-    DOMAIN,
 )
 
 COUNTRIES = COUNTRIES_API
@@ -89,10 +89,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def validate_input(self, hass: core.HomeAssistant, data):
         """Validate country, region, language and list of awareness_types."""
-
         if data[CONF_COUNTRY] not in COUNTRIES:
             raise MeteoAlarmUnrecognizedCountryError
 
+        data[CONF_REGION] = data[CONF_REGION].strip("'\"")
         regions = await hass.async_add_executor_job(get_regions, data[CONF_COUNTRY])
         if data[CONF_REGION] not in regions:
             raise MeteoAlarmUnrecognizedRegionError
@@ -118,5 +118,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         }
 
 
+# pylint:disable=too-few-public-methods
 class InvalidAwarenessType(exceptions.HomeAssistantError):
     """Error to indicate there is invalid awareness type."""

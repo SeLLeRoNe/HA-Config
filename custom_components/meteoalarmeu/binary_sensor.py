@@ -14,14 +14,14 @@ from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedRegionError,
 )
+from .const import DEFAULT_NAME  # pylint:disable=unused-import
+from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     ATTRIBUTION,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
     CONF_REGION,
-    DEFAULT_NAME,
-    DOMAIN,
     SCAN_INTERVAL_MINUTES,
 )
 
@@ -32,7 +32,6 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Add a meteoalarmeu entity from a config_entry."""
-
     country = config_entry.data.get(CONF_COUNTRY)
     region = config_entry.data.get(CONF_REGION)
     language = config_entry.data.get(CONF_LANGUAGE)

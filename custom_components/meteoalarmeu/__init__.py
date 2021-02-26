@@ -13,7 +13,7 @@ from .const import (
     DOMAIN,
 )
 
-__version__ = "0.4.2"
+__version__ = "2021.4.3"
 
 PLATFORMS = ["binary_sensor"]
 
@@ -48,7 +48,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
             *[
                 hass.config_entries.async_forward_entry_unload(entry, component)
                 for component in PLATFORMS
-            ]
+            ],
         )
     )
     if unload_ok:
