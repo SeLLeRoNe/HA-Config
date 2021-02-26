@@ -11,9 +11,11 @@ trigger:
   - platform: homeassistant
     event: start
 condition:
-  condition: time
-  after: '08:00:00'
-  before: '22:00:00'
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
 action:
   - service: mqtt.publish
     data:
