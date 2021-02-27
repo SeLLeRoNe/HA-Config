@@ -104,7 +104,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         try:
             alerts = self._api.alerts()
         except (KeyError, MeteoAlarmException):
-            _LOGGER.error("Bad response from meteoalarm.eu")
+            _LOGGER.warning("Bad response from meteoalarm.eu")
             self._available = False
             self._state = False
             return

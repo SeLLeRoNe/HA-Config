@@ -41,10 +41,21 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     def __init__(self):
-        self._name = DEFAULT_NAME
+        self._languages = LANGUAGES
+        self._regions = [""]
+        self._hold = ""
+
+    async def async_already_configured(self):
+        for entry in self._async_current_entries():
+            if entry.unique_id == DEFAULT_NAME:
+                return True
+        return False
 
     async def async_step_user(self, user_input=None):
         """Handle the initial step."""
+        if await self.async_already_configured():
+            return self.async_abort(reason="already_configured")
+
         errors = {}
 
         if user_input is not None:
@@ -52,23 +63,46 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 info = await self.validate_input(self.hass, user_input)
 
                 # Set 'unique_id' and abort flow if already configured
-                await self.async_set_unique_id(self._name)
+                await self.async_set_unique_id(DEFAULT_NAME)
                 self._abort_if_unique_id_configured()
 
                 return self.async_create_entry(title=info[CONF_NAME], data=info)
             except MeteoAlarmUnrecognizedCountryError:
                 errors["country"] = "unrecognized_country"
+                user_input[CONF_COUNTRY] = ""
             except MeteoAlarmUnrecognizedRegionError:
                 errors["region"] = "unrecognized_region"
+                user_input[CONF_REGION] = ""
             except MeteoAlarmUnavailableLanguageError:
                 errors["language"] = "not_available_language"
+                user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
             except InvalidAwarenessType:
                 errors["awareness_type"] = "invalid_awareness_type"
+                user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
             except exceptions.HomeAssistantError:
                 return self.async_abort(reason="already_configured")
             except Exception:  # pylint: disable=broad-except
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
+            if errors:
+                return self.async_show_form(
+                    step_id="user",
+                    data_schema=vol.Schema(
+                        {
+                            vol.Required(
+                                CONF_REGION, default=user_input[CONF_REGION]
+                            ): vol.In(self._regions),
+                            vol.Optional(
+                                CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]
+                            ): vol.In(self._languages),
+                            vol.Optional(
+                                CONF_AWARENESS_TYPES,
+                                default=user_input[CONF_AWARENESS_TYPES],
+                            ): cv.multi_select(DEFAULT_AWARENESS_TYPES),
+                        }
+                    ),
+                    errors=errors,
+                )
 
         return self.async_show_form(
             step_id="user",
@@ -89,16 +123,25 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def validate_input(self, hass: core.HomeAssistant, data):
         """Validate country, region, language and list of awareness_types."""
+        # Hold 'country'
+        try:
+            if data[CONF_COUNTRY]:
+                self._hold = data[CONF_COUNTRY]
+        except KeyError:
+            data[CONF_COUNTRY] = self._hold
+
         if data[CONF_COUNTRY] not in COUNTRIES:
             raise MeteoAlarmUnrecognizedCountryError
 
+        # Clean and update
         data[CONF_REGION] = data[CONF_REGION].strip("'\"")
-        regions = await hass.async_add_executor_job(get_regions, data[CONF_COUNTRY])
-        if data[CONF_REGION] not in regions:
+        await self.async_get_regions(hass, data[CONF_COUNTRY])
+        await self.async_get_languages(hass, data[CONF_COUNTRY])
+
+        if data[CONF_REGION] not in self._regions:
             raise MeteoAlarmUnrecognizedRegionError
 
-        languages = await hass.async_add_executor_job(get_languages, data[CONF_COUNTRY])
-        if data[CONF_LANGUAGE] and data[CONF_LANGUAGE] not in languages:
+        if data[CONF_LANGUAGE] and data[CONF_LANGUAGE] not in self._languages:
             raise MeteoAlarmUnavailableLanguageError
 
         for awt in data[CONF_AWARENESS_TYPES]:
@@ -106,7 +149,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 raise InvalidAwarenessType
 
         # Add 'name'
-        data[CONF_NAME] = self._name
+        data[CONF_NAME] = DEFAULT_NAME
 
         # Return info that you want to store in the config entry.
         return {
@@ -116,6 +159,23 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             CONF_NAME: data[CONF_NAME],
             CONF_AWARENESS_TYPES: data[CONF_AWARENESS_TYPES],
         }
+
+    async def async_get_languages(self, hass: core.HomeAssistant, country):
+        """Get available languages for country if possible."""
+        if country:
+            self._languages = [DEFAULT_LANGUAGE]
+            self._languages.extend(
+                await hass.async_add_executor_job(get_languages, country)
+            )
+        else:
+            self._languages = LANGUAGES
+
+    async def async_get_regions(self, hass: core.HomeAssistant, country):
+        """Get the regions of the country if possible."""
+        if country:
+            self._regions = await hass.async_add_executor_job(get_regions, country)
+        else:
+            self._regions = [""]
 
 
 # pylint:disable=too-few-public-methods
