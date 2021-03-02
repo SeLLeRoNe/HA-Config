@@ -1,6 +1,7 @@
 {
   "domain": "reversotts",
   "name": "Reverso TTS",
+  "version": "1.0.1",
   "documentation": "https://github.com/rt400/ReversoTTS-HA",
   "dependencies": [],
   "codeowners": ["@yuval_mejahez"],

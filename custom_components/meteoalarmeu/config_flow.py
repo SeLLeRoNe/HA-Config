@@ -7,8 +7,6 @@ from homeassistant import config_entries, core, exceptions
 from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
-from .client import COUNTRIES as COUNTRIES_API
-from .client import LANGUAGES as LANGUAGES_API
 from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
@@ -25,10 +23,11 @@ from .const import (
     DEFAULT_LANGUAGE,
     DEFAULT_NAME,
 )
+from .resources import cmap, lmap, ui_countries_list, ui_languages_list
 
-COUNTRIES = COUNTRIES_API
+COUNTRIES = ui_countries_list
 LANGUAGES = [DEFAULT_LANGUAGE]
-LANGUAGES.extend(LANGUAGES_API)
+LANGUAGES.extend(ui_languages_list)
 DEFAULT_AWARENESS_TYPES = sorted(list(AWARENESS_TYPES_API))
 
 _LOGGER = logging.getLogger(__name__)
@@ -62,10 +61,15 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             try:
                 info = await self.validate_input(self.hass, user_input)
 
+                # Convert 'country' and 'language' to ISO
+                info[CONF_COUNTRY] = cmap(info[CONF_COUNTRY])
+                info[CONF_LANGUAGE] = lmap(info[CONF_LANGUAGE])
+
                 # Set 'unique_id' and abort flow if already configured
                 await self.async_set_unique_id(DEFAULT_NAME)
                 self._abort_if_unique_id_configured()
 
+                # Create new entry in 'core.config_entries'
                 return self.async_create_entry(title=info[CONF_NAME], data=info)
             except MeteoAlarmUnrecognizedCountryError:
                 errors["country"] = "unrecognized_country"
@@ -165,7 +169,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if country:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
-                await hass.async_add_executor_job(get_languages, country)
+                map(
+                    lmap,
+                    await hass.async_add_executor_job(get_languages, cmap(country)),
+                )
             )
         else:
             self._languages = LANGUAGES
@@ -173,7 +180,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_get_regions(self, hass: core.HomeAssistant, country):
         """Get the regions of the country if possible."""
         if country:
-            self._regions = await hass.async_add_executor_job(get_regions, country)
+            self._regions = await hass.async_add_executor_job(
+                get_regions, cmap(country)
+            )
         else:
             self._regions = [""]
 
