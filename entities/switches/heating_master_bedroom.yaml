@@ -1,0 +1,13 @@
+---
+platform: mqtt
+name: "Heating Master Bedroom"
+icon: mdi:fire
+command_topic: "cmnd/master_bedroom_heating/POWER"
+state_topic: "stat/master_bedroom_heating/POWER"
+availability_topic: "tele/master_bedroom_heating/LWT"
+#payload_available: "Online"
+#payload_not_available: "Offline"
+payload_on: "ON"
+payload_off: "OFF"
+qos: 1
+retain: true
