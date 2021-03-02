@@ -1,0 +1,33 @@
+---
+id: '4607714163511'
+alias: Master Bedroom - WXKG02LM Button Single - Pause
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/master_bedroom_WXKG01LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'single' }}"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: media_player.master_bedroom_echo_dot
+          state: 'playing'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: media_player.master_bedroom_echo_dot
+              state: 'standby'
+            - condition: state
+              entity_id: media_player.spotify_andrea
+              state: 'paused'
+            - condition: state
+              entity_id: media_player.spotify_andrea
+              attribute: source
+              state: 'Master Bedroom Echo Dot'
+action:
+  - service: media_player.media_play_pause
+    data:
+      entity_id: media_player.spotify_andrea

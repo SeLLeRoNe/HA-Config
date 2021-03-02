@@ -1,0 +1,22 @@
+---
+id: '9677555425988'
+alias: Master Bedroom - WXKG02LM Button Hold\Many
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/master_bedroom_WXKG01LM'
+condition:
+  condition: or
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'hold' }}"
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'many' }}"
+action:
+  - service: notify.alexa_media
+    data:
+      data:
+        type: tts
+      target:
+        - media_player.master_bedroom_echo_dot
+      message: "Luca, stop touching that button!"

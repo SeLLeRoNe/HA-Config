@@ -1,0 +1,19 @@
+---
+id: '106238230940242'
+alias: Master Bedroom - WXKG02LM Button Triple
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/master_bedroom_WXKG01LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'triple' }}"
+    - condition: state
+      entity_id: media_player.master_bedroom_echo_dot
+      state: 'playing'
+action:
+  - service: media_player.media_previous_track
+    data:
+      entity_id: media_player.spotify_andrea
