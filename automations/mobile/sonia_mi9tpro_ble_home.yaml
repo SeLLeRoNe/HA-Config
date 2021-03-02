@@ -1,0 +1,20 @@
+---
+id: '172151075284207'
+alias: Mobile - Sonia - Mi 9T Pro - Bluetooth LTE - Home
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sensor.sonia_mi_9t_pro_ble_transmitter
+    to: 'Transmitting'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sensor.sonia_mi_9t_pro_ble_transmitter
+      state: 'Transmitting'
+action:
+  - service: device_tracker.see
+    data:
+      dev_id: sonia_mi_9t_pro_bt
+      location_name: home
