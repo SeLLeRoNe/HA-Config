@@ -1,8 +1,8 @@
----
-platform: mqtt
-source_type: bluetooth_le
-#qos: 1
-payload_home: 'true'
-payload_not_home: 'false'
-devices:
-  sonia_fitbit_flex2: 'room-assistant/device_tracker/ble-f201e173c053-tracker/state'
+#---
+#platform: mqtt
+#source_type: bluetooth_le
+##qos: 1
+#payload_home: 'true'
+#payload_not_home: 'false'
+#devices:
+#  sonia_fitbit_flex2: 'room-assistant/device_tracker/ble-f201e173c053-tracker/state'
