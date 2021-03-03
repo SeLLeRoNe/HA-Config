@@ -578,71 +578,67 @@ cards:
             title: Wireless Signal
             show_header_toggle: false
             entities:
-              - entity: sensor.rf_bridge_wireless_signal
+              - entity: sensor.rfbridge01_signal
                 name: "Sonoff RF Bridge"
                 tap_action:
                   action: none
-              - entity: sensor.studio_wall_light_wireless_signal
+              - entity: sensor.studio_wall_light_signal
                 name: "Studio - Wall Light"
                 tap_action:
                   action: none
-              - entity: sensor.studio_sonia_desk_lamp_wireless_signal
+              - entity: sensor.studio_sonia_desk_lamp_signal
                 name: "Studio - Sonia Desk Lamp"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_desk_plug_wireless_signal
+              - entity: sensor.studio_andrea_desk_plug_signal
                 name: "Studio - Desk Andrea Plug"
                 tap_action:
                   action: none
-              - entity: sensor.studio_table_plug_wireless_signal
+              - entity: sensor.studio_table_plug_signal
                 name: "Studio - Table Plug"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_power_strip_1_wireless_signal
+              - entity: sensor.studio_andrea_desk_power_strip_1_signal
                 name: "Studio - Desk Andrea PowerStrip #1"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_power_strip_2_wireless_signal
+              - entity: sensor.studio_andrea_desk_power_strip_2_signal
                 name: "Studio - Desk Andrea PowerStrip #2"
                 tap_action:
                   action: none
-              - entity: sensor.studio_sonia_desk_plug_wireless_signal
+              - entity: sensor.studio_sonia_desk_plug_signal
                 name: "Studio - Desk Sonia Plug"
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_1_wireless_signal
+              - entity: sensor.living_room_table_light_1_signal
                 name: "Living Room - Table Light 1"
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_2_wireless_signal
+              - entity: sensor.living_room_table_light_2_signal
                 name: "Living Room - Table Light 2"
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_3_wireless_signal
+              - entity: sensor.living_room_table_light_3_signal
                 name: "Living Room - Table Light 3"
                 tap_action:
                   action: none
-              - entity: sensor.living_room_tv_stand_plug_wireless_signal
+              - entity: sensor.living_room_tv_stand_plug_signal
                 name: "Living Room - TV Stand Plug"
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_fridge_plug_wireless_signal
-                name: "Kitchen - Fridge Plug"
-                tap_action:
-                  action: none
-              - entity: sensor.kitchen_dishwasher_plug_wireless_signal
+              - entity: sensor.kitchen_dishwasher_plug_signal
                 name: "Kitchen - Dishwasher Plug"
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_toaster_plug_wireless_signal
+              - entity: sensor.kitchen_toaster_plug_signal
                 name: "Kitchen - Toaster Plug"
                 tap_action:
                   action: none
-              - entity: sensor.laundry_room_washing_machine_plug_wireless_signal
+              - entity: sensor.laundry_room_washing_machine_plug_signal
                 name: "Laundry Room - Washing Machine Plug"
                 tap_action:
                   action: none
-              - entity: sensor.master_bedroom_lamp_top_light_wireless_signal
+              - entity: sensor.master_bedroom_lamp_top_light_signal
                 name: "Master Bedroom - Lamp Top Light"
                 tap_action:
                   action: none
