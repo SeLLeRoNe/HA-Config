@@ -88,7 +88,7 @@ room_device_10:
               labels: false
             color_thresholds: !include thresholds/device_10_current_ampere.yaml
             entities:
-              - entity: sensor.[[area]]_[[device]]_plug_energy_ampere
+              - entity: sensor.[[area]]_[[device]]_plug_energy_current
             tap_action:
               action: none
           - type: custom:mini-graph-card
