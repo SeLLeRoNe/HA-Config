@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Fridge Total Energy"
-icon: mdi:flash
-state_topic: "tele/Fridge_Plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Total"] }}'
-unit_of_measurement: "kWh"

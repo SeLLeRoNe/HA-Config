@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Studio Table Yesterday Energy"
-icon: mdi:flash
-state_topic: "tele/studio_table_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
-unit_of_measurement: "kWh"

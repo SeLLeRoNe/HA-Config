@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage TV Stand Yesterday Energy"
-icon: mdi:flash
-state_topic: "tele/tv_stand_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
-unit_of_measurement: "kWh"

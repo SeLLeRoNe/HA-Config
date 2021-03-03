@@ -1,6 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Dishwasher Voltage"
-state_topic: "tele/dishwasher_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-unit_of_measurement: "V"

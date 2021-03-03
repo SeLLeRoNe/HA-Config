@@ -1,6 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Studio Table Voltage"
-state_topic: "tele/studio_table_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-unit_of_measurement: "V"

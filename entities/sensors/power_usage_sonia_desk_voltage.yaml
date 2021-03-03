@@ -1,6 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Desk Sonia Voltage"
-state_topic: "tele/desk_sonia_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-unit_of_measurement: "V"

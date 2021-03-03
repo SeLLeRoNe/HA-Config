@@ -7,9 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.power_usage_desk_andrea_today_energy.state | float) +
-      (states.sensor.power_usage_desk_sonia_today_energy.state | float) +
-      (states.sensor.power_usage_studio_table_today_energy.state | float)
+      (states.sensor.studio_andrea_desk_plug_energy_today.state | float) +
+      (states.sensor.studio_sonia_desk_plug_energy_today.state | float) +
+      (states.sensor.studio_table_plug_energy_today.state | float)
       )
       | round(3)
       }}

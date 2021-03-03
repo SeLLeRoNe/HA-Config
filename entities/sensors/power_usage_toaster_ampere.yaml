@@ -1,6 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Toaster Ampere"
-state_topic: "tele/toaster_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Current"] }}'
-unit_of_measurement: "A"

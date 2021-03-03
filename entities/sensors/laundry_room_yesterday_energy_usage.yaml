@@ -7,7 +7,7 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.power_usage_washing_machine_yesterday_energy.state | float)
+      (states.sensor.washing_machine_plug_energy_yesterday.state | float)
       )
       | round(3)
       }}

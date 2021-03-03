@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Desk Sonia Power"
-icon: mdi:flash
-state_topic: "tele/desk_sonia_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Power"] }}'
-unit_of_measurement: "W"

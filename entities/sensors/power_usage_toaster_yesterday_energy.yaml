@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Toaster Yesterday Energy"
-icon: mdi:flash
-state_topic: "tele/toaster_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
-unit_of_measurement: "kWh"

@@ -7,9 +7,8 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.power_usage_dishwasher_ampere.state | float) +
-      (states.sensor.power_usage_fridge_ampere.state | float) +
-      (states.sensor.power_usage_toaster_ampere.state | float)
+      (states.sensor.kitchen_dishwasher_plug_energy_current.state | float) +
+      (states.sensor.kitchen_toaster_plug_energy_current.state | float)
       | round(3)
       )
       }}

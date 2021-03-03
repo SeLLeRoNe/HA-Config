@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Power Usage Studio Table Power"
-icon: mdi:flash
-state_topic: "tele/studio_table_plug/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Power"] }}'
-unit_of_measurement: "W"

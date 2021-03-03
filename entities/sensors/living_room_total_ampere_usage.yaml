@@ -7,7 +7,7 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.power_usage_tv_stand_ampere.state | float)
+      (states.sensor.living_room_tv_stand_plug_energy_current.state | float)
       | round(3)
       )
       }}
