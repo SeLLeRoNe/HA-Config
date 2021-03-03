@@ -23,19 +23,22 @@ studio_energy:
       - type: custom:decluttering-card
         template: room_device_10
         variables:
+          - area: studio
           - device_name: Desk Andrea
-          - device: desk_andrea
+          - device: andrea_desk
       - type: custom:hui-element
         row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:
+          - area: studio
           - device_name: Desk Sonia
-          - device: desk_sonia
+          - device: sonia_desk
       - type: custom:hui-element
         row_type: divider
       - type: custom:decluttering-card
         template: room_device_10
         variables:
+          - area: studio
           - device_name: Table
           - device: studio_table

@@ -23,19 +23,16 @@ kitchen_energy:
       - type: custom:decluttering-card
         template: room_device_16
         variables:
+          - area: kitchen
           - device_name: Dishwasher
           - device: dishwasher
       - type: custom:hui-element
         row_type: divider
-      - type: custom:decluttering-card
-        template: room_device_16
-        variables:
-          - device_name: Fridge
-          - device: fridge
       - type: custom:hui-element
         row_type: divider
       - type: custom:decluttering-card
         template: room_device_16
         variables:
+          - area: kitchen
           - device_name: Toaster
           - device: toaster

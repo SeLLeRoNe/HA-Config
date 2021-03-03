@@ -33,15 +33,12 @@ kitchen_energy_small:
           - type: custom:decluttering-card
             template: energy_device_16_card
             variables:
+              - area: kitchen
               - device_name: Dishwasher
               - device: dishwasher
           - type: custom:decluttering-card
             template: energy_device_16_card
             variables:
-              - device_name: Fridge
-              - device: fridge
-          - type: custom:decluttering-card
-            template: energy_device_16_card
-            variables:
+              - area: kitchen
               - device_name: Toaster
               - device: toaster

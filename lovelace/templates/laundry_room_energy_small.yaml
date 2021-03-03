@@ -33,5 +33,6 @@ laundry_room_energy_small:
           - type: custom:decluttering-card
             template: energy_device_16_card
             variables:
+              - area: laundry_room
               - device_name: Washing Machine
               - device: washing_machine

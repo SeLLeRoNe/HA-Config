@@ -2,13 +2,13 @@
 energy_device_10_card:
   card:
     type: custom:multiple-entity-row
-    entity: sensor.power_usage_[[device]]_power
+    entity: sensor.[[area]]_[[device]]_plug_energy_power
     name: '[[device_name]]'
     icon: mdi:flash
     show_state: true
     toggle: false
     entities:
-      - entity: sensor.power_usage_[[device]]_voltage
+      - entity: sensor.[[area]]_[[device]]_plug_energy_voltage
         name: false
         tap_action:
           action: call-service
@@ -23,7 +23,7 @@ energy_device_10_card:
                 - device: '[[device]]'
             style:
               width: 450px
-      - entity: sensor.power_usage_[[device]]_ampere
+      - entity: sensor.[[area]]_[[device]]_plug_energy_ampere
         name: false
         tap_action:
           action: call-service
@@ -38,7 +38,7 @@ energy_device_10_card:
                 - device: '[[device]]'
             style:
               width: 450px
-      - entity: sensor.power_usage_[[device]]_today_energy
+      - entity: sensor.[[area]]_[[device]]_plug_energy_today
         name: false
         tap_action:
           action: call-service

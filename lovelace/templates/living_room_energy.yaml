@@ -23,5 +23,6 @@ living_room_energy:
       - type: custom:decluttering-card
         template: room_device_10
         variables:
+          - area: living_room
           - device_name: TV Stand
           - device: tv_stand

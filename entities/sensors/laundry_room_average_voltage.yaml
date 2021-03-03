@@ -4,4 +4,4 @@ name: Laundry Room Average Voltage
 type: max
 round_digits: 1
 entity_ids:
-  - sensor.power_usage_washing_machine_voltage
+  - sensor.washing_machine_plug_energy_voltage

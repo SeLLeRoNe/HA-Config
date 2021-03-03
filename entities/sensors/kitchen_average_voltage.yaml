@@ -4,6 +4,5 @@ name: Kitchen Average Voltage
 type: max
 round_digits: 1
 entity_ids:
-  - sensor.power_usage_dishwasher_voltage
-  - sensor.power_usage_fridge_voltage
-  - sensor.power_usage_toaster_voltage
+  - sensor.kitchen_dishwasher_plug_energy_voltage
+  - sensor.kitchen_toaster_plug_energy_voltage

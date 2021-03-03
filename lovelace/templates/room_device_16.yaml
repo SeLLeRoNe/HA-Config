@@ -32,7 +32,7 @@ room_device_16:
               labels: false
             color_thresholds: !include thresholds/device_today_energy.yaml
             entities:
-              - entity: sensor.power_usage_[[device]]_today_energy
+              - entity: sensor.[[area]]_[[device]]_plug_energy_today
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -59,7 +59,7 @@ room_device_16:
               labels: false
             color_thresholds: !include thresholds/device_16_current_power.yaml
             entities:
-              - entity: sensor.power_usage_[[device]]_power
+              - entity: sensor.[[area]]_[[device]]_plug_energy_power
             tap_action:
               action: none
       - type: horizontal-stack
@@ -88,7 +88,7 @@ room_device_16:
               labels: false
             color_thresholds: !include thresholds/device_16_current_ampere.yaml
             entities:
-              - entity: sensor.power_usage_[[device]]_ampere
+              - entity: sensor.[[area]]_[[device]]_plug_energy_ampere
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -115,6 +115,6 @@ room_device_16:
               labels: false
             color_thresholds: !include thresholds/voltage.yaml
             entities:
-              - entity: sensor.power_usage_[[device]]_voltage
+              - entity: sensor.[[area]]_[[device]]_plug_energy_voltage
             tap_action:
               action: none

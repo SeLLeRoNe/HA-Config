@@ -7,7 +7,7 @@ sensors:
     value_template: >-
       {{ (
       (states.sensor.studio_andrea_desk_plug_energy_power.state | float) +
-      (states.sensor.sensor.studio_sonia_desk_plug_energy_power.state | float) +
+      (states.sensor.studio_sonia_desk_plug_energy_power.state | float) +
       (states.sensor.studio_table_plug_energy_power.state | float)
       ) | round(1) }}
     unit_of_measurement: 'W'
