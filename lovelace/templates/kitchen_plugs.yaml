@@ -12,12 +12,12 @@ kitchen_plugs:
         show_header_toggle: false
 #        state_color: true
         entities:
-          - type: custom:decluttering-card
-            template: plug_card
-            variables:
-              - name: "Fridge"
-              - entity: switch.kitchen_fridge_plug
-              - block: true
+#          - type: custom:decluttering-card
+#            template: plug_card
+#            variables:
+#              - name: "Fridge"
+#              - entity: switch.kitchen_fridge_plug
+#              - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
