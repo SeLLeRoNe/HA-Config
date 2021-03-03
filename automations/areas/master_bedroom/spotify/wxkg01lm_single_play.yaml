@@ -20,6 +20,10 @@ action:
     data:
       entity_id: media_player.spotify_andrea
       source: "Master Bedroom Echo Dot"
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.master_bedroom_echo_dot
+      volume_level: 0.25
   - service: media_player.play_media
     data:
       entity_id: media_player.spotify_andrea
