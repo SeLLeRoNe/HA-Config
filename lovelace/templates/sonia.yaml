@@ -55,7 +55,9 @@ sonia:
             name: "Mi 9T Pro"
             charging_state:
               entity_id: sensor.sonia_mi_9t_pro_battery_state
-              state: "charging"
+              state:
+                - "charging"
+                - "full"
         style: |
           .entity-row.non-numeric-state .icon {
             color: #808080;
