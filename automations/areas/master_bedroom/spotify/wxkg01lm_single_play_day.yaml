@@ -1,0 +1,34 @@
+---
+id: '4607714163512'
+alias: Master Bedroom - WXKG02LM Button Single - Play - Day
+initial_state: on
+trigger:
+  - platform: mqtt
+    topic: 'zigbee2mqtt/master_bedroom_WXKG01LM'
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['action'] == 'single' }}"
+    - condition: state
+      entity_id: media_player.master_bedroom_echo_dot
+      state: 'standby'
+      for:
+        minutes: 15
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+action:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.spotify_andrea
+      source: "Master Bedroom Echo Dot"
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.master_bedroom_echo_dot
+      volume_level: 0.25
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.spotify_andrea
+      media_content_id: 'spotify:playlist:5DyNudD2lZif0M7u3lqOxW'
+      media_content_type: playlist

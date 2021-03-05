@@ -1,5 +1,5 @@
 ---
-id: '4607714163512'
+id: '4607714163513'
 alias: Master Bedroom - WXKG02LM Button Single - Play
 initial_state: on
 trigger:
@@ -15,10 +15,13 @@ condition:
       state: 'standby'
       for:
         minutes: 15
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
 action:
   - service: media_player.select_source
     data:
-      entity_id: media_player.spotify_andrea
+      entity_id: media_player.spotify_sonia
       source: "Master Bedroom Echo Dot"
   - service: media_player.volume_set
     data:
@@ -26,6 +29,6 @@ action:
       volume_level: 0.25
   - service: media_player.play_media
     data:
-      entity_id: media_player.spotify_andrea
+      entity_id: media_player.spotify_sonia
       media_content_id: 'spotify:playlist:5DyNudD2lZif0M7u3lqOxW'
       media_content_type: playlist
