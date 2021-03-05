@@ -20,12 +20,16 @@ batteries_phones:
         name: "Andrea - OnePlus Nord"
         charging_state:
           entity_id: sensor.andrea_oneplus_nord_battery_state
-          state: "charging"
+          state:
+            - "charging"
+            - "full"
       - entity: sensor.sonia_mi_9t_pro_battery_level
         name: "Sonia - Mi 9T Pro"
         charging_state:
           entity_id: sensor.sonia_mi_9t_pro_battery_state
-          state: "charging"
+          state:
+            - "charging"
+            - "full"
     style: |
       .entity-row.non-numeric-state .icon {
         color: #808080;

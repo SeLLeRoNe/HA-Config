@@ -20,12 +20,16 @@ batteries_tablets:
         name: "Andrea - Samsung Galaxy Tab 7+"
         charging_state:
           entity_id: sensor.andrea_samsung_galaxy_tab_7_battery_state
-          state: "charging"
+          state:
+            - "charging"
+            - "full"
       - entity: sensor.andrea_shield_battery_level
         name: "Andrea - NVIDIA Shield K1"
         charging_state:
           entity_id: sensor.andrea_shield_battery_state
-          state: "charging"
+          state:
+            - "charging"
+            - "full"
     style: |
       .entity-row.non-numeric-state .icon {
         color: #808080;
