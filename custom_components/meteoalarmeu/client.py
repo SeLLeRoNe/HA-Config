@@ -21,7 +21,7 @@ LANGUAGES = _languages_list
 
 _LOGGER = logging.getLogger(__name__)
 
-TIMEOUT = 10
+TIMEOUT = 9
 
 
 class Client:

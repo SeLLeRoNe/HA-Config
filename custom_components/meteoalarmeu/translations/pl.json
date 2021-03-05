@@ -4,15 +4,16 @@
             "already_configured": "Urządzenie jest już skonfigurowane"
         },
         "error": {
-            "unrecognized_country": "Nierozpoznany kod kraju",
-            "unrecognized_region": "Nierozpoznany region dla wybranego kraju",
-            "not_available_language": "Język niedostępny dla wybranego kraju",
             "unknown": "Niespodziewany błąd"
         },
         "step": {
             "user": {
                 "data": {
-                    "country": "Kraj",
+                    "country": "Kraj"
+                }
+            },
+            "other": {
+                "data": {
                     "region": "Region",
                     "language": "Język",
                     "awareness_types": "Wydarzenia"
