@@ -36,7 +36,7 @@ cards:
                         tap_action:
                           action: none
           - type: custom:decluttering-card
-            template: thermostat_card
+            template: thermostat_card_small
             variables:
               - area: living_room
           - type: vertical-stack

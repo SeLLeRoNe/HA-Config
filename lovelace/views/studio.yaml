@@ -159,7 +159,7 @@ cards:
 #              - sensor.steam_76561198004701815
 ##                friendly_name: Francesco (Rynku)
           - type: custom:decluttering-card
-            template: thermostat_card
+            template: thermostat_card_small
             variables:
               - area: studio
           - type: vertical-stack

@@ -65,7 +65,7 @@ thermostat_popup:
           - type: section
             label: Workday
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T1
               - area: '[[area]]'
@@ -89,7 +89,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T2
               - area: '[[area]]'
@@ -113,7 +113,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T3
               - area: '[[area]]'
@@ -137,7 +137,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T4
               - area: '[[area]]'
@@ -161,7 +161,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T5
               - area: '[[area]]'
@@ -185,7 +185,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T6
               - area: '[[area]]'
@@ -209,7 +209,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T7
               - area: '[[area]]'
@@ -233,7 +233,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T8
               - area: '[[area]]'
@@ -257,7 +257,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T9
               - area: '[[area]]'
@@ -281,7 +281,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T10
               - area: '[[area]]'
@@ -307,7 +307,7 @@ thermostat_popup:
           - type: section
             label: Weekend
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T1
               - area: '[[area]]'
@@ -331,7 +331,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T2
               - area: '[[area]]'
@@ -355,7 +355,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T3
               - area: '[[area]]'
@@ -379,7 +379,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T4
               - area: '[[area]]'
@@ -403,7 +403,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T5
               - area: '[[area]]'
@@ -427,7 +427,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T6
               - area: '[[area]]'
@@ -451,7 +451,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T7
               - area: '[[area]]'
@@ -475,7 +475,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T8
               - area: '[[area]]'
@@ -499,7 +499,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T9
               - area: '[[area]]'
@@ -523,7 +523,7 @@ thermostat_popup:
                   {% endif %}
               }
           - type: 'custom:decluttering-card'
-            template: thermostat_entry
+            template: thermostat_settings_entry
             variables:
               - name: T10
               - area: '[[area]]'

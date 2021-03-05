@@ -1,5 +1,5 @@
 ---
-thermostat_entry:
+thermostat_settings_entry:
   card:
     type: custom:multiple-entity-row
     name: '[[name]]'

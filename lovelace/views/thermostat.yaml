@@ -7,31 +7,31 @@ cards:
     layout: vertical
     cards:
       - type: custom:decluttering-card
-        template: thermostat
+        template: thermostat_card
         variables:
           - title: House
           - area: house
       - break
       - type: custom:decluttering-card
-        template: thermostat
+        template: thermostat_card
         variables:
           - title: Living Room
           - area: living_room
       - break
       - type: custom:decluttering-card
-        template: thermostat
+        template: thermostat_card
         variables:
           - title: Studio
           - area: studio
       - break
       - type: custom:decluttering-card
-        template: thermostat
+        template: thermostat_card
         variables:
           - title: Master Bedroom
           - area: master_bedroom
       - break
       - type: custom:decluttering-card
-        template: thermostat
+        template: thermostat_card
         variables:
           - title: Bedroom Luca
           - area: bedroom_luca

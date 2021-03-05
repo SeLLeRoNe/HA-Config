@@ -171,7 +171,7 @@ cards:
                 tap_action:
                   action: none
               - entity: sensor.count_climates
-                icon: mdi:thermostat
+                icon: mdi:thermostat_card
                 tap_action:
                   action: none
               - entity: sensor.count_fans

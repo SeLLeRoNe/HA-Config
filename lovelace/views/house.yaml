@@ -169,7 +169,7 @@ cards:
             entity: plant.parsely
             name: "Parsely"
       - type: custom:decluttering-card
-        template: thermostat_card
+        template: thermostat_card_small
         variables:
           - area: house
       - type: custom:decluttering-card
