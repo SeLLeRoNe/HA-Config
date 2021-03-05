@@ -1,0 +1,8 @@
+---
+# This custom component allows Spotify playback from Home Assistant to Google Cast Devices
+#
+# https://github.com/fondberg/spotcast
+#
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key

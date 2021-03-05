@@ -3,10 +3,6 @@
 #
 # https://www.home-assistant.io/integrations/spotify/
 #
-spotcast:
-  sp_dc: !secret sp_dc
-  sp_key: !secret sp_key
-
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
