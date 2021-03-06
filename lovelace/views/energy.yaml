@@ -575,35 +575,31 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_today_energy
+                  - entity: sensor.studio_andrea_desk_plug_energy_today
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_studio_table_today_energy
-                    name: Table Andrea
+                  - entity: sensor.studio_table_plug_energy_today
+                    name: Table 
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_desk_sonia_today_energy
+                  - entity: sensor.studio_sonia_desk_plug_energy_today
                     name: Desk Sonia
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_tv_stand_today_energy
+                  - entity: sensor.living_room_tv_stand_plug_energy_today
                     name: TV Stand
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_fridge_today_energy
-                    name: Fridge
-                    tap_action:
-                      action: none
-                  - entity: sensor.power_usage_dishwasher_today_energy
+                  - entity: sensor.kitchen_dishwasher_plug_energy_today
                     name: Dishwasher
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_toaster_today_energy
+                  - entity: sensor.kitchen_toaster_plug_energy_today
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_washing_machine_today_energy
+                  - entity: sensor.washing_machine_plug_energy_today
                     name: Washing Machine
                     tap_action:
                       action: none
@@ -613,35 +609,31 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_yesterday_energy
+                  - entity: sensor.studio_andrea_desk_plug_energy_yesterday
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_studio_table_yesterday_energy
-                    name: Table Andrea
+                  - entity: sensor.studio_table_plug_energy_yesterday
+                    name: Table
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_desk_sonia_yesterday_energy
+                  - entity: sensor.studio_sonia_desk_plug_energy_yesterday
                     name: Desk Sonia
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_tv_stand_yesterday_energy
+                  - entity: sensor.living_room_tv_stand_plug_energy_yesterday
                     name: TV Stand
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_fridge_yesterday_energy
-                    name: Fridge
-                    tap_action:
-                      action: none
-                  - entity: sensor.power_usage_dishwasher_yesterday_energy
+                  - entity: sensor.kitchen_dishwasher_plug_energy_yesterday
                     name: Dishwasher
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_toaster_yesterday_energy
+                  - entity: sensor.kitchen_toaster_plug_energy_yesterday
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_washing_machine_yesterday_energy
+                  - entity: sensor.washing_machine_plug_energy_yesterday
                     name: Washing Machine
                     tap_action:
                       action: none
@@ -651,35 +643,31 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.power_usage_desk_andrea_total_energy
+                  - entity: sensor.studio_andrea_desk_plug_energy_total
                     name: Desk Andrea
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_studio_table_total_energy
-                    name: Table Andrea
+                  - entity: sensor.studio_table_plug_energy_total
+                    name: Table
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_desk_sonia_total_energy
+                  - entity: sensor.studio_sonia_desk_plug_energy_total
                     name: Desk Sonia
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_tv_stand_total_energy
+                  - entity: sensor.living_room_tv_stand_plug_energy_total
                     name: TV Stand
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_fridge_total_energy
-                    name: Fridge
-                    tap_action:
-                      action: none
-                  - entity: sensor.power_usage_dishwasher_total_energy
+                  - entity: sensor.kitchen_dishwasher_plug_energy_total
                     name: Dishwasher
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_toaster_total_energy
+                  - entity: sensor.kitchen_toaster_plug_energy_total
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.power_usage_washing_machine_total_energy
+                  - entity: sensor.washing_machine_plug_energy_total
                     name: Washing Machine
                     tap_action:
                       action: none
