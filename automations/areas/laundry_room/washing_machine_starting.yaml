@@ -10,7 +10,7 @@ alias: Kitchen - Washing Machine - Starting
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_washing_machine_power
+    entity_id: sensor.washing_machine_plug_energy_power
     above: 1
 condition:
   condition: or
@@ -26,4 +26,4 @@ action:
   - service: input_number.set_value
     data_template:
       entity_id: input_number.washing_machine_current_energy
-      value: "{{ states('sensor.power_usage_washing_machine_today_energy') }}"
+      value: "{{ states('sensor.washing_machine_plug_energy_today') }}"

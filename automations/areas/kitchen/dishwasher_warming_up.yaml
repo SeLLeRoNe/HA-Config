@@ -10,7 +10,7 @@ alias: Kitchen - Dishwasher - Warming Up
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_dishwasher_power
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
     above: 2000
 condition:
   condition: or

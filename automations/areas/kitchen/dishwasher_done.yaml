@@ -10,7 +10,7 @@ alias: Kitchen - Dishwasher - Done
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_dishwasher_power
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
     above: 0
     below: 2
     for:
@@ -29,12 +29,12 @@ action:
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float | round(2) }}kWh"
+      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.dishwasher_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
-      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.power_usage_dishwasher_today_energy')|float - states('input_number.dishwasher_current_energy')|float | round(3) }}kWh"
+      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.dishwasher_current_energy')|float | round(3) }}kWh"
   - service: tts.google_translate_say
     data:
       entity_id: media_player.living_room_google_tv

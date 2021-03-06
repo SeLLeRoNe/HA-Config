@@ -10,7 +10,7 @@ alias: Kitchen - Dishwasher - Idle
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_dishwasher_power
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
     below: 1
     for:
       seconds: 5

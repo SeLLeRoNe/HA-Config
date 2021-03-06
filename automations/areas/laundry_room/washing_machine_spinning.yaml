@@ -10,7 +10,7 @@ alias: Laundry Room - Washing Machine - Spinning
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_washing_machine_power
+    entity_id: sensor.washing_machine_plug_energy_power
     above: 200
     below: 400
     for:

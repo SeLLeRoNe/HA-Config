@@ -10,7 +10,7 @@ alias: Kitchen - Dishwasher - Starting
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.power_usage_dishwasher_power
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
     above: 1
 condition:
   condition: or
@@ -26,4 +26,4 @@ action:
   - service: input_number.set_value
     data_template:
       entity_id: input_number.dishwasher_current_energy
-      value: "{{ states('sensor.power_usage_dishwasher_today_energy') }}"
+      value: "{{ states('sensor.kitchen_dishwasher_plug_energy_today') }}"
