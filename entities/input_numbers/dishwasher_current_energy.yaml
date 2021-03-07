@@ -1,5 +1,5 @@
 ---
-dishwasher_current_energy:
+kitchen_dishwasher_current_energy:
   mode: box
   name: Dishwasher - Current Energy
   min: 0

@@ -4,7 +4,7 @@ alias: Studio - Andrea - Workday Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
+    entity_id: binary_sensor.studio_desk_andrea_computer_ping
     to: 'off'
     for:
       seconds: 120
@@ -14,7 +14,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: switch.studio_andrea_lg_monitor_2
+      entity_id: switch.studio_desk_andrea_lg_monitor_2
       state: 'on'
     - condition: state
       entity_id: person.andrea
@@ -25,7 +25,7 @@ condition:
     - condition: time
       after: '19:00:00'
     - condition: state
-      entity_id: binary_sensor.studio_andrea_computer_ping
+      entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'on'
 action:
   - service: tts.google_translate_say
@@ -36,4 +36,4 @@ action:
   - delay:
       seconds: 60
   - service: switch.turn_off
-    entity_id: switch.studio_andrea_lg_monitor_2
+    entity_id: switch.studio_desk_andrea_lg_monitor_2

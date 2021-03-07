@@ -6,13 +6,13 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
+    entity_id: binary_sensor.studio_desk_andrea_computer_ping
     to: 'on'
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.studio_andrea_computer_ping
+      entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'on'
     - condition: state
       entity_id: person.andrea
@@ -27,15 +27,15 @@ action:
   - service: switch.turn_on
     entity_id: switch.studio_media03_wol
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_uk_powerstrip
+    entity_id: switch.studio_desk_andrea_uk_powerstrip
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_lg_monitor_1
+    entity_id: switch.studio_desk_andrea_lg_monitor_1
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_lg_monitor_2
+    entity_id: switch.studio_desk_andrea_lg_monitor_2
   - service: media_player.turn_on
     entity_id: media_player.studio_amplifier
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_usb_hub
+    entity_id: switch.studio_desk_andrea_usb_hub
   - service: mqtt.publish
     data:
       topic: "wled/001/fx"

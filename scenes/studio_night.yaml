@@ -5,7 +5,7 @@ entities:
     state: on
     rgb_color: [0,0,255]
     brightness: 150
-  light.studio_sonia_desk_lamp:
+  light.studio_desk_sonia_lamp:
     state: on
     rgb_color: [0,255,0]
     brightness: 150

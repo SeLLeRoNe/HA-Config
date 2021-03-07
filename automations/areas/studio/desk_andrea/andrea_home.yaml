@@ -11,7 +11,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: switch.studio_andrea_computer_plug
+      entity_id: switch.studio_desk_andrea_computer_plug
       state: 'off'
 action:
   - service: switch.turn_on
@@ -19,6 +19,6 @@ action:
   - delay:
       seconds: 120
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_lg_monitor_1
+    entity_id: switch.studio_desk_andrea_lg_monitor_1
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_computer_plug
+    entity_id: switch.studio_desk_andrea_computer_plug

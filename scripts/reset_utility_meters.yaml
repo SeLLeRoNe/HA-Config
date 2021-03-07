@@ -30,19 +30,10 @@ reset_utility_meters:
       entity_id: utility_meter.laundry_room_electricity_yearly
   - service: utility_meter.reset
     data:
-      entity_id: utility_meter.studio_andrea_electricity_daily
+      entity_id: utility_meter.studio_desk_andrea_electricity_daily
   - service: utility_meter.reset
     data:
-      entity_id: utility_meter.studio_andrea_electricity_monthly
+      entity_id: utility_meter.studio_desk_andrea_electricity_monthly
   - service: utility_meter.reset
     data:
-      entity_id: utility_meter.studio_andrea_electricity_yearly
-  - service: utility_meter.reset
-    data:
-      entity_id: utility_meter.studio_sonia_electricity_daily
-  - service: utility_meter.reset
-    data:
-      entity_id: utility_meter.studio_sonia_electricity_monthly
-  - service: utility_meter.reset
-    data:
-      entity_id: utility_meter.studio_sonia_electricity_yearly
+      entity_id: utility_meter.studio_desk_andrea_electricity_yearly

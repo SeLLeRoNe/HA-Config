@@ -1,7 +1,7 @@
 ---
 id: '6498492866276'
 # When power is detected, and the dish washer is not in 
-# the Running state, change the status of the dishwasher
+# the Running state, change the status of the.kitchen_dishwasher
 # to Running. 
 # The status check will ensure we don't try to put the state 
 # to Running each time the power level changes, and we're already
@@ -19,22 +19,22 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       state: 'Drying'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       option: 'Done'
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.dishwasher_current_energy')|float | round(2) }}kWh"
+      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.kitchen_dishwasher_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
-      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.dishwasher_current_energy')|float | round(3) }}kWh"
+      message: "Dishwasher is now done. Energy consumed: {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.kitchen_dishwasher_current_energy')|float | round(3) }}kWh"
   - service: tts.google_translate_say
     data:
       entity_id: media_player.living_room_google_tv
@@ -42,8 +42,8 @@ action:
       language: "en"
   - service: input_number.set_value
     data_template:
-      entity_id: input_number.dishwasher_current_energy
+      entity_id: input_number.kitchen_dishwasher_current_energy
       value: "0"
   - service: counter.decrement
     data:
-      entity_id: counter.dishwasher_pods
+      entity_id: counter.kitchen_dishwasher_pods

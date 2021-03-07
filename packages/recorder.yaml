@@ -7,7 +7,7 @@
 recorder:
   db_url: !secret database_url
   auto_purge: true
-  purge_keep_days: 15
+  purge_keep_days: 30
   exclude:
     domains:
       - automation
@@ -43,3 +43,7 @@ recorder:
       - call_service
       - timer_out_of_sync
       - hacs/repository
+  include:
+    entities:
+      - switch.studio_desk_andrea_lg_monitor_1
+      - switch.studio_desk_andrea_lg_monitor_2

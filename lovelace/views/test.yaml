@@ -279,7 +279,7 @@ cards:
         show_header_toggle: false
         entities:
           - type: custom:light-brightness-preset-row
-            entity: light.studio_sonia_desk_lamp
+            entity: light.studio_desk_sonia_lamp
             name: Sonia Desk Lamp
             customSetpoints: true
             LowBrightness: 50

@@ -10,7 +10,7 @@ alias: Laundry Room - Washing Machine - Done
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
     below: 5
     for:
       seconds: 15
@@ -18,22 +18,22 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       state: 'Spinning'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       option: 'Done'
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Washing Machine is now done. Energy consumed was {{ states('sensor.washing_machine_plug_energy_today')|float - states('input_number.washing_machine_current_energy')|float | round(2) }}kWh"
+      message: "Washing Machine is now done. Energy consumed was {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float - states('input_number.laundry_room_washing_machine_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
       title: "Laundry Room"
-      message: "Washing Machine is now done. Energy consumed: {{ states('sensor.washing_machine_plug_energy_today')|float - states('input_number.washing_machine_current_energy')|float | round(3) }}kWh"
+      message: "Washing Machine is now done. Energy consumed: {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float - states('input_number.laundry_room_washing_machine_current_energy')|float | round(3) }}kWh"
   - service: tts.google_translate_say
     data:
       entity_id: media_player.living_room_google_tv
@@ -41,8 +41,8 @@ action:
       language: "en"
   - service: input_number.set_value
     data_template:
-      entity_id: input_number.washing_machine_current_energy
+      entity_id: input_number.laundry_room_washing_machine_current_energy
       value: "0"
   - service: counter.decrement
     data:
-      entity_id: counter.washing_machine_pods
+      entity_id: counter.laundry_room_washing_machine_pods

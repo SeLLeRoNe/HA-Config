@@ -6,8 +6,8 @@ sensors:
     icon_template: mdi:counter
     value_template: >-
       {{ (
-      (states.sensor.studio_andrea_desk_plug_energy_power.state | float) +
-      (states.sensor.studio_sonia_desk_plug_energy_power.state | float) +
+      (states.sensor.studio_desk_andrea_plug_energy_power.state | float) +
+      (states.sensor.studio_desk_sonia_plug_energy_power.state | float) +
       (states.sensor.studio_table_plug_energy_power.state | float)
       ) | round(1) }}
     unit_of_measurement: 'W'

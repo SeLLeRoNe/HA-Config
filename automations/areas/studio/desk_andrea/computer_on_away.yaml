@@ -4,7 +4,7 @@ alias: Studio - Andrea - Computer On - Away
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
+    entity_id: binary_sensor.studio_desk_andrea_computer_ping
     to: 'on'
 condition:
   - condition: state
@@ -14,12 +14,12 @@ action:
   - service: switch.turn_on
     entity_id: switch.studio_media03_wol
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_usb_hub
+    entity_id: switch.studio_desk_andrea_usb_hub
   - service: notify.andrea_oneplus_nord
     data:
       title: "Studio Andrea"
       message: "Computer has been turned on!"
   - service: switch.turn_off
-    entity_id: switch.studio_andrea_lg_monitor_1
+    entity_id: switch.studio_desk_andrea_lg_monitor_1
   - service: switch.turn_off
-    entity_id: switch.studio_andrea_lg_monitor_2
+    entity_id: switch.studio_desk_andrea_lg_monitor_2

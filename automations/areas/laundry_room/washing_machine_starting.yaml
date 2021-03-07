@@ -10,20 +10,20 @@ alias: Kitchen - Washing Machine - Starting
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
     above: 1
 condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       state: 'Idle'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       option: 'Starting'
   - service: input_number.set_value
     data_template:
-      entity_id: input_number.washing_machine_current_energy
-      value: "{{ states('sensor.washing_machine_plug_energy_today') }}"
+      entity_id: input_number.laundry_room_washing_machine_current_energy
+      value: "{{ states('sensor.laundry_room_washing_machine_plug_energy_today') }}"

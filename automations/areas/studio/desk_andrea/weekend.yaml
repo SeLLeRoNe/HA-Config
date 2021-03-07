@@ -23,9 +23,9 @@ action:
   - service: switch.turn_on
     entity_id: switch.studio_table_plug
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_powerstrip_2
+    entity_id: switch.studio_desk_andrea_powerstrip_2
   - service: switch.turn_on
-    entity_id: switch.studio_andrea_uk_powerstrip
+    entity_id: switch.studio_desk_andrea_uk_powerstrip
   - delay:
       seconds: 10
   - service: switch.turn_on
@@ -33,8 +33,8 @@ action:
 #  - delay:
 #      seconds: 10
 #  - service: switch.turn_on
-#    entity_id: switch.studio_andrea_computer_plug
+#    entity_id: switch.studio_desk_andrea_computer_plug
 #  - delay:
 #      seconds: 10
 #  - service: switch.turn_on
-#    entity_id: switch.studio_andrea_computer_wol
+#    entity_id: switch.studio_desk_andrea_computer_wol

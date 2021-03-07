@@ -5,7 +5,7 @@ alias: Kitchen - Washing Machine - Pods
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: counter.washing_machine_pods
+    entity_id: counter.laundry_room_washing_machine_pods
     below: 15
 action:
   - service: notify.telegram_andrea

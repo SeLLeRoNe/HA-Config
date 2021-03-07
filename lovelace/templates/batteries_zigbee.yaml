@@ -22,11 +22,11 @@ batteries_zigbee:
         name: "Studio - WSDCGQ11LM Temperature Sensor"
       - entity: sensor.studio_2ajz4kpbs_battery
         name: "Studio - 2AJZ4KPBS Motion Sensor"
-      - entity: sensor.studio_andrea_wxkg01lm_battery
+      - entity: sensor.studio_desk_andrea_wxkg01lm_battery
         name: "Studio - WXKG01LM Button"
       - entity: sensor.studio_wxkg03lm_battery
         name: "Studio - WXKG03LM Single Gang Switch"
-      - entity: sensor.washing_machine_djt11lm_battery
+      - entity: sensor.laundry_room_washing_machine_djt11lm_battery
         name: "Washing Machine - DJT11LM Vibration Sensor"
       - entity: sensor.master_bedroom_wxkg02lm_battery
         name: "Master Bedroom - WXKG02LM Double Gangs Switch"

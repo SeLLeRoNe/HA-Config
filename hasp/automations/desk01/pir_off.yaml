@@ -5,7 +5,7 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: state
-    entity_id: binary_sensor.studio_andrea_2ajz4kpbs_pir
+    entity_id: binary_sensor.studio_desk_andrea_2ajz4kpbs_pir
     to: 'off'
     for:
       seconds: 30

@@ -25,13 +25,13 @@ cards:
             temp: weather.dark_sky
             city: 'Pollution Levels'
             icons: "/local/icons/aqi_icons"
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - entity: binary_sensor.meteoalarmeu
-                name: Meteo Alert - Safety Level
-                type: "custom:secondaryinfo-entity-row"
-                secondary_info: '[[ if(binary_sensor.meteoalarmeu.state == "on", binary_sensor.meteoalarmeu.attributes.description, "") ]]'
+#          - type: entities
+#            show_header_toggle: false
+#            entities:
+#              - entity: binary_sensor.meteoalarmeu
+#                name: Meteo Alert - Safety Level
+#                type: "custom:secondaryinfo-entity-row"
+#                secondary_info: '[[ if(binary_sensor.meteoalarmeu.state == "on", binary_sensor.meteoalarmeu.attributes.description, "") ]]'
           - type: iframe
             url: https://embed.windy.com/embed2.html
             aspect_ratio: 72%

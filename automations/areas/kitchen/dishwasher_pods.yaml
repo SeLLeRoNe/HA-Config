@@ -5,7 +5,7 @@ alias: Kitchen - Dishwasher - Pods
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: counter.dishwasher_pods
+    entity_id: counter.kitchen_dishwasher_pods
     below: 10
 action:
   - service: notify.telegram_andrea

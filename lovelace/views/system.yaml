@@ -359,17 +359,17 @@ cards:
                 entities:
                   - name: "Andrea's Computer"
                     icon: mdi:desktop-tower
-                    entity: binary_sensor.studio_andrea_computer_ping
+                    entity: binary_sensor.studio_desk_andrea_computer_ping
                     tap_action:
                       action: none
                   - name: "Laptop"
                     icon: mdi:laptop
-                    entity: binary_sensor.studio_andrea_laptop_ping
+                    entity: binary_sensor.studio_desk_andrea_laptop_ping
                     tap_action:
                       action: none
                   - name: "Raspberry Pi"
                     icon: mdi:raspberry-pi
-                    entity: binary_sensor.studio_andrea_raspberry_ping
+                    entity: binary_sensor.studio_desk_andrea_raspberry_ping
                     tap_action:
                       action: none
               - type: glance
@@ -586,11 +586,11 @@ cards:
                 name: "Studio - Wall Light"
                 tap_action:
                   action: none
-              - entity: sensor.studio_sonia_desk_lamp_signal
+              - entity: sensor.studio_desk_sonia_lamp_signal
                 name: "Studio - Sonia Desk Lamp"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_desk_plug_signal
+              - entity: sensor.studio_desk_andrea_plug_signal
                 name: "Studio - Desk Andrea Plug"
                 tap_action:
                   action: none
@@ -598,15 +598,15 @@ cards:
                 name: "Studio - Table Plug"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_desk_power_strip_1_signal
+              - entity: sensor.studio_desk_andrea_power_strip_1_signal
                 name: "Studio - Desk Andrea PowerStrip #1"
                 tap_action:
                   action: none
-              - entity: sensor.studio_andrea_desk_power_strip_2_signal
+              - entity: sensor.studio_desk_andrea_power_strip_2_signal
                 name: "Studio - Desk Andrea PowerStrip #2"
                 tap_action:
                   action: none
-              - entity: sensor.studio_sonia_desk_plug_signal
+              - entity: sensor.studio_desk_sonia_plug_signal
                 name: "Studio - Desk Sonia Plug"
                 tap_action:
                   action: none
@@ -961,11 +961,11 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.studio_andrea_wxkg01lm_link_quality
+                - entity_id: sensor.studio_desk_andrea_wxkg01lm_link_quality
                   options:
                     name: Studio Andrea - WXKG01LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_andrea_wxkg01lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:
@@ -983,11 +983,11 @@ cards:
                     state: "unavailable"
                   not 2:
                     state: "unknown"
-                - entity_id: sensor.washing_machine_djt11lm_link_quality
+                - entity_id: sensor.laundry_room_washing_machine_djt11lm_link_quality
                   options:
                     name: Washing Machine - DJT11LM - Link Quality
                     type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", sensor.washing_machine_djt11lm_battery.state , "Not Available") ]][[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", sensor.washing_machine_djt11lm_voltage.state, "Not Available") ]][[ if(sensor.washing_machine_djt11lm_link_quality.state != "unknown", "mV", "") ]]'
+                    secondary_info: 'Battery Level: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "mV", "") ]]'
                     tap_action:
                       action: none
                   not 1:

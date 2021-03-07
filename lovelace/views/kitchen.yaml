@@ -32,7 +32,7 @@ cards:
                     tap_action:
                       action: none
                   - name: Dishwasher
-                    entity: input_select.dishwasher_status
+                    entity: input_select.kitchen_dishwasher_status
                     icon: "mdi:dishwasher"
                     tap_action:
                       action: none

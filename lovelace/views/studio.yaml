@@ -25,32 +25,32 @@ cards:
                 entities:
                   - name: "Computer"
                     icon: mdi:desktop-tower
-                    entity: binary_sensor.studio_andrea_computer_ping
+                    entity: binary_sensor.studio_desk_andrea_computer_ping
                     tap_action:
                       action: call-service
                       service: switch.turn_on
                       service_data:
-                        entity_id: switch.studio_andrea_computer_wol
+                        entity_id: switch.studio_desk_andrea_computer_wol
                     hold_action:
                       action: call-service
                       service: switch.turn_off
                       service_data:
-                        entity_id: switch.studio_andrea_computer_wol
+                        entity_id: switch.studio_desk_andrea_computer_wol
                   - name: "Laptop"
                     icon: mdi:laptop
-                    entity: binary_sensor.studio_andrea_laptop_ping
+                    entity: binary_sensor.studio_desk_andrea_laptop_ping
                     tap_action:
                       action: call-service
                       service: switch.turn_on
                       service_data:
-                        entity_id: switch.studio_andrea_laptop_wol
+                        entity_id: switch.studio_desk_andrea_laptop_wol
               - type: glance
                 show_state: false
                 columns: 2
                 entities:
                   - name: "Raspberry Pi"
                     icon: mdi:raspberry-pi
-                    entity: binary_sensor.studio_andrea_raspberry_ping
+                    entity: binary_sensor.studio_desk_andrea_raspberry_ping
                     tap_action:
                       action: none
                     hold_action:

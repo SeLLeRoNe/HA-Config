@@ -1,7 +1,7 @@
 ---
 platform: wake_on_lan
-name: Studio Andrea Computer WOL
-mac: !secret studio_andrea_computer_mac
-host: !secret studio_andrea_computer_ip
+name: Studio Desk Andrea Computer WOL
+mac: !secret studio_desk_andrea_computer_mac
+host: !secret studio_desk_andrea_computer_ip
 turn_off:
-  service: script.computer_andrea_shutdown
+  service: script.studio_desk_andrea_computer_shutdown

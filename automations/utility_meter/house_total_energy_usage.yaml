@@ -4,17 +4,17 @@ alias: Utility Meter - Update House Total Energy Usage
 initial_state: on
 trigger:
   - platform: mqtt
-    topic: tele/tv_plug/SENSOR
+    topic: tele/living_room_tv_stand_plug/SENSOR
   - platform: mqtt
-    topic: tele/washing_machine_plug/SENSOR
+    topic: tele/laundry_room_washing_machine_plug/SENSOR
   - platform: mqtt
-    topic: tele/dishwasher_plug/SENSOR
+    topic: tele/kitchen_dishwasher_plug/SENSOR
   - platform: mqtt
-    topic: tele/toaster_plug/SENSOR
+    topic: tele/kitchen_toaster_plug/SENSOR
   - platform: mqtt
-    topic: tele/desk_andrea_Plug/SENSOR
+    topic: tele/studio_desk_andrea_plug/SENSOR
   - platform: mqtt
-    topic: tele/desk_sonia_plug/SENSOR
+    topic: tele/studio_desk_sonia_plug/SENSOR
   - platform: mqtt
     topic: tele/studio_table_plug/SENSOR
 action:

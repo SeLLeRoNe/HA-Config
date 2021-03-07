@@ -1,7 +1,7 @@
 ---
-washing_machine_current_energy:
+laundry_room_washing_machine_current_energy:
   mode: box
   name: Washing Machine - Current Energy
   min: 0
   max: 100
-  step: 0.1 
+  step: 0.1

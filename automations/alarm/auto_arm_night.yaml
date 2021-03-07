@@ -19,7 +19,7 @@ trigger:
     event: enter
     zone: zone.garage
   - platform: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
+    entity_id: binary_sensor.studio_desk_andrea_computer_ping
     to: 'off'
     for:
       minutes: 10
@@ -57,7 +57,7 @@ condition:
       after: '01:00:00'
       before: '07:00:00'
     - condition: state
-      entity_id: binary_sensor.studio_andrea_computer_ping
+      entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'off'
     - condition: state
       entity_id: binary_sensor.living_room_tv
@@ -65,7 +65,7 @@ condition:
     - condition: and
       conditions:
         - condition: template
-          value_template: '{% if states.binary_sensor.studio_andrea_computer_ping is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.studio_andrea_computer_ping.last_changed)) > 600 }} {% endif %}'
+          value_template: '{% if states.binary_sensor.studio_desk_andrea_computer_ping is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.studio_desk_andrea_computer_ping.last_changed)) > 600 }} {% endif %}'
         - condition: template
           value_template: '{% if states.binary_sensor.living_room_tv is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.living_room_tv.last_changed)) > 600 }} {% endif %}'
 action:

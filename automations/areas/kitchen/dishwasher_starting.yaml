@@ -16,14 +16,14 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       state: 'Idle'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       option: 'Starting'
   - service: input_number.set_value
     data_template:
-      entity_id: input_number.dishwasher_current_energy
+      entity_id: input_number.kitchen_dishwasher_current_energy
       value: "{{ states('sensor.kitchen_dishwasher_plug_energy_today') }}"

@@ -48,7 +48,7 @@ condition:
         - condition: or
           conditions:
             - condition: state
-              entity_id: binary_sensor.studio_andrea_computer_ping
+              entity_id: binary_sensor.studio_desk_andrea_computer_ping
               state: 'on'
             - condition: state
               entity_id: binary_sensor.living_room_tv

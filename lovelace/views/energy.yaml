@@ -76,17 +76,6 @@ cards:
                   - entity: sensor.studio_cost_yearly
                     tap_action:
                       action: none
-#                  - type: custom:hui-element
-#                    row_type: divider
-#                  - entity: sensor.studio_sonia_cost_daily
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_cost_monthly
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_cost_yearly
-#                    tap_action:
-#                      action: none
               - type: 'custom:fold-entity-row'
                 head:
                   label: Energy Meters (Daily)
@@ -197,34 +186,6 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: custom:hui-element
-#                    row_type: divider
-#                  - entity: sensor.studio_sonia_electricity_daily_peak
-#                    name: Studio Sonia (Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_daily_peak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_electricity_daily_offpeak
-#                    name: Studio Sonia (Off Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_daily_offpeak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_daily_energy_usage
-#                    name: Studio Sonia (Total)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_daily
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - type: custom:hui-element
-#                    row_type: divider
                   - entity: sensor.house_electricity_daily_peak
                     name: House (Peak)
                     type: custom:multiple-entity-row
@@ -357,32 +318,6 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: custom:hui-element
-#                    row_type: divider
-#                  - entity: sensor.studio_sonia_electricity_monthly_peak
-#                    name: Studio Sonia (Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_monthly_peak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_electricity_monthly_offpeak
-#                    name: Studio Sonia (Off Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_monthly_offpeak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_monthly_energy_usage
-#                    name: Studio Sonia (Total)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_monthly
-#                      name: false
-#                    tap_action:
-#                      action: none
                   - type: custom:hui-element
                     row_type: divider
                   - entity: sensor.house_electricity_monthly_peak
@@ -517,32 +452,6 @@ cards:
                       name: false
                     tap_action:
                       action: none
-#                  - type: custom:hui-element
-#                    row_type: divider
-#                  - entity: sensor.studio_sonia_electricity_yearly_peak
-#                    name: Studio Sonia (Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_yearly_peak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_electricity_yearly_offpeak
-#                    name: Studio Sonia (Off Peak)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_yearly_offpeak
-#                      name: false
-#                    tap_action:
-#                      action: none
-#                  - entity: sensor.studio_sonia_yearly_energy_usage
-#                    name: Studio Sonia (Total)
-#                    type: custom:multiple-entity-row
-#                    primary:
-#                      entity: sensor.studio_sonia_cost_yearly
-#                      name: false
-#                    tap_action:
-#                      action: none
                   - type: custom:hui-element
                     row_type: divider
                   - entity: sensor.house_electricity_yearly_peak
@@ -575,7 +484,7 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.studio_andrea_desk_plug_energy_today
+                  - entity: sensor.studio_desk_andrea_plug_energy_today
                     name: Desk Andrea
                     tap_action:
                       action: none
@@ -583,7 +492,7 @@ cards:
                     name: Table 
                     tap_action:
                       action: none
-                  - entity: sensor.studio_sonia_desk_plug_energy_today
+                  - entity: sensor.studio_desk_sonia_plug_energy_today
                     name: Desk Sonia
                     tap_action:
                       action: none
@@ -599,7 +508,7 @@ cards:
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.washing_machine_plug_energy_today
+                  - entity: sensor.laundry_room_washing_machine_plug_energy_today
                     name: Washing Machine
                     tap_action:
                       action: none
@@ -609,7 +518,7 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.studio_andrea_desk_plug_energy_yesterday
+                  - entity: sensor.studio_desk_andrea_plug_energy_yesterday
                     name: Desk Andrea
                     tap_action:
                       action: none
@@ -617,7 +526,7 @@ cards:
                     name: Table
                     tap_action:
                       action: none
-                  - entity: sensor.studio_sonia_desk_plug_energy_yesterday
+                  - entity: sensor.studio_desk_sonia_plug_energy_yesterday
                     name: Desk Sonia
                     tap_action:
                       action: none
@@ -633,7 +542,7 @@ cards:
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.washing_machine_plug_energy_yesterday
+                  - entity: sensor.laundry_room_washing_machine_plug_energy_yesterday
                     name: Washing Machine
                     tap_action:
                       action: none
@@ -643,7 +552,7 @@ cards:
                   type: section
                 padding: 0
                 entities:
-                  - entity: sensor.studio_andrea_desk_plug_energy_total
+                  - entity: sensor.studio_desk_andrea_plug_energy_total
                     name: Desk Andrea
                     tap_action:
                       action: none
@@ -651,7 +560,7 @@ cards:
                     name: Table
                     tap_action:
                       action: none
-                  - entity: sensor.studio_sonia_desk_plug_energy_total
+                  - entity: sensor.studio_desk_sonia_plug_energy_total
                     name: Desk Sonia
                     tap_action:
                       action: none
@@ -667,7 +576,7 @@ cards:
                     name: Toaster
                     tap_action:
                       action: none
-                  - entity: sensor.washing_machine_plug_energy_total
+                  - entity: sensor.laundry_room_washing_machine_plug_energy_total
                     name: Washing Machine
                     tap_action:
                       action: none
@@ -716,8 +625,3 @@ cards:
         template: studio_energy
         variables:
           - title: Studio
-#      - break
-#      - type: custom:decluttering-card
-#        template: studio_sonia_energy
-#        variables:
-#          - title: Studio Sonia

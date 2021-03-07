@@ -4,11 +4,11 @@ alias: Studio - Desk Sonia Lamp On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: light.studio_sonia_desk_lamp
+    entity_id: light.studio_desk_sonia_lamp
     from: 'unavailable'
     to: 'on'
 action:
   - service: light.turn_on
-    entity_id: light.studio_sonia_desk_lamp
+    entity_id: light.studio_desk_sonia_lamp
   - service: light.turn_off
-    entity_id: light.studio_sonia_desk_lamp
+    entity_id: light.studio_desk_sonia_lamp

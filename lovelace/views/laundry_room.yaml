@@ -28,7 +28,7 @@ cards:
 #                    tap_action:
 #                      action: none
 #                  - name: Washing Machine
-#                    entity: input_select.washing_machine_status
+#                    entity: input_select.laundry_room_washing_machine_status
 #                    tap_action:
 #                      action: none
 #                    style: |
@@ -43,7 +43,7 @@ cards:
 #                          {% endif %}
 #                      }
 ##                  - name: Washing Machine
-##                    entity: binary_sensor.washing_machine_djt11lm_vibration
+##                    entity: binary_sensor.laundry_room_washing_machine_djt11lm_vibration
 ##                    icon: "mdi:washing-machine"
 ##                    tap_action:
 ##                      action: none
@@ -62,7 +62,7 @@ cards:
                     template: sensor_entity
                     variables:
                       - name: Washing Machine
-                      - entity: input_select.washing_machine_status
+                      - entity: input_select.laundry_room_washing_machine_status
                   - type: custom:decluttering-card
                     template: sensor_entity_alert
                     variables:

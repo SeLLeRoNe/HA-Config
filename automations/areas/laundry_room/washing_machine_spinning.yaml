@@ -10,7 +10,7 @@ alias: Laundry Room - Washing Machine - Spinning
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
     above: 200
     below: 400
     for:
@@ -19,10 +19,10 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       state: 'Rinsing'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.washing_machine_status
+      entity_id: input_select.laundry_room_washing_machine_status
       option: 'Spinning'

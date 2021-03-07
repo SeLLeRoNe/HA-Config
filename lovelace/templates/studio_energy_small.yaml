@@ -35,13 +35,13 @@ studio_energy_small:
             variables:
               - area: studio
               - device_name: Desk Andrea
-              - device: andrea_desk
+              - device: desk_andrea
           - type: custom:decluttering-card
             template: energy_device_10_card
             variables:
               - area: studio
               - device_name: Desk Sonia
-              - device: sonia_desk
+              - device: desk_sonia
           - type: custom:decluttering-card
             template: energy_device_10_card
             variables:

@@ -18,10 +18,10 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       state: 'Done'
 action:
   - service: input_select.select_option
     data:
-      entity_id: input_select.dishwasher_status
+      entity_id: input_select.kitchen_dishwasher_status
       option: 'Idle'

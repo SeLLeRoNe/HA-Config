@@ -8,7 +8,7 @@ trigger:
     from: 'unavailable'
     to: 'on'
   - platform: state
-    entity_id: light.studio_sonia_desk_lamp
+    entity_id: light.studio_desk_sonia_lamp
     from: 'unavailable'
     to: 'on'
 condition:
@@ -20,7 +20,7 @@ condition:
           entity_id: light.studio_wall_light
           state: "off"
         - condition: state
-          entity_id: light.studio_sonia_desk_lamp
+          entity_id: light.studio_desk_sonia_lamp
           state: "off"
     - condition: state
       entity_id: group.family
@@ -35,5 +35,5 @@ action:
       transition: 15
   - service: light.turn_off
     data:
-      entity_id: light.studio_sonia_desk_lamp
+      entity_id: light.studio_desk_sonia_lamp
       transition: 15

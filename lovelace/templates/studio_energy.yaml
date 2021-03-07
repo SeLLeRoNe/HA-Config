@@ -25,7 +25,7 @@ studio_energy:
         variables:
           - area: studio
           - device_name: Desk Andrea
-          - device: andrea_desk
+          - device: desk_andrea
       - type: custom:hui-element
         row_type: divider
       - type: custom:decluttering-card
@@ -33,7 +33,7 @@ studio_energy:
         variables:
           - area: studio
           - device_name: Desk Sonia
-          - device: sonia_desk
+          - device: desk_sonia
       - type: custom:hui-element
         row_type: divider
       - type: custom:decluttering-card

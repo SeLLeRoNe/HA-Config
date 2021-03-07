@@ -16,21 +16,21 @@ google_assistant:
 #    - light
 #    - sensor
   entity_config:
-    switch.studio_andrea_lg_monitor_1:
+    switch.studio_desk_andrea_lg_monitor_1:
       name: "Monitor 1"
-    switch.studio_andrea_lg_monitor_2:
+    switch.studio_desk_andrea_lg_monitor_2:
       name: "Monitor 2"
-    switch.studio_andrea_computer_wol:
+    switch.studio_desk_andrea_computer_wol:
       name: "Computer Andrea"
-    switch.studio_andrea_desk_plug:
+    switch.studio_desk_andrea_plug:
       expose: false
-    switch.studio_andrea_computer_plug:
+    switch.studio_desk_andrea_computer_plug:
       expose: false
-    switch.studio_andrea_powerstrip_2:
+    switch.studio_desk_andrea_powerstrip_2:
       expose: false
-    switch.studio_andrea_uk_powerstrip:
+    switch.studio_desk_andrea_uk_powerstrip:
       expose: false
-    switch.studio_sonia_desk_plug:
+    switch.studio_desk_sonia_plug:
       expose: false
     switch.studio_table_plug:
       expose: false

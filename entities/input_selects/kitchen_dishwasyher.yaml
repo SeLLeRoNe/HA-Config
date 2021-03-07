@@ -1,10 +1,11 @@
 ---
-washing_machine_status:
-  name: Washing Machine
+kitchen_dishwasher_status:
+  name: Dishwasher
   options:
     - Idle
+    - Starting
     - Warming Up
     - Washing
-    - Spinning
+    - Drying
     - Done
   initial: Idle

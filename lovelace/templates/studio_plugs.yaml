@@ -16,13 +16,13 @@ studio_plugs:
             template: plug_card
             variables:
               - name: "Desk Andrea"
-              - entity: switch.studio_andrea_desk_plug
+              - entity: switch.studio_desk_andrea_plug
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Desk Sonia"
-              - entity: switch.studio_sonia_desk_plug
+              - entity: switch.studio_desk_sonia_plug
               - block: true
           - type: custom:decluttering-card
             template: plug_card
@@ -40,31 +40,31 @@ studio_plugs:
             template: plug_card
             variables:
               - name: "Home Assistant Server"
-              - entity: switch.studio_home_assistant_server
+              - entity: switch.studio_desk_andrea_home_assistant_server
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Google Mini"
-              - entity: switch.studio_google_mini
+              - entity: switch.studio_desk_andrea_google_mini
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Computer"
-              - entity: switch.studio_andrea_computer_plug
+              - entity: switch.studio_desk_andrea_computer_plug
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "LG Monitor #1"
-              - entity: switch.studio_andrea_lg_monitor_1
+              - entity: switch.studio_desk_andrea_lg_monitor_1
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "LG Monitor #2"
-              - entity: switch.studio_andrea_lg_monitor_2
+              - entity: switch.studio_desk_andrea_lg_monitor_2
               - block: false
       - type: custom:hui-element
         row_type: divider
@@ -82,13 +82,13 @@ studio_plugs:
             template: plug_card
             variables:
               - name: "USB Ports"
-              - entity: switch.studio_andrea_usb_ports
+              - entity: switch.studio_desk_andrea_usb_ports
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "USB Hub"
-              - entity: switch.studio_andrea_usb_hub
+              - entity: switch.studio_desk_andrea_usb_hub
               - block: false
       - type: custom:hui-element
         row_type: divider
@@ -100,11 +100,11 @@ studio_plugs:
             template: plug_card
             variables:
               - name: "UK Power Strip"
-              - entity: switch.studio_andrea_uk_power_strip
+              - entity: switch.studio_desk_andrea_uk_power_strip
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Power Strip #2"
-              - entity: switch.studio_andrea_power_strip_2
+              - entity: switch.studio_desk_andrea_power_strip_2
               - block: false
