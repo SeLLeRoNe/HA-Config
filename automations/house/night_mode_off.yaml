@@ -28,3 +28,7 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
+  - service: notify.telegram_andrea
+    data:
+      title: "Night Mode"
+      message: "House no longer in night mode"

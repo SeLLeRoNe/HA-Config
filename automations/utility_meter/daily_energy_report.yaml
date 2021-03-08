@@ -15,6 +15,10 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
+  - service: notify.telegram_andrea
+    data:
+      title: "Energy Report"
+      message: "Today's energy use was {{ states('sensor.house_daily_energy_usage') }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro"
 #   - service: input_number.set_value
 #    data:
 #      entity_id: input_number.cumulative_energy_cost
