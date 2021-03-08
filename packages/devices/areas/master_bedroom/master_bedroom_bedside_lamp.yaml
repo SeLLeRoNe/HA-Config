@@ -12,8 +12,21 @@ light:
       - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
     brightness: true
     color_temp: true
+    xy: false
+    hs: false
     schema: "json"
     command_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/set"
+    brightness_scale: 254
+    max_mireds: 454
+    min_mireds: 250
+    effect: true
+    effect_list: 
+      - "blink"
+      - "breathe"
+      - "okay"
+      - "channel_change"
+      - "finish_effect"
+      - "stop_effect"
 
 sensor:
   - platform: mqtt

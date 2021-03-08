@@ -11,9 +11,20 @@ light:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/patio_light/availability"
     brightness: true
+    color_temp: false
     xy: true
+    hs: false
     schema: "json"
     command_topic: "zigbee2mqtt/patio_light/set"
+    brightness_scale: 254
+    effect: true
+    effect_list: 
+      - "blink"
+      - "breathe"
+      - "okay"
+      - "channel_change"
+      - "finish_effect"
+      - "stop_effect"
 
 sensor:
   - platform: mqtt

@@ -6,10 +6,10 @@
 binary_sensor:
   - platform: mqtt
     name: "Patio MCCGQ01LM Door"
-    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    state_topic: "zigbee2mqtt/patio_door_exterior"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+      - topic: "zigbee2mqtt/patio_door_exterior/availability"
     payload_on: false
     payload_off: true
     value_template: "{{ value_json.contact }}"
@@ -18,27 +18,27 @@ binary_sensor:
 sensor:
   - platform: mqtt
     name: "Patio MCCGQ01LM Battery"
-    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    state_topic: "zigbee2mqtt/patio_door_exterior"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+      - topic: "zigbee2mqtt/patio_door_exterior/availability"
     unit_of_measurement: "%"
     device_class: "battery"
     value_template: "{{ value_json.battery | int }}"
   - platform: mqtt
     name: 'Patio MCCGQ01LM Link Quality'
     icon: mdi:door-closed
-    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    state_topic: "zigbee2mqtt/patio_door_exterior"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+      - topic: "zigbee2mqtt/patio_door_exterior/availability"
     value_template: "{{ value_json.linkquality }}"
   - platform: mqtt
     name: "Patio MCCGQ01LM Voltage"
-    state_topic: "zigbee2mqtt/patio_MCCGQ01LM"
+    state_topic: "zigbee2mqtt/patio_door_exterior"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/patio_MCCGQ01LM/availability"
+      - topic: "zigbee2mqtt/patio_door_exterior/availability"
     icon: mdi:flash
     unit_of_measurement: "mV"
     value_template: "{{ value_json.voltage }}"
