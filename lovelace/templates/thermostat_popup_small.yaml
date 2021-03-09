@@ -1,0 +1,16 @@
+---
+thermostat_popup_small:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: entities
+        entities:
+          - input_boolean.climate_[[area]]_[[day]]_[[timing]]
+          - input_datetime.climate_[[area]]_[[day]]_[[timing]]_start
+          - input_datetime.climate_[[area]]_[[day]]_[[timing]]_end
+          - type: section
+            label: Temperature
+          - type: custom:slider-entity-row
+            entity: input_number.climate_[[area]]_[[day]]_[[timing]]
+            full_row: [[full_row]]
