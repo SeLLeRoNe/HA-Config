@@ -1,11 +1,11 @@
 ---
-# MQTT Device: Patio MCCGQ01LM
+# MQTT Device: Patio Door Exterior
 #
 # https://www.home-assistant.io/components/mqtt/
 #
 binary_sensor:
   - platform: mqtt
-    name: "Patio MCCGQ01LM Door"
+    name: "Patio Door Exterior"
     state_topic: "zigbee2mqtt/patio_door_exterior"
     availability:
       - topic: "zigbee2mqtt/bridge/state"

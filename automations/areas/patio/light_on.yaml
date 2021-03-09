@@ -16,7 +16,7 @@ trigger:
     for:
       seconds: 60
   - platform: state
-    entity_id: binary_sensor.patio_mccgq01lm_door
+    entity_id: binary_sensor.patio_door_exterior
     to: 'off'
     for:
       seconds: 60
@@ -29,7 +29,7 @@ condition:
       for:
         seconds: 60
     - condition: state
-      entity_id: binary_sensor.patio_mccgq01lm_door
+      entity_id: binary_sensor.patio_door_exterior
       state: 'off'
     - condition: state
       entity_id: binary_sensor.patio_pir

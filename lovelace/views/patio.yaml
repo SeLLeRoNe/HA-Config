@@ -29,7 +29,7 @@ cards:
                     tap_action:
                       action: none
                   - name: Door Status
-                    entity: binary_sensor.patio_mccgq01lm_door
+                    entity: binary_sensor.patio_door_exterior
                     tap_action:
                       action: none
           - type: vertical-stack
