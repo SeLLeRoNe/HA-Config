@@ -20,11 +20,22 @@ andrea:
                 tap_action:
                   action: none
               "home":
+                type: custom:state-switch
                 entity: sensor.andrea_oneplus_nord
-                type: "custom:secondaryinfo-entity-row"
-                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                tap_action:
-                  action: none
+                default: unavailable
+                states:
+                  "unavailable":
+                    entity: person.andrea
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                    tap_action:
+                      action: none
+                  "home":
+                    entity: sensor.andrea_oneplus_nord
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+                    tap_action:
+                      action: none
           "not_home":
             entity: person.andrea
             type: "custom:secondaryinfo-entity-row"
