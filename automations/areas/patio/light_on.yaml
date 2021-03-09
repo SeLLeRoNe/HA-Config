@@ -28,9 +28,14 @@ condition:
       state: "on"
       for:
         seconds: 60
-    - condition: state
-      entity_id: binary_sensor.patio_door_exterior
-      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.patio_door_exterior
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.patio_door_exterior
+          state: 'unavailable'
     - condition: state
       entity_id: binary_sensor.patio_pir
       state: 'off'
