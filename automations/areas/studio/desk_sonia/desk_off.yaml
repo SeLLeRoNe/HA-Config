@@ -8,14 +8,25 @@ trigger:
     to: 'off'
     for:
       seconds: 300
+  - platform: state
+    entity_id: binary_sensor.studio_desk_sonia_computer_work_ping
+    to: 'off'
+    for:
+      seconds: 300
   - platform: time
     at: "19:00:00"
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.workday_es
+      entity_id: binary_sensor.workday_nl
       state: 'on'
+    - condition: state
+      entity_id: binary_sensor.studio_desk_sonia_computer_ping
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.studio_desk_sonia_computer_work_ping
+      state: 'off'
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'off'

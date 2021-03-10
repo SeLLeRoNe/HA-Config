@@ -14,7 +14,7 @@ condition:
     - condition: template
       value_template: "{{ is_state('person.sonia', 'home') }}"
     - condition: state
-      entity_id: binary_sensor.workday_es
+      entity_id: binary_sensor.workday_nl
       state: 'on'
     - condition: time
       after: '07:00:00'
