@@ -1,0 +1,6 @@
+---
+platform: ping
+name: Master Bedroom Raspberry Zero W Ping
+host: !secret master_bedroom_raspberry_zero_w_ip
+count: 2
+scan_interval: 30

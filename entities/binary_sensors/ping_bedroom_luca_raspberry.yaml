@@ -1,0 +1,6 @@
+---
+platform: ping
+name: Bedroom Luca Raspberry Zero W Ping
+host: !secret bedroom_luca_raspberry_zero_w_ip
+count: 2
+scan_interval: 30

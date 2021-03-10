@@ -354,42 +354,33 @@ cards:
               - type: glance
 #                title: Devices
                 show_state: false
-                columns: 3
+                columns: 2
                 show_header_toggle: false
                 entities:
-                  - name: "Andrea's Computer"
+                  - name: "Computer Andrea"
                     icon: mdi:desktop-tower
                     entity: binary_sensor.studio_desk_andrea_computer_ping
                     tap_action:
                       action: none
-                  - name: "Laptop"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_andrea_laptop_ping
-                    tap_action:
-                      action: none
-                  - name: "Raspberry Pi"
-                    icon: mdi:raspberry-pi
-                    entity: binary_sensor.studio_desk_andrea_raspberry_ping
-                    tap_action:
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 3
-                show_header_toggle: false
-                entities:
-                  - name: "Andrea's VoIP Phone"
+                  - name: "VoIP Phone"
                     icon: mdi:phone-voip
                     entity: binary_sensor.polycom_wx410
                     tap_action:
                       action: none
-                  - name: NETGEAR EX7000
-                    icon: mdi:router-wireless
-                    entity: binary_sensor.netgear_ex7000
+              - type: glance
+#                title: Devices
+                show_state: false
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: "Laptop Andrea"
+                    icon: mdi:laptop
+                    entity: binary_sensor.studio_desk_andrea_laptop_ping
                     tap_action:
                       action: none
-                  - name: Samsung Q60R
-                    icon: mdi:television
-                    entity: binary_sensor.living_room_tv
+                  - name: "Laptop Andrea Work"
+                    icon: mdi:laptop
+                    entity: binary_sensor.studio_desk_andrea_laptop_work_ping
                     tap_action:
                       action: none
               - type: glance
@@ -430,6 +421,64 @@ cards:
                     hold_action:
                       action: call-service
                       service: shell_command.media03_off
+              - type: glance
+#                title: Devices
+                show_state: false
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: "Laptop Sonia"
+                    icon: mdi:laptop
+                    entity: binary_sensor.studio_desk_sonia_laptop_ping
+                    tap_action:
+                      action: none
+                  - name: "Laptop Sonia Work"
+                    icon: mdi:laptop
+                    entity: binary_sensor.studio_desk_sonia_laptop_work_ping
+                    tap_action:
+                      action: none
+              - type: glance
+#                title: Devices
+                show_state: false
+                columns: 1
+                show_header_toggle: false
+                entities:
+                  - name: "Living Room RPi"
+                    icon: mdi:raspberry-pi
+                    entity: binary_sensor.living_room_raspberry_ping
+                    tap_action:
+                      action: none
+              - type: glance
+#                title: Devices
+                show_state: false
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: "Bedroom Luca RPi Zero W"
+                    icon: mdi:raspberry-pi
+                    entity: binary_sensor.bedroom_luca_raspberry_zero_w_ping
+                    tap_action:
+                      action: none
+                  - name: "Master Bedroom RPi Zero W"
+                    icon: mdi:raspberry-pi
+                    entity: binary_sensor.master_bedroom_raspberry_zero_w_ping
+                    tap_action:
+                      action: none
+              - type: glance
+                show_state: false
+                columns: 2
+                show_header_toggle: false
+                entities:
+                  - name: NETGEAR EX7000
+                    icon: mdi:router-wireless
+                    entity: binary_sensor.netgear_ex7000
+                    tap_action:
+                      action: none
+                  - name: Samsung Q60R
+                    icon: mdi:television
+                    entity: binary_sensor.living_room_tv
+                    tap_action:
+                      action: none
               - type: glance
                 show_state: false
                 columns: 3

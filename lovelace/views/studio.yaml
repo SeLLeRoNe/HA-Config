@@ -10,104 +10,6 @@ cards:
         template: studio_lights
       - type: custom:decluttering-card
         template: studio_plugs
-      - type: vertical-stack
-        cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:decluttering-card
-                template: title
-                variables:
-                  - title: Devices
-              - type: glance
-                show_state: false
-                columns: 4
-                entities:
-                  - name: "Computer"
-                    icon: mdi:desktop-tower
-                    entity: binary_sensor.studio_desk_andrea_computer_ping
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_desk_andrea_computer_wol
-                    hold_action:
-                      action: call-service
-                      service: switch.turn_off
-                      service_data:
-                        entity_id: switch.studio_desk_andrea_computer_wol
-                  - name: "Laptop Andrea"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_andrea_laptop_ping
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_desk_andrea_laptop_wol
-                  - name: "Laptop Andrea"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_sonia_laptop_ping
-                    tap_action:
-                      action: none
-                  - name: "Laptop Sonia"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_sonia_laptop_work_ping
-                    tap_action: 
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 2
-                entities:
-                  - name: "Raspberry Pi"
-                    icon: mdi:raspberry-pi
-                    entity: binary_sensor.studio_desk_andrea_raspberry_ping
-                    tap_action:
-                      action: none
-                    hold_action:
-                      action: call-service
-                      service: shell_command.raspberry_off
-                  - name: "VoIP Phone"
-                    icon: mdi:phone-voip
-                    entity: binary_sensor.polycom_wx410
-                    tap_action:
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 3
-                entities:
-                  - name: MEDIA01
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media01
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media01_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media01_off
-                  - name: MEDIA02
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media02
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media02_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media02_off
-                  - name: MEDIA03
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media03
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media03_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media03_off
       - break
       - type: vertical-stack
         cards:
@@ -280,6 +182,106 @@ cards:
             tap_action:
               action: none
       - break
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Devices
+          - type: glance
+            show_state: false
+            columns: 2
+            entities:
+              - name: "Computer Andrea"
+                icon: mdi:desktop-tower
+                entity: binary_sensor.studio_desk_andrea_computer_ping
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_desk_andrea_computer_wol
+                hold_action:
+                  action: call-service
+                  service: switch.turn_off
+                  service_data:
+                    entity_id: switch.studio_desk_andrea_computer_wol
+              - name: "VoIP Phone"
+                icon: mdi:phone-voip
+                entity: binary_sensor.polycom_wx410
+                tap_action:
+                  action: none
+          - type: glance
+            show_state: false
+            columns: 2
+            entities:
+              - name: "Laptop Andrea"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_andrea_laptop_ping
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_desk_andrea_laptop_wol
+              - name: "Work Laptop Andrea"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_andrea_laptop_work_ping
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_desk_andrea_laptop_work_wol
+          - type: glance
+            show_state: false
+            columns: 3
+            entities:
+              - name: MEDIA01
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media01
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_media01_wol
+                hold_action:
+                  action: call-service
+                  service: shell_command.media01_off
+              - name: MEDIA02
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media02
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_media02_wol
+                hold_action:
+                  action: call-service
+                  service: shell_command.media02_off
+              - name: MEDIA03
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media03
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_media03_wol
+                hold_action:
+                  action: call-service
+                  service: shell_command.media03_off
+          - type: glance
+            show_state: false
+            columns: 2
+            entities:
+              - name: "Laptop Sonia"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_sonia_laptop_ping
+                tap_action:
+                  action: none
+              - name: "Work Laptop Sonia"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_sonia_laptop_work_ping
+                tap_action:
+                  action: none
       - type: custom:decluttering-card
         template: studio_energy_small
         variables:
