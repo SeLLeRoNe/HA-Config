@@ -6,12 +6,12 @@ trigger:
   - platform: homeassistant
     event: start
   - platform: time
-    at: "10:30:00"
+    at: "10:00:00"
 condition:
   condition: and
   conditions:
     - condition: time
-      after: '10:30:00'
+      after: '10:00:00'
       before: '21:00:00'
     - condition: state
       entity_id: input_boolean.night_mode
