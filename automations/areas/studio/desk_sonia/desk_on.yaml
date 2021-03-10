@@ -4,7 +4,7 @@ alias: Studio - Sonia - Desk On
 initial_state: on
 trigger:
 #  - platform: state
-#    entity_id: binary_sensor.studio_desk_sonia_computer_ping
+#    entity_id: binary_sensor.studio_desk_sonia_laptop_ping
 #    to: 'on'
   - platform: time
     at: "07:00:00"
