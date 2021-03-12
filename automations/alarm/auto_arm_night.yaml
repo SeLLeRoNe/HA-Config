@@ -31,6 +31,9 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
     - condition: template
       value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'armed_night') }}"
     - condition: state

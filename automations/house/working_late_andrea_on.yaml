@@ -10,7 +10,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      after: input_boolean.night_mode
+      entity_id: input_boolean.night_mode
       state: 'off'
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
