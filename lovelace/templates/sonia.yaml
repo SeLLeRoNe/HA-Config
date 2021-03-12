@@ -11,7 +11,7 @@ sonia:
           "home":
             type: custom:state-switch
             entity: device_tracker.sonia_mi_9t_pro_bt
-            default: home
+            default: not_home
             states:
               "not_home":
                 entity: person.sonia
