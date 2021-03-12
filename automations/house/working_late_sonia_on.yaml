@@ -1,0 +1,28 @@
+---
+id: '3641894265335'
+alias: House - Work Late Sonia Activated
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: input_boolean.working_late_sonia
+    to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      after: input_boolean.night_mode
+      state: 'off'
+action:
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: "Home Alarm"
+      message: "Sonia has to work until late today."
+      data:
+        color: "#0066FF"
+        sticky: "false"
+        tag: tag
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.studio_google_mini
+      message: "Sonia has to work until late today."
+      language: 'en'

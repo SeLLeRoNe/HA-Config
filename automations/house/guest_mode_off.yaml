@@ -1,6 +1,6 @@
 ---
 id: '3126035620144'
-alias: Alarm - Guest Mode Deactivated
+alias: House - Guest Mode Deactivated
 initial_state: on
 trigger:
   - platform: state

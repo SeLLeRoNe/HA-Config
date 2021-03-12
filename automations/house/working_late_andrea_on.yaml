@@ -1,22 +1,22 @@
 ---
-id: '3641894765835'
-alias: Alarm - Guest Mode Activated
+id: '3641894765335'
+alias: House - Work Late Andrea Activated
 initial_state: on
 trigger:
   - platform: state
-    entity_id: input_boolean.guest_mode
+    entity_id: input_boolean.working_late_andrea
     to: 'on'
 condition:
   condition: and
   conditions:
-    - condition: time
-      after: '09:00:00'
-      before: '23:00:00'
+    - condition: state
+      after: input_boolean.night_mode
+      state: 'off'
 action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Home Alarm"
-      message: "Guest Mode Activated. Alarm Disarmed"
+      message: "Andrea has to work until late today."
       data:
         color: "#0066FF"
         sticky: "false"
@@ -24,5 +24,5 @@ action:
   - service: tts.google_translate_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Guest Mode Activated"
+      message: "Andrea has to work until late today."
       language: 'en'

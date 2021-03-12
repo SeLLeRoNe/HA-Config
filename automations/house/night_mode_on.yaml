@@ -22,6 +22,8 @@ condition:
 action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.night_mode
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.working_late_andrea
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
       title: "Night Mode"
