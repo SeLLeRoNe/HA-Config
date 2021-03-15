@@ -1,148 +1,147 @@
 title: Pressures
 icon: fas:tachometer-alt
-panel: true
 path: pressure
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: vertical-stack
     cards:
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Pressures
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Outside
-              - entity: sensor.dark_sky_pressure
-              - color: '#FF8000'
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Patio
-              - entity: sensor.patio_pressure
-              - color: '#FF3333'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Living Room
-              - entity: sensor.living_room_pressure
-              - color: '#FF3333'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Kitchen
-              - entity: sensor.kitchen_pressure
-              - color: '#FF6666'
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Bathroom
-              - entity: sensor.bathroom_pressure
-              - color: '#FF33FF'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Studio
-              - entity: sensor.studio_pressure
-              - color: '#7F00FF'
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Bedroom Luca
-              - entity: sensor.bedroom_luca_pressure
-              - color: '#00FF00'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Master Bedroom
-              - entity: sensor.master_bedroom_pressure
-              - color: '#0080FF'
-          - type: custom:decluttering-card
-            template: pressure_text
-            variables:
-              - name: Master Bathroom
-              - entity: sensor.master_bathroom_pressure
-              - color: '#33FF99'
-      - type: custom:mini-graph-card
-        name: pressure 48h
-        icon: fas:tachometer-alt
-        more_info: false
-        group: false
-        height: 150
-        line_width: 4
-        hours_to_show: 168
-        points_per_hour: 0.25
-        aggregate_func: max
-        group_by: hour
-        hour24: true
-        animate: false
-        decimals: 1
-        font_size: 100
-        font_size_header: 14
-        align_header: default
-        align_icon: right
-        align_state: center
-        lower_bound: 850
-        upper_bound: 1100
-        state_map:
-          - value: "off"
-            label: "Day"
-          - value: "on"
-            label: "Night"
-        show:
-          name: false
-          icon: false
-          state: false
-          graph: bar
-          fill: false
-          points: false
-          legend: false
-          extrema: false
-          labels: false
-          labels_secondary: false
-          name_adaptive_color: false
-          icon_adaptive_color: false
-        entities:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Pressures
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Outside
           - entity: sensor.dark_sky_pressure
-            name: Outside
-            color: '#FF8000'
+          - color: '#FF8000'
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Patio
           - entity: sensor.patio_pressure
-            name: Patio
-            color: '#0066FF'
-          - entity: sensor.master_bedroom_pressure
-            name: Master Bedroom
-            color: '#0080FF'
+          - color: '#FF3333'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Living Room
           - entity: sensor.living_room_pressure
-            name: Living Room
-            color: '#FF3333'
-          - entity: sensor.studio_pressure
-            name: Studio
-            color: '#7F00FF'
-          - entity: sensor.bedroom_luca_pressure
-            name: Bedroom Luca
-            color: '#00FF00'
-          - entity: sensor.master_bathroom_pressure
-            name: Master Bathroom
-            color: '#33FF99'
-          - entity: sensor.bathroom_pressure
-            name: Bathroom
-            color: '#FF33FF'
+          - color: '#FF3333'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Kitchen
           - entity: sensor.kitchen_pressure
-            name: Bathroom
-            color: '#FF6666'
+          - color: '#FF6666'
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Bathroom
+          - entity: sensor.bathroom_pressure
+          - color: '#FF33FF'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Studio
+          - entity: sensor.studio_pressure
+          - color: '#7F00FF'
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Bedroom Luca
+          - entity: sensor.bedroom_luca_pressure
+          - color: '#00FF00'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Master Bedroom
+          - entity: sensor.master_bedroom_pressure
+          - color: '#0080FF'
+      - type: custom:decluttering-card
+        template: pressure_text
+        variables:
+          - name: Master Bathroom
+          - entity: sensor.master_bathroom_pressure
+          - color: '#33FF99'
+  - type: custom:mini-graph-card
+    name: pressure 48h
+    icon: fas:tachometer-alt
+    more_info: false
+    group: false
+    height: 150
+    line_width: 4
+    hours_to_show: 168
+    points_per_hour: 0.25
+    aggregate_func: max
+    group_by: hour
+    hour24: true
+    animate: false
+    decimals: 1
+    font_size: 100
+    font_size_header: 14
+    align_header: default
+    align_icon: right
+    align_state: center
+    lower_bound: 850
+    upper_bound: 1100
+    state_map:
+      - value: "off"
+        label: "Day"
+      - value: "on"
+        label: "Night"
+    show:
+      name: false
+      icon: false
+      state: false
+      graph: bar
+      fill: false
+      points: false
+      legend: false
+      extrema: false
+      labels: false
+      labels_secondary: false
+      name_adaptive_color: false
+      icon_adaptive_color: false
+    entities:
+      - entity: sensor.dark_sky_pressure
+        name: Outside
+        color: '#FF8000'
+      - entity: sensor.patio_pressure
+        name: Patio
+        color: '#0066FF'
+      - entity: sensor.master_bedroom_pressure
+        name: Master Bedroom
+        color: '#0080FF'
+      - entity: sensor.living_room_pressure
+        name: Living Room
+        color: '#FF3333'
+      - entity: sensor.studio_pressure
+        name: Studio
+        color: '#7F00FF'
+      - entity: sensor.bedroom_luca_pressure
+        name: Bedroom Luca
+        color: '#00FF00'
+      - entity: sensor.master_bathroom_pressure
+        name: Master Bathroom
+        color: '#33FF99'
+      - entity: sensor.bathroom_pressure
+        name: Bathroom
+        color: '#FF33FF'
+      - entity: sensor.kitchen_pressure
+        name: Bathroom
+        color: '#FF6666'
 #          - entity: binary_sensor.night_time
 #            color: '#B3B3B3'
 #            name: Night Time

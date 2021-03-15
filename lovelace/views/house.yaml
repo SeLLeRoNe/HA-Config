@@ -1,210 +1,219 @@
 title: Home
 icon: mdi:home
-panel: true
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:stack-in-card
+    mode: vertical
+    layout:
+      column: 1
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Security
-#          - type: horizontal-stack
-#            cards:
-#              - type: custom:bignumber-card
-#                entity: sensor.time
-#                scale: 20px
-#              - type: custom:bignumber-card
-#                entity: sensor.date
-#                scale: 20px
-#          - type: custom:username-element
-          - type: alarm-panel
-            entity: alarm_control_panel.home_alarm
-            states:
-              - arm_home
-              - arm_away
-              - arm_night
-#          - type: alarm-panel
-#            entity: alarm_control_panel.alarmo
-#            states:
-#              - arm_home
-#              - arm_away
-#              - arm_night
-          - type: glance
-            show_state: false
-            columns: 3
-            entities:
-              - entity: input_boolean.night_mode
-                tap_action:
-                  action: none
-                hold_action:
-                  action: toggle
-              - entity: input_boolean.guest_mode
-                tap_action:
-                  action: none
-                hold_action:
-                  action: toggle
-              - entity: input_boolean.holiday_mode
-                tap_action:
-                  action: none
-                hold_action:
-                  action: toggle
-          - type: glance
-            show_state: false
-            columns: 2
-            entities:
-              - entity: input_boolean.working_late_andrea
-                tap_action:
-                  action: none
-                hold_action:
-                  action: toggle
-              - entity: input_boolean.working_late_sonia
-                tap_action:
-                  action: none
-                hold_action:
-                  action: toggle
-#          - type: entities
-#            show_header_toggle: false
-#            entities:
-#              - type: custom:toggle-control-button-row
-#                entity: input_boolean.night_mode
-#                style: |
-#                  :host {
-#                    --paper-item-icon-color:
-#                      {% if is_state(config.entity, 'on') %}
-#                        rgb(51, 204, 51);
-#                      {% else %}
-#                        rgb(128, 128, 128);
-#                      {% endif %}
-#                  }
-#                customTheme: true
-#                tap_action:
-#                  action: toggle
-#              - type: custom:toggle-control-button-row
-#                entity: input_boolean.guest_mode
-#                style: |
-#                  :host {
-#                    --paper-item-icon-color:
-#                      {% if is_state(config.entity, 'on') %}
-#                        rgb(51, 204, 51);
-#                      {% else %}
-#                        rgb(128, 128, 128);
-#                      {% endif %}
-#                  }
-#                customTheme: true
-#                tap_action:
-#                  action: toggle
-#              - type: custom:toggle-control-button-row
-#                entity: input_boolean.holiday_mode
-#                style: |
-#                  :host {
-#                    --paper-item-icon-color:
-#                      {% if is_state(config.entity, 'on') %}
-#                        rgb(51, 204, 51);
-#                      {% else %}
-#                        rgb(128, 128, 128);
-#                      {% endif %}
-#                  }
-#                customTheme: true
-#                tap_action:
-#                  action: toggle
-#      - type: picture-glance
-#        title: Hallway
-#        entities: []
-#        camera_image: camera.hallway
-#      - type: picture-glance
-#        camera_image: camera.living_room_camera_mediaprofile_channel1_mainstream
-#        camera_view: live
-#        entities:
-#          - entity: binary_sensor.00000_cell_motion_detection
-#      - type: picture-glance
-#        title: Hallway
-#        tap_action:
-#          action: toggle
-#        camera_image: camera.hallway
-#        camera_view: live
-#        entities:
-#          - switch.studio_wall_light  
-#      - type: map
-#        aspect_ratio: 16:9
-#        default_zoom: 15
-#        dark_mode: true
-#        entities:
-#          - person.andrea
-#          - person.sonia
-#          - zone.allowed_area
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: people
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: cars
-#      - type: calendar
-#        initial_view: dayGridMonth
-#        entities:
-#          - calendar.personal_andrea
-#          - calendar.uk_holidays
-#          - calendar.it_holidays
-#          - calendar.es_holidays
-#          - calendar.motors
-#          - calendar.serie_a
-#          - calendar.uefa_champions_league
-#          - calendar.uefa_europa_league
-#          - calendar.euro_2020
-      - break
       - type: custom:decluttering-card
-        template: house_lights
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Weather
-          - type: custom:decluttering-card
-            template: darksky_card
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plants
-          - type: plant-status
-            entity: plant.parsely
-            name: "Parsely"
-      - type: custom:decluttering-card
-        template: thermostat_card_small
+        template: title
         variables:
-          - area: house
+          - title: Security
+#      - type: horizontal-stack
+#        cards:
+#          - type: custom:bignumber-card
+#            entity: sensor.time
+#            scale: 20px
+#          - type: custom:bignumber-card
+#            entity: sensor.date
+#            scale: 20px
+#      - type: custom:username-element
+      - type: alarm-panel
+        entity: alarm_control_panel.home_alarm
+        states:
+          - arm_home
+          - arm_away
+          - arm_night
+#      - type: alarm-panel
+#        entity: alarm_control_panel.alarmo
+#        states:
+#          - arm_home
+#          - arm_away
+#          - arm_night
+      - type: glance
+        show_state: false
+        columns: 3
+        entities:
+          - entity: input_boolean.night_mode
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: input_boolean.guest_mode
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: input_boolean.holiday_mode
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - entity: input_boolean.working_late_andrea
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: input_boolean.working_late_sonia
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+#      - type: entities
+#        show_header_toggle: false
+#        entities:
+#          - type: custom:toggle-control-button-row
+#            entity: input_boolean.night_mode
+#            style: |
+#              :host {
+#                --paper-item-icon-color:
+#                  {% if is_state(config.entity, 'on') %}
+#                    rgb(51, 204, 51);
+#                  {% else %}
+#                    rgb(128, 128, 128);
+#                  {% endif %}
+#              }
+#            customTheme: true
+#            tap_action:
+#              action: toggle
+#          - type: custom:toggle-control-button-row
+#            entity: input_boolean.guest_mode
+#            style: |
+#              :host {
+#                --paper-item-icon-color:
+#                  {% if is_state(config.entity, 'on') %}
+#                    rgb(51, 204, 51);
+#                  {% else %}
+#                    rgb(128, 128, 128);
+#                  {% endif %}
+#              }
+#            customTheme: true
+#            tap_action:
+#              action: toggle
+#          - type: custom:toggle-control-button-row
+#            entity: input_boolean.holiday_mode
+#            style: |
+#              :host {
+#                --paper-item-icon-color:
+#                  {% if is_state(config.entity, 'on') %}
+#                    rgb(51, 204, 51);
+#                  {% else %}
+#                    rgb(128, 128, 128);
+#                  {% endif %}
+#              }
+#            customTheme: true
+#            tap_action:
+#              action: toggle
+#  - type: picture-glance
+#    title: Hallway
+#    entities: []
+#    camera_image: camera.hallway
+#  - type: picture-glance
+#    camera_image: camera.living_room_camera_mediaprofile_channel1_mainstream
+#    camera_view: live
+#    entities:
+#      - entity: binary_sensor.00000_cell_motion_detection
+#  - type: picture-glance
+#    title: Hallway
+#    tap_action:
+#       action: toggle
+#    camera_image: camera.hallway
+#    camera_view: live
+#    entities:
+#      - switch.studio_wall_light  
+#  - type: map
+#    aspect_ratio: 16:9
+#    default_zoom: 15
+#    dark_mode: true
+#    entities:
+#      - person.andrea
+#      - person.sonia
+#      - zone.allowed_area
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    layout:
+      column: 2
+    cards:
       - type: custom:decluttering-card
-        template: house_energy_small
+        template: people
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: cars
+#  - type: calendar
+#    initial_view: dayGridMonth
+#    entities:
+#      - calendar.personal_andrea
+#      - calendar.uk_holidays
+#      - calendar.it_holidays
+#      - calendar.es_holidays
+#      - calendar.motors
+#      - calendar.serie_a
+#      - calendar.uefa_champions_league
+#      - calendar.uefa_europa_league
+#      - calendar.euro_2020
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: house_lights
+    layout:
+      column: 3
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    layout:
+      column: 4
+    cards:
+      - type: custom:decluttering-card
+        template: title
         variables:
-          - title: Energy Consumption
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
+          - title: Weather
+      - type: custom:decluttering-card
+        template: darksky_card
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plants
+      - type: plant-status
+        entity: plant.parsely
+        name: "Parsely"
+  - type: custom:decluttering-card
+    template: thermostat_card_small
+    variables:
+      - area: house
+  - type: custom:decluttering-card
+    template: house_energy_small
+    variables:
+      - title: Energy Consumption
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    layout:
+      column: 5
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Sensors
+      - type: vertical-stack
         cards:
           - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Sensors
-          - type: vertical-stack
-            cards:
-              - type: custom:decluttering-card
-                template: house_temperature
-              - type: custom:decluttering-card
-                template: house_humidity 
-              - type: custom:decluttering-card
-                template: house_pressure
-              - type: custom:decluttering-card
-                template: house_illuminance
+            template: house_temperature
+          - type: custom:decluttering-card
+            template: house_humidity 
+          - type: custom:decluttering-card
+            template: house_pressure
+          - type: custom:decluttering-card
+            template: house_illuminance

@@ -1,41 +1,39 @@
 title: Batteries
-#icon: fas:battery-full
 icon: mdi:battery
-panel: true
 path: batteries
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Phones
-          - type: custom:decluttering-card
-            template: batteries_phones
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Tablets
-          - type: custom:decluttering-card
-            template: batteries_tablets
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Zigbee Devices
-          - type: custom:decluttering-card
-            template: batteries_zigbee
-#      - break
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Phones
+      - type: custom:decluttering-card
+        template: batteries_phones
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Tablets
+      - type: custom:decluttering-card
+        template: batteries_tablets
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Zigbee Devices
+      - type: custom:decluttering-card
+        template: batteries_zigbee
+#      - type: custom:layout-break
 #      - type: custom:stack-in-card
 #        mode: vertical
 #        cards:

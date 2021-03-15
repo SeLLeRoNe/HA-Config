@@ -14,7 +14,7 @@ cards:
         fan_control: true
         min_slider: 18
         max_slider: 30
-      - break
+      - type: custom:layout-break
 #      - type: vertical-stack
 #        cards:
 #          - type: custom:thermostat-card

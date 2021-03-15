@@ -108,7 +108,7 @@ cards:
               - entity: sensor.database_size
                 name: Database Size
                 color: '#FF9900'
-      - break
+      - type: custom:layout-break
       - type: custom:stack-in-card
         mode: vertical
         cards:
@@ -216,7 +216,7 @@ cards:
                 icon: mdi:alphabetical
                 tap_action:
                   action: none
-      - break
+      - type: custom:layout-break
 #       - type: custom:decluttering-card
 #         template: title
 #         variables:

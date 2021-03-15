@@ -1,14 +1,13 @@
 title: Template
 icon: mdi:sunglasses
-panel: true
 path: template
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: vertical-stack
     cards:
-      - type: vertical-stack
-        cards:
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:

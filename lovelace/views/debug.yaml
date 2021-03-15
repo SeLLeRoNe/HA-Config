@@ -19,7 +19,7 @@ cards:
             show_header_toggle: false
             entities:
               - input_text.debug
-      - break
+      - type: custom:layout-break
       - type: custom:stack-in-card
         mode: vertical
         cards:
@@ -174,7 +174,7 @@ cards:
               separator: true
             hiddenState:
               - No Motion Detected
-#      - break
+#      - type: custom:layout-break
 #      - type: custom:stack-in-card
 #        mode: vertical
 #        cards:

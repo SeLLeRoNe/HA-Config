@@ -21,7 +21,7 @@ cards:
               - name: "Bitcoin / EUR"
               - entity: sensor.cryptoinfo_bitcoin_eur
               - decimals: 2
-      - break
+      - type: custom:layout-break
       - type: custom:stack-in-card
         mode: vertical
         cards:

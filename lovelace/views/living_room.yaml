@@ -1,142 +1,140 @@
 title: Living Room
-#icon: fas:couch
 icon: mdi:sofa
-panel: true
 path: livingroom
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:decluttering-card
+    template: living_room_lights
+  - type: custom:decluttering-card
+    template: living_room_plugs
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
       - type: custom:decluttering-card
-        template: living_room_lights
-      - type: custom:decluttering-card
-        template: living_room_plugs
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:decluttering-card
-                template: title
-                variables:
-                  - title: Sensors
-              - type: horizontal-stack
-                cards:
-                  - type: glance
-                    columns: 2
-                    show_state: true
-                    entities:
-                      - name: Motion Sensor
-                        entity: binary_sensor.living_room_pir
-                        tap_action:
-                          action: none
-                      - name: Window Status
-                        entity: binary_sensor.living_room_window
-                        tap_action:
-                          action: none
-          - type: custom:decluttering-card
-            template: thermostat_card_small
-            variables:
-              - area: living_room
-          - type: vertical-stack
-            cards:
-              - type: custom:decluttering-card
-                template: temperature
-                variables:
-                  - entity: sensor.living_room_temperature
-              - type: custom:decluttering-card
-                template: humidity
-                variables:
-                  - entity: sensor.living_room_humidity
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: TV
+        template: title
+        variables:
+          - title: TV
 #          - type: media-control
 #            entity: media_player.living_room_tv
-          - type: custom:hui-element
-            row_type: divider
-          - type: custom:mini-media-player
-            entity: media_player.living_room_tv
-            icon: mdi:television
-            artwork: cover
-            source: icon
-            hide:
-              info: true
-              power: false
-              source: false
-              sound_mode: true
-              controls: true
-              play_pause: true
-              play_stop: true
-              volume: false
-              mute: false
-              progress: true
-              runtime: true
-              artwork_border: true
-              power_state: false
-              shuffle: true
-            tap_action:
-              action: none
-          - type: custom:mini-media-player
-            entity: media_player.living_room_google_tv
-            icon: mdi:cast
-            artwork: cover
-            source: icon
-            hide:
-              info: true
-              power: false
-              source: false
-              sound_mode: true
-              controls: true
-              play_pause: true
-              play_stop: true
-              volume: false
-              mute: false
-              progress: true
-              runtime: true
-              artwork_border: true
-              power_state: false
-              shuffle: true
-            tts:
-              platform: google_translate
-            tap_action:
-              action: none
-          - type: custom:mini-media-player
-            entity: media_player.living_room_mundo_r
-            icon: mdi:cast
-            artwork: cover
-            source: icon
-            hide:
-              info: true
-              power: false
-              source: false
-              sound_mode: true
-              controls: true
-              play_pause: true
-              play_stop: true
-              volume: false
-              mute: false
-              progress: true
-              runtime: true
-              artwork_border: true
-              power_state: false
-              shuffle: true
-#            tts:
-#              platform: google_translate
-            tap_action:
-              action: none
-      - break
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:mini-media-player
+        entity: media_player.living_room_tv
+        icon: mdi:television
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: false
+          source: false
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: false
+          shuffle: true
+        tap_action:
+          action: none
+      - type: custom:mini-media-player
+        entity: media_player.living_room_google_tv
+        icon: mdi:cast
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: false
+          source: false
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: false
+          shuffle: true
+        tts:
+          platform: google_translate
+        tap_action:
+         action: none
+      - type: custom:mini-media-player
+        entity: media_player.living_room_mundo_r
+        icon: mdi:cast
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: false
+          source: false
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: false
+          shuffle: true
+#          tts:
+#            platform: google_translate
+        tap_action:
+          action: none
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
       - type: custom:decluttering-card
-        template: living_room_energy_small
+        template: title
         variables:
-          - title: Energy Consumption
-#      - break
+          - title: Sensors
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            columns: 2
+            show_state: true
+            entities:
+              - name: Motion Sensor
+                entity: binary_sensor.living_room_pir
+                tap_action:
+                  action: none
+              - name: Window Status
+                entity: binary_sensor.living_room_window
+                tap_action:
+                  action: none
+      - type: custom:decluttering-card
+        template: thermostat_card_small
+        variables:
+          - area: living_room
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: temperature
+        variables:
+          - entity: sensor.living_room_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.living_room_humidity
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: living_room_energy_small
+    variables:
+      - title: Energy Consumption
+#      - type: custom:layout-break
 #      - type: custom:decluttering-card
 #        template: title
 #        variables:

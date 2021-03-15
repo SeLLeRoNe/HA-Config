@@ -1,83 +1,82 @@
 title: Maintenance
 icon: mdi:cog
-panel: true
 path: system
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: vertical-stack
     cards:
-      - type: vertical-stack
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Intel NUC
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: entities
+        title: System
+        show_header_toggle: false
+        entities:
+          - entity: sensor.last_boot
+            name: Last System Reboot
+      - type: custom:mini-graph-card
+        name: Load
+        more_info: false
+        height: 150
+        line_width: 4
+        hours_to_show: 168
+        points_per_hour: 4
+        aggregate_func: max
+        group_by: hour
+        hour24: true
+        animate: false
+        decimals: 2
+        align_state: left
+        show:
+          name: true
+          icon: true
+          state: true
+          graph: line
+          fill: false
+          points: false
+          legend: true
+          extrema: false
+          labels: false
+        entities:
+          - entity: sensor.load_1m
+            name: 1 Minute
+            show_state: true
+          - entity: sensor.load_5m
+            name: 5 Minutes
+            show_state: true
+          - entity: sensor.load_15m
+            name: 15 Minutes
+            show_state: true
+      - type: horizontal-stack
         cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Intel NUC
-      - type: custom:stack-in-card
-        mode: vertical
+          - type: gauge
+            name: CPU
+            entity: sensor.processor_use_percent
+          - type: gauge
+            name: HDD
+            entity: sensor.disk_use_percent
+      - type: horizontal-stack
         cards:
-          - type: entities
-            title: System
-            show_header_toggle: false
-            entities:
-              - entity: sensor.last_boot
-                name: Last System Reboot
-          - type: custom:mini-graph-card
-            name: Load
-            more_info: false
-            height: 150
-            line_width: 4
-            hours_to_show: 168
-            points_per_hour: 4
-            aggregate_func: max
-            group_by: hour
-            hour24: true
-            animate: false
-            decimals: 2
-            align_state: left
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            entities:
-              - entity: sensor.load_1m
-                name: 1 Minute
-                show_state: true
-              - entity: sensor.load_5m
-                name: 5 Minutes
-                show_state: true
-              - entity: sensor.load_15m
-                name: 15 Minutes
-                show_state: true
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: CPU
-                entity: sensor.processor_use_percent
-              - type: gauge
-                name: HDD
-                entity: sensor.disk_use_percent
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: RAM
-                entity: sensor.memory_use_percent
-              - type: gauge
-                name: SWAP
-                entity: sensor.swap_use_percent
-          - type: entities
-            title: Network
-            show_header_toggle: false
-            entities:
-              - entity: sensor.ip_address
-                icon: mdi:ip-network
-              - entity: sensor.hostname_ip
-                icon: mdi:dns
+          - type: gauge
+            name: RAM
+            entity: sensor.memory_use_percent
+          - type: gauge
+            name: SWAP
+            entity: sensor.swap_use_percent
+      - type: entities
+        title: Network
+        show_header_toggle: false
+        entities:
+          - entity: sensor.ip_address
+            icon: mdi:ip-network
+          - entity: sensor.hostname_ip
+            icon: mdi:dns
 #          - type: horizontal-stack
 #            cards:
 #              - type: gauge
@@ -88,609 +87,609 @@ cards:
 #                name: Router Upload
 #                entity: sensor.technicolor_tc7230_kib_s_sent
 #                max: 6250
-          - type: custom:mini-graph-card
-            name: Speed Test
-            more_info: false
-            group: false
-            height: 0
-            line_width: 4
-            hour24: true
-            hours_to_show: 168
-            points_per_hour: 0.25
-            aggregate_func: max
-            group_by: date
-            animate: false
-            decimals: 0
-            align_state: left
-            logarithmic: true
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: false
-              points: false
-              legend: false
-              extrema: false
-              labels: false
+      - type: custom:mini-graph-card
+        name: Speed Test
+        more_info: false
+        group: false
+        height: 0
+        line_width: 4
+        hour24: true
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: date
+        animate: false
+        decimals: 0
+        align_state: left
+        logarithmic: true
+        show:
+          name: true
+          icon: true
+          state: true
+          graph: line
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
 #            style: |
 #              ha-card {
 #                padding: 16px !important;
 #              }
-            entities:
-              - entity: sensor.speedtest_download
-                name: Download
-                color: "#3399ff"
-                show_state: true
-              - entity: sensor.speedtest_upload
-                name: Upload
-                color: "#ff6600"
-                show_state: true
-              - entity: sensor.speedtest_ping
-                name: Ping
-                color: "#33cc33"
-                show_state: true
-          - type: custom:mini-graph-card
-            more_info: false
-            height: 150
-            line_width: 4
-            group: true
-            hour24: true
-            hours_to_show: 168
-            points_per_hour: 0.25
-            aggregate_func: max
-            group_by: hour
-            animate: false
-            decimals: 1
-            align_state: left
-            logarithmic: true
-            show:
-              name: false
-              icon: false
-              state: false
-              graph: line
-              fill: false
-              points: false
-              legend: false
-              extrema: false
-              labels: false
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
-            entities:
-              - entity: sensor.speedtest_download
-                color: "#3399ff"
-              - entity: sensor.speedtest_upload
-                color: "#ff6600"
-          - type: custom:mini-graph-card
-            more_info: false
-            group: true
-            height: 25
-            line_width: 4
-            hour24: true
-            hours_to_show: 168
-            points_per_hour: 0.25
-            aggregate_func: max
-            group_by: hour
-            animate: false
-            decimals: 0
-            align_state: left
-            logarithmic: true
-            show:
-              name: false
-              icon: false
-              state: false
-              graph: line
-              fill: false
-              points: false
-              legend: false
-              extrema: false
-              labels: false
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
-            entities:
-              - entity: sensor.speedtest_ping
-                color: "#33cc33"
-          - type: custom:mini-graph-card
-            more_info: false
-            group: true
-            height: 0
-            line_width: 4
-            hour24: true
-            hours_to_show: 168
-            points_per_hour: 0.25
-            aggregate_func: max
-            group_by: hour
-            animate: false
-            decimals: 0
-            align_state: left
-            logarithmic: true
-            show:
-              name: false
-              icon: false
-              state: false
-              graph: line
-              fill: false
-              points: false
-              legend: true
-              extrema: false
-              labels: false
+        entities:
+          - entity: sensor.speedtest_download
+            name: Download
+            color: "#3399ff"
+            show_state: true
+          - entity: sensor.speedtest_upload
+            name: Upload
+            color: "#ff6600"
+            show_state: true
+          - entity: sensor.speedtest_ping
+            name: Ping
+            color: "#33cc33"
+            show_state: true
+      - type: custom:mini-graph-card
+        more_info: false
+        height: 150
+        line_width: 4
+        group: true
+        hour24: true
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        animate: false
+        decimals: 1
+        align_state: left
+        logarithmic: true
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: line
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+        style: |
+          ha-card {
+            padding: 16px !important;
+          }
+        entities:
+          - entity: sensor.speedtest_download
+            color: "#3399ff"
+          - entity: sensor.speedtest_upload
+            color: "#ff6600"
+      - type: custom:mini-graph-card
+        more_info: false
+        group: true
+        height: 25
+        line_width: 4
+        hour24: true
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        animate: false
+        decimals: 0
+        align_state: left
+        logarithmic: true
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: line
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+        style: |
+          ha-card {
+            padding: 16px !important;
+          }
+        entities:
+          - entity: sensor.speedtest_ping
+            color: "#33cc33"
+      - type: custom:mini-graph-card
+        more_info: false
+        group: true
+        height: 0
+        line_width: 4
+        hour24: true
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        animate: false
+        decimals: 0
+        align_state: left
+        logarithmic: true
+        show:
+          name: false
+          icon: false
+          state: false
+          graph: line
+          fill: false
+          points: false
+          legend: true
+          extrema: false
+          labels: false
 #            style: |
 #              ha-card {
 #                padding: 16px !important;
 #              }
-            entities:
-              - entity: sensor.speedtest_download
-                name: Download
-                color: "#3399ff"
-              - entity: sensor.speedtest_upload
-                name: Upload
-                color: "#ff6600"
-              - entity: sensor.speedtest_ping
-                name: Ping
-                color: "#33cc33"
-          # - type: custom:mini-graph-card
-          #   name: Ethernet Traffic
-          #   more_info: false
-          #   height: 150
-          #   line_width: 4
-          #   hours_to_show: 168
-          #   points_per_hour: 2.50
-          #   aggregate_func: max
-          #   group_by: hour
-          #   hour24: true
-          #   animate: false
-          #   decimals: 2
-          #   align_state: left
-          #   show:
-          #     name: true
-          #     icon: true
-          #     state: true
-          #     graph: line
-          #     fill: false
-          #     points: false
-          #     legend: false
-          #     extrema: true
-          #     labels: false
-          #   entities:
-          #     - entity: sensor.network_in_eth0
-          #       name: Ethernet Download
-          #       color: "#33cc33"
-          #     - entity: sensor.network_out_eth0
-          #       name: Ethernet Upload
-          #       color: "#3399ff"
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Pi Hole
+        entities:
+          - entity: sensor.speedtest_download
+            name: Download
+            color: "#3399ff"
+          - entity: sensor.speedtest_upload
+            name: Upload
+            color: "#ff6600"
+          - entity: sensor.speedtest_ping
+            name: Ping
+            color: "#33cc33"
+      # - type: custom:mini-graph-card
+      #   name: Ethernet Traffic
+      #   more_info: false
+      #   height: 150
+      #   line_width: 4
+      #   hours_to_show: 168
+      #   points_per_hour: 2.50
+      #   aggregate_func: max
+      #   group_by: hour
+      #   hour24: true
+      #   animate: false
+      #   decimals: 2
+      #   align_state: left
+      #   show:
+      #     name: true
+      #     icon: true
+      #     state: true
+      #     graph: line
+      #     fill: false
+      #     points: false
+      #     legend: false
+      #     extrema: true
+      #     labels: false
+      #   entities:
+      #     - entity: sensor.network_in_eth0
+      #       name: Ethernet Download
+      #       color: "#33cc33"
+      #     - entity: sensor.network_out_eth0
+      #       name: Ethernet Upload
+      #       color: "#3399ff"
+  - type: custom:layout-break
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Pi Hole
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: entities
+        title: Statistics
+        show_header_toggle: false
+        entities:
+          - entity: sensor.pi_hole_ads_blocked_today
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_dns_queries_cached
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_dns_queries_forwarded
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_dns_queries_today
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_dns_unique_domains
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_domains_blocked
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_seen_clients
+            tap_action:
+              action: none
+          - entity: sensor.pi_hole_dns_unique_clients
+            tap_action:
+              action: none
+      - type: custom:mini-graph-card
+        name: Blocked Ads
+        more_info: false
+        height: 150
+        line_width: 4
+        hours_to_show: 24
+        points_per_hour: 4
+        aggregate_func: max
+        group_by: hour
+        hour24: true
+        animate: false
+        decimals: 2
+        align_state: left
+        show:
+          name: true
+          icon: true
+          state: true
+          graph: line
+          fill: true
+          points: false
+          legend: true
+          extrema: false
+          labels: false
+        style: |
+          ha-card {
+            padding: 16px !important;
+          }
+        entities:
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
+            show_graph: false
+            show_legend: false
+          - entity: sensor.pi_hole_dns_queries_today
+            name: Queries
+            color: red
+          - entity: sensor.pi_hole_ads_blocked_today
+            name: Ads blocked
+            color: blue
+            show_fill: false
+  - type: custom:layout-break
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Network Devices
       - type: custom:stack-in-card
         mode: vertical
         cards:
-          - type: entities
-            title: Statistics
+          - type: glance
+#                title: Devices
+            show_state: false
+            columns: 2
             show_header_toggle: false
             entities:
-              - entity: sensor.pi_hole_ads_blocked_today
+              - name: "Computer Andrea"
+                icon: mdi:desktop-tower
+                entity: binary_sensor.studio_desk_andrea_computer_ping
                 tap_action:
                   action: none
-              - entity: sensor.pi_hole_ads_percentage_blocked_today
+              - name: "VoIP Phone"
+                icon: mdi:phone-voip
+                entity: binary_sensor.polycom_wx410
                 tap_action:
                   action: none
-              - entity: sensor.pi_hole_dns_queries_cached
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_dns_queries_forwarded
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_dns_queries_today
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_dns_unique_domains
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_domains_blocked
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_seen_clients
-                tap_action:
-                  action: none
-              - entity: sensor.pi_hole_dns_unique_clients
-                tap_action:
-                  action: none
-          - type: custom:mini-graph-card
-            name: Blocked Ads
-            more_info: false
-            height: 150
-            line_width: 4
-            hours_to_show: 24
-            points_per_hour: 4
-            aggregate_func: max
-            group_by: hour
-            hour24: true
-            animate: false
-            decimals: 2
-            align_state: left
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: line
-              fill: true
-              points: false
-              legend: true
-              extrema: false
-              labels: false
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+          - type: glance
+#                title: Devices
+            show_state: false
+            columns: 2
+            show_header_toggle: false
             entities:
-              - entity: sensor.pi_hole_ads_percentage_blocked_today
-                show_graph: false
-                show_legend: false
-              - entity: sensor.pi_hole_dns_queries_today
-                name: Queries
-                color: red
-              - entity: sensor.pi_hole_ads_blocked_today
-                name: Ads blocked
-                color: blue
-                show_fill: false
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Network Devices
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: glance
-#                title: Devices
-                show_state: false
-                columns: 2
-                show_header_toggle: false
-                entities:
-                  - name: "Computer Andrea"
-                    icon: mdi:desktop-tower
-                    entity: binary_sensor.studio_desk_andrea_computer_ping
-                    tap_action:
-                      action: none
-                  - name: "VoIP Phone"
-                    icon: mdi:phone-voip
-                    entity: binary_sensor.polycom_wx410
-                    tap_action:
-                      action: none
-              - type: glance
-#                title: Devices
-                show_state: false
-                columns: 2
-                show_header_toggle: false
-                entities:
-                  - name: "Laptop Andrea"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_andrea_laptop_ping
-                    tap_action:
-                      action: none
-                  - name: "Laptop Andrea Work"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_andrea_laptop_work_ping
-                    tap_action:
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 3
-                show_header_toggle: false
-                entities:
-                  - name: MEDIA01
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media01
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media01_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media01_off
-                  - name: MEDIA02
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media02
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media02_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media02_off
-                  - name: MEDIA03
-                    icon: mdi:nas
-                    entity: binary_sensor.netgear_media03
-                    tap_action:
-                      action: call-service
-                      service: switch.turn_on
-                      service_data:
-                        entity_id: switch.studio_media03_wol
-                    hold_action:
-                      action: call-service
-                      service: shell_command.media03_off
-              - type: glance
-#                title: Devices
-                show_state: false
-                columns: 2
-                show_header_toggle: false
-                entities:
-                  - name: "Laptop Sonia"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_sonia_laptop_ping
-                    tap_action:
-                      action: none
-                  - name: "Laptop Sonia Work"
-                    icon: mdi:laptop
-                    entity: binary_sensor.studio_desk_sonia_laptop_work_ping
-                    tap_action:
-                      action: none
-              - type: glance
-#                title: Devices
-                show_state: false
-                columns: 1
-                show_header_toggle: false
-                entities:
-                  - name: "Living Room RPi"
-                    icon: mdi:raspberry-pi
-                    entity: binary_sensor.living_room_raspberry_ping
-                    tap_action:
-                      action: none
-              - type: glance
-#                title: Devices
-                show_state: false
-                columns: 2
-                show_header_toggle: false
-                entities:
-                  - name: "Bedroom Luca RPi Zero W"
-                    icon: mdi:raspberry-pi
-                    entity: binary_sensor.bedroom_luca_raspberry_zero_w_ping
-                    tap_action:
-                      action: none
-                  - name: "Master Bedroom RPi Zero W"
-                    icon: mdi:raspberry-pi
-                    entity: binary_sensor.master_bedroom_raspberry_zero_w_ping
-                    tap_action:
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 2
-                show_header_toggle: false
-                entities:
-                  - name: NETGEAR EX7000
-                    icon: mdi:router-wireless
-                    entity: binary_sensor.netgear_ex7000
-                    tap_action:
-                      action: none
-                  - name: Samsung Q60R
-                    icon: mdi:television
-                    entity: binary_sensor.living_room_tv
-                    tap_action:
-                      action: none
-              - type: glance
-                show_state: false
-                columns: 3
-                show_header_toggle: false
-                entities:
-                  - name: HASP Desk
-                    entity: sensor.hasp_desk_status
-                    tap_action:
-                      action: call-service
-                      service: browser_mod.popup
-                      service_data:
-                        title: HASP Desk
-                        card:
-                          type: entities
-                          entities:
-                            - sensor.hasp_desk_status
-                            - light.hasp_desk_display
-                            - sensor.hasp_desk_ip_address
-                            - sensor.hasp_desk_signal_strenght
-                            - sensor.hasp_desk_uptime
-                            - sensor.hasp_desk_esp_version
-                            - sensor.hasp_desk_esp_update_available
-                            - sensor.hasp_desk_lcd_version
-                            - sensor.hasp_desk_lcd_update_available
-                          deviceID:
-                  - name: HASP Andrea
-                    entity: sensor.hasp_andrea_status
-                    tap_action:
-                      action: call-service
-                      service: browser_mod.popup
-                      service_data:
-                        title: HASP Andrea
-                        card:
-                          type: entities
-                          entities:
-                            - sensor.hasp_andrea_status
-                            - light.hasp_andrea_display
-                            - sensor.hasp_andrea_ip_address
-                            - sensor.hasp_andrea_signal_strenght
-                            - sensor.hasp_andrea_uptime
-                            - sensor.hasp_andrea_esp_version
-                            - sensor.hasp_andrea_esp_update_available
-                            - sensor.hasp_andrea_lcd_version
-                            - sensor.hasp_andrea_esp_update_available
-                            - sensor.hasp_andrea_lcd_version
-                            - sensor.hasp_andrea_lcd_update_available
-                  - name: HASP Sonia
-                    entity: sensor.hasp_sonia_status
-                    tap_action:
-                      action: call-service
-                      service: browser_mod.popup
-                      service_data:
-                        title: HASP Sonia
-                        card:
-                          type: entities
-                          entities:
-                            - sensor.hasp_sonia_status
-                            - light.hasp_sonia_display
-                            - sensor.hasp_sonia_ip_address
-                            - sensor.hasp_sonia_signal_strenght
-                            - sensor.hasp_sonia_uptime
-                            - sensor.hasp_sonia_esp_version
-                            - sensor.hasp_sonia_esp_update_available
-                            - sensor.hasp_sonia_lcd_version
-                            - sensor.hasp_sonia_esp_update_available
-                            - sensor.hasp_sonia_lcd_version
-                            - sensor.hasp_sonia_lcd_update_available
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 3
-                show_header_toggle: false
-                entities:
-                  - entity: light.hasp_desk_display
-                    tap_action:
-                      action: toggle
-                  - entity: light.hasp_andrea_display
-                    tap_action:
-                      action:  toggle
-                  - entity: light.hasp_sonia_display
-                    tap_action:
-                      action: toggle
-              - type: glance
-                show_state: false
-                columns: 3
-                show_header_toggle: false
-                entities:
-                  - name: Hallway Camera
-                    icon: mdi:cctv
-                    entity: binary_sensor.camera_hallway
-                    tap_action:
-                      action: none
-                  - name: Living Room Camera
-                    icon: mdi:cctv
-                    entity: binary_sensor.camera_living_room
-                    tap_action:
-                      action: none
-                  - name: Patio Camera
-                    icon: mdi:cctv
-                    entity: binary_sensor.camera_patio
-                    tap_action:
-                      action: none
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Network Services
+              - name: "Laptop Andrea"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_andrea_laptop_ping
+                tap_action:
+                  action: none
+              - name: "Laptop Andrea Work"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_andrea_laptop_work_ping
+                tap_action:
+                  action: none
           - type: glance
             show_state: false
             columns: 3
             show_header_toggle: false
             entities:
-              - name: Pi Hole
-                entity: switch.pi_hole
+              - name: MEDIA01
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media01
                 tap_action:
                   action: call-service
                   service: switch.turn_on
                   service_data:
-                    entity_id: switch.pi_hole
+                    entity_id: switch.studio_media01_wol
                 hold_action:
                   action: call-service
-                  service: switch.turn_off
+                  service: shell_command.media01_off
+              - name: MEDIA02
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media02
+                tap_action:
+                  action: call-service
+                  service: switch.turn_on
                   service_data:
-                    entity_id: switch.pi_hole
-              - name: Zigbee Server
-                entity: binary_sensor.zigbee_server
-                tap_action:
-                  action: none
+                    entity_id: switch.studio_media02_wol
                 hold_action:
                   action: call-service
-                  service: shell_command.zigbee_restart
-              - name: MQTT Server
-                entity: binary_sensor.mqtt_server
+                  service: shell_command.media02_off
+              - name: MEDIA03
+                icon: mdi:nas
+                entity: binary_sensor.netgear_media03
                 tap_action:
-                  action: none
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.studio_media03_wol
                 hold_action:
                   action: call-service
-                  service: shell_command.mqtt_restart
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Tasmota Devices
-          - type: entities
-            title: Wireless Signal
+                  service: shell_command.media03_off
+          - type: glance
+#                title: Devices
+            show_state: false
+            columns: 2
             show_header_toggle: false
             entities:
-              - entity: sensor.rfbridge01_signal
-                name: "Sonoff RF Bridge"
+              - name: "Laptop Sonia"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_sonia_laptop_ping
                 tap_action:
                   action: none
-              - entity: sensor.studio_wall_light_signal
-                name: "Studio - Wall Light"
+              - name: "Laptop Sonia Work"
+                icon: mdi:laptop
+                entity: binary_sensor.studio_desk_sonia_laptop_work_ping
                 tap_action:
                   action: none
-              - entity: sensor.studio_desk_sonia_lamp_signal
-                name: "Studio - Sonia Desk Lamp"
+          - type: glance
+#                title: Devices
+            show_state: false
+            columns: 1
+            show_header_toggle: false
+            entities:
+              - name: "Living Room RPi"
+                icon: mdi:raspberry-pi
+                entity: binary_sensor.living_room_raspberry_ping
                 tap_action:
                   action: none
-              - entity: sensor.studio_desk_andrea_plug_signal
-                name: "Studio - Desk Andrea Plug"
+          - type: glance
+#                title: Devices
+            show_state: false
+            columns: 2
+            show_header_toggle: false
+            entities:
+              - name: "Bedroom Luca RPi Zero W"
+                icon: mdi:raspberry-pi
+                entity: binary_sensor.bedroom_luca_raspberry_zero_w_ping
                 tap_action:
                   action: none
-              - entity: sensor.studio_table_plug_signal
-                name: "Studio - Table Plug"
+              - name: "Master Bedroom RPi Zero W"
+                icon: mdi:raspberry-pi
+                entity: binary_sensor.master_bedroom_raspberry_zero_w_ping
                 tap_action:
                   action: none
-              - entity: sensor.studio_desk_andrea_power_strip_1_signal
-                name: "Studio - Desk Andrea PowerStrip #1"
+          - type: glance
+            show_state: false
+            columns: 2
+            show_header_toggle: false
+            entities:
+              - name: NETGEAR EX7000
+                icon: mdi:router-wireless
+                entity: binary_sensor.netgear_ex7000
                 tap_action:
                   action: none
-              - entity: sensor.studio_desk_andrea_power_strip_2_signal
-                name: "Studio - Desk Andrea PowerStrip #2"
+              - name: Samsung Q60R
+                icon: mdi:television
+                entity: binary_sensor.living_room_tv
                 tap_action:
                   action: none
-              - entity: sensor.studio_desk_sonia_plug_signal
-                name: "Studio - Desk Sonia Plug"
+          - type: glance
+            show_state: false
+            columns: 3
+            show_header_toggle: false
+            entities:
+              - name: HASP Desk
+                entity: sensor.hasp_desk_status
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: HASP Desk
+                    card:
+                      type: entities
+                      entities:
+                        - sensor.hasp_desk_status
+                        - light.hasp_desk_display
+                        - sensor.hasp_desk_ip_address
+                        - sensor.hasp_desk_signal_strenght
+                        - sensor.hasp_desk_uptime
+                        - sensor.hasp_desk_esp_version
+                        - sensor.hasp_desk_esp_update_available
+                        - sensor.hasp_desk_lcd_version
+                        - sensor.hasp_desk_lcd_update_available
+                      deviceID:
+              - name: HASP Andrea
+                entity: sensor.hasp_andrea_status
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: HASP Andrea
+                    card:
+                      type: entities
+                      entities:
+                        - sensor.hasp_andrea_status
+                        - light.hasp_andrea_display
+                        - sensor.hasp_andrea_ip_address
+                        - sensor.hasp_andrea_signal_strenght
+                        - sensor.hasp_andrea_uptime
+                        - sensor.hasp_andrea_esp_version
+                        - sensor.hasp_andrea_esp_update_available
+                        - sensor.hasp_andrea_lcd_version
+                        - sensor.hasp_andrea_esp_update_available
+                        - sensor.hasp_andrea_lcd_version
+                        - sensor.hasp_andrea_lcd_update_available
+              - name: HASP Sonia
+                entity: sensor.hasp_sonia_status
+                tap_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: HASP Sonia
+                    card:
+                      type: entities
+                      entities:
+                        - sensor.hasp_sonia_status
+                        - light.hasp_sonia_display
+                        - sensor.hasp_sonia_ip_address
+                        - sensor.hasp_sonia_signal_strenght
+                        - sensor.hasp_sonia_uptime
+                        - sensor.hasp_sonia_esp_version
+                        - sensor.hasp_sonia_esp_update_available
+                        - sensor.hasp_sonia_lcd_version
+                        - sensor.hasp_sonia_esp_update_available
+                        - sensor.hasp_sonia_lcd_version
+                        - sensor.hasp_sonia_lcd_update_available
+          - type: glance
+            show_name: false
+            show_state: false
+            columns: 3
+            show_header_toggle: false
+            entities:
+              - entity: light.hasp_desk_display
+                tap_action:
+                  action: toggle
+              - entity: light.hasp_andrea_display
+                tap_action:
+                  action:  toggle
+              - entity: light.hasp_sonia_display
+                tap_action:
+                  action: toggle
+          - type: glance
+            show_state: false
+            columns: 3
+            show_header_toggle: false
+            entities:
+              - name: Hallway Camera
+                icon: mdi:cctv
+                entity: binary_sensor.camera_hallway
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_1_signal
-                name: "Living Room - Table Light 1"
+              - name: Living Room Camera
+                icon: mdi:cctv
+                entity: binary_sensor.camera_living_room
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_2_signal
-                name: "Living Room - Table Light 2"
+              - name: Patio Camera
+                icon: mdi:cctv
+                entity: binary_sensor.camera_patio
                 tap_action:
                   action: none
-              - entity: sensor.living_room_table_light_3_signal
-                name: "Living Room - Table Light 3"
-                tap_action:
-                  action: none
-              - entity: sensor.living_room_tv_stand_plug_signal
-                name: "Living Room - TV Stand Plug"
-                tap_action:
-                  action: none
-              - entity: sensor.kitchen_dishwasher_plug_signal
-                name: "Kitchen - Dishwasher Plug"
-                tap_action:
-                  action: none
-              - entity: sensor.kitchen_toaster_plug_signal
-                name: "Kitchen - Toaster Plug"
-                tap_action:
-                  action: none
-              - entity: sensor.laundry_room_washing_machine_plug_signal
-                name: "Laundry Room - Washing Machine Plug"
-                tap_action:
-                  action: none
-              - entity: sensor.master_bedroom_lamp_top_light_signal
-                name: "Master Bedroom - Lamp Top Light"
-                tap_action:
-                  action: none
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Network Services
+      - type: glance
+        show_state: false
+        columns: 3
+        show_header_toggle: false
+        entities:
+          - name: Pi Hole
+            entity: switch.pi_hole
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.pi_hole
+            hold_action:
+              action: call-service
+              service: switch.turn_off
+              service_data:
+                entity_id: switch.pi_hole
+          - name: Zigbee Server
+            entity: binary_sensor.zigbee_server
+            tap_action:
+              action: none
+            hold_action:
+              action: call-service
+              service: shell_command.zigbee_restart
+          - name: MQTT Server
+            entity: binary_sensor.mqtt_server
+            tap_action:
+              action: none
+            hold_action:
+              action: call-service
+              service: shell_command.mqtt_restart
+  - type: custom:layout-break
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Tasmota Devices
+      - type: entities
+        title: Wireless Signal
+        show_header_toggle: false
+        entities:
+          - entity: sensor.rfbridge01_signal
+            name: "Sonoff RF Bridge"
+            tap_action:
+              action: none
+          - entity: sensor.studio_wall_light_signal
+            name: "Studio - Wall Light"
+            tap_action:
+              action: none
+          - entity: sensor.studio_desk_sonia_lamp_signal
+            name: "Studio - Sonia Desk Lamp"
+            tap_action:
+              action: none
+          - entity: sensor.studio_desk_andrea_plug_signal
+            name: "Studio - Desk Andrea Plug"
+            tap_action:
+              action: none
+          - entity: sensor.studio_table_plug_signal
+            name: "Studio - Table Plug"
+            tap_action:
+              action: none
+          - entity: sensor.studio_desk_andrea_power_strip_1_signal
+            name: "Studio - Desk Andrea PowerStrip #1"
+            tap_action:
+              action: none
+          - entity: sensor.studio_desk_andrea_power_strip_2_signal
+            name: "Studio - Desk Andrea PowerStrip #2"
+            tap_action:
+              action: none
+          - entity: sensor.studio_desk_sonia_plug_signal
+            name: "Studio - Desk Sonia Plug"
+            tap_action:
+              action: none
+          - entity: sensor.living_room_table_light_1_signal
+            name: "Living Room - Table Light 1"
+            tap_action:
+              action: none
+          - entity: sensor.living_room_table_light_2_signal
+            name: "Living Room - Table Light 2"
+            tap_action:
+              action: none
+          - entity: sensor.living_room_table_light_3_signal
+            name: "Living Room - Table Light 3"
+            tap_action:
+              action: none
+          - entity: sensor.living_room_tv_stand_plug_signal
+            name: "Living Room - TV Stand Plug"
+            tap_action:
+              action: none
+          - entity: sensor.kitchen_dishwasher_plug_signal
+            name: "Kitchen - Dishwasher Plug"
+            tap_action:
+              action: none
+          - entity: sensor.kitchen_toaster_plug_signal
+            name: "Kitchen - Toaster Plug"
+            tap_action:
+              action: none
+          - entity: sensor.laundry_room_washing_machine_plug_signal
+            name: "Laundry Room - Washing Machine Plug"
+            tap_action:
+              action: none
+          - entity: sensor.master_bedroom_lamp_top_light_signal
+            name: "Master Bedroom - Lamp Top Light"
+            tap_action:
+              action: none
 #          - type: custom:decluttering-card
 #            template: title
 #            variables:
@@ -718,373 +717,373 @@ cards:
 #                --zigbee2mqtt-networkmap-node-coordinator-color: rgba(224, 78, 93, .7);
 #                --zigbee2mqtt-networkmap-node-router-color: rgba(0, 165, 255, .7);
 #              }
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: ZigBee
-          - type: glance
-            show_state: false
-            columns: 2
-            show_header_toggle: false
-            entities:
-              - name: Zigbee Server
-                entity: binary_sensor.zigbee_server
+  - type: custom:layout-break
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: ZigBee
+      - type: glance
+        show_state: false
+        columns: 2
+        show_header_toggle: false
+        entities:
+          - name: Zigbee Server
+            entity: binary_sensor.zigbee_server
+            tap_action:
+              action: none
+            hold_action:
+              action: call-service
+              service: shell_command.zigbee_restart
+          - name: Allow Device Join
+            entity: switch.zigbee_device_join
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.zigbee_device_join
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Update Available for ZigBee Devices
+        filter:
+          include:
+            - entity_id: "binary_sensor.*firmware_update"
+              state: "on"
+              options:
+                secondary_info: last-changed
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Unavailable ZigBee Devices
+        filter:
+          include:
+            - entity_id: "sensor.*link_quality"
+              state: "un*"
+              options:
+                secondary_info: last-changed
+          exclude:
+            - entity_id: "sensor.*dark_sky*"
+            - entity_id: "sensor.*aemet*"
+            - entity_id: "sensor.count_*"
+      - type: custom:auto-entities
+        show_empty: true
+        card:
+          type: entities
+          show_header_toggle: false
+          title: ZigBee Devices Status
+        filter:
+          include:
+            - entity_id: sensor.cc2531_router_link_quality
+              options:
+                name: CC2531 Router - Link Quality
                 tap_action:
                   action: none
-                hold_action:
-                  action: call-service
-                  service: shell_command.zigbee_restart
-              - name: Allow Device Join
-                entity: switch.zigbee_device_join
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.house_alarm_siren_link_quality
+              options:
+                name: House - Alarm Siren - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.house_alarm_siren_link_quality.state != "unknown", sensor.house_alarm_siren_battery.state , "Not Available") ]][[ if(sensor.house_alarm_siren_link_quality.state != "unknown", "%" , "") ]]'
                 tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.zigbee_device_join
-          - type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-              show_header_toggle: false
-              title: Update Available for ZigBee Devices
-            filter:
-              include:
-                - entity_id: "binary_sensor.*firmware_update"
-                  state: "on"
-                  options:
-                    secondary_info: last-changed
-          - type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-              show_header_toggle: false
-              title: Unavailable ZigBee Devices
-            filter:
-              include:
-                - entity_id: "sensor.*link_quality"
-                  state: "un*"
-                  options:
-                    secondary_info: last-changed
-              exclude:
-                - entity_id: "sensor.*dark_sky*"
-                - entity_id: "sensor.*aemet*"
-                - entity_id: "sensor.count_*"
-          - type: custom:auto-entities
-            show_empty: true
-            card:
-              type: entities
-              show_header_toggle: false
-              title: ZigBee Devices Status
-            filter:
-              include:
-                - entity_id: sensor.cc2531_router_link_quality
-                  options:
-                    name: CC2531 Router - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.house_alarm_siren_link_quality
-                  options:
-                    name: House - Alarm Siren - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.house_alarm_siren_link_quality.state != "unknown", sensor.house_alarm_siren_battery.state , "Not Available") ]][[ if(sensor.house_alarm_siren_link_quality.state != "unknown", "%" , "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.studio_wsdcgq11lm_link_quality
-                  options:
-                    name: Studio - WSDCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", sensor.studio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.master_bedroom_wxkg02lm_link_quality
-                  options:
-                    name: Master Bedroom - WXKG02LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.studio_2ajz4kpbs_link_quality
-                  options:
-                    name: Studio - 2AJZ4KPBS - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bedroom_luca_wsdcgq11lm_link_quality
-                  options:
-                    name: Sonia's Studio - WSDCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bedroom_luca_wxkg11lm_link_quality
-                  options:
-                    name: Bedroom Luca - WXKG11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.living_room_power_strip_link_quality
-                  options:
-                    name: Living Room - LEELKI Power Strip - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.living_room_wsdcgq01lm_link_quality
-                  options:
-                    name: Living Room - WSDCGQ0W01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", sensor.living_room_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", sensor.living_room_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.kitchen_wsdcgq01lm_link_quality
-                  options:
-                    name: Kitchen - WSDCGQ01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", sensor.kitchen_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", sensor.kitchen_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.kitchen_sjcgq11lm_link_quality
-                  options:
-                    name: Kitchen - SJCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", sensor.kitchen_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", sensor.kitchen_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.master_bedroom_lamp_bottom_light_link_quality
-                  options:
-                    name: Master Bedroom - Lamp Bottom Light - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.master_bedroom_wsdcgq01lm_link_quality
-                  options:
-                    name: Master Bedroom - WSDCGQ0W01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bedroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bedroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.master_bathroom_wsdcgq01lm_link_quality
-                  options:
-                    name: Master Bathroom - WSDCGQ0W01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.master_bathroom_sjcgq11lm_link_quality
-                  options:
-                    name: Master Bathroom - SJCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.master_bathroom_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.master_bathroom_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bedroom_luca_light_1_link_quality
-                  options:
-                    name: Bedroom Luca - Light 1 - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bedroom_luca_light_2_link_quality
-                  options:
-                    name: Bedroom Luca - Light 2 - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bedroom_luca_light_3_link_quality
-                  options:
-                    name: Bedroom Luca - Light 3 - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bathroom_mccgq01lm_link_quality
-                  options:
-                    name: Bathroom - MCCGQ01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bathroom_wsdcgq01lm_link_quality
-                  options:
-                    name: Bathroom - WSDCGQ0W01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.bathroom_sjcgq11lm_link_quality
-                  options:
-                    name: Bathroom - SJCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.studio_wxkg03lm_link_quality
-                  options:
-                    name: Studio - WXKG03LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_battery.state , "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.studio_desk_andrea_wxkg01lm_link_quality
-                  options:
-                    name: Studio Andrea - WXKG01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.laundry_room_sjcgq11lm_link_quality
-                  options:
-                    name: Laundry Room - SJCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", sensor.laundry_room_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", sensor.laundry_room_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.laundry_room_washing_machine_djt11lm_link_quality
-                  options:
-                    name: Washing Machine - DJT11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.patio_light_link_quality
-                  options:
-                    name: Patio - Light - Link Quality
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.patio_gzcgq01lm_link_quality
-                  options:
-                    name: Patio - GZCGQ01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.patio_mccgq01lm_link_quality
-                  options:
-                    name: Patio - MCCGQ01LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", sensor.patio_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", sensor.patio_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
-                - entity_id: sensor.patio_wsdcgq11lm_link_quality
-                  options:
-                    name: Patio - WSDCGQ11LM - Link Quality
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: 'Battery Level: [[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", sensor.patio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", sensor.patio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
-                    tap_action:
-                      action: none
-                  not 1:
-                    state: "unavailable"
-                  not 2:
-                    state: "unknown"
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.studio_wsdcgq11lm_link_quality
+              options:
+                name: Studio - WSDCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.studio_wsdcgq11lm_link_quality.state != "unknown", sensor.studio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", sensor.studio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wsdcgq11lm_link_quality != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.master_bedroom_wxkg02lm_link_quality
+              options:
+                name: Master Bedroom - WXKG02LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", sensor.master_bedroom_wxkg02lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wxkg02lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.studio_2ajz4kpbs_link_quality
+              options:
+                name: Studio - 2AJZ4KPBS - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bedroom_luca_wsdcgq11lm_link_quality
+              options:
+                name: Sonia's Studio - WSDCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bedroom_luca_wxkg11lm_link_quality
+              options:
+                name: Bedroom Luca - WXKG11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", sensor.bedroom_luca_wxkg11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wxkg11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.living_room_power_strip_link_quality
+              options:
+                name: Living Room - LEELKI Power Strip - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.living_room_wsdcgq01lm_link_quality
+              options:
+                name: Living Room - WSDCGQ0W01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", sensor.living_room_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", sensor.living_room_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.living_room_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.kitchen_wsdcgq01lm_link_quality
+              options:
+                name: Kitchen - WSDCGQ01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", sensor.kitchen_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", sensor.kitchen_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.kitchen_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.kitchen_sjcgq11lm_link_quality
+              options:
+                name: Kitchen - SJCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", sensor.kitchen_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", sensor.kitchen_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.kitchen_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.master_bedroom_lamp_bottom_light_link_quality
+              options:
+                name: Master Bedroom - Lamp Bottom Light - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.master_bedroom_wsdcgq01lm_link_quality
+              options:
+                name: Master Bedroom - WSDCGQ0W01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bedroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bedroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bedroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.master_bathroom_wsdcgq01lm_link_quality
+              options:
+                name: Master Bathroom - WSDCGQ0W01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.master_bathroom_sjcgq11lm_link_quality
+              options:
+                name: Master Bathroom - SJCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.master_bathroom_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.master_bathroom_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bedroom_luca_light_1_link_quality
+              options:
+                name: Bedroom Luca - Light 1 - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bedroom_luca_light_2_link_quality
+              options:
+                name: Bedroom Luca - Light 2 - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bedroom_luca_light_3_link_quality
+              options:
+                name: Bedroom Luca - Light 3 - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bathroom_mccgq01lm_link_quality
+              options:
+                name: Bathroom - MCCGQ01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bathroom_wsdcgq01lm_link_quality
+              options:
+                name: Bathroom - WSDCGQ0W01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.bathroom_sjcgq11lm_link_quality
+              options:
+                name: Bathroom - SJCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.studio_wxkg03lm_link_quality
+              options:
+                name: Studio - WXKG03LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_battery.state , "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", sensor.studio_wxkg03lm_voltage.state, "Not Available") ]][[ if(sensor.studio_wxkg03lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.studio_desk_andrea_wxkg01lm_link_quality
+              options:
+                name: Studio Andrea - WXKG01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.laundry_room_sjcgq11lm_link_quality
+              options:
+                name: Laundry Room - SJCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", sensor.laundry_room_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", sensor.laundry_room_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.laundry_room_washing_machine_djt11lm_link_quality
+              options:
+                name: Washing Machine - DJT11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_battery.state , "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", sensor.laundry_room_washing_machine_djt11lm_voltage.state, "Not Available") ]][[ if(sensor.laundry_room_washing_machine_djt11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.patio_light_link_quality
+              options:
+                name: Patio - Light - Link Quality
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.patio_gzcgq01lm_link_quality
+              options:
+                name: Patio - GZCGQ01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", sensor.patio_gzcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_gzcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.patio_mccgq01lm_link_quality
+              options:
+                name: Patio - MCCGQ01LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", sensor.patio_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", sensor.patio_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.patio_mccgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
+            - entity_id: sensor.patio_wsdcgq11lm_link_quality
+              options:
+                name: Patio - WSDCGQ11LM - Link Quality
+                type: "custom:secondaryinfo-entity-row"
+                secondary_info: 'Battery Level: [[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", sensor.patio_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", sensor.patio_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.patio_wsdcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                tap_action:
+                  action: none
+              not 1:
+                state: "unavailable"
+              not 2:
+                state: "unknown"
 
 #                - entity_id: sensor.PLACEHOLDER_link_quality
 #                  options:

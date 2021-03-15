@@ -602,25 +602,25 @@ cards:
 #              - entity: script.reset_utility_meters
 #                    tap_action:
 #                      action: none
-      - break
+      - type: custom:layout-break
       - type: custom:decluttering-card
         template: house_energy
-      - break
+      - type: custom:layout-break
       - type: custom:decluttering-card
         template: living_room_energy
         variables:
           - title: Living Room
-      - break
+      - type: custom:layout-break
       - type: custom:decluttering-card
         template: kitchen_energy
         variables:
           - title: Kitchen
-      - break
+      - type: custom:layout-break
       - type: custom:decluttering-card
         template: laundry_room_energy
         variables:
           - title: Laundry Room
-      - break
+      - type: custom:layout-break
       - type: custom:decluttering-card
         template: studio_energy
         variables:

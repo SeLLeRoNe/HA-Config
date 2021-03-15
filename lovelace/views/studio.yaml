@@ -1,51 +1,136 @@
 title: Studio
 icon: mdi:desktop-tower-monitor
-panel: true
 path: studio
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:decluttering-card
+    template: studio_lights
+  - type: custom:decluttering-card
+    template: studio_plugs
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
       - type: custom:decluttering-card
-        template: studio_lights
-      - type: custom:decluttering-card
-        template: studio_plugs
-      - break
-      - type: vertical-stack
+        template: title
+        variables:
+          - title: Sensors
+      - type: horizontal-stack
         cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:decluttering-card
-                template: title
-                variables:
-                  - title: Sensors
-#              - type: horizontal-stack
-#                cards:
-#                  - type: custom:decluttering-card
-#                    template: sensor_entity_alert
-#                    variables:
-#                      - name: Motion Sensor
-#                      - entity: binary_sensor.studio_2ajz4kpbs_pir
-#                  - type: custom:decluttering-card
-#                    template: sensor_entity_alert
-#                    variables:
-#                      - name: Window Status
-#                      - entity:  binary_sensor.studio_window
-              - type: horizontal-stack
-                cards:
-                  - type: glance
-                    show_state: true
-                    columns: 2
-                    entities:
-                      - name: Motion Sensor
-                        entity: binary_sensor.studio_2ajz4kpbs_pir
-                        tap_action:
-                          action: none
-                      - name: Window Status
-                        entity: binary_sensor.studio_window
-                        tap_action:
-                          action: none
+          - type: glance
+            show_state: true
+            columns: 2
+            entities:
+              - name: Motion Sensor
+                entity: binary_sensor.studio_2ajz4kpbs_pir
+                tap_action:
+                  action: none
+              - name: Window Status
+                entity: binary_sensor.studio_window
+                tap_action:
+                  action: none
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Devices
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - name: "Computer Andrea"
+            icon: mdi:desktop-tower
+            entity: binary_sensor.studio_desk_andrea_computer_ping
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_desk_andrea_computer_wol
+            hold_action:
+              action: call-service
+              service: switch.turn_off
+              service_data:
+                entity_id: switch.studio_desk_andrea_computer_wol
+          - name: "VoIP Phone"
+            icon: mdi:phone-voip
+            entity: binary_sensor.polycom_wx410
+            tap_action:
+              action: none
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - name: "Laptop Andrea"
+            icon: mdi:laptop
+            entity: binary_sensor.studio_desk_andrea_laptop_ping
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_desk_andrea_laptop_wol
+          - name: "Work Laptop Andrea"
+            icon: mdi:laptop
+            entity: binary_sensor.studio_desk_andrea_laptop_work_ping
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_desk_andrea_laptop_work_wol
+      - type: glance
+        show_state: false
+        columns: 3
+        entities:
+          - name: MEDIA01
+            icon: mdi:nas
+            entity: binary_sensor.netgear_media01
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_media01_wol
+            hold_action:
+              action: call-service
+              service: shell_command.media01_off
+          - name: MEDIA02
+            icon: mdi:nas
+            entity: binary_sensor.netgear_media02
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_media02_wol
+            hold_action:
+              action: call-service
+              service: shell_command.media02_off
+          - name: MEDIA03
+            icon: mdi:nas
+            entity: binary_sensor.netgear_media03
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.studio_media03_wol
+            hold_action:
+              action: call-service
+              service: shell_command.media03_off
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - name: "Laptop Sonia"
+            icon: mdi:laptop
+            entity: binary_sensor.studio_desk_sonia_laptop_ping
+            tap_action:
+              action: none
+          - name: "Work Laptop Sonia"
+            icon: mdi:laptop
+            entity: binary_sensor.studio_desk_sonia_laptop_work_ping
+            tap_action:
+              action: none
 #          - type: 'custom:kb-steam-card'
 #            game_background: true
 ##            entity: sensor.steam_76561198052829771
@@ -70,60 +155,44 @@ cards:
 ##                friendly_name: Juan Carlos (JC)
 #              - sensor.steam_76561198004701815
 ##                friendly_name: Francesco (Rynku)
-          - type: custom:decluttering-card
-            template: thermostat_card_small
-            variables:
-              - area: studio
-          - type: vertical-stack
-            cards:
-              - type: custom:decluttering-card
-                template: temperature
-                variables:
-                  - entity: sensor.studio_temperature 
-          - type: vertical-stack
-            cards:
-              - type: custom:decluttering-card
-                template: humidity
-                variables:
-                  - entity: sensor.studio_humidity
-              - type: custom:decluttering-card
-                template: pressure
-                variables:
-                  - entity: sensor.studio_pressure
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Music
-          - type: custom:mini-media-player
-            entity: media_player.studio_amplifier
-            artwork: cover
-            source: icon
-            hide:
-              info: true
-              power: false
-              source: false
-              sound_mode: true
-              controls: true
-              play_pause: true
-              play_stop: true
-              volume: false
-              mute: false
-              progress: true
-              runtime: true
-              artwork_border: true
-              power_state: false
-              shuffle: true
-            tap_action:
-              action: none
-          - type: custom:spotify-card
-            client_id: !secret spotify_client_id
-            hide_top_header: true
-            limit: 10
-            device: YAMAHA-RXV779
+      - type: custom:decluttering-card
+        template: thermostat_card_small
+        variables:
+          - area: studio
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Music
+      - type: custom:mini-media-player
+        entity: media_player.studio_amplifier
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: false
+          source: false
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: false
+          shuffle: true
+        tap_action:
+          action: none
+      - type: custom:spotify-card
+        client_id: !secret spotify_client_id
+        hide_top_header: true
+        limit: 10
+        device: YAMAHA-RXV779
 #          - type: entities
 #            entities:
 #              - input_select.spotify_playlist
@@ -132,161 +201,81 @@ cards:
 #              - entity: input_boolean.spotify_shuffle
 #                tap_action:
 #                  action: none
-          - type: entities
-            entities:
-              - type: divider
-          - type: custom:mini-media-player
-            entity: media_player.spotify
-            artwork: cover
-            source: icon
-            hide:
-              info: true
-              power: true
-              source: true
-              sound_mode: true
-              controls: false
-              play_pause: false
-              play_stop: false
-              volume: false
-              mute: false
-              progress: false
-              runtime: true
-              artwork_border: false
-              power_state: true
-              shuffle: false
-            tap_action:
-              action: none
-          - type: entities
-            entities:
-              - type: divider
-          - type: custom:mini-media-player
-            entity: media_player.studio_google_mini
-            hide:
-              info: true
-              power: true
-              source: true
-              sound_mode: true
-              controls: true
-              play_pause: true
-              play_stop: true
-              volume: false
-              mute: false
-              progress: true
-              runtime: true
-              artwork_border: true
-              power_state: true
-              shuffle: true
-            tts:
-              platform: reversotts
+      - type: entities
+        entities:
+          - type: divider
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        artwork: cover
+        source: icon
+        hide:
+          info: true
+          power: true
+          source: true
+          sound_mode: true
+          controls: false
+          play_pause: false
+          play_stop: false
+          volume: false
+          mute: false
+          progress: false
+          runtime: true
+          artwork_border: false
+          power_state: true
+          shuffle: false
+        tap_action:
+          action: none
+      - type: entities
+        entities:
+          - type: divider
+      - type: custom:mini-media-player
+        entity: media_player.studio_google_mini
+        hide:
+          info: true
+          power: true
+          source: true
+          sound_mode: true
+          controls: true
+          play_pause: true
+          play_stop: true
+          volume: false
+          mute: false
+          progress: true
+          runtime: true
+          artwork_border: true
+          power_state: true
+          shuffle: true
+        tts:
+          platform: reversotts
 #              platform: google_translate
-            tap_action:
-              action: none
-      - break
-      - type: custom:stack-in-card
-        mode: vertical
+        tap_action:
+          action: none
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: vertical-stack
         cards:
           - type: custom:decluttering-card
-            template: title
+            template: temperature
             variables:
-              - title: Devices
-          - type: glance
-            show_state: false
-            columns: 2
-            entities:
-              - name: "Computer Andrea"
-                icon: mdi:desktop-tower
-                entity: binary_sensor.studio_desk_andrea_computer_ping
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_desk_andrea_computer_wol
-                hold_action:
-                  action: call-service
-                  service: switch.turn_off
-                  service_data:
-                    entity_id: switch.studio_desk_andrea_computer_wol
-              - name: "VoIP Phone"
-                icon: mdi:phone-voip
-                entity: binary_sensor.polycom_wx410
-                tap_action:
-                  action: none
-          - type: glance
-            show_state: false
-            columns: 2
-            entities:
-              - name: "Laptop Andrea"
-                icon: mdi:laptop
-                entity: binary_sensor.studio_desk_andrea_laptop_ping
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_desk_andrea_laptop_wol
-              - name: "Work Laptop Andrea"
-                icon: mdi:laptop
-                entity: binary_sensor.studio_desk_andrea_laptop_work_ping
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_desk_andrea_laptop_work_wol
-          - type: glance
-            show_state: false
-            columns: 3
-            entities:
-              - name: MEDIA01
-                icon: mdi:nas
-                entity: binary_sensor.netgear_media01
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_media01_wol
-                hold_action:
-                  action: call-service
-                  service: shell_command.media01_off
-              - name: MEDIA02
-                icon: mdi:nas
-                entity: binary_sensor.netgear_media02
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_media02_wol
-                hold_action:
-                  action: call-service
-                  service: shell_command.media02_off
-              - name: MEDIA03
-                icon: mdi:nas
-                entity: binary_sensor.netgear_media03
-                tap_action:
-                  action: call-service
-                  service: switch.turn_on
-                  service_data:
-                    entity_id: switch.studio_media03_wol
-                hold_action:
-                  action: call-service
-                  service: shell_command.media03_off
-          - type: glance
-            show_state: false
-            columns: 2
-            entities:
-              - name: "Laptop Sonia"
-                icon: mdi:laptop
-                entity: binary_sensor.studio_desk_sonia_laptop_ping
-                tap_action:
-                  action: none
-              - name: "Work Laptop Sonia"
-                icon: mdi:laptop
-                entity: binary_sensor.studio_desk_sonia_laptop_work_ping
-                tap_action:
-                  action: none
-      - type: custom:decluttering-card
-        template: studio_energy_small
-        variables:
-          - title: Energy Consumption
-#      - break
+              - entity: sensor.studio_temperature 
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: humidity
+            variables:
+              - entity: sensor.studio_humidity
+          - type: custom:decluttering-card
+            template: pressure
+            variables:
+              - entity: sensor.studio_pressure
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: studio_energy_small
+    variables:
+      - title: Energy Consumption
+#      - type: custom:layout-break
 #      - type: custom:decluttering-card
 #        template: title
 #        variables:

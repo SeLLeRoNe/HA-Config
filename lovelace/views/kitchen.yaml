@@ -1,76 +1,74 @@
 title: Kitchen
-#icon: fas:hat-chef
 icon: mdi:fridge
-panel: true
 path: kitchen
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:decluttering-card
+    template: kitchen_lights
+  - type: custom:decluttering-card
+    template: kitchen_plugs
+  - type: custom:layout-break
+  - type: shopping-list
+    title: Shopping List
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
       - type: custom:decluttering-card
-        template: kitchen_lights
-      - type: custom:decluttering-card
-        template: kitchen_plugs
-      - break
-      - type: vertical-stack
-        cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:decluttering-card
-                template: title
-                variables:
-                  - title: Sensors
+        template: title
+        variables:
+          - title: Sensors
 #          - type: horizontal-stack
 #            cards:
-              - type: glance
-                show_state: true
-                columns: 4
-                entities:
-                  - name: Leak Sensor
-                    entity: binary_sensor.kitchen_sjcgq11lm_leak
-                    tap_action:
-                      action: none
-                  - name: Dishwasher
-                    entity: input_select.kitchen_dishwasher_status
-                    icon: "mdi:dishwasher"
-                    tap_action:
-                      action: none
-                    style: |
-                      :host {
-                        --paper-item-icon-color:
-                          {% if is_state(config.entity, 'Done') %}
-                            rgb(51, 204, 51);
-                          {% elif is_state(config.entity, 'Washing') %}
-                            rgb(51, 127, 255);
-                          {% else %}
-                            rgb(128, 128, 128);
-                          {% endif %}
-                      }
-                  - name: Motion Sensor
-                    entity: binary_sensor.kitchen_pir
-                    tap_action:
-                      action: none
-                  - name: Window Status
-                    entity: binary_sensor.kitchen_window
-                    tap_action:
-                      action: none
-          - type: vertical-stack
-            cards:
-              - type: custom:decluttering-card
-                template: temperature
-                variables:
-                  - entity: sensor.kitchen_temperature
-              - type: custom:decluttering-card
-                template: humidity
-                variables:
-                  - entity: sensor.kitchen_humidity
-      - break
-      - type: shopping-list
-        title: Shopping List
-      - break
+      - type: glance
+        show_state: true
+        columns: 4
+        entities:
+          - name: Leak Sensor
+            entity: binary_sensor.kitchen_sjcgq11lm_leak
+            tap_action:
+              action: none
+          - name: Dishwasher
+            entity: input_select.kitchen_dishwasher_status
+            icon: "mdi:dishwasher"
+            tap_action:
+              action: none
+            style: |
+              :host {
+                --paper-item-icon-color:
+                  {% if is_state(config.entity, 'Done') %}
+                    rgb(51, 204, 51);
+                  {% elif is_state(config.entity, 'Washing') %}
+                    rgb(51, 127, 255);
+                  {% else %}
+                    rgb(128, 128, 128);
+                  {% endif %}
+              }
+          - name: Motion Sensor
+            entity: binary_sensor.kitchen_pir
+            tap_action:
+              action: none
+          - name: Window Status
+            entity: binary_sensor.kitchen_window
+            tap_action:
+              action: none
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
       - type: custom:decluttering-card
-        template: kitchen_energy_small
+        template: temperature
         variables:
-          - title: Energy Consumption
+          - entity: sensor.kitchen_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.kitchen_humidity
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: kitchen_energy_small
+    variables:
+      - title: Energy Consumption
 

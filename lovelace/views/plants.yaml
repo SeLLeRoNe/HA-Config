@@ -1,17 +1,16 @@
 itle: Plants
 icon: mdi:sprout
-panel: true
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Plants
-          - type: plant-status
-            entity: plant.parsely
-            name: "Parsely"
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plants
+      - type: plant-status
+        entity: plant.parsely
+        name: "Parsely"

@@ -1,164 +1,162 @@
 title: Temperatures
-#icon: fas:thermometer-half
 icon: mdi:thermometer
-panel: true
 path: temperatures
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: vertical-stack
     cards:
-      - type: vertical-stack
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Temperatures
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Outside
-              - entity: sensor.dark_sky_temperature
-              - color: '#FF8000'
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Patio
-              - entity: sensor.patio_temperature
-              - color: '#FF3333'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Living Room
-              - entity: sensor.living_room_temperature
-              - color: '#FF3333'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Kitchen
-              - entity: sensor.kitchen_temperature
-              - color: '#FF6666'
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Bathroom
-              - entity: sensor.bathroom_temperature
-              - color: '#FF33FF'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Studio
-              - entity: sensor.studio_temperature
-              - color: '#7F00FF'
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Bedroom Luca
-              - entity: sensor.bedroom_luca_temperature
-              - color: '#00FF00'
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Master Bedroom
-              - entity: sensor.master_bedroom_temperature
-              - color: '#0080FF'
-          - type: custom:decluttering-card
-            template: temperature_text
-            variables:
-              - name: Master Bathroom
-              - entity: sensor.master_bathroom_temperature
-              - color: '#33FF99'
-      - type: custom:mini-graph-card
-        name: Temperature
-        icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
-        more_info: false
-        group: false
-        height: 150
-        line_width: 4
-        hours_to_show: 168
-        points_per_hour: 0.25
-        aggregate_func: max
-        group_by: hour
-        hour24: true
-        animate: false
-        decimals: 1
-        font_size: 100
-        font_size_header: 14
-        align_header: default
-        align_icon: right
-        align_state: center
-        lower_bound: -5
-        upper_bound: 40
-        logarithmic: true
-        show:
-          name: false
-          icon: false
-          state: false
-          graph: line
-          fill: true
-          points: false
-          legend: false
-          extrema: false
-          labels: false
-          labels_secondary: false
-          name_adaptive_color: false
-          icon_adaptive_color: false
-        state_map:
-          - value: "off"
-            label: "Day"
-          - value: "on"
-            label: "Night"
-        entities:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Temperatures
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Outside
           - entity: sensor.dark_sky_temperature
-            name: Outside
-            color: '#FF8000'
-            show_fill: false
+          - color: '#FF8000'
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Patio
           - entity: sensor.patio_temperature
-            name: Patio
-            color: '#0066FF'
-            show_fill: false
-          - entity: sensor.master_bedroom_temperature
-            name: Master Bedroom
-            color: '#0080FF'
-            show_fill: false
-          - entity: sensor.master_bathroom_temperature
-            name: Master Bathroom
-            color: '#33FF99'
-            show_fill: false
+          - color: '#FF3333'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Living Room
           - entity: sensor.living_room_temperature
-            name: Living Room
-            color: '#FF3333'
-            show_fill: false
-          - entity: sensor.studio_temperature
-            name: Studio
-            color: '#7F00FF'
-            show_fill: false
-          - entity: sensor.bedroom_luca_temperature
-            name: Bedroom Luca
-            color: '#00FF00'
-            show_fill: false
-          - entity: sensor.bathroom_temperature
-            name: Bathroom
-            color: '#FF33FF'
-            show_fill: false
+          - color: '#FF3333'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Kitchen
           - entity: sensor.kitchen_temperature
-            name: Kitchen
-            color: '#FF6666'
-            show_fill: false
-          - entity: binary_sensor.night_time
-            color: '#B3B3B3'
-            name: Night Time
-            show_fill: true
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
+          - color: '#FF6666'
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Bathroom
+          - entity: sensor.bathroom_temperature
+          - color: '#FF33FF'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Studio
+          - entity: sensor.studio_temperature
+          - color: '#7F00FF'
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Bedroom Luca
+          - entity: sensor.bedroom_luca_temperature
+          - color: '#00FF00'
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Master Bedroom
+          - entity: sensor.master_bedroom_temperature
+          - color: '#0080FF'
+      - type: custom:decluttering-card
+        template: temperature_text
+        variables:
+          - name: Master Bathroom
+          - entity: sensor.master_bathroom_temperature
+          - color: '#33FF99'
+  - type: custom:mini-graph-card
+    name: Temperature
+    icon: "${vars[0] > 30 ? 'fas:thermometer-full' : vars[0] > 25 ? 'fas:thermometer-three-quarters' : vars[0] > 20 ? 'fas:thermometer-half' : vars[0] > 10 ? 'fas:thermometer-quarter' : 'fas:thermometer-empty' }"
+    more_info: false
+    group: false
+    height: 150
+    line_width: 4
+    hours_to_show: 168
+    points_per_hour: 0.25
+    aggregate_func: max
+    group_by: hour
+    hour24: true
+    animate: false
+    decimals: 1
+    font_size: 100
+    font_size_header: 14
+    align_header: default
+    align_icon: right
+    align_state: center
+    lower_bound: -5
+    upper_bound: 40
+    logarithmic: true
+    show:
+      name: false
+      icon: false
+      state: false
+      graph: line
+      fill: true
+      points: false
+      legend: false
+      extrema: false
+      labels: false
+      labels_secondary: false
+      name_adaptive_color: false
+      icon_adaptive_color: false
+    state_map:
+      - value: "off"
+        label: "Day"
+      - value: "on"
+        label: "Night"
+    entities:
+      - entity: sensor.dark_sky_temperature
+        name: Outside
+        color: '#FF8000'
+        show_fill: false
+      - entity: sensor.patio_temperature
+        name: Patio
+        color: '#0066FF'
+        show_fill: false
+      - entity: sensor.master_bedroom_temperature
+        name: Master Bedroom
+        color: '#0080FF'
+        show_fill: false
+      - entity: sensor.master_bathroom_temperature
+        name: Master Bathroom
+        color: '#33FF99'
+        show_fill: false
+      - entity: sensor.living_room_temperature
+        name: Living Room
+        color: '#FF3333'
+        show_fill: false
+      - entity: sensor.studio_temperature
+        name: Studio
+        color: '#7F00FF'
+        show_fill: false
+      - entity: sensor.bedroom_luca_temperature
+        name: Bedroom Luca
+        color: '#00FF00'
+        show_fill: false
+      - entity: sensor.bathroom_temperature
+        name: Bathroom
+        color: '#FF33FF'
+        show_fill: false
+      - entity: sensor.kitchen_temperature
+        name: Kitchen
+        color: '#FF6666'
+        show_fill: false
+      - entity: binary_sensor.night_time
+        color: '#B3B3B3'
+        name: Night Time
+        show_fill: true
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary

@@ -1,25 +1,24 @@
 title: Laundry Room
 icon: mdi:washing-machine
-panel: true
 path: laundry_room
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:decluttering-card
+    template: laundry_room_lights
+  - type: custom:decluttering-card
+    template: laundry_room_plugs
+  - type: custom:layout-break
+  - type: vertical-stack
     cards:
-      - type: custom:decluttering-card
-        template: laundry_room_lights
-      - type: custom:decluttering-card
-        template: laundry_room_plugs
-      - break
-      - type: vertical-stack
+      - type: custom:stack-in-card
+        mode: vertical
         cards:
-          - type: custom:stack-in-card
-            mode: vertical
-            cards:
-              - type: custom:decluttering-card
-                template: title
-                variables:
-                  - title: Sensors
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Sensors
 #              - type: custom:hui-glance-card
 #                columns: 3
 #                entities:
@@ -51,35 +50,37 @@ cards:
 #                    entity: binary_sensor.bathroom_mccgq01lm_window
 #                    tap_action:
 #                      action: none
-              - type: horizontal-stack
-                cards:
-                  - type: custom:decluttering-card
-                    template: sensor_entity_alert
-                    variables:
-                      - name: Leak Sensor
-                      - entity: binary_sensor.laundry_room_sjcgq11lm_leak
-                  - type: custom:decluttering-card
-                    template: sensor_entity
-                    variables:
-                      - name: Washing Machine
-                      - entity: input_select.laundry_room_washing_machine_status
-                  - type: custom:decluttering-card
-                    template: sensor_entity_alert
-                    variables:
-                      - name: Window Status
-                      - entity: binary_sensor.bathroom_mccgq01lm_window
-          - type: vertical-stack
+          - type: horizontal-stack
             cards:
               - type: custom:decluttering-card
-                template: temperature
+                template: sensor_entity_alert
                 variables:
-                  - entity: sensor.bathroom_temperature
+                  - name: Leak Sensor
+                  - entity: binary_sensor.laundry_room_sjcgq11lm_leak
               - type: custom:decluttering-card
-                template: humidity
+                template: sensor_entity
                 variables:
-                  - entity: sensor.bathroom_humidity
-      - break
+                  - name: Washing Machine
+                  - entity: input_select.laundry_room_washing_machine_status
+              - type: custom:decluttering-card
+                template: sensor_entity_alert
+                variables:
+                  - name: Window Status
+                  - entity: binary_sensor.bathroom_mccgq01lm_window
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
       - type: custom:decluttering-card
-        template: laundry_room_energy_small
+        template: temperature
         variables:
-          - title: Energy Consumption
+          - entity: sensor.bathroom_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.bathroom_humidity
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: laundry_room_energy_small
+    variables:
+      - title: Energy Consumption
