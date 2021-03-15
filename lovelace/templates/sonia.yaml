@@ -10,7 +10,7 @@ sonia:
         states:
           "home":
             type: custom:state-switch
-            entity: device_tracker.sonia_mi_9t_pro_bt
+            entity: device_tracker.sonia_mi_9t_pro_room
             default: not_home
             states:
               "not_home":
@@ -21,7 +21,7 @@ sonia:
                   action: none
               "home":
                 type: custom:state-switch
-                entity: sensor.sonia_mi_9t_pro
+                entity: device_tracker.sonia_mi_9t_pro_room
                 default: unavailable
                 states:
                   "unavailable":

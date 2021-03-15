@@ -10,7 +10,7 @@ andrea:
         states:
           "home":
             type: custom:state-switch
-            entity: device_tracker.andrea_oneplus_nord_bt
+            entity: device_tracker.andrea_oneplus_nord_room
             default: not_home
             states:
               "not_home":
@@ -21,7 +21,7 @@ andrea:
                   action: none
               "home":
                 type: custom:state-switch
-                entity: sensor.andrea_oneplus_nord
+                entity: device_tracker.andrea_oneplus_nord_room
                 default: unavailable
                 states:
                   "unavailable":
