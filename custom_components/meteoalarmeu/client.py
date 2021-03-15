@@ -25,6 +25,8 @@ TIMEOUT = 9
 
 
 class Client:
+    """Interface for 'library API' (meteoalarm-rssapi)."""
+
     def __init__(self, country, region, language=None, awareness_types=AWARENESS_TYPES):
         self._country = country
         self._region = region
@@ -33,6 +35,7 @@ class Client:
         self._api = self._get_api()
 
     def update(self, country=None, region=None, language=None, awareness_types=None):
+        """Update client with new parameters."""
         if not any(country, region, language, awareness_types):
             return
         self._country = country or self._country
@@ -47,37 +50,65 @@ class Client:
                 self._country, self._region, self._language, timeout=TIMEOUT
             )
         except MeteoAlarmUnrecognizedCountryError:
+            _LOGGER.debug("Unrecognized country (%s)", self._country)
             raise MeteoAlarmUnrecognizedCountryError()
         except MeteoAlarmUnrecognizedRegionError:
+            _LOGGER.debug(
+                "Unrecognized region (%s) for this country (%s)",
+                self._region,
+                self._country,
+            )
             raise MeteoAlarmUnrecognizedRegionError()
         except MeteoAlarmUnavailableLanguageError:
+            _LOGGER.debug(
+                "Unrecognized language (%s) for this country (%s)",
+                self._language,
+                self._country,
+            )
             raise MeteoAlarmUnavailableLanguageError()
 
     @staticmethod
     def languages():
+        """Return the list of available languages."""
         return _languages_list
 
     @staticmethod
     def countries():
+        """Return the list of participating countries."""
         return _countries_list
 
     def languages_for_country(self):
+        """Return languages for country."""
         return self._api.country_languages()
 
+    def _filter(self, alarms):
+        return [m for m in alarms if m["awareness_type"] in self._awareness_types]
+
+    @staticmethod
+    def _local_ts(iso_ts):
+        """Change to local date/time and drop the seconds."""
+        return timestamp_local(as_timestamp(iso_ts))[:-3]
+
+    @staticmethod
+    def _localize(alarm):
+        success = False
+        try:
+            ts_from = Client._local_ts(alarm["from"])
+            ts_until = Client._local_ts(alarm["until"])
+            ts_published = Client._local_ts(alarm["published"])
+            success = True
+        except ValueError:
+            _LOGGER.error("Not possible to convert to local time")
+        if success:
+            alarm["from"] = ts_from
+            alarm["until"] = ts_until
+            alarm["published"] = ts_published
+        return alarm
+
     def alerts(self):
+        """Get localized and filtered alerts."""
         alarms = self._api.alerts()
         if alarms:
-            # filter
-            alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
-            # change to local date/time (drop the seconds)
-            for alert in alerts:
-                try:
-                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
-                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    alert["published"] = timestamp_local(
-                        as_timestamp(alert["published"])
-                    )[:-3]
-                except ValueError:
-                    _LOGGER.error("Not possible to convert to local time")
-            alarms = alerts
+            alarms = self._filter(alarms)
+            alarms = [Client._localize(alarm) for alarm in alarms]
         return alarms
