@@ -12,6 +12,9 @@ trigger:
     entity_id: person.andrea
     zone: zone.home
     event: leave
+  - platform: state
+    entity_id: sensor.andrea_oneplus_nord_battery_state
+    to: 'charging'
 condition:
   condition: and
   conditions:
@@ -24,6 +27,9 @@ condition:
     - condition: numeric_state
       entity_id: sensor.andrea_oneplus_nord_battery_level
       above: 95
+    - condition: state
+      entity_id: sensor.andrea_oneplus_nord_battery_state
+      state: 'charging'
 action:
   - service: switch.turn_off
     entity_id: switch.studio_usb_relay_01
