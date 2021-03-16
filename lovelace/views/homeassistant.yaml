@@ -1,479 +1,478 @@
 title: Home Assistant
 icon: mdi:home-assistant
-panel: true
 path: ha
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Information
-          - type: entities
-            title: Version Checks
-            show_header_toggle: false
-            entities:
-              - entity: sensor.uptime
-                tap_action:
-                  action: none
-              - entity: sensor.home_assistant_current_version
-                tap_action:
-                  action: none
-              - entity: sensor.home_assistant_available_stable_version
-                tap_action:
-                  action: none
-              - entity: sensor.home_assistant_available_beta_version
-                tap_action:
-                  action: none
-#              - entity: sensor.potential_breaking_changes
-#                tap_action:
-#                  action: none
-              - type: custom:hui-element
-                row_type: divider
-              - entity: sensor.hacs
-                name: HACS Available Updates
-                tap_action:
-                  action: none
-              - type: custom:hui-element
-                row_type: divider
-              - entity: sensor.tasmota_current_version
-                tap_action:
-                  action: none
-              - entity: sensor.tasmota_available_version
-                tap_action:
-                  action: none
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Information
+      - type: entities
+        title: Version Checks
+        show_header_toggle: false
+        entities:
+          - entity: sensor.uptime
+            tap_action:
+              action: none
+          - entity: sensor.home_assistant_current_version
+            tap_action:
+              action: none
+          - entity: sensor.home_assistant_available_stable_version
+            tap_action:
+              action: none
+          - entity: sensor.home_assistant_available_beta_version
+            tap_action:
+              action: none
+  #              - entity: sensor.potential_breaking_changes
+  #                tap_action:
+  #                  action: none
           - type: custom:hui-element
             row_type: divider
-          - type: 'custom:github-flexi-card'
-            title: Github
-#            secondary_info: 'Released {latest_release_tag}'
-            url: true
-            attribute_urls: true
-            attributes:
-              - views
-              - stargazers
-              - open_issues
-              - clones
-              - forks
-              - open_pull_requests
-            entities:
-              - sensor.ha_config
-#          - type: custom:github-card
-#            show_github_icon: false
-#            show_extended: false
-#            entities:
-#              - sensor.ha_config
+          - entity: sensor.hacs
+            name: HACS Available Updates
+            tap_action:
+              action: none
           - type: custom:hui-element
             row_type: divider
-          - type: custom:mini-graph-card
+          - entity: sensor.tasmota_current_version
+            tap_action:
+              action: none
+          - entity: sensor.tasmota_available_version
+            tap_action:
+              action: none
+      - type: custom:hui-element
+        row_type: divider
+      - type: 'custom:github-flexi-card'
+        title: Github
+  #            secondary_info: 'Released {latest_release_tag}'
+        url: true
+        attribute_urls: true
+        attributes:
+          - views
+          - stargazers
+          - open_issues
+          - clones
+          - forks
+          - open_pull_requests
+        entities:
+          - sensor.ha_config
+  #          - type: custom:github-card
+  #            show_github_icon: false
+  #            show_extended: false
+  #            entities:
+  #              - sensor.ha_config
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:mini-graph-card
+        name: Database Size
+        icon: mdi:database
+        more_info: false
+        height: 150
+        line_width: 4
+        hours_to_show: 168
+        points_per_hour: 0.25
+        aggregate_func: max
+        group_by: hour
+        group: false
+        hour24: true
+        animate: false
+        decimals: 2
+        font_size: 100
+        font_size_header: 14
+        align_header: default
+        align_icon: right
+        align_state: center
+        show:
+          name: true
+          icon: true
+          state: true
+          graph: bar
+          fill: false
+          points: false
+          legend: false
+          extrema: false
+          labels: false
+          name_adaptive_color: true
+          icon_adaptive_color: true
+        style: |
+          ha-card {
+            padding: 16px !important;
+          }
+        entities:
+          - entity: sensor.database_size
             name: Database Size
-            icon: mdi:database
-            more_info: false
-            height: 150
-            line_width: 4
-            hours_to_show: 168
-            points_per_hour: 0.25
-            aggregate_func: max
-            group_by: hour
-            group: false
-            hour24: true
-            animate: false
-            decimals: 2
-            font_size: 100
-            font_size_header: 14
-            align_header: default
-            align_icon: right
-            align_state: center
-            show:
-              name: true
-              icon: true
-              state: true
-              graph: bar
-              fill: false
-              points: false
-              legend: false
-              extrema: false
-              labels: false
-              name_adaptive_color: true
-              icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
-            entities:
-              - entity: sensor.database_size
-                name: Database Size
-                color: '#FF9900'
-      - type: custom:layout-break
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: Statistics
-          - type: glance
-            columns: 4
-            entities:
-              - entity: sensor.count_automations
-                icon: mdi:autorenew
-                tap_action:
-                  action: none
-              - entity: sensor.count_scripts
-                icon: mdi:script-text-outline
-                tap_action:
-                  action: none
-              - entity: sensor.count_calendars
-                icon: mdi:calendar
-                tap_action:
-                  action: none
-              - entity: sensor.count_timers
-                icon: mdi:av-timer
-                tap_action:
-                  action: none
-          - type: glance
-            columns: 3
-            entities:
-              - entity: sensor.count_persons
-                icon: mdi:account-group
-                tap_action:
-                  action: none
-              - entity: sensor.count_device_trackers
-                icon: mdi:map-marker
-                tap_action:
-                  action: none
-              - entity: sensor.count_zones
-                name: Zones
-                icon: mdi:map-marker-radius
-                tap_action:
-                  action: none
-          - type: glance
-            columns: 3
-            entities:
-              - entity: sensor.count_switches
-                icon: mdi:light-switch
-                tap_action:
-                  action: none
-              - entity: sensor.count_lights
-                icon: mdi:lightbulb
-                tap_action:
-                  action: none
-              - entity: sensor.count_locks
-                icon: mdi:lock
-                tap_action:
-                  action: none
-              - entity: sensor.count_cameras
-                icon: mdi:cctv
-                tap_action:
-                  action: none
-              - entity: sensor.count_climates
-                icon: mdi:thermostat_card
-                tap_action:
-                  action: none
-              - entity: sensor.count_fans
-                icon: mdi:fan
-                tap_action:
-                  action: none
-              - entity: sensor.count_sensors
-                icon: mdi:resistor
-                tap_action:
-                  action: none
-              - entity: sensor.count_binary_sensors
-                icon: mdi:unfold-more-horizontal
-                tap_action:
-                  action: none
-              - entity: sensor.count_media_players
-                icon: mdi:playlist-music
-                tap_action:
-                  action: none
-          - type: glance
-            columns: 3
-            entities:
-              - entity: sensor.count_input_booleans
-                icon: mdi:toggle-switch
-                tap_action:
-                  action: none
-              - entity: sensor.count_input_selects
-                icon: mdi:view-list
-                tap_action:
-                  action: none
-              - entity: sensor.count_input_datetimes
-                icon: mdi:calendar-clock
-                tap_action:
-                  action: none
-          - type: glance
-            columns: 2
-            entities:
-              - entity: sensor.count_input_numbers
-                icon: mdi:numeric
-                tap_action:
-                  action: none
-              - entity: sensor.count_input_texts
-                icon: mdi:alphabetical
-                tap_action:
-                  action: none
-      - type: custom:layout-break
-#       - type: custom:decluttering-card
-#         template: title
-#         variables:
-#           - title: Automations
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Climate
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.climate*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: House
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.house*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Utility Meter
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.utility_meter*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Living Room
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.living_room*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Kitchen
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.kitchen*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Studio
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.studio_*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Bedroom Luca
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.bedroom_luca*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Master Bedroom
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.master_bedroom*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Laundry Room
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.laundry_room*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Patio
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.patio*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Outside
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.outside*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Alarm
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.alarm*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Mobile
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.mobile*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: System
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.system*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: Media Player
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.media_player*"
-#             sort:
-#               method: name
-#       - type: 'custom:fold-entity-row'
-#         head:
-#           label: ZigBee
-#           type: section
-#         padding: 0
-#         entities:
-#           - type: custom:auto-entities
-#             show_empty: false
-#             card:
-#               type: entities
-#               show_header_toggle: false
-#             filter:
-#               include:
-#                 - entity_id: "automation.zigbee.*"
-#             sort:
-#               method: name
+            color: '#FF9900'
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Statistics
+      - type: glance
+        columns: 4
+        entities:
+          - entity: sensor.count_automations
+            icon: mdi:autorenew
+            tap_action:
+              action: none
+          - entity: sensor.count_scripts
+            icon: mdi:script-text-outline
+            tap_action:
+              action: none
+          - entity: sensor.count_calendars
+            icon: mdi:calendar
+            tap_action:
+              action: none
+          - entity: sensor.count_timers
+            icon: mdi:av-timer
+            tap_action:
+              action: none
+      - type: glance
+        columns: 3
+        entities:
+          - entity: sensor.count_persons
+            icon: mdi:account-group
+            tap_action:
+              action: none
+          - entity: sensor.count_device_trackers
+            icon: mdi:map-marker
+            tap_action:
+              action: none
+          - entity: sensor.count_zones
+            name: Zones
+            icon: mdi:map-marker-radius
+            tap_action:
+              action: none
+      - type: glance
+        columns: 3
+        entities:
+          - entity: sensor.count_switches
+            icon: mdi:light-switch
+            tap_action:
+              action: none
+          - entity: sensor.count_lights
+            icon: mdi:lightbulb
+            tap_action:
+              action: none
+          - entity: sensor.count_locks
+            icon: mdi:lock
+            tap_action:
+              action: none
+          - entity: sensor.count_cameras
+            icon: mdi:cctv
+            tap_action:
+              action: none
+          - entity: sensor.count_climates
+            icon: mdi:thermostat_card
+            tap_action:
+              action: none
+          - entity: sensor.count_fans
+            icon: mdi:fan
+            tap_action:
+              action: none
+          - entity: sensor.count_sensors
+            icon: mdi:resistor
+            tap_action:
+              action: none
+          - entity: sensor.count_binary_sensors
+            icon: mdi:unfold-more-horizontal
+            tap_action:
+              action: none
+          - entity: sensor.count_media_players
+            icon: mdi:playlist-music
+            tap_action:
+              action: none
+      - type: glance
+        columns: 3
+        entities:
+          - entity: sensor.count_input_booleans
+            icon: mdi:toggle-switch
+            tap_action:
+              action: none
+          - entity: sensor.count_input_selects
+            icon: mdi:view-list
+            tap_action:
+              action: none
+          - entity: sensor.count_input_datetimes
+            icon: mdi:calendar-clock
+            tap_action:
+              action: none
+      - type: glance
+        columns: 2
+        entities:
+          - entity: sensor.count_input_numbers
+            icon: mdi:numeric
+            tap_action:
+              action: none
+          - entity: sensor.count_input_texts
+            icon: mdi:alphabetical
+            tap_action:
+              action: none
+  - type: custom:layout-break
+  #       - type: custom:decluttering-card
+  #         template: title
+  #         variables:
+  #           - title: Automations
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Climate
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.climate*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: House
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.house*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Utility Meter
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.utility_meter*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Living Room
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.living_room*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Kitchen
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.kitchen*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Studio
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.studio_*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Bedroom Luca
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.bedroom_luca*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Master Bedroom
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.master_bedroom*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Laundry Room
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.laundry_room*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Patio
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.patio*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Outside
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.outside*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Alarm
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.alarm*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Mobile
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.mobile*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: System
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.system*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: Media Player
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.media_player*"
+  #             sort:
+  #               method: name
+  #       - type: 'custom:fold-entity-row'
+  #         head:
+  #           label: ZigBee
+  #           type: section
+  #         padding: 0
+  #         entities:
+  #           - type: custom:auto-entities
+  #             show_empty: false
+  #             card:
+  #               type: entities
+  #               show_header_toggle: false
+  #             filter:
+  #               include:
+  #                 - entity_id: "automation.zigbee.*"
+  #             sort:
+  #               method: name

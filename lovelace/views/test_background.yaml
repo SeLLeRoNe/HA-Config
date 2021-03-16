@@ -1,12 +1,11 @@
 title: Test Background
 icon: mdi:folder-multiple-image
-panel: true
 path: test_background
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
-    cards:
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - input_select.background_test
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - input_select.background_test

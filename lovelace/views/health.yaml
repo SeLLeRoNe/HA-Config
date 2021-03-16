@@ -1,35 +1,34 @@
 title: Health
 icon: mdi:hospital-box
-panel: true
 path: health
+type: custom:vertical-layout
+layout:
+   max_cols: 5
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - type: custom:stack-in-card
-        mode: vertical
-        cards:
-          - type: custom:decluttering-card
-            template: title
-            variables:
-              - title: CoronaVirus
-          - type: custom:decluttering-card
-            template: coronavirus
-            variables:
-              - country_name: Worldwide
-              - country: worldwide
-          - type: custom:decluttering-card
-            template: coronavirus
-            variables:
-              - country_name: Spain
-              - country: spain
-          - type: custom:decluttering-card
-            template: coronavirus
-            variables:
-              - country_name: Italy
-              - country: italy
-          - type: custom:decluttering-card
-            template: coronavirus
-            variables:
-              - country_name: United Kingdom
-              - country: united_kingdom
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: CoronaVirus
+      - type: custom:decluttering-card
+        template: coronavirus
+        variables:
+          - country_name: Worldwide
+          - country: worldwide
+      - type: custom:decluttering-card
+        template: coronavirus
+        variables:
+          - country_name: Spain
+          - country: spain
+      - type: custom:decluttering-card
+        template: coronavirus
+        variables:
+          - country_name: Italy
+          - country: italy
+      - type: custom:decluttering-card
+        template: coronavirus
+        variables:
+          - country_name: United Kingdom
+          - country: united_kingdom

@@ -1,5 +1,6 @@
 itle: Plants
 icon: mdi:sprout
+path: plants
 type: custom:vertical-layout
 layout:
    max_cols: 5
