@@ -31,9 +31,9 @@ condition:
     - condition: state
       entity_id: group.family
       state: 'home'
-    - condition: time
-      after: '10:30:00'
-      before: '21:30:00'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
 action:
   - service: light.turn_on
     data:
