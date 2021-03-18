@@ -5,4 +5,4 @@
 #payload_home: 'true'
 #payload_not_home: 'false'
 #devices:
-#  sonia_fitbit_flex2: 'room-assistant/device_tracker/ble-f201e173c053-tracker/state'
+#  sonia_fitbit_flex2: 'room-assistant/device_tracker/ble-sonia-flex-2-tracker/state'
