@@ -5,5 +5,5 @@ source_type: bluetooth
 payload_home: 'true'
 payload_not_home: 'false'
 devices:
-  andrea_oneplus_nord_room: 'room-assistant/device_tracker/bluetooth-classic-5c-17-cf-21-52-7c-tracker/state'
-  sonia_mi_9t_pro_room: 'room-assistant/device_tracker/bluetooth-classic-e0-dc-ff-ec-92-c8-tracker/state'
+  andrea_oneplus_nord_room: 'room-assistant/device_tracker/bluetooth-classic-andrea-oneplus-nord-tracker/state'
+  sonia_mi_9t_pro_room: 'room-assistant/device_tracker/bluetooth-classic-sonia-mi-9t-pro-tracker/state'

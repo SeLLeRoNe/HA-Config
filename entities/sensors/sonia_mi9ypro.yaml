@@ -1,7 +1,7 @@
 ---
 platform: mqtt
 name: "Sonia Mi 9T Pro"
-state_topic: "room-assistant/sensor/bluetooth-classic-e0-dc-ff-ec-92-c8/state"
+state_topic: "room-assistant/sensor/bluetooth-classic-sonia-mi-9t-pro/state"
 availability_topic: "room-assistant/switch/studio-bluetooth-classic-inquiries-switch/status"
 payload_available: "online"
 payload_not_available: "offline"
