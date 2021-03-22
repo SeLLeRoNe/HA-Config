@@ -1,5 +1,5 @@
 ---
-id: '426167024678278'
+id: '266559616410186'
 alias: Climate - T3 - Living Room - Workday
 initial_state: 'on'
 trigger:
@@ -85,6 +85,10 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_living_room_weekend_t10
     to: 'off'
+  - platform: state
+    entity_id: climate.living_room
+    attribute: preset_mode
+    to: 'none'
 condition:
   condition: and
   conditions:
