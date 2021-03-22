@@ -1,5 +1,0 @@
----
-climate_house_workday_t3_start:
-  name: Start
-  has_date: false
-  has_time: true

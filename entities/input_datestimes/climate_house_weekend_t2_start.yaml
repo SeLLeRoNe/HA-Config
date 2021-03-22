@@ -1,5 +1,0 @@
----
-climate_house_weekend_t2_start:
-  name: Start
-  has_date: false
-  has_time: true

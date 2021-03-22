@@ -1,5 +1,0 @@
----
-climate_living_room_workday_t1_end:
-  name: End
-  has_date: false
-  has_time: true

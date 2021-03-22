@@ -1,5 +1,0 @@
----
-heating_push_studio:
-  name: Duration
-  has_date: false
-  has_time: true

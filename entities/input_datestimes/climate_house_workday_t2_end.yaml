@@ -1,5 +1,0 @@
----
-climate_house_workday_t2_end:
-  name: End
-  has_date: false
-  has_time: true

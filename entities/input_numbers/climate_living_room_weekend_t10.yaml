@@ -1,7 +1,0 @@
----
-climate_living_room_weekend_t10:
-  name: Temperature
-  icon: mdi:temperature-celsius
-  min: 15
-  max: 25
-  step: 0.1

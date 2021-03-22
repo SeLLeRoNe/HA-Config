@@ -33,141 +33,54 @@ cd $HA_PATH
 git add $HA_PATH/new_climate_room.sh >/dev/null 2>&1
 git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
 
-echo "Processing Climate file..."
-FILE=entities/climates/house.yaml
+echo "Processing Climate package..."
+FILE=packages/devices/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 echo "Copying $FILE to $NEW_FILE"
 \cp $FILE $NEW_FILE
+for LINE in `cat $NEW_FILE | grep "  - id: "`;
+	do
+	ID=`</dev/urandom tr -dc 0-9 | head -c15`
+	sed -i 's/  - id: .*/  - id: \'$ID\'/' $NEW_FILE
+done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
 sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
 sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
 sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
 sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
 
-git add -A entities/climates/house.yaml >/dev/null 2>&1
-git commit -m "Updated House Climate Configuration" >/dev/null 2>&1
+git add -A packages/devices/house.yaml >/dev/null 2>&1
+git commit -m "Updated House Climate Package" >/dev/null 2>&1
 
-git add -A entities/climates/"$ROOM_NAME_LOWER".yaml >/dev/null 2>&1
-git commit -m "Updated $ROOM_NAME Climate Configuration" >/dev/null 2>&1
-
-for FILE in `find $HA_PATH -name climate_* | grep house`
-do
-	git add $FILE >/dev/null 2>&1
-done
-for FILE in `find $HA_PATH -name heat*_push_* | grep house`
-do
-	git add $FILE >/dev/null 2>&1
-done
-git commit -m "Updated House Climate related Entities" >/dev/null 2>&1
-for FILE in `ls automations/climate/house_*.yaml`
-        do
-	git add $FILE >/dev/null 2>&1
-done
-git commit -m "Updated House Climate Automations" >/dev/null 2>&1
-
-echo "Processing Entities..."
-for FILE in `find $HA_PATH -name climate_* | grep house`
-do
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	echo "Copying $FILE to $NEW_FILE"
-	\cp $FILE $NEW_FILE
-	sed -i '/^id: /d' $NEW_FILE
-	sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
-	sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
-	sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
-	sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
-	sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
-	git add $NEW_FILE >/dev/null 2>&1
-done
-
-for FILE in `find $HA_PATH -name heat*_push_* | grep house`
-do
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	echo "Copying $FILE to $NEW_FILE"
-	\cp $FILE $NEW_FILE
-	sed -i '/^id: /d' $NEW_FILE
-	sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
-	sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
-	sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
-	sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
-	sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
-	git add $NEW_FILE >/dev/null 2>&1
-done
-git commit -m "Updated $ROOM_NAME Climate related Entities" >/dev/null 2>&1
-
-echo "Processing Automations..."
-for FILE in `ls automations/climate/house_*.yaml`
-	do
-	RANDOM_ID=`</dev/urandom tr -dc 0-9 | head -c15`
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	echo "Copying $FILE to $NEW_FILE"
-	\cp $FILE $NEW_FILE
-	sed -i '/^id: /d' $NEW_FILE
-	sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
-	sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
-	sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
-	sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
-	sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
-	sed -i "2 i id: '$RANDOM_ID'" $NEW_FILE
-	git add $NEW_FILE >/dev/null 2>&1
-done
-git commit -m "Updated $ROOM_NAME Climate Automations" >/dev/null 2>&1
+git add -A packages/devices/"$ROOM_NAME_LOWER".yaml >/dev/null 2>&1
+git commit -m "Updated $ROOM_NAME Climate Package" >/dev/null 2>&1
 
 cd $GITHUB_HA_PATH
 $GITHUB_HA_PATH/sync_github.sh
 
-echo "Processing Climate file..."
-FILE=entities/climates/house.yaml
+git add $GITHUB_HA_PATH/new_climate_room.sh >/dev/null 2>&1
+git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
+
+echo "Processing Climate package..."
+FILE=packages/devices/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 echo "Copying $FILE to $NEW_FILE"
 \cp $FILE $NEW_FILE
+for LINE in `cat $NEW_FILE | grep "  - id: "`;
+	do
+	ID=`</dev/urandom tr -dc 0-9 | head -c15`
+	sed -i 's/  - id: .*/  - id: \'$ID\'/' $NEW_FILE
+done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
 sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
 sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
 sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
 sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
 
-git add -A entities/climates/house.yaml >/dev/null 2>&1
-git commit -m "Updated House Climate Configuration" >/dev/null 2>&1
+git add -A packages/devices/house.yaml >/dev/null 2>&1
+git commit -m "Updated House Climate Package" >/dev/null 2>&1
 
-git add -A entities/climates/"$ROOM_NAME_LOWER".yaml >/dev/null 2>&1
-git commit -m "Updated $ROOM_NAME Climate Configuration" >/dev/null 2>&1
-
-for FILE in `find $GITHUB_HA_PATH -name climate_* | grep house`
-do
-        git add $FILE >/dev/null 2>&1
-done
-for FILE in `find $GITHUB_HA_PATH -name heat*_push_* | grep house`
-do
-        git add $FILE >/dev/null 2>&1
-done
-git commit -m "Updated House Climate related Entities" >/dev/null 2>&1
-for FILE in `ls automations/climate/house_*.yaml`
-        do
-        git add $FILE >/dev/null 2>&1
-done
-git commit -m "Updated House Climate Automations" >/dev/null 2>&1
-
-for FILE in `find $GITHUB_HA_PATH -name climate_* | grep house`
-	do
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	git add $NEW_FILE >/dev/null 2>&1
-done
-for FILE in `find $GITHUB_HA_PATH -name heat*_push_* | grep house`
-	do
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	git add $NEW_FILE >/dev/null 2>&1
-done
-git commit -m "Updated $ROOM_NAME Climate related Entities" >/dev/null 2>&1
-for FILE in `ls automations/climate/house_*.yaml`
-	do
-	NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-	git add $NEW_FILE >/dev/null 2>&1
-done
-git commit -m "Updated $ROOM_NAME Climate Automations" >/dev/null 2>&1
-
-git add $GITHUB_HA_PATH/new_climate_room.sh >/dev/null 2>&1
-git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
-
+git add -A packages/devices/"$ROOM_NAME_LOWER".yaml >/dev/null 2>&1
+git commit -m "Updated $ROOM_NAME Climate Package" >/dev/null 2>&1
 
 cd $OLD_PWD
