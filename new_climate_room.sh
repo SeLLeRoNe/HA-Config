@@ -40,6 +40,7 @@ NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 for LINE in `cat $NEW_FILE | grep "  - id: "`;
 	do
 	ID=`</dev/urandom tr -dc 0-9 | head -c15`
+echo $ID
 	sed -i "s/  - id: .*/  - id: '$ID'/" $NEW_FILE
 done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
