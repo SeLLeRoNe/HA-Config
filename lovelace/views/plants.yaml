@@ -9,9 +9,4 @@ cards:
     mode: vertical
     cards:
       - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: Plants
-      - type: plant-status
-        entity: plant.parsely
-        name: "Parsely"
+        template: plants_card

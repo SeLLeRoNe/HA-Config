@@ -1,0 +1,14 @@
+---
+plants_card:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plants
+      - type: plant-status
+        entity: plant.parsely
+        name: "Parsely"
+
