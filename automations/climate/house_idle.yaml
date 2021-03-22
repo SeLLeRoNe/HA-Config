@@ -114,6 +114,10 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_house_heating_push
     to: 'off'
+  - platform: state
+    entity_id: climate.house
+    attribute: preset_mode
+    to: 'none'
 condition:
   condition: and
   conditions:
