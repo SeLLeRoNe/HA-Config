@@ -43,6 +43,7 @@ for LINE in "`cat $NEW_FILE | tr -d '\r' | grep \"  - id: \"`";
 echo $LINE
 	ID=`</dev/urandom tr -dc 0-9 | head -c15`
 	sed -i 's/^'$LINE'/  - id: \\''$ID'\\'/' $NEW_FILE
+echo ""
 done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
 sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
