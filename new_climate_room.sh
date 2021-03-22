@@ -33,7 +33,7 @@ cd $HA_PATH
 git add $HA_PATH/new_climate_room.sh >/dev/null 2>&1
 git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
 
-echo "Processing Climate package..."
+echo "Processing Climate Package for $ROOM_NAME..."
 FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 echo "Copying $FILE to $NEW_FILE"
@@ -61,7 +61,7 @@ $GITHUB_HA_PATH/sync_github.sh
 git add $GITHUB_HA_PATH/new_climate_room.sh >/dev/null 2>&1
 git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
 
-echo "Processing Climate package..."
+echo "Processing Public Climate for $ROOM_NAME..."
 FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 echo "Copying $FILE to $NEW_FILE"
