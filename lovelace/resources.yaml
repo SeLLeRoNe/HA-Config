@@ -79,6 +79,8 @@
     type: module
   - url: /hacsfiles/lovelace-more-info-card/more-info-card.js
     type: module
+  - url: /hacsfiles/lovelace-climate-mode-entity-row/climate-mode-entity-row.js
+    type: module
 
   - url: /local/q-card.js
     type: module

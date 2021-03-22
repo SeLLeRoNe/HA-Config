@@ -1,3 +1,4 @@
+"""Interface for 'library API' (meteoalarm-rssapi)."""
 import logging
 
 from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp

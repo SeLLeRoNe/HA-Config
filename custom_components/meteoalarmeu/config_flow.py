@@ -9,6 +9,7 @@ from homeassistant.core import callback
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
 from .client import get_languages, get_regions
+from .const import DOMAIN  # pylint: disable=unused-import
 from .const import (
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
@@ -16,7 +17,6 @@ from .const import (
     CONF_REGION,
     DEFAULT_LANGUAGE,
     DEFAULT_NAME,
-    DOMAIN,
 )
 from .resources import cmap, lmap, ui_countries_list, ui_languages_list
 
@@ -28,7 +28,6 @@ DEFAULT_AWARENESS_TYPES = sorted(AWARENESS_TYPES_API)
 _LOGGER = logging.getLogger(__name__)
 
 
-@config_entries.HANDLERS.register(DOMAIN)
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for meteoalarmeu."""
 
@@ -138,10 +137,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if self._data[CONF_COUNTRY]:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
-                map(
-                    lmap,
-                    get_languages(cmap(self._data[CONF_COUNTRY])),
-                )
+                (lmap(l) for l in get_languages(cmap(self._data[CONF_COUNTRY])))
             )
         else:
             self._languages = LANGUAGES
