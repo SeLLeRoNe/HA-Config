@@ -38,7 +38,7 @@ FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 \cp $FILE $NEW_FILE
 LINE=""
-for LINE in "`cat $NEW_FILE | tr -d '\r' | grep \"  - id: \"`";
+for LINE in `grep "  - id: " $NEW_FILE`;
 	do
 echo $LINE
 	ID=`</dev/urandom tr -dc 0-9 | head -c15`
