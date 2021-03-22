@@ -585,6 +585,8 @@ automation:
         to: 'off'
       - platform: state
         entity_id: climate.house
+      - platform: state
+        entity_id: climate.house
         attribute: preset_mode
         to: 'away'
     condition:
@@ -1488,6 +1490,13 @@ automation:
       - platform: state
         entity_id: climate.house
         to: 'off'
+    condition:
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: climate.house
+          attribute: preset_mode
+          state: 'away'
     action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.climate_house_heating_push
