@@ -46,12 +46,6 @@ input_boolean:
   climate_house_heating_push:
     name: Push
     icon: mdi:timer
-  climate_house_weekend_t10_active:
-    name: Active
-    icon: mdi:fire
-  climate_house_weekend_t10:
-    name: Status
-    icon: mdi:fire
   climate_house_weekend_t1_active:
     name: Active
     icon: mdi:fire
@@ -106,10 +100,10 @@ input_boolean:
   climate_house_weekend_t9:
     name: Status
     icon: mdi:fire
-  climate_house_workday_t10_active:
+  climate_house_weekend_t10_active:
     name: Active
     icon: mdi:fire
-  climate_house_workday_t10:
+  climate_house_weekend_t10:
     name: Status
     icon: mdi:fire
   climate_house_workday_t1_active:
@@ -166,16 +160,14 @@ input_boolean:
   climate_house_workday_t9:
     name: Status
     icon: mdi:fire
+  climate_house_workday_t10_active:
+    name: Active
+    icon: mdi:fire
+  climate_house_workday_t10:
+    name: Status
+    icon: mdi:fire
 
 input_datetime:
-  climate_house_weekend_t10_end:
-    name: End
-    has_date: false
-    has_time: true
-  climate_house_weekend_t10_start:
-    name: Start
-    has_date: false
-    has_time: true
   climate_house_weekend_t1_end:
     name: End
     has_date: false
@@ -248,11 +240,11 @@ input_datetime:
     name: Start
     has_date: false
     has_time: true
-  climate_house_workday_t10_end:
+  climate_house_weekend_t10_end:
     name: End
     has_date: false
     has_time: true
-  climate_house_workday_t10_start:
+  climate_house_weekend_t10_start:
     name: Start
     has_date: false
     has_time: true
@@ -328,6 +320,14 @@ input_datetime:
     name: Start
     has_date: false
     has_time: true
+  climate_house_workday_t10_end:
+    name: End
+    has_date: false
+    has_time: true
+  climate_house_workday_t10_start:
+    name: Start
+    has_date: false
+    has_time: true
   heating_push_house:
     name: Duration
     has_date: false
@@ -335,12 +335,6 @@ input_datetime:
 
 input_number:
   climate_house_weekend_t0:
-    name: Temperature
-    icon: mdi:temperature-celsius
-    min: 15
-    max: 25
-    step: 0.1
-  climate_house_weekend_t10:
     name: Temperature
     icon: mdi:temperature-celsius
     min: 15
@@ -406,7 +400,7 @@ input_number:
     min: 15
     max: 25
     step: 0.1
-  climate_house_workday_t10:
+  climate_house_weekend_t10:
     name: Temperature
     icon: mdi:temperature-celsius
     min: 15
@@ -461,6 +455,12 @@ input_number:
     max: 25
     step: 0.1
   climate_house_workday_t9:
+    name: Temperature
+    icon: mdi:temperature-celsius
+    min: 15
+    max: 25
+    step: 0.1
+  climate_house_workday_t10:
     name: Temperature
     icon: mdi:temperature-celsius
     min: 15
