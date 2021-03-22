@@ -40,7 +40,7 @@ NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 for LINE in `cat $NEW_FILE | grep "  - id: "`;
 	do
 	ID=`</dev/urandom tr -dc 0-9 | head -c15`
-	sed -i "s/$LINE/  - id: '$ID'/" $NEW_FILE
+	sed -i "s/^$LINE/  - id: '$ID'/" $NEW_FILE
 done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
 sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
@@ -59,20 +59,6 @@ $GITHUB_HA_PATH/sync_github.sh
 
 git add $GITHUB_HA_PATH/new_climate_room.sh >/dev/null 2>&1
 git commit -m "Updated and improved Climate Config creation script" >/dev/null 2>&1
-
-FILE=packages/devices/climate/house.yaml
-NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
-\cp $FILE $NEW_FILE
-for LINE in `cat $NEW_FILE | grep "  - id: "`;
-	do
-	ID=`</dev/urandom tr -dc 0-9 | head -c15`
-	sed -i "s/  - id: .*/  - id: '$ID'/" $NEW_FILE
-done
-sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
-sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
-sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
-sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
-sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
 
 git add -A packages/devices/climate/house.yaml >/dev/null 2>&1
 git commit -m "Updated House Climate Package" >/dev/null 2>&1
