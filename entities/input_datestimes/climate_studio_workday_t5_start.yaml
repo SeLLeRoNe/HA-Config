@@ -1,5 +1,0 @@
----
-climate_studio_workday_t5_start:
-  name: Start
-  has_date: false
-  has_time: true

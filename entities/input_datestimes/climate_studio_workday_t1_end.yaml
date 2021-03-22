@@ -1,5 +1,0 @@
----
-climate_studio_workday_t1_end:
-  name: End
-  has_date: false
-  has_time: true

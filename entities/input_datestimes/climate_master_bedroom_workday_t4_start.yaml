@@ -1,5 +1,0 @@
----
-climate_master_bedroom_workday_t4_start:
-  name: Start
-  has_date: false
-  has_time: true
