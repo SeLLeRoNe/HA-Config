@@ -21,7 +21,7 @@ thermostat_card_small:
                 color: '#9575CD'
               - hvac_mode: 'heat'
 #                preset_mode: none
-                icon: 'mdi:weather-sunny'
+                icon: 'mdi:fire'
                 color: '#FFC107'
               - hvac_mode: 'off'
                 icon: 'mdi:power'
