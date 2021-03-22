@@ -1,8 +1,8 @@
 #!/bin/bash
 
 OLD_PWD=$PWD
-HA_PATH=/home/ha/.homeassistant/
-GITHUB_HA_PATH=/home/ha/HA-Config/
+HA_PATH=/home/ha/.homeassistant
+GITHUB_HA_PATH=/home/ha/HA-Config
 ALL=0
 ID=
 
@@ -28,7 +28,7 @@ if [ $ALL -eq 1 ]; then
 fi
 
 ROOM_NAME_LOWER=`echo $ROOM_NAME | tr A-Z a-z`
-ENTITY_NAME=$(sed "s/ /_/g" <<< $ROOM_NAME_LOWER)
+ROOM_NAME_LOWER=$(sed "s/ /_/g" <<< $ROOM_NAME_LOWER)
 
 cd $HA_PATH
 git add $HA_PATH/new_climate_room.sh >/dev/null 2>&1
@@ -36,7 +36,7 @@ git commit -m "Updated and improved Climate Config creation script" >/dev/null 2
 
 echo "Processing Climate Package for $ROOM_NAME..."
 FILE=packages/devices/climate/house.yaml
-NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
+NEW_FILE=$(sed "s/house/$ROOM_NAME_LOWER/g" <<< $FILE)
 \cp $FILE $NEW_FILE
 for ID in `cat $NEW_FILE | grep "  - id: " | cut -d\' -f2`;
 	do
@@ -44,9 +44,9 @@ for ID in `cat $NEW_FILE | grep "  - id: " | cut -d\' -f2`;
 	sed -i "s/  - id: '$ID'/  - id: '$RANDOM_ID'/" $NEW_FILE
 done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
-sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
-sed -i "s/_house/_$ENTITY_NAME/g" $NEW_FILE
-sed -i 's/climate.house/climate.'$ENTITY_NAME'/g' $NEW_FILE
+sed -i 's/house_/'$ROOM_NAME_LOWER'_/g' $NEW_FILE
+sed -i "s/_house/_$ROOM_NAME_LOWER/g" $NEW_FILE
+sed -i 's/climate.house/climate.'$ROOM_NAME_LOWER'/g' $NEW_FILE
 sed -i "s/House/$ROOM_NAME/g" $NEW_FILE
 
 git add -A packages/devices/climate/house.yaml >/dev/null 2>&1
