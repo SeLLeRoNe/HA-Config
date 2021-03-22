@@ -38,12 +38,10 @@ FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 \cp $FILE $NEW_FILE
 LINE=""
-for LINE in `grep "  - id: " $NEW_FILE`;
+for ID in `cat $NEW_FILE | grep "  - id: " | cut -d\' -f2`;
 	do
-echo $LINE
-	ID=`</dev/urandom tr -dc 0-9 | head -c15`
-	sed -i 's/^'$LINE'/  - id: \\''$ID'\\'/' $NEW_FILE
-echo ""
+	RANDOM_ID=`</dev/urandom tr -dc 0-9 | head -c15`
+	sed -i "s/  - id: '$ID'/  - id: '$RANDOM_ID'/" $NEW_FILE
 done
 sed -i "s/- House/- $ROOM_NAME/g" $NEW_FILE
 sed -i 's/house_/'$ENTITY_NAME'_/g' $NEW_FILE
