@@ -4,6 +4,7 @@ OLD_PWD=$PWD
 HA_PATH=/home/ha/.homeassistant/
 GITHUB_HA_PATH=/home/ha/HA-Config/
 ALL=0
+ID=
 
 if [ "$1" = "" ]; then
 	echo -n "Please enter the new room name: ";
@@ -37,7 +38,6 @@ echo "Processing Climate Package for $ROOM_NAME..."
 FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 \cp $FILE $NEW_FILE
-LINE=""
 for ID in `cat $NEW_FILE | grep "  - id: " | cut -d\' -f2`;
 	do
 	RANDOM_ID=`</dev/urandom tr -dc 0-9 | head -c15`
