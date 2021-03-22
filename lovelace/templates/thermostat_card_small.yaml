@@ -20,7 +20,7 @@ thermostat_card_small:
                 icon: 'mdi:airplane'
                 color: '#9575CD'
               - hvac_mode: 'heat'
-                preset_mode: none
+#                preset_mode: none
                 icon: 'mdi:weather-sunny'
                 color: '#FFC107'
               - hvac_mode: 'off'
