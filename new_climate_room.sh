@@ -37,6 +37,7 @@ echo "Processing Climate Package for $ROOM_NAME..."
 FILE=packages/devices/climate/house.yaml
 NEW_FILE=$(sed "s/house/$ENTITY_NAME/g" <<< $FILE)
 \cp $FILE $NEW_FILE
+LINE=""
 for LINE in "`cat $NEW_FILE | tr -d '\r' | grep \"  - id: \"`";
 	do
 echo $LINE
