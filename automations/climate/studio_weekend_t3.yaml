@@ -1,5 +1,5 @@
 ---
-id: '387328121514726'
+id: '210670670529684'
 alias: Climate - T3 - Studio - Weekend
 initial_state: 'on'
 trigger:
@@ -85,6 +85,10 @@ trigger:
   - platform: state
     entity_id: input_boolean.climate_studio_workday_t10
     to: 'off'
+  - platform: state
+    entity_id: climate.studio
+    attribute: preset_mode
+    to: 'none'
 condition:
   condition: and
   conditions:
