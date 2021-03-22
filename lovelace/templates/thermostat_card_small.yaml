@@ -11,10 +11,39 @@ thermostat_card_small:
       - type: entities
         show_header_toggle: false
         entities:
+          - type: 'custom:climate-mode-entity-row'
+            entity: climate.[[area]]
+            name: Thermostat
+            icon: 'mdi:fire'
+            modes:
+              - preset_mode: away
+                icon: 'mdi:airplane'
+                color: '#9575CD'
+              - hvac_mode: 'heat'
+                preset_mode: none
+                icon: 'mdi:weather-sunny'
+                color: '#FFC107'
+              - hvac_mode: 'off'
+                icon: 'mdi:power'
+                color: '#B3E5FC'
+            style: |
+              :host {
+                --paper-item-icon-color:
+                  {% if is_state_attr('climate.[[area]]', 'hvac_action', 'heating') %}
+                    rgb(51, 204, 51);
+                  {% elif is_state_attr('climate.[[area]]', 'hvac_action', 'idle') %}
+                    rgb(255, 0, 0);
+                  {% else %}
+                    rgb(128, 128, 128);
+                  {% endif %}
+              }
+      - type: entities
+        show_header_toggle: false
+        entities:
           - type: custom:multiple-entity-row
             entity: input_select.climate_[[area]]
-            name: Thermostat
-            icon: mdi:fire
+#            name: Thermostat
+            icon: mdi:timer
             toggle: false
             entities:
               - entity: climate.[[area]]
@@ -74,14 +103,14 @@ thermostat_card_small:
                     - area: '[[area]]'
                 style:
                   width: 450px
-            style: |
-              :host {
-                --paper-item-icon-color:
-                  {% if is_state_attr('climate.[[area]]', 'hvac_action', 'heating') %}
-                    rgb(51, 204, 51);
-                  {% elif is_state_attr('climate.[[area]]', 'hvac_action', 'idle') %}
-                    rgb(255, 0, 0);
-                  {% else %}
-                    rgb(128, 128, 128);
-                  {% endif %}
-              }
+#            style: |
+#              :host {
+#                --paper-item-icon-color:
+#                  {% if is_state_attr('climate.[[area]]', 'hvac_action', 'heating') %}
+#                    rgb(51, 204, 51);
+#                  {% elif is_state_attr('climate.[[area]]', 'hvac_action', 'idle') %}
+#                    rgb(255, 0, 0);
+#                  {% else %}
+#                    rgb(128, 128, 128);
+#                  {% endif %}
+#              }
