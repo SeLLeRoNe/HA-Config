@@ -7,7 +7,10 @@ trigger:
     event: start
   - platform: state
     entity_id: sensor.andrea_oneplus_nord_battery_level
-#    above: 95
+  - platform: state
+    entity_id: input_number.oneplus_charger_lower_bound
+  - platform: state
+    entity_id: input_number.oneplus_charger_upper_bound
   - platform: zone
     entity_id: person.andrea
     zone: zone.home
@@ -15,21 +18,37 @@ trigger:
   - platform: state
     entity_id: sensor.andrea_oneplus_nord_battery_state
     to: 'charging'
+  - platform: state
+    entity_id: sensor.andrea_oneplus_nord_battery_state
+    to: 'full'
 condition:
   condition: and
   conditions:
     - condition: state
       entity_id: switch.studio_usb_relay_01
       state: 'on'
-    - condition: state
-      entity_id: person.andrea
-      state: 'home'
-    - condition: numeric_state
-      entity_id: sensor.andrea_oneplus_nord_battery_level
-      above: 95
-    - condition: state
-      entity_id: sensor.andrea_oneplus_nord_battery_state
-      state: 'charging'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: person.andrea
+          state: 'home'
+        - condition: state
+          entity_id: person.andrea
+          state: 'Garage'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sensor.andrea_oneplus_nord_battery_state
+          state: 'charging'
+        - condition: state
+          entity_id: sensor.andrea_oneplus_nord_battery_state
+          state: 'full'
+    - condition: template
+      value_template: '{{ states.sensor.andrea_oneplus_nord_battery_level.state > states.input_number.oneplus_charger_upper_bound.state }}'
+    - condition: not
+      conditions:
+        - condition: template
+          value_template: '{{ states.sensor.andrea_oneplus_nord_battery_level.state < states.input_number.oneplus_charger_lower_bound.state }}'
 action:
   - service: switch.turn_off
     entity_id: switch.studio_usb_relay_01

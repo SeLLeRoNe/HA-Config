@@ -47,6 +47,49 @@ andrea:
 #        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
 #        tap_action:
 #          action: none
+      - type: custom:fold-entity-row
+        head:
+          type: custom:battery-state-card
+          secondary_info: charging
+          secondary_info_text:  "Charging"
+          color_thresholds:
+            - value: 20
+              color: "#990000"
+            - value: 40
+              color: "#CC6600"
+            - value: 60
+              color: "#FF8000"
+            - value: 80
+              color: "#009900"
+            - value: 100
+              color: "#009933"
+          entities:
+            - entity: sensor.andrea_oneplus_nord_battery_level
+              name: "OnePlus Nord"
+              charging_state:
+                entity_id: sensor.andrea_oneplus_nord_battery_state
+                state:
+                  - "charging"
+                  - "full"
+        entities:
+          - type: 'custom:slider-entity-row'
+            entity: input_number.oneplus_charger_lower_bound
+            toggle: false
+            hide_state: false
+            hide_when_off: false
+            full_row: false
+            min: 0
+            max: 100
+            step: 1
+          - type: 'custom:slider-entity-row'
+            entity: input_number.oneplus_charger_upper_bound
+            toggle: false
+            hide_state: false
+            hide_when_off: false
+            full_row: false
+            min: 0
+            max: 100
+            step: 1
       - type: custom:battery-state-card
         secondary_info: charging
         secondary_info_text:  "Charging"
@@ -62,13 +105,6 @@ andrea:
           - value: 100
             color: "#009933"
         entities:
-          - entity: sensor.andrea_oneplus_nord_battery_level
-            name: "OnePlus Nord"
-            charging_state:
-              entity_id: sensor.andrea_oneplus_nord_battery_state
-              state:
-                - "charging"
-                - "full"
           - entity: sensor.andrea_samsung_galaxy_tab_7_battery_level
             name: "Samsung Galaxy Tab 7+"
             charging_state:
