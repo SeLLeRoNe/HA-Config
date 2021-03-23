@@ -20,8 +20,9 @@ energy_cost_card:
               template: '[[type]]_cost'
               variables:
                 - area: '[[area]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
       - entity: sensor.[[area]]_cost_monthly
         name: Monthly
         tap_action:
@@ -34,8 +35,9 @@ energy_cost_card:
               template: '[[type]]_cost'
               variables:
                 - area: '[[area]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
       - entity: sensor.[[area]]_cost_yearly
         name: Yearly
         tap_action:
@@ -48,8 +50,9 @@ energy_cost_card:
               template: '[[type]]_cost'
               variables:
                 - area: '[[area]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
     tap_action:
       action: call-service
       service: browser_mod.popup
@@ -60,5 +63,6 @@ energy_cost_card:
           template: '[[type]]_cost'
           variables:
             - area: '[[area]]'
-        style:
-          width: 450px
+        card_mod:
+          style:
+            width: 450px

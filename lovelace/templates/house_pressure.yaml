@@ -41,10 +41,11 @@ house_pressure:
       name_adaptive_color: true
       icon_adaptive_color: true
       color_thresholds: !include thresholds/pressure.yaml
-    style: |
-      ha-card {
-        padding: 16px !important;
-      }
+    card_mod:
+      style: |
+        ha-card {
+          padding: 16px !important;
+        }
     entities:
       - entity: sensor.house_pressure
         name: Inside

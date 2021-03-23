@@ -69,37 +69,39 @@ sonia:
               state:
                 - "charging"
                 - "full"
-        style: |
-          .entity-row.non-numeric-state .icon {
-            color: #808080;
-          }
-          .entity-row .secondary {
-            color: #808080;
-          }
+        card_mod:
+          style: |
+            .entity-row.non-numeric-state .icon {
+              color: #808080;
+            }
+            .entity-row .secondary {
+              color: #808080;
+            }
 #      - entity: sensor.sonia_mi_9t_pro_battery_level
 #        name: "Mi 9T Pro"
 #        type: "custom:secondaryinfo-entity-row"
 #        secondary_info: "WiFi: [[ if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi_9t_pro_battery_state == 'charging', ' - Charging', '' ) ]]"
 #        tap_action:
 #          action: none
-#        style: |
-#          :host {
-#            --paper-item-icon-color:
-#              {% if is_state(config.entity, 'unknown') %}
-#                rgb(128, 128, 128);
-#              {% elif states(config.entity)|int > 100 %}
-#                rgb(128, 128, 128);
-#              {% elif states(config.entity)|int >= 80 %}
-#                rgb(0, 153, 51);
-#              {% elif states(config.entity)|int >= 60 %}
-#                rgb(0, 153, 0);
-#              {% elif states(config.entity)|int >= 40 %}
-#                rgb(255, 128, 0);
-#              {% elif states(config.entity)|int >= 20 %}
-#                rgb(204, 102, 0);
-#              {% elif states(config.entity)|int >= 0 %}
-#                rgb(153, 0, 0);
-#              {% else %}
-#                rgb(128, 128, 128);
-#              {% endif %}
-#          }
+#        card_mod:
+#          style: |
+#            :host {
+#              --paper-item-icon-color:
+#                {% if is_state(config.entity, 'unknown') %}
+#                  rgb(128, 128, 128);
+#                {% elif states(config.entity)|int > 100 %}
+#                  rgb(128, 128, 128);
+#                {% elif states(config.entity)|int >= 80 %}
+#                  rgb(0, 153, 51);
+#                {% elif states(config.entity)|int >= 60 %}
+#                  rgb(0, 153, 0);
+#                {% elif states(config.entity)|int >= 40 %}
+#                  rgb(255, 128, 0);
+#                {% elif states(config.entity)|int >= 20 %}
+#                  rgb(204, 102, 0);
+#                {% elif states(config.entity)|int >= 0 %}
+#                  rgb(153, 0, 0);
+#                {% else %}
+#                  rgb(128, 128, 128);
+#                {% endif %}
+#            }

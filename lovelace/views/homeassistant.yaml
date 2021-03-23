@@ -99,10 +99,11 @@ cards:
           labels: false
           name_adaptive_color: true
           icon_adaptive_color: true
-        style: |
-          ha-card {
-            padding: 16px !important;
-          }
+        card_mod:
+          style: |
+            ha-card {
+              padding: 16px !important;
+            }
         entities:
           - entity: sensor.database_size
             name: Database Size

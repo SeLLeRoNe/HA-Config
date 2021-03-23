@@ -52,10 +52,11 @@ batteries_zigbee:
         name: "Patio - WSDCGQ11LM Temperature Sensor"
       - entity: sensor.patio_mccgq01lm_battery
         name: "Patio - MCCGQ01LM Door/Window Sensor"
-    style: |
-      .entity-row.non-numeric-state .icon {
-        color: #808080;
-      }
-      .entity-row .secondary {
-        color: #808080;
-      }
+    card_mod:
+      style: |
+        .entity-row.non-numeric-state .icon {
+          color: #808080;
+        }
+        .entity-row .secondary {
+          color: #808080;
+        }

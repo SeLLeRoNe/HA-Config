@@ -21,8 +21,9 @@ energy_device_10_card:
               variables:
                 - device_name: '[[device_name]]'
                 - device: '[[device]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
       - entity: sensor.[[area]]_[[device]]_plug_energy_ampere
         name: false
         tap_action:
@@ -36,8 +37,9 @@ energy_device_10_card:
               variables:
                 - device_name: '[[device_name]]'
                 - device: '[[device]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
       - entity: sensor.[[area]]_[[device]]_plug_energy_today
         name: false
         tap_action:
@@ -51,8 +53,9 @@ energy_device_10_card:
               variables:
                 - device_name: '[[device_name]]'
                 - device: '[[device]]'
-            style:
-              width: 450px
+            card_mod:
+              style:
+                width: 450px
     tap_action:
       action: call-service
       service: browser_mod.popup
@@ -64,5 +67,6 @@ energy_device_10_card:
           variables:
             - device_name: '[[device_name]]'
             - device: '[[device]]'
-        style:
-          width: 450px
+        card_mod:
+          style:
+            width: 450px

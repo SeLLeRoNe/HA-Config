@@ -56,10 +56,11 @@ maurizio:
             charging_state:
               entity_id: sensor.samsung_galaxy_tab_a_stato_della_batteria
               state: "charging"
-        style: |
-          .entity-row.non-numeric-state .icon {
-            color: #808080;
-          }
-          .entity-row .secondary {
-            color: #808080;
-          }
+        card_mod:
+          style: |
+            .entity-row.non-numeric-state .icon {
+              color: #808080;
+            }
+            .entity-row .secondary {
+              color: #808080;
+            }

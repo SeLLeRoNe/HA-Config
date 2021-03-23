@@ -49,10 +49,11 @@ temperature:
         - value: "on"
           label: "Night"
       color_thresholds: !include thresholds/temperature.yaml
-      style: |
-        ha-card {
-          padding: 16px !important;
-        }
+      card_mod:
+        style: |
+          ha-card {
+            padding: 16px !important;
+          }
       entities:
         - entity: '[[entity]]'
           name: Temperature

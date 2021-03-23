@@ -71,13 +71,14 @@ andrea:
                 state:
                   - "charging"
                   - "full"
-          style: |
-            .entity-row.non-numeric-state .icon {
-              color: #808080;
-            }
-            .entity-row .secondary {
-              color: #808080;
-            }
+          card_mod:
+            style: |
+              .entity-row.non-numeric-state .icon {
+                color: #808080;
+              }
+              .entity-row .secondary {
+                color: #808080;
+              }
         entities:
           - type: 'custom:slider-entity-row'
             entity: input_number.oneplus_charger_lower_bound
@@ -126,10 +127,11 @@ andrea:
               state:
                 - "charging"
                 - "full"
-        style: |
-          .entity-row.non-numeric-state .icon {
-            color: #808080;
-          }
-          .entity-row .secondary {
-            color: #808080;
-          }
+        card_mod:
+          style: |
+            .entity-row.non-numeric-state .icon {
+              color: #808080;
+            }
+            .entity-row .secondary {
+              color: #808080;
+            }

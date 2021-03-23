@@ -112,6 +112,7 @@ cards:
           legend: false
           extrema: false
           labels: false
+#          card_mod:
 #            style: |
 #              ha-card {
 #                padding: 16px !important;
@@ -153,10 +154,11 @@ cards:
           legend: false
           extrema: false
           labels: false
-        style: |
-          ha-card {
-            padding: 16px !important;
-          }
+        card_mod:
+          style: |
+            ha-card {
+              padding: 16px !important;
+            }
         entities:
           - entity: sensor.speedtest_download
             color: "#3399ff"
@@ -186,10 +188,11 @@ cards:
           legend: false
           extrema: false
           labels: false
-        style: |
-          ha-card {
-            padding: 16px !important;
-          }
+        card_mod:
+          style: |
+            ha-card {
+              padding: 16px !important;
+            }
         entities:
           - entity: sensor.speedtest_ping
             color: "#33cc33"
@@ -217,6 +220,7 @@ cards:
           legend: true
           extrema: false
           labels: false
+#          card_mod:
 #            style: |
 #              ha-card {
 #                padding: 16px !important;
@@ -325,10 +329,11 @@ cards:
           legend: true
           extrema: false
           labels: false
-        style: |
-          ha-card {
-            padding: 16px !important;
-          }
+        card_mod:
+          style: |
+            ha-card {
+              padding: 16px !important;
+            }
         entities:
           - entity: sensor.pi_hole_ads_percentage_blocked_today
             show_graph: false

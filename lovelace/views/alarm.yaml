@@ -9,20 +9,21 @@ cards:
     cards:
     - content: |
         # Card Animation Tests
-      style:
-        .: |
-          ha-card {
-            background-color: transparent !important;
-            box-shadow: none !important;
-          }
-        ha-markdown:
-          $: |
-            h1 {
-              font-size: 25px;
-              font-weight: bold;
-              text-align: center;
-              letter-spacing: '-0.01em';
+      card-mod:
+        style:
+          .: |
+            ha-card {
+              background-color: transparent !important;
+              box-shadow: none !important;
             }
+          ha-markdown:
+            $: |
+              h1 {
+                font-size: 25px;
+                font-weight: bold;
+                text-align: center;
+                letter-spacing: '-0.01em';
+              }
       type: markdown
     - cards:
         - color_type: blank-card

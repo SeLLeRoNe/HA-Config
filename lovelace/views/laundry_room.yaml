@@ -30,17 +30,18 @@ cards:
 #                    entity: input_select.laundry_room_washing_machine_status
 #                    tap_action:
 #                      action: none
-#                    style: |
-#                      :host {
-#                        --paper-item-icon-color:
-#                          {% if is_state(config.entity, 'Done') %}
-#                            rgb(51, 204, 51);
-#                          {% elif is_state(config.entity, 'Running') %}
-#                            rgb(51, 127, 255);
-#                          {% else %}
-#                            rgb(128, 128, 128);
-#                          {% endif %}
-#                      }
+#                    card_mod:
+#                      style: |
+#                        :host {
+#                          --paper-item-icon-color:
+#                            {% if is_state(config.entity, 'Done') %}
+#                              rgb(51, 204, 51);
+#                            {% elif is_state(config.entity, 'Running') %}
+#                              rgb(51, 127, 255);
+#                            {% else %}
+#                              rgb(128, 128, 128);
+#                            {% endif %}
+#                        }
 ##                  - name: Washing Machine
 ##                    entity: binary_sensor.laundry_room_washing_machine_djt11lm_vibration
 ##                    icon: "mdi:washing-machine"

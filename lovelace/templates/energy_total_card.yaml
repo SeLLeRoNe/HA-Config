@@ -20,8 +20,9 @@ energy_total_card:
               template: '[[type]]_total'
               variables:
                 - area: '[[area]]'
-          style:
-            width: 450px
+          card_mod:
+            style:
+              width: 450px
       - entity: sensor.[[area]]_total_ampere_usage
         name: false
         tap_action:
@@ -34,8 +35,9 @@ energy_total_card:
               template: '[[type]]_total'
               variables:
                 - area: '[[area]]'
-          style:
-            width: 450px
+          card_mod:
+            style:
+              width: 450px
       - entity: sensor.[[area]]_today_energy_usage
         name: false
         tap_action:
@@ -48,8 +50,9 @@ energy_total_card:
               template: '[[type]]_total'
               variables:
                 - area: '[[area]]'
-          style:
-            width: 450px
+          card_mod:
+            style:
+              width: 450px
     tap_action:
       action: call-service
       service: browser_mod.popup
@@ -60,5 +63,6 @@ energy_total_card:
           template: '[[type]]_total'
           variables:
             - area: '[[area]]'
-      style:
-        width: 450px
+      card_mod:
+        style:
+          width: 450px

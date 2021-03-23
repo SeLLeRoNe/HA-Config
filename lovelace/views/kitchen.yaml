@@ -35,17 +35,18 @@ cards:
             icon: "mdi:dishwasher"
             tap_action:
               action: none
-            style: |
-              :host {
-                --paper-item-icon-color:
-                  {% if is_state(config.entity, 'Done') %}
-                    rgb(51, 204, 51);
-                  {% elif is_state(config.entity, 'Washing') %}
-                    rgb(51, 127, 255);
-                  {% else %}
-                    rgb(128, 128, 128);
-                  {% endif %}
-              }
+            card_mod:
+              style: |
+                :host {
+                  --paper-item-icon-color:
+                    {% if is_state(config.entity, 'Done') %}
+                      rgb(51, 204, 51);
+                    {% elif is_state(config.entity, 'Washing') %}
+                      rgb(51, 127, 255);
+                    {% else %}
+                      rgb(128, 128, 128);
+                    {% endif %}
+                }
           - name: Motion Sensor
             entity: binary_sensor.kitchen_pir
             tap_action:

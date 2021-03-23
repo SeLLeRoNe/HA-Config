@@ -79,10 +79,11 @@ cards:
                 labels: false
                 name_adaptive_color: true
                 icon_adaptive_color: true
-              style: |
-                ha-card {
-                  padding: 16px !important;
-                }
+              card_mod:
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
               entities:
                 - entity: sensor.dark_sky_overnight_low_temperature_0d
                   name: Min Temperature
@@ -126,10 +127,11 @@ cards:
                 labels: false
                 name_adaptive_color: true
                 icon_adaptive_color: true
-              style: |
-                ha-card {
-                  padding: 16px !important;
-                }
+              card_mod:
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
               entities:
                 - entity: sensor.dark_sky_daytime_high_temperature_0d
                   name: Max Temperature
@@ -183,10 +185,11 @@ cards:
             - value: "on"
               label: "Night"
           color_thresholds: !include ../templates/thresholds/temperature.yaml
-          style: |
-            ha-card {
-              padding: 16px !important;
-            }
+          card_mod:
+            style: |
+              ha-card {
+                padding: 16px !important;
+              }
           entities:
             - entity: sensor.dark_sky_temperature
               name: Temperature
@@ -240,10 +243,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_precip_probability
                 name: Rain Probability
@@ -281,10 +285,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_precip_intensity
                 name: Rain intensity
@@ -329,10 +334,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_visibility
                 name: Visibility
@@ -381,10 +387,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_wind_speed
                 name: Wind Speed
@@ -427,10 +434,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_pressure
                 name: Pressure
@@ -475,10 +483,11 @@ cards:
               labels: false
               name_adaptive_color: true
               icon_adaptive_color: true
-            style: |
-              ha-card {
-                padding: 16px !important;
-              }
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 16px !important;
+                }
             entities:
               - entity: sensor.dark_sky_humidity
                 name: Humidity
@@ -533,10 +542,11 @@ cards:
                   label: "Day"
                 - value: "on"
                   label: "Night"
-              style: |
-                ha-card {
-                  padding: 16px !important;
-                }
+              card_mod:
+                style: |
+                  ha-card {
+                    padding: 16px !important;
+                  }
               entities:
                 - entity: sensor.dark_sky_dew_point
                   name: Dew Point

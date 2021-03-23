@@ -11,10 +11,11 @@ cards:
       - type: entities
         title: Summary
         show_header_toggle: false
-        style: |
-          ha-card {
-            border: solid 1px var(--primary-color);
-          }
+        card_mod:
+          style: |
+            ha-card {
+              border: solid 1px var(--primary-color);
+            }
         entities:
           - type: 'custom:fold-entity-row'
             head:
