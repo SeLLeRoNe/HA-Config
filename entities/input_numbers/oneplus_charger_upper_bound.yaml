@@ -1,8 +1,7 @@
 ---
 oneplus_charger_upper_bound:
   name: Max
-  icon: mdi:battery-90
-  initial: 90
+  icon: mdi:battery-80
   min: 0
   max: 100
   step: 1

@@ -1,8 +1,7 @@
 ---
 oneplus_charger_lower_bound:
   name: Min
-  icon: mdi:battery-10
-  initial: 10
+  icon: mdi:battery-30
   min: 0
   max: 100
   step: 1
