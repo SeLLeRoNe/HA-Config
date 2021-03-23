@@ -8,6 +8,12 @@ trigger:
   - platform: state
     entity_id: sensor.andrea_oneplus_nord_battery_level
   - platform: state
+    entity_id: sensor.andrea_oneplus_nord_battery_state
+    to: 'charging'
+  - platform: state
+    entity_id: sensor.andrea_oneplus_nord_battery_state
+    to: 'full'
+  - platform: state
     entity_id: input_number.oneplus_charger_lower_bound
   - platform: state
     entity_id: input_number.oneplus_charger_upper_bound
@@ -15,12 +21,6 @@ trigger:
     entity_id: person.andrea
     zone: zone.home
     event: leave
-  - platform: state
-    entity_id: sensor.andrea_oneplus_nord_battery_state
-    to: 'charging'
-  - platform: state
-    entity_id: sensor.andrea_oneplus_nord_battery_state
-    to: 'full'
 condition:
   condition: and
   conditions:
