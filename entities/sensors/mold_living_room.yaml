@@ -3,5 +3,5 @@ platform: mold_indicator
 name: Living Room Mold Indicator
 indoor_temp_sensor: sensor.living_room_temperature
 indoor_humidity_sensor: sensor.living_room_humidity
-outdoor_temp_sensor: sensor.dark_sky_temperature
+outdoor_temp_sensor: sensor.patio_temperature
 calibration_factor: 1.3
