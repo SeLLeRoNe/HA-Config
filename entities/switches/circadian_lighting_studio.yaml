@@ -1,0 +1,6 @@
+---
+platform: circadian_lighting
+name: "Studio"
+lights_ct:
+  - light.studio_wall_ligh
+  - light.studio_desk_sonia_lamp

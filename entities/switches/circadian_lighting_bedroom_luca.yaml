@@ -1,0 +1,7 @@
+---
+platform: circadian_lighting
+name: "Bedroom Luca"
+lights_ct:
+  - light.bedroom_luca_light_1
+  - light.bedroom_luca_light_2
+  - light.bedroom_luca_light_3
