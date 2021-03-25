@@ -498,7 +498,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '939999809796405'
+  - id: '292576839026878'
     alias: Climate - Living Room - Active Off
     initial_state: 'on'
     trigger:
@@ -568,7 +568,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_living_room_active
-  - id: '935642070278352'
+  - id: '041008324957617'
     alias: Climate - Living Room - Away Mode On
     initial_state: 'on'
     trigger:
@@ -618,7 +618,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "Away"
-  - id: '272717043115860'
+  - id: '986416035925706'
     alias: Climate - Living Room - Idle
     initial_state: 'on'
     trigger:
@@ -1483,7 +1483,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "N/A"
-  - id: '532069416030182'
+  - id: '618305276205119'
     alias: Climate - Living Room - Off
     initial_state: 'on'
     trigger:
@@ -1506,7 +1506,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "N/A"
-  - id: '044566554254020'
+  - id: '393284530104161'
     alias: Climate - Living Room - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1532,7 +1532,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_living_room
-  - id: '266589903099222'
+  - id: '799073102423361'
     alias: Climate - Living Room - Timer Start
     initial_state: 'on'
     trigger:
@@ -1573,7 +1573,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "Push"
-  - id: '554665915113781'
+  - id: '084198108675103'
     alias: Climate - Living Room - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1591,7 +1591,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_living_room
-  - id: '623505454631298'
+  - id: '534312106235820'
     alias: Climate - T10 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -1751,7 +1751,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T10"
-  - id: '511666386104606'
+  - id: '917268611883318'
     alias: Climate - T1 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -1911,7 +1911,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T1"
-  - id: '045387268471262'
+  - id: '063569755361276'
     alias: Climate - T2 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2071,7 +2071,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T2"
-  - id: '228217760902268'
+  - id: '243954807414033'
     alias: Climate - T3 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2231,7 +2231,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T3"
-  - id: '895071947646049'
+  - id: '694807998450179'
     alias: Climate - T4 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2391,7 +2391,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T4"
-  - id: '987672533925281'
+  - id: '468410006225609'
     alias: Climate - T5 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2551,7 +2551,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T5"
-  - id: '748457763158973'
+  - id: '254880258203237'
     alias: Climate - T6 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2711,7 +2711,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T6"
-  - id: '701091272422638'
+  - id: '494780999691076'
     alias: Climate - T7 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -2871,7 +2871,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T7"
-  - id: '725948151260838'
+  - id: '090900034255281'
     alias: Climate - T8 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -3031,7 +3031,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T8"
-  - id: '692049906633492'
+  - id: '840866872798114'
     alias: Climate - T9 - Living Room - Weekend
     initial_state: 'on'
     trigger:
@@ -3191,7 +3191,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T9"
-  - id: '924374765709955'
+  - id: '374486092334073'
     alias: Climate - T10 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -3351,7 +3351,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T10"
-  - id: '128646590575550'
+  - id: '925817194339752'
     alias: Climate - T1 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -3511,7 +3511,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T1"
-  - id: '620425395538868'
+  - id: '102083925733741'
     alias: Climate - T2 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -3671,7 +3671,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T2"
-  - id: '020926579621763'
+  - id: '393341886204265'
     alias: Climate - T3 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -3831,7 +3831,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T3"
-  - id: '549113208229563'
+  - id: '585122320943592'
     alias: Climate - T4 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -3991,7 +3991,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T4"
-  - id: '465713520727985'
+  - id: '846704751356842'
     alias: Climate - T5 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -4151,7 +4151,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T5"
-  - id: '486931159343041'
+  - id: '197091411267074'
     alias: Climate - T6 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -4311,7 +4311,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T6"
-  - id: '248021308939178'
+  - id: '064001282903991'
     alias: Climate - T7 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -4471,7 +4471,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T7"
-  - id: '206651312595224'
+  - id: '432517614911000'
     alias: Climate - T8 - Living Room - Workday
     initial_state: 'on'
     trigger:
@@ -4631,7 +4631,7 @@ automation:
         data:
           entity_id: input_select.climate_living_room
           option: "T8"
-  - id: '321540392267669'
+  - id: '743483388327369'
     alias: Climate - T9 - Living Room - Workday
     initial_state: 'on'
     trigger:
