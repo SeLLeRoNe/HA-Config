@@ -8,9 +8,6 @@ class CustomFanRow extends Polymer.Element {
 					line-height: inherit;
 				}
 				.speed {
-					min-width: 30px;
-					max-width: 30px;
-					height: 30px;
 					margin-left: 2px;
 					margin-right: 2px;
 					background-color: #759aaa;
@@ -28,25 +25,25 @@ class CustomFanRow extends Polymer.Element {
 				<div class='horizontal justified layout' on-click="stopPropagation">
 					<button
 						class='speed'
-						style='[[_leftColor]]'
+						style='[[_leftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 						toggles name="[[_leftName]]"
 						on-click='setSpeed'
 						disabled='[[_leftState]]'>[[_leftText]]</button>
 					<button
 						class='speed'
-						style='[[_midLeftColor]];[[_hideMidLeft]]'
+						style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidLeft]]'
 						toggles name="[[_midLeftName]]"
 						on-click='setSpeed'
 						disabled='[[_midLeftState]]'>[[_midLeftText]]</button>
 					<button
 						class='speed'
-						style='[[_midRightColor]];[[_hideMidRight]]'
+						style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidRight]]'
 						toggles name="[[_midRightName]]"
 						on-click='setSpeed'
 						disabled='[[_midRightState]]'>[[_midRightText]]</button>
 					<button
 						class='speed'
-						style='[[_rightColor]]'
+						style='[[_rightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 						toggles name="[[_rightName]]"
 						on-click='setSpeed'
 						disabled='[[_rightState]]'>[[_rightText]]</button>
@@ -63,6 +60,8 @@ class CustomFanRow extends Polymer.Element {
 			},
 			_config: Object,
 			_stateObj: Object,
+			_width: String,
+			_height: String,
 			_leftColor: String,
 			_midLeftColor: String,
 			_midRightColor: String,
@@ -93,6 +92,8 @@ class CustomFanRow extends Polymer.Element {
 			sendStateWithSpeed: false,
 			reverseButtons: false,
 			isTwoSpeedFan: false,
+			width: '30px',
+			height: '30px',
 			isOffColor: '#f44c09',
 			isOnLowColor: '#43A047',
 			isOnMedColor: '#43A047',
@@ -114,6 +115,8 @@ class CustomFanRow extends Polymer.Element {
 		const sendStateWithSpeed = config.sendStateWithSpeed;
 		const revButtons = config.reverseButtons;
 		const twoSpdFan = config.isTwoSpeedFan;
+		const buttonWidth = config.width;
+		const buttonHeight = config.height;
 		const custOnLowClr = config.isOnLowColor;
 		const custOnMedClr = config.isOnMedColor;
 		const custOnHiClr = config.isOnHiColor;
@@ -208,6 +211,9 @@ class CustomFanRow extends Polymer.Element {
 		let medtext = custMedTxt;
 		let hitext = custHiTxt;
 		
+		let buttonwidth = buttonWidth;
+		let buttonheight = buttonHeight;
+		
 		let hiname = 'high';
 		let medname = 'medium';
 		let lowname = 'low';
@@ -230,6 +236,8 @@ class CustomFanRow extends Polymer.Element {
 				_midLeftState: low == 'on',
 				_midRightState: med == 'on',
 				_rightState: high == 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: offcolor,
 				_midLeftColor: lowcolor,
 				_midRightColor: medcolor,
@@ -252,6 +260,8 @@ class CustomFanRow extends Polymer.Element {
 				_midLeftState: med == 'on',
 				_midRightState: low == 'on',
 				_rightState: offstate == 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: hicolor,
 				_midLeftColor: medcolor,
 				_midRightColor: lowcolor,

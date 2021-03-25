@@ -8,9 +8,6 @@ class CustomToggleRow extends Polymer.Element {
 				line-height: inherit;
 			}
 			.switch {
-				min-width: 30px;
-				max-width: 30px;
-				height: 30px;
 				margin-left: 2px;
 				margin-right: 2px;
 				background-color: #759aaa;
@@ -28,7 +25,7 @@ class CustomToggleRow extends Polymer.Element {
 			<div class='horizontal justified layout' on-click="stopPropagation">
 				<button
 					class='switch'
-					style='[[_buttonColor]]'
+					style='[[_buttonColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 					toggles name='[[_buttonName]]'
 					on-click='setState'>
 						[[_buttonText]]
@@ -46,6 +43,8 @@ class CustomToggleRow extends Polymer.Element {
 			},
 			_config: Object,
 			_stateObj: Object,
+			_width: String,
+			_height: String,
 			_buttonColor: String,
 			_buttonText: String,
 			_buttonName: String,
@@ -58,6 +57,8 @@ class CustomToggleRow extends Polymer.Element {
 
 		this._config = {
 			customTheme: false,
+			width: '30px',
+			height: '30px',
 			isOnColor: '#43A047',
 			isOffColor: '#f44c09',
 			customOffText: 'OFF',
@@ -71,6 +72,8 @@ class CustomToggleRow extends Polymer.Element {
 		const config = this._config;
 		const stateObj = hass.states[config.entity];
 		const custTheme = config.customTheme;
+		const buttonWidth = config.width;
+		const buttonHeight = config.height;
 		const custOnClr = config.isOnColor;
 		const custOffClr = config.isOffColor;
 		const custOffTxt = config.customOffText;
@@ -105,6 +108,9 @@ class CustomToggleRow extends Polymer.Element {
 		let offtext = custOffTxt;
 		let ontext = custOnTxt;
 		let unavailtext = 'N/A';
+		
+		let buttonwidth = buttonWidth;
+		let buttonheight = buttonHeight;
 	
 		let offname = 'off';
 		let onname = 'on';
@@ -115,6 +121,8 @@ class CustomToggleRow extends Polymer.Element {
 			_stateObj: stateObj,
 			_buttonState: state,
 			_buttonName: onname,
+			_width: buttonwidth,
+			_height: buttonheight,
 			_buttonColor: color,
 			_buttonText: offtext,
 			});
@@ -122,6 +130,8 @@ class CustomToggleRow extends Polymer.Element {
 			this.setProperties({
 			_stateObj: stateObj,
 			_buttonState: state,
+			_width: buttonwidth,
+			_height: buttonheight,
 			_buttonName: offname,
 			_buttonColor: color,
 			_buttonText: ontext,
@@ -131,6 +141,8 @@ class CustomToggleRow extends Polymer.Element {
 			_stateObj: stateObj,
 			_buttonState: state,
 			_buttonName: unavailname,
+			_width: buttonwidth,
+			_height: buttonheight,
 			_buttonColor: color,
 			_buttonText: unavailtext,
 			});

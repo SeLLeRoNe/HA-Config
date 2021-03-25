@@ -8,9 +8,6 @@ class CustomBinaryRow extends Polymer.Element {
 				line-height: inherit;
 			}
 			.switch {
-				min-width: 30px;
-				max-width: 30px;
-				height: 30px;
 				margin-left: 2px;
 				margin-right: 2px;
 				background-color: #759aaa;
@@ -28,13 +25,13 @@ class CustomBinaryRow extends Polymer.Element {
 			<div class='horizontal justified layout' on-click="stopPropagation">
 				<button
 					class='switch'
-					style='[[_leftColor]]'
+					style='[[_leftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 					toggles name='[[_leftName]]'
 					on-click='setState'
 					disabled='[[_leftState]]'>[[_leftText]]</button>
 				<button
 					class='switch'
-					style='[[_rightColor]]'
+					style='[[_rightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 					toggles name='[[_rightName]]'
 					on-click='setState'
 					disabled='[[_rightState]]'>[[_rightText]]</button>
@@ -51,6 +48,8 @@ class CustomBinaryRow extends Polymer.Element {
 			},
 			_config: Object,
 			_stateObj: Object,
+			_width: String,
+			_height: String,
 			_leftColor: String,
 			_leftText: String,
 			_leftName: String,
@@ -68,6 +67,8 @@ class CustomBinaryRow extends Polymer.Element {
 		this._config = {
 			customTheme: false,
 			reverseButtons: false,
+			width: '30px',
+			height: '30px',
 			isOnColor: '#43A047',
 			isOffColor: '#f44c09',
 			buttonInactiveColor: '#759aaa',
@@ -83,15 +84,14 @@ class CustomBinaryRow extends Polymer.Element {
 		const stateObj = hass.states[config.entity];
 		const custTheme = config.customTheme;
 		const revButtons = config.reverseButtons;
+		const buttonWidth = config.width;
+		const buttonHeight = config.height;
 		const custOnClr = config.isOnColor;
 		const custOffClr = config.isOffColor;
 		const custInactiveClr = config.buttonInactiveColor;
 		const custOffTxt = config.customOffText;
 		const custOnTxt = config.customOnText;
-	
-		
-						
-		
+			
 		let state;
 			if (stateObj) {
 				state = stateObj.state;
@@ -139,6 +139,9 @@ class CustomBinaryRow extends Polymer.Element {
 	
 		let offtext = custOffTxt;
 		let ontext = custOnTxt;
+		
+		let buttonwidth = buttonWidth;
+		let buttonheight = buttonHeight;
 	
 		let offname = 'off';
 		let onname = 'on';
@@ -148,6 +151,8 @@ class CustomBinaryRow extends Polymer.Element {
 				_stateObj: stateObj,
 				_rightState: stateObj.state === 'on',
 				_leftState: stateObj.state == 'off',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_rightName: onname,
 				_leftName: offname,
 				_rightColor: oncolor,
@@ -160,6 +165,8 @@ class CustomBinaryRow extends Polymer.Element {
 				_stateObj: stateObj,
 				_leftState: stateObj.state === 'on',
 				_rightState: stateObj.state == 'off',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftName: onname,
 				_rightName: offname,
 				_leftColor: oncolor,
