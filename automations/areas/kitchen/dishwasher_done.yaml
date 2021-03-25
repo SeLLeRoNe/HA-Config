@@ -44,6 +44,3 @@ action:
     data_template:
       entity_id: input_number.kitchen_dishwasher_current_energy
       value: "0"
-  - service: counter.decrement
-    data:
-      entity_id: counter.kitchen_dishwasher_pods

@@ -25,3 +25,6 @@ action:
     data:
       entity_id: input_select.laundry_room_washing_machine_status
       option: 'Warming Up'
+  - service: counter.decrement
+    data:
+      entity_id: counter.laundry_room_washing_machine_pods

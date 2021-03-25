@@ -23,3 +23,6 @@ action:
     data:
       entity_id: input_select.kitchen_dishwasher_status
       option: 'Warming Up'
+  - service: counter.decrement
+    data:
+      entity_id: counter.kitchen_dishwasher_pods

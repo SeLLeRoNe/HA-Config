@@ -43,6 +43,3 @@ action:
     data_template:
       entity_id: input_number.laundry_room_washing_machine_current_energy
       value: "0"
-  - service: counter.decrement
-    data:
-      entity_id: counter.laundry_room_washing_machine_pods
