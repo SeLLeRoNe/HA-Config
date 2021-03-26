@@ -1,0 +1,75 @@
+type: horizontal-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: person.andrea
+        name: Andrea
+        template: sensor_person
+        variables:
+          battery_entity: sensor.andrea_oneplus_nord_battery_level
+      - type: 'custom:button-card'
+        entity: person.sonia
+        name: Sonia
+        template: sensor_person
+        variables:
+          battery_entity: sensor.sonia_mi_9t_pro_battery_level
+  - type: 'custom:button-card'
+    entity: sensor.time
+    layout: vertical
+    template: no_background
+    label: "[[[ return states['sensor.dark_sky_hourly_summary'].state; ]]]"
+    name: "[[[ return states['sensor.date'].state; ]]]"
+    show_icon: false
+    show_label: true
+    show_name: true
+    show_state: true
+    styles:
+      card:
+        - height: 100px
+      state:
+        - font-size: 200%
+        - font-weight: bold
+        - justify-self: center
+      label:
+        - justify-self: center
+        - font-size: 90%
+        - color: var(--paper-item-icon-active-color)
+      name:
+        - justify-self: center
+        - font-size: 120%
+    tap_action:
+      action: none        
+  - type: horizontal-stack
+    cards:
+      - type: glance
+        style: |
+          :host {
+            height: 100px;
+          }
+        entities:
+          - entity: binary_sensor.studio_desk_andrea_computer_ping
+            name: PC
+          - entity: binary_sensor.netgear_media01
+            name: MEDIA01
+          - entity: binary_sensor.netgear_media02
+            name: MEDIA02
+          - entity: binary_sensor.netgear_media03
+            name: MEDIA03
+        show_state: false
+      - type: 'custom:button-card'
+        entity: sensor.studio_desk_andrea_computercpu_temperature
+        show_icon: false
+        show_state: true
+        name: CPU
+        state_display: '[[[ return entity.state + "°" ]]]'
+        styles:
+          card:
+            - width: 100px
+            - height: 100px
+          name:
+            - font-size: 14px
+            - margin-bottom: 15px
+          state:
+            - font-size: 120%
+            - font-weight: bold

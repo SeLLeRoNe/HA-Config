@@ -1,0 +1,34 @@
+title: HOME
+path: home
+panel: true
+cards:
+  - type: 'custom:mod-card'
+    style:
+      hui-vertical-stack-card$: |
+        #root {
+          margin: 15px !important;
+        }
+    card:
+      type: vertical-stack
+      cards:
+        - !include tablet/home/header.yaml
+        - type: 'custom:button-card'
+          template: row_space_10
+        - type: horizontal-stack
+          cards:
+            - !include tablet/home/body_col_1.yaml
+            - type: 'custom:button-card'
+              template: empty_card
+              styles:
+                card:
+                  - width: 5px
+            - !include tablet/home/body_col_2.yaml
+            - type: 'custom:button-card'
+              template: empty_card
+              styles:
+                card:
+                  - width: 5px                
+            - !include tablet/home/body_col_3.yaml
+        - type: 'custom:button-card'
+          template: row_space_20
+        - !include tablet/home/footer.yaml

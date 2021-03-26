@@ -1,0 +1,65 @@
+type: vertical-stack
+cards:
+  - type: 'custom:button-card'
+    name: CLIMA
+    template: label_center
+  - type: weather-forecast
+    entity: weather.dark_sky
+    name: A Coruna
+    show_forecast: false
+    style: |
+      .state, .temp-attribute .temp {
+          font-size: 22px !important;
+      }
+      .temp-attribute .temp span {
+          font-size: 22px !important;
+      }
+  - type: horizontal-stack
+    cards:
+      - type: sensor
+        entity: sensor.house_temperature
+        graph: line
+        detail: 1
+        name: Interna
+      - entity: switch.heating_house
+#        label: |
+#          [[[
+#            var h = states['sensor.caldaia_oggi'].state;
+#            return 'Oggi: '+h;
+#          ]]]
+        layout: icon_name_state2nd
+        name: House Heating
+        show_icon: true
+        show_name: true
+        show_state: true
+        show_label: true
+        styles:
+          card:
+            - height: 100%
+          state:
+            - font-size: 160%
+          name:
+            - font-size: 16px
+            - font-weight: 500
+            - color: var(--secondary-text-color)
+          label:
+            - margin-top: 18px
+            - color: var(--secondary-text-color)
+            - font-size: 80%
+        state:
+          - value: Accesa
+            styles:
+              state:
+                - color: var(--paper-item-icon-active-color)
+              icon:
+                - color: var(--paper-item-icon-active-color)
+        type: 'custom:button-card'
+  - type: 'custom:simple-thermostat'
+    entity: climate.house
+    control: false
+    label:
+      temperature: Temp
+      state: Stato
+    show_header: false
+    sensors:
+      - entity: sensor.netatmo_preset_mode

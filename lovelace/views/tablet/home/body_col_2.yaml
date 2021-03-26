@@ -1,0 +1,283 @@
+type: vertical-stack
+cards: 
+  - type: 'custom:button-card'
+    name: ROUTINE & MEDIA
+    template: label_center
+  - type: horizontal-stack
+    cards:
+      - name: Buonanotte
+        template: button_routine_home
+        icon: 'mdi:weather-night'
+        tap_action:
+          action: call-service
+          service: script.routine_good_night
+        type: 'custom:button-card'
+      - name: Esco di Casa
+        template: button_routine_home
+        icon: 'mdi:home-lock'
+        tap_action:
+          action: call-service
+          service: script.routine_fuori_casa
+        type: 'custom:button-card'
+  - type: horizontal-stack
+    cards:
+      - name: Netflix in Cuffia
+        template: button_routine_home
+        icon: 'mdi:netflix'
+        tap_action:
+          action: call-service
+          service: script.routine_netflix
+        type: 'custom:button-card'
+      - template: button_routine_home
+        icon: 'mdi:spotify'
+        name: Musica in Sala
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: Quale genere vuoi ascoltare?
+            auto_close: false
+            style:
+              $: |
+                .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                  border-radius: 25px;
+                }
+                .mdc-dialog .mdc-dialog__content {
+                    padding: 40px 48px !important;
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: RELAX
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Relax
+                      type: 'custom:button-card'
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: POP
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Hits
+                      type: 'custom:button-card'
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: ROCK
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Rock
+                      type: 'custom:button-card'
+                - type: horizontal-stack
+                  cards:
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: ITALIANA
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Italiana
+                      type: 'custom:button-card'
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: FOCUS
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Focus
+                      type: 'custom:button-card'
+                    - template: button_horizontal
+                      icon: 'mdi:spotify'
+                      name: COUNTRY
+                      tap_action:
+                        action: call-service
+                        service: script.spotify_play
+                        service_data:
+                          room: Sala
+                          genre: Country
+                      type: 'custom:button-card'
+        type: 'custom:button-card'
+  - type: horizontal-stack
+    cards:
+      - name: Guarda Cartoni
+        template: button_routine_home
+        icon: 'mdi:baby-face-outline'
+        tap_action:
+          action: call-service
+          service: script.harmony_channel_digitale
+          service_data:
+            canale: 43
+        type: 'custom:button-card'
+      - name: Guarda TG
+        template: button_routine_home
+        icon: 'mdi:newspaper-variant-outline'
+        tap_action:
+          action: call-service
+          service: script.harmony_channel_digitale
+          service_data:
+            canale: 1
+        type: 'custom:button-card'
+  - type: horizontal-stack
+    cards:
+      - name: Metti SKY
+        template: button_routine_home
+        icon: 'mdi:satellite-uplink'
+        tap_action:
+          action: call-service
+          service: script.harmony_sky
+        type: 'custom:button-card'
+      - name: Metti Digitale
+        template: button_routine_home
+        icon: 'mdi:television-classic'
+        tap_action:
+          action: call-service
+          service: script.harmony_digitale
+        type: 'custom:button-card'
+  - type: horizontal-stack
+    cards:
+      - name: Gioca WII
+        template: button_routine_home
+        icon: 'mdi:nintendo-wii'
+        tap_action:
+          action: call-service
+          service: script.harmony_wii
+        type: 'custom:button-card'
+      - name: Guarda un DVD
+        template: button_routine_home
+        icon: 'mdi:disc-player'
+        tap_action:
+          action: call-service
+          service: script.harmony_dvd
+        type: 'custom:button-card'
+  - type: 'custom:button-card'
+    template: row_space_5
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: sensor.player_attivi
+        icon: 'mdi:music-circle'
+        name: Media
+        show_label: false
+        show_state: true
+        show_name: true
+        styles:
+          card:
+            - height: 100px
+          grid:
+            - grid-template-areas: '"n" "i" "s"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: min-content 1fr min-content
+          name:
+            - color: var(--secondary-text-color)
+            - font-size: 80%
+          state:
+            - color: var(--disabled-text-color)
+          icon:
+            - height: 70%
+            - width: 70%
+            - color: var(--disabled-text-color)
+        state:
+          - value: '0'
+            operator: '>'
+            styles:
+              state:
+                - font-weight: bold
+                - color: var(--primary-text-color)
+              icon:
+                - color: var(--paper-item-icon-active-color)
+        tap_action:
+          action: call-service
+          service: script.tablet_turn_off_media
+      - type: 'custom:button-card'
+        entity: media_player.spotify_andrea
+        icon: 'mdi:spotify'
+        name: Spotify Andrea
+        label: '[[[ return states["sensor.spotify_andrea_room"].state; ]]]'
+        show_label: true
+        show_state: false
+        show_name: true
+        styles:
+          card:
+            - height: 100px
+          grid:
+            - grid-template-areas: '"n" "i" "l"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: min-content 1fr min-content
+          name:
+            - color: var(--secondary-text-color)
+            - font-size: 80%
+          label:
+            - color: var(--disabled-text-color)
+          icon:
+            - height: 70%
+            - width: 70%
+            - color: var(--disabled-text-color)
+        state:
+          - value: playing
+            styles:
+              label:
+                - font-weight: bold
+                - color: var(--primary-text-color)
+              icon:
+                - color: var(--paper-item-icon-active-color)
+          - value: playing
+            operator: '!='
+            label: Spento
+        tap_action:
+          action: call-service
+          service: script.spotify_tablet_andrea_pause
+      - type: 'custom:button-card'
+        entity: media_player.spotify_sonia
+        icon: 'mdi:spotify'
+        name: Spotify Sonia
+        label: '[[[ return states["sensor.spotify_sonia_room"].state; ]]]'
+        show_label: true
+        show_state: false
+        show_name: true
+        styles:
+          card:
+            - height: 100px
+          grid:
+            - grid-template-areas: '"n" "i" "l"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: min-content 1fr min-content
+          name:
+            - color: var(--secondary-text-color)
+            - font-size: 80%
+          label:
+            - color: var(--disabled-text-color)
+          icon:
+            - height: 70%
+            - width: 70%
+            - color: var(--disabled-text-color)
+        state:
+          - value: playing
+            styles:
+              label:
+                - font-weight: bold
+                - color: var(--primary-text-color)
+              icon:
+                - color: var(--paper-item-icon-active-color)
+          - value: playing
+            operator: '!='
+            label: Spento
+        tap_action:
+          action: call-service
+          service: script.spotify_sonia_tablet_pause
+

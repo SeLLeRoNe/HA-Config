@@ -1,0 +1,162 @@
+type: vertical-stack
+cards:
+  - type: 'custom:button-card'
+    name: LUCI SOTTO
+    template: label_left
+    styles:
+      card:
+        - padding-top: 0px
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.piantana
+        icon: 'phu:archetypesFloorShade'
+        name: Piantana
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.tavolo
+        icon: 'phu:archetypesPendantRound'
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.led_tv
+        icon: 'phu:heroesLightstrip'
+        name: Led TV
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light_rgb
+      - type: 'custom:button-card'
+        entity: light.led_soffitto
+        icon: 'phu:heroesLightstrip'
+        name: Led Soffitto
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light_rgb
+      - type: 'custom:button-card'
+        entity: light.sotto_scala
+        icon: 'phu:archetypesTableWash'
+        name: Sotto Scala
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light_rgb
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.scala_sotto
+        icon: 'phu:bulbsSultan'
+        name: Scala Sotto
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.scala_sopra
+        icon: 'phu:bulbsSultan'
+        name: Scala Sopra
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.faretti_sala
+        icon: 'phu:bulbsSpot'
+        name: Faretti
+        label: '&nbsp;'
+        template:
+          - button_light
+          - button_light_brightness
+      - type: 'custom:button-card'
+        entity: light.terrazzo_salotto
+        icon: 'phu:bulbsClassic'
+        name: Terrazzo
+        label: '&nbsp;'
+        template:
+          - button_light
+          - button_light_brightness
+      - type: 'custom:button-card'
+        entity: light.terrazzo_cucina
+        icon: 'phu:bulbsClassic'
+        name: Cucina
+        label: '&nbsp;'
+        template:
+          - button_light
+          - button_light_brightness
+  - type: 'custom:button-card'
+    template: row_space_10
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.lamp
+        icon: 'mdi:ceiling-light'
+        name: Studio
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.scrivania
+        icon: 'phu:archetypesDeskLamp'
+        name: Scrivania
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.bagno_sotto
+        icon: 'mdi:dome-light'
+        name: Bagno
+        label: '&nbsp;'
+        template:
+          - button_light
+          - button_light_brightness
+      - type: 'custom:button-card'
+        template: empty_card
+      - type: 'custom:button-card'
+        template: empty_card
+  - type: 'custom:button-card'
+    name: LUCI SOPRA
+    template: label_left
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.camera_bajour
+        icon: 'phu:archetypesTableShade'
+        name: Bajour
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light_rgb
+      - type: 'custom:button-card'
+        entity: light.comodino_max
+        icon: 'mdi:bed'
+        name: Max
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.comodino_elena
+        icon: 'mdi:bed'
+        name: Elena
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.luce_bagno_sopra
+        icon: 'mdi:dome-light'
+        name: Bagno
+        label: '&nbsp;'
+        template:
+          - button_light
+          - button_light_brightness
+      - type: 'custom:button-card'
+        template: empty_card

@@ -1,0 +1,14 @@
+type: horizontal-stack
+cards:
+  - type: 'custom:button-card'
+    template: empty_card
+  - type: 'custom:button-card'
+    template: empty_card
+  - type: 'custom:button-card'
+    template: empty_card
+  - type: 'custom:button-card'
+    template: empty_card
+  - type: 'custom:button-card'
+    template: empty_card
+  - type: 'custom:button-card'
+    template: button_home               

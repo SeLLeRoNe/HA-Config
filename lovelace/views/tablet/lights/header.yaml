@@ -1,0 +1,57 @@
+type: horizontal-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: sensor.luci_accese
+        icon: 'mdi:lightbulb-group-outline'
+        name: LUCI ACCESE
+        template:
+          - sensor_card
+          - action_state_numeric
+          - card_header
+        styles:
+          card:
+            - width: 350px
+      - type: 'custom:button-card'
+        name: SPEGNI
+        entity: group.luci_all
+        template:
+          - button_horizontal
+          - action_turn_off
+          - card_header
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: SALA
+        icon: 'phu:roomsLiving'
+        entity: group.luci_salotto
+        template:
+          - button_horizontal
+          - action_turn_off
+          - card_header
+      - type: 'custom:button-card'
+        name: STUDIO
+        icon: 'phu:roomsOffice'
+        entity: light.studio
+        template:
+          - button_horizontal
+          - action_turn_off
+          - card_header
+      - type: 'custom:button-card'
+        name: TAVOLO
+        icon: 'phu:archetypesCeilingRound'
+        entity: light.tavolo
+        template:
+          - button_horizontal
+          - action_turn_off
+          - card_header
+      - type: 'custom:button-card'
+        name: SCALA
+        icon: 'mdi:stairs'
+        entity: light.scala
+        template:
+          - button_horizontal
+          - action_turn_off
+          - card_header
+          

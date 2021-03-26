@@ -1,0 +1,32 @@
+type: horizontal-stack
+cards:
+  - type: 'custom:button-card'
+    template: button_menu
+    name: LUCI
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/luci
+  - type: 'custom:button-card'
+    template: button_menu
+    name: TV
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/tv
+  - type: 'custom:button-card'
+    template: button_menu
+    name: MUSICA
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/musica
+  - type: 'custom:button-card'
+    template: button_menu
+    name: MEDIA
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/media
+  - type: 'custom:button-card'
+    template: button_menu
+    name: SISTEMA
+  - type: 'custom:button-card'
+    template: button_menu
+    name: TABLET                    

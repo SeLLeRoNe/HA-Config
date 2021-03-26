@@ -1,0 +1,32 @@
+title: lights
+path: lights
+panel: true
+cards:
+  - type: 'custom:mod-card'
+    style:
+      hui-vertical-stack-card$: |
+        #root {
+          margin: 15px auto !important;
+          max-width: 90%;
+        }
+    card:
+      type: vertical-stack
+      cards:
+        - !include tablet/lights/header.yaml
+        - type: 'custom:button-card'
+          template: row_space_10
+        - type: horizontal-stack
+          cards:
+            - !include tablet/lights/body_col_1.yaml
+            - type: 'custom:button-card'
+              template: empty_card
+              styles:
+                card:
+                  - width: 5px
+            - !include tablet/lights/body_col_2.yaml
+        - type: 'custom:button-card'
+          template: empty_card
+          styles:
+            card:
+              - height: 25px
+        - !include tablet/lights/footer.yaml
