@@ -45,20 +45,10 @@ condition:
           entity_id: alarm_control_panel.home_alarm
           state: 'armed_home'
 action:
-  - service: scene.turn_on
+  - service: light.turn_on
     data:
-      entity_id: scene.studio_night
-      transition: 30
-#  - service: notify.mobile_app_andrea_oneplus_nord
+      entity_id: light.studio_lights
+#  - service: scene.turn_on
 #    data:
-#      title: "Home Alarm"
-#      message: "Motion detected in the Studio"
-#      data:
-#        color: "#0066FF"
-#        sticky: false
-#        tag: tag
-#        actions:
-#          - action: "studio_wall_light_on"
-#            title: "Turn On Light"
-#          - action: "studio_wall_light_off"
-#            title: "Turn Off Light"
+#      entity_id: scene.studio_night
+#      transition: 30
