@@ -95,7 +95,7 @@ house_lights:
           - title: Circadian Lighing
       - type: glance
         show_state: false
-        columns: 4
+        columns: 3
         entities:
           - entity: switch.circadian_lighting_living_room
             tap_action:
@@ -107,12 +107,21 @@ house_lights:
               action: none
             hold_action:
               action: toggle
-          - entity: switch.circadian_lighting_bedroom_luca
+          - entity: switch.circadian_lighting_patio
             tap_action:
               action: none
             hold_action:
               action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
           - entity: switch.circadian_lighting_master_bedroom
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.circadian_lighting_bedroom_luca
             tap_action:
               action: none
             hold_action:
