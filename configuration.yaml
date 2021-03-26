@@ -62,25 +62,32 @@ homeassistant:
 lovelace:
   resources: !include lovelace/resources.yaml
   dashboards:
+    lovelace-tablet:
+      mode: yaml
+      title: Tablet
+      icon: mdi:tablet
+      show_in_sidebar: true
+      require_admin: false
+      filename: dashboard_tablet.yaml
     lovelace-management:
       mode: yaml
-      filename: dashboard_management.yaml
       title: Management
       icon: mdi:chart-bar-stacked
       show_in_sidebar: true
       require_admin: true
+      filename: dashboard_management.yaml
     lovelace-test:
       mode: yaml
-      filename: dashboard_test.yaml
       title: Test
       icon: mdi:tune
       show_in_sidebar: true
       require_admin: true
+      filename: dashboard_test.yaml
     lovelace-tocheck:
       mode: yaml
-      filename: dashboard_tocheck.yaml
       title: Test
       icon: mdi:tune
       show_in_sidebar: true
       require_admin: true
+      filename: dashboard_tocheck.yaml
 scene: !include scenes.yaml
