@@ -1,0 +1,5 @@
+---
+platform: circadian_lighting
+name: "Kitchen"
+lights_ct:
+  - light.kitchen_light

@@ -1,0 +1,10 @@
+---
+circadian_lighting_house:
+  name: Circadian Lighting House
+  entities:
+    - switch.circadian_lighting_living_room
+    - switch.circadian_lighting_kitchen
+    - switch.circadian_lighting_studio
+    - switch.circadian_lighting_patio
+    - switch.circadian_lighting_master_bedroom
+    - switch.circadian_lighting_bedroom_luca
