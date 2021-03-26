@@ -1,0 +1,5 @@
+---
+platform: circadian_lighting
+name: "Patio"
+lights_rgb:
+  - light.patio_ligh
