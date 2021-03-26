@@ -81,6 +81,8 @@
     type: module
   - url: /hacsfiles/lovelace-climate-mode-entity-row/climate-mode-entity-row.js
     type: module
+  - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+    type: module
 
   - url: /local/q-card.js
     type: module
