@@ -32,4 +32,4 @@ action:
       entity_id: light.patio_light
       brightness_pct: 5
       rgb_color: [255,255,255]
-      transition: 15
+      transition: 5

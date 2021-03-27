@@ -20,4 +20,4 @@ action:
   - service: light.turn_off
     data:
       entity_id: group.all_lights
-      transition: 10
+      transition: 5

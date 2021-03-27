@@ -51,4 +51,4 @@ action:
 #  - service: scene.turn_on
 #    data:
 #      entity_id: scene.studio_night
-#      transition: 30
+#      transition: 5

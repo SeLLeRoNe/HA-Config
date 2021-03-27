@@ -1,7 +1,7 @@
 ---
 id: '3347976259516'
 alias: Living Room - PIR Off
-initial_state: on
+initial_state: off
 trigger:
   - platform: state
     entity_id: binary_sensor.living_room_pir
@@ -12,4 +12,4 @@ action:
   - service: light.turn_off
     data:
       entity_id: light.living_room_lights
-      transition: 15
+      transition: 5

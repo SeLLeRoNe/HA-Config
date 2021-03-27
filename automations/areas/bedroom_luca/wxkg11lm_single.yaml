@@ -17,8 +17,8 @@ action:
 #  - service: light.toggle
 #    data:
 #      entity_id: light.bedroom_luca_lights
-#      transition: 15
+#      transition: 5
   - service: scene.apply
     data:
       entity_id: scene.bedroom_luca_lights_on
-      transition: 15
+      transition: 5

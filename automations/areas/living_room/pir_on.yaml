@@ -1,7 +1,7 @@
 ---
 id: '1252805989352'
 alias: Living Room - PIR On Day
-initial_state: on
+initial_state: off
 trigger:
   - platform: state
     entity_id: binary_sensor.living_room_pir
