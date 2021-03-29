@@ -19,12 +19,14 @@ from homeassistant.helpers.dispatcher import (
     async_dispatcher_connect,
     async_dispatcher_send,
 )
-
 from . import const
 from .store import async_get_registry
 from .panel import (
     async_register_panel,
     async_unregister_panel,
+)
+from .card import (
+    async_register_card,
 )
 from .websockets import async_register_websockets
 from .sensors import SensorHandler
@@ -72,6 +74,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
     # Register the panel (frontend)
     await async_register_panel(hass)
+    await async_register_card(hass)
 
     # Websocket support
     await async_register_websockets(hass)
@@ -263,13 +266,14 @@ class AlarmoCoordinator(DataUpdateCoordinator):
         async def async_handle_event(event):
             action = None
             if (
-                event.data and "categoryName" in event.data
+                event.data
+                and "categoryName" in event.data
                 and "actionName" in event.data
                 and event.data["categoryName"] in const.EVENT_CATEGORIES
             ):
                 # IOS push notification format
                 action = event.data["actionName"]
-            elif event.data["action"]:
+            elif "action" in "action" and event.data["action"]:
                 # Android push notification format
                 action = event.data["action"]
 
@@ -295,6 +299,9 @@ class AlarmoCoordinator(DataUpdateCoordinator):
             elif action == const.EVENT_ACTION_RETRY_ARM:
                 _LOGGER.info("Received request for retry arming")
                 await alarm_entity.async_arm(arm_mode)
+            elif action == const.EVENT_ACTION_DISARM:
+                _LOGGER.info("Received request for disarming")
+                await alarm_entity.async_alarm_disarm(None, True)
 
         for event in const.PUSH_EVENTS:
             handle = self.hass.bus.async_listen(event, async_handle_event)
