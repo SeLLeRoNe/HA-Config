@@ -8,7 +8,7 @@ cards:
       - type: 'custom:button-card'
         entity: sensor.house_lights_count
         icon: 'mdi:lightbulb-group-outline'
-        name: LUCI ACCESE
+        name: Lights On
         template:
           - sensor_card
           - action_state_numeric

@@ -5,10 +5,14 @@ type: custom:vertical-layout
 layout:
    max_cols: 5
 cards:
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-      - type: custom:decluttering-card
+  - type: custom:state-switch
+    entity: light.bathroom_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: bathroom_lights
+      "off":
+        type: custom:decluttering-card
         template: bathroom_lights
   - type: custom:layout-break
   - type: vertical-stack

@@ -5,8 +5,15 @@ type: custom:vertical-layout
 layout:
    max_cols: 5
 cards:
-  - type: custom:decluttering-card
-    template: studio_lights
+  - type: custom:state-switch
+    entity: light.studio_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: studio_lights
+      "off":
+        type: custom:decluttering-card
+        template: studio_lights
   - type: custom:decluttering-card
     template: studio_plugs
   - type: custom:layout-break

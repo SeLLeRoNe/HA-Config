@@ -9,8 +9,15 @@ cards:
     template: title
     variables:
       - title: Master Bedroom
-  - type: custom:decluttering-card
-    template: master_bedroom_lights
+  - type: custom:state-switch
+    entity: light.master_bedroom_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: master_bedroom_lights
+      "off":
+        type: custom:decluttering-card
+        template: master_bedroom_lights
   - type: custom:decluttering-card
     template: master_bedroom_plugs
   - type: custom:mini-media-player
@@ -78,8 +85,15 @@ cards:
         template: title
         variables:
           - title: En Suite
-  - type: custom:decluttering-card
-    template: master_bathroom_lights
+  - type: custom:state-switch
+    entity: light.master_bathroom_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: master_bathroom_lights
+      "off":
+        type: custom:decluttering-card
+        template: master_bathroom_lights
   - type: custom:decluttering-card
     template: master_bathroom_plugs
   - type: custom:stack-in-card

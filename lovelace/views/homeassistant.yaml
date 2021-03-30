@@ -45,6 +45,28 @@ cards:
           - entity: sensor.tasmota_available_version
             tap_action:
               action: none
+      - type: 'custom:uptime-card'
+        entity: binary_sensor.updater
+        icon: mdi:home-assistant
+        severity: 100
+        ok: 'on'
+        ko: 'off'
+        bar:
+          height: 46
+          round: 1
+          spacing: 4
+          amount: 36
+        name: HA update
+        alias:
+          ok: Update available !
+          ko: No update for the moment...
+        color:
+          icon: grey
+        hours_to_show: 168
+        show:
+          header: false
+          footer: false
+        status_adaptive_color: true
       - type: custom:hui-element
         row_type: divider
       - type: 'custom:github-flexi-card'

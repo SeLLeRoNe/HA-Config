@@ -5,8 +5,15 @@ type: custom:vertical-layout
 layout:
    max_cols: 5
 cards:
-  - type: custom:decluttering-card
-    template: bedroom_luca_lights
+  - type: custom:state-switch
+    entity: light.bedroom_luca_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: bedroom_luca_lights
+      "off":
+        type: custom:decluttering-card
+        template: bedroom_luca_lights
   - type: custom:decluttering-card
     template: bedroom_luca_plugs
   - type: custom:layout-break

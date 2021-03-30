@@ -5,8 +5,15 @@ type: custom:vertical-layout
 layout:
    max_cols: 5
 cards:
-  - type: custom:decluttering-card
-    template: patio_lights
+  - type: custom:state-switch
+    entity: light.patio_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: patio_lights
+      "off":
+        type: custom:decluttering-card
+        template: patio_lights
   - type: custom:decluttering-card
     template: patio_plugs
   - type: custom:layout-break
