@@ -585,7 +585,7 @@ sensor_person:
   label: |
     [[[
       var h = states[variables.battery_entity].state;
-      return 'Batteria: '+h+'%';
+      return 'Battery: '+h+'%';
     ]]]
   layout: icon_name_state2nd
   show_icon: false
