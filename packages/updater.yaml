@@ -11,10 +11,3 @@
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 #
 updater:
-  # I chose to share some information with the Home Assistant developers.
-  # It will help them to prioritize the development.
-  # That why this option is enabled.
-  reporting: false
-
-  # I'm also reporting a list of components that I'm using.
-  include_used_components: false
