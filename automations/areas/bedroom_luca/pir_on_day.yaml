@@ -9,6 +9,9 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
     - condition: or
       conditions:
         - condition: numeric_state
@@ -31,15 +34,12 @@ condition:
     - condition: state
       entity_id: group.family
       state: 'home'
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'off'
 action:
-  - service: light.turn_on
-    data:
-      entity_id: light.bedroom_luca_lights
-#      transition: 5
-#  - service: scene.turn_on
+#  - service: light.turn_on
 #    data:
-#      entity_id: scene.bedroom_luca_lights_on
+#      entity_id: light.bedroom_luca_lights
 #      transition: 5
+  - service: scene.turn_on
+    data:
+      entity_id: scene.bedroom_luca_lights_on
+      transition: 5
