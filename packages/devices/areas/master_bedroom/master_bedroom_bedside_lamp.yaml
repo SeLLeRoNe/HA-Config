@@ -37,6 +37,14 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
     value_template: "{{ value_json.linkquality }}"
+  - platform: "mqtt"
+    name: "Master Bedroom Lamp Bottom light Firmware Update"
+    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+    icon: mdi:update
+    value_template: '{{ value_json["update"]["state"] }}'
 
 binary_sensor:
   - platform: mqtt

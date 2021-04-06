@@ -57,5 +57,4 @@ sensor:
     availability:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/living_room_leelki_power_strip/availability"
-    unit_of_measurement: "lqi"
     value_template: "{{ value_json.linkquality }}"

@@ -35,6 +35,14 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/patio_light/availability"
     value_template: "{{ value_json.linkquality }}"
+  - platform: "mqtt"
+    name: "Patio Light Firmware Update"
+    icon: mdi:update
+    state_topic: "zigbee2mqtt/patio_light"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/patio_light/availability"
+    value_template: '{{ value_json["update"]["state"] }}'
 
 binary_sensor:
   - platform: mqtt

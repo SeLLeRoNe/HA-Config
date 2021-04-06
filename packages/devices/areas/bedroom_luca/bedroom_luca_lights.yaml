@@ -93,6 +93,30 @@ sensor:
       - topic: "zigbee2mqtt/bridge/state"
       - topic: "zigbee2mqtt/bedroom_luca_light_3/availability"
     value_template: "{{ value_json.linkquality }}"
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 1 Firmware Update"
+    icon: mdi:update
+    state_topic: "zigbee2mqtt/bedroom_luca_light_1"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_1/availability"
+    value_template: '{{ value_json["update"]["state"] }}'
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 2 Firmware Update"
+    icon: mdi:update
+    state_topic: "zigbee2mqtt/bedroom_luca_light_2"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_2/availability"
+    value_template: '{{ value_json["update"]["state"] }}'
+  - platform: "mqtt"
+    name: "Bedroom Luca Light 3 Firmware Update"
+    icon: mdi:update
+    state_topic: "zigbee2mqtt/bedroom_luca_light_3"
+    availability:
+      - topic: "zigbee2mqtt/bridge/state"
+      - topic: "zigbee2mqtt/bedroom_luca_light_3/availability"
+    value_template: '{{ value_json["update"]["state"] }}'
 
 binary_sensor:
   - platform: mqtt
