@@ -3,4 +3,5 @@ platform: group
 name: Studio Lights
 entities:
   - light.studio_wall_light
+  - light.studio_desk_andrea_lamp
   - light.studio_desk_sonia_lamp

@@ -4,4 +4,5 @@ name: "Studio"
 lights_ct:
   - light.studio_wall_light
 lights_rgb:
+  - light.studio_desk_andrea_lamp
   - light.studio_desk_sonia_lamp

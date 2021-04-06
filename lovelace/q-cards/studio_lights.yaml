@@ -21,5 +21,10 @@ studio_lights:
     - type: custom:decluttering-card
       template: light_card_rgb
       variables:
+        - name: Andrea Desk Lamp
+        - entity: light.studio_desk_andrea_lamp
+    - type: custom:decluttering-card
+      template: light_card_rgb
+      variables:
         - name: Sonia Desk Lamp
         - entity: light.studio_desk_sonia_lamp
