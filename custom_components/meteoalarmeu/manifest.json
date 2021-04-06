@@ -1,12 +1,12 @@
 {
-  "version": "2021.5.6",
+  "version": "2021.5.7",
   "domain": "meteoalarmeu",
   "name": "meteoalarmeu",
   "config_flow": true,
   "documentation": "https://github.com/xlcnd/meteoalarmeu",
   "issue_tracker": "https://github.com/xlcnd/meteoalarmeu/issues",
   "requirements": [
-    "meteoalarm-rssapi==1.0.3"
+    "meteoalarm-rssapi==1.0.5"
   ],
   "ssdp": [],
   "zeroconf": [],
