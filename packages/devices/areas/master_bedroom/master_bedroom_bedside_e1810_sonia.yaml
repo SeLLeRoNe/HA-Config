@@ -1,51 +1,51 @@
 ---
-# MQTT Device: Master Bedroom Remote
+# MQTT Device: Master Bedroom E1810
 #
 # https://www.home-assistant.io/components/mqtt/
 # https://www.zigbee2mqtt.io/devices/E1524_E1810.html
 #
 sensor:
   - platform: "mqtt"
-    name: "Master Bedroom Remote Sonia Battery"
-    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    name: "Master Bedroom E1810 Sonia Battery"
+    state_topic: "zigbee2mqtt/master_bedroom_e1810_sonia"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_remote/availability"
+      - topic: "zigbee2mqtt/master_bedroom_e1810_sonia/availability"
     value_template: "{{ value_json.battery }}"
     unit_of_measurement: "%"
     device_class: "battery"
   - platform: "mqtt"
-    name: "Master Bedroom Remote Sonia"
-    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    name: "Master Bedroom E1810 Sonia"
+    state_topic: "zigbee2mqtt/master_bedroom_e1810_sonia"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_remote/availability"
+      - topic: "zigbee2mqtt/master_bedroom_e1810_sonia/availability"
     value_template: "{{ value_json.action }}"
     icon: mdi:gesture-double-tap
   - platform: "mqtt"
-    name: "Master Bedroom Remote Sonia Link Quality"
-    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    name: "Master Bedroom E1810 Sonia Link Quality"
+    state_topic: "zigbee2mqtt/master_bedroom_e1810_sonia"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_remote/availability"
+      - topic: "zigbee2mqtt/master_bedroom_e1810_sonia/availability"
     value_template: "{{ value_json.linkquality }}"
     icon: mdi:gesture-double-tap
   - platform: "mqtt"
-    name: "Master Bedroom Remote Sonia Firmware Update"
-    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    name: "Master Bedroom E1810 Sonia Firmware Update"
+    state_topic: "zigbee2mqtt/master_bedroom_e1810_sonia"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_remote/availability"
+      - topic: "zigbee2mqtt/master_bedroom_e1810_sonia/availability"
     icon: mdi:update
     value_template: '{{ value_json["update"]["state"] }}'
 
 binary_sensor:
   - platform: "mqtt"
-    name: "Master Bedroom Remote Sonia Firmware Update"
-    state_topic: "zigbee2mqtt/master_bedroom_remote"
+    name: "Master Bedroom E1810 Sonia Firmware Update"
+    state_topic: "zigbee2mqtt/master_bedroom_e1810_sonia"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_remote/availability"
+      - topic: "zigbee2mqtt/master_bedroom_e1810_sonia/availability"
     payload_on: true
     payload_off: false
     value_template: "{{ value_json.update_available}}"
