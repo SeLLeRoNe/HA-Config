@@ -1,12 +1,14 @@
 type: vertical-stack
 cards:
   - type: 'custom:button-card'
-    name: LUCI
+    name: LIGHTS
     template: label_center
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
         entity: sensor.house_lights_count
+        state_display: >
+          [[[ return entity.state + "/" + entity.attributes['total_lights'] ]]]
         icon: 'mdi:lightbulb-group-outline'
         name: Lights On
         template:

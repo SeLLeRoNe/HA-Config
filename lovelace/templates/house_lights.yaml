@@ -8,6 +8,37 @@ house_lights:
         template: title
         variables:
           - title: Lights
+      - type: 'custom:button-card'
+        entity: sensor.house_lights_count
+        name: Lights On
+        state_display: >
+          [[[ return entity.state + "/" + entity.attributes['total_lights'] ]]]
+        icon: 'mdi:lightbulb-group-outline'
+        layout: icon_name_state2nd
+        show_state: true
+        styles:
+          card:
+            - padding-top: 2%
+            - padding-bottom: 2%
+            - height: 80px
+            - width: 300px
+          state:
+            - font-size: 140%
+            - font-weight: bold
+            - justify-self: start
+            - align-self: center
+          name:
+            - font-size: 85%
+            - justify-self: start
+            - color: var(--secondary-text-color)
+        state:
+          - value: 0
+            operator: '>'
+            styles:
+              icon:
+                - color: var(--paper-item-icon-active-color)    
+        tap_action:
+          action: none
       - type: custom:state-switch
         entity: light.living_room_lights
         states:

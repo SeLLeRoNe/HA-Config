@@ -2,10 +2,10 @@ type: horizontal-stack
 cards:
   - type: 'custom:button-card'
     template: button_menu
-    name: LUCI
+    name: LIGHTS
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/luci
+      navigation_path: /lovelace-tablet/lights
   - type: 'custom:button-card'
     template: button_menu
     name: TV
