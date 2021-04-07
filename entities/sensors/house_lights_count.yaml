@@ -3,15 +3,28 @@ platform: template
 sensors:
   house_lights_count:
     friendly_name: "House Lights Count"
-    entity_id: sensor.time
     value_template: >-
-      {% set lights_on = states |
-        selectattr('entity_id','in',state_attr('light.house_lights','entity_id'))|
-        selectattr('state','eq','on') | map(attribute='entity_id') | list | count %}
-      {{lights_on}}
+      {{
+      (
+      (states('sensor.living_room_lights_count') | int) +
+      (states('sensor.kitchen_lights_count') | int) +
+      (states('sensor.studio_lights_count') | int) +
+      (states('sensor.master_bedroom_lights_count') | int) +
+      (states('sensor.bedroom_luica_lights_count') | int) +
+      (states('sensor.patio_lights_count') | int)
+      )
+      | int
+      }}
     attribute_templates:
       total_lights: >-
-        {% set lights_on = states |
-          selectattr('entity_id','in',state_attr('light.house_lights','entity_id'))|
-          map(attribute='entity_id') | list | count %}
-        {{lights_on}}
+        {{
+        (
+        (state_attr('sensor.living_room_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.kitchen_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.studio_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.master_bedroom_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.bedroom_luica_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.patio_lights_count', 'total_lights') | int )
+        )
+        | int
+        }}

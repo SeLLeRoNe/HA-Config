@@ -3,7 +3,7 @@ platform: template
 sensors:
   patio_lights_count:
     friendly_name: "Patio Lights Count"
-    entity_id: sensor.time
+#    entity_id: sensor.time
     value_template: >-
       {% set lights_on = states |
         selectattr('entity_id','in',state_attr('light.patio_lights','entity_id'))|
