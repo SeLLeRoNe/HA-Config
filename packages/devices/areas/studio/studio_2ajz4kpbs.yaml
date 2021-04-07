@@ -42,4 +42,4 @@ binary_sensor:
     payload_off: false
     value_template: "{{ value_json.occupancy }}"
     device_class: "motion"
-    off_delay: 5
+#    off_delay: 5

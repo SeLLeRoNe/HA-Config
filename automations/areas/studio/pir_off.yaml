@@ -6,8 +6,8 @@ trigger:
   - platform: state
     entity_id: binary_sensor.studio_2ajz4kpbs_pir
     to: 'off'
-    for:
-      seconds: 30
+#    for:
+#      seconds: 30
 action:
   - service: light.turn_off
     data:
