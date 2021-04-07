@@ -11,17 +11,12 @@ trigger:
   - platform: state
     entity_id: input_boolean.night_mode
     to: 'on'
-#  - platform: time_pattern
-#    minutes: '*'
 condition:
   condition: and
   conditions:
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'on'
-    - condition: time
-      after: '00:00:00'
-      before: '09:30:00'
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'off'
