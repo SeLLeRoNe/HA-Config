@@ -26,7 +26,7 @@ from homeassistant.components.alarm_control_panel import (
 
 from homeassistant.helpers import config_validation as cv
 
-VERSION = "1.5.5"
+VERSION = "1.5.6"
 NAME = "Alarmo"
 MANUFACTURER = "@nielsfaber"
 
@@ -159,7 +159,7 @@ SERVICE_ARM = "arm"
 SERVICE_ARM_SCHEMA = vol.Schema(
     {
         vol.Required(ATTR_ENTITY_ID): cv.entity_id,
-        vol.Optional(CONF_CODE): cv.string,
+        vol.Optional(CONF_CODE, default=""): cv.string,
         vol.Optional(CONF_MODE, default=ARM_MODE_AWAY): vol.In([
             ARM_MODE_AWAY,
             ARM_MODE_HOME,
