@@ -14,7 +14,7 @@ trigger:
     above: 0
     below: 2
     for:
-      seconds: 15
+      seconds: 10
 condition:
   condition: or
   conditions:
