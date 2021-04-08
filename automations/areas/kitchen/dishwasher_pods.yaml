@@ -11,4 +11,4 @@ action:
   - service: notify.telegram_andrea
     data:
       title: "Kitchen"
-      message: "Dishwasher pods are running out. Please remember to buy them!"
+      message: "Dishwasher pods are running out ({{ states('counter.dishwasher_pods')}} left). Please remember to buy them!"

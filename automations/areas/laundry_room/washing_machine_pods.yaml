@@ -11,4 +11,4 @@ action:
   - service: notify.telegram_andrea
     data:
       title: "Laundry Room"
-      message: "Washing Machine pods are running out. Please remember to buy them!"
+      message: "Washing Machine pods are running out ({{ states('counter.washing_machine_pods')}} left). Please remember to buy them!"
