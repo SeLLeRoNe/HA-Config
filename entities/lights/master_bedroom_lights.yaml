@@ -4,5 +4,5 @@ name: Master Bedroom Lights
 entities:
   - light.master_bedroom_lamp_top_light
   - light.master_bedroom_lamp_bottom_light
-  - light.master_bedroom_andrea_bedside_lamp
-  - light.master_bedroom_sonia_bedside_lamp
+#  - light.master_bedroom_andrea_bedside_lamp
+#  - light.master_bedroom_sonia_bedside_lamp
