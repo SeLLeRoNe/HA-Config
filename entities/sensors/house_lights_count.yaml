@@ -10,7 +10,7 @@ sensors:
       (states('sensor.kitchen_lights_count') | int) +
       (states('sensor.studio_lights_count') | int) +
       (states('sensor.master_bedroom_lights_count') | int) +
-      (states('sensor.bedroom_luica_lights_count') | int) +
+      (states('sensor.bedroom_luca_lights_count') | int) +
       (states('sensor.patio_lights_count') | int)
       )
       | int
@@ -23,7 +23,7 @@ sensors:
         (state_attr('sensor.kitchen_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.studio_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.master_bedroom_lights_count', 'total_lights') | int ) +
-        (state_attr('sensor.bedroom_luica_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.bedroom_luca_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.patio_lights_count', 'total_lights') | int )
         )
         | int
