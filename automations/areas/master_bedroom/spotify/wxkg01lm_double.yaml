@@ -13,6 +13,10 @@ condition:
     - condition: state
       entity_id: media_player.master_bedroom_echo_dot
       state: 'playing'
+    - condition: state
+      entity_id: media_player.spotify_andrea
+      attribute: source
+      state: 'df0d797c-553d-4f4d-a44e-92b8618158a7'
 action:
   - service: media_player.media_next_track
     data:
