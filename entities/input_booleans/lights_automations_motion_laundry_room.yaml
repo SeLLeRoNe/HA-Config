@@ -1,0 +1,4 @@
+---
+lights_automations_motion_laundry_room:
+  name: Motion Detection - Laundry Room
+  icon: mdi:motion-sensor

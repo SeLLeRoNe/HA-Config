@@ -1,13 +1,13 @@
 ---
 id: '3347797456625'
-alias: Studio - PIR Off
+alias: Master Bedroom - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_2ajz4kpbs_pir
+    entity_id: binary_sensor.master_bedroom_pir
     to: 'off'
     for:
-      seconds: '{{ states("input_number.lights_automations_duration_studio") | int }}'
+      seconds: '{{ states("input_number.lights_automations_duration_master_bedroom") | int }}'
 condition:
   condition: and
   conditions:
@@ -15,16 +15,16 @@ condition:
       entity_id: group.lights_automations_motion_house
       state: 'on'
     - condition: state
-      entity_id: input_boolean.lights_automations_motion_studio
+      entity_id: input_boolean.lights_automations_motion_master_bedroom
       state: 'on'
     - condition: state
-      entity_id: light.studio_lights
+      entity_id: light.master_bedroom_lights
       state: 'on'
     - condition: state
-      entity_id: input_boolean.lights_automations_lux_studio
+      entity_id: input_boolean.lights_automations_lux_master_bedroom
       state: 'on'
 action:
   - service: light.turn_off
     data:
-      entity_id: light.studio_lights
+      entity_id: light.master_bedroom_lights
       transition: 5

@@ -1,0 +1,7 @@
+---
+lights_automations_duration_laundry_room:
+  name: "Light Duration - Laundry Room"
+  min: 0
+  max: 60
+  unit_of_measurement: "seconds"
+  icon: mdi:timelapse

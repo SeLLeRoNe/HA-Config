@@ -1,0 +1,7 @@
+---
+lights_automations_duration_studio:
+  name: "Light Duration - Studio"
+  min: 0
+  max: 60
+  unit_of_measurement: "seconds"
+  icon: mdi:timelapse

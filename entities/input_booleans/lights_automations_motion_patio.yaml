@@ -1,0 +1,4 @@
+---
+lights_automations_motion_patio:
+  name: Motion Detection - Patio
+  icon: mdi:motion-sensor

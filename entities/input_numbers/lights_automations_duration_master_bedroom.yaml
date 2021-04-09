@@ -1,0 +1,7 @@
+---
+lights_automations_duration_master_bedroom:
+  name: "Light Duration - Master Bedroom"
+  min: 0
+  max: 60
+  unit_of_measurement: "seconds"
+  icon: mdi:timelapse

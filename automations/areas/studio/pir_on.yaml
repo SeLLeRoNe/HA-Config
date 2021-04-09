@@ -9,14 +9,28 @@ trigger:
 condition:
   condition: and
   conditions:
+    - condition: state
+      entity_id: group.lights_automations_motion_house
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.lights_automations_motion_studio
+      state: 'on'
     - condition: or
       conditions:
         - condition: state
           entity_id: input_boolean.night_mode
           state: 'on'
-        - condition: numeric_state
-          entity_id: sensor.patio_gzcgq01lm_illuminance
-          below: 5
+        - condition: template
+          value_template: >-
+            {% if is_state("input_boolean.lights_automations_lux_studio", "on") %}
+              {% if (states("sensor.patio_gzcgq01lm_illuminance") | int) <= (states("input_number.lights_automations_lux_studio") | int) %}
+                true
+              {% else %}
+                false
+              {% endif %}
+            {% else %}
+              true
+            {% endif %}
     - condition: state
       entity_id: light.studio_lights
       state: 'off'
@@ -44,6 +58,9 @@ condition:
         - condition: state
           entity_id: alarm_control_panel.home_alarm
           state: 'armed_home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
 action:
   - service: light.turn_on
     data:

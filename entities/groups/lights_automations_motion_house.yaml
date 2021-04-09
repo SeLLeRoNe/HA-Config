@@ -1,0 +1,14 @@
+---
+lights_automations_motion_house:
+  name: Motion Detection - House
+  icon: mdi:motion-sensor
+  entities:
+    - input_boolean.lights_automations_motion_living_room
+    - input_boolean.lights_automations_motion_kitchen
+    - input_boolean.lights_automations_motion_studio
+    - input_boolean.lights_automations_motion_bedroom_luca
+    - input_boolean.lights_automations_motion_bathroom
+    - input_boolean.lights_automations_motion_master_bedroom
+    - input_boolean.lights_automations_motion_master_bathroom
+    - input_boolean.lights_automations_motion_laundry_room
+    - input_boolean.lights_automations_motion_patio

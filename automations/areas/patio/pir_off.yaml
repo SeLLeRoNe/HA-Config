@@ -1,13 +1,13 @@
 ---
-id: '3347976259556'
-alias: Bedroom Luca - PIR Off
+id: '3347797456625'
+alias: Patio - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.bedroom_luca_pir
+    entity_id: binary_sensor.patio_pir
     to: 'off'
     for:
-      seconds: '{{ states("input_number.lights_automations_duration_bedroom_luca") | int }}'
+      seconds: '{{ states("input_number.lights_automations_duration_patio") | int }}'
 condition:
   condition: and
   conditions:
@@ -15,16 +15,16 @@ condition:
       entity_id: group.lights_automations_motion_house
       state: 'on'
     - condition: state
-      entity_id: input_boolean.lights_automations_motion_studio
+      entity_id: input_boolean.lights_automations_motion_patio
       state: 'on'
     - condition: state
-      entity_id: light.studio_lights
+      entity_id: light.patio_lights
       state: 'on'
     - condition: state
-      entity_id: input_boolean.lights_automations_lux_studio
+      entity_id: input_boolean.lights_automations_lux_patio
       state: 'on'
 action:
   - service: light.turn_off
     data:
-      entity_id: light.bedroom_luca_lights
+      entity_id: light.patio_lights
       transition: 5

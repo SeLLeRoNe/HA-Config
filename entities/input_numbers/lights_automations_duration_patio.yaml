@@ -1,0 +1,7 @@
+---
+lights_automations_duration_patio:
+  name: "Light Duration - Patio"
+  min: 0
+  max: 60
+  unit_of_measurement: "seconds"
+  icon: mdi:timelapse

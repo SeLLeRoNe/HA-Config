@@ -1,0 +1,64 @@
+title: PIR
+icon: mdi:motion-sensor
+path: pir
+type: custom:vertical-layout
+layout:
+   max_cols: 5
+cards:
+  - type: custom:decluttering-card
+    template: title
+    variables:
+      - title: House
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: group.lights_automations_motion_house
+      - entity: group.lights_automations_lux_house
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Living Room
+      - area: living_room
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Kitchen
+      - area: kitchen
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Studio
+      - area: studio
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Bedroom Luca
+      - area: bedroom_luca
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Bathroom
+      - area: bathroom
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Master Bedroom
+      - area: master_bedroom
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Master Bathroom
+      - area: master_bathroom
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Laundry Room
+      - area: laundry_room
+  - type: custom:decluttering-card
+    template: pir_settings
+    variables:
+      - title: Patio
+      - area: patio

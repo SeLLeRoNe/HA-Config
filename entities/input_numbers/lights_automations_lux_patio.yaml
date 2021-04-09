@@ -1,0 +1,7 @@
+---
+lights_automations_lux_patio:
+  name: "Lux Level - Patio"
+  min: 0
+  max: 200
+  unit_of_measurement: "lux"
+  icon: mdi:brightness-6

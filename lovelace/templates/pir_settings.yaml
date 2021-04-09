@@ -1,0 +1,17 @@
+---
+pir_settings:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.lights_automations_motion_[[area]]
+          - entity: input_boolean.lights_automations_lux_[[area]]
+          - entity: input_number.lights_automations_duration_[[area]]
+          - entity: input_number.lights_automations_lux_[[area]]

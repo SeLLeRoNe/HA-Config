@@ -1,0 +1,4 @@
+---
+lights_automations_lux_master_bedroom:
+  name: Lux Level Motion - Master Bedroom
+  icon: mdi:theme-light-dark

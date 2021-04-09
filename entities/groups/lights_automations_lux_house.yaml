@@ -1,0 +1,14 @@
+---
+lights_automations_lux_house:
+  name: Lux Level Motion - House
+  icon: mdi:motion-sensor
+  entities:
+    - input_boolean.lights_automations_lux_living_room
+    - input_boolean.lights_automations_lux_kitchen
+    - input_boolean.lights_automations_lux_studio
+    - input_boolean.lights_automations_lux_bedroom_luca
+    - input_boolean.lights_automations_lux_bathroom
+    - input_boolean.lights_automations_lux_master_bedroom
+    - input_boolean.lights_automations_lux_master_bathroom
+    - input_boolean.lights_automations_lux_laundry_room
+    - input_boolean.lights_automations_lux_patio

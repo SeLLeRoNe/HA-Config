@@ -1,0 +1,4 @@
+---
+lights_automations_motion_master_bedroom:
+  name: Motion Detection - Master Bedroom
+  icon: mdi:motion-sensor

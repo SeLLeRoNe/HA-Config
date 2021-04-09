@@ -7,7 +7,22 @@ trigger:
     entity_id: binary_sensor.living_room_pir
     to: 'off'
     for:
-      seconds: 30
+      seconds: '{{ states("input_number.lights_automations_duration_living_room") | int }}'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: group.lights_automations_motion_house
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.lights_automations_motion_studio
+      state: 'on'
+    - condition: state
+      entity_id: light.studio_lights
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.lights_automations_lux_studio
+      state: 'on'
 action:
   - service: light.turn_off
     data:

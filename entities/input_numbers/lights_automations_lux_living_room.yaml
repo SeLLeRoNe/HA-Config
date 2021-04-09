@@ -1,0 +1,7 @@
+---
+lights_automations_lux_living_room:
+  name: "Lux Level - Living Room"
+  min: 0
+  max: 200
+  unit_of_measurement: "lux"
+  icon: mdi:brightness-6
