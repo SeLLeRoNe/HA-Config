@@ -12,16 +12,10 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: group.lights_automations_motion_house
-      state: 'on'
-    - condition: state
       entity_id: input_boolean.lights_automations_motion_patio
       state: 'on'
     - condition: state
       entity_id: light.patio_lights
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.lights_automations_lux_patio
       state: 'on'
 action:
   - service: light.turn_off
