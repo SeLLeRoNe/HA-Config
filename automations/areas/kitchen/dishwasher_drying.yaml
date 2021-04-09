@@ -14,6 +14,9 @@ trigger:
     above: 2000
     for:
       minutes: 1
+  - platform: state
+    entity_id: input_select.kitchen_dishwasher_status
+    to: 'Washing'
 condition:
   condition: or
   conditions:

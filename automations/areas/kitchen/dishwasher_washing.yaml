@@ -13,6 +13,9 @@ trigger:
     entity_id: sensor.kitchen_dishwasher_plug_energy_power
     above: 2
     below: 2000
+  - platform: state
+    entity_id: input_select.kitchen_dishwasher_status
+    to: 'Warming Up'
 condition:
   condition: or
   conditions:

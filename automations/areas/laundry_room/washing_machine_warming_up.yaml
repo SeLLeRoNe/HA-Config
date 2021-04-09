@@ -14,6 +14,9 @@ trigger:
     above: 500
     for:
       seconds: 15
+  - platform: state
+    entity_id: input_select.laundry_room_washing_machine_status
+    to: 'Starting'
 condition:
   condition: or
   conditions:

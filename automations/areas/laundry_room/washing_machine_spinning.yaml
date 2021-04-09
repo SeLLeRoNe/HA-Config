@@ -15,6 +15,9 @@ trigger:
     below: 400
     for:
       seconds: 5
+  - platform: state
+    entity_id: input_select.laundry_room_washing_machine_status
+    to: 'Rinsing'
 condition:
   condition: or
   conditions:

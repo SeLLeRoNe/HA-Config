@@ -13,7 +13,10 @@ trigger:
     entity_id: sensor.kitchen_dishwasher_plug_energy_power
     below: 1
     for:
-      seconds: 5
+      seconds: 15
+  - platform: state
+    entity_id: input_select.kitchen_dishwasher_status
+    to: 'Done'
 condition:
   condition: or
   conditions:

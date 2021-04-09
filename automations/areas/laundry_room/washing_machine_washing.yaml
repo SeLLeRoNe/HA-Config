@@ -13,6 +13,9 @@ trigger:
     entity_id: sensor.laundry_room_washing_machine_plug_energy_power
     above: 500
     below: 2250
+  - platform: state
+    entity_id: input_select.laundry_room_washing_machine_status
+    to: 'Warming Up'
 condition:
   condition: or
   conditions:

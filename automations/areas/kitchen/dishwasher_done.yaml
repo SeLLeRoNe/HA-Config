@@ -11,10 +11,12 @@ initial_state: on
 trigger:
   - platform: numeric_state
     entity_id: sensor.kitchen_dishwasher_plug_energy_power
-    above: 0
     below: 2
     for:
-      seconds: 10
+      seconds: 15
+  - platform: state
+    entity_id: input_select.kitchen_dishwasher_status
+    to: 'Drying'
 condition:
   condition: or
   conditions:
