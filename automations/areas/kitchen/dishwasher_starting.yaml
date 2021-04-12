@@ -12,9 +12,6 @@ trigger:
   - platform: numeric_state
     entity_id: sensor.kitchen_dishwasher_plug_energy_power
     above: 1
-  - platform: state
-    entity_id: input_select.kitchen_dishwasher_status
-    to: 'Idle'
 condition:
   condition: or
   conditions:

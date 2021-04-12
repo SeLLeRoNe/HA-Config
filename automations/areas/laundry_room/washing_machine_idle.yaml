@@ -14,9 +14,6 @@ trigger:
     below: 1
     for:
       seconds: 15
-  - platform: state
-    entity_id: input_select.laundry_room_washing_machine_status
-    to: 'Done'
 condition:
   condition: or
   conditions:
