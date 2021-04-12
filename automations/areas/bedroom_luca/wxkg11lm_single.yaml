@@ -14,11 +14,7 @@ condition:
       entity_id: group.family
       state: 'home'
 action:
-#  - service: light.toggle
-#    data:
-#      entity_id: light.bedroom_luca_lights
-#      transition: 5
-  - service: scene.apply
+  - service: scene.turn_on
     data:
       entity_id: scene.bedroom_luca_lights_on
       transition: 5
