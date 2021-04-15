@@ -42,7 +42,7 @@ cards:
           - entity: sensor.tasmota_current_version
             tap_action:
               action: none
-          - entity: sensor.tasmota_available_version
+          - entity: sensor.tasmota_firmware_available_version
             tap_action:
               action: none
       - type: custom:hui-element

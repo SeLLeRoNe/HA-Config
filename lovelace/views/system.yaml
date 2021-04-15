@@ -628,73 +628,103 @@ cards:
         variables:
           - title: Tasmota Devices
       - type: entities
-        title: Wireless Signal
         show_header_toggle: false
         entities:
-          - entity: sensor.rfbridge01_signal
-            name: "Sonoff RF Bridge"
-            tap_action:
-              action: none
-          - entity: sensor.studio_wall_light_signal
-            name: "Studio - Wall Light"
-            tap_action:
-              action: none
-          - entity: sensor.studio_desk_sonia_lamp_signal
-            name: "Studio - Sonia Desk Lamp"
-            tap_action:
-              action: none
-          - entity: sensor.studio_desk_andrea_plug_signal
-            name: "Studio - Desk Andrea Plug"
-            tap_action:
-              action: none
-          - entity: sensor.studio_table_plug_signal
-            name: "Studio - Table Plug"
-            tap_action:
-              action: none
-          - entity: sensor.studio_desk_andrea_power_strip_1_signal
-            name: "Studio - Desk Andrea PowerStrip #1"
-            tap_action:
-              action: none
-          - entity: sensor.studio_desk_andrea_power_strip_2_signal
-            name: "Studio - Desk Andrea PowerStrip #2"
-            tap_action:
-              action: none
-          - entity: sensor.studio_desk_sonia_plug_signal
-            name: "Studio - Desk Sonia Plug"
-            tap_action:
-              action: none
-          - entity: sensor.living_room_table_light_1_signal
-            name: "Living Room - Table Light 1"
-            tap_action:
-              action: none
-          - entity: sensor.living_room_table_light_2_signal
-            name: "Living Room - Table Light 2"
-            tap_action:
-              action: none
-          - entity: sensor.living_room_table_light_3_signal
-            name: "Living Room - Table Light 3"
-            tap_action:
-              action: none
-          - entity: sensor.living_room_tv_stand_plug_signal
-            name: "Living Room - TV Stand Plug"
-            tap_action:
-              action: none
-          - entity: sensor.kitchen_dishwasher_plug_signal
-            name: "Kitchen - Dishwasher Plug"
-            tap_action:
-              action: none
-          - entity: sensor.kitchen_toaster_plug_signal
-            name: "Kitchen - Toaster Plug"
-            tap_action:
-              action: none
-          - entity: sensor.laundry_room_washing_machine_plug_signal
-            name: "Laundry Room - Washing Machine Plug"
-            tap_action:
-              action: none
-          - entity: sensor.master_bedroom_lamp_top_light_signal
-            name: "Master Bedroom - Lamp Top Light"
-            tap_action:
-              action: none
+          - type: section
+            label: Living Room
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: living_room_table_light_1
+              - device_name: "Table Light #1"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: living_room_table_light_2
+              - device_name: "Table Light #2"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: living_room_table_light_3
+              - device_name: "Table Light #3"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: living_room_tv_stand_plug
+              - device_name: "TV Stand Plug"
+          - type: section
+            label: Kitchen
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: kitchen_dishwasher_plug
+              - device_name: "Dishwasher Plug"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: kitchen_toaster_plug
+              - device_name: "Toaster Plug"
+          - type: section
+            label: Studio
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: rfbridge01
+              - device_name: "RF Bridge"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_table_plug
+              - device_name: "Table Plug"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_wall_light
+              - device_name: "Wall Light"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_andrea_lamp
+              - device_name: "Desk Andrea Lamp"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_andrea_plug
+              - device_name: "Desk Andrea Plug"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_andrea_power_strip_1
+              - device_name: "Desk Andrea PowerStrip #1"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_andrea_power_strip_2
+              - device_name: "Desk Andrea PowerStrip #2"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_sonia_lamp
+              - device_name: "Desk Sonia Lamp"
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: studio_desk_sonia_plug
+              - device_name: "Desk Sonia Plug"
+          - type: section
+            label: Master Bedroom
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: master_bedroom_lamp_top_light
+              - device_name: "Lamp Top Light"
+          - type: section
+            label: Laundry Room
+          - type: 'custom:decluttering-card'
+            template: tasmota_info
+            variables:
+              - device: laundry_room_washing_machine_plug
+              - device_name: "Washing Machine Plug"
 #          - type: custom:decluttering-card
 #            template: title
 #            variables:

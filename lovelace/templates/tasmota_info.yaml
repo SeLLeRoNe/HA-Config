@@ -1,0 +1,70 @@
+---
+tasmota_info:
+  card:
+    type: 'custom:config-template-card'
+    variables:
+      varDEVICE: 'parseFloat(states[''sensor.[[device]]_rssi''].state)'
+    entities:
+      - 'sensor.[[device]]_rssi'
+      - 'sensor.[[device]]_signal'
+      - 'sensor.[[device]]_mqtt_connect_count'
+      - 'sensor.[[device]]_wifi_connect_count'
+    card:
+      type: 'custom:mod-card'
+      style:
+        multiple-entity-row:
+          $:
+            hui-generic-entity-row: |
+              .entities-row div.entity:nth-child(1) div::before {
+                {% if states('sensor.[[device]]_rssi')|int >= 100 %}
+                color: green;
+                content: "Excellent\A";
+                {% elif states('sensor.[[device]]_rssi')|int >= 80 %}
+                color: orange;
+                content: "Good\A";
+                {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
+                color: red;
+                content: "Fair\A";
+                {% else %}
+                color: magenta;
+                content: "Weak\A";
+                {% endif %}
+                line-height: var(--mdc-typography-body1-line-height, 1.5rem);
+                text-align: center;
+                white-space: pre;
+              }
+              .entities-row div.entity:nth-child(1) div {
+                color: transparent;
+                line-height: 0px;
+              }
+      card:
+        type: 'custom:multiple-entity-row'
+        entity: sensor.[[device]]_rssi
+        show_state: false
+        name: '[[device_name]]'
+        icon: >-
+          ${varDEVICE >= 100 ? "mdi:wifi-strength-4" : (varDEVICE >= 80 ?
+          "mdi:wifi-strength-3" : (varDEVICE >= 60 ? "mdi:wifi-strength-2" :
+          "mdi:wifi-strength-1")) }
+        secondary_info: last-changed
+        entities:
+          - entity: sensor.[[device]]_rssi
+            name: Quality
+            styles:
+              width: 55px
+          - entity: sensor.[[device]]_mqtt_connect_count
+            name: MQTT
+            styles:
+              width: 23px
+          - entity: sensor.[[device]]_wifi_connect_count
+            name: WiFi
+            styles:
+              width: 23px
+          - entity: sensor.[[device]]_signal
+            name: Signal
+            styles:
+              width: 48px
+          - entity: sensor.[[device]]_rssi
+            name: RSSI
+            styles:
+              width: 38px

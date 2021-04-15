@@ -7,7 +7,7 @@ house_temperature:
       - sensor.house_temperature
       - sensor.dark_sky_temperature
     variables:
-      - states['sensor.house_temperature'].state
+      - vars[0]: states['sensor.house_temperature'].state
     card:
       type: custom:mini-graph-card
       name: Temperature
