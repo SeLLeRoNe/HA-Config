@@ -21,7 +21,7 @@ action:
         color: "#0066FF"
         sticky: "false"
         tag: tag
-  - service: tts.google_translate_say
+  - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
       message: "Guest Mode Activated"

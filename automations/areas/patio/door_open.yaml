@@ -35,7 +35,7 @@ action:
         sticky: "true"
         tag: tag
         ttl: 0
-  - service: tts.google_translate_say
+  - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
       message: "The patio door has been opened for 15 minutes."

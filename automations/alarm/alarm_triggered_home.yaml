@@ -26,7 +26,7 @@ action:
     entity_id: alarm_control_panel.home_alarm
 #  - service: alarm_control_panel.alarm_trigger
 #    entity_id: alarm_control_panel.home_alarm_mqtt
-  - service: tts.google_translate_say
+  - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
       message: >

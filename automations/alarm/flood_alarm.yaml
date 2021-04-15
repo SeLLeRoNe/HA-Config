@@ -32,7 +32,7 @@ action:
         tag: tag
         ttl: 0
         priority: high
-  - service: tts.google_translate_say
+  - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
       message: >

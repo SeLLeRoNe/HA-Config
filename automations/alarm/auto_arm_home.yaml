@@ -66,7 +66,7 @@ action:
 #    entity_id: alarm_control_panel.home_alarm_mqtt
 #    data:
 #      code: !secret home_alarm_pin
-#  - service: tts.google_translate_say
+#  - service: tts.google_say
 #    data:
 #      entity_id: media_player.studio_google_mini
 #      message: "Switched to Home Mode" 
