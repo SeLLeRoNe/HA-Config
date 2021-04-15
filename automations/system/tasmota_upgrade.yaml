@@ -12,7 +12,7 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: '{{ states("sensor.tasmota_available_version") > states("sensor.tasmota_current_version") }}'
+      value_template: '{{ states("sensor.tasmota_firmware_available_version") > states("sensor.tasmota_current_version") }}'
     - condition: template
       value_template: '{% if states.binary_sensor.studio_desk_andrea_computer_ping is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.studio_desk_andrea_computer_ping.last_changed)) > 600 }} {% endif %}'
     - condition: template
