@@ -25,6 +25,9 @@ tasmota_info:
                 {% elif states('sensor.[[device]]_rssi')|int >= 60 %}
                 color: red;
                 content: "Fair\A";
+                {% elif states('sensor.[[device]]_rssi') in ['unavailable','unknown'] %}
+                color: brown;
+                content: "N/A\A";
                 {% else %}
                 color: magenta;
                 content: "Weak\A";
@@ -36,6 +39,62 @@ tasmota_info:
               .entities-row div.entity:nth-child(1) div {
                 color: transparent;
                 line-height: 0px;
+              }
+              .entities-row div.entity:nth-child(2) div::before {
+                {% if states('sensor.[[device]]_mqtt_connect_count') in ['unavailable','unknown'] %}
+                color: brown;
+                content: "N/A\A";
+                line-height: var(--mdc-typography-body1-line-height, 1.5rem);
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(2) div {
+                {% if states('sensor.[[device]]_mqtt_connect_count') in ['unavailable','unknown'] %}
+                color: transparent;
+                line-height: 0px;
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(3) div::before {
+                {% if states('sensor.[[device]]_wifi_connect_count') in ['unavailable','unknown'] %}
+                color: brown;
+                content: "N/A\A";
+                line-height: var(--mdc-typography-body1-line-height, 1.5rem);
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(3) div {
+                {% if states('sensor.[[device]]_wifi_connect_count') in ['unavailable','unknown'] %}
+                color: transparent;
+                line-height: 0px;
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(4) div::before {
+                {% if states('sensor.[[device]]_signal') in ['unavailable','unknown'] %}
+                color: brown;
+                content: "N/A\A";
+                line-height: var(--mdc-typography-body1-line-height, 1.5rem);
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(4) div {
+                {% if states('sensor.[[device]]_signal') in ['unavailable','unknown'] %}
+                color: transparent;
+                line-height: 0px;
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(5) div::before {
+                {% if states('sensor.[[device]]_rssi') in ['unavailable','unknown'] %}
+                color: brown;
+                content: "N/A\A";
+                line-height: var(--mdc-typography-body1-line-height, 1.5rem);
+                {% endif %}
+              }
+              .entities-row div.entity:nth-child(5) div {
+                {% if states('sensor.[[device]]_rssi') in ['unavailable','unknown'] %}
+                color: transparent;
+                line-height: 0px;
+                {% endif %}
+              }
+              .entities-row {
+                justify-content: flex-start;
+                align-items: unset;
               }
       card:
         type: 'custom:multiple-entity-row'
