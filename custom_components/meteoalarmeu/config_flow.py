@@ -7,10 +7,12 @@ from homeassistant import config_entries, exceptions
 from homeassistant.const import CONF_NAME
 from homeassistant.core import callback
 
+from .client import AWARENESS_LEVELS as AWARENESS_LEVELS_API
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
 from .client import get_languages, get_regions
 from .const import DOMAIN  # pylint: disable=unused-import
 from .const import (
+    CONF_AWARENESS_LEVELS,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
@@ -24,6 +26,7 @@ COUNTRIES = ui_countries_list
 LANGUAGES = [DEFAULT_LANGUAGE]
 LANGUAGES.extend(ui_languages_list)
 DEFAULT_AWARENESS_TYPES = sorted(AWARENESS_TYPES_API)
+DEFAULT_AWARENESS_LEVELS = AWARENESS_LEVELS_API
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -111,6 +114,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         CONF_AWARENESS_TYPES,
                         default=DEFAULT_AWARENESS_TYPES,
                     ): cv.multi_select(DEFAULT_AWARENESS_TYPES),
+                    vol.Optional(
+                        CONF_AWARENESS_LEVELS,
+                        default=DEFAULT_AWARENESS_LEVELS,
+                    ): cv.multi_select(DEFAULT_AWARENESS_LEVELS),
                 }
             ),
             errors=errors,

@@ -18,6 +18,7 @@ from .const import DEFAULT_NAME  # pylint:disable=unused-import
 from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     ATTRIBUTION,
+    CONF_AWARENESS_LEVELS,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
@@ -37,9 +38,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
     awareness_types = config_entry.data.get(CONF_AWARENESS_TYPES)
+    awareness_levels = config_entry.data.get(CONF_AWARENESS_LEVELS)
 
     try:
-        api = Client(country, region, language, awareness_types)
+        api = Client(country, region, language, awareness_types, awareness_levels)
     except MeteoAlarmUnrecognizedRegionError:
         _LOGGER.error("Wrong region name (check 'meteoalarm.eu' for the EXACT name)")
     except MeteoAlarmUnavailableLanguageError:

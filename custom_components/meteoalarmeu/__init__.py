@@ -6,6 +6,7 @@ from homeassistant.core import HomeAssistant
 
 from .client import Client
 from .const import (
+    CONF_AWARENESS_LEVELS,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
@@ -13,7 +14,7 @@ from .const import (
     DOMAIN,
 )
 
-__version__ = "2021.5.7"
+__version__ = "2021.5.8"
 
 PLATFORMS = ["binary_sensor"]
 
@@ -31,6 +32,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         entry.data[CONF_REGION],
         entry.data[CONF_LANGUAGE],
         entry.data[CONF_AWARENESS_TYPES],
+        entry.data.get(CONF_AWARENESS_LEVELS, None),
     )
 
     for component in PLATFORMS:

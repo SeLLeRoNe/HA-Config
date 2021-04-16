@@ -16,6 +16,7 @@ from meteoalarm_rssapi import awareness_types as _awareness_types
 from meteoalarm_rssapi import countries_list as _countries_list
 from meteoalarm_rssapi import languages_list as _languages_list
 
+AWARENESS_LEVELS = ("Red", "Orange", "Yellow")  # only these are relevant!
 AWARENESS_TYPES = _awareness_types
 COUNTRIES = _countries_list
 LANGUAGES = _languages_list
@@ -25,17 +26,33 @@ _LOGGER = logging.getLogger(__name__)
 TIMEOUT = 9
 
 
+# pylint: disable=too-many-arguments
 class Client:
     """Interface for 'library API' (meteoalarm-rssapi)."""
 
-    def __init__(self, country, region, language=None, awareness_types=AWARENESS_TYPES):
+    def __init__(
+        self,
+        country,
+        region,
+        language=None,
+        awareness_types=AWARENESS_TYPES,
+        awareness_levels=AWARENESS_LEVELS,
+    ):
         self._country = country
         self._region = region
         self._language = language
         self._awareness_types = awareness_types or AWARENESS_TYPES
+        self._awareness_levels = awareness_levels or AWARENESS_LEVELS
         self._api = self._get_api()
 
-    def update(self, country=None, region=None, language=None, awareness_types=None):
+    def update(
+        self,
+        country=None,
+        region=None,
+        language=None,
+        awareness_types=None,
+        awareness_levels=None,
+    ):
         """Update client with new parameters."""
         if not any(country, region, language, awareness_types):
             return
@@ -43,6 +60,7 @@ class Client:
         self._region = region or self._region
         self._language = language or self._language
         self._awareness_types = awareness_types or self._awareness_types
+        self._awareness_levels = awareness_levels or self._awareness_levels
         self._api = self._get_api()
 
     def _get_api(self):
@@ -83,7 +101,13 @@ class Client:
         return self._api.country_languages()
 
     def _filter(self, alarms):
-        return [m for m in alarms if m["awareness_type"] in self._awareness_types]
+        """Filter messages by event and severity user choices."""
+        return [
+            m
+            for m in alarms
+            if m["awareness_type"] in self._awareness_types
+            and m["awareness_level"] in self._awareness_levels
+        ]
 
     @staticmethod
     def _local_ts(iso_ts):

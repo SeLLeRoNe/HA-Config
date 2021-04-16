@@ -1,5 +1,5 @@
 {
-  "version": "2021.5.7",
+  "version": "2021.5.8",
   "domain": "meteoalarmeu",
   "name": "meteoalarmeu",
   "config_flow": true,
