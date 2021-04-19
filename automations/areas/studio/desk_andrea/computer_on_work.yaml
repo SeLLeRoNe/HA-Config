@@ -40,3 +40,7 @@ action:
     data:
       topic: "wled/001/fx"
       payload: "74"
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_lights
+      transition: 5
