@@ -8,9 +8,6 @@ class CustomLightBrightnessRow extends Polymer.Element {
 					line-height: inherit;
 				}
 				.brightness {
-				min-width: 30px;
-				max-width: 30px;
-				height: 30px;
 				margin-left: 2px;
 				margin-right: 2px;
 				background-color: #759aaa;
@@ -29,25 +26,25 @@ class CustomLightBrightnessRow extends Polymer.Element {
 						<div class='horizontal justified layout' on-click="stopPropagation">
 							<button
 								class='brightness'
-								style='[[_leftColor]]'
+								style='[[_leftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 								toggles name="[[_leftName]]"
 								on-click='setBrightness'
 								disabled='[[_leftState]]'>[[_leftText]]</button>
 							<button
 								class='brightness'
-								style='[[_midLeftColor]]'
+								style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 								toggles name="[[_midLeftName]]"
 								on-click='setBrightness'
 								disabled='[[_midLeftState]]'>[[_midLeftText]]</button>
 							<button
 								class='brightness'
-								style='[[_midRightColor]]'
+								style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 								toggles name="[[_midRightName]]"
 								on-click='setBrightness'
 								disabled='[[_midRightState]]'>[[_midRightText]]</button>
 							<button
 								class='brightness'
-								style='[[_rightColor]]'
+								style='[[_rightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 								toggles name="[[_rightName]]"
 								on-click='setBrightness'
 								disabled='[[_rightState]]'>[[_rightText]]</button>
@@ -67,6 +64,8 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				_lowSP: Number,
 				_medSP: Number,
 				_highSP: Number,
+				_width: String,
+				_height: String,
 				_leftColor: String,
 				_midLeftColor: String,
 				_midRightColor: String,
@@ -94,6 +93,8 @@ class CustomLightBrightnessRow extends Polymer.Element {
 			customTheme: false,
 			customSetpoints: false,
 			reverseButtons: false,
+			width: '30px',
+			height: '30px',
 			lowBrightness: 43,
 			medBrightness: 128,
 			hiBrightness: 213,
@@ -117,6 +118,8 @@ class CustomLightBrightnessRow extends Polymer.Element {
 		const custTheme = config.customTheme;
 		const custSetpoint = config.customSetpoints;
 		const revButtons = config.reverseButtons;
+		const buttonWidth = config.width;
+		const buttonHeight = config.height;
 		const OnLowClr = config.isOnLowColor;
 		const OnMedClr = config.isOnMedColor;
 		const OnHiClr = config.isOnHiColor;
@@ -239,6 +242,9 @@ class CustomLightBrightnessRow extends Polymer.Element {
 		let medname = 'medium'
 		let hiname = 'high'
 		
+		let buttonwidth = buttonWidth;
+		let buttonheight = buttonHeight;
+		
 		if (revButtons) {
 			this.setProperties({
 				_stateObj: stateObj,
@@ -246,6 +252,8 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				_midLeftState: low === 'on',
 				_midRightState: med === 'on',
 				_rightState: high === 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: offcolor,
 				_midLeftColor: lowcolor,
 				_midRightColor: medcolor,
@@ -270,6 +278,8 @@ class CustomLightBrightnessRow extends Polymer.Element {
 				_midLeftState: med === 'on',
 				_midRightState: low === 'on',
 				_rightState: offstate === 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: hicolor,
 				_midLeftColor: medcolor,
 				_midRightColor: lowcolor,
