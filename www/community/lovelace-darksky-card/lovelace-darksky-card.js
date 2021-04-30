@@ -462,9 +462,10 @@ style() {
   var currentDataTopMargin = this.config.current_data_top_margin ? this.config.current_data_top_margin : this.config.show_separator ? "1em" : "7em";
   var separatorTopMargin = this.config.separator_top_margin || "6em";
   
-  return html`
-        .clear {
-        clear: both;
+return html`
+      .clear {
+      clear: both;
+		  line-height:1.2;
       }
 
       .card {
