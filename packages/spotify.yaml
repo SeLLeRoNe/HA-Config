@@ -6,6 +6,5 @@
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
-#aliases:
-#    abc123def456: 'Living Room'
-#    9183abas000: 'Bed Room'
+aliases:
+  df0d797c-553d-4f4d-a44e-92b8618158a7: 'Master Bedroom Echo Dot'

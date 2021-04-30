@@ -22,8 +22,7 @@ action:
   - service: media_player.select_source
     data:
       entity_id: media_player.spotify_sonia
-      source: "df0d797c-553d-4f4d-a44e-92b8618158a7"
-#      source: "Master Bedroom Echo Dot"
+      source: "Master Bedroom Echo Dot"
   - service: media_player.volume_set
     data:
       entity_id: media_player.master_bedroom_echo_dot

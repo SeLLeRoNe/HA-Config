@@ -16,7 +16,7 @@ condition:
     - condition: state
       entity_id: media_player.spotify_andrea
       attribute: source
-      state: 'df0d797c-553d-4f4d-a44e-92b8618158a7'
+      state: 'Master Bedroom Echo Dot'
 action:
   - service: media_player.media_previous_track
     data:
