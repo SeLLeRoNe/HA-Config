@@ -28,7 +28,8 @@ action:
   - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
-      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.kitchen_dishwasher_current_energy')|float | round(2) }}kWh"
+      message: "Dishwasher is now done"
+#      message: "Dishwasher is now done. Energy consumed was {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.kitchen_dishwasher_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea
     data:
