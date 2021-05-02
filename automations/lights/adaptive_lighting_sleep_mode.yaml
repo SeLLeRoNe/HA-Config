@@ -1,0 +1,20 @@
+---
+alias: "Lights - Adaptive lighting - Enable Sleep Mode"
+trigger:
+  - platform: state
+    entity_id: input_boolean.night_time
+  - platform: homeassistant
+    event: start
+variables:
+  night_time: "{{ states('input_boolean.night_time') }}"
+action:
+  service: "switch.turn_{{ night_time }}"
+  entity_id:
+    - switch.adaptive_lighting_sleep_mode_living_room
+    - switch.adaptive_lighting_sleep_mode_kitchen
+    - switch.adaptive_lighting_sleep_mode_studio
+    - switch.adaptive_lighting_sleep_mode_bedroom_luca
+    - switch.adaptive_lighting_sleep_mode_bathroom
+    - switch.adaptive_lighting_sleep_mode_master_bedroom
+    - switch.adaptive_lighting_sleep_mode_master_bathroom
+    - switch.adaptive_lighting_sleep_mode_patio
