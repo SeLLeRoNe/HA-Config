@@ -3,7 +3,7 @@
   "name": "Alarmo",
   "documentation": "https://github.com/nielsfaber/alarmo",
   "issue_tracker": "https://github.com/nielsfaber/alarmo/issues",
-  "version": "v1.5.6",
+  "version": "v1.5.7",
   "dependencies": [
     "http",
     "panel_custom"
@@ -16,5 +16,6 @@
     "@nielsfaber"
   ],
   "requirements": [],
-  "config_flow": true
+  "config_flow": true,
+  "iot_class": "local_push"
 }
