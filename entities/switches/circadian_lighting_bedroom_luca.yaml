@@ -1,7 +1,0 @@
----
-platform: circadian_lighting
-name: "Bedroom Luca"
-lights_rgb:
-  - light.bedroom_luca_light_1
-  - light.bedroom_luca_light_2
-  - light.bedroom_luca_light_3

@@ -1,6 +1,0 @@
----
-platform: circadian_lighting
-name: "Master Bedroom"
-lights_ct:
-#  - light.master_bedroom_lamp_top_light
-  - light.master_bedroom_lamp_bottom_light
