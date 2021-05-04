@@ -26,8 +26,9 @@ logger:
     homeassistant.components.ping: error
     homeassistant.components.pi_hole: error
     homeassistant.components.python_script: error
+    homeassistant.components.spotify: error
     homeassistant.setup: error
     homeassistant.components.websocket_api: error
     homeassistant.helpers: error
-    custom_components.adaptive_lighting: debug
+    custom_components.adaptive_lighting: error
     custom_components.entity_controller: error
