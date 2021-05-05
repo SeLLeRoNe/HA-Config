@@ -1,4 +1,5 @@
 ---
+id: '548588280111608'
 alias: "Lights - Adaptive lighting - Enable Sleep Mode"
 trigger:
   - platform: state
