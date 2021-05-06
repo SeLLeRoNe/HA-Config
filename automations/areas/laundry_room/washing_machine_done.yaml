@@ -25,6 +25,10 @@ action:
     data:
       entity_id: input_select.laundry_room_washing_machine_status
       option: 'Done'
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.laundry_room_washing_machine_current_energy
+      value: "0"
   - service: tts.google_say
     data:
       entity_id: media_player.studio_google_mini
@@ -36,10 +40,16 @@ action:
       message: "Washing Machine is now done. Energy consumed: {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float - states('input_number.laundry_room_washing_machine_current_energy')|float | round(3) }}kWh"
   - service: tts.google_say
     data:
-      entity_id: media_player.living_room_google_tv
+      entity_id: media_player.living_room_chromecast
       message: "Washing Machine is now done"
       language: "en"
-  - service: input_number.set_value
-    data_template:
-      entity_id: input_number.laundry_room_washing_machine_current_energy
-      value: "0"
+  - service: notify.living_room_chromecast
+    data:
+      title: "Laundry Room"
+      message: "Washing Machine is now done"
+      fontsize: "large"
+      position: "center"
+      duration: 2
+      transparency: "20%"
+      color: "blue"
+      interrupt: 1
