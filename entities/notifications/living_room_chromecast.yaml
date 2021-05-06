@@ -1,0 +1,3 @@
+platform: nfandroidtv
+name: Living Room Chromecast
+host: !secret living_room_chromecast_ip
