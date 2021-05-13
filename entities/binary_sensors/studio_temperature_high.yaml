@@ -1,0 +1,5 @@
+---
+platform: threshold
+name: Studio Temperature - High
+entity_id: sensor.studio_temperature
+upper: 22
