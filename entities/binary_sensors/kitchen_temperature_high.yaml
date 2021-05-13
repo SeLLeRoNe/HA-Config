@@ -1,0 +1,5 @@
+---
+platform: threshold
+name: Kitchen Temperature - High
+entity_id: sensor.kitchen_temperature
+upper: 22

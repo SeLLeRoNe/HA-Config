@@ -1,0 +1,5 @@
+---
+platform: threshold
+name: Kitchen Temperature - Low
+entity_id: sensor.kitchen_temperature
+lower: 15

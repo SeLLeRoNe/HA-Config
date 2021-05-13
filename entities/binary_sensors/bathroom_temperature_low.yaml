@@ -1,0 +1,5 @@
+---
+platform: threshold
+name: Bathroom Temperature - Low
+entity_id: sensor.bathroom_temperature
+lower: 15

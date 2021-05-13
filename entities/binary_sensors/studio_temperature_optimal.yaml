@@ -2,5 +2,5 @@
 platform: threshold
 name: Studio Temperature - Optimal
 entity_id: sensor.studio_temperature
-upper: 18
-lower: 22
+lower: 18
+upper: 22

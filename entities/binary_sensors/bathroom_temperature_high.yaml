@@ -1,0 +1,5 @@
+---
+platform: threshold
+name: Bathroom Temperature - High
+entity_id: sensor.bathroom_temperature
+upper: 22

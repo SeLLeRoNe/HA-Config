@@ -2,5 +2,5 @@
 platform: threshold
 name: Living Room Temperature - Optimal
 entity_id: sensor.living_room_temperature
-upper: 18
-lower: 22
+lower: 18
+upper: 22
