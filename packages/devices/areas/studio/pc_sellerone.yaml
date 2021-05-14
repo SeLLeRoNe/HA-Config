@@ -1,7 +1,7 @@
 ---
 binary_sensor:
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerConnected"
+    name: "Studio - Desk Andrea - Computer Connected"
     state_topic: "iotlink/casa/pc-sellerone/lwt"
     value_template: "{{ value }}"
     payload_on: "ON"
@@ -10,7 +10,7 @@ binary_sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerCharging"
+    name: "Studio - Desk Andrea - Computer Charging"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/power/status"
     value_template: "{{ value }}"
     payload_on: "Online"
@@ -22,7 +22,7 @@ binary_sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerBattery Status"
+    name: "Studio - Desk Andrea - Computer Battery Status"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/status"
     value_template: "{{ value }}"
     payload_on: "Online"
@@ -35,7 +35,7 @@ binary_sensor:
 
 sensor:
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerCurrent User"
+    name: "Studio - Desk Andrea - Computer Current User"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/system/current-user"
     unit_of_measurement: ''
     icon: mdi:account
@@ -46,7 +46,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerIdle Time"
+    name: "Studio - Desk Andrea - Computer Idle Time"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/system/idle-time"
     unit_of_measurement: 'seconds'
     icon: mdi:timer
@@ -57,7 +57,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerCPU Usage"
+    name: "Studio - Desk Andrea - Computer CPU Usage"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/cpu/usage"
     unit_of_measurement: '%'
     icon: mdi:speedometer
@@ -68,7 +68,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerCPU Temperature"
+    name: "Studio - Desk Andrea - Computer CPU Temperature"
     state_topic: "iotlink/casa/pc-sellerone/temperature-monitor/stats/cpu/temperature"
     unit_of_measurement: '°C'
     icon: mdi:thermometer
@@ -79,7 +79,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRAM Usage"
+    name: "Studio - Desk Andrea - Computer RAM Usage"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/usage"
     unit_of_measurement: '%'
     icon: mdi:memory
@@ -90,7 +90,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRAM Available"
+    name: "Studio - Desk Andrea - Computer RAM Available"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/available"
     unit_of_measurement: 'MB'
     icon: mdi:memory
@@ -101,7 +101,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRAM Used"
+    name: "Studio - Desk Andrea - Computer RAM Used"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/used"
     unit_of_measurement: 'MB'
     icon: mdi:memory
@@ -112,7 +112,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRAM Total"
+    name: "Studio - Desk Andrea - Computer RAM Total"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/memory/total"
     unit_of_measurement: 'MB'
     icon: mdi:memory
@@ -123,7 +123,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRemaining Battery"
+    name: "Studio - Desk Andrea - Computer Remaining Battery"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/remaining-percent"
     unit_of_measurement: '%'
     device_class: battery
@@ -134,7 +134,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerRemaining Battery Time"
+    name: "Studio - Desk Andrea - Computer Remaining Battery Time"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/remaining-time"
     unit_of_measurement: 'minutes'
     icon: mdi:timer
@@ -145,7 +145,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerPredicted Lifetime"
+    name: "Studio - Desk Andrea - Computer Predicted Lifetime"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/battery/full-lifetime"
     unit_of_measurement: 'minutes'
     icon: mdi:timer
@@ -156,7 +156,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Usage (C)"
+    name: "Studio - Desk Andrea - Computer HDD Usage (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/drive-usage"
     unit_of_measurement: '%'
     icon: mdi:chart-donut
@@ -167,7 +167,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Total Size (C)"
+    name: "Studio - Desk Andrea - Computer HDD Total Size (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/total-size"
     unit_of_measurement: 'GB'
     icon: mdi:harddisk
@@ -178,7 +178,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Total Free Space (C)"
+    name: "Studio - Desk Andrea - Computer HDD Total Free Space (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/total-free-space"
     unit_of_measurement: 'GB'
     icon: mdi:harddisk
@@ -189,7 +189,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Free Space (C)"
+    name: "Studio - Desk Andrea - Computer HDD Free Space (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/available-free-space"
     unit_of_measurement: 'GB'
     icon: mdi:harddisk
@@ -200,7 +200,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Used Space (C)"
+    name: "Studio - Desk Andrea - Computer HDD Used Space (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/used-space"
     unit_of_measurement: 'GB'
     icon: mdi:harddisk
@@ -211,7 +211,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Format (C)"
+    name: "Studio - Desk Andrea - Computer HDD Format (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/drive-format"
     unit_of_measurement: ''
     icon: mdi:harddisk
@@ -222,7 +222,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerHDD Label (C)"
+    name: "Studio - Desk Andrea - Computer HDD Label (C)"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/hard-drive/c/volume-label"
     unit_of_measurement: ''
     icon: mdi:harddisk
@@ -233,7 +233,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerNetwork IPv4"
+    name: "Studio - Desk Andrea - Computer Network IPv4"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/ipv4"
     unit_of_measurement: ''
     icon: mdi:lan
@@ -244,7 +244,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerNetwork IPv6"
+    name: "Studio - Desk Andrea - Computer Network IPv6"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/ipv6"
     unit_of_measurement: ''
     icon: mdi:lan
@@ -255,7 +255,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerNetwork Speed"
+    name: "Studio - Desk Andrea - Computer Network Speed"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/speed"
     unit_of_measurement: 'Mbps'
     icon: mdi:speedometer
@@ -266,7 +266,7 @@ sensor:
     qos: 1
 
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerNetwork Wired"
+    name: "Studio - Desk Andrea - Computer Network Wired"
     state_topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/network/0/wired"
     unit_of_measurement: ''
     icon: mdi:ethernet
@@ -278,10 +278,10 @@ sensor:
 
 camera:
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerScreen 0"
+    name: "Studio - Desk Andrea - Computer Screen 0"
     topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/display/0/screen"
   - platform: mqtt
-    name: "Studio - Desk Andrea - ComputerScreen 1"
+    name: "Studio - Desk Andrea - Computer Screen 1"
     topic: "iotlink/casa/pc-sellerone/windows-monitor/stats/display/1/screen"
 
 #switch:
@@ -299,14 +299,14 @@ camera:
 script:
   studio_desk_andrea_computer_wake:
     # To enable see https://www.home-assistant.io/components/wake_on_lan/
-    alias: "Studio - Desk Andrea - ComputerWake"
+    alias: "Studio - Desk Andrea - Computer Wake"
     sequence:
       - service: wake_on_lan.send_magic_packet
         data:
           mac: "70:85:C2:63:9F:11"
 
   studio_desk_andrea_computer_shutdown:
-    alias: "Studio - Desk Andrea - ComputerShutdown"
+    alias: "Studio - Desk Andrea - Computer Shutdown"
     sequence:
       - service: mqtt.publish
         data:
@@ -314,7 +314,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_suspend:
-    alias: "Studio - Desk Andrea - ComputerSuspend"
+    alias: "Studio - Desk Andrea - Computer Suspend"
     sequence:
       - service: mqtt.publish
         data:
@@ -322,7 +322,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_hibernate:
-    alias: "Studio - Desk Andrea - ComputerHibernate"
+    alias: "Studio - Desk Andrea - Computer Hibernate"
     sequence:
       - service: mqtt.publish
         data:
@@ -330,7 +330,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_reboot:
-    alias: "Studio - Desk Andrea - ComputerReboot"
+    alias: "Studio - Desk Andrea - Computer Reboot"
     sequence:
       - service: mqtt.publish
         data:
@@ -338,7 +338,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_lock:
-    alias: "Studio - Desk Andrea - ComputerLock"
+    alias: "Studio - Desk Andrea - Computer Lock"
     sequence:
       - service: mqtt.publish
         data:
@@ -346,7 +346,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_logoff:
-    alias: "Studio - Desk Andrea - ComputerLogoff"
+    alias: "Studio - Desk Andrea - Computer Logoff"
     sequence:
       - service: mqtt.publish
         data:
@@ -354,7 +354,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_vol_mute:
-    alias: "Studio - Desk Andrea - ComputerToggle Mute"
+    alias: "Studio - Desk Andrea - Computer Toggle Mute"
     sequence:
       - service: mqtt.publish
         data:
@@ -362,7 +362,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_vol_max:
-    alias: "Studio - Desk Andrea - ComputerVol Max"
+    alias: "Studio - Desk Andrea - Computer Vol Max"
     sequence:
       - service: mqtt.publish
         data:
@@ -370,7 +370,7 @@ script:
           payload: "100"
 
   studio_desk_andrea_computer_displays_on:
-    alias: "Studio - Desk Andrea - ComputerDisplays ON"
+    alias: "Studio - Desk Andrea - Computer Displays ON"
     sequence:
       - service: mqtt.publish
         data:
@@ -378,7 +378,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_displays_off:
-    alias: "Studio - Desk Andrea - ComputerDisplays OFF"
+    alias: "Studio - Desk Andrea - Computer Displays OFF"
     sequence:
       - service: mqtt.publish
         data:
@@ -386,7 +386,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_refresh:
-    alias: "Studio - Desk Andrea - ComputerRefresh"
+    alias: "Studio - Desk Andrea - Computer Refresh"
     sequence:
       - service: mqtt.publish
         data:
@@ -394,7 +394,7 @@ script:
           payload: ""
 
   studio_desk_andrea_computer_notify:
-    alias: "Studio - Desk Andrea - ComputerNotify"
+    alias: "Studio - Desk Andrea - Computer Notify"
     sequence:
       - service: mqtt.publish
         data:
@@ -402,7 +402,7 @@ script:
           payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
 
   studio_desk_andrea_computer_run_chrome:
-    alias: "Studio - Desk Andrea - ComputerRun Chrome"
+    alias: "Studio - Desk Andrea - Computer Run Chrome"
     sequence:
       - service: mqtt.publish
         data:
@@ -410,7 +410,7 @@ script:
           payload: '{ "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "args": "https://iotlink.gitlab.io", "path": "C:\\Program Files (x86)\\Google\\Chrome\\Application", "user": "", "visible": true, "fallback": true }'
 
   studio_desk_andrea_computer_run_ccleaner:
-    alias: "Studio - Desk Andrea - ComputerRun CCleaner"
+    alias: "Studio - Desk Andrea - Computer Run CCleaner"
     sequence:
       - service: mqtt.publish
         data:
