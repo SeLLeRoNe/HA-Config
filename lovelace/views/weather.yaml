@@ -10,6 +10,8 @@ cards:
     cards:
       - type: custom:decluttering-card
         template: darksky_card
+      - type: custom:meteoalarm-card
+        entity: binary_sensor.meteoalarmeu
       - type: custom:air-visual-card
         air_pollution_level: sensor.u_s_air_pollution_level
         air_quality_index: sensor.u_s_air_quality_index
