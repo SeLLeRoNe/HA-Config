@@ -29,8 +29,8 @@
     type: module
   - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
     type: module
-  - url: /hacsfiles/sun-card/sun-card.js
-    type: module
+#  - url: /hacsfiles/sun-card/sun-card.js
+#    type: module
   - url: /hacsfiles/search-card/search-card.js
     type: module
   - url: /hacsfiles/lovelace-card-tools/card-tools.js
@@ -86,6 +86,8 @@
   - url: /hacsfiles/uptime-card/uptime-card.js
     type: module
   - url: /hacsfiles/MeteoalarmCard/meteoalarm-card.js
+    type: module
+  - url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
     type: module
 
   - url: /local/q-card.js
