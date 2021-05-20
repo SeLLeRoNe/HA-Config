@@ -39,11 +39,11 @@ action:
     data:
       title: "Kitchen"
       message: "Dishwasher is now done. Energy consumed: {{ states('sensor.kitchen_dishwasher_plug_energy_today')|float - states('input_number.kitchen_dishwasher_current_energy')|float | round(3) }}kWh"
-  - service: tts.google_say
-    data:
-      entity_id: media_player.living_room_chromecast
-      message: "Dishwasher is now done"
-      language: "en"
+#  - service: tts.google_say
+#    data:
+#      entity_id: media_player.living_room_chromecast
+#      message: "Dishwasher is now done"
+#      language: "en"
   - service: notify.living_room_chromecast
     data:
       title: "Kitchen"

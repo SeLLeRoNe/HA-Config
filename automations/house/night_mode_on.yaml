@@ -17,7 +17,7 @@ condition:
           before: '00:00:00'
         - condition: time
           after: '00:00:00'
-          before: '10:00:00'
+          before: '09:30:00'
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
