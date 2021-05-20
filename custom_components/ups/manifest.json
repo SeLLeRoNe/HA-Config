@@ -1,6 +1,7 @@
 {
     "domain": "ups",
     "name": "Ups",
+    "version": "1.0.0",
     "documentation": "https://www.home-assistant.io/components/ups",
     "requirements": [
       "upsmychoice==1.0.6"
