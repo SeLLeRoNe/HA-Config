@@ -3377,157 +3377,319 @@ LitElement.shadowRootOptions = { mode: 'open' };
 var _templateObject$1;
 var cardStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  .sun-card {\n    --sun-card-lines: #464646;\n    --sun-card-text-color: #fff;\n    --sun-card-subtitle-color: #fff;\n\n    color: var(--sun-card-text-color);\n    padding: 1rem;\n  }\n\n  .sun-card-body {\n    padding-top: 0.5rem;\n  }\n\n  .sun-card.sun-card-light {\n    --sun-card-lines: #ececec;\n    --sun-card-text-color: #000;\n    --sun-card-subtitle-color: #828282;\n  }\n\n  .sun-card-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  \n  .sun-card-footer .sun-card-footer-row {\n    display: flex;\n    justify-content: space-around;\n    padding-top: 1.5rem;\n  }\n\n  .sun-card-title {\n    font-size: 1.5rem;\n    font-weight: 500;\n    padding-bottom: 2rem;\n    margin: 0;\n  }\n\n  .sun-card-text-container {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n\n  .sun-card-header .sun-card-text-subtitle {\n    font-size: 1.15rem;\n    font-weight: 400;\n    padding-bottom: 0.25rem;\n    color: var(--sun-card-subtitle-color);\n  }\n\n  .sun-card-header .sun-card-text-time {\n    font-size: 1.85rem;\n    font-weight: 400;\n  }\n\n  .sun-card-footer .sun-card-text-subtitle {\n    font-size: 1.25rem;\n    font-weight: 400;\n    padding-bottom: 0.5rem;\n    color: var(--sun-card-subtitle-color);\n  }\n\n  .sun-card-footer .sun-card-text-time {\n    font-size: 1.25rem;\n    font-weight: 500;\n  }\n\n  .sun-card-text-time-period {\n    font-size: 0.75rem;\n  }\n"])));
 
-var Azimuth$8 = "Azimut";
-var Dawn$8 = "Morgendämmerung";
-var Dusk$8 = "Abenddämmerung";
-var Elevation$8 = "Zenitwinkel";
-var Noon$8 = "Zenit";
-var Sunrise$8 = "Sonnenaufgang";
-var Sunset$8 = "Sonnenuntergang";
+var Azimuth$e = "Azimut";
+var Dawn$e = "Daggry";
+var Dusk$e = "Tusmørke";
+var Elevation$e = "Højde";
+var Noon$e = "Middag";
+var Sunrise$e = "Solopgang";
+var Sunset$e = "Solnedgang";
+var errors$e = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var da = {
+	Azimuth: Azimuth$e,
+	Dawn: Dawn$e,
+	Dusk: Dusk$e,
+	Elevation: Elevation$e,
+	Noon: Noon$e,
+	Sunrise: Sunrise$e,
+	Sunset: Sunset$e,
+	errors: errors$e
+};
+
+var Azimuth$d = "Azimut";
+var Dawn$d = "Morgendämmerung";
+var Dusk$d = "Abenddämmerung";
+var Elevation$d = "Zenitwinkel";
+var Noon$d = "Zenit";
+var Sunrise$d = "Sonnenaufgang";
+var Sunset$d = "Sonnenuntergang";
+var errors$d = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
 var de = {
+	Azimuth: Azimuth$d,
+	Dawn: Dawn$d,
+	Dusk: Dusk$d,
+	Elevation: Elevation$d,
+	Noon: Noon$d,
+	Sunrise: Sunrise$d,
+	Sunset: Sunset$d,
+	errors: errors$d
+};
+
+var Azimuth$c = "Azimuth";
+var Dawn$c = "Dawn";
+var Dusk$c = "Dusk";
+var Elevation$c = "Elevation";
+var Noon$c = "Solar noon";
+var Sunrise$c = "Sunrise";
+var Sunset$c = "Sunset";
+var errors$c = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var en = {
+	Azimuth: Azimuth$c,
+	Dawn: Dawn$c,
+	Dusk: Dusk$c,
+	Elevation: Elevation$c,
+	Noon: Noon$c,
+	Sunrise: Sunrise$c,
+	Sunset: Sunset$c,
+	errors: errors$c
+};
+
+var Azimuth$b = "Azimut";
+var Dawn$b = "Amanecer";
+var Dusk$b = "Anochecer";
+var Elevation$b = "Elevación";
+var Noon$b = "Mediodía solar";
+var Sunrise$b = "Salida del sol";
+var Sunset$b = "Atardecer";
+var errors$b = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var es = {
+	Azimuth: Azimuth$b,
+	Dawn: Dawn$b,
+	Dusk: Dusk$b,
+	Elevation: Elevation$b,
+	Noon: Noon$b,
+	Sunrise: Sunrise$b,
+	Sunset: Sunset$b,
+	errors: errors$b
+};
+
+var Azimuth$a = "Asimuut";
+var Dawn$a = "Koidik";
+var Dusk$a = "Hämarik";
+var Elevation$a = "Kõrgus";
+var Noon$a = "Keskpäev";
+var Sunrise$a = "Päikesetõus";
+var Sunset$a = "Päikeseloojang";
+var errors$a = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var et = {
+	Azimuth: Azimuth$a,
+	Dawn: Dawn$a,
+	Dusk: Dusk$a,
+	Elevation: Elevation$a,
+	Noon: Noon$a,
+	Sunrise: Sunrise$a,
+	Sunset: Sunset$a,
+	errors: errors$a
+};
+
+var Azimuth$9 = "Atsimuutti";
+var Dawn$9 = "Sarastus";
+var Dusk$9 = "Hämärä";
+var Elevation$9 = "Korkeus";
+var Noon$9 = "Keskipäivä";
+var Sunrise$9 = "Auringonnousu";
+var Sunset$9 = "Auringonlasku";
+var errors$9 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var fi = {
+	Azimuth: Azimuth$9,
+	Dawn: Dawn$9,
+	Dusk: Dusk$9,
+	Elevation: Elevation$9,
+	Noon: Noon$9,
+	Sunrise: Sunrise$9,
+	Sunset: Sunset$9,
+	errors: errors$9
+};
+
+var Azimuth$8 = "Azimut";
+var Dawn$8 = "Aube";
+var Dusk$8 = "Crépuscule";
+var Elevation$8 = "Élévation";
+var Noon$8 = "Midi solaire";
+var Sunrise$8 = "Lever du soleil";
+var Sunset$8 = "Coucher du soleil";
+var errors$8 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var fr = {
 	Azimuth: Azimuth$8,
 	Dawn: Dawn$8,
 	Dusk: Dusk$8,
 	Elevation: Elevation$8,
 	Noon: Noon$8,
 	Sunrise: Sunrise$8,
-	Sunset: Sunset$8
+	Sunset: Sunset$8,
+	errors: errors$8
 };
 
-var Azimuth$7 = "Azimuth";
-var Dawn$7 = "Dawn";
-var Dusk$7 = "Dusk";
-var Elevation$7 = "Elevation";
-var Noon$7 = "Solar noon";
-var Sunrise$7 = "Sunrise";
-var Sunset$7 = "Sunset";
-var en = {
+var Azimuth$7 = "Azimut";
+var Dawn$7 = "Hajnal";
+var Dusk$7 = "Szürkület";
+var Elevation$7 = "Magasság";
+var Noon$7 = "Dél";
+var Sunrise$7 = "Napkelte";
+var Sunset$7 = "Napnyugta";
+var errors$7 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var hu = {
 	Azimuth: Azimuth$7,
 	Dawn: Dawn$7,
 	Dusk: Dusk$7,
 	Elevation: Elevation$7,
 	Noon: Noon$7,
 	Sunrise: Sunrise$7,
-	Sunset: Sunset$7
+	Sunset: Sunset$7,
+	errors: errors$7
 };
 
-var Azimuth$6 = "Azimut";
-var Dawn$6 = "Amanecer";
-var Dusk$6 = "Anochecer";
-var Elevation$6 = "Elevación";
-var Noon$6 = "Mediodía solar";
-var Sunrise$6 = "Salida del sol";
-var Sunset$6 = "Atardecer";
-var es = {
+var Azimuth$6 = "Azimuth";
+var Dawn$6 = "Alba";
+var Dusk$6 = "Crepuscolo";
+var Elevation$6 = "Elevazione";
+var Noon$6 = "Mezzogiorno solare";
+var Sunrise$6 = "Alba";
+var Sunset$6 = "Tramonto";
+var errors$6 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var it = {
 	Azimuth: Azimuth$6,
 	Dawn: Dawn$6,
 	Dusk: Dusk$6,
 	Elevation: Elevation$6,
 	Noon: Noon$6,
 	Sunrise: Sunrise$6,
-	Sunset: Sunset$6
+	Sunset: Sunset$6,
+	errors: errors$6
 };
 
-var Azimuth$5 = "Atsimuutti";
-var Dawn$5 = "Sarastus";
-var Dusk$5 = "Hämärä";
-var Elevation$5 = "Korkeus";
-var Noon$5 = "Keskipäivä";
-var Sunrise$5 = "Auringonnousu";
-var Sunset$5 = "Auringonlasku";
-var fi = {
+var Azimuth$5 = "Azimut";
+var Dawn$5 = "Dageraad";
+var Dusk$5 = "Schemer";
+var Elevation$5 = "Hoogte";
+var Noon$5 = "Zonne-middag";
+var Sunrise$5 = "Zonsopkomst";
+var Sunset$5 = "Zonsondergang";
+var errors$5 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var nl = {
 	Azimuth: Azimuth$5,
 	Dawn: Dawn$5,
 	Dusk: Dusk$5,
 	Elevation: Elevation$5,
 	Noon: Noon$5,
 	Sunrise: Sunrise$5,
-	Sunset: Sunset$5
+	Sunset: Sunset$5,
+	errors: errors$5
 };
 
-var Azimuth$4 = "Azimut";
-var Dawn$4 = "Aube";
-var Dusk$4 = "Crépuscule";
-var Elevation$4 = "Élévation";
-var Noon$4 = "Midi solaire";
-var Sunrise$4 = "Lever du soleil";
-var Sunset$4 = "Coucher du soleil";
-var fr = {
+var Azimuth$4 = "Azymut";
+var Dawn$4 = "Świt";
+var Dusk$4 = "Zmierzch";
+var Elevation$4 = "Wysokość";
+var Noon$4 = "Górowanie";
+var Sunrise$4 = "Wschód";
+var Sunset$4 = "Zachód";
+var errors$4 = {
+	SunIntegrationNotFound: "Nie odnaleziono integracji sun"
+};
+var pl = {
 	Azimuth: Azimuth$4,
 	Dawn: Dawn$4,
 	Dusk: Dusk$4,
 	Elevation: Elevation$4,
 	Noon: Noon$4,
 	Sunrise: Sunrise$4,
-	Sunset: Sunset$4
+	Sunset: Sunset$4,
+	errors: errors$4
 };
 
-var Azimuth$3 = "Azimut";
-var Dawn$3 = "Hajnal";
-var Dusk$3 = "Szürkület";
-var Elevation$3 = "Magasság";
-var Noon$3 = "Dél";
-var Sunrise$3 = "Napkelte";
-var Sunset$3 = "Napnyugta";
-var hu = {
+var Azimuth$3 = "Azimute";
+var Dawn$3 = "Amanhecer";
+var Dusk$3 = "Anoitecer";
+var Elevation$3 = "Elevação";
+var Noon$3 = "Meio dia solar";
+var Sunrise$3 = "Nascer do sol";
+var Sunset$3 = "Pôr do sol";
+var errors$3 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var ptBR = {
 	Azimuth: Azimuth$3,
 	Dawn: Dawn$3,
 	Dusk: Dusk$3,
 	Elevation: Elevation$3,
 	Noon: Noon$3,
 	Sunrise: Sunrise$3,
-	Sunset: Sunset$3
+	Sunset: Sunset$3,
+	errors: errors$3
 };
 
-var Azimuth$2 = "Azimuth";
-var Dawn$2 = "Alba";
-var Dusk$2 = "Crepuscolo";
-var Elevation$2 = "Elevazione";
-var Noon$2 = "Mezzogiorno solare";
-var Sunrise$2 = "Alba";
-var Sunset$2 = "Tramonto";
-var it = {
+var Azimuth$2 = "Азимут";
+var Dawn$2 = "Рассвет";
+var Dusk$2 = "Сумерки";
+var Elevation$2 = "Высота";
+var Noon$2 = "Зенит";
+var Sunrise$2 = "Восход";
+var Sunset$2 = "Закат";
+var errors$2 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var ru = {
 	Azimuth: Azimuth$2,
 	Dawn: Dawn$2,
 	Dusk: Dusk$2,
 	Elevation: Elevation$2,
 	Noon: Noon$2,
 	Sunrise: Sunrise$2,
-	Sunset: Sunset$2
+	Sunset: Sunset$2,
+	errors: errors$2
 };
 
 var Azimuth$1 = "Azimut";
-var Dawn$1 = "Dageraad";
-var Dusk$1 = "Schemer";
-var Elevation$1 = "Hoogte";
-var Noon$1 = "Zonne-middag";
-var Sunrise$1 = "Zonsopkomst";
-var Sunset$1 = "Zonsondergang";
-var nl = {
+var Dawn$1 = "Zora";
+var Dusk$1 = "Mrak";
+var Elevation$1 = "Višina";
+var Noon$1 = "Sončno poldne";
+var Sunrise$1 = "Sončni vzhod";
+var Sunset$1 = "Sončni zahod";
+var errors$1 = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var sl = {
 	Azimuth: Azimuth$1,
 	Dawn: Dawn$1,
 	Dusk: Dusk$1,
 	Elevation: Elevation$1,
 	Noon: Noon$1,
 	Sunrise: Sunrise$1,
-	Sunset: Sunset$1
+	Sunset: Sunset$1,
+	errors: errors$1
 };
 
-var Azimuth = "Azimute";
-var Dawn = "Amanhecer";
-var Dusk = "Anoitecer";
-var Elevation = "Elevação";
-var Noon = "Meio dia solar";
-var Sunrise = "Nascer do sol";
-var Sunset = "Pôr do sol";
-var ptBR = {
+var Azimuth = "Azimut";
+var Dawn = "Gryning";
+var Dusk = "Skymning";
+var Elevation = "Elevation";
+var Noon = "Middag";
+var Sunrise = "Soluppgång";
+var Sunset = "Solnedgång";
+var errors = {
+	SunIntegrationNotFound: "Sun integration not found"
+};
+var sv = {
 	Azimuth: Azimuth,
 	Dawn: Dawn,
 	Dusk: Dusk,
 	Elevation: Elevation,
 	Noon: Noon,
 	Sunrise: Sunrise,
-	Sunset: Sunset
+	Sunset: Sunset,
+	errors: errors
 };
 
 var Constants = function Constants() {
@@ -3552,20 +3714,26 @@ _defineProperty(Constants, "EVENT_X_POSITIONS", {
 _defineProperty(Constants, "HORIZON_Y", 108);
 
 _defineProperty(Constants, "LOCALIZATION_LANGUAGES", {
+  da: da,
   de: de,
   en: en,
   es: es,
+  et: et,
   fi: fi,
   fr: fr,
   hu: hu,
   it: it,
   nl: nl,
-  'pt-BR': ptBR
+  pl: pl,
+  'pt-BR': ptBR,
+  ru: ru,
+  sl: sl,
+  sv: sv
 });
 
 _defineProperty(Constants, "SUN_RADIUS", 17);
 
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17;
 var SunCardContent = /*#__PURE__*/function () {
   function SunCardContent() {
     _classCallCheck(this, SunCardContent);
@@ -3574,13 +3742,17 @@ var SunCardContent = /*#__PURE__*/function () {
   _createClass(SunCardContent, null, [{
     key: "generate",
     value: function generate(data, localization, config) {
-      return html(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <ha-card>\n        <div class=\"sun-card ", "\">\n          ", "\n          ", "\n          ", "\n        </div>\n      </ha-card>\n    "])), config.darkMode ? '' : 'sun-card-light', this.generateHeader(data, localization, config), this.generateBody(data), this.generateFooter(data, localization, config));
+      if (data !== null && data !== void 0 && data.error) {
+        return html(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <ha-card>\n          ", "\n        </ha-card>\n      "])), this.generateError());
+      }
+
+      return html(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n      <ha-card>\n        <div class=\"sun-card ", "\">\n          ", "\n          ", "\n          ", "\n        </div>\n      </ha-card>\n    "])), config.darkMode ? '' : 'sun-card-light', this.generateHeader(data, localization, config), this.generateBody(data), this.generateFooter(data, localization, config));
     }
   }, {
     key: "generateHeader",
     value: function generateHeader(data, localization, config) {
-      var title = config.title !== undefined ? html(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n      <h1 class=\"sun-card-title\">", "</h1>\n    "])), config.title) : html(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral([""])));
-      return html(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n      ", "\n      <div class=\"sun-card-header\">\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n      </div>\n    "])), title, localization.Sunrise, data !== null && data !== void 0 && data.times.sunrise ? this.generateTime(data.times.sunrise) : '', localization.Sunset, data !== null && data !== void 0 && data.times.sunset ? this.generateTime(data.times.sunset) : '');
+      var title = config.title !== undefined ? html(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n      <h1 class=\"sun-card-title\">", "</h1>\n    "])), config.title) : html(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral([""])));
+      return html(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n      ", "\n      <div class=\"sun-card-header\">\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n      </div>\n    "])), title, localization.Sunrise, data !== null && data !== void 0 && data.times.sunrise ? this.generateTime(data.times.sunrise) : '', localization.Sunset, data !== null && data !== void 0 && data.times.sunset ? this.generateTime(data.times.sunset) : '');
     }
   }, {
     key: "generateBody",
@@ -3591,37 +3763,48 @@ var SunCardContent = /*#__PURE__*/function () {
       var dawnID = Math.random().toString(36).replace('0.', '');
       var dayID = Math.random().toString(36).replace('0.', '');
       var duskID = Math.random().toString(36).replace('0.', '');
-      return html(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-body\">\n        <svg viewBox=\"0 0 550 150\" xmlns=\"http://www.w3.org/2000/svg\">\n          <defs>\n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n              <stop offset=\"0%\" style=\"stop-color:#f9d05e;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#f9d05e;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#8ebeeb;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#8ebeeb;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n          </defs>\n          <path class=\"sun-card-sun-line\" d=\"M5,146 C29,153 73,128 101,108 C276,-29 342,23 449,108 C473,123 509,150 545,146\" fill=\"none\" stroke=\"var(--sun-card-lines)\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M5,146 C29,153 73,128 101,108 L 5 108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M101,108 C276,-29 342,23 449,108 L 104,108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M449,108 C473,123 509,150 545,146 L 545 108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <line x1=\"5\" y1=\"108\" x2=\"545\" y2=\"108\" stroke=\"var(--sun-card-lines)\" />\n          <line x1=\"101\" y1=\"25\" x2=\"101\" y2=\"100\" stroke=\"var(--sun-card-lines)\" />\n          <line x1=\"449\" y1=\"25\" x2=\"449\" y2=\"100\" stroke=\"var(--sun-card-lines)\" />\n          <circle cx=\"", "\" cy=\"", "\" r=\"17\" opacity=\"", "\" stroke=\"none\" fill=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n        </svg>\n      </div>\n    "])), sunID, (_data$sunPercentOverH = data === null || data === void 0 ? void 0 : data.sunPercentOverHorizon) !== null && _data$sunPercentOverH !== void 0 ? _data$sunPercentOverH : 0, (_data$sunPercentOverH2 = data === null || data === void 0 ? void 0 : data.sunPercentOverHorizon) !== null && _data$sunPercentOverH2 !== void 0 ? _data$sunPercentOverH2 : 0, dawnID, (_data$dawnProgressPer = data === null || data === void 0 ? void 0 : data.dawnProgressPercent) !== null && _data$dawnProgressPer !== void 0 ? _data$dawnProgressPer : 0, (_data$dawnProgressPer2 = data === null || data === void 0 ? void 0 : data.dawnProgressPercent) !== null && _data$dawnProgressPer2 !== void 0 ? _data$dawnProgressPer2 : 0, dayID, (_data$dayProgressPerc = data === null || data === void 0 ? void 0 : data.dayProgressPercent) !== null && _data$dayProgressPerc !== void 0 ? _data$dayProgressPerc : 0, (_data$dayProgressPerc2 = data === null || data === void 0 ? void 0 : data.dayProgressPercent) !== null && _data$dayProgressPerc2 !== void 0 ? _data$dayProgressPerc2 : 0, duskID, (_data$duskProgressPer = data === null || data === void 0 ? void 0 : data.duskProgressPercent) !== null && _data$duskProgressPer !== void 0 ? _data$duskProgressPer : 0, (_data$duskProgressPer2 = data === null || data === void 0 ? void 0 : data.duskProgressPercent) !== null && _data$duskProgressPer2 !== void 0 ? _data$duskProgressPer2 : 0, dawnID, data !== null && data !== void 0 && data.dawnProgressPercent ? 1 : 0, dawnID, dayID, data !== null && data !== void 0 && data.dayProgressPercent ? 1 : 0, dayID, duskID, data !== null && data !== void 0 && data.duskProgressPercent ? 1 : 0, duskID, (_data$sunPosition$x = data === null || data === void 0 ? void 0 : data.sunPosition.x) !== null && _data$sunPosition$x !== void 0 ? _data$sunPosition$x : 0, (_data$sunPosition$y = data === null || data === void 0 ? void 0 : data.sunPosition.y) !== null && _data$sunPosition$y !== void 0 ? _data$sunPosition$y : 0, data !== null && data !== void 0 && data.sunPercentOverHorizon ? 1 : 0, sunID);
+      return html(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-body\">\n        <svg viewBox=\"0 0 550 150\" xmlns=\"http://www.w3.org/2000/svg\">\n          <defs>\n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n              <stop offset=\"0%\" style=\"stop-color:#f9d05e;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#f9d05e;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#8ebeeb;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#8ebeeb;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n            \n            <linearGradient id=\"", "\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n              <stop offset=\"0%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:#393b78;stop-opacity:1\" />\n              <stop offset=\"", "%\" style=\"stop-color:rgb(0,0,0,0);stop-opacity:1\" />\n            </linearGradient>\n          </defs>\n          <path class=\"sun-card-sun-line\" d=\"M5,146 C29,153 73,128 101,108 C276,-29 342,23 449,108 C473,123 509,150 545,146\" fill=\"none\" stroke=\"var(--sun-card-lines)\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M5,146 C29,153 73,128 101,108 L 5 108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M101,108 C276,-29 342,23 449,108 L 104,108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <path d=\"M449,108 C473,123 509,150 545,146 L 545 108\" fill=\"url(#", ")\" opacity=\"", "\" stroke=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n          <line x1=\"5\" y1=\"108\" x2=\"545\" y2=\"108\" stroke=\"var(--sun-card-lines)\" />\n          <line x1=\"101\" y1=\"25\" x2=\"101\" y2=\"100\" stroke=\"var(--sun-card-lines)\" />\n          <line x1=\"449\" y1=\"25\" x2=\"449\" y2=\"100\" stroke=\"var(--sun-card-lines)\" />\n          <circle cx=\"", "\" cy=\"", "\" r=\"17\" opacity=\"", "\" stroke=\"none\" fill=\"url(#", ")\" shape-rendering=\"geometricPrecision\" />\n        </svg>\n      </div>\n    "])), sunID, (_data$sunPercentOverH = data === null || data === void 0 ? void 0 : data.sunPercentOverHorizon) !== null && _data$sunPercentOverH !== void 0 ? _data$sunPercentOverH : 0, (_data$sunPercentOverH2 = data === null || data === void 0 ? void 0 : data.sunPercentOverHorizon) !== null && _data$sunPercentOverH2 !== void 0 ? _data$sunPercentOverH2 : 0, dawnID, (_data$dawnProgressPer = data === null || data === void 0 ? void 0 : data.dawnProgressPercent) !== null && _data$dawnProgressPer !== void 0 ? _data$dawnProgressPer : 0, (_data$dawnProgressPer2 = data === null || data === void 0 ? void 0 : data.dawnProgressPercent) !== null && _data$dawnProgressPer2 !== void 0 ? _data$dawnProgressPer2 : 0, dayID, (_data$dayProgressPerc = data === null || data === void 0 ? void 0 : data.dayProgressPercent) !== null && _data$dayProgressPerc !== void 0 ? _data$dayProgressPerc : 0, (_data$dayProgressPerc2 = data === null || data === void 0 ? void 0 : data.dayProgressPercent) !== null && _data$dayProgressPerc2 !== void 0 ? _data$dayProgressPerc2 : 0, duskID, (_data$duskProgressPer = data === null || data === void 0 ? void 0 : data.duskProgressPercent) !== null && _data$duskProgressPer !== void 0 ? _data$duskProgressPer : 0, (_data$duskProgressPer2 = data === null || data === void 0 ? void 0 : data.duskProgressPercent) !== null && _data$duskProgressPer2 !== void 0 ? _data$duskProgressPer2 : 0, dawnID, data !== null && data !== void 0 && data.dawnProgressPercent ? 1 : 0, dawnID, dayID, data !== null && data !== void 0 && data.dayProgressPercent ? 1 : 0, dayID, duskID, data !== null && data !== void 0 && data.duskProgressPercent ? 1 : 0, duskID, (_data$sunPosition$x = data === null || data === void 0 ? void 0 : data.sunPosition.x) !== null && _data$sunPosition$x !== void 0 ? _data$sunPosition$x : 0, (_data$sunPosition$y = data === null || data === void 0 ? void 0 : data.sunPosition.y) !== null && _data$sunPosition$y !== void 0 ? _data$sunPosition$y : 0, data !== null && data !== void 0 && data.sunPercentOverHorizon ? 1 : 0, sunID);
+    }
+  }, {
+    key: "generateError",
+    value: function generateError() {
+      return html(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n      <hui-error-card></hui-error-card>\n    "])));
     }
   }, {
     key: "generateFooter",
     value: function generateFooter(data, localization, config) {
-      var upperRow = html(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-footer-row\">\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n      </div>\n    "])), localization.Dawn, data !== null && data !== void 0 && data.times.dawn ? this.generateTime(data.times.dawn) : '', localization.Noon, data !== null && data !== void 0 && data.times.noon ? this.generateTime(data.times.noon) : '', localization.Dusk, data !== null && data !== void 0 && data.times.dusk ? this.generateTime(data.times.dusk) : '');
-      var bottomRow = html(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral([""])));
+      var upperRow = html(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-footer-row\">\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          ", "\n        </div>\n      </div>\n    "])), localization.Dawn, data !== null && data !== void 0 && data.times.dawn ? this.generateTime(data.times.dawn) : '', localization.Noon, data !== null && data !== void 0 && data.times.noon ? this.generateTime(data.times.noon) : '', localization.Dusk, data !== null && data !== void 0 && data.times.dusk ? this.generateTime(data.times.dusk) : '');
+      var bottomRow = html(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral([""])));
 
       if (config.showAzimuth || config.showElevation) {
         var _data$azimuth, _data$elevation;
 
-        var azimuth = config.showAzimuth ? html(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          <span class=\"sun-card-dawn-time sun-card-text-time\">", "</span>\n        </div>\n      "])), localization.Azimuth, (_data$azimuth = data === null || data === void 0 ? void 0 : data.azimuth) !== null && _data$azimuth !== void 0 ? _data$azimuth : '') : html(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral([""])));
-        var elevation = config.showElevation ? html(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          <span class=\"sun-card-dawn-time sun-card-text-time\">", "</span>\n        </div>\n      "])), localization.Elevation, (_data$elevation = data === null || data === void 0 ? void 0 : data.elevation) !== null && _data$elevation !== void 0 ? _data$elevation : '') : html(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral([""])));
-        bottomRow = html(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-footer-row\">\n          ", "\n          ", "\n        </div>\n      "])), azimuth, elevation);
+        var azimuth = config.showAzimuth ? html(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          <span class=\"sun-card-dawn-time sun-card-text-time\">", "</span>\n        </div>\n      "])), localization.Azimuth, (_data$azimuth = data === null || data === void 0 ? void 0 : data.azimuth) !== null && _data$azimuth !== void 0 ? _data$azimuth : '') : html(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral([""])));
+        var elevation = config.showElevation ? html(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-text-container\">\n          <span class=\"sun-card-text-subtitle\">", "</span>\n          <span class=\"sun-card-dawn-time sun-card-text-time\">", "</span>\n        </div>\n      "])), localization.Elevation, (_data$elevation = data === null || data === void 0 ? void 0 : data.elevation) !== null && _data$elevation !== void 0 ? _data$elevation : '') : html(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral([""])));
+        bottomRow = html(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n        <div class=\"sun-card-footer-row\">\n          ", "\n          ", "\n        </div>\n      "])), azimuth, elevation);
       }
 
-      return html(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-footer\">\n        ", "\n        ", "\n      </div>\n    "])), upperRow, bottomRow);
+      return html(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["\n      <div class=\"sun-card-footer\">\n        ", "\n        ", "\n      </div>\n    "])), upperRow, bottomRow);
     }
   }, {
     key: "generateTime",
     value: function generateTime(time) {
       if (time.period) {
-        return html(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n        <span class=\"sun-card-text-time\">\n          ", " <span class=\"sun-card-text-time-period\">", "</span>\n        </span>\n      "])), time.time, time.period);
+        return html(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["\n        <span class=\"sun-card-text-time\">\n          ", " <span class=\"sun-card-text-time-period\">", "</span>\n        </span>\n      "])), time.time, time.period);
       }
 
-      return html(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["\n      <span class=\"sun-card-text-time\">", "</span>\n    "])), time.time);
+      return html(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["\n      <span class=\"sun-card-text-time\">", "</span>\n    "])), time.time);
     }
   }]);
 
   return SunCardContent;
 }();
+
+var ESunCardErrors;
+
+(function (ESunCardErrors) {
+  ESunCardErrors["SunIntegrationNotFound"] = "SunIntegrationNotFound";
+})(ESunCardErrors || (ESunCardErrors = {}));
 
 var SunCard = _decorate([customElement('sun-card')], function (_initialize, _LitElement) {
   var SunCard = /*#__PURE__*/function (_LitElement2) {
@@ -3798,6 +3981,10 @@ var SunCard = _decorate([customElement('sun-card')], function (_initialize, _Lit
           return;
         }
 
+        if (!this.lastHass.states['sun.sun']) {
+          return this.showError(ESunCardErrors.SunIntegrationNotFound);
+        }
+
         this.config.darkMode = (_this$config$darkMode = this.config.darkMode) !== null && _this$config$darkMode !== void 0 ? _this$config$darkMode : this.lastHass.themes.darkMode;
         this.config.language = (_ref = (_this$config$language = this.config.language) !== null && _this$config$language !== void 0 ? _this$config$language : (_this$lastHass$locale = this.lastHass.locale) === null || _this$lastHass$locale === void 0 ? void 0 : _this$lastHass$locale.language) !== null && _ref !== void 0 ? _ref : this.lastHass.language;
         this.config.timeFormat = (_this$config$timeForm = this.config.timeFormat) !== null && _this$config$timeForm !== void 0 ? _this$config$timeForm : this.getTimeFormatByLanguage(this.config.language);
@@ -3864,6 +4051,14 @@ var SunCard = _decorate([customElement('sun-card')], function (_initialize, _Lit
       }
     }, {
       kind: "method",
+      key: "showError",
+      value: function showError(error) {
+        this.data = {
+          error: error
+        };
+      }
+    }, {
+      kind: "method",
       key: "render",
       value: function render() {
         var config = this.getConfig();
@@ -3880,6 +4075,27 @@ var SunCard = _decorate([customElement('sun-card')], function (_initialize, _Lit
         if (!this.hasRendered) {
           this.hasRendered = true;
           this.processLastHass();
+          return;
+        }
+
+        if (this.data.error) {
+          var _this$shadowRoot2;
+
+          var errorElement = (_this$shadowRoot2 = this.shadowRoot) === null || _this$shadowRoot2 === void 0 ? void 0 : _this$shadowRoot2.querySelector('hui-error-card');
+
+          if (errorElement) {
+            var _errorElement$setConf;
+
+            var _config = this.getConfig();
+
+            var language = _config.language;
+            var localization = Constants.LOCALIZATION_LANGUAGES[language];
+            var error = localization.errors[this.data.error];
+            (_errorElement$setConf = errorElement.setConfig) === null || _errorElement$setConf === void 0 ? void 0 : _errorElement$setConf.call(errorElement, {
+              error: error
+            });
+            console.error(error);
+          }
         }
       }
     }, {
