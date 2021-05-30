@@ -13,5 +13,5 @@ sensors:
       total_lights: >-
         {% set lights_on = states |
           selectattr('entity_id','in',state_attr('light.living_room_lights','entity_id'))|
-          map(attribute='entity_id') | list | count %}
+          selectattr('state','ne','unavailable') | map(attribute='entity_id') | list | count %}
         {{lights_on}}
