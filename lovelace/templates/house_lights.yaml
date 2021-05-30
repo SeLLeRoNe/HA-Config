@@ -43,83 +43,164 @@ house_lights:
         entity: light.living_room_lights
         states:
           "on":
-            type: custom:q-card
-            card: living_room_lights
+            type: custom:decluttering-card
+            template: living_room_lights
           "off":
-            type: custom:q-card
-            card: living_room_lights
+            type: custom:decluttering-card
+            template: living_room_lights
       - type: custom:state-switch
         entity: light.kitchen_lights
         states:
           "on":
-            type: custom:q-card
-            card: kitchen_lights
+            type: custom:decluttering-card
+            template: kitchen_lights
           "off":
-            type: custom:q-card
-            card: kitchen_lights
+            type: custom:decluttering-card
+            template: kitchen_lights
       - type: custom:state-switch
         entity: light.studio_lights
         states:
           "on":
-            type: custom:q-card
-            card: studio_lights
+            type: custom:decluttering-card
+            template: studio_lights_fold
           "off":
-            type: custom:q-card
-            card: studio_lights
+            type: custom:decluttering-card
+            template: studio_lights_fold
       - type: custom:state-switch
         entity: light.master_bedroom_lights
         states:
           "on":
-            type: custom:q-card
-            card: master_bedroom_lights
+            type: custom:decluttering-card
+            template: master_bedroom_lights_fold
           "off":
-            type: custom:q-card
-            card: master_bedroom_lights
+            type: custom:decluttering-card
+            template: master_bedroom_lights_fold
       - type: custom:state-switch
         entity: light.master_bathroom_lights
         states:
           "on":
-            type: custom:q-card
-            card: master_bathroom_lights
+            type: custom:decluttering-card
+            template: master_bathroom_lights_fold
           "off":
-            type: custom:q-card
-            card: master_bathroom_lights
+            type: custom:decluttering-card
+            template: master_bathroom_lights_fold
       - type: custom:state-switch
         entity: light.bedroom_luca_lights
         states:
           "on":
-            type: custom:q-card
-            card: bedroom_luca_lights
+            type: custom:decluttering-card
+            template: bedroom_luca_lights_fold
           "off":
-            type: custom:q-card
-            card: bedroom_luca_lights
+            type: custom:decluttering-card
+            template: bedroom_luca_lights_fold
       - type: custom:state-switch
         entity: light.bathroom_lights
         states:
           "on":
-            type: custom:q-card
-            card: bathroom_lights
+            type: custom:decluttering-card
+            template: bathroom_lights_fold
           "off":
-            type: custom:q-card
-            card: bathroom_lights
+            type: custom:decluttering-card
+            template: bathroom_lights_fold
       - type: custom:state-switch
         entity: light.laundry_room_lights
         states:
           "on":
-            type: custom:q-card
-            card: laundry_room_lights
+            type: custom:decluttering-card
+            template: laundry_room_lights_fold
           "off":
-            type: custom:q-card
-            card: laundry_room_lights
+            type: custom:decluttering-card
+            template: laundry_room_lights_fold
       - type: custom:state-switch
         entity: light.patio_lights
         states:
           "on":
-            type: custom:q-card
-            card: patio_lights
+            type: custom:decluttering-card
+            template: patio_lights_fold
           "off":
-            type: custom:q-card
-            card: patio_lights
+            type: custom:decluttering-card
+            template: patio_lights_fold
+#      - type: custom:state-switch
+#        entity: light.living_room_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: living_room_lights
+#          "off":
+#            type: custom:q-card
+#            card: living_room_lights
+#      - type: custom:state-switch
+#        entity: light.kitchen_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: kitchen_lights
+#          "off":
+#            type: custom:q-card
+#            card: kitchen_lights
+#      - type: custom:state-switch
+#        entity: light.studio_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: studio_lights
+#          "off":
+#            type: custom:q-card
+#            card: studio_lights
+#      - type: custom:state-switch
+#        entity: light.master_bedroom_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: master_bedroom_lights
+#          "off":
+#            type: custom:q-card
+#            card: master_bedroom_lights
+#      - type: custom:state-switch
+#        entity: light.master_bathroom_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: master_bathroom_lights
+#          "off":
+#            type: custom:q-card
+#            card: master_bathroom_lights
+#      - type: custom:state-switch
+#        entity: light.bedroom_luca_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: bedroom_luca_lights
+#          "off":
+#            type: custom:q-card
+#            card: bedroom_luca_lights
+#      - type: custom:state-switch
+#        entity: light.bathroom_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: bathroom_lights
+#          "off":
+#            type: custom:q-card
+#            card: bathroom_lights
+#      - type: custom:state-switch
+#        entity: light.laundry_room_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: laundry_room_lights
+#          "off":
+#            type: custom:q-card
+#            card: laundry_room_lights
+#      - type: custom:state-switch
+#        entity: light.patio_lights
+#        states:
+#          "on":
+#            type: custom:q-card
+#            card: patio_lights
+#          "off":
+#            type: custom:q-card
+#            card: patio_lights
       - type: custom:decluttering-card
         template: title
         variables:

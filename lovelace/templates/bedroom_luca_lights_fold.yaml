@@ -1,0 +1,41 @@
+---
+bedroom_luca_lights_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: custom:slider-entity-row
+      entity: light.bedroom_luca_lights
+      name: Bedroom Luca
+      toggle: true
+      hide_state: true
+      hide_when_off: false
+      full_row: false
+      min: 0
+      max: 100
+      step: 1
+    entities:
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
+          - name: Light 1
+          - entity: light.bedroom_luca_light_1
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
+          - name: Light 2
+          - entity: light.bedroom_luca_light_2
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
+          - name: Light 3
+          - entity: light.bedroom_luca_light_3
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
+          - name: Top
+          - entity: light.bedroom_luca_lamp_top_light
+      - type: custom:decluttering-card
+        template: light_card
+        variables:
+          - name: Bottom
+          - entity: light.bedroom_luca_lamp_bottom_light
