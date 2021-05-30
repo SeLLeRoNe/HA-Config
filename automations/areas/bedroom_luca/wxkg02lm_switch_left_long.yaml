@@ -1,6 +1,6 @@
 ---
-id: '2831310072100'
-alias: Master Bedroom - WXKG02LM Switch Right Long
+id: '1615970672717'
+alias: Master Bedroom - WXKG02LM Switch Left Long
 initial_state: on
 trigger:
   - platform: mqtt
@@ -9,9 +9,10 @@ condition:
   condition: and
   conditions:
     - condition: template
-      value_template: "{{ trigger.payload_json['action'] == 'hold_right' }}"
+      value_template: "{{ trigger.payload_json['action'] == 'hold_left' }}"
 action:
   - service: light.turn_on
     data:
-      entity_id: light.master_bedroom_lamp_bottom_light
+      entity_id: light.bedroom_luca_lamp_top_light
       brightness_pct: 100
+      rgb_color: [255,0,0]

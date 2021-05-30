@@ -13,10 +13,10 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.master_bedroom_lamp_top_light
+      entity_id: light.bedroom_luca_lamp_top_light
       brightness_pct: 50
       rgb_color: [255,0,0]
   - service: light.turn_on
     data:
-      entity_id: light.master_bedroom_lamp_bottom_light
+      entity_id: light.bedroom_luca_lamp_bottom_light
       brightness_pct: 25

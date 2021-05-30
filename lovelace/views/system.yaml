@@ -716,7 +716,7 @@ cards:
           - type: 'custom:decluttering-card'
             template: tasmota_info
             variables:
-              - device: master_bedroom_lamp_top_light
+              - device: bedroom_luca_lamp_top_light
               - device_name: "Lamp Top Light"
           - type: section
             label: Laundry Room
@@ -942,9 +942,9 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.master_bedroom_lamp_bottom_light_link_quality
+            - entity_id: sensor.bedroom_luca_lamp_bottom_light_link_quality
               options:
-                name: Master Bedroom - Lamp Bottom Light - Link Quality
+                name: Bedroom Luca - Lamp Bottom Light - Link Quality
                 tap_action:
                   action: none
               not 1:

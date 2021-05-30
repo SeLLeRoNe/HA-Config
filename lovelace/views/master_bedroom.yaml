@@ -5,10 +5,6 @@ type: custom:vertical-layout
 layout:
    max_cols: 5
 cards:
-  - type: custom:decluttering-card
-    template: title
-    variables:
-      - title: Master Bedroom
   - type: custom:state-switch
     entity: light.master_bedroom_lights
     states:

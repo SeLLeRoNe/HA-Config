@@ -1,21 +1,21 @@
 ---
-# MQTT Device: Master Bedroom Lamp
+# MQTT Device: Bedroom Luca Lamp
 #
 # https://www.home-assistant.io/components/mqtt/
 #
 light:
   - platform: "mqtt"
-    name: "Master Bedroom Lamp Bottom Light"
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    name: "Bedroom Luca Lamp Bottom Light"
+    state_topic: "zigbee2mqtt/bedroom_luca_lamp_bottom_light"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+      - topic: "zigbee2mqtt/bedroom_luca_lamp_top_light/availability"
     brightness: true
     color_temp: true
     xy: false
     hs: false
     schema: "json"
-    command_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/set"
+    command_topic: "zigbee2mqtt/bedroom_luca_lamp_bottom_light/set"
     brightness_scale: 254
     max_mireds: 454
     min_mireds: 250
@@ -30,28 +30,28 @@ light:
 
 sensor:
   - platform: mqtt
-    name: 'Master Bedroom Lamp Bottom Light Link Quality'
+    name: 'Bedroom Luca Lamp Bottom Light Link Quality'
     icon: mdi:lightbulb
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    state_topic: "zigbee2mqtt/bedroom_luca_lamp_bottom_light"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+      - topic: "zigbee2mqtt/bedroom_luca_lamp_top_light/availability"
     value_template: "{{ value_json.linkquality }}"
   - platform: "mqtt"
-    name: "Master Bedroom Lamp Bottom light Firmware Update"
+    name: "Bedroom Luca Lamp Bottom light Firmware Update"
     state_topic: "zigbee2mqtt/master_bedroom_remote"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light/availability"
+      - topic: "zigbee2mqtt/bedroom_luca_lamp_bottom_light/availability"
     icon: mdi:update
     value_template: '{{ value_json["update"]["state"] }}'
 
 binary_sensor:
   - platform: mqtt
-    name: 'Master Bedroom Lamp Bottom Light Firmware Update'
-    state_topic: "zigbee2mqtt/master_bedroom_lamp_bottom_light"
+    name: 'Bedroom Luca Lamp Bottom Light Firmware Update'
+    state_topic: "zigbee2mqtt/bedroom_luca_lamp_bottom_light"
     availability:
       - topic: "zigbee2mqtt/bridge/state"
-      - topic: "zigbee2mqtt/master_bedroom_lamp_top_light/availability"
+      - topic: "zigbee2mqtt/bedroom_luca_lamp_top_light/availability"
     value_template: "{% if value_json['update'].state is defined %}{{ value_json['update'].state }}{% endif %}"
     payload_on: available

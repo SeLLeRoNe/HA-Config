@@ -35,13 +35,13 @@ master_bedroom_lights:
         - entity: light.sonia_bedside_lamp
     - type: section
       label: Lamp
-    - type: custom:decluttering-card
-      template: light_card_rgb
-      variables:
-        - name: Top
-        - entity: light.master_bedroom_lamp_top_light
-    - type: custom:decluttering-card
-      template: light_card
-      variables:
-        - name: Bottom
-        - entity: light.master_bedroom_lamp_bottom_light
+#    - type: custom:decluttering-card
+#      template: light_card_rgb
+#      variables:
+#        - name: Top
+#        - entity: light.bedroom_luca_lamp_top_light
+#    - type: custom:decluttering-card
+#      template: light_card
+#      variables:
+#        - name: Bottom
+#        - entity: light.bedroom_luca_lamp_bottom_light

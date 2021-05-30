@@ -23,6 +23,21 @@ bedroom_luca_lights:
         variables:
           - name: Light 3
           - entity: light.bedroom_luca_light_3
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Top
+              - entity: light.bedroom_luca_lamp_top_light
+          - type: custom:decluttering-card
+            template: light_card
+            variables:
+              - name: Bottom
+              - entity: light.bedroom_luca_lamp_bottom_light
       - type: custom:decluttering-card
         template: title
         variables:
