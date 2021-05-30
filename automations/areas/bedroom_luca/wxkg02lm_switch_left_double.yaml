@@ -4,7 +4,7 @@ alias: Master Bedroom - WXKG02LM Switch Left Double
 initial_state: on
 trigger:
   - platform: mqtt
-    topic: 'zigbee2mqtt/master_bedroom_WXKG02LM'
+    topic: 'zigbee2mqtt/bedroom_lucaWXKG02LM'
 condition:
   condition: and
   conditions:
