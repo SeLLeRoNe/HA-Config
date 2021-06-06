@@ -7,7 +7,7 @@
 recorder:
   db_url: !secret database_url
   auto_purge: true
-  purge_keep_days: 7
+  purge_keep_days: 15
   exclude:
     domains:
       - automation
