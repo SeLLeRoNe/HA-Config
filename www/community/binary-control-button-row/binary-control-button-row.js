@@ -1,3 +1,11 @@
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "binary-control-button-row",
+  name: "binary control button row",
+  description: "A plugin to display your binary entity controls in a button row.",
+  preview: false,
+});
+
 class CustomBinaryRow extends Polymer.Element {
 
 	static get template() {

@@ -1,3 +1,11 @@
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "light-brightness-preset-row",
+  name: "light brightness preset row",
+  description: "A plugin to display your light controls in a button row.",
+  preview: false,
+});
+
 class CustomLightBrightnessRow extends Polymer.Element {
 
 	static get template() {

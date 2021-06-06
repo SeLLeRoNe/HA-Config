@@ -1,3 +1,11 @@
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "fan-control-entity-row",
+  name: "fan control entity row",
+  description: "A plugin to display your fan controls in a button row.",
+  preview: false,
+});
+
 class CustomFanRow extends Polymer.Element {
 
 	static get template() {

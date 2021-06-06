@@ -1,3 +1,11 @@
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "toggle-control-button-row",
+  name: "toggle control button row",
+  description: "A plugin to display your binary entity in a button row with a single button.",
+  preview: false,
+});
+
 class CustomToggleRow extends Polymer.Element {
 
 	static get template() {
