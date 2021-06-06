@@ -44,19 +44,19 @@ house_lights:
         states:
           "on":
             type: custom:decluttering-card
-            template: living_room_lights
+            template: living_room_lights_fold
           "off":
             type: custom:decluttering-card
-            template: living_room_lights
+            template: living_room_lights_fold
       - type: custom:state-switch
         entity: light.kitchen_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: kitchen_lights
+            template: kitchen_lights_fold
           "off":
             type: custom:decluttering-card
-            template: kitchen_lights
+            template: kitchen_lights_fold
       - type: custom:state-switch
         entity: light.studio_lights
         states:
