@@ -14,7 +14,7 @@ condition:
       entity_id: media_player.master_bedroom_echo_dot
       state: 'standby'
       for:
-        minutes: 15
+        seconds: 60
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
@@ -23,10 +23,14 @@ action:
     data:
       entity_id: media_player.spotify_andrea
       source: "Master Bedroom Echo Dot"
+  - delay:
+      seconds: 1
   - service: media_player.volume_set
     data:
       entity_id: media_player.master_bedroom_echo_dot
       volume_level: 0.25
+  - delay:
+      seconds: 1
   - service: media_player.play_media
     data:
       entity_id: media_player.spotify_andrea
