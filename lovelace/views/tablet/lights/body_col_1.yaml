@@ -6,55 +6,55 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: scene.salotto_brillante
-        icon: 'phu:roomsLiving'
+        entity: scene.living_room_table_lights_on
+        name: Living Room
+        label: Day Light
+        icon: 'phu:archetypesFloorShade'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: GIORNO
-        label: Sala
       - type: 'custom:button-card'
-        entity: scene.salotto_relax
-        icon: 'phu:roomsLiving'
+        entity: scene.living_room_table_game
+        name: Living Room
+        label: Table Game
+        icon: 'phu:presetsDimmerDimdown'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: RELAX
-        label: Sala
       - type: 'custom:button-card'
-        entity: scene.salotto_luce_tv
-        icon: 'phu:roomsLiving'
+        entity: scene.living_room_table_mood
+        name: Living Room
+        label: Party
+        icon: 'phu:presetsNightlight'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: SERA
-        label: Sala
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: scene.salotto_energia
-        icon: 'phu:roomsLiving'
+        name: Luca's Bedroom
+        label: Day Light
+        entity: scene.bedroom_luca_lights_on
+        icon: 'phu:routinesDaytime'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: ENERGIA
-        label: Sala
       - type: 'custom:button-card'
-        entity: scene.salotto_calda
-        icon: 'phu:roomsLiving'
+        entity: scene.bedroom_luca_lights_on_guest
+        name: Luca's Bedroom
+        label: Relax
+        icon: 'phu:tabbarAutomation'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: CALDA
-        label: Sala
       - type: 'custom:button-card'
-        entity: scene.salotto_tutto
-        icon: 'phu:roomsLiving'
+        entity: scene.bedroom_luca_diaper_change
+        name: Luca's Bedroom
+        label: Party
+        icon: 'phu:tabbarAutomation'
         template:
-          - button_icon_label
+          - button_text_label
           - action_turn_scene
-        name: LUMINOSO
-        label: Sala
   - type: 'custom:button-card'
     template: row_space_30
   - type: horizontal-stack

@@ -58,7 +58,7 @@ cards:
             name: MEDIA03
         show_state: false
       - type: 'custom:button-card'
-        entity: sensor.studio_desk_andrea_computercpu_temperature
+        entity: sensor.studio_desk_andrea_computer_cpu_temperature
         show_icon: false
         show_state: true
         name: CPU

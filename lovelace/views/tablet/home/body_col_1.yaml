@@ -31,101 +31,103 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: scene.salotto_brillante
+        entity: scene.living_room_table_lights_on
+        name: Living Room
+        label: Day Light
         icon: 'phu:archetypesFloorShade'
         template:
           - button_text_label
           - action_turn_scene
-        name: Sala
-        label: GIORNO
       - type: 'custom:button-card'
-        entity: scene.salotto_relax
+        entity: scene.living_room_table_game
+        name: Living Room
+        label: Table Game
         icon: 'phu:presetsDimmerDimdown'
         template:
           - button_text_label
           - action_turn_scene
-        name: Sala
-        label: RELAX
       - type: 'custom:button-card'
-        entity: scene.salotto_luce_tv
+        entity: scene.living_room_table_mood
+        name: Living Room
+        label: Party
         icon: 'phu:presetsNightlight'
         template:
           - button_text_label
           - action_turn_scene
-        name: Sala
-        label: SERA
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: scene.salotto_tutto
+        name: Luca's Bedroom
+        label: Day Light
+        entity: scene.bedroom_luca_lights_on
         icon: 'phu:routinesDaytime'
         template:
           - button_text_label
           - action_turn_scene
-        name: Sala
-        label: TUTTO
       - type: 'custom:button-card'
-        entity: scene.scala_cortesia
+        entity: scene.bedroom_luca_lights_on_guest
+        name: Luca's Bedroom
+        label: Relax
         icon: 'phu:tabbarAutomation'
         template:
           - button_text_label
           - action_turn_scene
-        name: Scala
-        label: CORTESIA
       - type: 'custom:button-card'
-        name: SALA
-        entity: group.luci_salotto
+        entity: scene.bedroom_luca_diaper_change
+        name: Luca's Bedroom
+        label: Party
+        icon: 'phu:tabbarAutomation'
         template:
-          - button_horizontal
-          - action_turn_off
-        styles:
-          card:
-            - height: 100%
+          - button_text_label
+          - action_turn_scene
   - type: 'custom:button-card'
     template: row_space_5
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        name: "Living Room Table"
-        entity: light.living_room_table_lights
+        name: "Living Room"
+        entity: light.living_room_lights
         icon: 'mdi:lightbulb-group'
         color: auto-no-temperature
         template:
           - button_light
       - type: 'custom:button-card'
-        entity: light.faretti_sala
-        icon: 'phu:bulbsClassic'
-        name: Faretti
+        entity: light.studio_lights
+        icon: 'mdi:lightbulb-group'
+#        icon: 'phu:bulbsClassic'
+        name: Studio
         template:
           - button_light
       - type: 'custom:button-card'
-        entity: light.terrazzo_salotto
-        icon: 'phu:bulbsClassic'
-        name: Terrazzo
+        entity: light.patio_lights
+        icon: 'mdi:lightbulb-group'
+#        icon: 'phu:bulbsClassic'
+        name: Patio
         template:
           - button_light
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: light.scala
-        icon: 'phu:bulbsClassic'
+        entity: light.master_bedroom_lights
+        icon: 'mdi:lightbulb-group'
+#        icon: 'phu:bulbsClassic'
+        color: auto-no-temperature
+        name: Master Bedroom
+        template:
+          - button_light
+      - type: 'custom:button-card'
+        entity: light.master_bathroom
+        icon: 'mdi:lightbulb-group'
+#        icon: 'phu:bulbsClassic'
+        name: Master Bathroom
         color: auto-no-temperature
         template:
           - button_light
       - type: 'custom:button-card'
-        entity: light.studio
-        icon: 'phu:bulbsClassic'
-        color: auto-no-temperature
-        template:
-          - button_light
-      - type: 'custom:button-card'
-        entity: light.bagno_sotto
-        name: Bagno
-        icon: 'phu:bulbsClassic'
+        entity: light.bedroom_luca_lights
+        name: Luca's Bedroom
+        icon: 'mdi:lightbulb-group'
+#        icon: 'phu:bulbsClassic'
         color: auto-no-temperature
         template:
           - button_light                  
-
-
-
-
