@@ -12,7 +12,7 @@ living_room_lights:
         show_header_toggle: false
         entities:
           - type: section
-            label: Lamp
+            label: Table
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
