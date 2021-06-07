@@ -1,0 +1,9 @@
+title: Lights
+icon: mdi:lightbulb-group
+path: lights
+type: custom:vertical-layout
+layout:
+   max_cols: 5
+cards:
+  - type: custom:decluttering-card
+    template: house_lights

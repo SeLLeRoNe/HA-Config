@@ -21,6 +21,7 @@ kiosk_mode:
 views:
   - !include lovelace/views/homeassistant.yaml
   - !include lovelace/views/system.yaml
+  - !include lovelace/views/lights.yaml
   - !include lovelace/views/batteries.yaml
   - !include lovelace/views/temperatures.yaml
   - !include lovelace/views/humidities.yaml
