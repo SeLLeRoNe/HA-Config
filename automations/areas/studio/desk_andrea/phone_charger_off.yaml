@@ -44,11 +44,11 @@ condition:
           entity_id: sensor.andrea_oneplus_nord_battery_state
           state: 'full'
     - condition: template
-      value_template: '{{ states.sensor.andrea_oneplus_nord_battery_level.state > states.input_number.oneplus_charger_upper_bound.state }}'
+      value_template: '{{ (states.sensor.andrea_oneplus_nord_battery_level.state | int ) > ( states.input_number.oneplus_charger_upper_bound.state | int ) }}'
     - condition: not
       conditions:
         - condition: template
-          value_template: '{{ states.sensor.andrea_oneplus_nord_battery_level.state < states.input_number.oneplus_charger_lower_bound.state }}'
+          value_template: '{{ ( states.sensor.andrea_oneplus_nord_battery_level.state | int ) < ( states.input_number.oneplus_charger_lower_bound.state | int ) }}'
 action:
   - service: switch.turn_off
     entity_id: switch.studio_usb_relay_01
