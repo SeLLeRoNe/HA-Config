@@ -10,8 +10,14 @@ calendars:
   - name: ES Holidays
     url: !secret ics_holiday_es
     includeAllDay: true
-  - name: Motors
-    url: !secret ics_motors
+  - name: Formula 1
+    url: !secret ics_formula_1
+  - name: Formula 2
+    url: !secret ics_formula_2
+  - name: Formula E
+    url: !secret ics_formula_e
+  - name: Moto GP
+    url: !secret ics_motogp
     includeAllDay: true
   - name: Serie A
     url: !secret ics_serie_a
