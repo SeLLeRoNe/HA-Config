@@ -1,14 +1,20 @@
+// #### Add card info to console
+console.info(
+    `%c DARK-SKY-WEATHER-CARD  \n%c  Version 7.2 animated    `,
+    "color: orange; font-weight: bold; background: black",
+    "color: white; font-weight: bold; background: dimgray",
+   );
 // #####
 // ##### Get the LitElement and HTML classes from an already defined HA Lovelace class
 // #####
-var LitElement = LitElement || Object.getPrototypeOf(customElements.get("home-assistant-main"));
-var html = LitElement.prototype.html;
+  var Lit = Lit || Object.getPrototypeOf(customElements.get("ha-panel-lovelace") || customElements.get('hui-view'));
+  var html = Lit.prototype.html;
 
 // #####
 // ##### Custom Card Definition begins
 // #####
 
-class DarkSkyWeatherCard extends LitElement {
+  class DarkSkyWeatherCard extends Lit {
 
 // #####
 // ##### Define Render Template
@@ -16,12 +22,13 @@ class DarkSkyWeatherCard extends LitElement {
 
   render() {
 //  Handle Configuration Flags 
-//    var icons = this.config.static_icons ? "static" : "animated";
+    var icons = this.config.static_icons ? "static" : "animated";
     var currentText = this.config.entity_current_text ? html`<span class="currentText" id="current-text">${this._hass.states[this.config.entity_current_text].state}</span>` : ``;
     var apparentTemp = this.config.entity_apparent_temp ? html`<span class="apparent">${this.localeText.feelsLike} <span id="apparent-text">${this.current.apparent}</span> ${this.getUOM("temperature")}</span>` : ``;
-    var summary = this.config.entity_daily_summary ? html`<br><span class="unit" id="daily-summary-text">${this._hass.states[this.config.entity_daily_summary].state}</span></br>` : ``;
+    var summaryToday = this.config.entity_summary_today? html`<br><span class="today" id="summary-today-text"> ${this._hass.states[this.config.entity_summary_today].state}<br> ` : ``;
+    var summary = this.config.entity_daily_summary ? html`<br><span class="summary" id="daily-summary-text">${this._hass.states[this.config.entity_daily_summary].state}</span></br>` : ``;
     var separator = this.config.show_separator ? html`<hr class=line>` : ``;
-    
+    var today = this.config.entity_today ? html`<span class="today" id="today-text">${this._hass.states[this.config.entity_today].state}</span>` : ``;
     
     
 // Build HTML    
@@ -65,6 +72,11 @@ class DarkSkyWeatherCard extends LitElement {
                   <div class="fcasttooltiptext" id="fcast-summary-${daily.dayIndex}">${ this.config.tooltips ? this._hass.states[daily.summary].state : ""}</div>
                 </div>`)}
               </div>
+          <br>
+          <hr>
+          <span class="summary">Summary for today: </span>${today}
+          ${summaryToday}
+          <br><br><span class="summary">Rest of the week: </span>
         ${summary}
       </ha-card>
     `;
@@ -246,8 +258,11 @@ class DarkSkyWeatherCard extends LitElement {
       'lightning': 'thunder',
       'thunderstorm': 'thunder',
       'windy-variant': html`cloudy-${this.dayOrNight}-3`,
-      'exceptional': '!!',
+        'exceptional':'severe-thunderstorm',
+      }
     }
+    get windIcons() {
+      if (this._hass.states[this.config.entity_wind_bearing].state < 361) return "mdi:arrow-down";
   }
 
 
@@ -319,9 +334,9 @@ class DarkSkyWeatherCard extends LitElement {
     var temperature = Math.round(this._hass.states[this.config.entity_temperature].state);
     var visibility = this.config.entity_visibility ? this._hass.states[this.config.entity_visibility].state : 0;
     var windBearing = this.config.entity_wind_bearing ? isNaN(this._hass.states[this.config.entity_wind_bearing].state) ? this._hass.states[this.config.entity_wind_bearing].state : this.windDirections[(Math.round((this._hass.states[this.config.entity_wind_bearing].state / 360) * 16))] : 0;
-    var windSpeed = this.config.entity_wind_speed ? Math.round(this._hass.states[this.config.entity_wind_speed].state) : 0;
+    var windSpeed = this.config.entity_wind_speed ? Math.round(this._hass.states[this.config.entity_wind_speed].state*3.6) : 0;
     var apparent = this.config.entity_apparent_temp ? Math.round(this._hass.states[this.config.entity_apparent_temp].state) : 0;
-    var beaufort = this.config.show_beaufort ? html`Bft: ${this.beaufortWind} - ` : ``;
+    var beaufort = this.config.show_beaufort ? html`Bft: ${this.beaufortWind} ` : ``;
     
     return {
       'conditions': conditions,
@@ -460,7 +475,8 @@ style() {
   var largeIconTopMargin = this.config.large_icon_top_margin || "-3.5em";
   var largeIconLeftPos = this.config.large_icon_left_pos || "0em";
   var currentDataTopMargin = this.config.current_data_top_margin ? this.config.current_data_top_margin : this.config.show_separator ? "1em" : "7em";
-  var separatorTopMargin = this.config.separator_top_margin || "6em";
+  var separatorTopMargin = this.config.separator_top_margin || "7.4em";
+  var temp_color = this.config.temp_color ? this._hass.states[this.config.temp_color].state : 'grey';
   
 return html`
       .clear {
@@ -616,6 +632,11 @@ return html`
         width: 30%;
       }
   
+        .today {
+          font-weight: bold;
+          font-size: 0.9em;
+          color: var(--primary-text-color);
+        }
       .fcasttooltip {
         position: relative;
         display: inline-block;
@@ -655,7 +676,15 @@ return html`
       .fcasttooltip:hover .fcasttooltiptext {
         visibility: ${tooltipVisible};
       }
-      `
+        .summary {
+          font-weight: bold;
+          font-size: 0.9em;
+          color: var(--secondary-text-color);
+         }
+        .hr {
+             margin-top: 7.4em;
+             color:var(--secondary-text-color);
+        }`
 }
 
 // #####
@@ -685,32 +714,14 @@ return html`
 // ##### This is called everytime a state change occurs in HA
 // #####
 
-  set hass(hass) {
-    
-    var interval = this.config.refresh_interval || 30;
-    var doRefresh = false;
-    
-    // Make sure hass is assigned first time.
-    if (!this._initialized) {
-      this._initialized= true;
-      this._lasRefresh = new Date();
-      doRefresh = true;
-    }
-    
-    var now = new Date();
-    
-    // Check if refresh interval has been exceeded and refresh if necessary
-    if (Math.round((now - this._lastRefresh)/1000) > interval ) { doRefresh = true; } 
-
-    if (doRefresh) {
-      this._lastRefresh = new Date();
+    set hass(hass) {
       this._hass = hass;
-      this.updateValues();
+      if (this.shadowRoot) { this.updateValues(); }
+  //     this.updateValues();
     }
-  }
-
   
-// #####
+    
+  // #####
 // updateValues - Updates card values as changes happen in the hass object
 // #####
 
@@ -748,6 +759,8 @@ return html`
       if (this.config.entity_sun && !this.config.alt_sun_next) { root.getElementById("sun-next-text").textContent = `${this.sunSet.nextText}` }
       if (this.config.entity_sun && !this.config.alt_sun_following) { root.getElementById("sun-following-text").textContent = `${this.sunSet.followingText}` }
       if (this.config.entity_daily_summary) { root.getElementById("daily-summary-text").textContent = `${this._hass.states[this.config.entity_daily_summary].state}` }
+      if (this.config.entity_summary_today) { root.getElementById("summary-today-text").textContent = `${this._hass.states[this.config.entity_summary_today].state}` }
+      if (this.config.entity_today) { root.getElementById("today-text").textContent = `${this._hass.states[this.config.entity_today].state}` }
       if (this.config.entity_precip_intensity_current) { root.getElementById("intensity_current-text").textContent = `${this._hass.states[this.config.entity_precip_intensity_current].state}` }
       if (this.config.entity_precip_current) { root.getElementById("precip_current-text").textContent = `${this._hass.states[this.config.entity_precip_current].state} ` }
 
