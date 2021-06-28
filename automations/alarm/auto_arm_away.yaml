@@ -21,12 +21,22 @@ condition:
       value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'armed_away') }}"
     - condition: or
       conditions:
-        - condition: state
-          entity_id: input_boolean.holiday_mode
-          state: 'on'
-        - condition: state
-          entity_id: input_boolean.guest_mode
-          state: 'off'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: input_boolean.holiday_mode
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.guest_mode
+              state: 'off'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: input_boolean.holiday_mode
+              state: 'off'
+            - condition: state
+              entity_id: input_boolean.guest_mode
+              state: 'off'
     - condition: state
       entity_id: group.family
       state: 'not_home'
