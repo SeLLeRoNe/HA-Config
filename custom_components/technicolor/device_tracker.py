@@ -94,7 +94,7 @@ class TechnicolorDeviceScanner(ScannerEntity):
         device = self._router.devices[self._mac]
         self._device['ip'] = device['ip']
         _LOGGER.info(f"updating state for ${self._mac} with ip ${self._device['ip']}")
-        self._active = self._device['ip'] is not None
+        self._active = self._device['ip'] is not None and self._device['ip'] != ""
 
     @property
     def unique_id(self) -> str:
