@@ -1,7 +1,0 @@
----
-hasp:
-  name: HASP
-  entities:
-    - binary_sensor.hasp_desk
-    - binary_sensor.hasp_andrea
-    - binary_sensor.hasp_sonia

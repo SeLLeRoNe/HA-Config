@@ -1,8 +1,0 @@
----
-hasp_andrea01_alarmcode2:
-  name: Alarm Code 2
-  icon: mdi:format-list-numbers
-  min: -1
-  max: 9
-  step: 1
-  initial: -1

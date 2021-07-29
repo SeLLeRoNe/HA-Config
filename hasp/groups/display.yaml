@@ -1,7 +1,0 @@
----
-hasp_display:
-  name: HASP Display
-  entities:
-    - light.hasp_desk_display
-    - light.hasp_andrea_display
-    - light.hasp_sonia_display

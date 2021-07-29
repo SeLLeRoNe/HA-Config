@@ -1,7 +1,0 @@
----
-hasp_andrea01_lights:
-  name: HASP Andrea Lights
-  entities:
-    - light.desk_lamp
-    - light.andrea_bedside_lamp
-    - light.sonia_bedside_lamp

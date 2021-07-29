@@ -1,7 +1,0 @@
----
-hasp_desk01_lights:
-  name: HASP Desk Lights
-  entities:
-    - light.patio_lights
-    - light.studio_lights
-    - light.bedroom_luca_lights

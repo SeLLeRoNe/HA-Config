@@ -1,7 +1,0 @@
----
-timer_screen_low:
-#  name: Timer Screen Low Brighness
-  entities:
-    - timer.desk01_screen_low
-    - timer.andrea01_screen_low
-    - timer.sonia01_screen_low
