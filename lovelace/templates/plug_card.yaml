@@ -2,6 +2,7 @@
 plug_card:
   card:
     type: "custom:restriction-card"
+    duration: 10
     restrictions:
       block: '[[block]]'
     row: true

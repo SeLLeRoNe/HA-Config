@@ -1,0 +1,19 @@
+---
+alerts:
+  card:
+    type: custom:layout-card
+    layout_type: custom:horizontal-layout
+    cards:
+#      - type: custom:decluttering-card
+#        template: title
+#        variables:
+#          - title: Alerts
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - entity: binary_sensor.bathroom_window
+          - entity: binary_sensor.patio_door_exterior

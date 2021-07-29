@@ -1,6 +1,0 @@
----
-airvisual:
-  api_key: !secret airvisual_api_key
-  geographies:
-    latitude: !secret zone_home_latitude
-    longitude: !secret zone_home_longitude

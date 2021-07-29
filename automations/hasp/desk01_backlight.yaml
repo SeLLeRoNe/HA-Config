@@ -1,0 +1,14 @@
+---
+id: '8857948807311'
+alias: HASP - Desk01 - Backlight
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: light.desk01_backlight
+    to: 'on'
+    for:
+      seconds: 10    
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.desk01_backlight

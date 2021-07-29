@@ -1,6 +1,0 @@
----
-platform: command_line
-name: "MQTT Server"
-command: "systemctl is-active mosquitto.service"
-payload_on: 'active'
-payload_off: 'inactive'

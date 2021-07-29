@@ -14,63 +14,247 @@ cards:
   - type: custom:stack-in-card
     mode: vertical
     cards:
-      - type: entities
-        title: System
-        show_header_toggle: false
+      - type: custom:config-template-card
+        variables:
+          DISK_USE_PERCENT: states['sensor.disk_use_percent'].state
+          HA_VERSION: states['sensor.home_assistant_current_version'].state
+          DISK_TOTAL: states['sensor.disk_total'].state
+          DISK_USE: states['sensor.disk_use'].state
+          MEMORY_USE_PERCENT: states['sensor.memory_use_percent'].state
+          PROCESSOR_USE_PERCENT: states['sensor.processor_use_percent'].state
+          CPU_TEMPERATURE: states['sensor.cpu_temperature'].state
         entities:
-          - entity: sensor.last_boot
-            name: Last System Reboot
-      - type: custom:mini-graph-card
-        name: Load
-        more_info: false
-        height: 150
-        line_width: 4
-        hours_to_show: 168
-        points_per_hour: 4
-        aggregate_func: max
-        group_by: hour
-        hour24: true
-        animate: false
-        decimals: 2
-        align_state: left
-        show:
-          name: true
-          icon: true
-          state: true
-          graph: line
-          fill: false
-          points: false
-          legend: true
-          extrema: false
-          labels: false
-        entities:
-          - entity: sensor.load_1m
-            name: 1 Minute
-            show_state: true
-          - entity: sensor.load_5m
-            name: 5 Minutes
-            show_state: true
-          - entity: sensor.load_15m
-            name: 15 Minutes
-            show_state: true
-      - type: horizontal-stack
+          - sensor.disk_use_percent
+          - sensor.home_assistant_current_version
+          - sensor.disk_total
+          - sensor.disk_use
+          - sensor.memory_use_percent
+          - sensor.processor_use
+          - sensor.cpu_temperature
+        card:
+          type: entities
+          show_header_toggle: 'off'
+          style: |
+            .card-header {
+              padding: 0px 0px 0px 0px !important;
+            }
+          entities:
+            - type: section
+              label: >-
+                ${ 'NUC BXNUC10i7FNH2 --- Debian 10.10 --- HA Version ' + HA_VERSION
+                }
+            - type: custom:hui-vertical-stack-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: picture
+                      style: |
+                        ha-card { 
+                            --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                            --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                            --ha-card-box-shadow: 'none';
+                        }
+                      image: /local/intel-nuc.png
+                      tap_action:
+                        action: none
+                    - type: vertical-stack
+                      cards:
+                        - type: custom:button-card
+                          layout: icon_name_state2nd
+                          show_icon: true
+                          show_state: true
+                          styles:
+                            grid:
+                              - grid-template-columns: 50px auto
+                            icon:
+                              - padding: 0px 0px
+                              - height: 30px
+                              - width: 30px
+                            card:
+                              - '--ha-card-background': rgba(0, 0, 0, 0.0)
+                              - '--ha-card-box-shadow': none
+                            state:
+                              - padding: 0px 10px
+                              - justify-self: start
+                              - font-family: Roboto, sans-serif
+                              - font-size: 15px
+                            name:
+                              - padding: 0px 10px
+                              - justify-self: start
+                              - color: var(--secondary-text-color)
+                          entity: sensor.system_uptime
+                          name: System Uptime
+                          icon: mdi:clock-outline
+                          tap_action:
+                            action: none
+                        - type: custom:button-card
+                          layout: icon_name_state2nd
+                          show_icon: true
+                          show_state: true
+                          styles:
+                            grid:
+                              - grid-template-columns: 50px auto
+                            icon:
+                              - padding: 0px 0px
+                              - height: 30px
+                              - width: 30px
+                            card:
+                              - '--ha-card-background': rgba(0, 0, 0, 0.0)
+                              - '--ha-card-box-shadow': none
+                            state:
+                              - padding: 0px 10px
+                              - justify-self: start
+                              - font-family: Roboto, sans-serif
+                              - font-size: 15px
+                            name:
+                              - padding: 0px 10px
+                              - justify-self: start
+                              - color: var(--secondary-text-color)
+                          entity: sensor.ha_uptime
+                          name: HA Uptime
+                          icon: mdi:clock-outline
+                          tap_action:
+                            action: none
+                - type: custom:bar-card
+                  show_icon: true
+                  align: split
+                  columns: 1
+                  max: 100
+                  positions:
+                    icon: inside
+                    indicator: inside
+                    name: inside
+                    value: inside
+                  unit_of_measurement: '%'
+                  severity:
+                    - value: 50
+                      color: '#3498db'
+                    - value: 75
+                      color: '#f39c12'
+                    - value: 100
+                      color: '#e45e65'
+                  style: |
+                    ha-card { 
+                        --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                        --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                        --paper-item-icon-color: 'var(--text-primary-color';
+                        --ha-card-box-shadow: 'none';
+                    }
+                  entities:
+                    - entity: sensor.disk_use_percent
+                  name: ${ 'Disk (' + DISK_USE + 'Gb/' + DISK_TOTAL + 'Gb)' }
+                  entity_row: true
+                  tap_action:
+                    action: none
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:bar-card
+                      show_icon: true
+                      align: split
+                      columns: 1
+                      max: 100
+                      positions:
+                        icon: inside
+                        indicator: inside
+                        name: inside
+                        value: inside
+                      unit_of_measurement: '%'
+                      severity:
+                        - value: 50
+                          color: '#3498db'
+                        - value: 75
+                          color: '#f39c12'
+                        - value: 100
+                          color: '#e45e65'
+                      style: |
+                        ha-card { 
+                          --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                          --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                          --paper-item-icon-color: 'var(--text-primary-color';
+                          --ha-card-box-shadow: 'none';
+                        }
+                      entity: sensor.memory_use_percent
+                      name: RAM
+                      entity_row: true
+                      tap_action:
+                        action: none
+                    - type: custom:bar-card
+                      show_icon: true
+                      align: split
+                      columns: 1
+                      max: 100
+                      positions:
+                        icon: inside
+                        indicator: inside
+                        name: inside
+                        value: inside
+                      unit_of_measurement: '%'
+                      severity:
+                        - value: 50
+                          color: '#3498db'
+                        - value: 75
+                          color: '#f39c12'
+                        - value: 100
+                          color: '#e45e65'
+                      style: |
+                        ha-card { 
+                          --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                          --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                          --paper-item-icon-color: 'var(--text-primary-color');
+                          --ha-card-box-shadow: 'none';
+                        }
+                      entity: sensor.processor_use_percent
+                      name: CPU
+                      entity_row: true
+                      tap_action:
+                        action: none
+                - type: custom:mini-graph-card
+                  height: 30
+                  line_width: 2
+                  font_size: 70
+                  hours_to_show: 168
+                  points_per_hour: 1
+                  show:
+                    name: true
+                    icon: true
+                    state: true
+                    graph: line
+                    fill: true
+                    points: false
+                    legend: false
+                    extrema: false
+                    labels: false
+                    labels_secondary: false
+                    name_adaptive_color: false
+                    icon_adaptive_color: true
+                  style: |
+                    ha-card { 
+                      --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                      --ha-card-box-shadow: 'none';
+                      border-radius: 5px;
+                    }
+                    .info.flex {
+                      font-size: 12px !important;
+                    }
+                  entities:
+                    - sensor.cpu_temperature
+                  name: Temperature
+                  color_thresholds:
+                    - value: 30
+                      color: '#3498db'
+                    - value: 50
+                      color: '#f39c12'
+                    - value: 80
+                      color: '#ff0000'
+                  tap_action:
+                    action: none
+      - type: vertical-stack
         cards:
-          - type: gauge
-            name: CPU
-            entity: sensor.processor_use_percent
-          - type: gauge
-            name: HDD
-            entity: sensor.disk_use_percent
-      - type: horizontal-stack
-        cards:
-          - type: gauge
-            name: RAM
-            entity: sensor.memory_use_percent
-          - type: gauge
-            name: SWAP
-            entity: sensor.swap_use_percent
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - title: Network
       - type: entities
-        title: Network
         show_header_toggle: false
         entities:
           - entity: sensor.ip_address
@@ -483,88 +667,88 @@ cards:
                 entity: binary_sensor.living_room_tv
                 tap_action:
                   action: none
-          - type: glance
-            show_state: false
-            columns: 3
-            show_header_toggle: false
-            entities:
-              - name: HASP Desk
-                entity: sensor.hasp_desk_status
-                tap_action:
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: HASP Desk
-                    card:
-                      type: entities
-                      entities:
-                        - sensor.hasp_desk_status
-                        - light.hasp_desk_display
-                        - sensor.hasp_desk_ip_address
-                        - sensor.hasp_desk_signal_strenght
-                        - sensor.hasp_desk_uptime
-                        - sensor.hasp_desk_esp_version
-                        - sensor.hasp_desk_esp_update_available
-                        - sensor.hasp_desk_lcd_version
-                        - sensor.hasp_desk_lcd_update_available
-                      deviceID:
-              - name: HASP Andrea
-                entity: sensor.hasp_andrea_status
-                tap_action:
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: HASP Andrea
-                    card:
-                      type: entities
-                      entities:
-                        - sensor.hasp_andrea_status
-                        - light.hasp_andrea_display
-                        - sensor.hasp_andrea_ip_address
-                        - sensor.hasp_andrea_signal_strenght
-                        - sensor.hasp_andrea_uptime
-                        - sensor.hasp_andrea_esp_version
-                        - sensor.hasp_andrea_esp_update_available
-                        - sensor.hasp_andrea_lcd_version
-                        - sensor.hasp_andrea_esp_update_available
-                        - sensor.hasp_andrea_lcd_version
-                        - sensor.hasp_andrea_lcd_update_available
-              - name: HASP Sonia
-                entity: sensor.hasp_sonia_status
-                tap_action:
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: HASP Sonia
-                    card:
-                      type: entities
-                      entities:
-                        - sensor.hasp_sonia_status
-                        - light.hasp_sonia_display
-                        - sensor.hasp_sonia_ip_address
-                        - sensor.hasp_sonia_signal_strenght
-                        - sensor.hasp_sonia_uptime
-                        - sensor.hasp_sonia_esp_version
-                        - sensor.hasp_sonia_esp_update_available
-                        - sensor.hasp_sonia_lcd_version
-                        - sensor.hasp_sonia_esp_update_available
-                        - sensor.hasp_sonia_lcd_version
-                        - sensor.hasp_sonia_lcd_update_available
-          - type: glance
-            show_name: false
-            show_state: false
-            columns: 3
-            show_header_toggle: false
-            entities:
-              - entity: light.hasp_desk_display
-                tap_action:
-                  action: toggle
-              - entity: light.hasp_andrea_display
-                tap_action:
-                  action:  toggle
-              - entity: light.hasp_sonia_display
-                tap_action:
-                  action: toggle
+#          - type: glance
+#            show_state: false
+#            columns: 3
+#            show_header_toggle: false
+#            entities:
+#              - name: HASP Desk
+#                entity: sensor.hasp_desk_status
+#                tap_action:
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: HASP Desk
+#                    card:
+#                      type: entities
+#                      entities:
+#                        - sensor.hasp_desk_status
+#                        - light.hasp_desk_display
+#                        - sensor.hasp_desk_ip_address
+#                        - sensor.hasp_desk_signal_strenght
+#                        - sensor.hasp_desk_uptime
+#                        - sensor.hasp_desk_esp_version
+#                        - sensor.hasp_desk_esp_update_available
+#                        - sensor.hasp_desk_lcd_version
+#                        - sensor.hasp_desk_lcd_update_available
+#                      deviceID:
+#              - name: HASP Andrea
+#                entity: sensor.hasp_andrea_status
+#                tap_action:
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: HASP Andrea
+#                    card:
+#                      type: entities
+#                      entities:
+#                        - sensor.hasp_andrea_status
+#                        - light.hasp_andrea_display
+#                        - sensor.hasp_andrea_ip_address
+#                        - sensor.hasp_andrea_signal_strenght
+#                        - sensor.hasp_andrea_uptime
+#                        - sensor.hasp_andrea_esp_version
+#                        - sensor.hasp_andrea_esp_update_available
+#                        - sensor.hasp_andrea_lcd_version
+#                        - sensor.hasp_andrea_esp_update_available
+#                        - sensor.hasp_andrea_lcd_version
+#                        - sensor.hasp_andrea_lcd_update_available
+#              - name: HASP Sonia
+#                entity: sensor.hasp_sonia_status
+#                tap_action:
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: HASP Sonia
+#                    card:
+#                      type: entities
+#                      entities:
+#                        - sensor.hasp_sonia_status
+#                        - light.hasp_sonia_display
+#                        - sensor.hasp_sonia_ip_address
+#                        - sensor.hasp_sonia_signal_strenght
+#                        - sensor.hasp_sonia_uptime
+#                        - sensor.hasp_sonia_esp_version
+#                        - sensor.hasp_sonia_esp_update_available
+#                        - sensor.hasp_sonia_lcd_version
+#                        - sensor.hasp_sonia_esp_update_available
+#                        - sensor.hasp_sonia_lcd_version
+#                        - sensor.hasp_sonia_lcd_update_available
+#          - type: glance
+#            show_name: false
+#            show_state: false
+#            columns: 3
+#            show_header_toggle: false
+#            entities:
+#              - entity: light.hasp_desk_display
+#                tap_action:
+#                  action: toggle
+#              - entity: light.hasp_andrea_display
+#                tap_action:
+#                  action:  toggle
+#              - entity: light.hasp_sonia_display
+#                tap_action:
+#                  action: toggle
           - type: glance
             show_state: false
             columns: 3
@@ -585,41 +769,41 @@ cards:
                 entity: binary_sensor.camera_patio
                 tap_action:
                   action: none
-      - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: Network Services
-      - type: glance
-        show_state: false
-        columns: 3
-        show_header_toggle: false
-        entities:
-          - name: Pi Hole
-            entity: switch.pi_hole
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.pi_hole
-            hold_action:
-              action: call-service
-              service: switch.turn_off
-              service_data:
-                entity_id: switch.pi_hole
-          - name: Zigbee Server
-            entity: binary_sensor.zigbee_server
-            tap_action:
-              action: none
-            hold_action:
-              action: call-service
-              service: shell_command.zigbee_restart
-          - name: MQTT Server
-            entity: binary_sensor.mqtt_server
-            tap_action:
-              action: none
-            hold_action:
-              action: call-service
-              service: shell_command.mqtt_restart
+#      - type: custom:decluttering-card
+#        template: title
+#        variables:
+#          - title: Network Services
+#      - type: glance
+#        show_state: false
+#        columns: 3
+#        show_header_toggle: false
+#        entities:
+#          - name: Pi Hole
+#            entity: switch.pi_hole
+#            tap_action:
+#              action: call-service
+#              service: switch.turn_on
+#              service_data:
+#                entity_id: switch.pi_hole
+#            hold_action:
+#              action: call-service
+#              service: switch.turn_off
+#              service_data:
+#                entity_id: switch.pi_hole
+#          - name: Zigbee Server
+#            entity: binary_sensor.zigbee_server
+#            tap_action:
+#              action: none
+#            hold_action:
+#              action: call-service
+#              service: shell_command.zigbee_restart
+#          - name: MQTT Server
+#            entity: binary_sensor.mqtt_server
+#            tap_action:
+#              action: none
+#            hold_action:
+#              action: call-service
+#              service: shell_command.mqtt_restart
   - type: custom:layout-break
   - type: vertical-stack
     cards:
@@ -758,19 +942,19 @@ cards:
       - type: custom:decluttering-card
         template: title
         variables:
-          - title: ZigBee
+          - title: ZigBee Devices
       - type: glance
         show_state: false
-        columns: 2
+        columns: 1
         show_header_toggle: false
         entities:
-          - name: Zigbee Server
-            entity: binary_sensor.zigbee_server
-            tap_action:
-              action: none
-            hold_action:
-              action: call-service
-              service: shell_command.zigbee_restart
+#          - name: Zigbee Server
+#            entity: binary_sensor.zigbee_server
+#            tap_action:
+#              action: none
+#            hold_action:
+#              action: call-service
+#              service: shell_command.zigbee_restart
           - name: Allow Device Join
             entity: switch.zigbee_device_join
             tap_action:

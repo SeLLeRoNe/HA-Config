@@ -17,10 +17,10 @@ resources:
   - type: load_5m
   - type: load_15m
   - type: network_in
-    arg: eth0
+    arg: eno0
   - type: network_out
-    arg: eth0
+    arg: eno0
   - type: ipv4_address
-    arg: eth0
+    arg: eno0
   - type: processor_use
   - type: last_boot

@@ -1,10 +1,10 @@
 ---
-binary_sensor:
-  - platform: command_line
-    name: "ZigBee Server"
-    command: "systemctl is-active zigbee.service"
-    payload_on: 'active'
-    payload_off: 'inactive'
+#binary_sensor:
+#  - platform: command_line
+#    name: "ZigBee Server"
+#    command: "systemctl is-active zigbee.service"
+#    payload_on: 'active'
+#    payload_off: 'inactive'
 
 switch:
   - platform: mqtt

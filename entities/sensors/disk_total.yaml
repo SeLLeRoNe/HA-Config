@@ -1,0 +1,5 @@
+---
+platform: template
+sensors:
+  disk_total:
+    value_template: "{{ ( states('sensor.disk_use')|float + states('sensor.disk_free')|float )| round (1) }}"

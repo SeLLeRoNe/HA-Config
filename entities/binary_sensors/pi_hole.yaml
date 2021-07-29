@@ -1,7 +1,0 @@
----
-platform: rest
-name: Pi Hole Status
-resource: !secret pi_hole_status
-headers:
-  auth: !secret pi_hole_api_key
-value_template: '{{ value_json.status == "enabled" }}'

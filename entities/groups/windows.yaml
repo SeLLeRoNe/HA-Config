@@ -1,0 +1,6 @@
+---
+windows:
+  name: Windows
+  icon: mdi:window-closed
+  entities:
+    - binary_sensor.bathroom_window

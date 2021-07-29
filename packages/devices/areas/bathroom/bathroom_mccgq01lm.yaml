@@ -5,7 +5,7 @@
 #
 binary_sensor:
   - platform: mqtt
-    name: "Bathroom MCCGQ01LM Window"
+    name: "Bathroom Window"
     state_topic: "zigbee2mqtt/bathroom_MCCGQ01LM"
     availability:
       - topic: "zigbee2mqtt/bridge/state"

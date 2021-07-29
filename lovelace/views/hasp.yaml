@@ -1,0 +1,74 @@
+title: HASP
+icon: mdi:cellphone-screenshot
+path: test
+type: custom:vertical-layout
+layout:
+   max_cols: 5
+cards:
+  - type: entities
+    title: Desk01
+    show_header_toggle: false
+    state_color: true
+    entities:
+      - name: Active Page
+        entity: number.desk01_active_page
+      - type: divider
+      - name: Backlight
+        entity: light.desk01_backlight
+        secondary_info: brightness
+      - type: divider
+      - type: attribute
+        name: "Selected Foreground Color"
+        entity: light.desk01_selected_foreground_color
+        icon: 'mdi:palette'
+        name: Selected Foreground Color
+        attribute: brightness
+      - type: attribute
+        name: "Selected Background Color"
+        entity: light.desk01_selected_background_color
+        icon: 'mdi:palette'
+        name: Selected Background Color
+        attribute: brightness
+      - type: attribute
+        name: "Unselected Foreground Color"
+        entity: light.desk01_unselected_foreground_color
+        icon: 'mdi:palette'
+        name: Unselected Foreground Color
+        attribute: brightness
+      - type: attribute
+        name: "Unselected Background Color"
+        entity: light.desk01_unselected_background_color
+        icon: 'mdi:palette'
+        name: Unselected Background Color
+        attribute: brightness
+      - type: divider
+      - type: attribute
+        name: ESP Firmware Version
+        entity: sensor.desk01_sensor
+        attribute: espVersion
+      - type: attribute
+        name: LCD Firmware Version
+        entity: sensor.desk01_sensor
+        attribute: lcdVersion
+      - type: divider
+    footer:
+      type: buttons
+      entities:
+        - entity: sensor.desk01_sensor
+          name: Blueprints
+          icon: 'mdi:palette-swatch'
+          tap_action:
+            action: navigate
+            navigation_path: /config/blueprint/dashboard
+        - entity: sensor.desk01_sensor
+          name: Automations
+          icon: 'mdi:robot'
+          tap_action:
+            action: navigate
+            navigation_path: /config/automation/dashboard
+        - entity: sensor.desk01_sensor
+          name: HASP Admin
+          icon: 'mdi:cellphone-text'
+          tap_action:
+            action: url
+            url_path: http://192.168.0.113

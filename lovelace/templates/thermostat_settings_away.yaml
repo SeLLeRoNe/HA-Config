@@ -1,0 +1,33 @@
+---
+thermostat_settings_away:
+  card:
+    type: custom:multiple-entity-row
+    name: '[[name]]'
+    entity: input_boolean.climate_[[area]]_away
+    toggle: false
+    icon: mdi:timer
+    entities:
+      - entity: input_number.climate_[[area]]_away
+        tap_action: 
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Configuration
+            card:
+              type: custom:decluttering-card
+              template: thermostat_popup_small
+              variables:
+                - area: '[[area]]'
+                - full_row: '[[full_row]]'
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Configuration
+        card:
+          type: custom:decluttering-card
+          template: thermostat_popup_small
+          variables:
+            - area: '[[area]]'
+            - full_row: '[[full_row]]'

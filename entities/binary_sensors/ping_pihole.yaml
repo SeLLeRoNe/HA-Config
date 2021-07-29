@@ -1,6 +1,0 @@
----
-platform: ping
-name: Pi Hole
-host: !secret pi_hole_ip
-count: 2
-scan_interval: 30

@@ -1,0 +1,8 @@
+---
+platform: command_line
+name: CPU Temperature
+command: "cat /sys/devices/virtual/thermal/thermal_zone2/temp"
+value_template: '{{ value | multiply(0.001) | round(2) }}'
+unit_of_measurement: "°C"
+scan_interval: 240
+

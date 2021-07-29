@@ -31,6 +31,9 @@ condition:
             {% else %}
               true
             {% endif %}
+        - condition: state
+          entity_id: sensor.patio_gzcgq01lm_illuminance
+          state: 'unavailable'
     - condition: state
       entity_id: light.patio_light
       state: 'off'

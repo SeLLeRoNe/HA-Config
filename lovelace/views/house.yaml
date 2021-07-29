@@ -53,6 +53,13 @@ cards:
               action: none
             hold_action:
               action: toggle
+      - type: conditional
+        conditions:
+          - entity: group.alerts
+            state: "on"
+        card:
+          type: custom:decluttering-card
+          template: alerts
       - type: glance
         show_state: false
         columns: 2

@@ -6,7 +6,7 @@ else
 	NEW_IDS=0
 fi
 
-cd /home/ha/.homeassistant/automations/
+cd /config/automations/
 for FILE in `find ./ -name *.yaml`
 	do
 	if [ $NEW_IDS -eq 1 ]; then
@@ -18,6 +18,6 @@ for FILE in `find ./ -name *.yaml`
 	fi
 done
 
-cd /home/ha/.homeassistant/
+cd /config/
 
 exit 0;
