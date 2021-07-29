@@ -1,0 +1,298 @@
+blueprint:
+  name: HASP p[x].b[y] displays a clock with a clock icon
+  description: '
+
+    # Description
+
+
+    A HASP button displays a clock on the right with a clock icon on the left.
+
+
+    ![Preview](https://raw.githubusercontent.com/HASwitchPlate/HASPone/main/images/hasp_Display_Clock_with_Icon.png)
+
+
+    ## HASP Page and Button reference
+
+
+    <details>
+
+
+    This automation is designed to work with the full-width buttons found on pages
+    1-3
+
+
+    | Pages 1-3 |
+
+    |-----------|
+
+    | ![Pages 1-3](https://raw.githubusercontent.com/HASwitchPlate/HASPone/main/images/NextionUI_p1-p3_4buttons.png)
+    |
+
+
+    </details>
+
+    '
+  domain: automation
+  input:
+    haspdevice:
+      name: HASP Device
+      description: Select the HASP device
+      selector:
+        device:
+          integration: mqtt
+          manufacturer: HASwitchPlate
+          model: HASPone v1.0.0
+    hasppage:
+      name: HASP Page
+      description: Select the HASP page (1-3) for the clock. Refer to the HASP Page
+        and Button reference above.
+      default: 1
+      selector:
+        number:
+          min: 1.0
+          max: 3.0
+          mode: slider
+          unit_of_measurement: page
+          step: 1.0
+    haspbutton:
+      name: HASP Button
+      description: Select the HASP button (4-7) for the clock. Refer to the HASP Page
+        and Button reference above.
+      default: 4
+      selector:
+        number:
+          min: 4.0
+          max: 7.0
+          mode: slider
+          unit_of_measurement: button
+          step: 1.0
+    hour24:
+      name: 24 hour clock display
+      default: false
+      selector:
+        boolean: {}
+  source_url: https://github.com/HASwitchPlate/HASPone/blob/main/Home_Assistant/blueprints/hasp_Display_Clock_with_Icon.yaml
+mode: parallel
+max_exceeded: silent
+variables:
+  haspdevice: !input 'haspdevice'
+  haspname: "{%- for entity in device_entities(haspdevice) -%}\n  {%- if entity|regex_search(\"\
+    ^sensor\\.\") -%}\n    {{- entity|regex_replace(find=\"^sensor\\.\", replace=\"\
+    \", ignorecase=true)|regex_replace(find=\"_sensor(?:_\\d+|)$\", replace=\"\",\
+    \ ignorecase=true) -}}\n  {%- endif -%}\n{%- endfor -%}"
+  hasppage: !input 'hasppage'
+  haspbutton: !input 'haspbutton'
+  hour24: !input 'hour24'
+  haspobject: '{{ "p[" ~ hasppage ~ "].b[" ~ haspbutton ~ "]" }}'
+  commandtopic: '{{ "hasp/" ~ haspname ~ "/command/" ~ haspobject }}'
+  jsontopic: '{{ "hasp/" ~ haspname ~ "/state/json" }}'
+  jsoncommandtopic: '{{ "hasp/" ~ haspname ~ "/command/json" }}'
+  activepage: "{%- set activepage = namespace() -%} {%- for entity in device_entities(haspdevice)\
+    \ -%}\n  {%- if entity|regex_search(\"^number\\..*_active_page(?:_\\d+|)$\") -%}\n\
+    \    {%- set activepage.entity=entity -%}\n  {%- endif -%}\n{%- endfor -%} {%\
+    \ if states(activepage.entity)|lower == \"none\" %}-1{% else %}{{ states(activepage.entity)\
+    \ | int }}{% endif %}"
+  selectedfgtopic: '{{ "hasp/" ~ haspname ~ "/light/selectedforegroundcolor/rgb" }}'
+  selectedbgtopic: '{{ "hasp/" ~ haspname ~ "/light/selectedbackgroundcolor/rgb" }}'
+  unselectedfgtopic: '{{ "hasp/" ~ haspname ~ "/light/unselectedforegroundcolor/rgb"
+    }}'
+  unselectedbgtopic: '{{ "hasp/" ~ haspname ~ "/light/unselectedbackgroundcolor/rgb"
+    }}'
+  selectedfg: "{%- set color = namespace() -%} {%- for entity in device_entities(haspdevice)\
+    \ -%}\n  {%- if entity|regex_search(\"^light\\..*_selected_foreground_color(?:_\\\
+    d+|)$\") -%}\n    {%- set color.source=entity -%}\n  {%- endif -%}\n{%- endfor\
+    \ -%} {%- set brightness = state_attr(color.source, \"brightness\")|int / 255\
+    \ -%} {%- set red=(state_attr(color.source, \"rgb_color\")[0] * brightness)|int\
+    \ -%} {%- set green=(state_attr(color.source, \"rgb_color\")[1] * brightness)|int\
+    \ -%} {%- set blue=(state_attr(color.source, \"rgb_color\")[2] * brightness)|int\
+    \ -%} {{ (red|bitwise_and(248)*256) + (green|bitwise_and(252)*8) + (blue|bitwise_and(248)/8)|int\
+    \ }}"
+  selectedbg: "{%- set color = namespace() -%} {%- for entity in device_entities(haspdevice)\
+    \ -%}\n  {%- if entity|regex_search(\"^light\\..*_selected_background_color(?:_\\\
+    d+|)$\") -%}\n    {%- set color.source=entity -%}\n  {%- endif -%}\n{%- endfor\
+    \ -%} {%- set brightness = state_attr(color.source, \"brightness\")|int / 255\
+    \ -%} {%- set red=(state_attr(color.source, \"rgb_color\")[0] * brightness)|int\
+    \ -%} {%- set green=(state_attr(color.source, \"rgb_color\")[1] * brightness)|int\
+    \ -%} {%- set blue=(state_attr(color.source, \"rgb_color\")[2] * brightness)|int\
+    \ -%} {{ (red|bitwise_and(248)*256) + (green|bitwise_and(252)*8) + (blue|bitwise_and(248)/8)|int\
+    \ }}"
+  unselectedfg: "{%- set color = namespace() -%} {%- for entity in device_entities(haspdevice)\
+    \ -%}\n  {%- if entity|regex_search(\"^light\\..*_unselected_foreground_color(?:_\\\
+    d+|)$\") -%}\n    {%- set color.source=entity -%}\n  {%- endif -%}\n{%- endfor\
+    \ -%} {%- set brightness = state_attr(color.source, \"brightness\")|int / 255\
+    \ -%} {%- set red=(state_attr(color.source, \"rgb_color\")[0] * brightness)|int\
+    \ -%} {%- set green=(state_attr(color.source, \"rgb_color\")[1] * brightness)|int\
+    \ -%} {%- set blue=(state_attr(color.source, \"rgb_color\")[2] * brightness)|int\
+    \ -%} {{ (red|bitwise_and(248)*256) + (green|bitwise_and(252)*8) + (blue|bitwise_and(248)/8)|int\
+    \ }}"
+  unselectedbg: "{%- set color = namespace() -%} {%- for entity in device_entities(haspdevice)\
+    \ -%}\n  {%- if entity|regex_search(\"^light\\..*_unselected_background_color(?:_\\\
+    d+|)$\") -%}\n    {%- set color.source=entity -%}\n  {%- endif -%}\n{%- endfor\
+    \ -%} {%- set brightness = state_attr(color.source, \"brightness\")|int / 255\
+    \ -%} {%- set red=(state_attr(color.source, \"rgb_color\")[0] * brightness)|int\
+    \ -%} {%- set green=(state_attr(color.source, \"rgb_color\")[1] * brightness)|int\
+    \ -%} {%- set blue=(state_attr(color.source, \"rgb_color\")[2] * brightness)|int\
+    \ -%} {{ (red|bitwise_and(248)*256) + (green|bitwise_and(252)*8) + (blue|bitwise_and(248)/8)|int\
+    \ }}"
+  text: '{%- if hour24 == true -%}{%- set hourformat="%-H" -%}{%- else %}{%- set hourformat="%I"
+    -%}{%- endif -%}{{(now().strftime(hourformat)|int)~now().strftime(":%M")}}'
+  font: 10
+  ypos: '{{(haspbutton|int - 4) * 67 + 2}}'
+  xpos: 0
+  icon: 
+  iconwidth: 50
+  iconheight: 65
+  iconfont: 8
+trigger_variables:
+  haspdevice: !input 'haspdevice'
+  haspname: "{%- for entity in device_entities(haspdevice) -%}\n  {%- if entity|regex_search(\"\
+    ^sensor\\.\") -%}\n    {{- entity|regex_replace(find=\"^sensor\\.\", replace=\"\
+    \", ignorecase=true)|regex_replace(find=\"_sensor(?:_\\d+|)$\", replace=\"\",\
+    \ ignorecase=true) -}}\n  {%- endif -%}\n{%- endfor -%}"
+  haspsensor: "{%- for entity in device_entities(haspdevice) -%}\n  {%- if entity|regex_search(\"\
+    ^sensor\\..+_sensor(?:_\\d+|)$\") -%}\n    {{ entity }}\n  {%- endif -%}\n{%-\
+    \ endfor -%}"
+  jsontopic: '{{ "hasp/" ~ haspname ~ "/state/json" }}'
+  selectedfgtopic: '{{ "hasp/" ~ haspname ~ "/light/selectedforegroundcolor/rgb" }}'
+  selectedbgtopic: '{{ "hasp/" ~ haspname ~ "/light/selectedbackgroundcolor/rgb" }}'
+  unselectedfgtopic: '{{ "hasp/" ~ haspname ~ "/light/unselectedforegroundcolor/rgb"
+    }}'
+  unselectedbgtopic: '{{ "hasp/" ~ haspname ~ "/light/unselectedbackgroundcolor/rgb"
+    }}'
+trigger:
+- platform: time_pattern
+  seconds: 0
+- platform: homeassistant
+  event: start
+- platform: template
+  value_template: '{{ is_state(haspsensor, ''ON'') }}'
+- platform: mqtt
+  topic: '{{jsontopic}}'
+- platform: mqtt
+  topic: '{{selectedfgtopic}}'
+- platform: mqtt
+  topic: '{{selectedbgtopic}}'
+- platform: mqtt
+  topic: '{{unselectedfgtopic}}'
+- platform: mqtt
+  topic: '{{unselectedbgtopic}}'
+condition:
+- condition: template
+  value_template: '{{ is_state(haspsensor, ''ON'') }}'
+action:
+- choose:
+  - conditions:
+    - condition: template
+      value_template: "{{-\n  (trigger is not defined)\nor\n  (trigger.platform is\
+        \ none)\nor\n  ((trigger.platform == 'homeassistant') and (trigger.event ==\
+        \ 'start'))\nor\n  ((trigger.platform == 'template') and (trigger.entity_id\
+        \ == haspsensor) and (trigger.to_state.state == 'ON'))\n-}}"
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: '{{jsoncommandtopic}}'
+        payload: '["{{haspobject}}.font={{font}}", "{{haspobject}}.xcen=2", "{{haspobject}}.ycen=1",
+          "{{haspobject}}.pco={{selectedfg}}", "{{haspobject}}.bco={{selectedbg}}",
+          "{{haspobject}}.pco2={{unselectedfg}}", "{{haspobject}}.bco2={{unselectedbg}}",
+          "{{haspobject}}.txt=\"{{text}} \"" {%- if activepage|int == hasppage|int
+          -%} ,"delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""
+          {%- endif -%}]'
+  - conditions:
+    - condition: template
+      value_template: '{{ trigger.platform == "time_pattern" }}'
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: '{{jsoncommandtopic}}'
+        payload: '["{{haspobject}}.txt=\"{{text}} \""{%- if activepage|int == hasppage|int
+          -%},"delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""{%-
+          endif -%}]'
+  - conditions:
+    - condition: template
+      value_template: '{{ trigger.platform == "mqtt" }}'
+    sequence:
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ (trigger.topic == jsontopic) and trigger.payload_json
+            is defined }}'
+        sequence:
+        - choose:
+          - conditions:
+            - condition: template
+              value_template: '{{ (trigger.topic == jsontopic ) and (trigger.payload_json.event
+                == haspobject ) and (trigger.payload_json.value == "OFF") }}'
+            sequence:
+            - service: mqtt.publish
+              data:
+                topic: '{{jsoncommandtopic}}'
+                payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""]'
+          - conditions:
+            - condition: template
+              value_template: '{{ (trigger.topic == jsontopic ) and (trigger.payload_json.event
+                == "page" ) and (trigger.payload_json.value == hasppage|int) }}'
+            sequence:
+            - service: mqtt.publish
+              data:
+                topic: '{{jsoncommandtopic}}'
+                payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""]'
+      - conditions:
+        - condition: template
+          value_template: '{{ trigger.topic == selectedfgtopic }}'
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: '{{commandtopic}}.pco'
+            payload: '{{trigger.payload}}'
+        - condition: template
+          value_template: '{{ activepage|int == hasppage|int }}'
+        - delay: '00:00:00.5'
+        - service: mqtt.publish
+          data:
+            topic: '{{jsoncommandtopic}}'
+            payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{trigger.payload}},0,1,1,3,\"{{icon}}\""]'
+      - conditions:
+        - condition: template
+          value_template: '{{ trigger.topic == selectedbgtopic }}'
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: '{{commandtopic}}.bco'
+            payload: '{{trigger.payload}}'
+        - condition: template
+          value_template: '{{ activepage|int == hasppage|int }}'
+        - delay: '00:00:00.5'
+        - service: mqtt.publish
+          data:
+            topic: '{{jsoncommandtopic}}'
+            payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""]'
+      - conditions:
+        - condition: template
+          value_template: '{{ trigger.topic == unselectedfgtopic }}'
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: '{{commandtopic}}.pco2'
+            payload: '{{trigger.payload}}'
+        - condition: template
+          value_template: '{{ activepage|int == hasppage|int }}'
+        - delay: '00:00:00.5'
+        - service: mqtt.publish
+          data:
+            topic: '{{jsoncommandtopic}}'
+            payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""]'
+      - conditions:
+        - condition: template
+          value_template: '{{ trigger.topic == unselectedbgtopic }}'
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: '{{commandtopic}}.bco2'
+            payload: '{{trigger.payload}}'
+        - condition: template
+          value_template: '{{ activepage|int == hasppage|int }}'
+        - delay: '00:00:00.5'
+        - service: mqtt.publish
+          data:
+            topic: '{{jsoncommandtopic}}'
+            payload: '["delay=1","xstr {{xpos}},{{ypos}},{{iconwidth}},{{iconheight}},{{iconfont}},{{selectedfg}},0,1,1,3,\"{{icon}}\""]'

@@ -89,6 +89,10 @@
     type: module
   - url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
     type: module
+  - url: /hacsfiles/lovelace-collapsable-cards/collapsable-cards.js
+    type: module
+  - url: /hacsfiles/bar-card/bar-card.js
+    type: module
 
   - url: /local/q-card.js
     type: module

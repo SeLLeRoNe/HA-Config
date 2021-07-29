@@ -2,7 +2,7 @@
   "domain": "technicolor",
   "name": "Technicolor",
   "documentation": "https://github.com/shaiu/technicolor",
-  "requirements": ["pytechnicolor==1.1.1"],
+  "requirements": ["pytechnicolor==1.1.2"],
   "dependencies": [],
   "codeowners": [
     "@shaiu"

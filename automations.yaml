@@ -1,1 +1,84 @@
-[]
+- id: '1626971090246'
+  alias: Daily Backup
+  description: ''
+  use_blueprint:
+    path: vorion/create-automated-backups-every-day.yaml
+    input:
+      trigger_time: 02:30:00
+- id: '1627032569150'
+  alias: HASP p[7].b[all] displays an alarm control panel
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Display_Alarm_Control_page7.yaml
+    input:
+      b15armservice: alarm_arm_away
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      alarmpanel: alarm_control_panel.home_alarm
+- id: '1627031906001'
+  alias: HASP Core functionality
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Core_Functionality.yaml
+    input:
+      page3font_select: 6 - Noto Sans 32
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      page_names:
+        page0: Page 0
+        page1: Page 1
+        page2: Page 2
+        page3: Page 3
+        page4: Page 4
+        page5: Page 5
+        page6: Page 6
+        page7: Page 7
+        page8: Page 8
+        page9: Page 9
+        page10: Page 10
+        page11: Page 11
+      page2font_select: 5 - Noto Sans 24
+      page2text: Weather
+      page3text: Alarm
+      page1font_select: 6 - Noto Sans 32
+      page1text: Lights
+      page3page: 7
+      reset_hasp: false
+- id: '1627045025181'
+  alias: HASP p[x].b[y] displays a clock with a clock icon
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Display_Clock_with_Icon.yaml
+    input:
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      hasppage: 2
+- id: '1627045059617'
+  alias: HASP p[x].b[y] displays the month + date with a calendar icon
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Display_Calendar_with_Icon.yaml
+    input:
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      hasppage: 2
+      haspbutton: 5
+- id: '1627045089002'
+  alias: HASP p[x].b[y] displays the current weather condition with icons
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Display_Weather_Condition_with_Icon.yaml
+    input:
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      hasppage: 2
+      haspbutton: 6
+      weather_provider: weather.aemet_daily
+- id: '1627045137898'
+  alias: HASP p[x].b[y] displays the current temperature with icon and colors
+  description: ''
+  use_blueprint:
+    path: HASwitchPlate/hasp_Display_Temperature_with_Icon_and_Colors.yaml
+    input:
+      suffix_select: °
+      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
+      hasppage: 2
+      haspbutton: 7
+      weather_provider: weather.aemet_daily
+      temperature_sensor: sensor.aemet_temperature
+      roundtemp: false
