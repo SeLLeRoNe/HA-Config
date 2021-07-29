@@ -28,3 +28,7 @@ known_devices.yaml
 sync_github.sh
 GoogleToken.json
 zigbee.db
+node-red/
+tts-cache/
+zigbee2mqtt/
+esphome/
