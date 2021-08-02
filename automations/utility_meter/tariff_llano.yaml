@@ -1,6 +1,6 @@
 ---
-id: '9339220574210'
-alias: Utility Meter - Meter Tariff Change - Off Peak
+id: '9339220574211'
+alias: Utility Meter - Meter Tariff Change - Llano
 initial_state: on
 trigger:
   - platform: homeassistant
@@ -27,9 +27,9 @@ condition:
     - condition: not
       conditions:
         - condition: template
-          value_template: '{{ now().month == 05 and now().day == 17 }}'
+          value_template: '{{ now().month == 5 and now().day == 17 }}'
         - condition: template
-          value_template: '{{ now().month == 07 and now().day == 25 }}'
+          value_template: '{{ now().month == 7 and now().day == 25 }}'
     - condition: or
       conditions:
         - condition: time

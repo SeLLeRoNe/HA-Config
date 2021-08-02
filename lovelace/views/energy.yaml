@@ -126,7 +126,7 @@ cards:
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_electricity_daily_llanoa
+              - entity: sensor.kitchen_electricity_daily_llano
                 name: Kitchen (Llano)
                 type: custom:multiple-entity-row
                 primary:
