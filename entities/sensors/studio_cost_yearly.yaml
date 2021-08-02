@@ -2,13 +2,14 @@
 platform: template
 sensors:
   studio_cost_yearly:
-    friendly_name: 'Studio Cost Monthly'
+    friendly_name: 'Studio Cost Yearly'
     icon_template: mdi:currency-eur
     value_template: >-
       {{
       (
-      (states('sensor.studio_electricity_yearly_peak')|float * states('input_number.energy_price_peak')|float) +
-      (states('sensor.studio_electricity_yearly_offpeak')|float * states('input_number.energy_price_offpeak')|float)
+      (states('sensor.studio_electricity_yearly_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.studio_electricity_yearly_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.studio_electricity_yearly_valle')|float * states('input_number.energy_price_valle')|float)
       )
       | round(2)
       }}

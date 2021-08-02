@@ -7,8 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states('sensor.studio_electricity_daily_peak')|float * states('input_number.energy_price_peak')|float) +
-      (states('sensor.studio_electricity_daily_offpeak')|float * states('input_number.energy_price_offpeak')|float)
+      (states('sensor.studio_electricity_daily_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.studio_electricity_daily_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.studio_electricity_daily_valle')|float * states('input_number.energy_price_valle')|float)
       )
       | round(2)
       }}
