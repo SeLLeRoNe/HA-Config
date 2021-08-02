@@ -1,0 +1,81 @@
+---
+id: '5221563482844'
+alias: Utility Meter - Meter Tariff Change - punta
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: '10:00:00'
+  - platform: time
+    at: '18:00:00'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: binary_sensor.workday_es
+      state: 'on'
+    - condition: not
+      conditions:
+        - condition: template
+          value_template: '{{ now().month == 05 and now().day == 17 }}'
+        - condition: template
+          value_template: '{{ now().month == 07 and now().day == 25 }}'
+    - condition: or
+      conditions:
+        - condition: time
+          after: '10:00:00'
+          before: '14:00:00'
+        - condition: time
+          after: '18:00:00'
+          before: '22:00:00'
+action:
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+          - utility_meter.house_electricity_daily
+          - utility_meter.house_electricity_monthly
+          - utility_meter.house_electricity_yearly
+      tariff: punta
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.living_room_electricity_daily
+        - utility_meter.living_room_electricity_monthly
+        - utility_meter.living_room_electricity_yearly
+      tariff: punta
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.kitchen_electricity_daily
+        - utility_meter.kitchen_electricity_monthly
+        - utility_meter.kitchen_electricity_yearly
+      tariff: punta
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.laundry_room_electricity_daily
+        - utility_meter.laundry_room_electricity_monthly
+        - utility_meter.laundry_room_electricity_yearly
+      tariff: punta
+  - service: utility_meter.select_tariff
+    data:
+      entity_id:
+        - utility_meter.studio_electricity_daily
+        - utility_meter.studio_electricity_monthly
+        - utility_meter.studio_electricity_yearly
+      tariff: punta
+#  - service: utility_meter.select_tariff
+#    data:
+#      entity_id:
+#        - utility_meter.bedroom_luca_electricity_daily
+#        - utility_meter.bedroom_luca_electricity_monthly
+#        - utility_meter.bedroom_luca_electricity_yearly
+#      tariff: punta

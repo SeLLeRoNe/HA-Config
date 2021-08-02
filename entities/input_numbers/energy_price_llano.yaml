@@ -1,6 +1,6 @@
 ---
-energy_daily_price:
-  name: Energy Price for 4.6kW Provided (Daily)
+energy_price_llano:
+  name: Energy Price per kWh (Llano)
   mode: box
   min: 0
   max: 100

@@ -1,63 +1,86 @@
 ---
-id: '5221563482844'
-alias: Utility Meter - Meter Tariff Change - Peak
+id: '9339220574210'
+alias: Utility Meter - Meter Tariff Change - Off Peak
 initial_state: on
 trigger:
-  - platform: time_pattern
-    minutes: '*'
+  - platform: homeassistant
+    event: start
   - platform: time
-    at: '15:00:00'
+    at: '08:00:00'
+  - platform: time
+    at: '14:00:00'
   - platform: time
     at: '22:00:00'
 condition:
-  condition: or
+  condition: and
   conditions:
     - condition: time
-      after: '15:00:00'
-      before: '18:00:00'
-    - condition: time
-      after: '22:00:00'
-      before: '11:00:00'
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: binary_sensor.workday_es
+      state: 'on'
+    - condition: not
+      conditions:
+        - condition: template
+          value_template: '{{ now().month == 05 and now().day == 17 }}'
+        - condition: template
+          value_template: '{{ now().month == 07 and now().day == 25 }}'
+    - condition: or
+      conditions:
+        - condition: time
+          after: '08:00:00'
+          before: '10:00:00'
+        - condition: time
+          after: '14:00:00'
+          before: '18:00:00'
+        - condition: time
+          after: '22:00:00'
+          before: '00:00:00'
 action:
   - service: utility_meter.select_tariff
     data:
       entity_id:
-          - utility_meter.house_electricity_daily
-          - utility_meter.house_electricity_monthly
-          - utility_meter.house_electricity_yearly
-      tariff: peak
+        - utility_meter.house_electricity_daily
+        - utility_meter.house_electricity_monthly
+        - utility_meter.house_electricity_yearly
+      tariff: llano
   - service: utility_meter.select_tariff
     data:
       entity_id:
         - utility_meter.living_room_electricity_daily
         - utility_meter.living_room_electricity_monthly
         - utility_meter.living_room_electricity_yearly
-      tariff: peak
+      tariff: llano
   - service: utility_meter.select_tariff
     data:
       entity_id:
         - utility_meter.kitchen_electricity_daily
         - utility_meter.kitchen_electricity_monthly
         - utility_meter.kitchen_electricity_yearly
-      tariff: peak
+      tariff: llano
   - service: utility_meter.select_tariff
     data:
       entity_id:
         - utility_meter.laundry_room_electricity_daily
         - utility_meter.laundry_room_electricity_monthly
         - utility_meter.laundry_room_electricity_yearly
-      tariff: peak
+      tariff: llano
   - service: utility_meter.select_tariff
     data:
       entity_id:
         - utility_meter.studio_electricity_daily
         - utility_meter.studio_electricity_monthly
         - utility_meter.studio_electricity_yearly
-      tariff: peak
+      tariff: llano
 #  - service: utility_meter.select_tariff
 #    data:
 #      entity_id:
 #        - utility_meter.bedroom_luca_electricity_daily
 #        - utility_meter.bedroom_luca_electricity_monthly
 #        - utility_meter.bedroom_luca_electricity_yearly
-#      tariff: peak
+#      tariff: llano

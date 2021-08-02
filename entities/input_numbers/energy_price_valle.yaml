@@ -1,6 +1,6 @@
 ---
-energy_price_peak:
-  name: Energy Price per kWh (Peak)
+energy_price_valle:
+  name: Energy Price per kWh (Valle)
   mode: box
   min: 0
   max: 100

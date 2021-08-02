@@ -1,6 +1,6 @@
 ---
-energy_price_offpeak:
-  name: Energy Price per kWh (Off Peak)
+energy_price_punta:
+  name: Energy Price per kWh (Punta)
   mode: box
   min: 0
   max: 100

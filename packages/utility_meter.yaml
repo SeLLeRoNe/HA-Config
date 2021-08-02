@@ -11,93 +11,108 @@ utility_meter:
     source: sensor.house_total_energy_usage
     cycle: daily
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   house_electricity_monthly:
     source: sensor.house_total_energy_usage
     cycle: monthly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   house_electricity_yearly:
     source: sensor.house_total_energy_usage
     cycle: yearly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   # LIVING ROOM #
   living_room_electricity_daily:
     source: sensor.living_room_total_energy_usage
     cycle: daily
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   living_room_electricity_monthly:
     source: sensor.living_room_total_energy_usage
     cycle: monthly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   living_room_electricity_yearly:
     source: sensor.living_room_total_energy_usage
     cycle: yearly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   # KITCHEN #
   kitchen_electricity_daily:
     source: sensor.kitchen_total_energy_usage
     cycle: daily
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   kitchen_electricity_monthly:
     source: sensor.kitchen_total_energy_usage
     cycle: monthly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   kitchen_electricity_yearly:
     source: sensor.kitchen_total_energy_usage
     cycle: yearly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   # LAUNDRY ROOM #
   laundry_room_electricity_daily:
     source: sensor.laundry_room_total_energy_usage
     cycle: daily
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   laundry_room_electricity_monthly:
     source: sensor.laundry_room_total_energy_usage
     cycle: monthly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   laundry_room_electricity_yearly:
     source: sensor.laundry_room_total_energy_usage
     cycle: yearly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   # STUDIO ANDREA #
   studio_electricity_daily:
     source: sensor.studio_total_energy_usage
     cycle: daily
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   studio_electricity_monthly:
     source: sensor.studio_total_energy_usage
     cycle: monthly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
   studio_electricity_yearly:
     source: sensor.studio_total_energy_usage
     cycle: yearly
     tariffs:
-      - peak
-      - offpeak
+      - punta
+      - llano
+      - valle
