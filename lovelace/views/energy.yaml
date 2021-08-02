@@ -84,19 +84,27 @@ cards:
             entities:
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.living_room_electricity_daily_peak
-                name: Living Room (Peak)
+              - entity: sensor.living_room_electricity_daily_punta
+                name: Living Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_daily_peak
+                  entity: sensor.living_room_cost_daily_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.living_room_electricity_daily_offpeak
-                name: Living Room (Off Peak)
+              - entity: sensor.living_room_electricity_daily_llano
+                name: Living Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_daily_offpeak
+                  entity: sensor.living_room_cost_daily_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.living_room_electricity_daily_valle
+                name: Living Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.living_room_cost_daily_valle
                   name: false
                 tap_action:
                   action: none
@@ -110,19 +118,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.kitchen_electricity_daily_peak
-                name: Kitchen (Peak)
+              - entity: sensor.kitchen_electricity_daily_punta
+                name: Kitchen (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_daily_peak
+                  entity: sensor.kitchen_cost_daily_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_electricity_daily_offpeak
-                name: Kitchen (Off Peak)
+              - entity: sensor.kitchen_electricity_daily_llanoa
+                name: Kitchen (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_daily_offpeak
+                  entity: sensor.kitchen_cost_daily_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.kitchen_electricity_daily_valle
+                name: Kitchen (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.kitchen_cost_daily_valle
                   name: false
                 tap_action:
                   action: none
@@ -136,19 +152,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.laundry_room_electricity_daily_peak
-                name: Laundry Room (Peak)
+              - entity: sensor.laundry_room_electricity_daily_punta
+                name: Laundry Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_daily_peak
+                  entity: sensor.laundry_room_cost_daily_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.laundry_room_electricity_daily_offpeak
-                name: Laundry Room (Off Peak)
+              - entity: sensor.laundry_room_electricity_daily_llano
+                name: Laundry Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_daily_offpeak
+                  entity: sensor.laundry_room_cost_daily_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.laundry_room_electricity_daily_valle
+                name: Laundry Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.laundry_room_cost_daily_valle
                   name: false
                 tap_action:
                   action: none
@@ -162,19 +186,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.studio_electricity_daily_peak
-                name: Studio (Peak)
+              - entity: sensor.studio_electricity_daily_punta
+                name: Studio (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_daily_peak
+                  entity: sensor.studio_cost_daily_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.studio_electricity_daily_offpeak
-                name: Studio (Off Peak)
+              - entity: sensor.studio_electricity_daily_llano
+                name: Studio (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_daily_offpeak
+                  entity: sensor.studio_cost_daily_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.studio_electricity_daily_valle
+                name: Studio (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.studio_cost_daily_valle
                   name: false
                 tap_action:
                   action: none
@@ -186,19 +218,27 @@ cards:
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.house_electricity_daily_peak
-                name: House (Peak)
+              - entity: sensor.house_electricity_daily_punta
+                name: House (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_daily_peak
+                  entity: sensor.house_cost_daily_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.house_electricity_daily_offpeak
-                name: House (Off Peak)
+              - entity: sensor.house_electricity_daily_llano
+                name: House (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_daily_offpeak
+                  entity: sensor.house_cost_daily_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.house_electricity_daily_valle
+                name: House (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.house_cost_daily_valle
                   name: false
                 tap_action:
                   action: none
@@ -216,19 +256,27 @@ cards:
               type: section
             padding: 0
             entities:
-              - entity: sensor.living_room_electricity_monthly_peak
-                name: Living Room (Peak)
+              - entity: sensor.living_room_electricity_monthly_punta
+                name: Living Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_monthly_peak
+                  entity: sensor.living_room_cost_monthly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.living_room_electricity_monthly_offpeak
-                name: Living Room (Off Peak)
+              - entity: sensor.living_room_electricity_monthly_llano
+                name: Living Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_monthly_offpeak
+                  entity: sensor.living_room_cost_monthly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.living_room_electricity_monthly_valle
+                name: Living Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.living_room_cost_monthly_valle
                   name: false
                 tap_action:
                   action: none
@@ -242,19 +290,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.kitchen_electricity_monthly_peak
-                name: Kitchen (Peak)
+              - entity: sensor.kitchen_electricity_monthly_punta
+                name: Kitchen (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_monthly_peak
+                  entity: sensor.kitchen_cost_monthly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_electricity_monthly_offpeak
-                name: Kitchen (Off Peak)
+              - entity: sensor.kitchen_electricity_monthly_llano
+                name: Kitchen (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_monthly_offpeak
+                  entity: sensor.kitchen_cost_monthly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.kitchen_electricity_monthly_valle
+                name: Kitchen (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.kitchen_cost_monthly_valle
                   name: false
                 tap_action:
                   action: none
@@ -268,19 +324,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.laundry_room_electricity_monthly_peak
-                name: Laundry Room (Peak)
+              - entity: sensor.laundry_room_electricity_monthly_punta
+                name: Laundry Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_monthly_peak
+                  entity: sensor.laundry_room_cost_monthly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.laundry_room_electricity_monthly_offpeak
-                name: Laundry Room (Off Peak)
+              - entity: sensor.laundry_room_electricity_monthly_llano
+                name: Laundry Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_monthly_offpeak
+                  entity: sensor.laundry_room_cost_monthly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.laundry_room_electricity_monthly_valle
+                name: Laundry Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.laundry_room_cost_monthly_valle
                   name: false
                 tap_action:
                   action: none
@@ -294,19 +358,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.studio_electricity_monthly_peak
-                name: Studio (Peak)
+              - entity: sensor.studio_electricity_monthly_punta
+                name: Studio (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_monthly_peak
+                  entity: sensor.studio_cost_monthly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.studio_electricity_monthly_offpeak
-                name: Studio (Off Peak)
+              - entity: sensor.studio_electricity_monthly_llano
+                name: Studio (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_monthly_offpeak
+                  entity: sensor.studio_cost_monthly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.studio_electricity_monthly_valle
+                name: Studio (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.studio_cost_monthly_valle
                   name: false
                 tap_action:
                   action: none
@@ -320,19 +392,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.house_electricity_monthly_peak
-                name: House (Peak)
+              - entity: sensor.house_electricity_monthly_punta
+                name: House (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_monthly_peak
+                  entity: sensor.house_cost_monthly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.house_electricity_monthly_offpeak
-                name: House (Off Peak)
+              - entity: sensor.house_electricity_monthly_llano
+                name: House (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_monthly_offpeak
+                  entity: sensor.house_cost_monthly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.house_electricity_monthly_valle
+                name: House (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.house_cost_monthly_valle
                   name: false
                 tap_action:
                   action: none
@@ -350,19 +430,27 @@ cards:
               type: section
             padding: 0
             entities:
-              - entity: sensor.living_room_electricity_yearly_peak
-                name: Living Room (Peak)
+              - entity: sensor.living_room_electricity_yearly_punta
+                name: Living Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_yearly_peak
+                  entity: sensor.living_room_cost_yearly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.living_room_electricity_yearly_offpeak
-                name: Living Room (Off Peak)
+              - entity: sensor.living_room_electricity_yearly_llano
+                name: Living Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.living_room_cost_yearly_offpeak
+                  entity: sensor.living_room_cost_yearly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.living_room_electricity_yearly_valle
+                name: Living Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.living_room_cost_yearly_valle
                   name: false
                 tap_action:
                   action: none
@@ -376,19 +464,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.kitchen_electricity_yearly_peak
-                name: Kitchen (Peak)
+              - entity: sensor.kitchen_electricity_yearly_punta
+                name: Kitchen (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_yearly_peak
+                  entity: sensor.kitchen_cost_yearly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.kitchen_electricity_yearly_offpeak
-                name: Kitchen (Off Peak)
+              - entity: sensor.kitchen_electricity_yearly_llano
+                name: Kitchen (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.kitchen_cost_yearly_offpeak
+                  entity: sensor.kitchen_cost_yearly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.kitchen_electricity_yearly_valle
+                name: Kitchen (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.kitchen_cost_yearly_valle
                   name: false
                 tap_action:
                   action: none
@@ -402,19 +498,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.laundry_room_electricity_yearly_peak
-                name: Laundry Room (Peak)
+              - entity: sensor.laundry_room_electricity_yearly_punta
+                name: Laundry Room (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_yearly_peak
+                  entity: sensor.laundry_room_cost_yearly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.laundry_room_electricity_yearly_offpeak
-                name: Laundry Room (Off Peak)
+              - entity: sensor.laundry_room_electricity_yearly_llano
+                name: Laundry Room (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.laundry_room_cost_yearly_offpeak
+                  entity: sensor.laundry_room_cost_yearly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.laundry_room_electricity_yearly_valle
+                name: Laundry Room (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.laundry_room_cost_yearly_valle
                   name: false
                 tap_action:
                   action: none
@@ -428,19 +532,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.studio_electricity_yearly_peak
-                name: Studio (Peak)
+              - entity: sensor.studio_electricity_yearly_punta
+                name: Studio (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_yearly_peak
+                  entity: sensor.studio_cost_yearly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.studio_electricity_yearly_offpeak
-                name: Studio (Off Peak)
+              - entity: sensor.studio_electricity_yearly_llano
+                name: Studio (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.studio_cost_yearly_offpeak
+                  entity: sensor.studio_cost_yearly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.studio_electricity_yearly_valle
+                name: Studio (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.studio_cost_yearly_valle
                   name: false
                 tap_action:
                   action: none
@@ -454,19 +566,27 @@ cards:
                   action: none
               - type: custom:hui-element
                 row_type: divider
-              - entity: sensor.house_electricity_yearly_peak
-                name: House (Peak)
+              - entity: sensor.house_electricity_yearly_punta
+                name: House (Punta)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_yearly_peak
+                  entity: sensor.house_cost_yearly_punta
                   name: false
                 tap_action:
                   action: none
-              - entity: sensor.house_electricity_yearly_offpeak
-                name: House (Off Peak)
+              - entity: sensor.house_electricity_yearly_llano
+                name: House (Llano)
                 type: custom:multiple-entity-row
                 primary:
-                  entity: sensor.house_cost_yearly_offpeak
+                  entity: sensor.house_cost_yearly_llano
+                  name: false
+                tap_action:
+                  action: none
+              - entity: sensor.house_electricity_yearly_valle
+                name: House (Valle)
+                type: custom:multiple-entity-row
+                primary:
+                  entity: sensor.house_cost_yearly_valle
                   name: false
                 tap_action:
                   action: none
@@ -593,10 +713,13 @@ cards:
               - entity: input_number.energy_daily_price
                 tap_action:
                   action: none
-              - entity: input_number.energy_price_peak
+              - entity: input_number.energy_price_punta
                 tap_action:
                   action: none
-              - entity: input_number.energy_price_offpeak
+              - entity: input_number.energy_price_llano
+                tap_action:
+                  action: none
+              - entity: input_number.energy_price_valle
                 tap_action:
                   action: none
 #              - entity: script.reset_utility_meters

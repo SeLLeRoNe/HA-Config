@@ -7,8 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.living_room_electricity_monthly_offpeak.state | float) +
-      (states.sensor.living_room_electricity_monthly_peak.state | float)
+      (states.sensor.living_room_electricity_monthly_punta.state | float) +
+      (states.sensor.living_room_electricity_monthly_llano.state | float) +
+      (states.sensor.living_room_electricity_monthly_valle.state | float)
       )
       | round(3)
       }}
