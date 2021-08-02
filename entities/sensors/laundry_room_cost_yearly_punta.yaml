@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  laundry_room_cost_yearly_punta:
+    friendly_name: 'Total Cost Yearly (Punta)'
+    icon_template: mdi:currency-eur
+    value_template: >-
+      {{
+      (
+      (states('sensor.laundry_room_electricity_yearly_punta')|float * states('input_number.energy_price_punta')|float)
+      )
+      | round(2)
+      }}
+    unit_of_measurement: "EUR"

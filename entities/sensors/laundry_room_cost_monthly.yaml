@@ -7,8 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states('sensor.laundry_room_electricity_monthly_peak')|float * states('input_number.energy_price_peak')|float) +
-      (states('sensor.laundry_room_electricity_monthly_offpeak')|float * states('input_number.energy_price_offpeak')|float)
+      (states('sensor.laundry_room_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.laundry_room_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.laundry_room_electricity_monthly_valle')|float * states('input_number.energy_price_valle')|float)
       )
       | round(2)
       }}

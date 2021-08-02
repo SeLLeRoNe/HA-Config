@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  kitchen_cost_daily_valle:
+    friendly_name: 'Kitchen Cost Daily (Valle)'
+    icon_template: mdi:currency-eur
+    value_template: >-
+      {{
+      (
+      (states('sensor.kitchen_electricity_daily_valle')|float * states('input_number.energy_price_valle')|float)
+      )
+      | round(2)
+      }}
+    unit_of_measurement: "EUR"

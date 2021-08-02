@@ -7,8 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.kitchen_electricity_daily_offpeak.state | float) +
-      (states.sensor.kitchen_electricity_daily_peak.state | float)
+      (states.sensor.kitchen_electricity_daily_punta.state | float) +
+      (states.sensor.kitchen_electricity_daily_llano.state | float) +
+      (states.sensor.kitchen_electricity_daily_valle.state | float)
       )
       | round(3)
       }}
