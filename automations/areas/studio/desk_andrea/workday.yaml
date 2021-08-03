@@ -10,9 +10,14 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: person.andrea
-      state: 'home'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: person.andrea
+          state: 'home'
+        - condition: state
+          entity_id: person.andrea
+          state: 'Garage'
     - condition: state
       entity_id: binary_sensor.workday_uk
       state: 'on'
