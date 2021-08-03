@@ -14,9 +14,14 @@ condition:
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'on'
-    - condition: state
-      entity_id: person.andrea
-      state: 'home'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: person.andrea
+          state: 'home'
+        - condition: state
+          entity_id: person.andrea
+          state: 'Garage'
     - condition: time
       after: '09:30:00'
       before: '18:30:00'
