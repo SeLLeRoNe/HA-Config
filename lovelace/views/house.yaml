@@ -28,6 +28,8 @@ cards:
           - arm_home
           - arm_away
           - arm_night
+      - type: custom:alarmo-card
+        entity: alarm_control_panel.alarmo
 #      - type: alarm-panel
 #        entity: alarm_control_panel.alarmo
 #        states:
