@@ -1,0 +1,3 @@
+---
+sensor.house_electricity_yearly_punta:
+  friendly_name: House Yearly Electricity Consumption (Punta)
