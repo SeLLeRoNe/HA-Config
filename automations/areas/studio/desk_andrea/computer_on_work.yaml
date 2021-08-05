@@ -14,7 +14,7 @@ condition:
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'on'
-    - condition: and
+    - condition: or
       conditions:
         - condition: state
           entity_id: person.andrea
