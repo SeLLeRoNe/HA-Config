@@ -238,7 +238,7 @@ cards:
                 - color: var(--paper-item-icon-active-color)
           - value: playing
             operator: '!='
-            label: Spento
+            label: Idle
         tap_action:
           action: call-service
           service: script.spotify_tablet_andrea_pause
@@ -276,7 +276,7 @@ cards:
                 - color: var(--paper-item-icon-active-color)
           - value: playing
             operator: '!='
-            label: Spento
+            label: Idle
         tap_action:
           action: call-service
           service: script.spotify_sonia_tablet_pause
