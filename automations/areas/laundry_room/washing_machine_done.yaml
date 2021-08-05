@@ -38,11 +38,6 @@ action:
     data:
       title: "Laundry Room"
       message: "Washing Machine is now done. Energy consumed: {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float - states('input_number.laundry_room_washing_machine_current_energy')|float | round(3) }}kWh"
-#  - service: tts.google_say
-#    data:
-#      entity_id: media_player.living_room_chromecast
-#      message: "Washing Machine is now done"
-#      language: "en"
   - service: notify.living_room_chromecast
     data:
       title: "Laundry Room"
