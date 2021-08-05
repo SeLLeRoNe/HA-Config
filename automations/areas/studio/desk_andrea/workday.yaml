@@ -10,7 +10,7 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: and
+    - condition: or
       conditions:
         - condition: state
           entity_id: person.andrea
