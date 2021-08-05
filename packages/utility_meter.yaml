@@ -8,6 +8,7 @@
 utility_meter:
   # HOUSE #
   house_electricity_daily:
+    name: House Daily Energy Consumption
     source: sensor.house_total_energy_usage
     cycle: daily
     tariffs:
@@ -15,6 +16,7 @@ utility_meter:
       - llano
       - valle
   house_electricity_monthly:
+    name: House Monthly Energy Consumption
     source: sensor.house_total_energy_usage
     cycle: monthly
     tariffs:
@@ -22,6 +24,7 @@ utility_meter:
       - llano
       - valle
   house_electricity_yearly:
+    name: House Yearly Energy Consumption
     source: sensor.house_total_energy_usage
     cycle: yearly
     tariffs:
@@ -30,6 +33,7 @@ utility_meter:
       - valle
   # LIVING ROOM #
   living_room_electricity_daily:
+    name: Living Room Daily Energy Consumption
     source: sensor.living_room_total_energy_usage
     cycle: daily
     tariffs:
@@ -37,6 +41,7 @@ utility_meter:
       - llano
       - valle
   living_room_electricity_monthly:
+    name: Living Room Monthly Energy Consumption
     source: sensor.living_room_total_energy_usage
     cycle: monthly
     tariffs:
@@ -44,6 +49,7 @@ utility_meter:
       - llano
       - valle
   living_room_electricity_yearly:
+    name: Living Room Yearly Energy Consumption
     source: sensor.living_room_total_energy_usage
     cycle: yearly
     tariffs:
@@ -52,6 +58,7 @@ utility_meter:
       - valle
   # KITCHEN #
   kitchen_electricity_daily:
+    name: Kitchen Daily Energy Consumption
     source: sensor.kitchen_total_energy_usage
     cycle: daily
     tariffs:
@@ -59,6 +66,7 @@ utility_meter:
       - llano
       - valle
   kitchen_electricity_monthly:
+    name: Kitchen Monthly Energy Consumption
     source: sensor.kitchen_total_energy_usage
     cycle: monthly
     tariffs:
@@ -66,6 +74,7 @@ utility_meter:
       - llano
       - valle
   kitchen_electricity_yearly:
+    name: Kitchen Yearly Energy Consumption
     source: sensor.kitchen_total_energy_usage
     cycle: yearly
     tariffs:
@@ -74,6 +83,7 @@ utility_meter:
       - valle
   # LAUNDRY ROOM #
   laundry_room_electricity_daily:
+    name: Laundry Room Daily Energy Consumption
     source: sensor.laundry_room_total_energy_usage
     cycle: daily
     tariffs:
@@ -81,6 +91,7 @@ utility_meter:
       - llano
       - valle
   laundry_room_electricity_monthly:
+    name: Laundry Room Monthly Energy Consumption
     source: sensor.laundry_room_total_energy_usage
     cycle: monthly
     tariffs:
@@ -88,6 +99,7 @@ utility_meter:
       - llano
       - valle
   laundry_room_electricity_yearly:
+    name: Laundry Room Yearly Energy Consumption
     source: sensor.laundry_room_total_energy_usage
     cycle: yearly
     tariffs:
@@ -96,6 +108,7 @@ utility_meter:
       - valle
   # STUDIO ANDREA #
   studio_electricity_daily:
+    name: Studio Daily Energy Consumption
     source: sensor.studio_total_energy_usage
     cycle: daily
     tariffs:
@@ -103,6 +116,7 @@ utility_meter:
       - llano
       - valle
   studio_electricity_monthly:
+    name: Studio Monthly Energy Consumption
     source: sensor.studio_total_energy_usage
     cycle: monthly
     tariffs:
@@ -110,6 +124,7 @@ utility_meter:
       - llano
       - valle
   studio_electricity_yearly:
+    name: Studio Yearly Energy Consumption
     source: sensor.studio_total_energy_usage
     cycle: yearly
     tariffs:
