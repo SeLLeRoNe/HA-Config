@@ -25,8 +25,23 @@ action:
       retain: true
   - service: mqtt.publish
     data:
+      topic: "cmnd/tasmotas/Timezone"
+      payload: "99"
+      retain: true
+  - service: mqtt.publish
+    data:
       topic: "cmnd/tasmotas/NtpServer"
+      payload: "1"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/NtpServer1"
       payload: "192.168.0.100"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/Time"
+      payload: "0"
       retain: true
   - service: mqtt.publish
     data:
