@@ -14,7 +14,7 @@ condition:
       entity_id: group.family
       state: 'home'
 action:
-  - service: light.turn_on
+  - service: scene.turn_on
     data:
-      entity_id: light.bedroom_luca_lamp_top_light
+      entity_id: scene.bedroom_luca_mood
       transition: 5
