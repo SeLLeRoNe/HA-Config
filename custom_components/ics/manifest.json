@@ -2,9 +2,9 @@
     "domain": "ics",
     "name": "ics Calendar",
     "documentation": "https://github.com/franc6/ics_calendar",
-    "requirements": ["ics", "icalevents"],
+    "requirements": ["ics", "arrow"],
     "dependencies": [],
     "homeassistant": "0.97.0",
     "codeowners": ["@franc6"],
-    "version": "2.0.0"
+    "version": "1.0.7"
 }
