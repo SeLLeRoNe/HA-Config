@@ -1,5 +1,5 @@
 ---
-platform: ics
+platform: ics_calendar
 calendars:
   - name: UK Holidays
     url: !secret ics_holiday_uk
@@ -27,7 +27,4 @@ calendars:
     includeAllDay: true
   - name: UEFA Europa League
     url: !secret ics_europa_league
-    includeAllDay: true
-  - name: EURO 2020
-    url: !secret ics_euro2020
     includeAllDay: true
