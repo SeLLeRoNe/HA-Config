@@ -3,8 +3,10 @@ platform: template
 sensors:
   studio_total_energy_usage:
     friendly_name: Studio Daily Energy Usage
+    entity_id: sensor.time
+    unit_of_measurement: kWh
     icon_template: mdi:counter
-    value_template: >-
+    value_template: >
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
         {% if s.object_id.startswith('studio_') and s.object_id.endswith('_energy_total') %}
@@ -20,4 +22,3 @@ sensors:
 #      )
 #      | round(3)
 #      }}
-    unit_of_measurement: 'kWh'
