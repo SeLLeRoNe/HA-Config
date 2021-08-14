@@ -5,10 +5,17 @@ sensors:
     friendly_name: Living Rooma Daily Energy Usage
     icon_template: mdi:counter
     value_template: >-
-      {{
-      (
-      (states.sensor.living_room_tv_stand_plug_energy_total.state | float)
-      )
-      | round(3)
-      }}
+      {% set ns = namespace(states=[]) %}
+      {% for s in states.sensor %}
+        {% if s.object_id.startswith('living_room_') and s.object_id.endswith('_energy_total') %}
+          {% set ns.states = ns.states + [ s.state | float ] %}
+        {% endif %}
+      {% endfor %}
+      {{ ns.states | sum | round(2) }}
+#      {{
+#      (
+#      (states.sensor.living_room_tv_stand_plug_energy_total.state | float)
+#      )
+#      | round(3)
+#      }}
     unit_of_measurement: 'kWh'
