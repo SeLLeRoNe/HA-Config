@@ -3,20 +3,22 @@ id: '3565344161321'
 alias: Utility Meter - Update House Total Energy Usage
 initial_state: on
 trigger:
-  - platform: mqtt
-    topic: tele/living_room_tv_stand_plug/SENSOR
-  - platform: mqtt
-    topic: tele/laundry_room_washing_machine_plug/SENSOR
-  - platform: mqtt
-    topic: tele/kitchen_dishwasher_plug/SENSOR
-  - platform: mqtt
-    topic: tele/kitchen_toaster_plug/SENSOR
-  - platform: mqtt
-    topic: tele/studio_desk_andrea_plug/SENSOR
-  - platform: mqtt
-    topic: tele/studio_desk_sonia_plug/SENSOR
-  - platform: mqtt
-    topic: tele/studio_table_plug/SENSOR
+  - platform: time_pattern
+    minutes: "*"
+#  - platform: mqtt
+#    topic: tele/living_room_tv_stand_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/laundry_room_washing_machine_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/kitchen_dishwasher_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/kitchen_toaster_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/studio_desk_andrea_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/studio_desk_sonia_plug/SENSOR
+#  - platform: mqtt
+#    topic: tele/studio_table_plug/SENSOR
 action:
   - service: mqtt.publish
     data:
