@@ -22,14 +22,21 @@ action:
     data:
       topic: "tele/House/TOTAL_ENERGY"
       payload_template: >-
-        {{
-        (
-        (states.sensor.living_room_total_energy_usage.state | float) +
-        (states.sensor.kitchen_total_energy_usage.state | float) +
-        (states.sensor.laundry_room_total_energy_usage.state | float) +
-        (states.sensor.studio_total_energy_usage.state | float)
-        )
-        | round(3)
-        }}
+        {% set ns = namespace(states=[]) %}
+        {% for s in states.sensor %}
+          {% if s.object_id.endswith('total_energy_usage') %}
+            {% set ns.states = ns.states + [ s.state | float ] %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.states | sum | round(2) }}
+#        {{
+#        (
+#        (states.sensor.living_room_total_energy_usage.state | float) +
+#        (states.sensor.kitchen_total_energy_usage.state | float) +
+#        (states.sensor.laundry_room_total_energy_usage.state | float) +
+#        (states.sensor.studio_total_energy_usage.state | float)
+#        )
+#        | round(3)
+#        }}
       qos: 1
       retain: true
