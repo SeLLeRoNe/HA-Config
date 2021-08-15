@@ -21,4 +21,4 @@ action:
   - service: light.turn_off
     data:
       entity_id: light.studio_lights
-      transition: 5
+      transition: 10
