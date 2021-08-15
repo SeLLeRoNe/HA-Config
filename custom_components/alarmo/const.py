@@ -26,7 +26,7 @@ from homeassistant.components.alarm_control_panel import (
 
 from homeassistant.helpers import config_validation as cv
 
-VERSION = "1.6.2"
+VERSION = "1.7.0a"
 NAME = "Alarmo"
 MANUFACTURER = "@nielsfaber"
 
@@ -43,10 +43,6 @@ PANEL_URL = "/api/panel_custom/alarmo"
 PANEL_TITLE = NAME
 PANEL_ICON = "mdi:shield-home"
 PANEL_NAME = "alarm-panel"
-
-CARD_FOLDER = "card"
-CARD_FILENAME = "dist/alarmo-card.js"
-CARD_URL = "/alarmo-card"
 
 INITIALIZATION_TIME = datetime.timedelta(seconds=30)
 SENSOR_ARM_TIME = datetime.timedelta(seconds=5)
