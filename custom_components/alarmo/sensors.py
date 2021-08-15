@@ -33,12 +33,14 @@ from homeassistant.const import (
 
 from . import const
 
-ATTR_IMMEDIATE = "immediate"
+ATTR_USE_EXIT_DELAY = "use_exit_delay"
+ATTR_USE_ENTRY_DELAY = "use_entry_delay"
 ATTR_ALWAYS_ON = "always_on"
 ATTR_ARM_ON_CLOSE = "arm_on_close"
 ATTR_ALLOW_OPEN = "allow_open"
 ATTR_TRIGGER_UNAVAILABLE = "trigger_unavailable"
 ATTR_AUTO_BYPASS = "auto_bypass"
+ATTR_AUTO_BYPASS_MODES = "auto_bypass_modes"
 
 SENSOR_STATES_OPEN = [STATE_ON, STATE_OPEN, STATE_UNLOCKED]
 SENSOR_STATES_CLOSED = [STATE_OFF, STATE_CLOSED, STATE_LOCKED]
@@ -140,7 +142,13 @@ class SensorHandler:
                 entities.append(entity)
         return entities
 
-    def validate_event(self, area_id: str = None, event: str = None, bypass_open_sensors: bool = False) -> bool:
+    def validate_event(
+        self,
+        area_id: str = None,
+        event: str = None,
+        bypass_open_sensors: bool = False,
+        arm_mode: str = None
+    ) -> bool:
         """"check if sensors have correct state"""
         open_sensors = {}
         bypassed_sensors = []
@@ -149,7 +157,7 @@ class SensorHandler:
 
         for entity in sensors_list:
             sensor_config = self._config[entity]
-            if event == const.EVENT_LEAVE and not sensor_config[ATTR_IMMEDIATE]:
+            if event == const.EVENT_LEAVE and sensor_config[ATTR_USE_EXIT_DELAY]:
                 continue
             elif event in [const.EVENT_LEAVE, const.EVENT_ARM] and (
                 sensor_config[ATTR_ALLOW_OPEN]
@@ -161,7 +169,10 @@ class SensorHandler:
             if state in [STATE_UNAVAILABLE, STATE_UNKNOWN] and not sensor_config[ATTR_TRIGGER_UNAVAILABLE]:
                 continue
             elif state in [STATE_OPEN, STATE_UNAVAILABLE, STATE_UNKNOWN]:
-                if bypass_open_sensors or sensor_config[ATTR_AUTO_BYPASS]:
+                if bypass_open_sensors or (
+                    sensor_config[ATTR_AUTO_BYPASS] and
+                    arm_mode in sensor_config[ATTR_AUTO_BYPASS_MODES]
+                ):
                     bypassed_sensors.append(entity)
                 else:
                     open_sensors[entity] = state
@@ -186,7 +197,7 @@ class SensorHandler:
 
         # immediate trigger due to always on sensor
         if sensor_config[ATTR_ALWAYS_ON] and new_state in [STATE_OPEN, STATE_UNKNOWN, STATE_UNAVAILABLE]:
-            _LOGGER.debug("Alarm is triggered due to an always-on sensor: {}".format(entity))
+            _LOGGER.info("Alarm is triggered due to an always-on sensor: {}".format(entity))
             await alarm_entity.async_trigger(
                 skip_delay=True,
                 open_sensors={entity: new_state}
@@ -204,7 +215,7 @@ class SensorHandler:
         elif alarm_entity.state == STATE_ALARM_ARMING:
             if (
                 new_state in [STATE_OPEN, STATE_UNKNOWN, STATE_UNAVAILABLE]
-                and sensor_config[ATTR_IMMEDIATE]
+                and not sensor_config[ATTR_USE_ENTRY_DELAY]
                 and not sensor_config[ATTR_ALLOW_OPEN]
                 and not self._bypass_mode
             ):
@@ -220,15 +231,15 @@ class SensorHandler:
         # alarm is armed -> check if need to be triggered
         elif alarm_entity.state in const.ARM_MODES:
             if new_state in [STATE_OPEN, STATE_UNKNOWN, STATE_UNAVAILABLE]:
-                _LOGGER.debug("Alarm is triggered due to sensor: {}".format(entity))
+                _LOGGER.info("Alarm is triggered due to sensor: {}".format(entity))
                 await alarm_entity.async_trigger(
-                    skip_delay=sensor_config[ATTR_IMMEDIATE],
+                    skip_delay=(not sensor_config[ATTR_USE_ENTRY_DELAY]),
                     open_sensors={entity: new_state}
                 )
 
         # alarm is in pending -> check if pending time needs to be aborted
         elif alarm_entity.state == STATE_ALARM_PENDING:
-            if new_state in [STATE_OPEN, STATE_UNKNOWN, STATE_UNAVAILABLE] and sensor_config[ATTR_IMMEDIATE]:
+            if new_state in [STATE_OPEN, STATE_UNKNOWN, STATE_UNAVAILABLE] and not sensor_config[ATTR_USE_ENTRY_DELAY]:
                 await alarm_entity.async_trigger(
                     skip_delay=True,
                     open_sensors={entity: new_state}
