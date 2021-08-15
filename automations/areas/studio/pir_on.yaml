@@ -31,9 +31,9 @@ condition:
             {% else %}
               true
             {% endif %}
-    - condition: state
-      entity_id: light.studio_lights
-      state: 'off'
+#    - condition: state
+#      entity_id: light.studio_lights
+#      state: 'off'
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: 'off'
@@ -65,6 +65,7 @@ action:
   - service: light.turn_on
     data:
       entity_id: light.studio_lights
+      transition: 10
 #  - service: scene.turn_on
 #    data:
 #      entity_id: scene.studio_night
