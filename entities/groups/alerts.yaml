@@ -6,3 +6,11 @@ alerts:
     - binary_sensor.patio_door_exterior
     - binary_sensor.bathroom_window
     - binary_sensor.master_bathroom_window
+    - binary_sensor.studio_pir
+    - binary_sensor.bathroom_pir
+    - binary_sensor.bedroom_luca_pir
+    - binary_sensor.kitchen_pir
+    - binary_sensor.living_room_pir
+    - binary_sensor.master_bathroom_pir
+    - binary_sensor.patio_pir
+

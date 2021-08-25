@@ -33,7 +33,7 @@ cards:
             card:
               - width: 25px
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @keyframes bounce {
               0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -74,7 +74,7 @@ cards:
                   - white-space: unset
                   - word-break: break-word
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @-webkit-keyframes swing
             {
@@ -145,7 +145,7 @@ cards:
                   - white-space: unset
                   - word-break: break-word
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @-webkit-keyframes WidthAni {
               0% {width: 0px}
@@ -208,7 +208,7 @@ cards:
             card:
               - width: 25px
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @keyframes mymove {
               50% {box-shadow: 0 0 20px red;}
@@ -251,7 +251,7 @@ cards:
                   - white-space: unset
                   - word-break: break-word
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @keyframes pulse {
               0% {
@@ -305,7 +305,7 @@ cards:
                   - white-space: unset
                   - word-break: break-word
           type: 'custom:button-card'
-        - entity: binary_sensor.studio_2ajz4kpbs_pir
+        - entity: binary_sensor.studio_pir
           extra_styles: |
             @keyframes ball-scale {
               from {
