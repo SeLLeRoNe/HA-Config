@@ -32,3 +32,4 @@ logger:
     homeassistant.helpers: error
     custom_components.adaptive_lighting: error
     custom_components.entity_controller: error
+    custom_components.sleep_as_android: error
