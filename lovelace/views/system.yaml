@@ -1080,11 +1080,11 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.studio_2ajz4kpbs_link_quality
+            - entity_id: sensor.studio_pir_link_quality
               options:
                 name: Studio - 2AJZ4KPBS - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", sensor.studio_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_link_quality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.studio_pir_link_quality.state != "unknown", sensor.studio_pir_battery.state , "Not Available") ]][[ if(sensor.studio_pir_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_pir_link_quality.state != "unknown", sensor.studio_pir_voltage.state, "Not Available") ]][[ if(sensor.studio_pir_link_quality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:

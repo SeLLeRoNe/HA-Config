@@ -16,4 +16,12 @@ alerts:
         state_color: true
         entities:
           - entity: binary_sensor.bathroom_window
+          - entity: binary_sensor.master_bathroom_window
           - entity: binary_sensor.patio_door_exterior
+          - entity: binary_sensor.studio_pir
+          - entity: binary_sensor.bathroom_pir
+          - entity: binary_sensor.bedroom_luca_pir
+          - entity: binary_sensor.kitchen_pir
+          - entity: binary_sensor.living_room_pir
+          - entity: binary_sensor.master_bathroom_pir
+          - entity: binary_sensor.patio_pir
