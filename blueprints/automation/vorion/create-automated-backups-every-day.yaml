@@ -36,7 +36,7 @@ trigger:
 - platform: time
   at: !input 'trigger_time'
 action:
-- service: hassio.snapshot_full
+- service: hassio.backup_full
   data:
     name: '{{ backup_filename }}'
 - choose:
