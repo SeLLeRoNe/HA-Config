@@ -455,7 +455,7 @@ cards:
       - type: custom:decluttering-card
         template: title
         variables:
-          - title: Pi Hole
+          - title: AdGuard
   - type: custom:stack-in-card
     mode: vertical
     cards:
@@ -463,31 +463,46 @@ cards:
         title: Statistics
         show_header_toggle: false
         entities:
-          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: switch.adguard_filtering
             tap_action:
               action: none
-          - entity: sensor.pi_hole_ads_percentage_blocked_today
+          - entity: switch.adguard_parental_control
             tap_action:
               action: none
-          - entity: sensor.pi_hole_dns_queries_cached
+          - entity: switch.adguard_protection
             tap_action:
               action: none
-          - entity: sensor.pi_hole_dns_queries_forwarded
+          - entity: switch.adguard_safe_browsing
             tap_action:
               action: none
-          - entity: sensor.pi_hole_dns_queries_today
+          - entity: switch.adguard_safe_search
             tap_action:
               action: none
-          - entity: sensor.pi_hole_dns_unique_domains
+          - entity: switch.adguard_query_log
             tap_action:
               action: none
-          - entity: sensor.pi_hole_domains_blocked
+          - entity: sensor.adguard_average_processing_speed
             tap_action:
               action: none
-          - entity: sensor.pi_hole_seen_clients
+          - entity: sensor.adguard_dns_queries
             tap_action:
               action: none
-          - entity: sensor.pi_hole_dns_unique_clients
+          - entity: sensor.adguard_dns_queries_blocked_ratio
+            tap_action:
+              action: none
+          - entity: sensor.adguard_parental_control_blocked
+            tap_action:
+              action: none
+          - entity: sensor.adguard_safe_browsing_blocked
+            tap_action:
+              action: none
+          - entity: sensor.adguard_safe_searches_enforced
+            tap_action:
+              action: none
+          - entity: sensor.adguard_dns_queries_blocked
+            tap_action:
+              action: none
+          - entity: sensor.adguard_rules_count
             tap_action:
               action: none
       - type: custom:mini-graph-card
@@ -502,10 +517,10 @@ cards:
         hour24: true
         animate: false
         decimals: 2
-        align_state: left
+        align_state: right
         show:
           name: true
-          icon: true
+          icon: false
           state: true
           graph: line
           fill: true
@@ -518,14 +533,28 @@ cards:
             ha-card {
               padding: 16px !important;
             }
+        tap_action:
+          action: none
         entities:
-          - entity: sensor.pi_hole_ads_percentage_blocked_today
+          - entity: sensor.adguard_dns_queries_blocked_ratio
             show_graph: false
             show_legend: false
-          - entity: sensor.pi_hole_dns_queries_today
+          - entity: sensor.adguard_dns_queries
             name: Queries
             color: red
-          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.adguard_parental_control_blocked
+            name: Parental Control blocked
+            color: green
+            show_fill: false
+          - entity: sensor.adguard_safe_browsing_blocked
+            name: Safe Browsing blocked
+            color: violet
+            show_fill: false
+          - entity: sensor.adguard_safe_searches_enforced
+            name: Safe Searche blocked
+            color: cyan
+            show_fill: false
+          - entity: sensor.adguard_dns_queries_blocked
             name: Ads blocked
             color: blue
             show_fill: false
