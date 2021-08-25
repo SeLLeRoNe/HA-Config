@@ -27,9 +27,15 @@ homeassistant:
   # metric for Metric, imperial for Imperial
   unit_system: !secret unit_system
 
+  # Time zone
   # Pick yours from here:
   # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret time_zone
+
+  # Currency
+  # Pick yours from here:
+  # https://en.wikipedia.org/wiki/ISO_4217#Active_codes
+  currency: EUR
 
   # URL Definition
   internal_url: !secret ha_url
