@@ -10,14 +10,9 @@ sensors:
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
         {% if s.object_id.startswith('kitchen_') and s.object_id.endswith('_energy_total') %}
-          {% set ns.states = ns.states + [ s.state | float ] %}
+          {% if ( s.state | float ) > 0.000 %}
+            {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
+          {% endif %}
         {% endif %}
       {% endfor %}
       {{ ns.states | sum | round(2) }}
-#      {{
-#      (
-#      (states.sensor.kitchen_dishwasher_plug_energy_total.state | float) +
-#      (states.sensor.kitchen_toaster_plug_energy_total.state | float)
-#      )
-#      | round(3)
-#      }}

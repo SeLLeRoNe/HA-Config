@@ -1,0 +1,7 @@
+---
+platform: filter
+name: "Kitchen Total Energy"
+entity_id: sensor.kitchen_total_energy_usage
+filters:
+  - filter: time_throttle
+    window_size: "00:01"

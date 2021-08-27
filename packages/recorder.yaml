@@ -15,25 +15,19 @@ recorder:
       - updater
       - media_player
       - weather
-      - switch
       - climate
       - camera
       - script
       - zone
     entities:
       - sun.sun
-      - sensor.night
       - sensor.season
       - sensor.last_boot
       - sensor.since_last_boot
       - sensor.date
       - sensor.time
       - sensor.time_utc
-      - sensor.sun_template
       - sensor.workday
-      - sensor.processor_use
-      - sensor.memory_use
-      - sensor.memory_free
       - sensor.hacs
     event_types:
       - panels_updated
@@ -43,7 +37,7 @@ recorder:
       - call_service
       - timer_out_of_sync
       - hacs/repository
-  include:
-    entities:
-      - switch.studio_desk_andrea_lg_monitor_1
-      - switch.studio_desk_andrea_lg_monitor_2
+#  include:
+#    entities:
+#      - switch.studio_desk_andrea_lg_monitor_1
+#      - switch.studio_desk_andrea_lg_monitor_2
