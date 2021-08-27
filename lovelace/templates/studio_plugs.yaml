@@ -45,9 +45,9 @@ studio_plugs:
           - type: custom:decluttering-card
             template: plug_card
             variables:
-              - name: "Google Mini"
-              - entity: switch.studio_desk_andrea_google_mini
-              - block: false
+              - name: "Modem R"
+              - entity: switch.studio_desk_andrea_modem
+              - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
