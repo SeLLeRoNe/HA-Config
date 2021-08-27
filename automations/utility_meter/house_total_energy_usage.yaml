@@ -29,18 +29,11 @@ action:
         {% set ns = namespace(states=[]) %}
         {% for s in states.sensor %}
           {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
-            {% set ns.states = ns.states + [ s.state | float ] %}
+            {% if ( s.state | float ) > 0.000 %}
+              {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
+            {% endif %}
           {% endif %}
         {% endfor %}
         {{ ns.states | sum | round(2) }}
-#        {{
-#        (
-#        (states.sensor.living_room_total_energy_usage.state | float) +
-#        (states.sensor.kitchen_total_energy_usage.state | float) +
-#        (states.sensor.laundry_room_total_energy_usage.state | float) +
-#        (states.sensor.studio_total_energy_usage.state | float)
-#        )
-#        | round(3)
-#        }}
       qos: 1
       retain: false
