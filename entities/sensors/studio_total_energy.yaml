@@ -3,5 +3,5 @@ platform: filter
 name: "Studio Total Energy"
 entity_id: sensor.studio_total_energy_usage
 filters:
-  - filter: time_throttle
-    window_size: "00:01"
+  - filter: range
+    lower_bound: 1
