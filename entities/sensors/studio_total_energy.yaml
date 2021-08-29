@@ -1,7 +1,0 @@
----
-platform: filter
-name: "Studio Total Energy"
-entity_id: sensor.studio_total_energy_usage
-filters:
-  - filter: range
-    lower_bound: 1
