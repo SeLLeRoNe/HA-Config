@@ -4,7 +4,7 @@ alias: Alarm - Triggered - Home
 initial_state: off
 trigger:
 #  - platform: state
-#    entity_id: binary_sensor.studio_2ajz4kpbs_pir
+#    entity_id: binary_sensor.studio_pir
 #    to: 'on'
   - platform: state
     entity_id: binary_sensor.patio_door_exterior
@@ -33,7 +33,7 @@ action:
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_2ajz4kpbs_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
@@ -49,7 +49,7 @@ action:
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_2ajz4kpbs_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
@@ -71,7 +71,7 @@ action:
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_2ajz4kpbs_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
