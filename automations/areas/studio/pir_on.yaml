@@ -1,10 +1,10 @@
 ---
 id: '8857948807317'
-alias: Studio - Andrea - PIR On
+alias: Studio - PIR On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_2ajz4kpbs_pir
+    entity_id: binary_sensor.studio_pir
     to: 'on'
 condition:
   condition: and
