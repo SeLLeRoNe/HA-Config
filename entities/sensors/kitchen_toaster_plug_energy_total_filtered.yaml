@@ -1,0 +1,11 @@
+---
+platform: template
+sensors:
+  kitchen_toaster_plug_energy_total_filtered:
+    friendly_name: "Kitchen Toaster Plug ENERGY Total (Filtered)"
+    value_template: >
+      {% if states('sensor.kitchen_toaster_plug_energy_total') in ['unavailable', 'unknown', 'none'] %}
+        {{ states('sensor.kitchen_toaster_plug_energy_total_filtered') }}
+      {% else %}
+        {{ states('sensor.kitchen_toaster_plug_energy_total') }}
+      {% endif %}

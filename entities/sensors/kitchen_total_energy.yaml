@@ -1,7 +1,0 @@
----
-platform: filter
-name: "Kitchen Total Energy"
-entity_id: sensor.kitchen_total_energy_usage
-filters:
-  - filter: range
-    lower_bound: 1

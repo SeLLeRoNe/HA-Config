@@ -1,0 +1,11 @@
+---
+platform: template
+sensors:
+  living_room_tv_stand_plug_energy_total_filtered:
+    friendly_name: "Living Room TV Stand Plug ENERGY Total (Filtered)"
+    value_template: >
+      {% if states('sensor.living_room_tv_stand_plug_energy_total') in ['unavailable', 'unknown', 'none'] %}
+        {{ states('sensor.living_room_tv_stand_plug_energy_total_filtered') }}
+      {% else %}
+        {{ states('sensor.living_room_tv_stand_plug_energy_total') }}
+      {% endif %}

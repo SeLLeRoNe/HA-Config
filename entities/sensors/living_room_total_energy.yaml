@@ -1,7 +1,0 @@
----
-platform: filter
-name: "Living Room Total Energy"
-entity_id: sensor.living_room_total_energy_usage
-filters:
-  - filter: range
-    lower_bound: 1
