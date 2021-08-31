@@ -1,7 +1,6 @@
 ---
 trakt_tv:
   language: en
-  update_interval: 30
   sensors:
     upcoming:
       show:
