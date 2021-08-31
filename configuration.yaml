@@ -89,11 +89,4 @@ lovelace:
       show_in_sidebar: true
       require_admin: true
       filename: dashboard_test.yaml
-    lovelace-tocheck:
-      mode: yaml
-      title: Test
-      icon: mdi:tune
-      show_in_sidebar: true
-      require_admin: true
-      filename: dashboard_tocheck.yaml
 scene: !include scenes.yaml

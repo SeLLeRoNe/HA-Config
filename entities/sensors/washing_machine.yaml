@@ -1,7 +1,0 @@
----
-platform: template
-sensors:
-  laundry_room_washing_machine:
-    friendly_name: Washing Machine
-    entity_id: "sensor.laundry_room_washing_machine_power"
-    value_template: "{{ states('sensor.laundry_room_washing_machine_power') | int < 3.4 }}"
