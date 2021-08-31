@@ -1,5 +1,6 @@
 """Platform for sensor integration."""
 import logging
+from datetime import timedelta
 
 from homeassistant.helpers.entity import Entity
 
@@ -7,17 +8,23 @@ from .const import DOMAIN
 from .model.kind import TraktKind
 from .utils import should_compute_identifier
 
+LOGGER = logging.getLogger(__name__)
+
+SCAN_INTERVAL = timedelta(minutes=5)
+
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the sensor platform."""
     coordinator = hass.data[DOMAIN]["instances"]["coordinator"]
 
+    sensors = []
+
     for trakt_kind in TraktKind:
         if should_compute_identifier(hass, trakt_kind.value.identifier):
-            async_add_entities(
-                [TraktUpcomingSensor(hass, config_entry, coordinator, trakt_kind)],
-                True,
-            )
+            sensor = TraktUpcomingSensor(hass, config_entry, coordinator, trakt_kind)
+            sensors.append(sensor)
+
+    async_add_entities(sensors)
 
 
 class TraktUpcomingSensor(Entity):
