@@ -23,7 +23,6 @@ def build_config_domain_schema():
                 }
             ),
             vol.Required("language"): vol.In(LANGUAGE_CODES),
-            vol.Required("update_interval", default=30): cv.positive_int,
         }
     )
 

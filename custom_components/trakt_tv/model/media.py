@@ -72,6 +72,7 @@ class Movie(Media):
     genres: List[str] = field(default_factory=list)
     rating: Optional[int] = None
     runtime: Optional[int] = None
+    studio: Optional[str] = None
 
     @staticmethod
     def from_trakt(data) -> "Movie":
@@ -109,6 +110,8 @@ class Movie(Media):
                     self.rating = vote_average
             if runtime := json.get("runtime"):
                 self.runtime = runtime
+            if production_companies := json.get("production_companies"):
+                self.studio = production_companies[0].get("name")
 
     def to_upcoming(self):
         """
@@ -123,6 +126,7 @@ class Movie(Media):
             "genres": self.genres,
             "rating": self.rating,
             "runtime": self.runtime,
+            "studio": self.studio,
         }
 
         return {k: v for k, v in default.items() if v is not None}
@@ -196,19 +200,30 @@ class Show(Media):
             if vote_average := json.get("vote_average"):
                 if vote_average != 0:
                     self.rating = vote_average
+            if networks := json.get("networks"):
+                self.studio = networks[0].get("name")
 
     def to_upcoming(self):
         """
         Convert the Show to upcoming data
         """
+        season = self.episode.season
+        season = season if season >= 10 else f"0{season}"
+
+        episode = self.episode.number
+        episode = episode if episode >= 10 else f"0{episode}"
+
         default = {
             "title": self.name,
+            "episode": self.episode.title,
+            "number": f"S{season}E{episode}",
             "release": "$day, $date $time",
             "airdate": self.released.isoformat() + "Z",
             "poster": self.poster,
             "fanart": self.fanart,
             "genres": self.genres,
             "rating": self.rating,
+            "studio": self.studio,
         }
 
         return {k: v for k, v in default.items() if v is not None}
