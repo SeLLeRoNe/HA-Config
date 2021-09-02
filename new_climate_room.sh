@@ -1,8 +1,8 @@
 #!/bin/bash
 
 OLD_PWD=$PWD
-HA_PATH=/home/ha/.homeassistant
-GITHUB_HA_PATH=/home/ha/HA-Config
+HA_PATH=/usr/share/hassio/homeassistant
+GITHUB_HA_PATH=/root/HA-Config
 ALL=0
 ID=
 
