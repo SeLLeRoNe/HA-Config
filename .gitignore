@@ -9,6 +9,7 @@ ssl/
 automations/system/tasmota_security.yaml
 custom_components/samsungtv_tizen/token-*.txt
 commands.txt
+frigate.yml
 getLatestConfs.sh
 www/icons/family/
 deps/
