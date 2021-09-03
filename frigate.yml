@@ -19,6 +19,7 @@ mqtt:
   stats_interval: 60
 
 clips:
+
   # Optional: Maximum length of time to retain video during long events. (default: shown below)
   # NOTE: If an object is being tracked for longer than this amount of time, the cache
   #       will begin to expire and the resulting clip will be the last x seconds of the event.
@@ -27,7 +28,7 @@ clips:
   # mount -t tmpfs -o size={tmpfs_cache_size} tmpfs /tmp/cache
   # NOTICE: Addon users must have Protection mode disabled for the addon when using this setting.
   # Also, if you have mounted a tmpfs volume through docker, this value should not be set in your config.
-  tmpfs_cache_size: 256m
+  #tmpfs_cache_size: 1G
   # Optional: Retention settings for clips (default: shown below)
   retain:
     # Required: Default retention days (default: shown below)
@@ -77,3 +78,57 @@ record:
   enabled: False
   # Optional: Number of days to retain
   retain_days: 30
+
+detectors:
+  cpu1:
+    type: cpu
+  cpu2:
+    type: cpu
+  cpu3:
+    type: cpu
+  cpu4:
+    type: cpu
+  cpu5:
+    type: cpu
+  cpu6:
+    type: cpu
+
+cameras:
+  studio:
+    ffmpeg:
+      inputs:
+        - path: rtsp://user:pass@192.168.0.254:554/cam/realmonitor?channel=1&subtype=1
+          roles:
+            - detect
+        - path: rtsp://user:pass@192.168.0.254:554/cam/realmonitor?channel=1&subtype=0
+          roles:
+            - clips            
+    width: 640
+    height: 480
+    fps: 5
+    objects:
+      track:
+        - person
+        - dog
+        - bicycle
+        - cat
+      filters:
+        person:
+          threshold: 0.5
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+    clips:
+      enabled: True
+      retain:
+        default: 3
+      pre_capture: 3
+    zones:
+      drivewayclose_in:
+        coordinates: 0,480,453,480,423,285,402,192,294,175,264,91,119,92,0,243      
+    motion:
+      mask:
+        - 2,465,328,468,330,432,5,431   
