@@ -4,7 +4,7 @@ alias: System - Start Backup to NAS MEDIA01
 initial_state: on
 trigger:
   - platform: time
-    at: '02:30:00'
+    at: '02:150:00'
 condition:
   condition: and
   conditions:
@@ -19,3 +19,6 @@ action:
     data:
       addon: 15d21743_samba_backup
       input: trigger
+  - delay: '00:00:30'
+  - service: switch.turn_off
+    entity_id: switch.studio_media01_wol
