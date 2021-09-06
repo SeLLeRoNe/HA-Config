@@ -1,10 +1,3 @@
-- id: '1626971090246'
-  alias: Daily Backup
-  description: ''
-  use_blueprint:
-    path: vorion/create-automated-backups-every-day.yaml
-    input:
-      trigger_time: 04:15:00
 - id: '1627032569150'
   alias: HASP p[7].b[all] displays an alarm control panel
   description: ''
