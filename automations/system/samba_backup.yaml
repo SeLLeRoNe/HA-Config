@@ -1,0 +1,13 @@
+---
+# Restire Samba Backup status on startup
+alias: System - Restore Samba Backup sensor
+initial_state: on
+mode: single
+trigger:
+  - event: start
+    platform: homeassistant
+action:
+  - service: hassio.addon_stdin
+    data:
+      addon: 15d21743_samba_backup
+      input: restore-sensor

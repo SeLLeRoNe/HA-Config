@@ -1,0 +1,21 @@
+---
+id: '5176015904441'
+alias: System - Start Backup to NAS MEDIA01
+initial_state: on
+trigger:
+  - platform: time
+    at: '02:30:00'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sensor.samba_backup
+      state: 'IDLE'
+action:
+  - service: switch.turn_on
+    entity_id: switch.studio_media01_wol
+  - delay: '00:05:00'
+  - service: hassio.addon_stdin
+    data:
+      addon: 15d21743_samba_backup
+      input: trigger
