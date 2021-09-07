@@ -4,7 +4,7 @@ alias: System - Start Backup to NAS MEDIA01
 initial_state: on
 trigger:
   - platform: time
-    at: '02:150:00'
+    at: '02:15:00'
 condition:
   condition: and
   conditions:
