@@ -3,8 +3,9 @@ import hashlib
 import json
 import logging
 import os
+import pathlib
 import re
-from typing import Optional
+import jsonschema
 
 from homeassistant.components.binary_sensor import DOMAIN as BINARY_SENSOR_DOMAIN
 from homeassistant.components.light import DOMAIN as LIGHT_DOMAIN
@@ -329,6 +330,11 @@ class SwitchPlate(RestoreEntity):
 
         self._subscriptions = []
 
+        with open(
+            pathlib.Path(__file__).parent.joinpath("pages_schema.json"), "r"
+        ) as schema_file:
+            self.json_schema = json.load(schema_file)
+
     async def async_will_remove_from_hass(self):
         """Run before entity is removed."""
         _LOGGER.debug("Remove plate %s", self._entry.data[CONF_NAME])
@@ -564,7 +570,7 @@ class SwitchPlate(RestoreEntity):
         self.async_write_ha_state()
 
     async def async_command_service(self, keyword, parameters):
-        """Sends commands directly to the plate entity """
+        """Sends commands directly to the plate entity"""
         self.hass.components.mqtt.async_publish(
             f"{self._topic}/command",
             f"{keyword} {parameters}".strip(),
@@ -580,7 +586,7 @@ class SwitchPlate(RestoreEntity):
             qos=0,
             retain=False,
         )
-        
+
     async def async_push_image(self, image, obj, width=None, height=None):
         """update object image."""
 
@@ -614,7 +620,7 @@ class SwitchPlate(RestoreEntity):
         await self.async_change_page(self._page)
 
     async def async_load_page(self, path):
-        """Clear current pages and load new ones."""
+        """Load pages file on the SwitchPlate, existing pages will not be cleared."""
         cmd_topic = f"{self._topic}/command"
         _LOGGER.info("Load page %s to %s", path, cmd_topic)
 
@@ -622,20 +628,51 @@ class SwitchPlate(RestoreEntity):
             _LOGGER.error("'%s' is not an allowed directory", path)
             return
 
+        def send_lines(lines):
+            mqtt_payload_buffer = ""
+            for line in lines:
+                if len(mqtt_payload_buffer) + len(line) > 1000:
+                    self.hass.components.mqtt.async_publish(
+                        f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+                    )
+                    mqtt_payload_buffer = line
+                else:
+                    mqtt_payload_buffer = mqtt_payload_buffer + line
+            self.hass.components.mqtt.async_publish(
+                f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+            )
+
         try:
-            with open(path) as pages_jsonl:
-                # load line by line
-                for line in pages_jsonl:
-                    if line:
-                        self.hass.components.mqtt.async_publish(
-                            f"{cmd_topic}/jsonl", line, qos=0, retain=False
-                        )
+            with open(path, "r") as pages_file:
+                if path.endswith(".json"):
+                    json_data = json.load(pages_file)
+                    jsonschema.validate(instance=json_data, schema=self.json_schema)
+                    lines = []
+                    for item in json_data:
+                        if isinstance(item, dict):
+                            lines.append(json.dumps(item) + "\n")
+                    send_lines(lines)
+                else:
+                    send_lines(pages_file)
             await self.refresh()
 
         except (IndexError, FileNotFoundError, IsADirectoryError, UnboundLocalError):
-            _LOGGER.warning(
+            _LOGGER.error(
                 "File or data not present at the moment: %s",
                 os.path.basename(path),
+            )
+
+        except json.JSONDecodeError:
+            _LOGGER.error(
+                "Error decoding .json file: %s",
+                os.path.basename(path),
+            )
+
+        except jsonschema.ValidationError as e:
+            _LOGGER.error(
+                "Schema check failed for %s. Validation Error: %s",
+                os.path.basename(path),
+                e.message,
             )
 
 
