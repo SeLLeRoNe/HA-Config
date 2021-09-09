@@ -32,7 +32,7 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_daily_energy.yaml
             entities:
-              - entity: sensor.[[area]]_daily_energy_usage
+              - entity: sensor.house_daily_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -58,7 +58,7 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_daily_cost.yaml
             entities:
-              - entity: sensor.[[area]]_cost_daily
+              - entity: sensor.house_cost_daily
             tap_action:
               action: none
       - type: horizontal-stack
@@ -86,7 +86,7 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_monthly_energy.yaml
             entities:
-              - entity: sensor.[[area]]_monthly_energy_usage
+              - entity: sensor.house_monthly_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -112,7 +112,7 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_monthly_cost.yaml
             entities:
-              - entity: sensor.[[area]]_cost_monthly
+              - entity: sensor.house_cost_monthly
             tap_action:
               action: none
       - type: horizontal-stack
@@ -140,7 +140,7 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_yearly_energy.yaml
             entities:
-              - entity: sensor.[[area]]_yearly_energy_usage
+              - entity: sensor.house_yearly_energy_usage
             tap_action:
               action: none
           - type: 'custom:mini-graph-card'
@@ -166,6 +166,6 @@ house_cost:
               labels: false
             color_thresholds: !include thresholds/house_yearly_cost.yaml
             entities:
-              - entity: sensor.[[area]]_cost_yearly
+              - entity: sensor.house_cost_yearly
             tap_action:
               action: none

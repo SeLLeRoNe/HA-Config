@@ -32,7 +32,7 @@ house_total:
               labels: false
             color_thresholds: !include thresholds/house_today_energy.yaml
             entities:
-              - entity: sensor.[[area]]_today_energy_usage
+              - entity: sensor.house_today_energy_usage
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -59,7 +59,7 @@ house_total:
               labels: false
             color_thresholds: !include thresholds/house_current_power.yaml
             entities:
-              - entity: sensor.[[area]]_total_power_usage
+              - entity: sensor.house_total_power_usage
             tap_action:
               action: none
       - type: horizontal-stack
@@ -88,7 +88,7 @@ house_total:
               labels: false
             color_thresholds: !include thresholds/house_current_ampere.yaml
             entities:
-              - entity: sensor.[[area]]_total_ampere_usage
+              - entity: sensor.house_total_ampere_usage
             tap_action:
               action: none
           - type: custom:mini-graph-card
@@ -115,6 +115,6 @@ house_total:
               labels: false
             color_thresholds: !include thresholds/voltage.yaml
             entities:
-              - entity: sensor.[[area]]_average_voltage
+              - entity: sensor.house_average_voltage
             tap_action:
               action: none
