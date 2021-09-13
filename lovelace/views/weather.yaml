@@ -29,10 +29,10 @@ cards:
 #          - type: entities
 #            show_header_toggle: false
 #            entities:
-#              - entity: binary_sensor.meteoalarmeu
+#              - entity: binary_sensor.meteoalarm
 #                name: Meteo Alert - Safety Level
 #                type: "custom:secondaryinfo-entity-row"
-#                secondary_info: '[[ if(binary_sensor.meteoalarmeu.state == "on", binary_sensor.meteoalarmeu.attributes.description, "") ]]'
+#                secondary_info: '[[ if(binary_sensor.meteoalarm.state == "on", binary_sensor.meteoalarm.attributes.description, "") ]]'
       - type: iframe
         url: https://embed.windy.com/embed2.html
         aspect_ratio: 72%
