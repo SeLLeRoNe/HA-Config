@@ -1,12 +1,3 @@
-- id: '1627032569150'
-  alias: HASP p[7].b[all] displays an alarm control panel
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Display_Alarm_Control_page7.yaml
-    input:
-      b15armservice: alarm_arm_away
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      alarmpanel: alarm_control_panel.home_alarm
 - id: '1627031906001'
   alias: HASP Core functionality
   description: ''
