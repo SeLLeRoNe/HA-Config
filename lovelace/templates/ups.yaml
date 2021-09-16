@@ -1,0 +1,154 @@
+---
+ups:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - id: nuc_status
+        type: 'custom:config-template-card'
+        variables:
+          - 'states[''sensor.ups_model''].state'
+          - 'states[''sensor.ups_status''].state'
+          - 'states[''sensor.ups_battery''].state'
+          - 'states[''sensor.ups_load''].state'
+          - 'states[''sensor.ups_input_voltage''].state'
+          - 'states[''sensor.ups_battery_voltage''].state'
+        entities:
+          - sensor.ups_model
+          - sensor.ups_status
+          - sensor.ups_battery
+          - sensor.ups_load
+          - sensor.ups_input_voltage
+          - sensor.ups_battery_voltage
+        card:
+          type: entities
+          show_header_toggle: 'off'
+          style: |
+            .card-header {
+              padding: 0px 0px 0px 0px !important;
+            }
+          entities:
+            - type: section
+              style: |
+                .label {
+                  text-align: center !important;
+                  margin-left: 0px !important;
+                  font-size: 17px !important;
+                }
+              label: '${ ''APC --- '' + vars[0] + '' --- '' + vars[1] }'
+            - type: 'custom:hui-vertical-stack-card'
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: picture
+                      style: |
+                        ha-card {
+                            --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                            --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                            --ha-card-box-shadow: 'none';
+                        }
+                      image: /local/images/apc.ups.png
+                    - type: 'custom:button-card'
+                      layout: icon_name_state2nd
+                      show_icon: true
+                      show_state: true
+                      styles:
+                        grid: null
+                        card:
+                          - '--ha-card-background': 'rgba(0, 0, 0, 0.0)'
+                          - '--ha-card-box-shadow': none
+                        icon:
+                          - padding: 10px 0px 0px
+                          - height: 40px
+                          - width: 40px
+                        state:
+                          - padding: 10px 0px 0px
+                          - justify-self: start
+                          - font-family: 'Roboto, sans-serif'
+                          - font-size: 14px
+                        name:
+                          - padding: 20px 0px 0px
+                          - justify-self: start
+                      entity: sensor.ups_time_left
+                      name: 'Remaining:'
+                      icon: 'mdi:battery-high'
+                - type: horizontal-stack
+                  cards:
+                    - type: 'custom:bar-card'
+                      show_icon: true
+                      align: split
+                      columns: 1
+                      max: 100
+                      positions:
+                        icon: inside
+                        indicator: inside
+                        name: inside
+                        value: inside
+                      unit_of_measurement: '%'
+                      severity:
+                        - value: 50
+                          color: '#3498db'
+                        - value: 75
+                          color: '#f39c12'
+                        - value: 100
+                          color: '#e45e65'
+                      style: |
+                        ha-card {
+                          --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                          --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                          --paper-item-icon-color: 'var(--text-primary-color)';
+                          --ha-card-box-shadow: 'none';
+                        }
+                        bar-card-name {
+                          margin-left: -10px;
+                        }
+                      entity: sensor.ups_battery
+                      name: Battery
+                      icon: 'mdi:battery-high'
+                      entity_row: true
+                    - type: 'custom:bar-card'
+                      show_icon: true
+                      align: split
+                      columns: 1
+                      max: 100
+                      positions:
+                        icon: inside
+                        indicator: inside
+                        name: inside
+                        value: inside
+                      unit_of_measurement: '%'
+                      severity:
+                        - value: 50
+                          color: '#3498db'
+                        - value: 75
+                          color: '#f39c12'
+                        - value: 100
+                          color: '#e45e65'
+                      style: |
+                        ha-card {
+                          --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                          --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                          --paper-item-icon-color: 'var(--text-primary-color)';
+                          --ha-card-box-shadow: 'none';
+                        }
+                        bar-card-name {
+                          margin-left: -10px;
+                        }
+                      entity: sensor.ups_load
+                      name: '${ ''Load'' }'
+                      entity_row: true
+                - type: entities
+                  entities:
+                    - entity: sensor.ups_input_voltage
+                      name: Input Voltage
+                      icon: 'mdi:power-plug'
+                    - entity: sensor.ups_battery_voltage
+                      name: Battery Voltage
+                      icon: 'mdi:battery-charging-high'
+                  style: |
+                    ha-card {
+                        --paper-card-background-color: 'rgba(0, 0, 0, 0.0)';
+                        --ha-card-background: "rgba(0, 0, 0, 0.0)";
+                        --paper-item-icon-color: 'var(--text-primary-color)';
+                        --ha-card-box-shadow: 'none';
+                    }
