@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Master Bathroom Humidity
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.master_bathroom_wsdcgq01lm_humidity

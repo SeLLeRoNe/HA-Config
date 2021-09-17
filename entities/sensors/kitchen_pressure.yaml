@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Kitchen Pressure
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.kitchen_wsdcgq01lm_pressure

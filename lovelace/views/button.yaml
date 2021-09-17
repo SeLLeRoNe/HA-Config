@@ -1,0 +1,185 @@
+type: 'custom:button-card'
+entity: light.living_room_light_switch_2
+tap_action:
+  action: navigate
+  navigation_path: livingroommobile
+double_tap_action:
+  action: toggle
+theme: iso_dark_mode
+name: Living Room
+state:
+  - value: 'on'
+    color: 'rgb(255,221,0)'
+    icon: 'mdi:wall-sconce-flat'
+    styles:
+      card: null
+  - operator: default
+    color: green
+    icon: 'mdi:sofa'
+styles:
+  card:
+    - border-radius: 10%
+    - padding: 10%
+    - color: ivory
+    - font-size: 10px
+    - text-shadow: 0px 0px 5px black
+    - text-transform: capitalize
+    - height: 123px
+    - width: 205px
+  name:
+    - font-weight: bold
+    - font-size: 18px
+    - color: white
+    - position: absolute
+    - left: 17px
+    - top: 93px
+  img_cell:
+    - align-self: center
+    - text-align: start
+  icon:
+    - position: absolute
+    - top: 0px
+    - left: 10px
+    - width: 45%
+  custom_fields:
+    temp_icon:
+      - position: absolute
+      - left: 8px
+      - top: 10px
+      - font-size: 20px
+      - '--text-color-sensor': >-
+          [[[  if (states["sensor.living_room_sensor_temperature"].state > 20)
+          return 'orange'; else return 'deepskyblue'; ]]]
+    windows:
+      - position: absolute
+      - left: 80%
+      - top: 10%
+      - color: >-
+          [[[ if (states["input_boolean.living_room_window_toggle"].state ==
+          "on") return "red"; "var(--paper-item-icon-active-color)";  if
+          (states["input_boolean.living_room_window_toggle"].state == "off")
+          return "green"; "var(--paper-item-icon-color)";  ]]]
+      - animation: >-
+          [[[ if (states["input_boolean.living_room_window_toggle"].state==
+          "on")
+            return "blink .1s ease infinite";]]]
+    door:
+      - position: absolute
+      - left: 65%
+      - top: 10%
+      - color: >-
+          [[[ if (states["binary_sensor.living_room_door"].state == "on") return
+          "red"; "var(--paper-item-icon-active-color)";  if
+          (states["binary_sensor.living_room_door"].state == "off") return
+          "green"; "var(--paper-item-icon-color)";  ]]]
+      - animation: |-
+          [[[ if (states["binary_sensor.living_room_door"].state== "on")
+            return "blink .1s ease infinite";]]]
+    tv:
+      - position: absolute
+      - left: 65%
+      - top: 50%
+      - color: >-
+          [[[ if (states["switch.living_room_tv"].state == "on") return "red";
+          "var(--paper-item-icon-active-color)";  if
+          (states["switch.living_room_tv"].state == "off") return "grey";
+          "var(--paper-item-icon-color)";  ]]]
+    lamp:
+      - position: absolute
+      - left: 80%
+      - top: 30%
+      - color: >-
+          [[[ if (states["switch.lr_window_socket_rh_s2"].state == "on") return
+          "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+          (states["switch.lr_window_socket_rh_s2"].state == "off") return
+          "grey"; "var(--paper-item-icon-color)";  ]]]
+    lights:
+      - position: absolute
+      - left: 65%
+      - top: 30%
+      - color: >-
+          [[[ if (states["light.living_room_light_switch_2"].state == "on")
+          return "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+          (states["light.living_room_light_switch_2"].state == "off") return
+          "grey"; "var(--paper-item-icon-color)";  ]]]
+    sockets:
+      - position: absolute
+      - left: 80%
+      - top: 50%
+      - color: >-
+          [[[ if (states["input_boolean.living_room_sockets_on_off"].state ==
+          "on") return "red"; "var(--paper-item-icon-active-color)";  if
+          (states["input_boolean.living_room_sockets_on_off"].state == "off")
+          return "grey"; "var(--paper-item-icon-color)";  ]]]
+    phone_chargers:
+      - position: absolute
+      - left: 65%
+      - top: 70%
+        color: >-
+          [[[ if (states["switch.phone_chargers"].state == "on") return "red";
+          "var(--paper-item-icon-active-color)";  if
+          (states["switch.phone_chargers"].state == "off") return "grey";
+          "var(--paper-item-icon-color)";  ]]]
+custom_fields:
+  temp_icon: |
+    [[[
+      return `<ha-icon
+        icon="mdi:thermometer"
+        style="width: 25px; height: 25px; color: yellow;">
+        </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.living_room_sensor_temperature'].state} 
+ °C</span></span>`
+    ]]]
+  windows: |
+    [[[
+      if (states["input_boolean.living_room_window_toggle"].state == "on")
+      return `<ha-icon
+        icon="mdi:window-open"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+      if (states["input_boolean.living_room_window_toggle"].state == "off")
+      return `<ha-icon
+        icon="mdi:window-closed"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]
+  door: |
+    [[[
+      if (states["binary_sensor.living_room_door"].state == "on")
+      return `<ha-icon
+        icon="mdi:door-open"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+      if (states["binary_sensor.living_room_door"].state == "off")
+      return `<ha-icon
+        icon="mdi:door-closed"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]
+  tv: |
+    [[[
+      return `<ha-icon
+        icon="mdi:television"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]
+  lamp: |
+    [[[
+      return `<ha-icon
+        icon="mdi:lamp"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]
+  lights: |
+    [[[
+      return `<ha-icon
+        icon="mdi:wall-sconce-flat"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]
+  sockets: |
+    [[[
+      return `<ha-icon
+        icon="mdi:power-socket-uk"
+        style="width: 25px; height: 25px;">
+        </ha-icon>`
+    ]]]

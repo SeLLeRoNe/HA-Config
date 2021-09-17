@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Master Bedroom Temperature
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.master_bedroom_wsdcgq01lm_temperature

@@ -106,7 +106,7 @@ cards:
             show_header_toggle: false
             entities:
               - name: Leak Sensor
-                entity: binary_sensor.master_bathroom_sjcgq11lm_leak
+                entity: binary_sensor.master_bathroom_sjcgq11lm_water_leak
                 tap_action:
                   action: none
               - name: Motion Sensor

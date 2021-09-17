@@ -453,111 +453,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: AdGuard
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-      - type: entities
-        title: Statistics
-        show_header_toggle: false
-        entities:
-          - entity: switch.adguard_filtering
-            tap_action:
-              action: none
-          - entity: switch.adguard_parental_control
-            tap_action:
-              action: none
-          - entity: switch.adguard_protection
-            tap_action:
-              action: none
-          - entity: switch.adguard_safe_browsing
-            tap_action:
-              action: none
-          - entity: switch.adguard_safe_search
-            tap_action:
-              action: none
-          - entity: switch.adguard_query_log
-            tap_action:
-              action: none
-          - entity: sensor.adguard_average_processing_speed
-            tap_action:
-              action: none
-          - entity: sensor.adguard_dns_queries
-            tap_action:
-              action: none
-          - entity: sensor.adguard_dns_queries_blocked_ratio
-            tap_action:
-              action: none
-          - entity: sensor.adguard_parental_control_blocked
-            tap_action:
-              action: none
-          - entity: sensor.adguard_safe_browsing_blocked
-            tap_action:
-              action: none
-          - entity: sensor.adguard_safe_searches_enforced
-            tap_action:
-              action: none
-          - entity: sensor.adguard_dns_queries_blocked
-            tap_action:
-              action: none
-          - entity: sensor.adguard_rules_count
-            tap_action:
-              action: none
-      - type: custom:mini-graph-card
-        name: Blocked Ads
-        more_info: false
-        height: 150
-        line_width: 4
-        hours_to_show: 24
-        points_per_hour: 4
-        aggregate_func: max
-        group_by: hour
-        hour24: true
-        animate: false
-        decimals: 2
-        align_state: right
-        show:
-          name: true
-          icon: false
-          state: true
-          graph: line
-          fill: true
-          points: false
-          legend: true
-          extrema: false
-          labels: false
-        card_mod:
-          style: |
-            ha-card {
-              padding: 16px !important;
-            }
-        tap_action:
-          action: none
-        entities:
-          - entity: sensor.adguard_dns_queries_blocked_ratio
-            show_graph: false
-            show_legend: false
-          - entity: sensor.adguard_dns_queries
-            name: Queries
-            color: red
-          - entity: sensor.adguard_parental_control_blocked
-            name: Parental Control blocked
-            color: green
-            show_fill: false
-          - entity: sensor.adguard_safe_browsing_blocked
-            name: Safe Browsing blocked
-            color: violet
-            show_fill: false
-          - entity: sensor.adguard_safe_searches_enforced
-            name: Safe Searche blocked
-            color: cyan
-            show_fill: false
-          - entity: sensor.adguard_dns_queries_blocked
-            name: Ads blocked
-            color: blue
-            show_fill: false
+        template: adguard
   - type: custom:layout-break
   - type: vertical-stack
     cards:
@@ -1175,11 +1071,11 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.master_bathroom_wsdcgq01lm_link_quality
+            - entity_id: sensor.master.bathroom_wsdcgq01lm_link_quality
               options:
                 name: Master Bathroom - WSDCGQ0W01LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.master.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master.bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.master.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master.bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
@@ -1224,33 +1120,33 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.bathroom_mccgq01lm_link_quality
+            - entity_id: sensor.bathroom_mccgq01lm_linkquality
               options:
                 name: Bathroom - MCCGQ01LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", sensor.bathroom_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", sensor.bathroom_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", sensor.bathroom_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.bathroom_wsdcgq01lm_link_quality
+            - entity_id: sensor.bathroom_wsdcgq01lm_linkquality
               options:
                 name: Bathroom - WSDCGQ0W01LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", sensor.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_link_quality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_wsdcgq01lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.bathroom_sjcgq11lm_link_quality
+            - entity_id: sensor.bathroom_mccgq01lm_linkquality
               options:
                 name: Bathroom - SJCGQ11LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", sensor.bathroom_sjcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_sjcgq11lm_link_quality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", sensor.bathroom_mccgq01lm_battery.state , "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", sensor.bathroom_mccgq01lm_voltage.state, "Not Available") ]][[ if(sensor.bathroom_mccgq01lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
@@ -1301,7 +1197,7 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.patio_light_link_quality
+            - entity_id: sensor.patio_led1624g9_wall_linkquality
               options:
                 name: Patio - Light - Link Quality
                 tap_action:

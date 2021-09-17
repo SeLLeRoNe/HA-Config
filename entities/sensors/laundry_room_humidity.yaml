@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Laundry Room Humidity
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.laundry_room_wsdcgq01lm_humidity

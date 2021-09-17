@@ -22,19 +22,19 @@ living_room_plugs:
             template: plug_card
             variables:
               - name: "Strip Plug #1"
-              - entity: switch.living_room_power_strip_plug_1
+              - entity: switch.living_room_e220_l1
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Strip Plug #2"
-              - entity: switch.living_room_power_strip_plug_2
+              - entity: switch.living_room_e220_l2
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Strip Plug #3"
-              - entity: switch.living_room_power_strip_plug_3
+              - entity: switch.living_room_e220_l3
               - block: false
           - type: custom:decluttering-card
             template: plug_card

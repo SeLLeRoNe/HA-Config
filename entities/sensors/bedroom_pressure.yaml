@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Bedroom Luca Pressure
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.bedroom_luca_wsdcgq11lm_pressure

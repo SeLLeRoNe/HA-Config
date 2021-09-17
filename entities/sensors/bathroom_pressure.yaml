@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Bathroom Pressure
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.bathroom_wsdcgq01lm_pressure

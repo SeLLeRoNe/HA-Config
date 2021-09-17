@@ -7,7 +7,7 @@ trigger:
     entity_id: binary_sensor.master_bathroom_sjcgq11lm_leak
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.bathroom_sjcgq11lm_leak
+    entity_id: binary_sensor.bathroom_mccgq01lm_water_leak
     to: 'on'
 action:
 #  - service: mqtt.publish
@@ -20,7 +20,7 @@ action:
       message: >
         Flood detected
         {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak" %} in the Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
         {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
         {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage
@@ -38,7 +38,7 @@ action:
       message: >
         Flood detected
         {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak" %} in the Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
         {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
         {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage
@@ -51,7 +51,7 @@ action:
       message: >
         Flood detected
         {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_leak" %} in the Master Bathroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_sjcgq11lm_leak" %} in the Bathroom
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak" %} in the Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_leak" %} in the Kitchen
         {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_leak" %} in the Patio
         {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_leak" %} in the Garage

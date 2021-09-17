@@ -3,4 +3,4 @@ doors:
   name: Doors
   icon: mdi:door
   entities:
-    - binary_sensor.patio_door_exterior
+    - binary_sensor.patio_MCCGQ01LM_outside

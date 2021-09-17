@@ -20,7 +20,7 @@ trigger:
       - sensor.bedroom_luca_wsdcgq11lm_battery
       - sensor.bathroom_wsdcgq01lm_battery
       - sensor.bathroom_mccgq01lm_battery
-      - sensor.bathroom_sjcgq11lm_battery
+      - sensor.bathroom_mccgq01lm_battery
       - sensor.patio_gzcgq01lm_battery
       - sensor.patio_wsdcgq11lm_battery
       - sensor.patio_mccgq01lm_battery
@@ -43,7 +43,7 @@ condition:
         - sensor.bedroom_luca_wsdcgq11lm_battery
         - sensor.bathroom_wsdcgq01lm_battery
         - sensor.bathroom_mccgq01lm_battery
-        - sensor.bathroom_sjcgq11lm_battery
+        - sensor.bathroom_mccgq01lm_battery
         - sensor.patio_gzcgq01lm_battery
         - sensor.patio_wsdcgq11lm_battery
         - sensor.patio_mccgq01lm_battery

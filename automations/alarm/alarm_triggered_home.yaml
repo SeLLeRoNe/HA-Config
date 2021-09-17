@@ -7,7 +7,7 @@ trigger:
 #    entity_id: binary_sensor.studio_pir
 #    to: 'on'
   - platform: state
-    entity_id: binary_sensor.patio_door_exterior
+    entity_id: binary_sensor.patio_MCCGQ01LM_outside
     to: 'on'
 condition:
   condition: and
@@ -35,9 +35,9 @@ action:
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
         {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_door_exterior" %}at the Patio Door
+        {% elif trigger.entity_id == "binary_sensor.patio_MCCGQ01LM_outside" %}at the Patio Door
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
@@ -51,9 +51,9 @@ action:
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
         {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_door_exterior" %}at the Patio Door
+        {% elif trigger.entity_id == "binary_sensor.patio_MCCGQ01LM_outside" %}at the Patio Door
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
@@ -73,9 +73,9 @@ action:
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
         {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_window" %}at the Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_door_exterior" %}at the Patio Door
+        {% elif trigger.entity_id == "binary_sensor.patio_MCCGQ01LM_outside" %}at the Patio Door
         {% elif trigger.entity_id == "binary_sensor.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}

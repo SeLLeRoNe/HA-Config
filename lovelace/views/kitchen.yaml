@@ -34,7 +34,7 @@ cards:
         columns: 4
         entities:
           - name: Leak Sensor
-            entity: binary_sensor.kitchen_sjcgq11lm_leak
+            entity: binary_sensor.kitchen_sjcgq11lm_water_leak
             tap_action:
               action: none
           - name: Dishwasher

@@ -32,7 +32,7 @@ batteries_zigbee:
         name: "Master Bedroom - WXKG02LM Double Gangs Switch"
       - entity: sensor.master_bedroom_wsdcgq01lm_battery
         name: "Master Bedroom - WSDCGQ01LM Temperature Sensor"
-      - entity: sensor.master_bathroom_wsdcgq01lm_battery
+      - entity: sensor.master.bathroom_wsdcgq01lm_battery
         name: "Master Bathroom - WSDCGQ01LM Temperature Sensor"
       - entity: sensor.master_bathroom_sjcgq11lm_battery
         name: "Master Bathroom - SJCGQ11LM Leak Sensor"
@@ -44,7 +44,7 @@ batteries_zigbee:
         name: "Bathroom - WSDCGQ01LM Temperature Sensor"
       - entity: sensor.bathroom_mccgq01lm_battery
         name: "Bathroom - MCCGQ01LM Door/Window Sensor"
-      - entity: sensor.bathroom_sjcgq11lm_battery
+      - entity: sensor.bathroom_mccgq01lm_battery
         name: "Bathroom - SJCGQ11LM Leak Sensor"
       - entity: sensor.patio_gzcgq01lm_battery
         name: "Patio - GZCGQ01LM Illuminance Sensor"

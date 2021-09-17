@@ -30,7 +30,7 @@ cards:
                 template: sensor_entity_alert
                 variables:
                   - name: Leak Sensor
-                  - entity: binary_sensor.bathroom_sjcgq11lm_leak
+                  - entity: binary_sensor.bathroom_mccgq01lm_water_leak
               - type: custom:decluttering-card
                 template: sensor_entity
                 variables:
@@ -40,13 +40,13 @@ cards:
                 template: sensor_entity_alert
                 variables:
                   - name: Window Status
-                  - entity: binary_sensor.bathroom_mccgq01lm_window
+                  - entity: binary_sensor.bathroom_mccgq01lm_window_contact
 #              - type: glance
 #                show_state: true
 #                columns: 3
 #                entities:
 #                  - name: Leak Sensor
-#                    entity: binary_sensor.bathroom_sjcgq11lm_leak
+#                    entity: binary_sensor.bathroom_mccgq01lm_water_leak
 #                    tap_action:
 #                      action: none
 #                  - name: Motion Sensor
@@ -54,7 +54,7 @@ cards:
 #                    tap_action:
 #                      action: none
 #                  - name: Window Status
-#                    entity: binary_sensor.bathroom_mccgq01lm_window
+#                    entity: binary_sensor.bathroom_mccgq01lm_contact
 #                    tap_action:
 #                      action: none
   - type: custom:layout-break

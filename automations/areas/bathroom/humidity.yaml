@@ -12,7 +12,7 @@ condition:
   condition: or
   conditions:
     - condition: state
-      entity_id: binary_sensor.bathroom_mccgq01lm_window
+      entity_id: binary_sensor.bathroom_mccgq01lm_contact
       state: 'off'
 action:
   - service: tts.google_say
