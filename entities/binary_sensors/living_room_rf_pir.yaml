@@ -1,9 +1,9 @@
 ---
 platform: mqtt
-name: "Master Bedroom PIR"
+name: "Living Room RF PIR"
 device_class: motion
 state_topic: "tele/RFBridge01/RESULT"
 value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
-payload_on: "E85E"
+payload_on: "EF716E"
 off_delay: 5
 qos: 1

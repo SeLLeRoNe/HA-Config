@@ -4,31 +4,34 @@ alias: Alarm - Triggered - Away
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.living_room_pir
+    entity_id: group.living_room_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: group.kithcen_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.bedroom_luca_pir
+    entity_id: group.studio_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.master_bedroom_pir
+    entity_id: group.bathroom_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.garage_door
+    entity_id: group.bedroom_luca_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.bathroom_mccgq01lm_contact
+    entity_id: group.master_bedroom_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.patio_pir
+    entity_id: group.master_bathroom_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.patio_MCCGQ01LM_outside
+    entity_id: group.laundry_room_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.00000_cell_motion_detection
+    entity_id: group.patio_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_MCCGQ01LM_outside_contact
     to: 'on'
 condition:
   condition: and

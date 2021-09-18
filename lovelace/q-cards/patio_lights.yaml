@@ -17,4 +17,4 @@ patio_lights:
       template: light_card_rgb
       variables:
         - name: Light
-        - entity: light.patio_light
+        - entity: light.patio_led1624g9_wall

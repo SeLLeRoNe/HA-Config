@@ -1,0 +1,6 @@
+---
+laundry_room_pir:
+  name: Laundry Room PiR
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.laundry_room_rf_pir

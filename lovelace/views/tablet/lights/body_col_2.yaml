@@ -115,7 +115,7 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_light_1
+        entity: light.bedroom_luca_led1624g9_ceiling_1
         name: 'Ceiling Light #1'
         icon: 'mdi:ceiling-light'
         template:
@@ -123,7 +123,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_light_2
+        entity: light.bedroom_luca_led1624g9_ceiling_2
         name: 'Ceiling Light #2'
         icon: 'mdi:ceiling-light'
         template:
@@ -131,7 +131,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_light_3
+        entity: light.bedroom_luca_led1624g9_ceiling_3
         name: 'Ceiling Light #3'
         icon: 'mdi:ceiling-light'
         template:
@@ -139,7 +139,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_lamp_top_light
+        entity: light.bedroom_luca_lamp_top
         name: Lamp Top
         icon: 'mdi:floor-lamp-dual'
         template:
@@ -147,7 +147,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_lamp_bottom_light
+        entity: light.bedroom_luca_led1537r6_lamp_bottom
         name: Lamp Bottom
         icon: 'mdi:floor-lamp-dual'
         template:

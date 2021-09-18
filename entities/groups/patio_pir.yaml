@@ -1,0 +1,6 @@
+---
+patio_pir:
+  name: Patio PiR
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.patio_rf_pir

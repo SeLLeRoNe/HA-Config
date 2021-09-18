@@ -17,5 +17,5 @@ patio_lights_fold:
       - type: custom:decluttering-card
         template: light_card_rgb
         variables:
-          - name: Light
-          - entity: light.patio_light
+          - name: Wall Light
+          - entity: light.patio_led1624g9_wall

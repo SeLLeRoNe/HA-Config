@@ -17,24 +17,24 @@ bedroom_luca_lights:
       template: light_card_rgb
       variables:
         - name: Light 1
-        - entity: light.bedroom_luca_light_1
+        - entity: light.bedroom_luca_led1624g9_ceiling_1
     - type: custom:decluttering-card
       template: light_card_rgb
       variables:
         - name: Light 2
-        - entity: light.bedroom_luca_light_2
+        - entity: light.bedroom_luca_led1624g9_ceiling_2
     - type: custom:decluttering-card
       template: light_card_rgb
       variables:
         - name: Light 3
-        - entity: light.bedroom_luca_light_3
+        - entity: light.bedroom_luca_led1624g9_ceiling_3
     - type: custom:decluttering-card
       template: light_card_rgb
       variables:
         - name: Top
-        - entity: light.bedroom_luca_lamp_top_light
+        - entity: light.bedroom_luca_lamp_top
     - type: custom:decluttering-card
       template: light_card
       variables:
         - name: Bottom
-        - entity: light.bedroom_luca_lamp_bottom_light
+        - entity: light.bedroom_luca_led1537r6_lamp_bottom

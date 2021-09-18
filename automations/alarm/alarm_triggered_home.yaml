@@ -4,10 +4,10 @@ alias: Alarm - Triggered - Home
 initial_state: off
 trigger:
 #  - platform: state
-#    entity_id: binary_sensor.studio_pir
+#    entity_id: group.studio_pir
 #    to: 'on'
   - platform: state
-    entity_id: binary_sensor.patio_MCCGQ01LM_outside
+    entity_id: binary_sensor.patio_MCCGQ01LM_outside_contact
     to: 'on'
 condition:
   condition: and
@@ -19,7 +19,7 @@ condition:
       entity_id: binary_sensor.patio_pir
       state: 'off'
     - condition: state
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       state: 'off'
 action:
   - service: alarm_control_panel.alarm_trigger

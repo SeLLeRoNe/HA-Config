@@ -1,0 +1,6 @@
+---
+master_bedroom_pir:
+  name: Master Bedroom PiR
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.master_bedroom_rf_pir

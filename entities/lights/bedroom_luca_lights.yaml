@@ -2,8 +2,8 @@
 platform: group
 name: Bedroom Luca Lights
 entities:
-  - light.bedroom_luca_light_1
-  - light.bedroom_luca_light_2
-  - light.bedroom_luca_light_3
-  - light.bedroom_luca_lamp_top_light
-  - light.bedroom_luca_lamp_bottom_light
+  - light.bedroom_luca_led1624g9_ceiling_1
+  - light.bedroom_luca_led1624g9_ceiling_2
+  - light.bedroom_luca_led1624g9_ceiling_3
+  - light.bedroom_luca_LED1537R6_lamp_top
+  - light.bedroom_luca_led1537r6_lamp_bottom

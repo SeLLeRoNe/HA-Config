@@ -1,17 +1,17 @@
 ---
 name: Bedroom Luca Lights On Guest
 entities:
-  light.bedroom_luca_light_1:
+  light.bedroom_luca_led1624g9_ceiling_1:
     state: on
     color_temp: 153
     hs_color: [0,0]
     brightness: 50
-  light.bedroom_luca_light_2:
+  light.bedroom_luca_led1624g9_ceiling_2:
     state: on
     color_temp: 153
     hs_color: [0,0]
     brightness: 50
-  light.bedroom_luca_light_3:
+  light.bedroom_luca_led1624g9_ceiling_3:
     state: on
     color_temp: 153
     hs_color: [0,0]

@@ -1,0 +1,6 @@
+---
+living_room_pir:
+  name: Living Room PiR
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.living_room_rf_pir

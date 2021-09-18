@@ -39,9 +39,9 @@ master_bedroom_lights:
 #      template: light_card_rgb
 #      variables:
 #        - name: Top
-#        - entity: light.bedroom_luca_lamp_top_light
+#        - entity: light.bedroom_luca_lamp_top
 #    - type: custom:decluttering-card
 #      template: light_card
 #      variables:
 #        - name: Bottom
-#        - entity: light.bedroom_luca_lamp_bottom_light
+#        - entity: light.bedroom_luca_led1537r6_lamp_bottom
