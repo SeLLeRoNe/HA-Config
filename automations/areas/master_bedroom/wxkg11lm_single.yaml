@@ -1,0 +1,13 @@
+---
+id: '7649382680606'
+alias: Master Bedroom - WXKG02LM Button Single
+initial_state: on
+trigger:
+  - platform: state
+    entity_id: sensor.master_bedroom_wxkg11lm_action
+    to: 'single'
+action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.bedroom_luca_lights_on
+      transition: 5
