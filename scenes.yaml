@@ -1,7 +1,7 @@
 - id: '1627321383895'
   name: Bedroom Luca Mood
   entities:
-    light.bedroom_luca_lamp_top_light:
+    light.bedroom_luca_lamp_top:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -29,7 +29,7 @@
       friendly_name: Bedroom Luca Lamp Top Light
       supported_features: 36
       state: 'on'
-    light.bedroom_luca_light_1:
+    light.bedroom_luca_led1624g9_ceiling_1:
       effect_list:
       - blink
       - breathe
@@ -42,7 +42,7 @@
       friendly_name: Bedroom Luca Light 1
       supported_features: 61
       state: unavailable
-    light.bedroom_luca_light_2:
+    light.bedroom_luca_led1624g9_ceiling_2:
       effect_list:
       - blink
       - breathe
@@ -55,7 +55,7 @@
       friendly_name: Bedroom Luca Light 2
       supported_features: 61
       state: unavailable
-    light.bedroom_luca_light_3:
+    light.bedroom_luca_led1624g9_ceiling_3:
       effect_list:
       - blink
       - breathe
