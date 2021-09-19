@@ -4,7 +4,7 @@ alias: Studio - PIR On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: group.studio_pir
     to: 'on'
 condition:
   condition: and
@@ -23,7 +23,7 @@ condition:
         - condition: template
           value_template: >-
             {% if is_state("input_boolean.lights_automations_lux_studio", "on") %}
-              {% if (states("sensor.patio_gzcgq01lm_illuminance") | int) <= (states("input_number.lights_automations_lux_studio") | int) %}
+              {% if (states("sensor.patio_gzcgq01lm_illuminance_lux") | int) <= (states("input_number.lights_automations_lux_studio") | int) %}
                 true
               {% else %}
                 false

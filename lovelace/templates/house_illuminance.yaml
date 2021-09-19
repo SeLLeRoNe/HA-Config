@@ -48,7 +48,7 @@ house_illuminance:
           padding: 16px !important;
         }
     entities:
-      - entity: sensor.patio_gzcgq01lm_illuminance
+      - entity: sensor.patio_gzcgq01lm_illuminance_lux
         name: Patio
         color: '#FFDD00'
         show_state: true

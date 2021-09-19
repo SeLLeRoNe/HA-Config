@@ -4,19 +4,16 @@ alias: Patio - Sunset
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.patio_gzcgq01lm_illuminance
+    entity_id: sensor.patio_gzcgq01lm_illuminance_lux
     below: 5
 condition:
   condition: and
   conditions:
-    - condition: numeric_state
-      entity_id: sensor.patio_gzcgq01lm_illuminance
-      below: 5
     - condition: state
-      entity_id: binary_sensor.patio_MCCGQ01LM_outside
+      entity_id: binary_sensor.patio_MCCGQ01LM_outside_contact
       state: 'on'
     - condition: state
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       state: 'off'
     - condition: or
       conditions:
@@ -29,7 +26,7 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       brightness_pct: 5
       rgb_color: [255,255,255]
       transition: 5

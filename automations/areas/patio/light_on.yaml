@@ -11,7 +11,7 @@ trigger:
     for:
       seconds: 60
   - platform: state
-    entity_id: binary_sensor.patio_MCCGQ01LM_outside
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
     to: 'off'
     for:
       seconds: 60
@@ -26,13 +26,13 @@ condition:
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.patio_MCCGQ01LM_outside
+          entity_id: binary_sensor.patio_mccgq01lm_outside_contact
           state: 'off'
         - condition: state
-          entity_id: binary_sensor.patio_MCCGQ01LM_outside
+          entity_id: binary_sensor.patio_mccgq01lm_outside_contact
           state: 'unavailable'
     - condition: state
-      entity_id: binary_sensor.patio_pir
+      entity_id: group.patio_pir
       state: 'off'
       for:
         seconds: 60

@@ -4,7 +4,7 @@ alias: Patio - Door Left Open for 10 Minutes
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.patio_MCCGQ01LM_outside
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
     to: 'on'
     for:
       minutes: 15

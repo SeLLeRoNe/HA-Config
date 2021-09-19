@@ -8,7 +8,7 @@ alert:
     name: Freezer Door is open
     message: The patio door is still open..
     done_message: Thank you for closing the patio door!
-    entity_id: binary_sensor.patio_MCCGQ01LM_outside
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
     state: 'on'
     repeat:
       - 10

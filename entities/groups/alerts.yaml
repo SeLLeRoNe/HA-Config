@@ -3,7 +3,7 @@ alerts:
   name: Alerts
   icon: mdi:alert
   entities:
-    - binary_sensor.patio_MCCGQ01LM_outside
+    - binary_sensor.patio_mccgq01lm_outside_contact
     - binary_sensor.bathroom_mccgq01lm_contact
     - binary_sensor.master_bathroom_window
     - binary_sensor.studio_pir

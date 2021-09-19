@@ -4,7 +4,7 @@ alias: Patio - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.patio_pir
+    entity_id: group.patio_pir
     to: 'off'
     for:
       seconds: '{{ states("input_number.lights_automations_duration_patio") | int }}'
@@ -20,10 +20,10 @@ condition:
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.patio_MCCGQ01LM_outside
+          entity_id: binary_sensor.patio_mccgq01lm_outside_contact
           state: 'off'
         - condition: state
-          entity_id: binary_sensor.patio_MCCGQ01LM_outside
+          entity_id: binary_sensor.patio_mccgq01lm_outside_contact
           state: 'unavailable'
 action:
   - service: light.turn_off

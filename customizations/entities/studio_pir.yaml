@@ -1,3 +1,0 @@
----
-binary_sensor.studio_pir:
-  friendly_name: Motion Status

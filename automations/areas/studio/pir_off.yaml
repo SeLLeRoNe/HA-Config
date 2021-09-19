@@ -4,7 +4,7 @@ alias: Studio - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: group.studio_pir
     to: 'off'
     for:
       seconds: '{{ states("input_number.lights_automations_duration_studio") | int }}'

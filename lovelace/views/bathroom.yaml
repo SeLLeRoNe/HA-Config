@@ -50,7 +50,7 @@ cards:
 #                    tap_action:
 #                      action: none
 #                  - name: Motion Sensor
-#                    entity: binary_sensor.bathroom_pir
+#                    entity: group.bathroom_pir
 #                    tap_action:
 #                      action: none
 #                  - name: Window Status

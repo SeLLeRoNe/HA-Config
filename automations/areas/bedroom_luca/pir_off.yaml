@@ -4,7 +4,7 @@ alias: Bedroom Luca - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.bedroom_luca_pir
+    entity_id: group.bedroom_luca_pir
     to: 'off'
     for:
       seconds: '{{ states("input_number.lights_automations_duration_bedroom_luca") | int }}'

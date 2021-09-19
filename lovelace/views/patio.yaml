@@ -55,7 +55,7 @@ cards:
       - type: custom:decluttering-card
         template: illuminance
         variables:
-          - entity: sensor.patio_gzcgq01lm_illuminance
+          - entity: sensor.patio_gzcgq01lm_illuminance_lux
 #      - type: custom:layout-break
 #      - type: custom:stack-in-card
 #        mode: vertical

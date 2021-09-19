@@ -1,3 +1,0 @@
----
-binary_sensor.living_room_pir:
-  friendly_name: Motion Status
