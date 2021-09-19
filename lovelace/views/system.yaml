@@ -1,4 +1,4 @@
-atitle: Maintenance
+title: Maintenance
 icon: mdi:cog
 path: system
 type: custom:vertical-layout
@@ -694,41 +694,6 @@ cards:
                 entity: binary_sensor.camera_patio
                 tap_action:
                   action: none
-#      - type: custom:decluttering-card
-#        template: title
-#        variables:
-#          - title: Network Services
-#      - type: glance
-#        show_state: false
-#        columns: 3
-#        show_header_toggle: false
-#        entities:
-#          - name: Pi Hole
-#            entity: switch.pi_hole
-#            tap_action:
-#              action: call-service
-#              service: switch.turn_on
-#              service_data:
-#                entity_id: switch.pi_hole
-#            hold_action:
-#              action: call-service
-#              service: switch.turn_off
-#              service_data:
-#                entity_id: switch.pi_hole
-#          - name: Zigbee Server
-#            entity: binary_sensor.zigbee_server
-#            tap_action:
-#              action: none
-#            hold_action:
-#              action: call-service
-#              service: shell_command.zigbee_restart
-#          - name: MQTT Server
-#            entity: binary_sensor.mqtt_server
-#            tap_action:
-#              action: none
-#            hold_action:
-#              action: call-service
-#              service: shell_command.mqtt_restart
   - type: custom:layout-break
   - type: vertical-stack
     cards:
@@ -834,93 +799,19 @@ cards:
             variables:
               - device: laundry_room_washing_machine_plug
               - device_name: "Washing Machine Plug"
-#          - type: custom:decluttering-card
-#            template: title
-#            variables:
-#              - title: ZigBee Devices
-#          - type: custom:zigbee2mqtt-networkmap
-#            entity: sensor.zigbee_networkmap
-#            mqtt_base_topic: zigbee2mqtt # if you change base_topic of Zigbee2mqtt, change it accordingly
-#            force: 500 # decrease it to get smaller map if you have many devices
-#            node_size: 16
-#            font_size: 12
-#            link_width: 2
-#            height: 500 # height of the card
-#            # use this css config or use whatever css tech to change look and feel,
-#            # the same variable can also be used in Home Assistant themes, see https://www.home-assistant.io/components/frontend/#defining-themes
-#            css: |
-#              :host {
-#                --zigbee2mqtt-networkmap-node-color: rgba(18, 120, 98, .7);
-#                --zigbee2mqtt-networkmap-node-fill-color: #dcfaf3;
-#                --zigbee2mqtt-networkmap-node-pinned-color: rgba(190, 56, 93, .6);
-#                --zigbee2mqtt-networkmap-link-color: rgba(18, 120, 98, .5);
-#                --zigbee2mqtt-networkmap-hover-color: #be385d;
-#                --zigbee2mqtt-networkmap-link-selected-color: rgba(202, 164, 85, .6);
-#                --zigbee2mqtt-networkmap-label-color: #127862;
-#                --zigbee2mqtt-networkmap-arrow-color: rgba(18, 120, 98, 0.7);
-#                --zigbee2mqtt-networkmap-node-coordinator-color: rgba(224, 78, 93, .7);
-#                --zigbee2mqtt-networkmap-node-router-color: rgba(0, 165, 255, .7);
-#              }
   - type: custom:layout-break
   - type: vertical-stack
     cards:
       - type: custom:decluttering-card
         template: title
         variables:
-          - title: ZigBee Devices
-      - type: glance
-        show_state: false
-        columns: 1
-        show_header_toggle: false
-        entities:
-#          - name: Zigbee Server
-#            entity: binary_sensor.zigbee_server
-#            tap_action:
-#              action: none
-#            hold_action:
-#              action: call-service
-#              service: shell_command.zigbee_restart
-          - name: Allow Device Join
-            entity: switch.zigbee_device_join
-            tap_action:
-              action: call-service
-              service: switch.toggle
-              service_data:
-                entity_id: switch.zigbee_device_join
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Update Available for ZigBee Devices
-        filter:
-          include:
-            - entity_id: "binary_sensor.*firmware_update"
-              state: "on"
-              options:
-                secondary_info: last-changed
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          title: Unavailable ZigBee Devices
-        filter:
-          include:
-            - entity_id: "sensor.*link_quality"
-              state: "un*"
-              options:
-                secondary_info: last-changed
-          exclude:
-            - entity_id: "sensor.*dark_sky*"
-            - entity_id: "sensor.*aemet*"
-            - entity_id: "sensor.count_*"
+          - title: Zigbee Devices
       - type: custom:auto-entities
         show_empty: true
         card:
           type: entities
           show_header_toggle: false
-          title: ZigBee Devices Status
+#          title: ZigBee Devices
         filter:
           include:
             - entity_id: sensor.cc2531_router_linkquality
@@ -976,11 +867,11 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.studio_pir_linkquality
+            - entity_id: sensor.studio_2ajz4kpbs_linkquality
               options:
                 name: Studio - 2AJZ4KPBS - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.studio_pir_linkquality.state != "unknown", sensor.studio_pir_battery.state , "Not Available") ]][[ if(sensor.studio_pir_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_pir_linkquality.state != "unknown", sensor.studio_pir_voltage.state, "Not Available") ]][[ if(sensor.studio_pir_linkquality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.studio_2ajz4kpbs_linkquality.state != "unknown", sensor.studio_2ajz4kpbs_battery.state , "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_2ajz4kpbs_linkquality.state != "unknown", sensor.studio_2ajz4kpbs_voltage.state, "Not Available") ]][[ if(sensor.studio_2ajz4kpbs_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
@@ -989,7 +880,7 @@ cards:
                 state: "unknown"
             - entity_id: sensor.bedroom_luca_wsdcgq11lm_linkquality
               options:
-                name: Sonia's Studio - WSDCGQ11LM - Link Quality
+                name: Bedroom Luca - WSDCGQ11LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
                 secondary_info: 'Battery Level: [[ if(sensor.bedroom_luca_wsdcgq11lm_linkquality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_battery.state , "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.bedroom_luca_wsdcgq11lm_linkquality.state != "unknown", sensor.bedroom_luca_wsdcgq11lm_voltage.state, "Not Available") ]][[ if(sensor.bedroom_luca_wsdcgq11lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
@@ -1051,7 +942,7 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.light.bedroom_luca_led1537r6_lamp_bottom_linkquality
+            - entity_id: sensor.bedroom_luca_led1537r6_lamp_bottom_linkquality
               options:
                 name: Bedroom Luca - Lamp Bottom Light - Link Quality
                 tap_action:
@@ -1071,11 +962,11 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.master.bathroom_wsdcgq01lm_linkquality
+            - entity_id: sensor.master_bathroom_wsdcgq01lm_linkquality
               options:
                 name: Master Bathroom - WSDCGQ0W01LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.master.bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.master.bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master.bathroom_wsdcgq01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master.bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.master.bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master.bathroom_wsdcgq01lm_linkquality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.master_bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_battery.state , "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.master_bathroom_wsdcgq01lm_linkquality.state != "unknown", sensor.master_bathroom_wsdcgq01lm_voltage.state, "Not Available") ]][[ if(sensor.master_bathroom_wsdcgq01lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:
@@ -1251,3 +1142,31 @@ cards:
 #                    state: "unavailable"
 #                  not 2:
 #                    state: "unknown"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Update Available for ZigBee Devices
+        filter:
+          include:
+            - entity_id: "binary_sensor.*firmware_update"
+              state: "on"
+              options:
+                secondary_info: last-changed
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Unavailable ZigBee Devices
+        filter:
+          include:
+            - entity_id: "sensor.*link_quality"
+              state: "un*"
+              options:
+                secondary_info: last-changed
+          exclude:
+            - entity_id: "sensor.*dark_sky*"
+            - entity_id: "sensor.*aemet*"
+            - entity_id: "sensor.count_*"
