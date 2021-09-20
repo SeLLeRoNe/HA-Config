@@ -4,6 +4,6 @@ sensors:
   living_room_pir:
     friendly_name: "Living Room PIR"
     device_class: motion
-    entity_id:
-      - binary_sensor.living_room_rf_pir
-    value_template: "{{ expand('binary_sensor.living_room_pir') | selectattr('state','eq','on') | list | count > 0 }}"
+    value_template: >
+      {% set sensors = [states.binary_sensor.living_room_rf_pir] %}
+      {{ sensors | selectattr('state','eq','on') | list | count > 0 }}

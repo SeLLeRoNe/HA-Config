@@ -31,7 +31,7 @@ cards:
             columns: 2
             entities:
               - name: Motion Sensor
-                entity: binary_sensor.studio_2ajz4kpbs_occupancy
+                entity: binary_sensor.studio_pir
                 tap_action:
                   action: none
               - name: Window Status
