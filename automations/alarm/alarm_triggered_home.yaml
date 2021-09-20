@@ -4,7 +4,7 @@ alias: Alarm - Triggered - Home
 initial_state: off
 trigger:
 #  - platform: state
-#    entity_id: group.studio_pir
+#    entity_id: binary_sensor.studio_pir
 #    to: 'on'
   - platform: state
     entity_id: binary_sensor.patio_mccgq01lm_outside_contact
@@ -16,7 +16,7 @@ condition:
       entity_id: alarm_control_panel.home_alarm
       state: 'armed_home'
     - condition: state
-      entity_id: group.patio_pir
+      entity_id: binary_sensor.patio_pir
       state: 'off'
     - condition: state
       entity_id: light.patio_lights
@@ -31,12 +31,12 @@ action:
       entity_id: media_player.studio_google_mini
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "group.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "group.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "group.studio_pir" %}in the Studio
-        {% elif trigger.entity_id == "group.bedroom_luca_pir" %}in the Luca's Bedroom
+        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "group.patio_pir" %}in the Patio
+        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
         {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
@@ -47,12 +47,12 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "group.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "group.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "group.studio_pir" %}in the Studio
-        {% elif trigger.entity_id == "group.bedroom_luca_pir" %}in the Luca's Bedroom
+        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "group.patio_pir" %}in the Patio
+        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
         {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
@@ -69,12 +69,12 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "group.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "group.master_bedroom_pir" %}in the Master Bedroom
-        {% elif trigger.entity_id == "group.studio_pir" %}in the Studio
-        {% elif trigger.entity_id == "group.bedroom_luca_pir" %}in the Luca's Bedroom
+        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "group.patio_pir" %}in the Patio
+        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
         {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor

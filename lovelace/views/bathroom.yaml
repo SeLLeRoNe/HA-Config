@@ -35,7 +35,7 @@ cards:
                 template: sensor_entity
                 variables:
                   - name:  Motion Sensor
-                  - entity: group.bathroom_pir
+                  - entity: binary_sensor.bathroom_pir
               - type: custom:decluttering-card
                 template: sensor_entity_alert
                 variables:
@@ -50,7 +50,7 @@ cards:
 #                    tap_action:
 #                      action: none
 #                  - name: Motion Sensor
-#                    entity: group.bathroom_pir
+#                    entity: binary_sensor.bathroom_pir
 #                    tap_action:
 #                      action: none
 #                  - name: Window Status

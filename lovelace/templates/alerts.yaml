@@ -18,10 +18,10 @@ alerts:
           - entity: binary_sensor.bathroom_mccgq01lm_contact
           - entity: binary_sensor.master_bathroom_window
           - entity: binary_sensor.patio_mccgq01lm_outside_contact
-          - entity: group.studio_pir
-          - entity: group.bathroom_pir
-          - entity: group.bedroom_luca_pir
-          - entity: group.kitchen_pir
-          - entity: group.living_room_pir
-          - entity: group.master_bathroom_pir
-          - entity: group.patio_pir
+          - entity: binary_sensor.studio_pir
+          - entity: binary_sensor.bathroom_pir
+          - entity: binary_sensor.bedroom_luca_pir
+          - entity: binary_sensor.kitchen_pir
+          - entity: binary_sensor.living_room_pir
+          - entity: binary_sensor.master_bathroom_pir
+          - entity: binary_sensor.patio_pir

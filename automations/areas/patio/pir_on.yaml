@@ -4,7 +4,7 @@ alias: Patio - PIR
 initial_state: on
 trigger:
   - platform: state
-    entity_id: group.patio_pir
+    entity_id: binary_sensor.patio_pir
     to: 'on'
 condition:
   condition: and

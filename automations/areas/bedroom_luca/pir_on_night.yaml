@@ -4,7 +4,7 @@ alias: Bedroom Luca - PIR On Night
 initial_state: on
 trigger:
   - platform: state
-    entity_id: group.bedroom_luca_pir
+    entity_id: binary_sensor.bedroom_luca_pir
     to: 'on'
 condition:
   condition: and

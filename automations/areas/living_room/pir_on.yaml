@@ -4,7 +4,7 @@ alias: Living Room - PIR On Day
 initial_state: off
 trigger:
   - platform: state
-    entity_id: group.living_room_pir
+    entity_id: binary_sensor.living_room_pir
     to: 'on'
 condition:
   condition: and

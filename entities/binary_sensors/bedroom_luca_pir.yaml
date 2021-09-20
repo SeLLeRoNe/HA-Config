@@ -1,0 +1,9 @@
+---
+platform: template
+sensors:
+  bedroom_luca_pir:
+    friendly_name: "Bedroom Luca PIR"
+    device_class: motion
+    entity_id:
+      - binary_sensor.bedroom_luca_rf_pir
+    value_template: "{{ expand('binary_sensor.bedroom_luca_pir') | selectattr('state','eq','on') | list | count > 0 }}"

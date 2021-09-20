@@ -55,7 +55,7 @@ cards:
                     {% endif %}
                 }
           - name: Motion Sensor
-            entity: group.kitchen_pir
+            entity: binary_sensor.kitchen_pir
             tap_action:
               action: none
           - name: Window Status

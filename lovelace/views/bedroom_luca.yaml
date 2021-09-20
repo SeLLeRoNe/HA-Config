@@ -31,7 +31,7 @@ cards:
             columns: 2
             entities:
               - name: Motion Sensor
-                entity: group.bedroom_luca_pir
+                entity: binary_sensor.bedroom_luca_pir
                 tap_action:
                   action: none
               - name: Window Status

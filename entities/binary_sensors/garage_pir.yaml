@@ -1,0 +1,9 @@
+---
+platform: template
+sensors:
+  garage_pir:
+    friendly_name: "Garage PIR"
+    device_class: motion
+    entity_id:
+      - binary_sensor.garage_rf_pir
+    value_template: "{{ expand('binary_sensor.garage_pir') | selectattr('state','eq','on') | list | count > 0 }}"

@@ -32,7 +32,7 @@ condition:
           entity_id: binary_sensor.patio_mccgq01lm_outside_contact
           state: 'unavailable'
     - condition: state
-      entity_id: group.patio_pir
+      entity_id: binary_sensor.patio_pir
       state: 'off'
       for:
         seconds: 60

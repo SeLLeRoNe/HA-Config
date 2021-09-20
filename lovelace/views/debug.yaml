@@ -28,7 +28,7 @@ cards:
           - title: "PIR Logbooks"
       - type: custom:logbook-card
         title: "PIR - Patio"
-        entity: group.patio_pir
+        entity: binary_sensor.patio_pir
         max_items: 5
         date_format: dd/MM/YYYY hh:mm
         state_map:
@@ -49,7 +49,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Living Room"
-        entity: group.living_room_pir
+        entity: binary_sensor.living_room_pir
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:
@@ -70,7 +70,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Kitchen"
-        entity: group.kitchen_pir
+        entity: binary_sensor.kitchen_pir
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:
@@ -91,7 +91,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Studio"
-        entity: group.studio_pir
+        entity: binary_sensor.studio_pir
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:
@@ -112,7 +112,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Master Bedroom"
-        entity: group.master_bedroom_pir
+        entity: binary_sensor.master_bedroom_pi
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:
@@ -133,7 +133,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Master Bathroom"
-        entity: group.master_bathroom_pir
+        entity: binary_sensor.master_bathroom_pir
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:
@@ -154,7 +154,7 @@ cards:
           - No Motion Detected
       - type: custom:logbook-card
         title: "PIR - Luca's Bedroom"
-        entity: group.patio_pir
+        entity: binary_sensor.patio_pir
         date_format: dd/MM/YYYY hh:mm
         max_items: 5
         state_map:

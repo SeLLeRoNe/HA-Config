@@ -29,7 +29,7 @@ cards:
         columns: 2
         entities:
           - name: Motion Sensor
-            entity: group.patio_pir
+            entity: binary_sensor.patio_pir
             tap_action:
               action: none
           - name: Door Status
