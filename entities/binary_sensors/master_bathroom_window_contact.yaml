@@ -1,6 +1,6 @@
 ---
 platform: mqtt
-name: "Master Bathroom Window"
+name: "Master Bathroom Window Contact"
 device_class: window
 state_topic: "tele/RFBridge01/RESULT"
 value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"

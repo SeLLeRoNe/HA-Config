@@ -15,9 +15,12 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - entity: binary_sensor.bathroom_mccgq01lm_contact
-          - entity: binary_sensor.master_bathroom_window
-          - entity: binary_sensor.patio_mccgq01lm_outside_contact
+          - name: Bathroom Window
+            entity: binary_sensor.bathroom_mccgq01lm_window_contact
+          - name: Master Bathroom Window
+            entity: binary_sensor.master_bathroom_window_contact
+          - name: Patio Door Exterior
+            entity: binary_sensor.patio_mccgq01lm_outside_contact
           - entity: binary_sensor.studio_pir
           - entity: binary_sensor.bathroom_pir
           - entity: binary_sensor.bedroom_luca_pir
