@@ -35,7 +35,7 @@ condition:
           entity_id: sensor.patio_gzcgq01lm_illuminance_lux
           state: 'unavailable'
     - condition: state
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       state: 'off'
     - condition: or
       conditions:
