@@ -1,0 +1,9 @@
+---
+platform: template
+sensors:
+  studio_pir:
+    friendly_name: "Studio PIR"
+    device_class: motion
+    entity_id:
+      - binary_sensor.studio_2ajz4kpbs_occupancy
+    value_template: "{{ expand('binary_sensor.studio_pir') | selectattr('state','eq','on') | list | count > 0 }}"

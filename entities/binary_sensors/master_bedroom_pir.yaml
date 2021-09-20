@@ -1,0 +1,9 @@
+---
+platform: template
+sensors:
+  master_bedroompir:
+    friendly_name: "Master Bedroom PIR"
+    device_class: motion
+    entity_id:
+      - binary_sensor.master_bedroomrf_pir
+    value_template: "{{ expand('binary_sensor.master_bedroompir') | selectattr('state','eq','on') | list | count > 0 }}"

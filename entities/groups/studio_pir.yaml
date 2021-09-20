@@ -1,6 +1,0 @@
----
-studio_pir:
-  name: Studio PiR
-  icon: mdi:motion-sensor
-  entities:
-    - binary_sensor.studio_2ajz4kpbs_occupancy

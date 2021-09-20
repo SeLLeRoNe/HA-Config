@@ -1,6 +1,0 @@
----
-kitchen_pir:
-  name: Kitchen PiR
-  icon: mdi:motion-sensor
-  entities:
-    - binary_sensor.kitchen_rf_pir
