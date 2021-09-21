@@ -9,7 +9,7 @@ trigger:
 action:
   - service: light.toggle
     data:
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       brightness_pct: 5
       rgb_color: [255,255,255]
       transition: 5

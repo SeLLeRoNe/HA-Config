@@ -4,11 +4,11 @@ alias: Studio - Wall Light On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: light.studio_wall_light
+    entity_id: light.studio_wall_lights
     from: 'unavailable'
     to: 'on'
 action:
   - service: light.turn_on
-    entity_id: light.studio_wall_light
+    entity_id: light.studio_wall_lights
   - service: light.turn_off
-    entity_id: light.studio_wall_light
+    entity_id: light.studio_wall_lights

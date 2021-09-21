@@ -22,7 +22,7 @@ condition:
 action:
   - service: light.toggle
     data:
-      entity_id: light.studio_wall_light
+      entity_id: light.studio_wall_lights
       transition: 5
       color_name: cyan
       brightness_pct: 50

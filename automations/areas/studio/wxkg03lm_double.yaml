@@ -9,7 +9,7 @@ trigger:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.patio_light
+      entity_id: light.patio_lights
       color_name: cyan
       brightness_pct: 25
       transition: 5
