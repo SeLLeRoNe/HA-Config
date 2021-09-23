@@ -17,12 +17,12 @@ master_bedroom_lights:
 #            template: light_card_rgb
 #            variables:
 #              - name: Top
-#              - entity: light.bedroom_luca_lamp_top
+#              - entity: light.master_bedroom_lamp_top
 #          - type: custom:decluttering-card
 #            template: light_card
 #            variables:
 #              - name: Bottom
-#              - entity: light.bedroom_luca_led1537r6_lamp_bottom
+#              - entity: light.master_bedroom_led1537r6_lamp_bottom
       - type: custom:decluttering-card
         template: light_card_rgb
         variables:
@@ -36,6 +36,11 @@ master_bedroom_lights:
       - type: custom:decluttering-card
         template: light_card_rgb
         variables:
+          - name: Lamp
+          - entity: light.master_bedroom_lamp
+      - type: custom:decluttering-card
+        template: light_card_rgb
+        variables:
           - name: Andrea
           - entity: light.andrea_bedside_lamp
       - type: custom:decluttering-card
@@ -43,3 +48,8 @@ master_bedroom_lights:
         variables:
           - name: Sonia
           - entity: light.sonia_bedside_lamp
+#      - type: custom:decluttering-card
+#        template: light_card_rgb
+#        variables:
+#          - name: Lamp
+#          - entity: light.master_bedroom_lamp
