@@ -1,7 +1,7 @@
 ---
 platform: template
 sensors:
-  master_bedroompir:
+  master_bedroom_pir:
     friendly_name: "Master Bedroom PIR"
     device_class: motion
     value_template: >
