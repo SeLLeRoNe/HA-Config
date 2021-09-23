@@ -7,7 +7,8 @@ trigger:
     entity_id: sensor.master_bedroom_wxkg11lm_action
     to: 'hold'
 action:
-  - service: scene.turn_on
+  - service: light.toggle
     data:
-      entity_id: scene.bedroom_luca_diaper_change
-      transition: 5
+      entity_id: light.master_bedroom_lamp
+      brightness_pct: 150
+      rgb_color: [255,0,0]

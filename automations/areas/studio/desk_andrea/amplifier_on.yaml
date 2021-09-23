@@ -35,10 +35,10 @@ condition:
             - condition: or
               conditions:
                 - condition: state
-                  entity_id: media_player.spotify
+                  entity_id: media_player.spotify_andrea
                   state: "paused"
                 - condition: state
-                  entity_id: media_player.spotify
+                  entity_id: media_player.spotify_andrea
                   state: "idle"
         - condition: or
           conditions:

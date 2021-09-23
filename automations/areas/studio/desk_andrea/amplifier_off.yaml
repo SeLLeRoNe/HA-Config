@@ -30,11 +30,11 @@ condition:
           entity_id: binary_sensor.studio_desk_andrea_computer_ping
           state: 'off'
     - condition: template
-      value_template: "{{ states.media_player.spotify.state != 'playing' }}"
+      value_template: "{{ states.media_player.spotify_andrea.state != 'playing' }}"
     - condition: template
-      value_template: "{{ states.media_player.spotify.attributes.source != 'YAMAHA-RXV779' }}"
+      value_template: "{{ states.media_player.spotify_andrea.attributes.source != 'YAMAHA-RXV779' }}"
     - condition: template
-      value_template: "{{ states.media_player.spotify.attributes.source != 'PC-SELLERONE' }}"
+      value_template: "{{ states.media_player.spotify_andrea.attributes.source != 'PC-SELLERONE' }}"
 action:
   - service: media_player.turn_off
     entity_id: media_player.studio_amplifier

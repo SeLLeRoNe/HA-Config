@@ -3,8 +3,6 @@ id: '3398152523589'
 alias: Studio - Set Amplifier Volume for PC
 initial_state: on
 trigger:
-  - platform: homeassistant
-    event: start
   - platform: template
     value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'PC') }}"
 condition:
@@ -13,8 +11,6 @@ condition:
     - condition: state
       entity_id: binary_sensor.studio_desk_andrea_computer_ping
       state: "on"
-    - condition: template
-      value_template: "{{ is_state_attr('media_player.studio_amplifier', 'source', 'PC') }}"
 action:
   - service: media_player.volume_set
     data:
