@@ -1,6 +1,6 @@
 ---
 id: '2831310072100'
-alias: Master Bedroom - WXKG02LM Switch Right Long
+alias: Bedroom Luca - WXKG02LM Switch Right Long
 initial_state: on
 trigger:
   - platform: state
