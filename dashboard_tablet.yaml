@@ -14,7 +14,7 @@ preload_cards:
   - markdown
 preload_rows:
   - divider
-button_card_templates: !include lovelace/templates/button_card_templates.yaml
+button_card_templates: !include lovelace/views/tablet/button_card_templates.yaml
 decluttering_templates: !include_dir_merge_named lovelace/templates/
 q_cards: !include_dir_merge_named lovelace/q-cards/
 kiosk_mode:

@@ -1,0 +1,118 @@
+---
+button_studio:
+  card:
+    type: custom:button-card
+    entity: light.studio_lights
+    tap_action:
+      action: navigate
+      navigation_path: studio_mobile
+    double_tap_action:
+      action: toggle
+    theme: iso_dark_mode
+    name: Studio
+    state:
+      - value: 'on'
+        color: rgb(255,221,0)
+        icon: mdi:wall-sconce-flat
+      - operator: default
+        color: white
+        icon: mdi:desktop-tower-monitor
+    styles:
+      card:
+        - border-radius: 3%
+        - padding: 10%
+        - color: ivory
+        - font-size: 10px
+        - text-shadow: 0px 0px 5px black
+        - text-transform: capitalize
+        - height: 122px
+        - width: 199px
+      grid:
+        - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+        - grid-template-columns: 1fr 1fr
+        - grid-template-rows: 1fr min-content min-content min-content min-content
+      name:
+        - font-weight: bold
+        - font-size: 17px
+        - color: white
+        - position: absolute
+        - left: 10px
+        - top: 93px
+      img_cell:
+        - align-self: center
+        - text-align: start
+      icon:
+        - position: absolute
+        - top: 0px
+        - left: 3px
+        - width: 85%
+      custom_fields:
+        temp_icon:
+          - position: absolute
+          - left: 8px
+          - top: 10px
+          - font-size: 20px
+          - align-self: start
+          - justify-self: end
+          - '--text-color-sensor': >-
+              [[[  if (states["sensor.studio_temperature"].state > 20) return
+              'orange'; else return 'deepskyblue'; ]]]
+        ext_door:
+          - position: absolute
+          - left: 65%
+          - top: 10%
+          - color: >-
+              [[[ if (states["binary_sensor.studio_mccgq01lm_outside_contact"].state == "on")
+              return "red"; "var(--paper-item-icon-active-color)";  if
+              (states["binary_sensor.studio_mccgq01lm_outside_contact"].state == "off") return
+              "green"; "var(--paper-item-icon-color)";  ]]]
+          - animation: |-
+              [[[ if (states["binary_sensor.studio_mccgq01lm_outside_contact"].state== "on")
+                return "blink 1s ease infinite";]]]
+        pir:
+          - position: absolute
+          - left: 76%
+          - top: 10%
+          - color: >-
+              [[[ if (states["binary_sensor.studio_pir"].state == "on")
+              return "red"; "var(--paper-item-icon-active-color)";  if
+              (states["binary_sensor.studio_pir"].state == "off") return
+              "green"; "var(--paper-item-icon-color)";  ]]]
+          - animation: |-
+              [[[ if (states["binary_sensor.studio_pir"].state== "on")
+                return "blink 1s ease infinite";]]]
+    custom_fields:
+      temp_icon: |
+        [[[
+          return `<ha-icon
+            icon="mdi:thermometer"
+            style="width: 25px; height: 25px; color: yellow;">
+            </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.studio_temperature'].state}°C</span></span>`
+        ]]]
+      ext_door: |
+        [[[
+          if (states["binary_sensor.studio_mccgq01lm_outside_contact"].state == "on")
+          return `<ha-icon
+            icon="mdi:window-open"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+          if (states["binary_sensor.studio_mccgq01lm_outside_contact"].state == "off")
+          return `<ha-icon
+            icon="mdi:window-closed"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      pir: |
+        [[[
+          if (states["binary_sensor.studio_pir"].state == "on")
+          return `<ha-icon
+            icon="mdi:run"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+          if (states["binary_sensor.studio_pir"].state == "off")
+          return `<ha-icon
+            icon="mdi:walk"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+
