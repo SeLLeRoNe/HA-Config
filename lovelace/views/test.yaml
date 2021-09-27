@@ -271,7 +271,6 @@ cards:
                 style="width: 20px; height: 20px; color: white;">
                 </ha-icon><span>  Battery Status: <span style="color: var(--text-color-sensor);">${states['sensor.sonia_mi_9t_pro_battery_state'].state}</span></span>`
             ]]]
-
   - type: custom:layout-break
   - type: entities
     title: Studio
@@ -292,7 +291,7 @@ cards:
         IsOnHiColor: '#248F24'
         ButtonInactiveColor: '#000000'
       - type: custom:light-brightness-preset-row
-        entity: light.studio_wall_light
+        entity: light.studio_desk_andrea_lamp
         name: Wall Light
         customSetpoints: true
         LowBrightness: 50
@@ -305,3 +304,14 @@ cards:
         IsOnMedColor: '#248F24'
         IsOnHiColor: '#248F24'
         ButtonInactiveColor: '#000000'
+
+
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: horizontal
+    cards:
+      - type: custom:decluttering-card
+        template: button_patio
+      - type: custom:decluttering-card
+        template: button_studio
+        
