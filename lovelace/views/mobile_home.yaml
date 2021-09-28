@@ -1,0 +1,44 @@
+title: Home
+icon: mdi:home
+path: mobile_home
+type: custom:vertical-layout
+kiosk_mode:
+  user_settings:
+    - users:
+        - sellerone_mobile
+      hide_sidebar: true
+      hide_header: true
+layout:
+   max_cols: 5
+cards:
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:stack-in-card
+        mode: horizontal
+        cards:
+          - type: custom:decluttering-card
+            template: button_living_room
+          - type: custom:decluttering-card
+            template: button_kitchen
+      - type: custom:stack-in-card
+        mode: horizontal
+        cards:
+          - type: custom:decluttering-card
+            template: button_studio
+          - type: custom:decluttering-card
+            template: button_patio
+      - type: custom:stack-in-card
+        mode: horizontal
+         cards:
+          - type: custom:decluttering-card
+            template: button_master_bedroom
+          - type: custom:decluttering-card
+            template: button_bedroom_luca
+      - type: custom:stack-in-card
+        mode: horizontal
+         cards:
+          - type: custom:decluttering-card
+            template: button_bathroom
+          - type: custom:decluttering-card
+            template: button_master_bathroom

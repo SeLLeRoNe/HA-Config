@@ -68,6 +68,13 @@ homeassistant:
 lovelace:
   resources: !include lovelace/resources.yaml
   dashboards:
+    lovelace-mobile:
+      mode: yaml
+      title: Mobile
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      require_admin: false
+      filename: dashboard_mobile.yaml
     lovelace-tablet:
       mode: yaml
       title: Tablet

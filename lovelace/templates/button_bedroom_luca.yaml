@@ -1,22 +1,22 @@
 ---
-button_studio:
+button_bedroom_luca:
   card:
     type: custom:button-card
-    entity: light.studio_lights
+    entity: light.bedroom_luca_lights
     tap_action:
       action: navigate
-      navigation_path: studio_mobile
+      navigation_path: bedroom_luca_mobile
     double_tap_action:
       action: toggle
     theme: iso_dark_mode
-    name: Studio
+    name: Bedroom Luca
     state:
       - value: 'on'
         color: rgb(255,221,0)
         icon: mdi:wall-sconce-flat
       - operator: default
         color: white
-        icon: mdi:desktop-tower-monitor
+        icon: mdi:bunk-bed
     styles:
       card:
         - border-radius: 3%
@@ -55,31 +55,31 @@ button_studio:
           - align-self: start
           - justify-self: end
           - '--text-color-sensor': >-
-              [[[  if (states["sensor.studio_temperature"].state > 20) return
+              [[[  if (states["sensor.bedroom_luca_temperature"].state > 20) return
               'orange'; else return 'deepskyblue'; ]]]
         window:
           - position: absolute
           - left: 65%
           - top: 10%
           - color: >-
-              [[[ if (states["binary_sensor.studio_window"].state == "on")
+              [[[ if (states["binary_sensor.bedroom_luca_window"].state == "on")
               return "red"; "var(--paper-item-icon-active-color)";  if
-              (states["binary_sensor.studio_window"].state == "off") return
+              (states["binary_sensor.bedroom_luca_window"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.studio_window"].state== "on")
+              [[[ if (states["binary_sensor.bedroom_luca_window"].state== "on")
                 return "blink 1s ease infinite";]]]
         pir:
           - position: absolute
           - left: 76%
           - top: 10%
           - color: >-
-              [[[ if (states["binary_sensor.studio_pir"].state == "on")
+              [[[ if (states["binary_sensor.bedroom_luca_pir"].state == "on")
               return "red"; "var(--paper-item-icon-active-color)";  if
-              (states["binary_sensor.studio_pir"].state == "off") return
+              (states["binary_sensor.bedroom_luca_pir"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.studio_pir"].state== "on")
+              [[[ if (states["binary_sensor.bedroom_luca_pir"].state== "on")
                 return "blink 1s ease infinite";]]]
     custom_fields:
       temp_icon: |
@@ -87,16 +87,16 @@ button_studio:
           return `<ha-icon
             icon="mdi:thermometer"
             style="width: 25px; height: 25px; color: yellow;">
-            </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.studio_temperature'].state}°C</span></span>`
+            </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.bedroom_luca_temperature'].state}°C</span></span>`
         ]]]
       window: |
         [[[
-          if (states["binary_sensor.studio_window"].state == "on")
+          if (states["binary_sensor.bedroom_luca_window"].state == "on")
           return `<ha-icon
             icon="mdi:window-open"
             style="width: 22px; height: 22px;">
             </ha-icon>`
-          if (states["binary_sensor.studio_window"].state == "off")
+          if (states["binary_sensor.bedroom_luca_window"].state == "off")
           return `<ha-icon
             icon="mdi:window-closed"
             style="width: 22px; height: 22px;">
@@ -104,12 +104,12 @@ button_studio:
         ]]]
       pir: |
         [[[
-          if (states["binary_sensor.studio_pir"].state == "on")
+          if (states["binary_sensor.bedroom_luca_pir"].state == "on")
           return `<ha-icon
             icon="mdi:run"
             style="width: 22px; height: 22px;">
             </ha-icon>`
-          if (states["binary_sensor.studio_pir"].state == "off")
+          if (states["binary_sensor.bedroom_luca_pir"].state == "off")
           return `<ha-icon
             icon="mdi:walk"
             style="width: 22px; height: 22px;">
