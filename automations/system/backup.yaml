@@ -8,9 +8,11 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      entity_id: sensor.samba_backup
-      state: 'IDLE'
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.samba_backup
+          state: 'RUNNING'
 action:
   - service: switch.turn_on
     entity_id: switch.studio_media01_wol
@@ -19,6 +21,6 @@ action:
     data:
       addon: 15d21743_samba_backup
       input: trigger
-  - delay: '00:00:30'
+  - delay: '01:00:00'
   - service: switch.turn_off
     entity_id: switch.studio_media01_wol
