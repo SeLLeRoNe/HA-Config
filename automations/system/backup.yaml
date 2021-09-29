@@ -21,6 +21,6 @@ action:
     data:
       addon: 15d21743_samba_backup
       input: trigger
-  - delay: '01:00:00'
+  - delay: '00:30:00'
   - service: switch.turn_off
     entity_id: switch.studio_media01_wol
