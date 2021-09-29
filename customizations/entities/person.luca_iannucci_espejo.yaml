@@ -1,4 +1,3 @@
 ---
 person.luca:
-  icon: mdi:baby
-#  entity_picture: /local/icons/family/sonia.png
+  entity_picture: /local/icons/family/luca.png
