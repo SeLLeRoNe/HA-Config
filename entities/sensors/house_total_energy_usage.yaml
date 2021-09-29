@@ -1,6 +1,32 @@
 ---
-platform: mqtt
-name: "House Total Energy Usage"
-icon: mdi:flash
-state_topic: "tele/House/TOTAL_ENERGY"
-unit_of_measurement: "kWh"
+platform: template
+sensors:
+  house_total_energy_usage:
+    friendly_name: House Daily Energy Usage
+    entity_id: sensor.time
+    unit_of_measurement: kWh
+    icon_template: mdi:counter
+    availability_template: >
+      {% set ns = namespace(states=[]) %}
+      {% for s in states.sensor %}
+        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
+          {% if ( s.state ) not in ['unknown', 'unavailable'] %}
+            {% if ( ns.state ) not in ['unknown', 'unavailable'] %}
+              {% set ns.states = "True" %}
+            {% endif %}
+          {% else %}
+            {% set ns.states = "False" %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {{ ns.states }}
+    value_template: >
+      {% set ns = namespace(states=[]) %}
+      {% for s in states.sensor %}
+        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
+          {% if ( s.state | float ) > 0.000 %}
+            {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {{ ns.states | sum | round(2) }}
