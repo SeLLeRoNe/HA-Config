@@ -93,12 +93,12 @@ button_patio:
         [[[
           if (states["binary_sensor.patio_mccgq01lm_outside_contact"].state == "on")
           return `<ha-icon
-            icon="mdi:window-open"
+            icon="mdi:door-open"
             style="width: 22px; height: 22px;">
             </ha-icon>`
           if (states["binary_sensor.patio_mccgq01lm_outside_contact"].state == "off")
           return `<ha-icon
-            icon="mdi:window-closed"
+            icon="mdi:door-closed"
             style="width: 22px; height: 22px;">
             </ha-icon>`
         ]]]

@@ -1,0 +1,714 @@
+########################
+### PICTURE ELEMENTS ###
+########################
+
+pic_label_stato_operativo:
+  template:
+    - no_background
+  show_icon: false
+  show_state: false
+  styles:
+    name:
+      - justify-self: start
+      - font-size: 120%
+    card:
+      - border-radius: 0px
+      - padding: 0px
+  state:
+    - value: 'on'
+      name: IN FUNZIONE
+      styles:
+        name:
+          - color: var(--paper-item-icon-active-color)
+          - font-weight: bold
+    - value: 'off'
+      name: SPENTA
+      styles:
+        name:
+          - color: var(--secondary-text-color)
+
+pic_icon_stato_operativo_lavatrice:
+  template:
+    - no_background
+  show_name: false
+  show_state: false
+  show_icon: true
+  styles:
+    card:
+      - border-radius: 0px
+  state:
+    - value: 'on'
+      icon: 'mdi:washing-machine'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+    - value: 'off'
+      icon: 'mdi:washing-machine-off'
+      styles:
+        icon:
+          - color: var(--secondary-text-color)      
+          
+pic_icon_stato_operativo_lavastoviglie:
+  template:
+    - no_background
+  show_name: false
+  show_state: false
+  show_icon: true
+  styles:
+    card:
+      - border-radius: 0px
+  state:
+    - value: 'on'
+      icon: 'mdi:dishwasher'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+    - value: 'off'
+      icon: 'mdi:dishwasher-off'
+      styles:
+        icon:
+          - color: var(--secondary-text-color)       
+          
+pic_icon_stato_operativo_asciugatrice:
+  template:
+    - no_background
+  show_name: false
+  show_state: false
+  show_icon: true
+  styles:
+    card:
+      - border-radius: 0px
+  state:
+    - value: 'on'
+      icon: 'mdi:tumble-dryer'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+    - value: 'off'
+      icon: 'mdi:tumble-dryer-off'
+      styles:
+        icon:
+          - color: var(--secondary-text-color)    
+          
+pic_label_fase_operativa:
+  show_icon: false
+  template: no_background
+  name: Riscaldamento Acqua
+  styles:
+    name:
+      - font-size: 110%
+      - justify-self: start
+
+    card:
+      - border-radius: 0px
+      - padding: 0px
+      
+pic_label_tempo_ciclo:
+  template: no_background
+  show_icon: false
+  show_state: true
+  show_name: false
+  styles:
+    card:
+      - border-radius: 0px
+      - padding: 0px
+    state:
+      - justify-self: start
+      - font-size: 110%
+      - font-weight: bold
+      
+pic_label_consumo:
+  template: no_background
+  show_icon: false
+  show_state: true
+  show_name: false
+  styles:
+    card:
+      - border-radius: 0px
+      - padding: 0px
+    state:
+      - justify-self: start
+      - font-size: 95%
+
+feedback_click:
+  styles:
+    card:
+      - '--mdc-ripple-color': var(--paper-item-icon-active-color)
+      - '--mdc-ripple-press-opacity': 0.2
+      
+#######################
+### ACTION TEMPLATE ###
+#######################
+      
+action_var:
+  entity: var.spotify_var_room
+  styles:
+    card:
+      - height: 80px
+    name:
+      - margin-bottom: 5px
+  tap_action:
+    action: call-service
+    service: script.spotify_set_room
+    service_data:
+      room: '[[[ return variables.room ]]]'
+  state:
+    - value: '[[[ return variables.room ]]]'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+          - font-weight: bold
+        name:
+          - color: var(--paper-item-icon-active-color)
+          - font-weight: bold
+action_var_echo_entity:
+  entity: var.alexa_echo_entity
+  styles:
+    card:
+      - height: 80px
+    name:
+      - margin-bottom: 5px
+  tap_action:
+    action: call-service
+    service: var.set
+    service_data:
+      entity_id: var.alexa_echo_entity
+      value: '[[[ return variables.echo_entity ]]]'
+  state:
+    - value: '[[[ return variables.echo_entity ]]]'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+          - font-weight: bold
+        name:
+          - color: var(--paper-item-icon-active-color)
+          - font-weight: bold
+action_state_numeric:
+  state:
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+action_turn_off:
+  state:
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+        name:
+          - color: var(--disabled-text-color)
+  icon: 'mdi:power'
+  tap_action:
+    action: call-service
+    service: homeassistant.turn_off
+    service_data:
+      entity_id: '[[[ return entity.entity_id ]]]'
+action_state_off:
+  state:
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+        name:
+          - color: var(--disabled-text-color)
+action_state_number_off:
+  state:
+    - value: 0
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+        name:
+          - color: var(--disabled-text-color)
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: red
+action_turn_scene:
+  template: feedback_click
+  tap_action:
+    action: call-service
+    service: scene.turn_on
+    service_data:
+      entity_id: '[[[ return entity.entity_id ]]]'
+      
+#######################
+### BUTTON TEMPLATE ###
+#######################
+      
+button_home:
+  template: feedback_click
+  layout: icon_name
+  name: GO TO HOME
+  styles:
+    card:
+      - height: 70px
+    name:
+      - justify-self: left
+  icon: 'phu:routinesComingHome'
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-tablet/home
+button_footer:
+  template: feedback_click
+  layout: icon_name
+  styles:
+    card:
+      - height: 70px
+    name:
+      - justify-self: left
+button_icon_square:
+  template: feedback_click
+  size: 60%
+  show_name: false
+  aspect_ratio: 1/1
+button_text_square:
+  template: feedback_click
+  size: 60%
+  show_icon: false
+  aspect_ratio: 1/1
+button_horizontal:
+  layout: icon_name
+  show_icon: true
+  styles:
+    card:
+      - height: 60px
+    name:
+      - padding-right: 5px
+button_routine_home:
+  template:
+    - button_horizontal
+    - feedback_click
+  size: 50%
+  styles:
+    grid:
+      - grid-template-columns: 30% 1fr
+    name:
+      - color: var(--secondary-text-color)
+    icon:
+      - color: var(--secondary-text-color)
+    tap_action:
+      action: call-service
+      service: '[[[ return entity.entity_id ]]]'
+button_channel:
+  template: no_background
+  show_icon: false
+  show_name: false
+  size: 70%
+  show_entity_picture: true
+  styles:
+    card:
+      - height: 90px
+  entity_picture: '[[[ return "/local/tv_logos/" + variables.picture_name ]]]'
+  tap_action:
+    action: call-service
+    service: '[[[ return "script.harmony_channel_" + variables.activity ]]]'
+    service_data:
+      canale: '[[[ return variables.channel ]]]'
+button_radio:
+  template: no_background
+  show_icon: false
+  show_name: false
+  size: 60%
+  show_entity_picture: true
+  styles:
+    card:
+      - height: 90px
+  entity_picture: '[[[ return "/local/radio_logos/" + variables.picture_name ]]]'
+  tap_action:
+    action: call-service
+    service: media_player.play_media
+    service_data:
+      entity_id: '[[[ return "media_player." + states["var.alexa_echo_entity"].state ]]]'
+      media_content_id: '[[[ return variables.stazione ]]]'
+      media_content_type: TUNEIN
+button_number_channel:
+  template:
+    - action_state_off
+    - feedback_click
+  entity: sensor.command_device
+  show_name: false
+  styles:
+    card:
+      - height: 60px
+    icon:
+      - width: 40px
+  icon: '[[[ return "mdi:numeric-" + variables.number + "-circle" ]]]'
+  tap_action:
+    action: call-service
+    service: script.harmony_command
+    service_data:
+      comando: '[[[ return variables.number ]]]'
+button_text_label:
+  template: feedback_click
+  show_label: true
+  show_icon: false
+  styles:
+    card:
+      - height: 60px
+    name:
+      - font-size: 90%
+      - color: var(--secondary-text-color)
+      - margin-bottom: 2px
+    label:
+      - margin-top: 2px
+      - font-weight: bold
+button_icon_label:
+  show_label: true
+  show_state: false
+  show_name: true
+  styles:
+    grid:
+      - grid-template-areas: '"i l" "i n"'
+      - grid-template-columns: 30% 1fr
+      - grid-template-rows: 1fr 1fr
+    card:
+      - height: 60px
+    label:
+      - font-size: 90%
+      - color: var(--secondary-text-color)
+    name:
+      - font-weight: bold
+button_text:
+  show_label: false
+  show_icon: false
+  styles:
+    card:
+      - height: 60px
+    name:
+      - font-weight: bold
+button_menu:
+  template:
+    - button_text
+    - feedback_click
+  icon: 'mdi:power'
+  styles:
+    card:
+      - background: 'rgba(25, 25, 25, 1)'
+    name:
+      - color: var(--secondary-text-color)
+    icon:
+      - color: var(--secondary-text-color)
+button_light:
+  color: auto
+  styles:
+    name:
+      - margin-top: 5px
+    label:
+      - margin-top: 5px
+      - font-size: 80%
+      - color: var(--secondary-text-color)
+  state:
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+        label:
+          - color: var(--disabled-text-color)
+        name:
+          - color: var(--secondary-text-color)
+    - value: 'on'
+      styles:
+        name:
+          - font-weight: bold
+button_light_brightness:
+  show_label: true
+  label: |
+    [[[ 
+      if (entity.state === 'on' && entity.attributes.brightness) 
+      {
+        const brightness = Math.round(entity.attributes.brightness / 2.54);
+        return brightness + '<span style="font-size: 80%;">%</span>'; 
+      } else {
+        return '0%';
+      }
+    ]]]
+    
+######################
+### POPUP TEMPLATE ###
+######################
+
+popup_light:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup    
+      title: '[[[ return entity.attributes.friendly_name ]]]'
+      hide_header: true
+      auto_close: false
+      style:
+        $: |
+          .mdc-dialog .mdc-dialog__container {
+            width: 100%;
+          }
+          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+            width:100%;
+            box-shadow:none;
+          }
+        .: |
+          :host {
+            --mdc-theme-surface: rgba(0,0,0,0);
+            --secondary-background-color: rgba(0,0,0,0);
+            --ha-card-background: rgba(0,0,0,0);
+            --mdc-dialog-scrim-color: rgba(0,0,0,0.8);
+            --mdc-dialog-min-height: 100%;
+            --mdc-dialog-min-width: 100%;
+            --mdc-dialog-max-width: 100%;
+          }
+          mwc-icon-button {
+            color: #FFF;
+          }        
+      card:
+        type: 'custom:light-popup-card'
+        entity: '[[[ return entity.entity_id ]]]'
+        icon: 'mdi:led-strip'
+        actionSize: 60px
+        actions:
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 153
+            color: '#d8d9e1'
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 326
+            color: '#d5b08d'
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 500
+            color: '#ce944b'
+popup_light_rgb:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup   
+      title: '[[[ return entity.attributes.friendly_name ]]]'
+      hide_header: true
+      auto_close: false
+      style:
+        $: |
+          .mdc-dialog .mdc-dialog__container {
+            width: 100%;
+          }
+          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+            width:100%;
+            box-shadow:none;
+          }
+        .: |
+          :host {
+            --mdc-theme-surface: rgba(0,0,0,0);
+            --secondary-background-color: rgba(0,0,0,0);
+            --ha-card-background: rgba(0,0,0,0);
+            --mdc-dialog-scrim-color: rgba(0,0,0,0.8);
+            --mdc-dialog-min-height: 100%;
+            --mdc-dialog-min-width: 100%;
+            --mdc-dialog-max-width: 100%;
+          }
+          mwc-icon-button {
+            color: #FFF;
+          }        
+      card:
+        type: 'custom:light-popup-card'
+        entity: '[[[ return entity.entity_id ]]]'
+        icon: 'mdi:led-strip'
+        actionSize: 60px
+        settings:
+          openButton: RGB
+          closeButton: CHIUDI
+        settingsCard:
+          type: 'custom:light-entity-card'
+          cardOptions:
+            entity: '[[[ return entity.entity_id ]]]'
+            brightness: false
+            full_width_sliders: true
+            hide_header: true
+            show_slider_percent: true
+            smooth_color_wheel: true
+            consolidate_entities: true
+        actions:
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 153
+            color: '#d8d9e1'
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 326
+            color: '#d5b08d'
+          - service: light.turn_on
+            service_data:
+              entity_id: '[[[ return entity.entity_id ]]]'
+              color_temp: 500
+            color: '#ce944b'
+            
+#######################
+### SENSOR TEMPLATE ###
+#######################
+
+sensor_card:
+  layout: icon_name_state2nd
+  show_state: true
+  styles:
+    card:
+      - padding-top: 2%
+      - padding-bottom: 2%
+    state:
+      - font-size: 140%
+      - font-weight: bold
+      - justify-self: start
+      - align-self: center
+    name:
+      - font-size: 85%
+      - justify-self: start
+      - color: var(--secondary-text-color)
+  tap_action:
+    action: none
+sensor_card_text:
+  show_icon: false
+  show_state: true
+  styles:
+    card:
+      - height: 60px
+    name:
+      - font-size: 80%
+      - color: var(--secondary-text-color)
+    state:
+      - font-size: 120%
+      - font-weight: bold
+  tap_action:
+    action: none
+sensor_person:
+  label: |
+    [[[
+      var h = states[variables.battery_entity].state;
+      return 'Battery: '+h+'%';
+    ]]]
+  layout: icon_name_state2nd
+  show_icon: false
+  show_entity_picture: true
+  show_name: true
+  show_state: true
+  show_label: true
+  styles:
+    card:
+      - height: 100px
+    state:
+      - font-size: 120%
+    name:
+      - font-size: 14px
+      - font-weight: 500
+      - color: var(--secondary-text-color)
+    label:
+      - margin-top: 8px
+      - color: var(--secondary-text-color)
+      - font-size: 80%
+    entity_picture:
+      - border-radius: 50%
+      - width: 55px
+  state:
+    - value: home
+      operator: '!='
+      styles:
+        state:
+          - color: var(--paper-item-icon-active-color)       
+          
+###########################
+### LABEL & EMPTY CARDS ###
+###########################
+
+card_header:
+  styles:
+    card:
+      - height: 80px
+empty_card:
+  template: no_background
+  color_type: blank-card
+row_space_5:
+  template: no_background
+  styles:
+    card:
+      - height: 5px
+      - padding: 0px
+      
+row_space_10:
+  template: no_background
+  styles:
+    card:
+      - height: 10px
+      - padding: 0px
+      
+row_space_15:
+  template: no_background
+  styles:
+    card:
+      - height: 15px
+      - padding: 0px
+row_space_20:
+  template: no_background
+  styles:
+    card:
+      - height: 20px
+      - padding: 0px
+row_space_25:
+  template: no_background
+  styles:
+    card:
+      - height: 25px
+      - padding: 0px
+row_space_30:
+  template: no_background
+  styles:
+    card:
+      - height: 30px
+      - padding: 0px
+row_space_35:
+  template: no_background
+  styles:
+    card:
+      - height: 35px
+      - padding: 0px
+row_space_40:
+  template: no_background
+  styles:
+    card:
+      - height: 40px
+      - padding: 0px
+row_space_80:
+  template: no_background
+  styles:
+    card:
+      - height: 80px
+      - padding: 0px
+no_background:
+  styles:
+    card:
+      - background-color: 'rgba(0, 0, 0, 0.0)'
+      - box-shadow: none
+label_left:
+  styles:
+    card:
+      - padding: 5px 5px
+      - margin-left: 4px
+      - border-radius: 0px
+    name:
+      - justify-self: left
+      - font-size: 120%
+      - color: var(--secondary-text-color)
+  template: no_background
+  tap_action:
+    action: none
+label_center:
+  styles:
+    card:
+      - padding: 5px 5px
+    name:
+      - justify-self: center
+      - font-size: 120%
+      - color: var(--secondary-text-color)
+  template: no_background
+  tap_action:
+    action: none

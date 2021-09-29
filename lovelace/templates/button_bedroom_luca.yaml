@@ -9,14 +9,14 @@ button_bedroom_luca:
     double_tap_action:
       action: toggle
     theme: iso_dark_mode
-    name: Bedroom Luca
+    name: Luca's
     state:
       - value: 'on'
-        color: rgb(255,221,0)
-        icon: mdi:wall-sconce-flat
+        color: cyan
+        icon: mdi:human-male
       - operator: default
         color: white
-        icon: mdi:bunk-bed
+        icon: mdi:human-male
     styles:
       card:
         - border-radius: 3%
@@ -67,7 +67,7 @@ button_bedroom_luca:
               (states["binary_sensor.bedroom_luca_window"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.bedroom_luca_window"].state== "on")
+              [[[ if (states["binary_sensor.bedroom_luca_window"].state == "on")
                 return "blink 1s ease infinite";]]]
         pir:
           - position: absolute
@@ -79,8 +79,47 @@ button_bedroom_luca:
               (states["binary_sensor.bedroom_luca_pir"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.bedroom_luca_pir"].state== "on")
+              [[[ if (states["binary_sensor.bedroom_luca_pir"].state == "on")
                 return "blink 1s ease infinite";]]]
+        alexa:
+          - position: absolute
+          - left: 65%
+          - top: 30%
+          - color: >-
+              [[[ if (states["switch.bedroom_luca_echo_dot_do_not_disturb_switch"].state == "on") return
+              "rgb(23,155,217)"; "var(--paper-item-icon-active-color)";  if
+              (states["switch.bedroom_luca_echo_dot_do_not_disturb_switch"].state == "off") return
+              "rgb(255,153,0)"; "var(--paper-item-icon-color)";  ]]]
+          - animation: |-
+              [[[ if (states["switch.bedroom_luca_echo_dot_do_not_disturb_switch"].state == "off")
+                return "blink 1s ease infinite";]]]
+        lamp_top:
+          - position: absolute
+          - left: 65%
+          - top: 50%
+          - color: >-
+              [[[ if (states["light.bedroom_luca_lamp_top"].state == "on") return
+              "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+              (states["light.bedroom_luca_lamp_top"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
+        lamp_bottom:
+          - position: absolute
+          - left: 76%
+          - top: 50%
+          - color: >-
+              [[[ if (states["light.bedroom_luca_led1537r6_lamp_bottom"].state == "on") return
+              "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+              (states["light.bedroom_luca_led1537r6_lamp_bottom"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
+        ceiling_lights:
+          - position: absolute
+          - left: 87%
+          - top: 50%
+          - color: >-
+              [[[ if (states["light.bedroom_luca_ceiling_lights"].state == "on") return
+              "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+              (states["light.bedroom_luca_ceiling_lights"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
     custom_fields:
       temp_icon: |
         [[[
@@ -88,6 +127,13 @@ button_bedroom_luca:
             icon="mdi:thermometer"
             style="width: 25px; height: 25px; color: yellow;">
             </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.bedroom_luca_temperature'].state}°C</span></span>`
+        ]]]
+      alexa: |
+        [[[
+          return `<ha-icon
+            icon="mdi:amazon-alexa"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
         ]]]
       window: |
         [[[
@@ -115,4 +161,24 @@ button_bedroom_luca:
             style="width: 22px; height: 22px;">
             </ha-icon>`
         ]]]
-
+      ceiling_lights: |
+        [[[
+          return `<ha-icon
+            icon="mdi:wall-sconce-round"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      lamp_top: |
+        [[[
+          return `<ha-icon
+            icon="mdi:floor-lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      lamp_bottom: |
+        [[[
+          return `<ha-icon
+            icon="mdi:floor-lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]

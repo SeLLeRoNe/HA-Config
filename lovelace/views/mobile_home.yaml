@@ -30,14 +30,14 @@ cards:
             template: button_patio
       - type: custom:stack-in-card
         mode: horizontal
-         cards:
+        cards:
           - type: custom:decluttering-card
             template: button_master_bedroom
           - type: custom:decluttering-card
             template: button_bedroom_luca
       - type: custom:stack-in-card
         mode: horizontal
-         cards:
+        cards:
           - type: custom:decluttering-card
             template: button_bathroom
           - type: custom:decluttering-card

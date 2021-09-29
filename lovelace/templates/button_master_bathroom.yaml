@@ -16,7 +16,7 @@ button_master_bathroom:
         icon: mdi:wall-sconce-flat
       - operator: default
         color: white
-        icon: mdi:toilet
+        icon: mdi:shower
     styles:
       card:
         - border-radius: 3%

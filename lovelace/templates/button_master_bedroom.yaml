@@ -9,14 +9,14 @@ button_master_bedroom:
     double_tap_action:
       action: toggle
     theme: iso_dark_mode
-    name: Master Bedroom
+    name: Mum & Dad's
     state:
       - value: 'on'
         color: rgb(255,221,0)
         icon: mdi:wall-sconce-flat
       - operator: default
         color: white
-        icon: mdi:bed-empty
+        icon: mdi:human-male-female
     styles:
       card:
         - border-radius: 3%
@@ -57,6 +57,18 @@ button_master_bedroom:
           - '--text-color-sensor': >-
               [[[  if (states["sensor.master_bedroom_temperature"].state > 20) return
               'orange'; else return 'deepskyblue'; ]]]
+        alexa:
+          - position: absolute
+          - left: 65%
+          - top: 30%
+          - color: >-
+              [[[ if (states["switch.master_bedroom_echo_dot_do_not_disturb_switch"].state == "on") return
+              "rgb(23,155,217)"; "var(--paper-item-icon-active-color)";  if
+              (states["switch.master_bedroom_echo_dot_do_not_disturb_switch"].state == "off") return
+              "rgb(255,153,0)"; "var(--paper-item-icon-color)";  ]]]
+          - animation: |-
+              [[[ if (states["switch.master_bedroom_echo_dot_do_not_disturb_switch"].state == "off")
+                return "blink 1s ease infinite";]]]
         window:
           - position: absolute
           - left: 65%
@@ -67,7 +79,7 @@ button_master_bedroom:
               (states["binary_sensor.master_bedroom_window"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.master_bedroom_window"].state== "on")
+              [[[ if (states["binary_sensor.master_bedroom_window"].state == "on")
                 return "blink 1s ease infinite";]]]
         pir:
           - position: absolute
@@ -79,8 +91,17 @@ button_master_bedroom:
               (states["binary_sensor.master_bedroom_pir"].state == "off") return
               "green"; "var(--paper-item-icon-color)";  ]]]
           - animation: |-
-              [[[ if (states["binary_sensor.master_bedroom_pir"].state== "on")
+              [[[ if (states["binary_sensor.master_bedroom_pir"].state == "on")
                 return "blink 1s ease infinite";]]]
+        lamp:
+          - position: absolute
+          - left: 65%
+          - top: 50%
+          - color: >-
+              [[[ if (states["light.master_bedroom_lamp"].state == "on") return
+              "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+              (states["light.master_bedroom_lamp"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
     custom_fields:
       temp_icon: |
         [[[
@@ -88,6 +109,13 @@ button_master_bedroom:
             icon="mdi:thermometer"
             style="width: 25px; height: 25px; color: yellow;">
             </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.master_bedroom_temperature'].state}°C</span></span>`
+        ]]]
+      alexa: |
+        [[[
+          return `<ha-icon
+            icon="mdi:amazon-alexa"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
         ]]]
       window: |
         [[[
@@ -115,4 +143,10 @@ button_master_bedroom:
             style="width: 22px; height: 22px;">
             </ha-icon>`
         ]]]
-
+      lamp: |
+        [[[
+          return `<ha-icon
+            icon="mdi:lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]

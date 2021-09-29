@@ -1,0 +1,76 @@
+      temp_icon: |
+        [[[
+          return `<ha-icon
+            icon="mdi:thermometer"
+            style="width: 25px; height: 25px; color: yellow;">
+            </ha-icon><span> <span style="color: var(--text-color-sensor);">${states['sensor.living_room_temperature'].state}°C</span></span>`
+        ]]]
+      window: |
+        [[[
+          if (states["binary_sensor.living_room_window"].state == "on")
+          return `<ha-icon
+            icon="mdi:window-open"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+          if (states["binary_sensor.living_room_window"].state == "off")
+          return `<ha-icon
+            icon="mdi:window-closed"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      pir: |
+        [[[
+          if (states["binary_sensor.living_room_pir"].state == "on")
+          return `<ha-icon
+            icon="mdi:run"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+          if (states["binary_sensor.living_room_pir"].state == "off")
+          return `<ha-icon
+            icon="mdi:walk"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+
+      wii: |
+        [[[
+          return `<ha-icon
+            icon="mdi:nintendo-wii"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      tv: |
+        [[[
+          return `<ha-icon
+            icon="mdi:television"
+            style="width: 20px; height: 20px;">
+            </ha-icon>`
+        ]]]
+      lamp: |
+        [[[
+          return `<ha-icon
+            icon="mdi:lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      lamp_top: |
+        [[[
+          return `<ha-icon
+            icon="mdi:lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      lamp_bottom: |
+        [[[
+          return `<ha-icon
+            icon="mdi:lamp"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      alexa: |
+        [[[
+          return `<ha-icon
+            icon="mdi:amazon-alexa"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]

@@ -81,6 +81,32 @@ button_living_room:
           - animation: |-
               [[[ if (states["binary_sensor.living_room_pir"].state== "on")
                 return "blink 1s ease infinite";]]]
+        wii:
+          - position: absolute
+          - left: 87%
+          - top: 50%
+          - color: >-
+              [[[ if (states["switch.nintendo_wii"].state == "on") return "red";
+              "var(--paper-item-icon-active-color)";  if (states["switch.nintendo_wii"].state
+              == "off") return "grey"; "var(--paper-item-icon-color)";  ]]]
+        tv:
+          - position: absolute
+          - left: 65%
+          - top: 70%
+          - color: >-
+              [[[ if (states["media_player.living_room_tv"].state == "on") return "red";
+              "var(--paper-item-icon-active-color)";  if
+              (states["media_player.living_room_tv"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
+        table_lights:
+          - position: absolute
+          - left: 65%
+          - top: 50%
+          - color: >-
+              [[[ if (states["light.living_room_table_lights"].state == "on") return
+              "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
+              (states["light.living_room_table_lights"].state == "off") return "grey";
+              "var(--paper-item-icon-color)";  ]]]
     custom_fields:
       temp_icon: |
         [[[
@@ -116,3 +142,24 @@ button_living_room:
             </ha-icon>`
         ]]]
 
+      wii: |
+        [[[
+          return `<ha-icon
+            icon="mdi:nintendo-wii"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
+      tv: |
+        [[[
+          return `<ha-icon
+            icon="mdi:television"
+            style="width: 20px; height: 20px;">
+            </ha-icon>`
+        ]]]
+      table_lights: |
+        [[[
+          return `<ha-icon
+            icon="mdi:wall-sconce-round"
+            style="width: 22px; height: 22px;">
+            </ha-icon>`
+        ]]]
