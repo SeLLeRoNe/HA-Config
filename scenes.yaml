@@ -26,7 +26,7 @@
       - 0.136
       - 0.04
       effect: None
-      friendly_name: Bedroom Luca Lamp Top Light
+      friendly_name: Bedroom Luca Lamp Top
       supported_features: 36
       state: 'on'
     light.bedroom_luca_led1624g9_ceiling_1:
@@ -38,8 +38,8 @@
       - finish_effect
       - stop_effect
       supported_color_modes:
-      - hs
-      friendly_name: Bedroom Luca Light 1
+      - xy
+      friendly_name: bedroom_luca_LED1624G9_ceiling_1
       supported_features: 61
       state: unavailable
     light.bedroom_luca_led1624g9_ceiling_2:
@@ -51,8 +51,8 @@
       - finish_effect
       - stop_effect
       supported_color_modes:
-      - hs
-      friendly_name: Bedroom Luca Light 2
+      - xy
+      friendly_name: bedroom_luca_LED1624G9_ceiling_2
       supported_features: 61
       state: unavailable
     light.bedroom_luca_led1624g9_ceiling_3:
@@ -64,7 +64,75 @@
       - finish_effect
       - stop_effect
       supported_color_modes:
-      - hs
-      friendly_name: Bedroom Luca Light 3
+      - xy
+      friendly_name: bedroom_luca_LED1624G9_ceiling_3
       supported_features: 61
       state: unavailable
+    light.bedroom_luca_led1537r6_lamp_bottom:
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      device:
+        applicationVersion: 32
+        dateCode: '20200312'
+        friendlyName: bedroom_luca_LED1537R6_lamp_bottom
+        hardwareVersion: 1
+        ieeeAddr: '0xd0cf5efffedcd4a8'
+        manufacturerID: 4476
+        manufacturerName: IKEA of Sweden
+        model: LED1537R6/LED1739R5
+        networkAddress: 11919
+        powerSource: Mains (single phase)
+        softwareBuildID: 2.0.029
+        stackVersion: 98
+        type: Router
+        zclVersion: 2
+      last_seen: '2021-09-29T16:27:18.185Z'
+      linkquality: 63
+      power_on_behavior: 'off'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: bedroom_luca_LED1537R6_lamp_bottom
+      supported_features: 47
+      state: 'off'
+    select.bedroom_luca_led1537r6_lamp_bottom_power_on_behavior:
+      options:
+      - 'off'
+      - previous
+      - 'on'
+      brightness: 64
+      color_mode: color_temp
+      color_temp: 259
+      device:
+        applicationVersion: 32
+        dateCode: '20200312'
+        friendlyName: bedroom_luca_LED1537R6_lamp_bottom
+        hardwareVersion: 1
+        ieeeAddr: '0xd0cf5efffedcd4a8'
+        manufacturerID: 4476
+        manufacturerName: IKEA of Sweden
+        model: LED1537R6/LED1739R5
+        networkAddress: 11919
+        powerSource: Mains (single phase)
+        softwareBuildID: 2.0.029
+        stackVersion: 98
+        type: Router
+        zclVersion: 2
+      last_seen: '2021-09-29T16:27:18.185Z'
+      linkquality: 63
+      power_on_behavior: 'off'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: bedroom_luca_LED1537R6_lamp_bottom_power_on_behavior
+      icon: mdi:power-settings
+      state: 'off'
