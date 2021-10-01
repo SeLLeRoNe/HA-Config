@@ -6,6 +6,14 @@
 # https://www.home-assistant.io/components/logbook/
 #
 logbook:
+  include:
+    domains:
+      - alarm_control_panel
+      - light
+    entity_globs:
+      - sensor.*_total_energy_usage
+      - sensor.*__energy_total
+      - sensor.*__energy_total_filtered
   exclude:
     domains:
       - automation
