@@ -23,7 +23,7 @@ sensors:
     value_template: >
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
-        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
+        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage_filtered') %}
           {% if ( s.state | float ) > 0.000 %}
             {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
           {% endif %}
