@@ -7,7 +7,7 @@ trigger:
     entity_id: sensor.master_bedroom_wxkg03lm_action
     to: 'double'
 action:
-  - service: light.toggle
+  - service: light.turn_on
     data:
       entity_id: light.master_bedroom_lamp
       brightness_pct: 100
