@@ -10,10 +10,8 @@ sensors:
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
         {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
-          {% if ( s.state ) not in ['unknown', 'unavailable'] %}
-            {% if ( ns.state ) not in ['unknown', 'unavailable'] %}
-              {% set ns.states = "True" %}
-            {% endif %}
+          {% if ( s.state ) not in ['unknown', 'unavailable'] and ( ns.state ) not in ['False'] %}
+            {% set ns.states = "True" %}
           {% else %}
             {% set ns.states = "False" %}
           {% endif %}
@@ -23,10 +21,11 @@ sensors:
     value_template: >
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
-        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage_filtered') %}
-          {% if ( s.state | float ) > 0.000 %}
-            {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
-          {% endif %}
+        {% if not s.object_id.startswith('house_') and s.object_id.endswith('_total_energy_usage') %}
+          {% set ns.states = ns.states + [ states(s.entity_id) | float ] %}
         {% endif %}
       {% endfor %}
-      {{ ns.states | sum | round(2) }}
+      {{ ns.states | sum | round(3) }}
+      {% if [ states('ns.states') | float ] < [ states('sensor.house_total_energy_usage') | float ] %}
+        {% set ns.states = sensor.house_total_energy_usage %}
+      {% endif %}
