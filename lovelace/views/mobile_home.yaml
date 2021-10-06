@@ -11,6 +11,20 @@ kiosk_mode:
 layout:
    max_cols: 5
 cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: phone_card
+        variables:
+          - phone_entity: andrea_oneplus_nord
+          - phone_name: OnePlus Nord
+          - phone_image: /local/oneplus_nord.png
+      - type: custom:decluttering-card
+        template: phone_card
+        variables:
+          - phone_entity: sonia_mi_9t_pro
+          - phone_name: Mi 9T Pro
+          - phone_image: /local/mi_9t_pro.png
   - type: custom:stack-in-card
     mode: vertical
     cards:
