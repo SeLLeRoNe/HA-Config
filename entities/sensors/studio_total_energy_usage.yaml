@@ -10,7 +10,7 @@ sensors:
       {% set ns = namespace(states=[]) %}
       {% for s in states.sensor %}
         {% if s.object_id.startswith('studio_') and s.object_id.endswith('_energy_total') %}
-          {% if ( s.state ) not in ['unknown', 'unavailable'] and ( ns.state ) not in ['False'] %}
+          {% if ( s.state ) not in ['unknown', 'unavailable'] and ( ns.states ) not in ['False'] %}
             {% set ns.states = "True" %}
           {% else %}
             {% set ns.states = "False" %}
@@ -26,7 +26,3 @@ sensors:
         {% endif %}
       {% endfor %}
       {{ ns.states | sum | round(3) }}
-      {% if [ states('ns.states') | float ] < [ states('sensor.studio_total_energy_usage') | float ] %}
-        {% set ns.states = sensor.studio_total_energy_usage %}
-      {% endif %}
-
