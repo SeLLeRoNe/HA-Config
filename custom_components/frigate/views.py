@@ -1,13 +1,15 @@
 """Frigate HTTP views."""
 from __future__ import annotations
 
+import asyncio
 from ipaddress import ip_address
 import logging
 from typing import Any, Optional, cast
 
 import aiohttp
 from aiohttp import hdrs, web
-from aiohttp.web_exceptions import HTTPBadGateway
+from aiohttp.web_exceptions import HTTPBadGateway, HTTPUnauthorized
+import jwt
 from multidict import CIMultiDict
 from yarl import URL
 
@@ -19,6 +21,7 @@ from custom_components.frigate.const import (
     DOMAIN,
 )
 from homeassistant.components.http import HomeAssistantView
+from homeassistant.components.http.auth import DATA_SIGN_SECRET, SIGN_QUERY_PARAM
 from homeassistant.components.http.const import KEY_HASS
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
@@ -76,6 +79,10 @@ def get_frigate_instance_id_for_config_entry(
 
     config = hass.data[DOMAIN].get(config_entry.entry_id, {}).get(ATTR_CONFIG, {})
     return get_frigate_instance_id(config) if config else None
+
+
+# These proxies are inspired by:
+#  - https://github.com/home-assistant/supervisor/blob/main/supervisor/api/ingress.py
 
 
 class ProxyView(HomeAssistantView):  # type: ignore[misc]
@@ -170,30 +177,17 @@ class ProxyView(HomeAssistantView):  # type: ignore[misc]
             return response
 
 
-class ClipsProxyView(ProxyView):
-    """A proxy for clips."""
+class SnapshotsProxyView(ProxyView):
+    """A proxy for snapshots."""
 
     url = "/api/frigate/{frigate_instance_id:.+}/clips/{path:.*}"
     extra_urls = ["/api/frigate/clips/{path:.*}"]
 
-    name = "api:frigate:clips"
+    name = "api:frigate:snapshots"
 
     def _create_path(self, path: str, **kwargs: Any) -> str:
         """Create path."""
         return f"clips/{path}"
-
-
-class RecordingsProxyView(ProxyView):
-    """A proxy for recordings."""
-
-    url = "/api/frigate/{frigate_instance_id:.+}/recordings/{path:.*}"
-    extra_urls = ["/api/frigate/recordings/{path:.*}"]
-
-    name = "api:frigate:recordings"
-
-    def _create_path(self, path: str, **kwargs: Any) -> str:
-        """Create path."""
-        return f"recordings/{path}"
 
 
 class NotificationsProxyView(ProxyView):
@@ -214,14 +208,174 @@ class NotificationsProxyView(ProxyView):
         if path == "snapshot.jpg":
             return f"api/events/{event_id}/snapshot.jpg"
 
-        camera = path.split("/")[0]
         if path.endswith("clip.mp4"):
-            return f"clips/{camera}-{event_id}.mp4"
+            return f"api/events/{event_id}/clip.mp4"
         return None
 
     def _permit_request(self, request: web.Request, config_entry: ConfigEntry) -> bool:
         """Determine whether to permit a request."""
         return bool(config_entry.options.get(CONF_NOTIFICATION_PROXY_ENABLE, True))
+
+
+class VodProxyView(ProxyView):
+    """A proxy for vod playlists."""
+
+    url = "/api/frigate/{frigate_instance_id:.+}/vod/{path:.+}/{manifest:.+}.m3u8"
+    extra_urls = ["/api/frigate/vod/{path:.+}/{manifest:.+}.m3u8"]
+
+    name = "api:frigate:vod:mainfest"
+
+    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+        """Create path."""
+        manifest = kwargs["manifest"]
+
+        return f"vod/{path}/{manifest}.m3u8"
+
+
+class VodSegmentProxyView(ProxyView):
+    """A proxy for vod segments."""
+
+    url = "/api/frigate/{frigate_instance_id:.+}/vod/{path:.+}/{segment:.+}.ts"
+    extra_urls = ["/api/frigate/vod/{path:.+}/{segment:.+}.ts"]
+
+    name = "api:frigate:vod:segment"
+    requires_auth = False
+
+    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+        """Create path."""
+        segment = kwargs["segment"]
+
+        return f"vod/{path}/{segment}.ts"
+
+    async def _async_validate_signed_manifest(self, request: web.Request) -> bool:
+        """Validate the signature for the manifest of this segment."""
+        hass = request.app[KEY_HASS]
+        secret = hass.data.get(DATA_SIGN_SECRET)
+        signature = request.query.get(SIGN_QUERY_PARAM)
+
+        if signature is None:
+            _LOGGER.warning("Missing authSig query parameter on VOD segment request.")
+            return False
+
+        try:
+            claims = jwt.decode(
+                signature, secret, algorithms=["HS256"], options={"verify_iss": False}
+            )
+        except jwt.InvalidTokenError:
+            _LOGGER.warning("Invalid JWT token for VOD segment request.")
+            return False
+
+        # Check that the base path is the same as what was signed
+        check_path = request.path.rsplit("/", maxsplit=1)[0]
+        if not claims["path"].startswith(check_path):
+            _LOGGER.warning("%s does not start with %s", claims["path"], check_path)
+            return False
+
+        return True
+
+    async def get(
+        self,
+        request: web.Request,
+        **kwargs: Any,
+    ) -> web.Response | web.StreamResponse | web.WebSocketResponse:
+        """Route data to service."""
+
+        if not await self._async_validate_signed_manifest(request):
+            raise HTTPUnauthorized()
+
+        return await super().get(request, **kwargs)
+
+
+class WebsocketProxyView(ProxyView):
+    """A simple proxy for websockets."""
+
+    async def _proxy_msgs(
+        self,
+        ws_in: aiohttp.ClientWebSocketResponse | web.WebSocketResponse,
+        ws_out: aiohttp.ClientWebSocketResponse | web.WebSocketResponse,
+    ) -> None:
+
+        async for msg in ws_in:
+            try:
+                if msg.type == aiohttp.WSMsgType.TEXT:
+                    await ws_out.send_str(msg.data)
+                elif msg.type == aiohttp.WSMsgType.BINARY:
+                    await ws_out.send_bytes(msg.data)
+                elif msg.type == aiohttp.WSMsgType.PING:
+                    await ws_out.ping()
+                elif msg.type == aiohttp.WSMsgType.PONG:
+                    await ws_out.pong()
+            except ConnectionResetError:
+                return
+
+    async def _handle_request(
+        self,
+        request: web.Request,
+        path: str,
+        frigate_instance_id: str | None = None,
+        **kwargs: Any,
+    ) -> web.Response | web.StreamResponse:
+        """Handle route for request."""
+
+        config_entry = self._get_config_entry_for_request(request, frigate_instance_id)
+        if not config_entry:
+            return web.Response(status=HTTP_BAD_REQUEST)
+
+        if not self._permit_request(request, config_entry):
+            return web.Response(status=HTTP_FORBIDDEN)
+
+        full_path = self._create_path(path=path, **kwargs)
+        if not full_path:
+            return web.Response(status=HTTP_NOT_FOUND)
+
+        req_protocols = []
+        if hdrs.SEC_WEBSOCKET_PROTOCOL in request.headers:
+            req_protocols = [
+                str(proto.strip())
+                for proto in request.headers[hdrs.SEC_WEBSOCKET_PROTOCOL].split(",")
+            ]
+
+        ws_to_user = web.WebSocketResponse(
+            protocols=req_protocols, autoclose=False, autoping=False
+        )
+        await ws_to_user.prepare(request)
+
+        # Preparing
+        url = str(URL(config_entry.data[CONF_URL]) / full_path)
+        source_header = _init_header(request)
+
+        # Support GET query
+        if request.query_string:
+            url = f"{url}?{request.query_string}"
+
+        async with self._websession.ws_connect(
+            url,
+            headers=source_header,
+            protocols=req_protocols,
+            autoclose=False,
+            autoping=False,
+        ) as ws_to_frigate:
+            await asyncio.wait(
+                [
+                    self._proxy_msgs(ws_to_frigate, ws_to_user),
+                    self._proxy_msgs(ws_to_user, ws_to_frigate),
+                ],
+                return_when=asyncio.tasks.FIRST_COMPLETED,
+            )
+        return ws_to_user
+
+
+class JSMPEGProxyView(WebsocketProxyView):
+    """A proxy for JSMPEG websocket."""
+
+    url = "/api/frigate/{frigate_instance_id:.+}/jsmpeg/{path:.+}"
+    extra_urls = ["/api/frigate/jsmpeg/{path:.+}"]
+
+    name = "api:frigate:jsmpeg"
+
+    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+        """Create path."""
+        return f"live/{path}"
 
 
 def _init_header(request: web.Request) -> CIMultiDict | dict[str, str]:
