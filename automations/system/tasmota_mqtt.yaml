@@ -13,13 +13,6 @@ trigger:
 action:
   - service: mqtt.publish
     data:
-      topic: "cmnd/sonoffs/grouptopic"
-      payload: "tasmotas"
-      retain: true
-  - delay:
-      seconds: 5
-  - service: mqtt.publish
-    data:
       topic: "cmnd/tasmotas/IPAddress4"
       payload: "192.168.0.100"
       retain: true
@@ -114,6 +107,11 @@ action:
     data:
       topic: "cmnd/tasmotas/SetOption59"
       payload: "0"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/tasmotas/SetOption73"
+      payload: "1"
       retain: true
   - service: mqtt.publish
     data:
