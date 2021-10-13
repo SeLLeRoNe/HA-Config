@@ -499,7 +499,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '958237703968001'
+  - id: '962933327524800'
     alias: Climate - Bedroom Luca - Active Off
     initial_state: 'on'
     trigger:
@@ -569,7 +569,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_bedroom_luca_active
-  - id: '585647441974576'
+  - id: '648487707834231'
     alias: Climate - Bedroom Luca - Away Mode On
     initial_state: 'on'
     trigger:
@@ -619,10 +619,12 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "Away"
-  - id: '209226627725738'
+  - id: '642720285547983'
     alias: Climate - Bedroom Luca - Idle
     initial_state: 'on'
     trigger:
+      - platform: homeassistant
+        event: start
       - platform: state
         entity_id: group.family
         to: 'home'
@@ -739,6 +741,11 @@ automation:
     condition:
       condition: and
       conditions:
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: climate.bedroom_luca
+              state: 'off'
         - condition: or
           conditions:
             - condition: state
@@ -1482,7 +1489,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T0"
-  - id: '501070161704555'
+  - id: '831852555615734'
     alias: Climate - Bedroom Luca - Off
     initial_state: 'on'
     trigger:
@@ -1505,7 +1512,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T0"
-  - id: '341495839435128'
+  - id: '193806653707736'
     alias: Climate - Bedroom Luca - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1531,7 +1538,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_bedroom_luca
-  - id: '199479049274775'
+  - id: '478855809877875'
     alias: Climate - Bedroom Luca - Timer Start
     initial_state: 'on'
     trigger:
@@ -1572,7 +1579,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "Push"
-  - id: '823172322726762'
+  - id: '243936275758626'
     alias: Climate - Bedroom Luca - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1590,7 +1597,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_bedroom_luca
-  - id: '289546428663655'
+  - id: '211248929971843'
     alias: Climate - T10 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -1750,7 +1757,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T10"
-  - id: '321826629468622'
+  - id: '987154151824042'
     alias: Climate - T1 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -1910,7 +1917,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T1"
-  - id: '465978306586615'
+  - id: '926104699507774'
     alias: Climate - T2 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2070,7 +2077,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T2"
-  - id: '923961763192419'
+  - id: '518686867089851'
     alias: Climate - T3 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2230,7 +2237,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T3"
-  - id: '488162295164679'
+  - id: '298943405218348'
     alias: Climate - T4 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2390,7 +2397,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T4"
-  - id: '780646447203991'
+  - id: '890039925028142'
     alias: Climate - T5 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2550,7 +2557,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T5"
-  - id: '849765563202682'
+  - id: '698618246990315'
     alias: Climate - T6 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2710,7 +2717,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T6"
-  - id: '213859086948128'
+  - id: '892597114454629'
     alias: Climate - T7 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -2870,7 +2877,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T7"
-  - id: '108359589090742'
+  - id: '366034060391180'
     alias: Climate - T8 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -3030,7 +3037,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T8"
-  - id: '181536065943959'
+  - id: '655095064143974'
     alias: Climate - T9 - Bedroom Luca - Weekend
     initial_state: 'on'
     trigger:
@@ -3190,7 +3197,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T9"
-  - id: '950665720546535'
+  - id: '412668261124366'
     alias: Climate - T10 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -3350,7 +3357,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T10"
-  - id: '015834582863405'
+  - id: '701006111626289'
     alias: Climate - T1 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -3510,7 +3517,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T1"
-  - id: '942579527352625'
+  - id: '538793960646589'
     alias: Climate - T2 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -3670,7 +3677,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T2"
-  - id: '301103990147845'
+  - id: '784648831856843'
     alias: Climate - T3 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -3830,7 +3837,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T3"
-  - id: '154087445200029'
+  - id: '841364849791621'
     alias: Climate - T4 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -3990,7 +3997,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T4"
-  - id: '557944858163766'
+  - id: '086515589543118'
     alias: Climate - T5 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -4150,7 +4157,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T5"
-  - id: '871696057175452'
+  - id: '977878359998578'
     alias: Climate - T6 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -4310,7 +4317,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T6"
-  - id: '643153509854721'
+  - id: '381176778558986'
     alias: Climate - T7 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -4470,7 +4477,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T7"
-  - id: '182142518932708'
+  - id: '462150314551106'
     alias: Climate - T8 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
@@ -4630,7 +4637,7 @@ automation:
         data:
           entity_id: input_select.climate_bedroom_luca
           option: "T8"
-  - id: '346356209900198'
+  - id: '000431714308666'
     alias: Climate - T9 - Bedroom Luca - Workday
     initial_state: 'on'
     trigger:
