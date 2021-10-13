@@ -499,7 +499,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '077134507237573'
+  - id: '036776586775844'
     alias: Climate - Studio - Active Off
     initial_state: 'on'
     trigger:
@@ -569,7 +569,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_studio_active
-  - id: '133894507824492'
+  - id: '041820155691362'
     alias: Climate - Studio - Away Mode On
     initial_state: 'on'
     trigger:
@@ -619,12 +619,10 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "Away"
-  - id: '670533242446504'
+  - id: '757025905484134'
     alias: Climate - Studio - Idle
     initial_state: 'on'
     trigger:
-      - platform: homeassistant
-        event: start
       - platform: state
         entity_id: group.family
         to: 'home'
@@ -1484,7 +1482,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T0"
-  - id: '534550434806470'
+  - id: '907604357540087'
     alias: Climate - Studio - Off
     initial_state: 'on'
     trigger:
@@ -1507,7 +1505,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T0"
-  - id: '208159772683354'
+  - id: '920250046201566'
     alias: Climate - Studio - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1533,7 +1531,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_studio
-  - id: '714006972990595'
+  - id: '550753996325278'
     alias: Climate - Studio - Timer Start
     initial_state: 'on'
     trigger:
@@ -1574,7 +1572,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "Push"
-  - id: '736669801824098'
+  - id: '938757135280385'
     alias: Climate - Studio - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1592,7 +1590,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_studio
-  - id: '731562362416755'
+  - id: '786496014532604'
     alias: Climate - T10 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -1752,7 +1750,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T10"
-  - id: '143671288086966'
+  - id: '030692863446599'
     alias: Climate - T1 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -1912,7 +1910,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T1"
-  - id: '692691900011939'
+  - id: '790559125445910'
     alias: Climate - T2 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2072,7 +2070,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T2"
-  - id: '140069564647589'
+  - id: '220520348999961'
     alias: Climate - T3 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2232,7 +2230,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T3"
-  - id: '585518945369354'
+  - id: '770237863081305'
     alias: Climate - T4 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2392,7 +2390,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T4"
-  - id: '637295720566309'
+  - id: '821761919017477'
     alias: Climate - T5 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2552,7 +2550,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T5"
-  - id: '424906951874219'
+  - id: '452648745986493'
     alias: Climate - T6 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2712,7 +2710,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T6"
-  - id: '897287776375822'
+  - id: '863317870477357'
     alias: Climate - T7 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2872,7 +2870,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T7"
-  - id: '028722458514833'
+  - id: '442467078726599'
     alias: Climate - T8 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -3032,7 +3030,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T8"
-  - id: '145096275373365'
+  - id: '981829497404329'
     alias: Climate - T9 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -3192,7 +3190,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T9"
-  - id: '885766971052343'
+  - id: '301799632863019'
     alias: Climate - T10 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3352,7 +3350,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T10"
-  - id: '117601126575238'
+  - id: '740865792013105'
     alias: Climate - T1 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3512,7 +3510,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T1"
-  - id: '653690640815321'
+  - id: '289703305573616'
     alias: Climate - T2 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3672,7 +3670,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T2"
-  - id: '471825002258453'
+  - id: '521867361635050'
     alias: Climate - T3 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3832,7 +3830,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T3"
-  - id: '631082365855011'
+  - id: '135035828381663'
     alias: Climate - T4 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3992,7 +3990,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T4"
-  - id: '041900970214346'
+  - id: '786737376576875'
     alias: Climate - T5 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4152,7 +4150,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T5"
-  - id: '725989070105119'
+  - id: '038191943005954'
     alias: Climate - T6 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4312,7 +4310,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T6"
-  - id: '106848681231916'
+  - id: '403604425471444'
     alias: Climate - T7 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4472,7 +4470,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T7"
-  - id: '703993927355732'
+  - id: '693593517010881'
     alias: Climate - T8 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4632,7 +4630,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T8"
-  - id: '201220768911993'
+  - id: '709276305713043'
     alias: Climate - T9 - Studio - Workday
     initial_state: 'on'
     trigger:
