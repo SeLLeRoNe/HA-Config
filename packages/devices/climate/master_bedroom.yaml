@@ -499,7 +499,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '923623776259283'
+  - id: '291127711158007'
     alias: Climate - Master Bedroom - Active Off
     initial_state: 'on'
     trigger:
@@ -569,7 +569,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_master_bedroom_active
-  - id: '974238801518643'
+  - id: '225710162730031'
     alias: Climate - Master Bedroom - Away Mode On
     initial_state: 'on'
     trigger:
@@ -619,10 +619,12 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "Away"
-  - id: '034705214137188'
+  - id: '314921004049869'
     alias: Climate - Master Bedroom - Idle
     initial_state: 'on'
     trigger:
+      - platform: homeassistant
+        event: start
       - platform: state
         entity_id: group.family
         to: 'home'
@@ -739,6 +741,11 @@ automation:
     condition:
       condition: and
       conditions:
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: climate.master_bedroom
+              state: 'off'
         - condition: or
           conditions:
             - condition: state
@@ -1482,7 +1489,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T0"
-  - id: '242936447338999'
+  - id: '136174517556617'
     alias: Climate - Master Bedroom - Off
     initial_state: 'on'
     trigger:
@@ -1505,7 +1512,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T0"
-  - id: '390585195273044'
+  - id: '510538514945241'
     alias: Climate - Master Bedroom - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1531,7 +1538,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_master_bedroom
-  - id: '174071858633474'
+  - id: '218210798131370'
     alias: Climate - Master Bedroom - Timer Start
     initial_state: 'on'
     trigger:
@@ -1572,7 +1579,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "Push"
-  - id: '083096009480278'
+  - id: '008079637581698'
     alias: Climate - Master Bedroom - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1590,7 +1597,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_master_bedroom
-  - id: '252690086143584'
+  - id: '504331074205850'
     alias: Climate - T10 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -1750,7 +1757,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T10"
-  - id: '372858172690336'
+  - id: '640519575414915'
     alias: Climate - T1 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -1910,7 +1917,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T1"
-  - id: '660646960935413'
+  - id: '895185167486964'
     alias: Climate - T2 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2070,7 +2077,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T2"
-  - id: '274531104811718'
+  - id: '414559864278298'
     alias: Climate - T3 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2230,7 +2237,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T3"
-  - id: '808878488078363'
+  - id: '360707122477214'
     alias: Climate - T4 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2390,7 +2397,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T4"
-  - id: '815015709037894'
+  - id: '599130371843992'
     alias: Climate - T5 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2550,7 +2557,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T5"
-  - id: '551313087759688'
+  - id: '205628732515644'
     alias: Climate - T6 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2710,7 +2717,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T6"
-  - id: '675559924349258'
+  - id: '693519445580713'
     alias: Climate - T7 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -2870,7 +2877,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T7"
-  - id: '859778108434759'
+  - id: '059659563450995'
     alias: Climate - T8 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -3030,7 +3037,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T8"
-  - id: '124351860630336'
+  - id: '353577792091163'
     alias: Climate - T9 - Master Bedroom - Weekend
     initial_state: 'on'
     trigger:
@@ -3190,7 +3197,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T9"
-  - id: '350627303941576'
+  - id: '842836153489165'
     alias: Climate - T10 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -3350,7 +3357,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T10"
-  - id: '607551900456148'
+  - id: '324427869256266'
     alias: Climate - T1 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -3510,7 +3517,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T1"
-  - id: '322296175103066'
+  - id: '581438578666601'
     alias: Climate - T2 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -3670,7 +3677,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T2"
-  - id: '035351250535480'
+  - id: '509774085858607'
     alias: Climate - T3 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -3830,7 +3837,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T3"
-  - id: '321682024515345'
+  - id: '951381564370034'
     alias: Climate - T4 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -3990,7 +3997,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T4"
-  - id: '326894033188822'
+  - id: '291897423942269'
     alias: Climate - T5 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -4150,7 +4157,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T5"
-  - id: '663376543081489'
+  - id: '249401265852208'
     alias: Climate - T6 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -4310,7 +4317,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T6"
-  - id: '016799727057703'
+  - id: '843223523983305'
     alias: Climate - T7 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -4470,7 +4477,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T7"
-  - id: '673786669186967'
+  - id: '592111019513964'
     alias: Climate - T8 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
@@ -4630,7 +4637,7 @@ automation:
         data:
           entity_id: input_select.climate_master_bedroom
           option: "T8"
-  - id: '758770253769390'
+  - id: '673840016155422'
     alias: Climate - T9 - Master Bedroom - Workday
     initial_state: 'on'
     trigger:
