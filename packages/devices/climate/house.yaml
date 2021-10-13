@@ -623,6 +623,8 @@ automation:
     alias: Climate - House - Idle
     initial_state: 'on'
     trigger:
+      - platform: homeassistant
+        event: start
       - platform: state
         entity_id: group.family
         to: 'home'
@@ -739,6 +741,11 @@ automation:
     condition:
       condition: and
       conditions:
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: climate.house
+              state: 'off'
         - condition: or
           conditions:
             - condition: state
