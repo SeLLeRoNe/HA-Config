@@ -68,7 +68,7 @@
       friendly_name: bedroom_luca_LED1624G9_ceiling_3
       supported_features: 61
       state: unavailable
-    light.bedroom_luca_led1537r6_lamp_bottom:
+    light.bedroom_luca_lamp_bottom:
       min_mireds: 250
       max_mireds: 454
       effect_list:
@@ -104,7 +104,7 @@
       friendly_name: bedroom_luca_LED1537R6_lamp_bottom
       supported_features: 47
       state: 'off'
-    select.bedroom_luca_led1537r6_lamp_bottom_power_on_behavior:
+    select.bedroom_luca_lamp_bottom_power_on_behavior:
       options:
       - 'off'
       - previous
