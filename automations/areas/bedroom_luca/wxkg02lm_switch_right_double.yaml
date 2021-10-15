@@ -9,5 +9,5 @@ trigger:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.bedroom_luca_led1537r6_lamp_bottom
+      entity_id: light.bedroom_luca_lamp_bottom
       brightness_pct: 25

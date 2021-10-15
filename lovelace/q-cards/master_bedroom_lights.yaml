@@ -44,4 +44,4 @@ master_bedroom_lights:
 #      template: light_card
 #      variables:
 #        - name: Bottom
-#        - entity: light.bedroom_luca_led1537r6_lamp_bottom
+#        - entity: light.bedroom_luca_lamp_bottom

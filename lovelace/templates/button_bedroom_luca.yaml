@@ -107,9 +107,9 @@ button_bedroom_luca:
           - left: 76%
           - top: 50%
           - color: >-
-              [[[ if (states["light.bedroom_luca_led1537r6_lamp_bottom"].state == "on") return
+              [[[ if (states["light.bedroom_luca_lamp_bottom"].state == "on") return
               "rgb(225,221,0)"; "var(--paper-item-icon-active-color)";  if
-              (states["light.bedroom_luca_led1537r6_lamp_bottom"].state == "off") return "grey";
+              (states["light.bedroom_luca_lamp_bottom"].state == "off") return "grey";
               "var(--paper-item-icon-color)";  ]]]
         ceiling_lights:
           - position: absolute

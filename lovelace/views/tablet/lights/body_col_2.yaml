@@ -147,7 +147,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_led1537r6_lamp_bottom
+        entity: light.bedroom_luca_lamp_bottom
         name: Lamp Bottom
         icon: 'mdi:floor-lamp-dual'
         template:

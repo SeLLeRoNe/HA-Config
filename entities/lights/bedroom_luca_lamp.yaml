@@ -3,4 +3,4 @@ platform: group
 name: Bedroom Luca Lamp
 entities:
   - light.bedroom_luca_lamp_top
-  - light.bedroom_luca_led1537r6_lamp_bottom
+  - light.bedroom_luca_lamp_bottom

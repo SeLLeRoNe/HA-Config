@@ -942,7 +942,7 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.bedroom_luca_led1537r6_lamp_bottom_linkquality
+            - entity_id: sensor.test_led1537r6_light_linkquality
               options:
                 name: Bedroom Luca - Lamp Bottom Light - Link Quality
                 tap_action:

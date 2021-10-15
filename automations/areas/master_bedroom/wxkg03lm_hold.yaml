@@ -11,4 +11,4 @@ action:
     data:
       entity_id: light.master_bedroom_lamp
       brightness_pct: 25
-      color_temp: 153
+      color_temp: 500

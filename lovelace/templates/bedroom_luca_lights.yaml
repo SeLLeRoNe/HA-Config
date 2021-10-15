@@ -34,10 +34,10 @@ bedroom_luca_lights:
               - name: Top
               - entity: light.bedroom_luca_lamp_top
           - type: custom:decluttering-card
-            template: light_card
+            template: light_card_rgb
             variables:
               - name: Bottom
-              - entity: light.bedroom_luca_led1537r6_lamp_bottom
+              - entity: light.bedroom_luca_lamp_bottom
       - type: custom:decluttering-card
         template: title
         variables:
