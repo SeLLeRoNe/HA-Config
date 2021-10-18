@@ -1,0 +1,38 @@
+---
+lara:
+  card:
+    type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:state-switch
+        entity: person.lara
+        default: not_home
+        states:
+          "home":
+            type: custom:state-switch
+            entity: device_tracker.sonia_mi_9t_pro_bt
+            default: home
+            states:
+              "not_home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: person.lara
+                secondary_info: "Next Birthday in [[ sensor.birthday_lara ]] Days ([[ sensor.birthday_lara.attributes.years ]])"
+                tap_action:
+                  action: none
+              "home":
+                type: "custom:secondaryinfo-entity-row"
+                entity: sensor.lara_mi_9t_pro
+                secondary_info: "Next Birthday in [[ sensor.birthday_lara ]] Days ([[ sensor.birthday_lara.attributes.years ]])"
+                tap_action:
+                  action: none
+          "not_home":
+            type: "custom:secondaryinfo-entity-row"
+            entity: person.lara
+            secondary_info: "Next Birthday in [[ sensor.birthday_lara ]] Days ([[ sensor.birthday_lara.attributes.years ]])"
+            tap_action:
+              action: none
+#      - entity: person.lara
+#        type: "custom:secondaryinfo-entity-row"
+#        secondary_info: "Next Birthday in [[ sensor.birthday_lara ]] Days ([[ sensor.birthday_lara.attributes.years ]])"
+#        tap_action:
+#          action: none
