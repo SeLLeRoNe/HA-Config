@@ -8,18 +8,18 @@ andrea:
         entity: person.andrea
         default: not_home
         states:
-          home:
+          "home":
             type: custom:state-switch
             entity: device_tracker.andrea_oneplus_nord_room
             default: not_home
             states:
-              not_home:
+              "not_home":
                 entity: person.andrea
                 type: "custom:secondaryinfo-entity-row"
                 secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                 tap_action:
                   action: none
-              home:
+              "home":
                 type: custom:state-switch
                 entity: device_tracker.andrea_oneplus_nord_room
                 default: unavailable
@@ -30,13 +30,13 @@ andrea:
                     secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                     tap_action:
                       action: none
-                  home:
+                  "home":
                     entity: sensor.andrea_oneplus_nord
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                     tap_action:
                       action: none
-          not_home:
+          "not_home":
             entity: person.andrea
             type: entities
             type: "custom:secondaryinfo-entity-row"
@@ -123,13 +123,13 @@ andrea:
               state:
                 - "charging"
                 - "full"
-          - entity: sensor.andrea_shield_battery_level
-            name: "NVIDIA Shield K1"
-            charging_state:
-              entity_id: input_boolean.andrea_shield_battery_state
-              state:
-                - "charging"
-                - "full"
+#          - entity: sensor.andrea_shield_battery_level
+#            name: "NVIDIA Shield K1"
+#            charging_state:
+#              entity_id: input_boolean.andrea_shield_battery_state
+#              state:
+#                - "charging"
+#                - "full"
         card_mod:
           style: |
             .entity-row.non-numeric-state .icon {
