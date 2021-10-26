@@ -2,6 +2,7 @@
 platform: group
 name: Living Room Lights
 entities:
+  - light.living_room_ceiling_light_1
   - light.living_room_table_light_1
   - light.living_room_table_light_2
   - light.living_room_table_light_3
