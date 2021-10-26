@@ -2,24 +2,24 @@
 andrea:
   card:
     type: custom:layout-card
-    layout_type: custom:vertical-layout
+    layout_type: vertical
     cards:
       - type: custom:state-switch
         entity: person.andrea
         default: not_home
         states:
-          "home":
+          home:
             type: custom:state-switch
             entity: device_tracker.andrea_oneplus_nord_room
             default: not_home
             states:
-              "not_home":
+              not_home:
                 entity: person.andrea
                 type: "custom:secondaryinfo-entity-row"
                 secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                 tap_action:
                   action: none
-              "home":
+              home:
                 type: custom:state-switch
                 entity: device_tracker.andrea_oneplus_nord_room
                 default: unavailable
@@ -30,14 +30,15 @@ andrea:
                     secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                     tap_action:
                       action: none
-                  "home":
+                  home:
                     entity: sensor.andrea_oneplus_nord
                     type: "custom:secondaryinfo-entity-row"
                     secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
                     tap_action:
                       action: none
-          "not_home":
+          not_home:
             entity: person.andrea
+            type: entities
             type: "custom:secondaryinfo-entity-row"
             secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
             tap_action:
@@ -47,60 +48,62 @@ andrea:
 #        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
 #        tap_action:
 #          action: none
-      - type: custom:fold-entity-row
-        head:
-          type: custom:battery-state-card
-          secondary_info: charging
-          secondary_info_text:  "Charging"
-          color_thresholds:
-            - value: 20
-              color: "#990000"
-            - value: 40
-              color: "#CC6600"
-            - value: 60
-              color: "#FF8000"
-            - value: 80
-              color: "#009900"
-            - value: 100
-              color: "#009933"
-          entities:
-            - entity: sensor.andrea_oneplus_nord_battery_level
-              name: "OnePlus Nord"
-              charging_state:
-                entity_id: sensor.andrea_oneplus_nord_battery_state
-                state:
-                  - "charging"
-                  - "full"
-          card_mod:
-            style: |
-              .entity-row.non-numeric-state .icon {
-                color: #808080;
-              }
-              .entity-row .secondary {
-                color: #808080;
-              }
+      - type: entities
         entities:
-          - type: 'custom:slider-entity-row'
-            entity: input_number.oneplus_charger_lower_bound
-            toggle: false
-            hide_state: false
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-          - type: 'custom:slider-entity-row'
-            entity: input_number.oneplus_charger_upper_bound
-            toggle: false
-            hide_state: false
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
+          - type: custom:fold-entity-row
+            head:
+              type: custom:battery-state-card
+              secondary_info: charging
+              secondary_info_text: "Charging"
+              color_thresholds:
+                - value: 20
+                  color: "#990000"
+                - value: 40
+                  color: "#CC6600"
+                - value: 60
+                  color: "#FF8000"
+                - value: 80
+                  color: "#009900"
+                - value: 100
+                  color: "#009933"
+              entities:
+                - entity: sensor.andrea_oneplus_nord_battery_level
+                  name: "OnePlus Nord"
+                  charging_state:
+                    entity_id: sensor.andrea_oneplus_nord_battery_state
+                    state:
+                      - "charging"
+                      - "full"
+              card_mod:
+                style: |
+                  .entity-row.non-numeric-state .icon {
+                    color: #808080;
+                  }
+                  .entity-row .secondary {
+                    color: #808080;
+                  }
+            entities:
+              - type: 'custom:slider-entity-row'
+                entity: input_number.oneplus_charger_lower_bound
+                toggle: false
+                hide_state: false
+                hide_when_off: false
+                full_row: false
+                min: 0
+                max: 100
+                step: 1
+              - type: 'custom:slider-entity-row'
+                entity: input_number.oneplus_charger_upper_bound
+                toggle: false
+                hide_state: false
+                hide_when_off: false
+                full_row: false
+                min: 0
+                max: 100
+                step: 1
       - type: custom:battery-state-card
         secondary_info: charging
-        secondary_info_text:  "Charging"
+        secondary_info_text: "Charging"
         color_thresholds:
           - value: 20
             color: "#990000"
