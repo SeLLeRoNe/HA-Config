@@ -3,7 +3,7 @@ icon: mdi:folder-multiple-image
 path: test_background
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: entities
     show_header_toggle: false

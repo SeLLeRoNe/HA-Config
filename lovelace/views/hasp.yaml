@@ -3,7 +3,7 @@ icon: mdi:cellphone-screenshot
 path: test
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: entities
     title: Desk01

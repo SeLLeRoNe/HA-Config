@@ -3,7 +3,7 @@ icon: mdi:power-plug
 path: energy
 type: custom:vertical-layout
 layout:
-   max_cols: 6
+  max_cols: 6
 cards:
   - type: custom:stack-in-card
     mode: vertical

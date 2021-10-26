@@ -3,7 +3,7 @@ icon: mdi:thermometer
 path: temperatures
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: vertical-stack
     cards:

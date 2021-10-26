@@ -3,7 +3,7 @@ icon: fas:tachometer-alt
 path: pressure
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: vertical-stack
     cards:

@@ -9,7 +9,7 @@ kiosk_mode:
       hide_sidebar: true
       hide_header: true
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: horizontal-stack
     cards:

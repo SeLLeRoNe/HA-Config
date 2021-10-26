@@ -3,7 +3,7 @@ icon: mdi:temperature-celsius
 path: climate
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: custom:dual-thermostat
     name: Downstairs

@@ -3,7 +3,7 @@ icon: mdi:water-percent
 path: humidity
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: vertical-stack
     cards:

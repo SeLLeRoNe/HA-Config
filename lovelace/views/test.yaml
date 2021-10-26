@@ -3,7 +3,7 @@ icon: mdi:tune
 path: test
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
 #  - type: custom:decluttering-card
 #    template: house_humidity_apex

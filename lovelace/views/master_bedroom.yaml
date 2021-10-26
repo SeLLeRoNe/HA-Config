@@ -3,7 +3,7 @@ icon: mdi:bed-empty
 path: master-bedroom
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: custom:state-switch
     entity: light.master_bedroom_lights

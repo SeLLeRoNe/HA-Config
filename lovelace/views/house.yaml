@@ -2,7 +2,7 @@ title: Home
 icon: mdi:home
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+  max_cols: 5
 cards:
   - type: custom:stack-in-card
     mode: vertical

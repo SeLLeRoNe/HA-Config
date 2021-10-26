@@ -3,7 +3,7 @@ icon: mdi:toilet
 path: bathroom
 type: custom:vertical-layout
 layout:
-   max_cols: 5
+ max_cols: 5
 cards:
   - type: custom:state-switch
     entity: light.bathroom_lights
