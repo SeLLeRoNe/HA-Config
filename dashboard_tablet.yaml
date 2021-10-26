@@ -22,6 +22,7 @@ kiosk_mode:
     - users:
         - tablet
       hide_sidebar: true
+      hide_header: true
 views:
   - !include lovelace/views/tablet_home.yaml
   - !include lovelace/views/tablet_lights.yaml
