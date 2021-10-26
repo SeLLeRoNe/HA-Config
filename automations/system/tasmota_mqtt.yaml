@@ -133,11 +133,19 @@ action:
       topic: cmnd/tasmotas/otaurl
       payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
       retain: true
-  - delay:
-      seconds: 60
+  - service: mqtt.publish
+    data:
+      topic: cmnd/Citroen_Cactus/otaurl
+      payload: "https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
+      retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge01/otaurl
+      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
+      retain: true
+  - service: mqtt.publish
+    data:
+      topic: cmnd/ZBBridge02/otaurl
       payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
       retain: true
   - service: mqtt.publish
@@ -147,16 +155,6 @@ action:
       retain: true
   - service: mqtt.publish
     data:
-      topic: cmnd/ZBBridge02/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
-      retain: true
-  - service: mqtt.publish
-    data:
       topic: cmnd/ZBBridge02/Rule1
       payload: "ON System#Boot do TCPStart 8888 endon"
-      retain: true
-  - service: mqtt.publish
-    data:
-      topic: cmnd/Citroen_Cactus/otaurl
-      payload: "https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
       retain: true
