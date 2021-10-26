@@ -70,7 +70,7 @@ thermostat_card:
       - type: entities
         show_header_toggle: false
         entities:
-          - type: 'custom:fold-entity-row'
+          - type: custom:fold-entity-row
             head:
               label: Settings
               type: section
