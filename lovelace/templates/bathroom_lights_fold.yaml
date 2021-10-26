@@ -1,21 +1,23 @@
 ---
 bathroom_lights_fold:
   card:
-    type: custom:fold-entity-row
-    head:
-      type: custom:slider-entity-row
-      entity: light.bathroom_lights
-      name: Bathroom
-      toggle: true
-      hide_state: true
-      hide_when_off: false
-      full_row: false
-      min: 0
-      max: 100
-      step: 1
+    type: entities
     entities:
-      - type: custom:decluttering-card
-        template: light_card_rgb
-        variables:
-          - name: Light
-          - entity: light.bathroom_light
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.bathroom_lights
+          name: Bathroom
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light
+              - entity: light.bathroom_light
