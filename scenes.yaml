@@ -14,7 +14,7 @@
       - color_temp
       - hs
       color_mode: hs
-      brightness: 255
+      brightness_pct: 50
       hs_color:
       - 240
       - 100

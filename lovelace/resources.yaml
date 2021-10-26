@@ -95,6 +95,8 @@
     type: module
   - url: /hacsfiles/alarmo-card/alarmo-card.js
     type: module
+  - url: /hacsfiles/scheduler-card/scheduler-card.js
+    type: module
 
   - url: /local/q-card.js
     type: module
