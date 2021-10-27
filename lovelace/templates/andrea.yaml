@@ -4,50 +4,49 @@ andrea:
     type: custom:layout-card
     layout_type: vertical
     cards:
-      - type: custom:state-switch
+      # - type: custom:state-switch
+      #   entity: person.andrea
+      #   default: not_home
+      #   states:
+      #     "home":
+      #       type: custom:state-switch
+      #       entity: device_tracker.andrea_oneplus_nord_room
+      #       default: not_home
+      #       states:
+      #         "not_home":
+      #           entity: person.andrea
+      #           type: "custom:secondaryinfo-entity-row"
+      #           secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+      #           tap_action:
+      #             action: none
+      #         "home":
+      #           type: custom:state-switch
+      #           entity: device_tracker.andrea_oneplus_nord_room
+      #           default: unavailable
+      #           states:
+      #             "unavailable":
+      #               entity: person.andrea
+      #               type: "custom:secondaryinfo-entity-row"
+      #               secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+      #               tap_action:
+      #                 action: none
+      #             "home":
+      #               entity: sensor.andrea_oneplus_nord
+      #               type: "custom:secondaryinfo-entity-row"
+      #               secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+      #               tap_action:
+      #                 action: none
+      #     "not_home":
+      #       entity: person.andrea
+      #       type: "custom:secondaryinfo-entity-row"
+      #       secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+      #       tap_action:
+      #         action: none
+      - type: "custom:secondaryinfo-entity-row"
         entity: person.andrea
-        default: not_home
-        states:
-          "home":
-            type: custom:state-switch
-            entity: device_tracker.andrea_oneplus_nord_room
-            default: not_home
-            states:
-              "not_home":
-                entity: person.andrea
-                type: "custom:secondaryinfo-entity-row"
-                secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                tap_action:
-                  action: none
-              "home":
-                type: custom:state-switch
-                entity: device_tracker.andrea_oneplus_nord_room
-                default: unavailable
-                states:
-                  "unavailable":
-                    entity: person.andrea
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                    tap_action:
-                      action: none
-                  "home":
-                    entity: sensor.andrea_oneplus_nord
-                    type: "custom:secondaryinfo-entity-row"
-                    secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-                    tap_action:
-                      action: none
-          "not_home":
-            entity: person.andrea
-            type: entities
-            type: "custom:secondaryinfo-entity-row"
-            secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-            tap_action:
-              action: none
-#      - type: "custom:secondaryinfo-entity-row"
-#        entity: person.andrea
-#        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
-#        tap_action:
-#          action: none
+        secondary_info: "Next Birthday in [[ sensor.birthday_andrea ]] Days ([[ sensor.birthday_andrea.attributes.years ]])"
+        tap_action:
+          action: none
       - type: entities
         entities:
           - type: custom:fold-entity-row
