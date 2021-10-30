@@ -12,6 +12,26 @@ living_room_lights:
         show_header_toggle: false
         entities:
           - type: section
+            label: Ceiling
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 1
+              - entity: light.living_room_ceiling_light_1
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 2
+              - entity: light.living_room_ceiling_light_2
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 3
+              - entity: light.living_room_ceiling_light_3
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
             label: Table
           - type: custom:decluttering-card
             template: light_card_rgb
