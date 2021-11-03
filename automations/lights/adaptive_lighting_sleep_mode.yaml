@@ -3,13 +3,13 @@ id: '548588280111608'
 alias: "Lights - Adaptive lighting - Enable Sleep Mode"
 trigger:
   - platform: state
-    entity_id: input_boolean.night_time
+    entity_id: input_boolean.night_mode
   - platform: homeassistant
     event: start
 variables:
-  night_time: "{{ states('input_boolean.night_time') }}"
+  night_mode: "{{ states('input_boolean.night_mode') }}"
 action:
-  service: "switch.turn_{{ night_time }}"
+  service: "switch.turn_{{ night_mode }}"
   entity_id:
     - switch.adaptive_lighting_sleep_mode_living_room
     - switch.adaptive_lighting_sleep_mode_kitchen
