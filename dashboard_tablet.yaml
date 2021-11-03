@@ -20,7 +20,8 @@ q_cards: !include_dir_merge_named lovelace/q-cards/
 kiosk_mode:
   user_settings:
     - users:
-        - tablet
+        - "Andrea Mobile"
+        - "tablet"
       hide_sidebar: true
       hide_header: true
 views:
