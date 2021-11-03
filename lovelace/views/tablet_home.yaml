@@ -1,16 +1,10 @@
 title: Home
 icon: mdi:home
 path: tablet_home
+panel: true
 type: custom:vertical-layout
-kiosk_mode:
-  user_settings:
-    - users:
-        - tablet
-      hide_sidebar: true
-      hide_header: true
 layout:
   max_cols: 5
-panel: true
 cards:
   - type: 'custom:mod-card'
     style:
