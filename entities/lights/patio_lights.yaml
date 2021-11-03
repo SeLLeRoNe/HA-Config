@@ -3,5 +3,3 @@ platform: group
 name: Patio Lights
 entities:
   - light.patio_led1624g9_wall
-  - light.patio_ceiling_light
-  - light.studio_wall_light
