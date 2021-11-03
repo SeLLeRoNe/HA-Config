@@ -1,0 +1,23 @@
+---
+adaptive_lighting:
+  - name: "Living Room"
+    lights: 
+      - light.living_room_ceiling_light_1
+      - light.living_room_ceiling_light_2
+      - light.living_room_ceiling_light_3
+      - light.living_room_table_light_1
+      - light.living_room_table_light_2
+      - light.living_room_table_light_3
+    prefer_rgb_color: false
+    transition: 45
+    initial_transition: 1
+    interval: 90
+    min_brightness: 1
+    max_brightness: 100
+    min_color_temp: 2000
+    max_color_temp: 5500
+    sleep_brightness: 1
+    sleep_color_temp: 1000
+    take_over_control: true
+    detect_non_ha_changes: true
+    only_once: false
