@@ -18,7 +18,7 @@ batteries_zigbee:
         name: "Living Room - WSDCGQ01LM Temperature Sensor"
       - entity: sensor.kitchen_wsdcgq01lm_battery
         name: "Kitchen - WSDCGQ01LM Temperature Sensor"
-      - entity: sensor.studio_wsdcgq11lm_battery
+      - entity: sensor.studio_TS0201_battery
         name: "Studio - WSDCGQ11LM Temperature Sensor"
       - entity: sensor.studio_pir_battery
         name: "Studio - 2AJZ4KPBS Motion Sensor"

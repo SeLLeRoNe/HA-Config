@@ -4,4 +4,4 @@ name: Studio Temperature
 type: mean
 round_digits: 2
 entity_ids:
-  - sensor.studio_wsdcgq11lm_temperature
+  - sensor.studio_TS0201_temperature
