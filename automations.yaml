@@ -66,3 +66,19 @@
       weather_provider: weather.aemet_daily
       temperature_sensor: sensor.aemet_temperature
       roundtemp: false
+- id: '1636126939277'
+  alias: Studio Remote
+  description: ''
+  use_blueprint:
+    path: mbacks/z2m-tint-remote.yaml
+    input:
+      remote: sensor.studio_light_remote_action
+      light_group_1:
+        device_id: c2c635e5bc53f7c70b34edfb5b915fe6
+      light_group_2:
+        device_id:
+        - c2c635e5bc53f7c70b34edfb5b915fe6
+        - 164ed71ca1dd3aa9378cd82e0b3f400b
+      light_group_3:
+        device_id: 164ed71ca1dd3aa9378cd82e0b3f400b
+      working_scene: []
