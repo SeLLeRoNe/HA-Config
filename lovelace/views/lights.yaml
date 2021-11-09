@@ -11,47 +11,58 @@ cards:
       - title: House
   - type: custom:decluttering-card
     template: house_lights
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: group.lights_automations_motion_house
+      - entity: group.lights_automations_lux_house
   - type: custom:stack-in-card
     mode: vertical
     cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Adaptive Lighting
       - type: glance
         show_state: false
-        columns: 2
+        columns: 3
         entities:
           - entity: switch.adaptive_lighting_living_room
+            name: Living Room
             tap_action:
               action: none
             hold_action:
               action: toggle
           - entity: switch.adaptive_lighting_kitchen
-            tap_action:
-              action: none
-            hold_action:
-              action: toggle
-      - type: glance
-        show_state: false
-        columns: 2
-        entities:
-          - entity: switch.adaptive_lighting_studio
+            name: Kitchen
             tap_action:
               action: none
             hold_action:
               action: toggle
           - entity: switch.adaptive_lighting_patio
+            name: Patio
             tap_action:
               action: none
             hold_action:
               action: toggle
       - type: glance
         show_state: false
-        columns: 2
+        columns: 3
         entities:
+          - entity: switch.adaptive_lighting_studio
+            name: Studio
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
           - entity: switch.adaptive_lighting_master_bedroom
+            name: Master Bedroom
             tap_action:
               action: none
             hold_action:
               action: toggle
           - entity: switch.adaptive_lighting_bedroom_luca
+            name: Bedroom Luca
             tap_action:
               action: none
             hold_action:
@@ -61,20 +72,17 @@ cards:
         columns: 2
         entities:
           - entity: switch.adaptive_lighting_master_bathroom
+            name: Master Bathroom
             tap_action:
               action: none
             hold_action:
               action: toggle
           - entity: switch.adaptive_lighting_bathroom
+            name: Bathroom
             tap_action:
               action: none
             hold_action:
               action: toggle
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - entity: group.lights_automations_motion_house
-      - entity: group.lights_automations_lux_house
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: pir_settings

@@ -33,6 +33,11 @@ living_room_lights_fold:
             variables:
               - name: Light 3
               - entity: light.living_room_ceiling_light_3
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 4
+              - entity: light.living_room_ceiling_light_4
           - type: section
             label: Table
           - type: custom:decluttering-card
