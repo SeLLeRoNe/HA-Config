@@ -1,6 +1,6 @@
 ---
 id: '619264096959765'
-alias: "Lights - Adaptive lighting - Reset Manual Control after 1 hour"
+alias: "Lights - Adaptive lighting - Reset Manual Control after 6 hours"
 mode: parallel
 trigger:
   platform: event
