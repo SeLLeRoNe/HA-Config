@@ -19,7 +19,7 @@ cards:
             - height: 60px
       - type: 'custom:button-card'
         name: TURN OFF
-        entity: group.all_lights
+        entity: group.house_lights
         template:
           - button_horizontal
           - action_turn_off

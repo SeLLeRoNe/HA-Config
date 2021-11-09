@@ -8,11 +8,21 @@ living_room_lights:
         template: title
         variables:
           - title: Lights
-      - type: entities
-        show_header_toggle: false
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.living_room_ceiling_lights
+          name: Ceiling
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
         entities:
-          - type: section
-            label: Ceiling
+#          - type: section
+#            label: Ceiling
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
@@ -33,11 +43,21 @@ living_room_lights:
             variables:
               - name: Light 4
               - entity: light.living_room_ceiling_light_4
-      - type: entities
-        show_header_toggle: false
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.living_room_table_lights
+          name: Table
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
         entities:
-          - type: section
-            label: Table
+#          - type: section
+#            label: Table
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
@@ -53,11 +73,24 @@ living_room_lights:
             variables:
               - name: Light 3
               - entity: light.living_room_table_light_3
-      - type: custom:decluttering-card
-        template: wled_card
-        variables:
-          - name: Christmas Tree
-          - entity: christmas_tree
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.christmas_tree
+          name: Christmas
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:decluttering-card
+            template: wled_card
+            variables:
+              - name: Tree
+              - entity: christmas_tree
       - type: custom:decluttering-card
         template: title
         variables:

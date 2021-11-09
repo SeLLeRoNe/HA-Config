@@ -8,18 +8,28 @@ studio_lights:
         template: title
         variables:
           - title: Lights
-      - type: custom:decluttering-card
-        template: light_card_rgb
-        variables:
-          - name: Wall Light
-          - entity: light.studio_wall_light
-      - type: custom:decluttering-card
-        template: light_card_rgb
-        variables:
-          - name: Andrea Desk Lamp
-          - entity: light.studio_desk_andrea_lamp
-      - type: custom:decluttering-card
-        template: light_card_rgb
-        variables:
-          - name: Sonia Desk Lamp
-          - entity: light.studio_desk_sonia_lamp
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Desk Andrea
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Andrea Desk Lamp
+              - entity: light.studio_desk_andrea_lamp
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Desk Sonia
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Sonia Desk Lamp
+              - entity: light.studio_desk_sonia_lamp
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Wall Light
+              - entity: light.studio_wall_light

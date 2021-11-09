@@ -16,6 +16,8 @@ bedroom_luca_lights_fold:
           max: 100
           step: 1
         entities:
+          - type: section
+            label: Ceiling
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
@@ -31,6 +33,8 @@ bedroom_luca_lights_fold:
             variables:
               - name: Light 3
               - entity: light.bedroom_luca_led1624g9_ceiling_3
+          - type: section
+            label: Lamp
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:

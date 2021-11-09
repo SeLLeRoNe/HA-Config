@@ -16,31 +16,42 @@ master_bedroom_lights_fold:
           max: 100
           step: 1
         entities:
+          - type: section
+            label: Ceiling
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
-              - name: Ceiling Light
-              - entity: light.master_bedroom_ceiling_light
+              - name: Light 1
+              - entity: light.master_bedroom_ceiling_light_1
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
-              - name: Wardrobe
-              - entity: light.master_bedroom_wardrobe_light
+              - name: Light 2
+              - entity: light.master_bedroom_ceiling_light_2
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 3
+              - entity: light.master_bedroom_ceiling_light_3
+          - type: section
+            label: Lamp
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
               - name: Lamp
               - entity: light.master_bedroom_lamp
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Andrea
-              - entity: light.andrea_bedside_lamp
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Sonia
-              - entity: light.sonia_bedside_lamp
+#          - type: section
+#            label: Bedside
+#          - type: custom:decluttering-card
+#            template: light_card_rgb
+#            variables:
+#              - name: Andrea
+#              - entity: light.andrea_bedside_lamp
+#          - type: custom:decluttering-card
+#            template: light_card_rgb
+#            variables:
+#              - name: Sonia
+#              - entity: light.sonia_bedside_lamp
 #          - type: custom:decluttering-card
 #            template: light_card_rgb
 #            variables:

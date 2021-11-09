@@ -55,3 +55,10 @@ living_room_lights_fold:
             variables:
               - name: Light 3
               - entity: light.living_room_table_light_3
+          - type: section
+            label: Christmas
+          - type: custom:decluttering-card
+            template: wled_card
+            variables:
+              - name: Tree
+              - entity: christmas_tree

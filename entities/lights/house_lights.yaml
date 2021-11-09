@@ -2,7 +2,7 @@
 platform: group
 name: House Lights
 entities:
-  - light.living_room_light
+  - light.living_room_lights
   - light.kitchen_lights
   - light.studio_lights
   - light.master_bedroom_lights
