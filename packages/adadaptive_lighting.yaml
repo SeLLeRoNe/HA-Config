@@ -5,6 +5,7 @@ adaptive_lighting:
       - light.living_room_ceiling_light_1
       - light.living_room_ceiling_light_2
       - light.living_room_ceiling_light_3
+      - light.living_room_ceiling_light_4
       - light.living_room_table_light_1
       - light.living_room_table_light_2
       - light.living_room_table_light_3
