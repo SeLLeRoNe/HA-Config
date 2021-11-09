@@ -150,7 +150,7 @@ action_var:
   tap_action:
     action: call-service
     service: script.spotify_set_room
-    data:
+    service_data:
       room: '[[[ return variables.room ]]]'
   state:
     - value: '[[[ return variables.room ]]]'
@@ -171,7 +171,7 @@ action_var_echo_entity:
   tap_action:
     action: call-service
     service: var.set
-    data:
+    service_data:
       entity_id: var.alexa_echo_entity
       value: '[[[ return variables.echo_entity ]]]'
   state:
@@ -202,7 +202,7 @@ action_turn_off:
   tap_action:
     action: call-service
     service: homeassistant.turn_off
-    data:
+    service_data:
       entity_id: '[[[ return entity.entity_id ]]]'
 action_state_off:
   state:
@@ -230,7 +230,7 @@ action_turn_scene:
   tap_action:
     action: call-service
     service: scene.turn_on
-    data:
+    service_data:
       entity_id: '[[[ return entity.entity_id ]]]'
       
 #######################
@@ -304,7 +304,7 @@ button_channel:
   tap_action:
     action: call-service
     service: '[[[ return "script.harmony_channel_" + variables.activity ]]]'
-    data:
+    service_data:
       canale: '[[[ return variables.channel ]]]'
 button_radio:
   template: no_background
@@ -319,7 +319,7 @@ button_radio:
   tap_action:
     action: call-service
     service: media_player.play_media
-    data:
+    service_data:
       entity_id: '[[[ return "media_player." + states["var.alexa_echo_entity"].state ]]]'
       media_content_id: '[[[ return variables.stazione ]]]'
       media_content_type: TUNEIN
@@ -338,7 +338,7 @@ button_number_channel:
   tap_action:
     action: call-service
     service: script.harmony_command
-    data:
+    service_data:
       comando: '[[[ return variables.number ]]]'
 button_text_label:
   template: feedback_click
@@ -466,17 +466,17 @@ popup_light:
         actionSize: 60px
         actions:
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 153
             color: '#d8d9e1'
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 326
             color: '#d5b08d'
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 500
             color: '#ce944b'
@@ -530,17 +530,17 @@ popup_light_rgb:
             consolidate_entities: true
         actions:
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 153
             color: '#d8d9e1'
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 326
             color: '#d5b08d'
           - service: light.turn_on
-            data:
+            service_data:
               entity_id: '[[[ return entity.entity_id ]]]'
               color_temp: 500
             color: '#ce944b'
