@@ -1,0 +1,36 @@
+---
+id: '3641894765835'
+alias: House - Cleaning Mode Activated
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "21:00:00"
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: "09:30:00"
+      before: "12:00:00"
+      weekday:
+        - tue
+    - condition: state
+      entity_id: input_boolean.cleaning_mode
+      state: 'off'
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.cleaning_mode
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: "Home Alarm"
+      message: "Cleaningt Mode Activated. Alarm Disarmed"
+      data:
+        color: "#0066FF"
+        sticky: "false"
+        tag: tag
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_google_mini
+      message: "Cleaning Mode Activated"
+      language: 'en'

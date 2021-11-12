@@ -32,7 +32,7 @@ cards:
         entity: alarm_control_panel.house
       - type: glance
         show_state: false
-        columns: 3
+        columns: 4
         entities:
           - entity: input_boolean.night_mode
             tap_action:
@@ -45,6 +45,11 @@ cards:
             hold_action:
               action: toggle
           - entity: input_boolean.holiday_mode
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: input_boolean.cleaning_mode
             tap_action:
               action: none
             hold_action:

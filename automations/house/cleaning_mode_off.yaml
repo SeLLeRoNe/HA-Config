@@ -1,0 +1,34 @@
+---
+id: '3126035620144'
+alias: House - Cleaning Mode Deactivated
+initial_state: on
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: "12:15:00"
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: "09:30:00"
+      before: "12:00:00"
+    - condition: state
+      entity_id: input_boolean.cleaning_mode
+      state: 'on'
+action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.cleaning_mode
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: "Home Alarm"
+      message: "Cleaning Mode Deactivated. Alarm Armed"
+      data:
+        color: "#33CC33"
+        sticky: "false"
+        tag: tag
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_google_mini
+      message: "Cleaning Mode Deactivated"
+      language: 'en'
