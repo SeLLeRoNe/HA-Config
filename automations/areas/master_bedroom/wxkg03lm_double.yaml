@@ -10,5 +10,5 @@ action:
   - service: light.turn_on
     data:
       entity_id: light.master_bedroom_lamp
-      brightness_pct: 50
+      brightness_pct: 25
       color_temp: 500
