@@ -499,7 +499,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '513982705618177'
+  - id: '390490598632806'
     alias: Climate - Studio - Active Off
     initial_state: 'on'
     trigger:
@@ -569,7 +569,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_studio_active
-  - id: '286828681281733'
+  - id: '630262982901707'
     alias: Climate - Studio - Away Mode On
     initial_state: 'on'
     trigger:
@@ -581,6 +581,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'off'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'on'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -601,9 +604,14 @@ automation:
             - condition: state
               entity_id: group.family
               state: 'not_home'
-            - condition: state
-              entity_id: input_boolean.guest_mode
-              state: 'off'
+            - condition: or
+              conditions:
+                - condition: state
+                  entity_id: input_boolean.guest_mode
+                  state: 'off'
+                - condition: state
+                  entity_id: input_boolean.cleaning_mode
+                  state: 'on'
         - condition: state
           entity_id: climate.studio
           attribute: preset_mode
@@ -619,7 +627,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "Away"
-  - id: '132191535165252'
+  - id: '496357542213701'
     alias: Climate - Studio - Idle
     initial_state: 'on'
     trigger:
@@ -735,6 +743,12 @@ automation:
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
       - platform: state
+        entity_id: input_boolean.guest_mode
+        to: 'off'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'on'
+      - platform: state
         entity_id: climate.studio
         attribute: preset_mode
         to: 'none'
@@ -754,6 +768,9 @@ automation:
             - condition: state
               entity_id: input_boolean.guest_mode
               state: 'on'
+            - condition: state
+              entity_id: input_boolean.cleaning_mode
+              state: 'off'
         - condition: state
           entity_id: input_boolean.climate_studio_heating_push
           state: 'off'
@@ -1489,20 +1506,33 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T0"
-  - id: '799881096575919'
+  - id: '187458473903418'
     alias: Climate - Studio - Off
     initial_state: 'on'
     trigger:
       - platform: state
         entity_id: climate.studio
         to: 'off'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
     condition:
-      condition: not
+      condition: and
       conditions:
-        - condition: state
-          entity_id: climate.studio
-          attribute: preset_mode
-          state: 'away'
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: climate.studio
+              attribute: preset_mode
+              state: 'away'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: input_boolean.cleaning_mode
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.guest_mode
+              state: 'off'
     action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.climate_studio_heating_push
@@ -1512,7 +1542,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T0"
-  - id: '717555234975336'
+  - id: '920888856072791'
     alias: Climate - Studio - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1521,14 +1551,22 @@ automation:
         to: 'on'
       - platform: state
         entity_id: input_number.heating_push_studio
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'on'
     condition:
-      condition: and
+      condition: or
       conditions:
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: input_boolean.climate_studio_heating_push
+              state: 'on'
+            - condition: template
+              value_template: "{{ states('input_number.heating_push_studio') < states('sensor.studio_temperature') }}"
         - condition: state
-          entity_id: input_boolean.climate_studio_heating_push
+          entity_id: input_boolean.cleaning_mode
           state: 'on'
-        - condition: template
-          value_template: "{{ states('input_number.heating_push_studio') < states('sensor.studio_temperature') }}"
     action:
       - delay:
           seconds: 2
@@ -1538,7 +1576,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_studio
-  - id: '676656493842056'
+  - id: '092212810289701'
     alias: Climate - Studio - Timer Start
     initial_state: 'on'
     trigger:
@@ -1553,6 +1591,9 @@ automation:
         - condition: state
           entity_id: input_boolean.climate_studio_heating_push
           state: 'on'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -1579,7 +1620,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "Push"
-  - id: '468104662227708'
+  - id: '976059404739981'
     alias: Climate - Studio - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1590,6 +1631,9 @@ automation:
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
     action:
       - service: input_boolean.turn_off
         data:
@@ -1597,7 +1641,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_studio
-  - id: '238350078923902'
+  - id: '881402972391655'
     alias: Climate - T10 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -1611,6 +1655,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -1736,6 +1783,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -1757,7 +1807,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T10"
-  - id: '602275244584095'
+  - id: '278347756457420'
     alias: Climate - T1 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -1771,6 +1821,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -1896,6 +1949,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -1917,7 +1973,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T1"
-  - id: '112468513803432'
+  - id: '558716102812346'
     alias: Climate - T2 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -1931,6 +1987,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2056,6 +2115,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2077,7 +2139,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T2"
-  - id: '149407263075114'
+  - id: '816556147891551'
     alias: Climate - T3 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2091,6 +2153,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2216,6 +2281,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2237,7 +2305,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T3"
-  - id: '586028472036151'
+  - id: '646710510688243'
     alias: Climate - T4 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2251,6 +2319,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2376,6 +2447,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2397,7 +2471,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T4"
-  - id: '031201395330502'
+  - id: '808840379440603'
     alias: Climate - T5 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2411,6 +2485,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2536,6 +2613,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2557,7 +2637,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T5"
-  - id: '066760288730230'
+  - id: '029067826186159'
     alias: Climate - T6 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2571,6 +2651,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2696,6 +2779,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2717,7 +2803,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T6"
-  - id: '105550665202433'
+  - id: '383122061107247'
     alias: Climate - T7 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2731,6 +2817,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -2856,6 +2945,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -2877,7 +2969,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T7"
-  - id: '800250108937478'
+  - id: '405126995605041'
     alias: Climate - T8 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -2891,6 +2983,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3016,6 +3111,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3037,7 +3135,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T8"
-  - id: '321349434914082'
+  - id: '251569551742511'
     alias: Climate - T9 - Studio - Weekend
     initial_state: 'on'
     trigger:
@@ -3051,6 +3149,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3176,6 +3277,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3197,7 +3301,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T9"
-  - id: '151965401205967'
+  - id: '295957867797814'
     alias: Climate - T10 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3211,6 +3315,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3336,6 +3443,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3357,7 +3467,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T10"
-  - id: '644265772783005'
+  - id: '766443184967734'
     alias: Climate - T1 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3371,6 +3481,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3496,6 +3609,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3517,7 +3633,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T1"
-  - id: '564782166231499'
+  - id: '023904610196542'
     alias: Climate - T2 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3531,6 +3647,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3656,6 +3775,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3677,7 +3799,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T2"
-  - id: '696385868861345'
+  - id: '954786078946806'
     alias: Climate - T3 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3691,6 +3813,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3816,6 +3941,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3837,7 +3965,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T3"
-  - id: '164585223521002'
+  - id: '334966968951644'
     alias: Climate - T4 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -3851,6 +3979,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -3976,6 +4107,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -3997,7 +4131,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T4"
-  - id: '406704103507928'
+  - id: '990361844236737'
     alias: Climate - T5 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4011,6 +4145,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -4136,6 +4273,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -4157,7 +4297,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T5"
-  - id: '388401385367658'
+  - id: '428065149886509'
     alias: Climate - T6 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4171,6 +4311,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -4296,6 +4439,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -4317,7 +4463,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T6"
-  - id: '968163283266587'
+  - id: '821525243933918'
     alias: Climate - T7 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4331,6 +4477,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -4456,6 +4605,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -4477,7 +4629,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T7"
-  - id: '054501161234016'
+  - id: '952626587214587'
     alias: Climate - T8 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4491,6 +4643,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -4616,6 +4771,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
@@ -4637,7 +4795,7 @@ automation:
         data:
           entity_id: input_select.climate_studio
           option: "T8"
-  - id: '509380539979542'
+  - id: '503588530578631'
     alias: Climate - T9 - Studio - Workday
     initial_state: 'on'
     trigger:
@@ -4651,6 +4809,9 @@ automation:
       - platform: state
         entity_id: input_boolean.guest_mode
         to: 'on'
+      - platform: state
+        entity_id: input_boolean.cleaning_mode
+        to: 'off'
       - platform: state
         entity_id: input_boolean.climate_studio_heating_push
         to: 'off'
@@ -4776,6 +4937,9 @@ automation:
             - condition: state
               entity_id: climate.studio
               state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_mode
+          state: 'off'
     action:
       - service: climate.turn_on
         data:
