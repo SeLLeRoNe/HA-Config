@@ -1,4 +1,5 @@
 ---
 cleaning_mode:
   name: Cleaning Mode
-  icon: mdi:vacuum
+  icon: mdi:spray-bottle
+#  icon: mdi:vacuum

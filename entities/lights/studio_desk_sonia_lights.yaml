@@ -1,0 +1,5 @@
+---
+platform: group
+name: Studio Desk Sonia Lights
+entities:
+  - light.studio_wall_light
