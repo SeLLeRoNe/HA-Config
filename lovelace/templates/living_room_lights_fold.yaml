@@ -16,49 +16,95 @@ living_room_lights_fold:
           max: 100
           step: 1
         entities:
-          - type: section
-            label: Ceiling
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 1
-              - entity: light.living_room_ceiling_light_1
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 2
-              - entity: light.living_room_ceiling_light_2
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 3
-              - entity: light.living_room_ceiling_light_3
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 4
-              - entity: light.living_room_ceiling_light_4
-          - type: section
-            label: Table
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 1
-              - entity: light.living_room_table_light_1
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 2
-              - entity: light.living_room_table_light_2
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Light 3
-              - entity: light.living_room_table_light_3
-          - type: section
-            label: Christmas
-          - type: custom:decluttering-card
-            template: wled_card
-            variables:
-              - name: Tree
-              - entity: christmas_tree
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.living_room_ceiling_lights
+              name: Ceiling
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.living_room_ceiling_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.living_room_ceiling_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.living_room_ceiling_light_3
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 4
+                  - entity: light.living_room_ceiling_light_4
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.living_room_table_lights
+              name: Table
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.living_room_table_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.living_room_table_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.living_room_table_light_3
+          - type: 'custom:slider-entity-row'
+            entity: light.christmas_tree
+            name: Christmas Tree
+            toggle: true
+            hide_state: true
+            hide_when_off: false
+            full_row: false
+            min: 0
+            max: 100
+            step: 1
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: 'Christmas Tree'
+                card:
+                  type: entities
+                  entities:
+                    - type: 'custom:more-info-card'
+                      entity: light.christmas_tree
+                    - entity: sensor.christmas_tree_estimated_current
+                    - entity: sensor.christmas_tree_free_memory
+                    - entity: switch.christmas_tree_nightlight
+                    - entity: switch.christmas_tree_sync_receive
+                    - entity: switch.christmas_tree_sync_send
+                    - entity: sensor.christmas_tree_uptime
+                    - entity: sensor.christmas_tree_wi_fi_bssid
+                    - entity: sensor.christmas_tree_wi_fi_channel
+                    - entity: sensor.christmas_tree_wi_fi_rssi
+                    - entity: sensor.christmas_tree_wi_fi_signal
+                  deviceID:

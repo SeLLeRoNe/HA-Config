@@ -5,111 +5,66 @@ wled_card:
     entity: light.[[entity]]
     states:
       "off":
-        type: entities
-        show_header_toggle: false
-        entities:
-          - type: 'custom:slider-entity-row'
-            entity: light.[[entity]]
-            name: '[[name]]'
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-            tap_action:
-              action: call-service
-              service: browser_mod.popup
-              service_data:
-                title: '[[name]]'
-                card:
-                  type: entities
-                  entities:
-                    - type: 'custom:more-info-card'
-                      entity: light.[[entity]]
-                    - entity: sensor.[[entity]]_estimated_current
-                    - entity: sensor.[[entity]]_free_memory
-                    - entity: switch.[[entity]]_nightlight
-                    - entity: switch.[[entity]]_sync_receive
-                    - entity: switch.[[entity]]_sync_send
-                    - entity: sensor.[[entity]]_uptime
-                    - entity: sensor.[[entity]]_wi_fi_bssid
-                    - entity: sensor.[[entity]]_wi_fi_channel
-                    - entity: sensor.[[entity]]_wi_fi_rssi
-                    - entity: sensor.[[entity]]_wi_fi_signal
-                  deviceID:
+        type: 'custom:slider-entity-row'
+        entity: light.[[entity]]
+        name: '[[name]]'
+        toggle: true
+        hide_state: true
+        hide_when_off: false
+        full_row: false
+        min: 0
+        max: 100
+        step: 1
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: '[[name]]'
+            card:
+              type: entities
+              entities:
+                - type: 'custom:more-info-card'
+                  entity: light.[[entity]]
+                - entity: sensor.[[entity]]_estimated_current
+                - entity: sensor.[[entity]]_free_memory
+                - entity: switch.[[entity]]_nightlight
+                - entity: switch.[[entity]]_sync_receive
+                - entity: switch.[[entity]]_sync_send
+                - entity: sensor.[[entity]]_uptime
+                - entity: sensor.[[entity]]_wi_fi_bssid
+                - entity: sensor.[[entity]]_wi_fi_channel
+                - entity: sensor.[[entity]]_wi_fi_rssi
+                - entity: sensor.[[entity]]_wi_fi_signal
+              deviceID:
       "on":
-        type: entities
-        show_header_toggle: false
-        entities:
-          - type: 'custom:slider-entity-row'
-            entity: light.[[entity]]
-            name: '[[name]]'
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-            tap_action:
-              action: call-service
-              service: browser_mod.popup
-              service_data:
-                title: '[[name]]'
-                card:
-                  type: entities
-                  entities:
-                    - type: 'custom:more-info-card'
-                      entity: light.[[entity]]
-                    - entity: sensor.[[entity]]_estimated_current
-                    - entity: sensor.[[entity]]_free_memory
-                    - entity: switch.[[entity]]_nightlight
-                    - entity: switch.[[entity]]_sync_receive
-                    - entity: switch.[[entity]]_sync_send
-                    - entity: sensor.[[entity]]_uptime
-                    - entity: sensor.[[entity]]_wi_fi_bssid
-                    - entity: sensor.[[entity]]_wi_fi_channel
-                    - entity: sensor.[[entity]]_wi_fi_rssi
-                    - entity: sensor.[[entity]]_wi_fi_signal
-                  deviceID:
-          - type: 'custom:rgb-light-card'
-            entity: light.[[entity]]
-            size: 25
-            colors:
-              - rgb_color:
-                - 255
-                - 255
-                - 255
-                icon_color: '#FFFFFF'
-              - rgb_color:
-                - 0
-                - 00
-                - 255
-                icon_color: '#0000FF'
-              - rgb_color:
-                - 0
-                - 255
-                - 0
-                icon_color: '#00FF00'
-              - rgb_color:
-                - 255
-                - 0
-                - 0
-                icon_color: '#FF0000'
-              - rgb_color:
-                - 255
-                - 0
-                - 255
-                icon_color: '#FF00FF'
-              - rgb_color:
-                - 255
-                - 102
-                - 0
-                icon_color: '#FF6600'
-              - rgb_color:
-                - 255
-                - 255
-                - 0
-                icon_color: '#FFFF00'
+        type: 'custom:slider-entity-row'
+        entity: light.[[entity]]
+        name: '[[name]]'
+        toggle: true
+        hide_state: true
+        hide_when_off: false
+        full_row: false
+        min: 0
+        max: 100
+        step: 1
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: '[[name]]'
+            card:
+              type: entities
+              entities:
+                - type: 'custom:more-info-card'
+                  entity: light.[[entity]]
+                - entity: sensor.[[entity]]_estimated_current
+                - entity: sensor.[[entity]]_free_memory
+                - entity: switch.[[entity]]_nightlight
+                - entity: switch.[[entity]]_sync_receive
+                - entity: switch.[[entity]]_sync_send
+                - entity: sensor.[[entity]]_uptime
+                - entity: sensor.[[entity]]_wi_fi_bssid
+                - entity: sensor.[[entity]]_wi_fi_channel
+                - entity: sensor.[[entity]]_wi_fi_rssi
+                - entity: sensor.[[entity]]_wi_fi_signal
+              deviceID:

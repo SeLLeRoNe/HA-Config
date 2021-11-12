@@ -16,22 +16,44 @@ studio_lights_fold:
           max: 100
           step: 1
         entities:
-          - type: section
-            label: Desk Andrea
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Sonia Desk Lamp
-              - entity: light.studio_desk_andrea_lamp
-          - type: section
-            label: Desk Sonia
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Sonia Desk Lamp
-              - entity: light.studio_desk_sonia_lamp
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Wall Light
-              - entity: light.studio_wall_light
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.studio_desk_andrea_lights
+              name: Desk Andrea
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Lamp
+                  - entity: light.studio_desk_andrea_lamp
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.studio_desk_sonia_lights
+              name: Desk Sonia
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Lamp
+                  - entity: light.studio_desk_sonia_lamp
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Wall Light
+                  - entity: light.studio_wall_light
