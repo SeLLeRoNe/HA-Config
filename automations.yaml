@@ -72,13 +72,13 @@
   use_blueprint:
     path: mbacks/z2m-tint-remote.yaml
     input:
-      remote: sensor.studio_light_remote_action
-      light_group_1:
-        device_id: c2c635e5bc53f7c70b34edfb5b915fe6
+      remote: sensor.studio_lights_remote_action
       light_group_2:
         device_id:
-        - c2c635e5bc53f7c70b34edfb5b915fe6
         - 164ed71ca1dd3aa9378cd82e0b3f400b
+        - 7ee026510d2ba744145ba9478c4b24d3
       light_group_3:
         device_id: 164ed71ca1dd3aa9378cd82e0b3f400b
       working_scene: []
+      light_group_1:
+        device_id: 7ee026510d2ba744145ba9478c4b24d3
