@@ -1,6 +1,6 @@
 blueprint:
-  name: Z2M - Tint Remote - testing
-  description: Control lights with a Tint Remote v0.2
+  name: Zigbee2MQTT - Tint Remote
+  description: Control lights with a Tint Remote
   domain: automation
   input:
     remote:

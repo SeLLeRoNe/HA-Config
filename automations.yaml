@@ -26,59 +26,18 @@
       page1text: Lights
       page3page: 7
       reset_hasp: false
-- id: '1627045025181'
-  alias: HASP p[x].b[y] displays a clock with a clock icon
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Display_Clock_with_Icon.yaml
-    input:
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      hasppage: 2
-- id: '1627045059617'
-  alias: HASP p[x].b[y] displays the month + date with a calendar icon
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Display_Calendar_with_Icon.yaml
-    input:
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      hasppage: 2
-      haspbutton: 5
-- id: '1627045089002'
-  alias: HASP p[x].b[y] displays the current weather condition with icons
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Display_Weather_Condition_with_Icon.yaml
-    input:
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      hasppage: 2
-      haspbutton: 6
-      weather_provider: weather.aemet_daily
-- id: '1627045137898'
-  alias: HASP p[x].b[y] displays the current temperature with icon and colors
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Display_Temperature_with_Icon_and_Colors.yaml
-    input:
-      suffix_select: °
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      hasppage: 2
-      haspbutton: 7
-      weather_provider: weather.aemet_daily
-      temperature_sensor: sensor.aemet_temperature
-      roundtemp: false
 - id: '1636126939277'
-  alias: Studio Remote
+  alias: Master Bedroom Remote
   description: ''
   use_blueprint:
-    path: mbacks/z2m-tint-remote.yaml
+    path: z2m-tint-remote.yaml
     input:
       remote: sensor.studio_lights_remote_action
       light_group_2:
-        device_id:
-        - 164ed71ca1dd3aa9378cd82e0b3f400b
-        - 7ee026510d2ba744145ba9478c4b24d3
-      light_group_3:
-        device_id: 164ed71ca1dd3aa9378cd82e0b3f400b
-      working_scene: []
+        entity_id: light.master_bedroom_ceiling_lights
       light_group_1:
-        device_id: 7ee026510d2ba744145ba9478c4b24d3
+        entity_id: light.master_bedroom_lamp
+      light_group_3:
+        entity_id:
+        - light.master_bedroom_lamp
+        - light.master_bedroom_ceiling_lights
