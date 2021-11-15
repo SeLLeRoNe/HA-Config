@@ -9,24 +9,16 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: light.living_room_table_light_1
-        name: 'Table Light #1'
+        entity: light.living_room_ceiling_lights
+        name: 'Ceiling'
         icon: 'mdi:ceiling-light'
         template:
           - button_light
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.living_room_table_light_2
-        name: 'Table Light #2'
-        icon: 'mdi:ceiling-light'
-        template:
-          - button_light
-          - button_light_brightness
-          - popup_light
-      - type: 'custom:button-card'
-        entity: light.living_room_table_light_3
-        name: 'Table Light #3'
+        entity: light.living_room_table_lights
+        name: 'Table'
         icon: 'mdi:ceiling-light'
         template:
           - button_light
@@ -66,14 +58,14 @@ cards:
           - button_light
           - button_light_brightness
           - popup_light
-      - type: 'custom:button-card'
-        entity: light.studio_desk_sonia_lamp
-        name: Desk Sonia
-        icon: 'mdi:lamp'
-        template:
-          - button_light
-          - button_light_brightness
-          - popup_light
+#      - type: 'custom:button-card'
+#        entity: light.studio_desk_sonia_lamp
+#        name: Desk Sonia
+#        icon: 'mdi:lamp'
+#        template:
+#          - button_light
+#          - button_light_brightness
+#          - popup_light
       - type: 'custom:button-card'
         template: empty_card
       - type: 'custom:button-card'
@@ -89,7 +81,7 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: light.patio_light
+        entity: light.patio_led1624g9_wall
         name: Wall Light
         icon: 'mdi:outdoor-lamp'
         template:
@@ -107,6 +99,32 @@ cards:
   - type: 'custom:button-card'
     template: row_space_10
   - type: 'custom:button-card'
+    name: Master Bedroom
+    template: label_left
+    styles:
+      card:
+        - padding-top: 0px
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        entity: light.master_bedroom_ceiling_lights
+        name: 'Ceiling'
+        icon: 'mdi:ceiling-light'
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+      - type: 'custom:button-card'
+        entity: light.master_bedroom_lamp
+        name: Lamp
+        icon: 'mdi:floor-lamp-dual'
+        template:
+          - button_light
+          - button_light_brightness
+          - popup_light
+  - type: 'custom:button-card'
+    template: row_space_10
+  - type: 'custom:button-card'
     name: Luca's Bedroom
     template: label_left
     styles:
@@ -115,40 +133,16 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_led1624g9_ceiling_1
-        name: 'Ceiling Light #1'
+        entity: light.bedroom_luca_ceiling_lights
+        name: 'Ceiling'
         icon: 'mdi:ceiling-light'
         template:
           - button_light
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.bedroom_luca_led1624g9_ceiling_2
-        name: 'Ceiling Light #2'
-        icon: 'mdi:ceiling-light'
-        template:
-          - button_light
-          - button_light_brightness
-          - popup_light
-      - type: 'custom:button-card'
-        entity: light.bedroom_luca_led1624g9_ceiling_3
-        name: 'Ceiling Light #3'
-        icon: 'mdi:ceiling-light'
-        template:
-          - button_light
-          - button_light_brightness
-          - popup_light
-      - type: 'custom:button-card'
-        entity: light.bedroom_luca_lamp_top
-        name: Lamp Top
-        icon: 'mdi:floor-lamp-dual'
-        template:
-          - button_light
-          - button_light_brightness
-          - popup_light
-      - type: 'custom:button-card'
-        entity: light.bedroom_luca_lamp_bottom
-        name: Lamp Bottom
+        entity: light.bedroom_luca_lamp
+        name: Lamp
         icon: 'mdi:floor-lamp-dual'
         template:
           - button_light
