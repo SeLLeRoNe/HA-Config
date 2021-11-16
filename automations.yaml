@@ -32,12 +32,17 @@
   use_blueprint:
     path: z2m-tint-remote.yaml
     input:
-      remote: sensor.studio_lights_remote_action
-      light_group_2:
-        entity_id: light.master_bedroom_ceiling_lights
+      remote: sensor.master_bedroom_lights_remote_action
       light_group_1:
-        entity_id: light.master_bedroom_lamp
+        device_id: c2c635e5bc53f7c70b34edfb5b915fe6
+      light_group_2:
+        device_id:
+        - 4573594cd2f5c483f1d2fff1ec7542af
+        - 251ab0bef835d7621318e5bf881c454e
+        - 43ceefdea05ae470558813573f58ad1c
       light_group_3:
-        entity_id:
-        - light.master_bedroom_lamp
-        - light.master_bedroom_ceiling_lights
+        device_id:
+        - c2c635e5bc53f7c70b34edfb5b915fe6
+        - 4573594cd2f5c483f1d2fff1ec7542af
+        - 251ab0bef835d7621318e5bf881c454e
+        - 43ceefdea05ae470558813573f58ad1c
