@@ -1,0 +1,11 @@
+---
+alias: "Telegram callback to stop alerts for patio door"
+trigger:
+  - platform: event
+    event_type: telegram_callback
+    event_data:
+      data: "/patio_acknowledge"
+action:
+  - service: alert.turn_off
+    target:
+      entity_id: alert.patio_door
