@@ -16,7 +16,7 @@ alert:
       - 10
       - 15
       - 30
-    skip_first: false
+    skip_first: true
     can_acknowledge: true
     notifiers:
       - telegram_andrea
