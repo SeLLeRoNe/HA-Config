@@ -13,6 +13,8 @@ condition:
     - condition: time
       after: "09:30:00"
       before: "12:00:00"
+      weekday:
+        - tue
     - condition: state
       entity_id: input_boolean.cleaning_mode
       state: 'on'
@@ -21,8 +23,8 @@ action:
     entity_id: input_boolean.cleaning_mode
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Home Alarm"
-      message: "Cleaning Mode Deactivated. Alarm Armed"
+      title: "Home"
+      message: "Cleaning Mode Deactivated"
       data:
         color: "#33CC33"
         sticky: "false"
