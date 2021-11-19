@@ -12,6 +12,8 @@ cards:
         template: darksky_card
       - type: custom:meteoalarm-card
         entity: binary_sensor.meteoalarm
+        hide_when_no_warning: true
+        override_headline: true
       - type: custom:air-visual-card
         air_pollution_level: sensor.u_s_air_pollution_level
         air_quality_index: sensor.u_s_air_quality_index
