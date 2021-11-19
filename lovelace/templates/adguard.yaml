@@ -14,22 +14,22 @@ adguard:
         mode: vertical
         cards:
           - type: entities
-            title: Statistics
+#            title: Statistics
             show_header_toggle: false
             entities:
-              - entity: switch.adguard_filtering
-                tap_action:
-                  action: none
-              - entity: switch.adguard_parental_control
-                tap_action:
-                  action: none
               - entity: switch.adguard_protection
+                tap_action:
+                  action: none
+              - entity: switch.adguard_filtering
                 tap_action:
                   action: none
               - entity: switch.adguard_safe_browsing
                 tap_action:
                   action: none
               - entity: switch.adguard_safe_search
+                tap_action:
+                  action: none
+              - entity: switch.adguard_parental_control
                 tap_action:
                   action: none
               - entity: switch.adguard_query_log
