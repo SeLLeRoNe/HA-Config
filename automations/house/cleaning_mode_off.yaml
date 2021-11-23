@@ -11,8 +11,7 @@ condition:
   condition: and
   conditions:
     - condition: time
-      after: "09:30:00"
-      before: "12:00:00"
+      after: "12:15:00"
       weekday:
         - tue
     - condition: state
