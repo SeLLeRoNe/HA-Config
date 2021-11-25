@@ -9,6 +9,9 @@ trigger:
   - platform: state
     entity_id: input_boolean.guest_mode
     to: 'off'
+  - platform: state
+    entity_id: input_boolean.cleaning_mode
+    to: 'off'
   - platform: time_pattern
     minutes: '*'
   - platform: state
@@ -29,6 +32,9 @@ condition:
             - condition: state
               entity_id: input_boolean.guest_mode
               state: 'off'
+            - condition: state
+              entity_id: input_boolean.clenaing_mode
+              state: 'off'
         - condition: and
           conditions:
             - condition: state
@@ -36,6 +42,9 @@ condition:
               state: 'off'
             - condition: state
               entity_id: input_boolean.guest_mode
+              state: 'off'
+            - condition: state
+              entity_id: input_boolean.cleaning_mode
               state: 'off'
     - condition: state
       entity_id: group.family

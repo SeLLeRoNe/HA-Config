@@ -12,6 +12,9 @@ trigger:
     entity_id: input_boolean.guest_mode
     to: 'off'
   - platform: state
+    entity_id: input_boolean.clenaing_mode
+    to: 'off'
+  - platform: state
     entity_id: group.family
     to: 'home'
   - platform: zone
@@ -39,14 +42,14 @@ condition:
     - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.clening_mode
+      state: 'off'
     - condition: or
       conditions:
         - condition: state
           entity_id: group.family
           state: 'home'
-        - condition: state
-          entity_id: input_boolean.guest_mode
-          state: 'on'
         - condition: state
           entity_id: person.andrea
           state: 'Garage'
