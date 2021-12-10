@@ -37,6 +37,8 @@ MATCH_TYPE_UNEQUAL = "not"
 MATCH_TYPE_BELOW = "below"
 MATCH_TYPE_ABOVE = "above"
 
+ATTR_TRACK_CONDITIONS = "track_conditions"
+
 ATTR_REPEAT_TYPE = "repeat_type"
 REPEAT_TYPE_REPEAT = "repeat"
 REPEAT_TYPE_SINGLE = "single"
@@ -143,13 +145,14 @@ TIMESLOT_SCHEMA = vol.Schema(
                 CONDITION_TYPE_OR,
             ]
         ),
+        vol.Optional(ATTR_TRACK_CONDITIONS): cv.boolean,
         vol.Required(ATTR_ACTIONS): vol.All(
             cv.ensure_list, vol.Length(min=1), [ACTION_SCHEMA]
         ),
     }
 )
 
-SCHEDULE_SCHEMA = vol.Schema(
+ADD_SCHEDULE_SCHEMA = vol.Schema(
     {
         vol.Optional(ATTR_WEEKDAYS, default=[DAY_TYPE_DAILY]): vol.All(
             cv.ensure_list,
@@ -171,6 +174,43 @@ SCHEDULE_SCHEMA = vol.Schema(
             cv.ensure_list, vol.Length(min=1), [TIMESLOT_SCHEMA]
         ),
         vol.Required(ATTR_REPEAT_TYPE): vol.In(
+            [
+                REPEAT_TYPE_REPEAT,
+                REPEAT_TYPE_SINGLE,
+                REPEAT_TYPE_PAUSE,
+            ]
+        ),
+        vol.Optional(ATTR_NAME): vol.Any(cv.string, None),
+        vol.Optional(ATTR_TAGS): vol.All(
+            cv.ensure_list,
+            vol.Unique(),
+            [cv.string]
+        ),
+    }
+)
+
+EDIT_SCHEDULE_SCHEMA = vol.Schema(
+    {
+        vol.Optional(ATTR_WEEKDAYS): vol.All(
+            cv.ensure_list,
+            vol.Unique(),
+            vol.Length(min=1),
+            [
+                vol.In(
+                    WEEKDAYS + [
+                        DAY_TYPE_WORKDAY,
+                        DAY_TYPE_WEEKEND,
+                        DAY_TYPE_DAILY,
+                    ]
+                )
+            ],
+        ),
+        vol.Optional(ATTR_START_DATE, default=None): validate_date,
+        vol.Optional(ATTR_END_DATE, default=None): validate_date,
+        vol.Optional(ATTR_TIMESLOTS): vol.All(
+            cv.ensure_list, vol.Length(min=1), [TIMESLOT_SCHEMA]
+        ),
+        vol.Optional(ATTR_REPEAT_TYPE): vol.In(
             [
                 REPEAT_TYPE_REPEAT,
                 REPEAT_TYPE_SINGLE,

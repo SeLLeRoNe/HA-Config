@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+from http import HTTPStatus
 from ipaddress import ip_address
 import logging
 from typing import Any, Optional, cast
@@ -24,12 +25,7 @@ from homeassistant.components.http import HomeAssistantView
 from homeassistant.components.http.auth import DATA_SIGN_SECRET, SIGN_QUERY_PARAM
 from homeassistant.components.http.const import KEY_HASS
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import (
-    CONF_URL,
-    HTTP_BAD_REQUEST,
-    HTTP_FORBIDDEN,
-    HTTP_NOT_FOUND,
-)
+from homeassistant.const import CONF_URL
 from homeassistant.core import HomeAssistant
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
@@ -104,7 +100,7 @@ class ProxyView(HomeAssistantView):  # type: ignore[misc]
             return get_config_entry_for_frigate_instance_id(hass, frigate_instance_id)
         return get_default_config_entry(hass)
 
-    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
         raise NotImplementedError  # pragma: no cover
 
@@ -129,21 +125,20 @@ class ProxyView(HomeAssistantView):  # type: ignore[misc]
     async def _handle_request(
         self,
         request: web.Request,
-        path: str,
         frigate_instance_id: str | None = None,
         **kwargs: Any,
     ) -> web.Response | web.StreamResponse:
         """Handle route for request."""
         config_entry = self._get_config_entry_for_request(request, frigate_instance_id)
         if not config_entry:
-            return web.Response(status=HTTP_BAD_REQUEST)
+            return web.Response(status=HTTPStatus.BAD_REQUEST)
 
         if not self._permit_request(request, config_entry):
-            return web.Response(status=HTTP_FORBIDDEN)
+            return web.Response(status=HTTPStatus.FORBIDDEN)
 
-        full_path = self._create_path(path=path, **kwargs)
+        full_path = self._create_path(**kwargs)
         if not full_path:
-            return web.Response(status=HTTP_NOT_FOUND)
+            return web.Response(status=HTTPStatus.NOT_FOUND)
 
         url = str(URL(config_entry.data[CONF_URL]) / full_path)
         data = await request.read()
@@ -180,14 +175,14 @@ class ProxyView(HomeAssistantView):  # type: ignore[misc]
 class SnapshotsProxyView(ProxyView):
     """A proxy for snapshots."""
 
-    url = "/api/frigate/{frigate_instance_id:.+}/clips/{path:.*}"
-    extra_urls = ["/api/frigate/clips/{path:.*}"]
+    url = "/api/frigate/{frigate_instance_id:.+}/snapshot/{eventid:.*}"
+    extra_urls = ["/api/frigate/snapshot/{eventid:.*}"]
 
     name = "api:frigate:snapshots"
 
-    def _create_path(self, path: str, **kwargs: Any) -> str:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
-        return f"clips/{path}"
+        return f"api/events/{kwargs['eventid']}/snapshot.jpg"
 
 
 class NotificationsProxyView(ProxyView):
@@ -199,9 +194,9 @@ class NotificationsProxyView(ProxyView):
     name = "api:frigate:notification"
     requires_auth = False
 
-    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
-        event_id = kwargs["event_id"]
+        path, event_id = kwargs["path"], kwargs["event_id"]
         if path == "thumbnail.jpg":
             return f"api/events/{event_id}/thumbnail.jpg"
 
@@ -225,11 +220,9 @@ class VodProxyView(ProxyView):
 
     name = "api:frigate:vod:mainfest"
 
-    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
-        manifest = kwargs["manifest"]
-
-        return f"vod/{path}/{manifest}.m3u8"
+        return f"vod/{kwargs['path']}/{kwargs['manifest']}.m3u8"
 
 
 class VodSegmentProxyView(ProxyView):
@@ -241,11 +234,9 @@ class VodSegmentProxyView(ProxyView):
     name = "api:frigate:vod:segment"
     requires_auth = False
 
-    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
-        segment = kwargs["segment"]
-
-        return f"vod/{path}/{segment}.ts"
+        return f"vod/{kwargs['path']}/{kwargs['segment']}.ts"
 
     async def _async_validate_signed_manifest(self, request: web.Request) -> bool:
         """Validate the signature for the manifest of this segment."""
@@ -311,7 +302,6 @@ class WebsocketProxyView(ProxyView):
     async def _handle_request(
         self,
         request: web.Request,
-        path: str,
         frigate_instance_id: str | None = None,
         **kwargs: Any,
     ) -> web.Response | web.StreamResponse:
@@ -319,14 +309,14 @@ class WebsocketProxyView(ProxyView):
 
         config_entry = self._get_config_entry_for_request(request, frigate_instance_id)
         if not config_entry:
-            return web.Response(status=HTTP_BAD_REQUEST)
+            return web.Response(status=HTTPStatus.BAD_REQUEST)
 
         if not self._permit_request(request, config_entry):
-            return web.Response(status=HTTP_FORBIDDEN)
+            return web.Response(status=HTTPStatus.FORBIDDEN)
 
-        full_path = self._create_path(path=path, **kwargs)
+        full_path = self._create_path(**kwargs)
         if not full_path:
-            return web.Response(status=HTTP_NOT_FOUND)
+            return web.Response(status=HTTPStatus.NOT_FOUND)
 
         req_protocols = []
         if hdrs.SEC_WEBSOCKET_PROTOCOL in request.headers:
@@ -373,9 +363,9 @@ class JSMPEGProxyView(WebsocketProxyView):
 
     name = "api:frigate:jsmpeg"
 
-    def _create_path(self, path: str, **kwargs: Any) -> str | None:
+    def _create_path(self, **kwargs: Any) -> str | None:
         """Create path."""
-        return f"live/{path}"
+        return f"live/{kwargs['path']}"
 
 
 def _init_header(request: web.Request) -> CIMultiDict | dict[str, str]:
