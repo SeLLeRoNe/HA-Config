@@ -72,8 +72,8 @@ class HASPBinarySensor(HASPEntity, BinarySensorEntity):
 
     async def refresh(self):
         """Force sync of plate state back to binary sensor."""
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command/input{self._gpio}", "", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command/input{self._gpio}", "", qos=0, retain=False
         )
 
     async def async_added_to_hass(self):
@@ -101,6 +101,6 @@ class HASPBinarySensor(HASPEntity, BinarySensorEntity):
             )
         )
 
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command/input{self._gpio}", "", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command/input{self._gpio}", "", qos=0, retain=False
         )

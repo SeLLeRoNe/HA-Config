@@ -122,7 +122,7 @@ class CustomLightBrightnessRow extends Polymer.Element {
 	hassChanged(hass) {
 
 		const config = this._config;
-		const stateObj = hass.states[config.entity];
+		var stateObj = hass.states[config.entity];
 		const custTheme = config.customTheme;
 		const custSetpoint = config.customSetpoints;
 		const revButtons = config.reverseButtons;
@@ -140,7 +140,12 @@ class CustomLightBrightnessRow extends Polymer.Element {
 		const custLowTxt = config.customLowText;
 		const custMedTxt = config.customMedText;
 		const custHiTxt = config.customHiText;
-						
+
+		// if entity is a group, use the state of the 1st item in the group to read current state (e.g. current brightness)
+		if (stateObj && stateObj.attributes && Array.isArray(stateObj.attributes.entity_id) && stateObj.attributes.entity_id.length > 0) {
+			var firstChildEntity_id = stateObj.attributes.entity_id[0];
+			stateObj = hass.states[firstChildEntity_id];
+		}
 		
 		let lowSetpoint;
 		let medSetpoint;

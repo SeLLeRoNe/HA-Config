@@ -31,6 +31,7 @@ from .const import (
     DISCOVERED_NODE,
     DISCOVERED_PAGES,
     DISCOVERED_POWER,
+    DISCOVERED_URL,
     DISCOVERED_VERSION,
     DOMAIN,
     MAJOR,
@@ -73,17 +74,15 @@ class OpenHASPFlowHandler(config_entries.ConfigFlow):
         """Handle a flow initialized by User."""
         _LOGGER.error("Discovery Only")
 
-        self.hass.components.mqtt.async_publish(
-            "hasp/broadcast/command/discovery", "discovery", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, "hasp/broadcast/command/discovery", "discovery", qos=0, retain=False
         )
 
         return self.async_abort(reason="discovery_only")
 
     async def async_step_mqtt(self, discovery_info=None):
         """Handle a flow initialized by MQTT discovery."""
-        print(type(discovery_info))
-
-        _discovered = json.loads(discovery_info["payload"])
+        _discovered = json.loads(discovery_info.payload)
         _LOGGER.debug("Discovered: %s", _discovered)
 
         hwid = _discovered[DISCOVERED_HWID]
@@ -107,8 +106,9 @@ class OpenHASPFlowHandler(config_entries.ConfigFlow):
         ]
         self.config_data[
             CONF_TOPIC
-        ] = f"{discovery_info['topic'].split('/')[0]}/{self.config_data[CONF_NODE]}"
+        ] = f"{discovery_info.topic.split('/')[0]}/{self.config_data[CONF_NODE]}"
 
+        self.config_data[DISCOVERED_URL] = _discovered.get(DISCOVERED_URL)
         self.config_data[DISCOVERED_MANUFACTURER] = _discovered.get(
             DISCOVERED_MANUFACTURER
         )

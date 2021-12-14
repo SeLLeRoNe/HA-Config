@@ -117,7 +117,8 @@ class HASPLight(HASPToggleEntity, LightEntity):
 
     async def refresh(self):
         """Sync local state back to plate."""
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             f"{self._topic}/command/output{self._gpio}",
             json.dumps(HASP_LIGHT_SCHEMA({"state": int(self._state)})),
             qos=0,
@@ -151,8 +152,8 @@ class HASPLight(HASPToggleEntity, LightEntity):
         )
 
         # Force immediatable state update from plate
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
         )
 
 
@@ -188,7 +189,8 @@ class HASPDimmableLight(HASPToggleEntity, LightEntity):
             self._brightness,
         )
 
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             f"{self._topic}/command/output{self._gpio}",
             json.dumps(
                 HASP_LIGHT_SCHEMA(
@@ -228,8 +230,8 @@ class HASPDimmableLight(HASPToggleEntity, LightEntity):
         )
 
         # Force immediatable state update from plate
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
         )
 
     async def async_turn_on(self, **kwargs):
@@ -330,8 +332,8 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
             )
         )
 
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, "backlight", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, "backlight", qos=0, retain=False
         )
 
     async def async_listen_idleness(self):
@@ -364,7 +366,8 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
 
             new_state = {"state": backlight, "brightness": brightness}
 
-            self.hass.components.mqtt.async_publish(
+            await self.hass.components.mqtt.async_publish(
+                self.hass, 
                 f"{self._topic}/command",
                 f"backlight {json.dumps(new_state)}",
                 qos=0,
@@ -386,7 +389,8 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
 
         _LOGGER.debug("refresh(%s) backlight - %s", self.name, new_state)
 
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             cmd_topic,
             f"backlight {json.dumps(new_state)}",
             qos=0,
@@ -405,7 +409,7 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
         await self.refresh()
 
 
-class HASPMoodLight(HASPToggleEntity, LightEntity):
+class HASPMoodLight(HASPToggleEntity, LightEntity, RestoreEntity):
     """Representation of HASP LVGL Moodlight."""
 
     def __init__(self, name, hwid, topic):
@@ -443,6 +447,18 @@ class HASPMoodLight(HASPToggleEntity, LightEntity):
         """Run when entity about to be added."""
         await super().async_added_to_hass()
 
+        state = await self.async_get_last_state()
+        if state:
+            self._state = state.state
+            self._brightness = state.attributes.get(ATTR_BRIGHTNESS)
+            self._hs = state.attributes.get(ATTR_HS_COLOR)
+            _LOGGER.debug(
+                "Restoring %s self.brigthness = %s; hs_color = %s",
+                self.name,
+                self._brightness,
+                self._hs,
+            )
+
         @callback
         async def moodlight_message_received(msg):
             """Process Moodlight State."""
@@ -468,8 +484,8 @@ class HASPMoodLight(HASPToggleEntity, LightEntity):
             )
         )
 
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command", "moodlight", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command", "moodlight", qos=0, retain=False
         )
 
     async def refresh(self):
@@ -484,7 +500,8 @@ class HASPMoodLight(HASPToggleEntity, LightEntity):
             new_state["brightness"] = self._brightness
 
         _LOGGER.debug("refresh(%s) moodlight - %s", self.name, new_state)
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             cmd_topic,
             f"moodlight {json.dumps(new_state)}",
             qos=0,

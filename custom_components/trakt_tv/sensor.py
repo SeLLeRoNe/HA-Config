@@ -77,7 +77,7 @@ class TraktUpcomingSensor(Entity):
         return "items"
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes of the sensor."""
         return {"data": self.data}
 

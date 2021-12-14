@@ -52,6 +52,7 @@ from .const import (
     DATA_LISTENER,
     DISCOVERED_MANUFACTURER,
     DISCOVERED_MODEL,
+    DISCOVERED_URL,
     DISCOVERED_VERSION,
     DOMAIN,
     EVENT_HASP_PLATE_OFFLINE,
@@ -242,6 +243,7 @@ async def async_setup_entry(hass, entry) -> bool:
         manufacturer=entry.data[DISCOVERED_MANUFACTURER],
         model=entry.data[DISCOVERED_MODEL],
         sw_version=entry.data[DISCOVERED_VERSION],
+        configuration_url=entry.data.get(DISCOVERED_URL),
         name=plate,
     )
 
@@ -406,8 +408,8 @@ class SwitchPlate(RestoreEntity):
                 f"{self._topic}/state/statusupdate", statusupdate_message_received
             )
         )
-        self.hass.components.mqtt.async_publish(
-            f"{self._topic}/command", "statusupdate", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, f"{self._topic}/command", "statusupdate", qos=0, retain=False
         )
 
         @callback
@@ -509,8 +511,8 @@ class SwitchPlate(RestoreEntity):
         """Wake up the display."""
         cmd_topic = f"{self._topic}/command"
         _LOGGER.warning("Wakeup will be deprecated in 0.8.0")  # remove in version 0.8.0
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, "wakeup", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, "wakeup", qos=0, retain=False
         )
 
     async def async_change_page_next(self):
@@ -520,8 +522,8 @@ class SwitchPlate(RestoreEntity):
             "page next service will be deprecated in 0.8.0"
         )  # remove in version 0.8.0
 
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, "page next", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, "page next", qos=0, retain=False
         )
 
     async def async_change_page_prev(self):
@@ -531,21 +533,21 @@ class SwitchPlate(RestoreEntity):
             "page prev service will be deprecated in 0.8.0"
         )  # remove in version 0.8.0
 
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, "page prev", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, "page prev", qos=0, retain=False
         )
 
     async def async_clearpage(self, page="all"):
         """Clear page."""
         cmd_topic = f"{self._topic}/command"
 
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, f"clearpage {page}", qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, f"clearpage {page}", qos=0, retain=False
         )
 
         if page == "all":
-            self.hass.components.mqtt.async_publish(
-                cmd_topic, "page 1", qos=0, retain=False
+            await self.hass.components.mqtt.async_publish(
+                self.hass, cmd_topic, "page 1", qos=0, retain=False
             )
 
     async def async_change_page(self, page):
@@ -564,14 +566,15 @@ class SwitchPlate(RestoreEntity):
         self._page = page
 
         _LOGGER.debug("Change page %s", self._page)
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, self._page, qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, self._page, qos=0, retain=False
         )
         self.async_write_ha_state()
 
     async def async_command_service(self, keyword, parameters):
         """Sends commands directly to the plate entity"""
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             f"{self._topic}/command",
             f"{keyword} {parameters}".strip(),
             qos=0,
@@ -580,7 +583,8 @@ class SwitchPlate(RestoreEntity):
 
     async def async_config_service(self, submodule, parameters):
         """Sends configuration commands to plate entity"""
-        self.hass.components.mqtt.async_publish(
+        await self.hass.components.mqtt.async_publish(
+            self.hass, 
             f"{self._topic}/config/{submodule}",
             f"{parameters}".strip(),
             qos=0,
@@ -606,14 +610,14 @@ class SwitchPlate(RestoreEntity):
 
         _LOGGER.debug("Push %s with %s", cmd_topic, rgb_image_url)
 
-        self.hass.components.mqtt.async_publish(
-            cmd_topic, rgb_image_url, qos=0, retain=False
+        await self.hass.components.mqtt.async_publish(
+            self.hass, cmd_topic, rgb_image_url, qos=0, retain=False
         )
 
     async def refresh(self):
         """Refresh objects in the SwitchPlate."""
 
-        _LOGGER.warning("Refreshing %s", self._entry.data[CONF_NAME])
+        _LOGGER.info("Refreshing %s", self._entry.data[CONF_NAME])
         for obj in self._objects:
             await obj.refresh()
 
@@ -628,18 +632,18 @@ class SwitchPlate(RestoreEntity):
             _LOGGER.error("'%s' is not an allowed directory", path)
             return
 
-        def send_lines(lines):
+        async def send_lines(lines):
             mqtt_payload_buffer = ""
             for line in lines:
                 if len(mqtt_payload_buffer) + len(line) > 1000:
-                    self.hass.components.mqtt.async_publish(
-                        f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+                    await self.hass.components.mqtt.async_publish(
+                        self.hass, f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
                     )
                     mqtt_payload_buffer = line
                 else:
                     mqtt_payload_buffer = mqtt_payload_buffer + line
-            self.hass.components.mqtt.async_publish(
-                f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+            await self.hass.components.mqtt.async_publish(
+                self.hass, f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
             )
 
         try:
@@ -651,9 +655,9 @@ class SwitchPlate(RestoreEntity):
                     for item in json_data:
                         if isinstance(item, dict):
                             lines.append(json.dumps(item) + "\n")
-                    send_lines(lines)
+                    await send_lines(lines)
                 else:
-                    send_lines(pages_file)
+                    await send_lines(pages_file)
             await self.refresh()
 
         except (IndexError, FileNotFoundError, IsADirectoryError, UnboundLocalError):
@@ -722,7 +726,7 @@ class HASPObject:
         """Set HASP Object property to template value."""
 
         @callback
-        def _async_template_result_changed(event, updates):
+        async def _async_template_result_changed(event, updates):
             track_template_result = updates.pop()
             template = track_template_result.template
             result = track_template_result.result
@@ -752,8 +756,8 @@ class HASPObject:
                 result,
             )
 
-            self.hass.components.mqtt.async_publish(
-                self.command_topic + _property, result
+            await self.hass.components.mqtt.async_publish(
+                self.hass, self.command_topic + _property, result
             )
 
         property_template = async_track_template_result(
@@ -769,8 +773,8 @@ class HASPObject:
         """Refresh based on cached values."""
         for _property, result in self.cached_properties.items():
             _LOGGER.debug("Refresh object %s.%s = %s", self.obj_id, _property, result)
-            self.hass.components.mqtt.async_publish(
-                self.command_topic + _property, result
+            await self.hass.components.mqtt.async_publish(
+                self.hass, self.command_topic + _property, result
             )
 
     async def async_listen_hasp_events(self):
@@ -805,7 +809,7 @@ class HASPObject:
                                 variables=message,
                             )
             except vol.error.Invalid:
-                _LOGGER.warning(
+                _LOGGER.debug(
                     "Could not handle openHASP event: '%s' on '%s'",
                     msg.payload,
                     msg.topic,
