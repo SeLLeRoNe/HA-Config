@@ -24,6 +24,7 @@ from .const.const import (
     SENSOR_PREFIX,
     ATTR_LAST_UPDATE,
     ATTR_VOLUME,
+    ATTR_BASE_PRICE,
     ATTR_CHANGE,
     ATTR_MARKET_CAP,
     API_ENDPOINT,
@@ -84,9 +85,11 @@ class CryptoinfoSensor(Entity):
         self._state = None
         self._last_update = None
         self._volume = None
+        self._base_price = None
         self._change = None
         self._market_cap = None
         self._unit_of_measurement = "\u200b"
+        self._attr_unique_id=cryptocurrency_name + currency_name + multiplier
 
     @property
     def name(self):
@@ -105,8 +108,8 @@ class CryptoinfoSensor(Entity):
         return self._unit_of_measurement
 
     @property
-    def device_state_attributes(self):
-        return {ATTR_LAST_UPDATE: self._last_update, ATTR_VOLUME: self._volume, ATTR_CHANGE: self._change, ATTR_MARKET_CAP: self._market_cap }
+    def extra_state_attributes(self):
+        return {ATTR_LAST_UPDATE: self._last_update, ATTR_VOLUME: self._volume, ATTR_BASE_PRICE:self._base_price, ATTR_CHANGE: self._change, ATTR_MARKET_CAP: self._market_cap }
 
     def _update(self):
         url = (
@@ -131,6 +134,7 @@ class CryptoinfoSensor(Entity):
                 self._state = float(price_data)
                 # set the attributes of the sensor
                 self._volume = r.json()[self.cryptocurrency_name][self.currency_name + "_24h_vol"]
+                self._base_price = r.json()[self.cryptocurrency_name][self.currency_name]
                 self._change = r.json()[self.cryptocurrency_name][self.currency_name + "_24h_change"]
                 self._market_cap = r.json()[self.cryptocurrency_name][self.currency_name + "_market_cap"]
             else:
@@ -139,5 +143,6 @@ class CryptoinfoSensor(Entity):
             self._state = None
             self._last_update = datetime.today().strftime("%d-%m-%Y %H:%M")
             self._volume = None
+            self._base_price = None
             self._change = None
             self._market_cap = None

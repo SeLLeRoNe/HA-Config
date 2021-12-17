@@ -9,6 +9,7 @@ CONF_UPDATE_FREQUENCY = "update_frequency"
 SENSOR_PREFIX = "Cryptoinfo "
 ATTR_LAST_UPDATE = "last_update"
 ATTR_VOLUME = "volume"
+ATTR_BASE_PRICE = "baseprice"
 ATTR_CHANGE = "change"
 ATTR_MARKET_CAP = "market_cap"
 
