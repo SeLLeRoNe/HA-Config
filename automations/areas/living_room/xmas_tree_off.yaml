@@ -3,30 +3,14 @@ id: '5631989524575'
 alias: XMAS Tree Off
 initial_state: on
 trigger:
-  - platform: numeric_state
-    entity_id: sensor.illuminance
-    above: 1000
   - platform: time
-    at: '21:00:00'
-  - platform: state
-    entity_id: input_boolean.guest_mode
-    to: 'off'
+    at: '23:00:00'
   - platform: state
     entity_id: media_player.living_room_tv
-    to: 'on'
+    to: 'om'
 condition:
   condition: and
   conditions:
-#    - condition: template
-#      value_template: >
-#        {% set n = now() %}
-#        {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
-    - condition: state
-      entity_id: input_boolean.guest_mode
-      state: 'off'
-    - condition: numeric_state
-      entity_id: sensor.illuminance
-      above: 1000
     - condition: or
       conditions:
         - condition: and
@@ -34,13 +18,7 @@ condition:
             - condition: template
               value_template: "{{ states('sensor.time') >= '21:00:00' }}"
             - condition: template
-              value_template: "{{ states('sensor.time') < '00:00:00' }}"
-        - condition: and
-          conditions:
-            - condition: template
-              value_template: "{{ states('sensor.time') >= '00:00:00' }}"
-            - condition: template
-              value_template: "{{ states('sensor.time') < '02:00:00' }}"
+              value_template: "{{ states('sensor.time') <= '23:00:00' }}"
 action:
   - service: light.turn_off
     entity_id: light.christmas_tree
