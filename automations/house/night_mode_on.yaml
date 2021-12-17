@@ -26,3 +26,5 @@ action:
     entity_id: input_boolean.night_mode
   - service: input_boolean.turn_off
     entity_id: input_boolean.working_late_andrea
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.working_late_sonia
