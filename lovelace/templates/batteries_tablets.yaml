@@ -23,6 +23,13 @@ batteries_tablets:
           state:
             - "charging"
             - "full"
+      - entity: sensor.teclast_t40_plus_battery_level
+        name: "Andrea - Samsung Galaxy Tab 7+"
+        charging_state:
+          entity_id: sensor.teclast_t40_plus_battery_state
+          state:
+            - "charging"
+            - "full"
       - entity: sensor.andrea_shield_battery_level
         name: "Andrea - NVIDIA Shield K1"
         charging_state:
