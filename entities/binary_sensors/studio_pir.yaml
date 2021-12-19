@@ -5,5 +5,5 @@ sensors:
     friendly_name: "Studio PIR"
     device_class: motion
     value_template: >
-      {% set sensors = [states.binary_sensor.studio_2ajz4kpbs_occupancy] %}
+      {% set sensors = [states.binary_sensor.studio_rf_pir] %}
       {{ sensors | selectattr('state','eq','on') | list | count > 0 }}
