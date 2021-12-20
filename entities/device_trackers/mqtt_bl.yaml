@@ -6,4 +6,4 @@ payload_home: 'true'
 payload_not_home: 'false'
 devices:
   andrea_oneplus_nord_room: 'room-assistant/device_tracker/bluetooth-classic-andrea-oneplus-nord-tracker/state'
-  sonia_mi_9t_pro_room: 'room-assistant/device_tracker/bluetooth-classic-sonia-mi-9t-pro-tracker/state'
+  sonia_oneplus_9_room: 'room-assistant/device_tracker/bluetooth-classic-sonia-mi-9t-pro-tracker/state'

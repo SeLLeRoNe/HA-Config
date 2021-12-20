@@ -1,7 +1,7 @@
 ---
 platform: mqtt
-name: 'Studio - Occupancy Confidence - Sonia Mi 9T Pro'
-state_topic: 'monitor/studio/sonia_mi_9t_pro'
+name: 'Studio - Occupancy Confidence - Sonia OnePlus 9 Pro'
+state_topic: 'monitor/studio/sonia_oneplus_9'
 value_template: '{{ value_json.confidence }}'
 unit_of_measurement: '%'
 availability_topic: 'monitor/studio/status'

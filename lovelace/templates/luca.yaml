@@ -10,7 +10,7 @@ luca:
       #   states:
       #     "home":
       #       type: custom:state-switch
-      #       entity: device_tracker.sonia_mi_9t_pro_bt
+      #       entity: device_tracker.sonia_oneplus_9_bt
       #       default: home
       #       states:
       #         "not_home":
@@ -21,7 +21,7 @@ luca:
       #             action: none
       #         "home":
       #           type: "custom:secondaryinfo-entity-row"
-      #           entity: sensor.luca_mi_9t_pro
+      #           entity: sensor.luca_oneplus_9
       #           secondary_info: "Next Birthday in [[ sensor.birthday_luca ]] Days ([[ sensor.birthday_luca.attributes.years ]])"
       #           tap_action:
       #             action: none

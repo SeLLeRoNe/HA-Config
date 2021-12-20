@@ -20,7 +20,7 @@ condition:
       entity_id: sensor.bedroom_luca_occupancy_confidence_andrea_oneplus_nord
       above: 10
     - condition: numeric_state
-      entity_id: sensor.bedroom_luca_occupancy_confidence_sonia_mi_9t_pro
+      entity_id: sensor.bedroom_luca_occupancy_confidence_sonia_oneplus_9
       above: 10
 action:
   - service: input_boolean.turn_on

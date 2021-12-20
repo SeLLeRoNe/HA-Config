@@ -1,4 +1,4 @@
 ---
-sensor.sonia_mi_9t_pro:
+sensor.sonia_oneplus_9:
   friendly_name: Sonia
   entity_picture: /local/icons/family/sonia.png

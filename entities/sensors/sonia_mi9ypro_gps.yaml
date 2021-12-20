@@ -1,7 +1,7 @@
 ---
 platform: template
 sensors:
-  sonia_mi_9t_pro_gps:
-    friendly_name: Mi 9T Pro GPS
+  sonia_oneplus_9_gps:
+    friendly_name: OnePlus 9 Pro GPS
     device_class: battery
-    value_template: "Latitude: {{ state_attr('device_tracker.sonia_mi_9t_pro', 'latitude') }} Longitude: {{ state_attr('device_tracker.sonia_mi_9t_pro', 'longitude') }}"
+    value_template: "Latitude: {{ state_attr('device_tracker.sonia_oneplus_9', 'latitude') }} Longitude: {{ state_attr('device_tracker.sonia_oneplus_9', 'longitude') }}"

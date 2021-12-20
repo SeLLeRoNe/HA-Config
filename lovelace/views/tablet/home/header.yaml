@@ -13,7 +13,7 @@ cards:
         name: Sonia
         template: sensor_person
         variables:
-          battery_entity: sensor.sonia_mi_9t_pro_battery_level
+          battery_entity: sensor.sonia_oneplus_9_battery_level
   - type: 'custom:button-card'
     entity: sensor.time
     layout: vertical

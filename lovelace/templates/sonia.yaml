@@ -10,7 +10,7 @@ sonia:
       #   states:
       #     "home":
       #       type: custom:state-switch
-      #       entity: device_tracker.sonia_mi_9t_pro_room
+      #       entity: device_tracker.sonia_oneplus_9_room
       #       default: not_home
       #       states:
       #         "not_home":
@@ -21,7 +21,7 @@ sonia:
       #             action: none
       #         "home":
       #           type: custom:state-switch
-      #           entity: device_tracker.sonia_mi_9t_pro_room
+      #           entity: device_tracker.sonia_oneplus_9_room
       #           default: unavailable
       #           states:
       #             "unavailable":
@@ -31,7 +31,7 @@ sonia:
       #               tap_action:
       #                 action: none
       #             "home":
-      #               entity: sensor.sonia_mi_9t_pro
+      #               entity: sensor.sonia_oneplus_9
       #               type: "custom:secondaryinfo-entity-row"
       #               secondary_info: "Next Birthday in [[ sensor.birthday_sonia ]] Days ([[ sensor.birthday_sonia.attributes.years ]])"
       #               tap_action:
@@ -62,10 +62,10 @@ sonia:
           - value: 100
             color: "#009933"
         entities:
-          - entity: sensor.sonia_mi_9t_pro_battery_level
-            name: "Mi 9T Pro"
+          - entity: sensor.sonia_oneplus_9_battery_level
+            name: "OnePlus 9"
             charging_state:
-              entity_id: sensor.sonia_mi_9t_pro_battery_state
+              entity_id: sensor.sonia_oneplus_9_battery_state
               state:
                 - "charging"
                 - "full"
@@ -77,10 +77,10 @@ sonia:
             .entity-row .secondary {
               color: #808080;
             }
-#      - entity: sensor.sonia_mi_9t_pro_battery_level
-#        name: "Mi 9T Pro"
+#      - entity: sensor.sonia_oneplus_9_battery_level
+#        name: "OnePlus 9 Pro"
 #        type: "custom:secondaryinfo-entity-row"
-#        secondary_info: "WiFi: [[ if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_mi_9t_pro_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_mi_9t_pro_battery_state == 'charging', ' - Charging', '' ) ]]"
+#        secondary_info: "WiFi: [[ if(sensor.sonia_oneplus_9_wifi_connection.attributes.bssid != 'null', 'Connected', if(sensor.sonia_oneplus_9_wifi_connection.attributes.bssid == 'null', 'Disconnected', 'Unknown')) ]] [[ if(sensor.sonia_oneplus_9_battery_state == 'charging', ' - Charging', '' ) ]]"
 #        tap_action:
 #          action: none
 #        card_mod:

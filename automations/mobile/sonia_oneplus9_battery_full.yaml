@@ -1,10 +1,10 @@
 ---
 id: '7330673428340'
-alias: Mobile - Sonia - Mi 9T Pro - Battery Full
+alias: Mobile - Sonia - OnePlus 9 Pro - Battery Full
 initial_state: on
 trigger:
   - platform: numeric_state
-    entity_id: sensor.sonia_mi_9t_pro_battery_level
+    entity_id: sensor.sonia_oneplus_9_battery_level
     above: 99
 condition:
   condition: and
@@ -12,19 +12,19 @@ condition:
     - condition: or
       conditions:
         - condition: state
-          entity_id: sensor.sonia_mi_9t_pro_battery_state
+          entity_id: sensor.sonia_oneplus_9_battery_state
           state: 'charging'
         - condition: state
-          entity_id: sensor.sonia_mi_9t_pro_battery_state
+          entity_id: sensor.sonia_oneplus_9_battery_state
           state: 'full'
     - condition: state
       entity_id: person.sonia
       state: 'home'
 action:
-  - service: notify.mobile_app_sonia_mi_9t_pro
+  - service: notify.mobile_app_sonia_oneplus_9
     data:
       title: "Battery Alert"
-      message: "Battery Full on Mi 9T Pro, please unplug it!"
+      message: "Battery Full on OnePlus 9 Pro, please unplug it!"
       data:
         color: "#FF66FF"
         sticky: "true"

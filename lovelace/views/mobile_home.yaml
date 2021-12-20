@@ -22,9 +22,9 @@ cards:
       - type: custom:decluttering-card
         template: phone_card
         variables:
-          - phone_entity: sonia_mi_9t_pro
-          - phone_name: Mi 9T Pro
-          - phone_image: /local/mi_9t_pro.png
+          - phone_entity: sonia_oneplus_9
+          - phone_name: OnePlus 9 Pro
+          - phone_image: /local/oneplus_9.png
   - type: custom:stack-in-card
     mode: vertical
     cards:

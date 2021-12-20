@@ -70,10 +70,10 @@ batteries_phones:
           - value: 100
             color: "#009933"
         entities:
-          - entity: sensor.sonia_mi_9t_pro_battery_level
-            name: "Sonia - Mi 9T Pro"
+          - entity: sensor.sonia_oneplus_9_battery_level
+            name: "Sonia - OnePlus 9 Pro"
             charging_state:
-              entity_id: sensor.sonia_mi_9t_pro_battery_state
+              entity_id: sensor.sonia_oneplus_9_battery_state
               state:
                 - "charging"
                 - "full"

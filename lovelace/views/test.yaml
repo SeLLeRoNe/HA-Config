@@ -56,7 +56,7 @@ cards:
           separator: false
       - type: custom:logbook-card
         title: "Sonia - HA App"
-        entity: device_tracker.sonia_mi_9t_pro
+        entity: device_tracker.sonia_oneplus_9
         max_items: 5
         date_format: dd/MM/YYYY hh:mm
         show:
@@ -72,7 +72,7 @@ cards:
     entities:
       - entity: sensor.andrea_oneplus_nord_gps
 #          - entity: sensor.andrea_oneplus_nord_gpslogger_gps
-      - entity: sensor.sonia_mi_9t_pro_gps
+      - entity: sensor.sonia_oneplus_9_gps
   - type: history-graph
     title:
     hours_to_show: 24
@@ -88,9 +88,9 @@ cards:
 #            name: GPSLogger
       - entity: person.sonia
         name: Sonia
-      - entity: device_tracker.sonia_mi_9t_pro
+      - entity: device_tracker.sonia_oneplus_9
         name: HA App
-      - entity: device_tracker.sonia_mi_9t_pro_bt
+      - entity: device_tracker.sonia_oneplus_9_bt
         name: Bluetooth
   - type: custom:layout-break
   - type: entities

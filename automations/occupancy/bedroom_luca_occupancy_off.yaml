@@ -9,7 +9,7 @@ trigger:
     for:
       seconds: 10
   - platform: numeric_state
-    entity_id: sensor.master_bedroom_occupancy_confidence_sonia_mi_9t_pro
+    entity_id: sensor.master_bedroom_occupancy_confidence_sonia_oneplus_9
     below: 10
     for:
       seconds: 10
@@ -20,7 +20,7 @@ condition:
       entity_id: sensor.bedroom_luca_occupancy_confidence_andrea_oneplus_nord
       below: 10
     - condition: numeric_state
-      entity_id: sensor.bedroom_luca_occupancy_confidence_sonia_mi_9t_pro
+      entity_id: sensor.bedroom_luca_occupancy_confidence_sonia_oneplus_9
       below: 10
 action:
   - service: input_boolean.turn_off
