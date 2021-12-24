@@ -1,0 +1,38 @@
+# dwains_dashboard
+
+#Room addon view
+
+{% for room in _dd_config.rooms %}
+{% if room["addons"] %}
+{% for addon in room["addons"] %}
+- title: {{ addon["name"] }}
+  path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+  type: custom:dwains-dashboard
+  visible: false
+  cards:    
+    - type: vertical-stack
+      cards:
+        {% if addon["show_header"] != 'false' %}
+        #Header
+        - type: custom:dwains-header-card
+          title: {{ addon["name"] }}
+          subtitle: {{ room["name"] }}
+          navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+        {% endif %}
+        #Start for a custom more page
+        - type: custom:dwains-flexbox-card
+          css: |
+            padding: 11px;
+          cards:
+            - type: vertical-stack
+              cards:
+                !include 
+                  - ../../../../../../../{{ addon["path"] }}
+                  - name: {{ addon["name"] }}
+                    {% if addon["data"] %}
+                    data: '{{ addon["data"]|tojson }}'
+                    {% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
