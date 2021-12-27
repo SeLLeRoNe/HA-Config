@@ -8,11 +8,19 @@ master_bedroom_lights:
         template: title
         variables:
           - title: Lights
-      - type: entities
-        show_header_toggle: false
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.master_bedroom_ceiling_lights
+          name: Ceiling
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
         entities:
-          - type: section
-            label: Ceiling
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
@@ -28,11 +36,19 @@ master_bedroom_lights:
             variables:
               - name: Light 3
               - entity: light.master_bedroom_ceiling_light_3
-      - type: entities
-        show_header_toggle: false
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.master_bedroom_lamp
+          name: Lamp
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
         entities:
-          - type: section
-            label: Lamp
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:

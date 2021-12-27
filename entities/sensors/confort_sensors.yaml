@@ -1,0 +1,35 @@
+---
+platform: thermal_comfort
+sensors:
+  living_room:
+    friendly_name: Living Room
+    temperature_sensor: sensor.living_room_temperature
+    humidity_sensor: sensor.living_room_humidity
+  kitchen:
+    friendly_name: Kitchen
+    temperature_sensor: sensor.kitchen_temperature
+    humidity_sensor: sensor.kitchen_humidity
+  studio:
+    friendly_name: Studio
+    temperature_sensor: sensor.studio_temperature
+    humidity_sensor: sensor.studio_temperature
+  bedroom_luca:
+    friendly_name: Bedroom Luca
+    temperature_sensor: sensor.bedroom_luca_temperature
+    humidity_sensor: sensor.bedroom_luca_temperature
+  bathroom:
+    friendly_name: Bathroom
+    temperature_sensor: sensor.bathroom_temperature
+    humidity_sensor: sensor.bathroom_temperature
+  master_bedroom:
+    friendly_name: Master Bedroom
+    temperature_sensor: sensor.master_bedroom_temperature
+    humidity_sensor: sensor.master_bedroom_temperature
+  master_bathroom:
+    friendly_name: Master Bathroom
+    temperature_sensor: sensor.master_bathroom_temperature
+    humidity_sensor: sensor.master_bathroom_temperature
+  patio:
+    friendly_name: Patio
+    temperature_sensor: sensor.patio_temperature
+    humidity_sensor: sensor.patio_temperature

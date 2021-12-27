@@ -273,10 +273,10 @@ cards:
             template: humidity
             variables:
               - entity: sensor.studio_humidity
-          - type: custom:decluttering-card
-            template: pressure
-            variables:
-              - entity: sensor.studio_pressure
+#          - type: custom:decluttering-card
+#            template: pressure
+#            variables:
+#              - entity: sensor.studio_pressure
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: studio_energy_small
