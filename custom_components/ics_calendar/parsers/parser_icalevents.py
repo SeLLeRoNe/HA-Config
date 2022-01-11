@@ -19,14 +19,11 @@ class parser_icalevents(ICalendarParser):
                 data = {
                     "uid": uid,
                     "summary": event.summary,
-                    "start": parser_icalevents.get_date_formatted(
-                        event.start.astimezone(), event.all_day
-                    ),
-                    "end": parser_icalevents.get_date_formatted(
-                        event.end.astimezone(), event.all_day
-                    ),
+                    "start": event.start.astimezone(),
+                    "end": event.end.astimezone(),
                     "location": event.location,
                     "description": event.description,
+                    "all_day": event.all_day,
                 }
                 # Note that we return a formatted date for start and end here,
                 # but a different format for get_current_event!
@@ -58,27 +55,9 @@ class parser_icalevents(ICalendarParser):
 
         return {
             "summary": temp_event.summary,
-            "start": parser_icalevents.get_hass_date(
-                temp_event.start, temp_event.all_day
-            ),
-            "end": parser_icalevents.get_hass_date(temp_event.end, temp_event.all_day),
+            "start": temp_event.start,
+            "end": temp_event.end,
             "location": temp_event.location,
             "description": temp_event.description,
+            "all_day": temp_event.all_day,
         }
-
-    @staticmethod
-    def get_date_formatted(dt, is_all_day):
-        """Return the formatted date"""
-        # Note that all day events should have a time of 0, and the timezone
-        # must be local.
-        if is_all_day:
-            return dt.strftime("%Y-%m-%d")
-
-        return dt.strftime("%Y-%m-%dT%H:%M:%S.%f%z")
-
-    @staticmethod
-    def get_hass_date(dt, is_all_day):
-        """Return the wrapped and formatted date"""
-        if is_all_day:
-            return {"date": parser_icalevents.get_date_formatted(dt, is_all_day)}
-        return {"dateTime": parser_icalevents.get_date_formatted(dt, is_all_day)}

@@ -1,11 +1,8 @@
 """Support for ICS Calendar."""
 import re
-from arrow import get as arrowget, utcnow
+from arrow import Arrow, get as arrowget, utcnow
 from ics import Calendar
 from ..icalendarparser import ICalendarParser
-
-# ics 0.8 needs this (see get_date_formatted)
-# from dateutil import tz as dateutil_tz
 
 
 class parser_ics(ICalendarParser):
@@ -18,29 +15,34 @@ class parser_ics(ICalendarParser):
         calendar = Calendar(re.sub(parser_ics.re_method, "", content))
 
         if calendar is not None:
+            # ics 0.8 takes datetime not Arrow objects
+            # ar_start = start
+            # ar_end = end
             ar_start = arrowget(start)
             ar_end = arrowget(end)
 
-            # ics 0.8 takes datetime not Arrow objects
-            # for event in calendar.timeline.included(ar_start.datetime, ar_end.datetime):
             for event in calendar.timeline.included(ar_start, ar_end):
                 if event.all_day and not include_all_day:
                     continue
                 uid = None
+                summary = ""
                 if hasattr(event, "uid"):
                     uid = event.uid
+                # ics 0.8 uses 'summary' reliably, older versions use 'name'
+                if hasattr(event, "summary"):
+                    summary = event.summary
+                elif hasattr(event, "name"):
+                    summary = event.name
                 # print("event: ")
                 # print(vars(event))
                 data = {
                     "uid": uid,
-                    "summary": event.name,
-                    # ics 0.8 doesn't use 'name' reliably, but 'summary' always
-                    # exists
-                    # "summary": event.summary,
-                    "start": parser_ics.get_date_formatted(event.begin, event.all_day),
-                    "end": parser_ics.get_date_formatted(event.end, event.all_day),
+                    "summary": summary,
+                    "start": parser_ics.get_date(event.begin, event.all_day),
+                    "end": parser_ics.get_date(event.end, event.all_day),
                     "location": event.location,
                     "description": event.description,
+                    "all_day": event.all_day,
                 }
                 # Note that we return a formatted date for start and end here,
                 # but a different format for get_current_event!
@@ -65,35 +67,25 @@ class parser_ics(ICalendarParser):
 
         if temp_event is None:
             return None
-
         return {
             "summary": temp_event.name,
-            "start": parser_ics.get_hass_date(temp_event.begin, temp_event.all_day),
-            "end": parser_ics.get_hass_date(temp_event.end, temp_event.all_day),
+            "start": parser_ics.get_date(temp_event.begin, temp_event.all_day),
+            "end": parser_ics.get_date(temp_event.end, temp_event.all_day),
             "location": temp_event.location,
             "description": temp_event.description,
+            "all_day": temp_event.all_day,
         }
 
     @staticmethod
-    def get_date_formatted(arw, is_all_day):
-        """Return the formatted date"""
-        # Note that all day events should have a time of 0, and the timezone
-        # must be local.  The server probably has the timezone erroneously set
-        # to UTC!
+    def get_date(arw, is_all_day):
+        if type(arw) == Arrow:
+            if is_all_day:
+                arw = arw.replace(
+                    hour=0, minute=0, second=0, microsecond=0, tzinfo="local"
+                )
+            return arw.datetime
+        else:
+            if arw.tzinfo is None or arw.tzinfo.utcoffset(arw) is None or is_all_day:
+                arw = arw.astimezone()
 
-        # ics 0.8 doesn't always return an Arrow date?  Not sure why
-        # if type(arw) != "Arrow":
-        # arw = arrowget(arw)
-        if is_all_day:
-            arw = arw.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo="local")
-            # arw = arw.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=dateutil_tz.tzlocal())
-            return arw.format("YYYY-MM-DD")
-
-        return arw.isoformat()
-
-    @staticmethod
-    def get_hass_date(arw, is_all_day):
-        """Return the wrapped and formatted date"""
-        if is_all_day:
-            return {"date": parser_ics.get_date_formatted(arw, is_all_day)}
-        return {"dateTime": parser_ics.get_date_formatted(arw, is_all_day)}
+        return arw

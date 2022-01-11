@@ -54,7 +54,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                             ): cv.boolean,
                             vol.Optional(CONF_USERNAME, default=""): cv.string,
                             vol.Optional(CONF_PASSWORD, default=""): cv.string,
-                            vol.Optional(CONF_PARSER, default="icalevents"): cv.string,
+                            vol.Optional(CONF_PARSER, default="rie"): cv.string,
                         }
                     )
                 ]
@@ -72,7 +72,7 @@ MIN_TIME_BETWEEN_DOWNLOADS = timedelta(minutes=10)
 
 
 def setup_platform(hass, config, add_entities, _=None):
-    """Set up the ICS Calendar platform """
+    """Set up the ICS Calendar platform"""
     _LOGGER.debug("Setting up ics calendars")
     calendar_devices = []
     for calendar in config.get(CONF_CALENDARS):
@@ -105,11 +105,6 @@ class ICSCalendarEventDevice(CalendarEventDevice):
         self._last_event_list = None
 
     @property
-    def device_state_attributes(self):
-        """Return the calendar entity's state attributes."""
-        return {"offset_reached": self._offset_reached}
-
-    @property
     def event(self):
         """Returns the current event for the calendar entity or None"""
         return self._event
@@ -140,8 +135,8 @@ class ICSCalendarEventDevice(CalendarEventDevice):
             self._event = event
             return
         event = calculate_offset(event, OFFSET)
-        self._offset_reached = is_offset_reached(event)
         self._event = event
+        self._attr_extra_state_attributes = {"offset_reached": is_offset_reached(event)}
 
 
 class ICSCalendarData:
@@ -193,14 +188,15 @@ class ICSCalendarData:
     async def async_get_events(self, hass, start_date, end_date):
         """Get all events in a specific time frame."""
         event_list = []
-        await hass.async_add_job(self._download_calendar)
+        await hass.async_add_executor_job(self._download_calendar)
         try:
-            event_list = self.parser.get_event_list(
+            events = self.parser.get_event_list(
                 content=self._calendar_data,
                 start=start_date,
                 end=end_date,
                 include_all_day=self.include_all_day,
             )
+            event_list = list(map(self.format_dates, events))
         except:
             _LOGGER.error(f"{self.name}: Failed to parse ICS!")
             event_list = []
@@ -215,8 +211,40 @@ class ICSCalendarData:
             self.event = self.parser.get_current_event(
                 content=self._calendar_data, include_all_day=self.include_all_day
             )
-            return True
         except:
             _LOGGER.error(f"{self.name}: Failed to parse ICS!")
+        if self.event is not None:
+            _LOGGER.debug(
+                f'{self.name}: got event: {self.event["summary"]}; start: {self.event["start"]}; end: {self.event["end"]}; all_day: {self.event["all_day"]}'
+            )
+            self.event["start"] = self.get_hass_date(
+                self.event["start"], self.event["all_day"]
+            )
+            self.event["end"] = self.get_hass_date(
+                self.event["end"], self.event["all_day"]
+            )
+            return True
+        else:
+            _LOGGER.debug(f"{self.name}: No event found!")
 
         return False
+
+    def format_dates(self, event):
+        event["start"] = self.get_date_formatted(event["start"], event["all_day"])
+        event["end"] = self.get_date_formatted(event["end"], event["all_day"])
+        return event
+
+    def get_date_formatted(self, dt, is_all_day):
+        """Return the formatted date"""
+        # Note that all day events should have a time of 0, and the timezone
+        # must be local.
+        if is_all_day:
+            return dt.strftime("%Y-%m-%d")
+
+        return dt.strftime("%Y-%m-%dT%H:%M:%S.%f%z")
+
+    def get_hass_date(self, dt, is_all_day):
+        """Return the wrapped and formatted date"""
+        if is_all_day:
+            return {"date": self.get_date_formatted(dt, is_all_day)}
+        return {"dateTime": self.get_date_formatted(dt, is_all_day)}
