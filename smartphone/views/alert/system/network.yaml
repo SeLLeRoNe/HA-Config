@@ -1,0 +1,299 @@
+- title: Sistema Network
+  path: sistema_network
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_sistema
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sistema
+                  label: Network     
+
+                - type: custom:button-card
+                  template: header_base 
+                  icon: mdi:reload      
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%      
+                    icon:
+                      - color: var(--paper-item-icon-active-color)                                   
+                  confirmation:
+                    text: "Vuoi rinnovare l'indirizzo IP?"                     
+                  tap_action:
+                    action: call-service
+                    service: fritz.reconnect
+                    service_data:
+                      device_id: a4ddd3af5cda07e7361589f0e33254ee              
+
+                - type: custom:button-card
+                  template: header_base 
+                  icon: mdi:restart      
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%                   
+                    icon:
+                      - color: var(--paper-item-icon-active-color)                                                   
+                  confirmation:
+                    text: 'Vuoi eseguire un riavvio del router?'                             
+                  tap_action:
+                    action: call-service
+                    service: fritz.reboot
+                    service_data:
+                      device_id: a4ddd3af5cda07e7361589f0e33254ee         
+                                         
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 3
+              cards:
+
+                - type: custom:button-card
+                  template: header_switch_with_name 
+                  entity: switch.fritz_box_7530_wi_fi_maxele_mesh
+                  name: Wifi
+
+                - type: custom:button-card
+                  template: header_switch_with_name 
+                  entity: switch.fritz_box_7530_wi_fi_maxele_mesh_5ghz
+                  name: 5 Ghz                  
+
+                - type: custom:button-card
+                  template: header_switch_with_name 
+                  entity: switch.fritz_box_7530_wi_fi_max_guest
+                  name: Guest          
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5                             
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Connessione Internet
+                template: label_heading              
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:              
+
+                  - type: custom:button-card
+                    entity: binary_sensor.fritz_box_7530_connection
+                    name: Internet                
+                    icon: mdi:web
+                    template: entity_card
+                    state:
+                      - value: 'on'
+                        styles:
+                          state:
+                            - color: var(--label-badge-green)
+                          icon:
+                            - color: var(--label-badge-green)                            
+                      - value: 'off'
+                        styles:
+                          state:
+                            - color: var(--label-badge-red)                    
+                          icon:
+                            - color: var(--label-badge-red)                    
+
+                  - type: custom:button-card
+                    entity: sensor.fritz_box_7530_connection_uptime
+                    icon: mdi:clock
+                    name: Connesso da                
+                    template: 
+                      - entity_card                    
+                      - time_since_state
+
+                  - type: custom:button-card
+                    entity: sensor.fritz_box_7530_external_ip
+                    name: IP Pubblico                
+                    template: entity_card      
+
+                  - type: custom:button-card
+                    entity: sensor.fritz_box_7530_device_uptime
+                    name: Router Uptime
+                    icon: mdi:clock               
+                    template: 
+                      - entity_card                    
+                      - time_since_state          
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 2
+                      margin_top: 2                                    
+
+                  - type: custom:button-card
+                    entity: sensor.fritz_box_7530_kb_s_received
+                    name: Current Download    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">kB/s</span>'              
+                    template: entity_card     
+
+                  - type: custom:button-card
+                    entity: sensor.fritz_box_7530_kb_s_sent
+                    name: Current Upload
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">kB/s</span>'              
+                    template: entity_card                               
+
+              - type: custom:button-card
+
+                name: Speed Test
+                entity: sensor.speedtest_download
+                show_name: true
+                show_icon: false
+                show_label: true
+                show_last_changed: true
+                styles:
+                  grid:
+                    - grid-template-areas: '"n l"'
+                    - grid-template-columns: min-content auto
+                    - grid-template-rows: min-content min-content    
+                  card:
+                    - box-shadow: none
+                    - padding: 5px 0 0 0
+                    - background: transparent                    
+                  name:
+                    - color: var(--secondary-text-color)
+                    - font-weight: bold
+                    - justify-self: start
+                    - font-size: 16px 
+                  label:
+                    - justify-self: end
+                    - align-self: center
+                    - font-size: 14px
+                    - color: var(--secondary-text-color)
+                    - text-align: right
+                tap_action:
+                  action: none                 
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:              
+
+                  - type: custom:button-card
+                    entity: sensor.speedtest_ping
+                    name: Ping    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">ms</span>'              
+                    template: entity_card                      
+
+                  - type: custom:button-card
+                    entity: sensor.speedtest_download
+                    name: Download    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">Mb/s</span>'              
+                    template: entity_card
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        command: popup
+                        title: SpeedTest Download 
+                        card:                     
+                          type: 'custom:mini-graph-card'
+                          name: Speedtest Download
+                          icon: 'mdi:speedometer'
+                          entities:
+                            - entity: sensor.speedtest_download
+                              name: Speedtest Download
+                          hour24: true
+                          aggregate_func: max
+                          points_per_hour: 1
+                          show:
+                            graph: true
+                            extrema: true
+                            average: true                           
+
+                  - type: custom:button-card
+                    entity: sensor.speedtest_upload
+                    name: Upload    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">Mb/s</span>'              
+                    template: entity_card      
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        command: popup
+                        title: SpeedTest Upload
+                        card:                     
+                          type: 'custom:mini-graph-card'
+                          name: Speedtest Upload
+                          icon: 'mdi:speedometer'
+                          entities:
+                            - entity: sensor.speedtest_upload
+                              name: Speedtest Upload
+                          hour24: true
+                          aggregate_func: max
+                          points_per_hour: 1
+                          show:
+                            graph: true
+                            extrema: true
+                            average: true                           
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_top: 5
+                      margin_bottom: 0
+
+                  - type: 'custom:button-card'
+                    show_icon: false
+                    name: Esegui Test Ora
+                    icon: mdi:speedometer
+                    styles:
+                      card:
+                        - padding-top: 15px
+                        - padding-bottom: 15px
+                      name:
+                        - font-size: 15px
+                        - color: var(--accent-color)
+                    tap_action:
+                      confirmation:
+                        text: Eseguire uno Speed Test adesso?                  
+                      action: call-service
+                      service: speedtestdotnet.speedtest   
+
+           
+
+    
+                              
+
+                                                                                       
+
+                   

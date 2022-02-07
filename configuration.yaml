@@ -75,6 +75,13 @@ lovelace:
       show_in_sidebar: true
       require_admin: false
       filename: dashboard_mobile.yaml
+    lovelace-smartphone:
+      mode: yaml
+      title: Smartphone
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      require_admin: false
+      filename: dashboard_smartphone.yaml
     lovelace-tablet:
       mode: yaml
       title: Tablet

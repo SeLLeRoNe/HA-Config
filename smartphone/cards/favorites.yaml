@@ -1,0 +1,74 @@
+- type: custom:button-card
+  name: Routine
+  template: label_heading  
+
+- type: grid
+  square: false
+  columns: 2
+  cards:
+    - type: custom:button-card
+      name: Buonanotte
+      icon: 'mdi:weather-night'
+      template: button_action     
+      tap_action:
+        haptic: heavy  
+        action: call-service
+        service: script.routine_good_night      
+
+    - type: custom:button-card
+      name: Esco di casa
+      icon: 'mdi:home-lock'
+      template: button_action          
+      tap_action:
+        haptic: heavy
+        action: call-service
+        service: script.routine_leaving_home         
+
+    - type: custom:button-card
+      name: Netflix
+      icon: 'mdi:netflix'
+      template: button_action          
+      tap_action:
+        haptic: heavy
+        action: call-service
+        service: script.routine_netflix
+
+    - type: 'custom:button-card' 
+      name: Cartoni
+      template: button_action
+      icon: 'mdi:baby-face-outline'
+      tap_action:
+        haptic: heavy
+        action: call-service
+        service: script.harmony_channel_sky
+        service_data:
+          canale: 5041
+
+    - type: 'custom:button-card'   
+      name: Notebook
+      template: button_action
+      icon: 'mdi:lan-connect'
+      entity: switch.system_wol_notebook        
+
+- type: custom:button-card
+  name: Automazioni
+  template: label_heading     
+
+- type: 'custom:button-card'   
+  name: Home Mode
+  template: automation_card
+  entity: switch.synology_nas_home_mode      
+  lock:
+    enabled: true  
+                              
+- type: 'custom:button-card'   
+  name: Spegni luce studio
+  template: automation_card
+  icon: phu:bulb-group
+  entity: automation.lights_azione_spegni_luci_studio
+          
+- type: 'custom:button-card'   
+  name: Lampeggia scrivania
+  template: automation_card
+  icon: 'mdi:alert-circle'
+  entity: automation.routine_azione_flash_scrivania            

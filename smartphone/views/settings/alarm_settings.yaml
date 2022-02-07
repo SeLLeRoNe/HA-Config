@@ -1,0 +1,113 @@
+- title: Alarm Settings
+  path: alarm_settings
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alarm
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sicurezza
+                  label: Impostazioni   
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:                  
+
+              - type: custom:button-card
+                name: Gestione Notifiche Attivazione
+                template: label_heading  
+
+              - type: entities
+                entities:
+                  - entity: input_boolean.alarm_gestione_notifiche_allarme
+                    name: Notifiche Allarme
+                  - entity: input_boolean.alarm_gestione_notifiche_videosorveglianza
+                    name: Notifiche Videosorveglianza
+                state_color: true
+                show_header_toggle: false          
+
+              - type: custom:button-card
+                name: Automatismi
+                template: label_heading      
+
+              - type: entities
+                entities:
+                  - entity: input_boolean.alarm_auto_attivazione
+                    name: Auto Attivazione Allarme 
+                  - entity: input_boolean.alarm_auto_disattivazione
+                    name: Auto Disttivazione Allarme 
+                  - entity: input_boolean.alarm_gestione_videosorveglianza
+                    name: Includi Videosorveglianza
+                state_color: true
+                show_header_toggle: false        
+
+              - type: custom:button-card
+                name: Innesco allarme
+                template: label_heading                 
+
+              - type: entities
+                entities:
+                  - entity: input_boolean.alarm_lampeggio_luci
+                    name: Attiva Lampeggio Luci        
+
+                  - entity: input_boolean.alarm_sirena_alexa
+                    name: Attiva Sirena Alexa               
+
+                  - type: custom:state-switch
+                    entity: input_boolean.alarm_sirena_alexa
+                    states:
+                      "on":
+                        type: entities
+                        show_header_toggle: false                        
+                        entities:
+                    
+                          # - type: section
+                          #   label: Volume sirena
+
+                          - type: custom:button-card
+                            name: Volume sirena
+                            template: label_heading
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 0px
+                                - background: transparent                            
+                              name:
+                                - color: var(--primary-text-color)
+                                - font-weight: normal
+                                - justify-self: start
+                                - font-size: 14px   
+                            tap_action:
+                              action: none                            
+
+
+
+                          - type: custom:slider-entity-row
+                            entity: input_number.alarm_sirena_alexa_volume
+                            full_row: true   
+                            hide_state: false                    
+                                                   
+

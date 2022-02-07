@@ -1,0 +1,56 @@
+- title: Alert Home
+  path: alert_home
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Alert Home
+                  label: Homepage     
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                entity: binary_sensor.home_alert_check_lavastoviglie
+                template: alert_card
+                name: Controlli Lavastoviglie
+                icon: mdi:dishwasher
+                label: >
+                  [[[
+                    if (entity.state == 'on')
+                    {
+                      return "Ci sono interventi da fare";
+                    } else {
+                      return "Nessun intervento necessario";
+                    }
+                  ]]] 
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/home_check_lavastoviglie         
+

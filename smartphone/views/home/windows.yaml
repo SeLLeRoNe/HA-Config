@@ -1,0 +1,59 @@
+- title: Finestre
+  path: finestre
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Finestre     
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Finestre
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.finestre_all
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: window_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: last_changed
+                  reverse: true
+           
+
+           

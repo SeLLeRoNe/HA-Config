@@ -1,0 +1,63 @@
+- title: Bagno Sotto Homepage
+  path: bagno_sotto_homepage
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Bagno Sotto
+                  label: Homepage
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            # SENSORI
+            - type: grid
+              square: false
+              columns: 4
+              cards:  
+
+                - type: custom:button-card
+                  entity: binary_sensor.finestra_bagno_sotto_contact
+                  template: header_binary_sensor    
+
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5                                                   
+                     
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+              - type: custom:button-card
+                entity: light.bagno_sotto
+                template: light_card
+
+                                   

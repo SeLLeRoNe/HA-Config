@@ -1,0 +1,296 @@
+- title: Home
+  path: home
+  icon: mdi:home
+  cards:
+    - type: vertical-stack
+      cards:
+
+        # HEADER
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }  
+          cards:
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: horizontal-stack
+              cards:
+
+                - type: 'custom:button-card'
+                  entity: weather.openweathermap
+                  show_name: false
+                  show_icon: true
+                  show_state: true
+                  show_label: true  
+                  show_entity_picture: true
+                  entity_picture: >
+                    [[[
+                      return '/local/dark_sky/weather-' + entity.state + '.png';
+                    ]]]
+                  label: >
+                    [[[
+                      var temperatura = states['sensor.temperatura_esterna_temperature'].state + ' <span style="font-size: 14px; font-weight: 200">°C</span>';
+                      var umidita = states['sensor.temperatura_esterna_humidity'].state + ' <span style="font-size: 14px; font-weight: 200">%</span>';
+                      return temperatura + '&nbsp;&nbsp;' + umidita;
+                    ]]]
+                  styles:
+                    grid:
+                      - grid-template-areas: '"i l""i s"'
+                      - grid-template-columns: 50px auto
+                      - grid-template-rows: min-content
+                    card:
+                      - padding-top: 5px
+                      - padding-bottom: 5px
+                      - width: 200px
+                    icon:
+                      - width: 40px
+                      - height: 40px
+                    img_cell:
+                      - width: 50px
+                      - height: 50px
+                      - border-radius: 100%
+                    state:
+                      - justify-self: start
+                      - align-self: left
+                      - font-size: 16px
+                      - color: var(--secondary-text-color)
+                    label:
+                      - justify-self: start
+                      - font-size: 18px
+                      - font-weight: bold
+                      - align-self: center          
+
+                - type: 'custom:button-card'
+                  entity: person.max
+                  template: no_background
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  show_state: true
+                  styles:
+                    state:
+                      - font-size: 14px
+                      - margin-top: 5px
+                    entity_picture:
+                      - border-radius: 50%
+                      - width: 40px
+
+                - type: 'custom:button-card'
+                  entity: person.ele
+                  template: no_background
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  show_state: true
+                  styles:
+                    state:
+                      - font-size: 14px
+                      - margin-top: 5px
+                    entity_picture:
+                      - border-radius: 50%
+                      - width: 40px    
+
+            - type: grid
+              square: false
+              columns: 5
+              cards:
+
+                - type: 'custom:button-card'
+                  entity: alarm_control_panel.home
+                  template: alert_sensor_home                  
+                  icon: mdi:alert              
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alarm                                
+                  state:
+                    - value: 'disarmed'
+                      icon: mdi:shield-check
+                      styles:
+                        icon:
+                          - color: var(--label-badge-green)   
+                    - value: 'armed_home'
+                      icon: mdi:shield-home     
+                      styles:
+                        icon:
+                          - color: var(--accent-color)  
+
+                    - value: 'armed_away'
+                      icon: mdi:shield-lock         
+                      styles:
+                        icon:
+                          - color: var(--label-badge-red)                       
+
+                    - value: 'armed_night'
+                      icon: mdi:shield-moon 
+                      styles:
+                        icon:
+                          - color: var(--accent-color)                        
+
+                    - value: 'arming'
+                      icon: mdi:shield-half-full      
+                      styles:
+                        icon:
+                          - color: var(--label-badge-yellow)          
+                          - animation: blink 2s ease infinite         
+
+                    - value: 'pending'
+                      icon: mdi:shield-alert-outline     
+                      styles:
+                        icon:
+                          - color: var(--label-badge-yellow)          
+                          - animation: blink 2s ease infinite                                
+
+                    - value: 'triggered'
+                      icon: mdi:shield-alert              
+                      styles:
+                        icon:
+                          - color: var(--label-badge-red)   
+                          - animation: blink 2s ease infinite          
+
+                - type: 'custom:button-card'
+                  template: empty_card          
+                  styles:
+                    card:
+                      - height: 50px                                                                                                                                                                
+
+                - type: 'custom:button-card'
+                  #entity: sensore da creare
+                  template: alert_sensor_home
+                  icon: mdi:update
+                                                                                                                        
+                - type: 'custom:button-card'
+                  entity: binary_sensor.system_alert
+                  template: alert_sensor_home
+                  icon: phu:nas
+                  state:
+                    - value: 'on'
+                      styles:
+                        icon:
+                          - color: var(--error-color)                 
+                          - animation: blink 2s ease infinite               
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_sistema                          
+
+                - type: 'custom:button-card'
+                  entity: binary_sensor.home_alert
+                  template: alert_sensor_home
+                  icon: mdi:home-alert             
+                  state:
+                    - value: 'on'
+                      styles:
+                        icon:
+                          - color: var(--error-color)                       
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_home                               
+
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 5
+              cards:
+                - type: custom:button-card
+                  entity: sensor.lights_count_on
+                  template: header_sensor_count                
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/luci                                
+
+                - type: custom:button-card
+                  entity: sensor.finestre_aperte
+                  template: header_sensor_count              
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/finestre
+
+                - type: custom:button-card
+                  entity: sensor.climate_netatmo_valvole_aperte
+                  template: header_sensor_count    
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/clima                  
+
+                - type: custom:button-card
+                  entity: sensor.active_speakers
+                  icon: 'phu:echo-dot-gen-4'
+                  template: header_sensor_count
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/media                  
+
+                - type: custom:button-card
+                  entity: remote.harmony_hub
+                  icon: 'mdi:television'
+                  template: header_binary_sensor
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/tv                  
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5      
+
+        # CONTENT
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+              - type: grid
+                square: false
+                columns: 3
+                cards:
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_home_menu
+                    name: Stanze
+                    template: state_switch_menu     
+
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_home_menu
+                    name: Dispositivi
+                    template: state_switch_menu     
+
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_home_menu
+                    name: Preferiti
+                    template: state_switch_menu                  
+
+              - type: custom:state-switch
+                entity: input_select.ui_smartphone_home_menu
+                states:
+                  Stanze:
+                    type: grid
+                    square: false
+                    columns: 2
+                    cards:    
+                      !include ../cards/rooms.yaml
+
+                  Dispositivi:
+                    type: grid
+                    square: false
+                    columns: 2
+                    cards:    
+                      !include ../cards/devices.yaml
+                  
+                  Preferiti:
+                    type: vertical-stack
+                    cards:    
+                      !include ../cards/favorites.yaml

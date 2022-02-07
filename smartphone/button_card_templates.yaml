@@ -1,0 +1,1279 @@
+# SUPPORTO
+
+no_background:
+  styles:
+    card:
+      - background-color: 'rgba(0, 0, 0, 0.0)'
+      - box-shadow: none
+      - border-radius: 0px
+
+empty_card:
+  template: no_background
+  color_type: blank-card      
+
+row_space:
+  template: no_background
+  styles:
+    card:
+      - height: '[[[ return variables.height + "px" ]]]'
+      - padding: 0px
+  tap_action:
+    action: none        
+
+row_border:
+  template: no_background
+  styles:
+    card:
+      - height: 0px
+      - padding: 0px
+      - border-bottom: 1px solid
+      - border-bottom-color: var(--border-color)                   
+      - margin-bottom: '[[[ return variables.margin_bottom + "px" ]]]'
+      - margin-top: '[[[ return variables.margin_top + "px" ]]]'
+  tap_action:
+    action: none      
+
+time_since_state:
+  state_display: |
+    [[[
+      var date = new Date((entity.state || "").replace(/-/g,"/").replace(/[TZ]/g," "));
+      // differenza in secondi
+      var diff = (((new Date()).getTime() - date.getTime()) / 1000);
+      // giorni trascorsi
+      var day_diff = Math.floor(diff / 86400);
+          
+      if ( isNaN(day_diff) || day_diff < 0 )
+        return 'Errore';
+          
+      return day_diff == 0 && (
+          diff < 60 && "Adesso" ||
+          diff < 120 && "1 minuto" ||
+          diff < 3600 && Math.floor( diff / 60 ) + " minuti" ||
+          diff < 7200 && "1 ora" ||
+          diff < 86400 && Math.floor( diff / 3600 ) + " ore") ||
+          day_diff == 1 && "Ieri" ||
+          day_diff > 1 && day_diff + " giorni";
+    ]]] 
+
+
+# STYLES
+
+styles_base:
+  styles:
+    card:
+      - border-radius: 5px
+      - margin-bottom: 0px
+      - padding-top: 14px
+      - padding-bottom: 14px
+    icon:
+      - width: 30px
+      - height: 30px
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 15px
+      - align-self: center
+    state:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px
+      - color: var(--secondary-text-color)
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 13px
+      - color: var(--secondary-text-color)
+      - text-align: right
+      - margin-right: 20px    
+
+styles_icon_name_label:
+  template: styles_base
+  show_name: true
+  show_icon: true
+  show_state: false
+  show_label: true  
+  styles:
+    grid:
+      - grid-template-areas: '"i n l"'
+      - grid-template-columns: 65px min-content auto
+      - grid-template-rows: min-content min-content min-content  
+
+styles_icon_name_state_label:
+  template: styles_base
+  show_name: true
+  show_icon: true
+  show_state: true
+  show_label: true  
+  styles:
+    grid:
+      - grid-template-areas: ' "i n l" "i s l" '
+      - grid-template-columns: 70px min-content auto
+      - grid-template-rows: min-content
+
+# HEADER
+
+header_base:
+  show_name: false
+  show_state: false
+  show_icon: true
+  styles:                  
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color) 
+
+header_base_with_name:
+  show_name: true
+  show_state: false
+  show_icon: true
+  styles:                  
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)   
+    name:
+      - font-size: 15px
+
+header_base_with_state:
+  show_name: false
+  show_state: true
+  show_icon: true
+  styles:                  
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)   
+    state:
+      - font-size: 15px   
+      - font-weight: bold   
+   
+
+header_back_button:
+  show_name: false
+  show_state: false
+  show_icon: true
+  icon: mdi:arrow-left-bold
+  styles:                  
+    card:
+      - width: 70px
+      - height: 100%
+    icon:
+      - width: 55%
+      - color: var(--paper-item-icon-active-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)    
+
+header_off_button:
+  show_name: false
+  show_state: false
+  show_icon: true
+  icon: mdi:power
+  styles:                  
+    card:
+      - width: 70px
+      - height: 100%
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)   
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)
+  tap_action:
+    action: call-service
+    haptic: medium
+    service: homeassistant.turn_off
+    service_data:
+      entity_id: "[[[ return entity.entity_id ]]]"
+
+header_label_page:
+  show_label: true
+  styles:
+    card:
+      - padding: 4px
+    name:
+      - font-size: 22px
+      - font-weight: bold
+      - justify-self: start                      
+    label:
+      - font-size: 16px
+      - font-weight: 300
+      - justify-self: start
+
+header_sensor_text:
+  show_name: false
+  show_state: true
+  show_icon: false
+  styles:                  
+    state:
+      - color: var(--secondary-text-color)   
+      - font-size: 24px 
+    card:
+      - height: 100%                 
+
+header_binary_sensor:
+  template: header_base
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)         
+
+header_sensor_count:
+  template: header_base
+  styles:
+    grid:
+      - position: relative
+    custom_fields:
+      count:
+        - background-color: '#1c6997'
+        - border-radius: 50%
+        - position: absolute
+        - left: 65%
+        - top: -7%
+        - height: 18px
+        - width: 18px
+        - font-size: 14px         
+        - font-weight: bold        
+        - display: none    
+  custom_fields:
+    count: >
+      [[[ return entity.state ]]]                        
+  state:
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+        custom_fields:
+          count:         
+            - display: block   
+
+header_switch:
+  template: header_base
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      styles:
+        icon:
+          - color: var(--label-badge-red)
+
+header_switch_with_name:
+  template: header_base_with_name
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+        name:
+          - font-weight: bold
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      styles:
+        icon:
+          - color: var(--label-badge-red)          
+  
+header_switch_lock:
+  template: header_switch
+  lock:
+    enabled: true
+  confirmation:
+    text: |
+      [[[ 
+        if (entity.state === 'on')
+        {
+          return variables.message_off;
+        } else {
+          return variables.message_on;
+        }
+      ]]]               
+  styles:
+    lock:
+      - position: absolute
+      - top: -20%
+      - left: 55%                    
+      - width: 18px    
+
+# LABELS & SWITCHES
+
+label_heading:
+  show_name: true
+  show_icon: false
+  show_state: false
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 5px 0 0 0
+      - background: transparent
+    name:
+      - color: var(--secondary-text-color)
+      - font-weight: bold
+      - justify-self: start
+      - font-size: 16px   
+  tap_action:
+    action: none
+
+state_switch_menu:
+  template: no_background
+  show_icon: false
+  show_state: false
+  show_name: true
+  styles:
+    name:
+      - color: var(--secondary-text-color)
+      - font-weight: bold
+      - justify-self: center
+      - font-size: 16px
+      - padding-left: 1px              
+  tap_action:
+    action: call-service
+    service: input_select.select_option
+    service_data:
+      entity_id: '[[[ return entity.entity_id ]]]'
+      option: '[[[ return this._config.name ]]]'       
+  state:
+    - value: '[[[ return this._config.name ]]]'
+      styles:
+        name:
+          - color: var(--paper-item-icon-active-color) 
+
+# HOME PAGE
+
+room_homepage:
+  styles:
+    card:
+      - height: 170px
+    name:
+      - top: 60%
+      - position: absolute
+      - font-size: 18px
+      - font-weight: bold
+      - color: var(--primary-text-color)
+    icon:
+      - top: -5%
+      - width: 40px
+      - color: var(--paper-item-icon-active-color)
+    custom_fields:
+      sensors_icon:
+        - top: 5%
+        - left: 5%
+        - position: absolute
+        - color: var(--paper-item-icon-active-color)
+      temp:
+        - top: 80%
+        - left: 10%
+        - position: absolute
+        - color: var(--secondary-text-color)
+      humidity:
+        - top: 80%
+        - left: 55%
+        - position: absolute
+        - color: var(--secondary-text-color)
+  custom_fields:
+    sensors_icon: |
+      [[[
+        var html = '';
+        var color = '';
+        var icon = '';
+
+        if (typeof(variables.lights) !== 'undefined')
+        {
+          icon = "phu:bulb-group";
+          if (states[variables.lights].state == 'on')          
+          {
+            color = 'var(--paper-item-icon-active-color)';
+          } else {
+            color = 'var(--disabled-text-color)';
+          }
+          html += '<ha-icon style="color: ' + color + '; height: 20px; width: 20px; margin-right: 10px;" icon="' + icon + '"></ha-icon>';
+        }  
+
+        if (typeof(variables.window) !== 'undefined')
+        {              
+          icon = "mdi:window-closed-variant";
+          if (states[variables.window].state == 'on')          
+          {
+            color = 'var(--paper-item-icon-active-color)';
+          } else {
+            color = 'var(--disabled-text-color)';
+          }
+          html += '<ha-icon style="color: '+color+'; height: 20px; width: 20px; margin-right: 10px;" icon="' + icon + '"></ha-icon>';
+        }  
+      
+        if (typeof(variables.climate_state) !== 'undefined')
+        {              
+          icon = "mdi:fire";
+          if (states[variables.climate_state].state == 'on')          
+          {
+            color = 'var(--paper-item-icon-active-color)';
+          } else {
+            color = 'var(--disabled-text-color)';
+          }
+          html += '<ha-icon style="color: '+color+'; height: 20px; width: 20px; margin-right: 10px;" icon="' + icon + '"></ha-icon>';
+        }            
+
+        if (typeof(variables.motion) !== 'undefined')
+        {              
+          icon = "mdi:motion-sensor";
+          if (states[variables.motion].state == 'on')          
+          {
+            color = 'var(--paper-item-icon-active-color)';
+          } else {
+            color = 'var(--disabled-text-color)';
+          }
+          html += '<ha-icon style="color: '+color+'; height: 20px; width: 20px; margin-right: 10px;" icon="' + icon + '"></ha-icon>';
+        }                        
+
+        if (typeof(variables.media_player) !== 'undefined')
+        {              
+          icon = "phu:echo-dot-gen-4";
+          if (states[variables.media_player].state == 'playing')          
+          {
+            color = 'var(--paper-item-icon-active-color)';
+          } else {
+            color = 'var(--disabled-text-color)';
+          }
+          html += '<ha-icon style="color: '+color+'; height: 20px; width: 20px; margin-right: 10px;" icon="' + icon + '"></ha-icon>';
+        }        
+
+        return html;          
+      ]]]
+    temp: |
+      [[[
+        if (typeof(variables.temperature) !== 'undefined')
+        {          
+          return `<ha-icon
+                    icon="mdi:thermometer"
+                    style="width: 16px; height: 16px;">
+                  </ha-icon>
+                  <span 
+                    style="font-size: 16px">
+                    ${states[variables.temperature].state}
+                  </span>`
+        }
+      ]]]
+    humidity: |
+      [[[
+        if (typeof(variables.humidity) !== 'undefined')
+        {         
+          return `<ha-icon
+                    icon="mdi:water-percent"
+                    style="width: 16px; height: 16px;">
+                  </ha-icon>
+                  <span 
+                    style="font-size: 16px">
+                    ${states[variables.humidity].state}
+                  </span>`
+        }
+      ]]]               
+
+device_homepage:
+  show_name: true
+  show_label: true
+  show_icon: true             
+  styles:                  
+    grid:
+      - grid-template-areas: '" i " " n " " l "'
+      - grid-template-rows: 60px 40px min-content
+    img_cell:
+      - width: 60px
+      - height: 60px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)              
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)                                         
+    name:
+      - font-size: 18px
+      - font-weight: bold
+    label:
+      - font-size: 16px
+      - color: var(--secondary-text-color)      
+    card:
+      - height: 100%  
+
+meteo_homepage:
+  template: styles_icon_name_state
+
+# ROOMS
+
+### Da vedere come applicare template ###
+
+room_lights:
+  name: Luci
+  icon: phu:bulb-group
+  label: Spente
+  show_label: true
+  size: 50%
+  tap_action: 
+    action: more-info 
+  styles:
+    grid:
+      - grid-template-areas: '"i n l"'
+      - grid-template-columns: 65px min-content auto
+      - grid-template-rows: min-content min-content min-content
+    card:
+      - border-radius: 5px
+      - margin-top: 10px
+      - padding: 15px 0
+    icon:
+      - color: var(--disabled-text-color)
+      - height: 25px
+      - width: 25px
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - background: var(--primary-background-color) 
+      - border-radius: 100%
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 16px
+      - align-self: center
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 13px
+      - color: var(--disabled-text-color)
+      - text-align: right
+      - margin-right: 20px
+      - text-transform: capitalize            
+  state:
+    - value: 0
+      operator: '>'
+      label: >
+        [[[
+          if (entity.state == 1)
+          {
+            return '1 accesa';
+          } else {
+            return entity.state + ' accese';
+          }
+        ]]]
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+        name:
+          - font-weight: bold
+        label:
+          - color: var(--primary-text-color)  
+
+room_climate:
+  #layout: icon_name_state2nd
+  name: Riscaldamento
+  icon: mdi:thermometer
+  show_label: true
+  label: >
+    [[[
+      var current = entity.attributes.current_temp;
+      var target = entity.attributes.target_temp;
+      var html = '';
+      var color = '';
+
+      html = '<span style="font-size: 18px;font-weight: bold;color: var(--primary-text-color)">'+current+'</span> °C';
+      html += '<br>';
+      if (entity.state == 'on')
+      {
+        color = 'var(--accent-color)';
+      } else {
+        color = 'var(--secondary-text-color)';
+      }
+      html += '<span style="font-size: 16px;color: '+color+'">'+target+'</span> °C';
+
+      return html;
+
+    ]]]  
+
+  size: 50%
+  tap_action: 
+    action: more-info 
+  styles:
+    grid:
+      - grid-template-areas: '"i n l"'
+      - grid-template-columns: 65px min-content auto
+      - grid-template-rows: min-content min-content min-content
+    card:
+      - border-radius: 5px
+      - margin-top: 10px
+      - padding: 15px 0
+    icon:
+      - color: var(--disabled-text-color)
+      - height: 25px
+      - width: 25px
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - background: var(--primary-background-color) 
+      - border-radius: 100%
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 16px
+      - align-self: center
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 13px
+      - color: var(--secondary-text-color)
+      - text-align: right
+      - margin-right: 20px
+      - text-transform: capitalize            
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+        name:
+          - font-weight: bold            
+
+room_media:
+  layout: icon_name_state2nd
+  name: Media Player
+  show_label: true
+  label: >
+    [[[
+      if (entity.state == 'playing')
+      {
+        return 'Riproduzione';
+      } else if (entity.state == 'paused')
+      {
+        return 'In Pausa';
+      } else if (entity.state == 'standby')
+      {
+        return 'Standby';
+      } else if (entity.state == 'unavailable')
+      {
+        return 'Non Disponibile';
+      } else {
+        return 'Sconosciuto';
+      }
+    ]]]
+  size: 50%
+  tap_action: 
+    action: more-info 
+  styles:
+    grid:
+      - grid-template-areas: '"i n l"'
+      - grid-template-columns: 65px min-content auto
+      - grid-template-rows: min-content min-content min-content
+    card:
+      - border-radius: 5px
+      - margin-top: 10px
+      - padding: 15px 0
+    icon:
+      - color: var(--disabled-text-color)
+      - height: 25px
+      - width: 25px
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - background: var(--primary-background-color) 
+      - border-radius: 100%
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 16px
+      - align-self: center
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 13px
+      - color: var(--secondary-text-color)
+      - text-align: right
+      - margin-right: 20px
+      - text-transform: capitalize            
+  state:
+    - value: 'playing'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+        name:
+          - font-weight: bold
+        label:
+          - color: var(--primary-text-color)            
+
+climate_state:
+  template: no_background
+  show_name: true
+  show_icon: false
+  show_label: true
+  show_last_changed: true
+  styles:
+    grid:
+      - grid-template-areas: '"n l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content    
+    name:
+      - font-size: 18px      
+      - color: var(--primary-text-color) 
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 14px
+      - color: var(--secondary-text-color)
+      - text-align: right
+  state:
+    - value: 'on'
+      name: 'Riscaldamento Acceso'                                        
+    - value: 'off'
+      name: 'Riscaldamento Spento' 
+  tap_action:
+    action: none           
+
+climate_current_temperature:
+  template: no_background
+  show_name: false
+  show_state: true
+  show_icon: true
+  show_units: true
+  units: '<span style="font-size: 16px; font-weight: 300">°C</span>'               
+  styles:                  
+    grid:
+      - grid-template-areas: '" i " " s "'
+      - grid-template-rows: 70px auto
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%                   
+      - background: var(--primary-background-color)              
+    icon:
+      - width: 55%
+      - color: var(--paper-item-icon-active-color)                                         
+    state:
+      - align-self: start
+      - font-size: 26px
+      - font-weight: bold
+    card:
+      - height: 100%  
+
+# DEVICES
+
+light_card:
+  template: styles_icon_name_state_label
+  show_name: true
+  show_icon: true
+  show_state: true
+  show_label: true
+  color: 'auto'
+  label: >
+    [[[
+        if(entity.state == 'on') 
+        {
+          if ('brightness' in entity.attributes) 
+          { 
+            if (entity.attributes && (entity.attributes.brightness <= 255)) 
+            { 
+              var bri = Math.round(entity.attributes.brightness / 2.55); 
+              return (bri ? bri : '0') + ' <span style="font-size: 13px; font-weight: 200">%</span>'; 
+            } else {
+              return '&nbsp;';
+            } 
+          } else {
+            return '&nbsp;';
+          }
+        } else {
+          return '&nbsp;';
+        }      
+    ]]]
+  state:
+    - value: 'on'
+      styles:
+        name:
+          - font-weight: bold 
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      styles:
+        icon:
+          - color: var(--label-badge-red)
+          - animation: blink 2s ease infinite
+        state:
+          - color: var(--label-badge-red)
+          - font-weight: bold 
+  styles:
+    label:
+      - font-size: 16px 
+  
+  tap_action:
+    action: toggle
+    haptic: medium          
+  double_tap_action:
+    action: more-info
+  hold_action:
+    action: more-info
+
+scene_card:
+  template: button_action
+  icon: mdi:palette 
+  tap_action: 
+    haptic: heavy
+    action: call-service
+    service: scene.turn_on
+    service_data:
+      entity_id: "[[[ return entity.entity_id ]]]"        
+
+climate_card:
+  template: styles_icon_name_state_label
+  icon: mdi:fire
+  state_display: >
+    [[[
+      if (entity.state == 'on')
+      {
+        return 'Acceso';
+      } else {
+        return 'Spento';
+      }
+    ]]]
+  label: >
+    [[[
+      var current = entity.attributes.current_temp;
+      var target = entity.attributes.target_temp;
+      var html = '';
+      var color = '';
+
+      html = '<span style="font-size: 16px;font-weight: bold;color: var(--primary-text-color)">'+current+'</span> °C';
+      html += '<br>';
+      if (entity.state == 'on')
+      {
+        color = 'var(--accent-color)';
+      } else {
+        color = 'var(--secondary-text-color)';
+      }
+      html += '<span style="font-size: 15px;color: '+color+'">'+target+'</span> °C';
+
+      return html;
+
+    ]]]
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+        name:
+          - font-weight: bold 
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      icon: mdi:help
+      styles:
+        icon:
+          - color: var(--label-badge-red)       
+  tap_action:
+    action: navigate
+    navigation_path: >
+      [[[
+        return '/lovelace-smartphone/' + this._config.name.toLowerCase() + '_climate';
+      ]]] 
+
+appliance_card:
+  template: styles_icon_name_state_label
+  state_display: >
+    [[[
+      if (entity.state == 'on')
+      {
+        
+        // return 'In funzione da ' + states[variables.time].state;
+        return 'In funzione da <strong>' + states[variables.time].state + '</strong>';
+      } else {
+        return 'Spenta';
+      }
+    ]]]
+  label: >
+    [[[
+      var html = '';
+      html = '<span style="font-size: 18px;">'+ states[variables.power].state + '</span> w';
+    
+      return html;
+
+    ]]]
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+          - animation: blink 2s ease infinite
+        name:
+          - font-weight: bold 
+        state:
+          - color: var(--primary-text-color)        
+        label:
+          - color: var(--primary-text-color) 
+          - font-weight: bold
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color)       
+
+    - value: 'unavailable'
+      icon: mdi:help
+      styles:
+        icon:
+          - color: var(--label-badge-red)
+   
+window_card:
+  template: styles_icon_name_state_label
+  show_last_changed: true
+  state:
+    - value: 'on'
+      icon: phu:double-window-open 
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+        name:
+          - font-weight: bold 
+    - value: 'off'
+      icon: phu:double-window-closed
+      styles:
+        icon:
+          - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      icon: mdi:help
+      styles:
+        icon:
+          - color: var(--label-badge-red)       
+  tap_action:
+    action: more-info        
+
+motion_card:
+  template: styles_icon_name_state_label
+  show_last_changed: true
+  state:
+    - value: 'on'
+      #icon: phu:double-window-open 
+      styles:
+        # icon:
+        #   - color: var(--paper-item-icon-active-color)  
+        name:
+          - font-weight: bold 
+    # - value: 'off'
+    #   #icon: phu:double-window-closed
+    #   styles:
+    #     icon:
+    #       - color: var(--disabled-text-color)
+    - value: 'unavailable'
+      icon: mdi:alert
+      styles:
+        icon:
+          - color: var(--label-badge-red)       
+  tap_action:
+    action: more-info        
+
+# ALERT
+
+alert_sensor_home:
+  template: no_background
+  show_name: false
+  show_state: false
+  show_icon: true
+  styles:            
+    card:
+      - height: 100%        
+    icon:
+      - width: 55%
+      - color: var(--disabled-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px 
+
+alert_card:
+  template: styles_base
+  show_name: true
+  show_icon: true
+  show_state: false
+  show_label: true
+  label: test
+  styles:
+    grid:
+      - grid-template-areas: ' "i n alert" "i l alert" '
+      - grid-template-columns: 65px auto 65px
+      - grid-template-rows: min-content  
+    icon:
+      - color: var(--secondary-text-color)   
+    img_cell:
+      - width: 50px
+      - height: 50px
+      - border-radius: 100%
+      #- background: var(--primary-background-color) 
+    name:
+      - font-size: 16px      
+      - font-weight: bold
+    label:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px
+      - color: var(--secondary-text-color)      
+  custom_fields:
+    alert: |
+      [[[
+
+        if (entity.state == 'on')
+        {         
+          return `<ha-icon
+            icon="mdi:alert-circle"
+            style="width: 30px; height: 30px; color: var(--label-badge-red);">`
+
+        } else {
+          return `<ha-icon
+            icon="mdi:check-circle"
+            style="width: 30px; height: 30px; color: var(--label-badge-green);">`
+        }
+
+      ]]] 
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--label-badge-red) 
+     
+# ENTITIES
+
+entity_card:
+  template: no_background
+  show_name: true
+  show_icon: true
+  show_state: true
+  show_label: false  
+  styles:
+    grid:
+      - grid-template-areas: '"i n s"'
+      - grid-template-columns: 50px min-content
+      - grid-template-rows: min-content
+    card:
+      - padding-top: 0px
+      - padding-bottom: 0px
+    icon:
+      - width: 24px
+      - height: 24px
+      - color: var(--disabled-text-color) 
+    img_cell:
+      - width: 45px
+      - height: 45px
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 14px
+      - align-self: center                        
+    state:
+      - justify-self: end
+      - font-size: 14px
+      - font-weight: bold  
+      - text-align: right
+      - margin-right: 20px   
+        
+entity_card_label:
+  template: no_background
+  show_name: true
+  show_icon: true
+  show_state: true
+  show_label: true  
+  styles:
+    grid:
+      - grid-template-areas: ' "i n s" "i l s" '
+      - grid-template-columns: 50px min-content
+      - grid-template-rows: min-content
+    card:
+      - padding-top: 5px
+      - padding-bottom: 5px
+    icon:
+      - width: 24px
+      - height: 24px
+      - color: var(--disabled-text-color) 
+    img_cell:
+      - width: 45px
+      - height: 45px
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 14px
+      #- align-self: center                        
+    state:
+      - justify-self: end
+      - font-size: 14px
+      - font-weight: bold  
+      - text-align: right
+      - margin-right: 20px  
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-size: 12px
+      - color: var(--secondary-text-color)
+       
+automation_card:
+  show_label: false
+  show_state: true
+  show_icon: true
+  state_display: >
+    [[[
+      if (entity.state == 'on')
+      {
+        return "Attiva";
+      } else {
+        return "Non Attiva";
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i n" "i s"'
+      - grid-template-columns: 70px auto
+      - grid-template-rows: min-content
+    card:
+      - border-radius: 5px
+      - margin-bottom: 0px
+      - padding-top: 14px
+      - padding-bottom: 14px
+    icon:
+      - width: 30px
+      - height: 30px
+    img_cell:
+      - width: 50px
+      - height: 50px
+    name:
+      - color: var(--primary-text-color) 
+      - justify-self: start
+      - font-size: 15px
+      - align-self: center
+    state:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px   
+  state:
+    - value: 'on'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)  
+        state:
+          - color: var(--paper-item-icon-active-color)  
+        name:
+          - font-weight: bold
+    - value: 'off'
+      styles:
+        icon:
+          - color: var(--disabled-text-color) 
+        state:
+          - color: var(--secondary-text-color)          
+        name:
+          - font-weight: normal
+  tap_action:
+    haptic: medium
+    action: toggle          
+
+# BUTTON
+
+button_action:
+  show_label: false
+  show_state: false
+  show_icon: true
+
+  styles:
+    grid:
+      - grid-template-areas: '"i n"'
+      - grid-template-columns: 55px auto
+      - grid-template-rows: min-content
+    card:
+      - border-radius: 5px
+      - margin-bottom: 0px
+      - padding-top: 10px
+      - padding-bottom: 10px
+    icon:
+      - color: var(--disabled-text-color)
+      - width: 70%
+    img_cell:
+      - width: 45px
+      - height: 45px
+    name:
+      - color: var(--primary-text-color)
+      - font-weight: bold
+      - justify-self: start
+      - font-size: 15px
+      - align-self: center      
+        
+
+button_radio:
+  template: no_background
+  show_icon: false
+  show_name: false
+  size: 80%
+  show_entity_picture: true
+  entity_picture: '[[[ return "/local/radio_logos/" + variables.picture_name ]]]'  
+  tap_action:
+    haptic: medium
+    action: call-service
+    service: media_player.play_media
+    service_data:
+      entity_id: >
+        [[[
+          let path = window.location.pathname;
+          let page = path.substring(path.lastIndexOf('/') + 1);
+          let room = page.replace("_media", "");
+          switch (room) {
+            case "studio":
+              return 'media_player.echo_dot_studio';
+              break;
+            case "sala":
+              return 'media_player.echo_sala';
+              break;
+            case "camera":
+              return 'media_player.echo_camera';
+              break;
+            case "bagno_sopra":
+              return 'media_player.echo_bagno';
+              break;
+          }          
+        ]]]      
+      media_content_id: "[[[ return 'metti ' + variables.stazione + ' su tunein' ]]]"
+      media_content_type: custom  
+
+button_harmony_activity:
+  template: button_action 
+  entity: select.harmony_hub_activities
+  state:
+    - value: '[[[ return variables.activity ]]]'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)                    
+  tap_action:
+    haptic: medium  
+    action: call-service
+    service: select.select_option
+    service_data:
+      entity_id: '[[[ return entity.entity_id ]]]'
+      option: '[[[ return variables.activity ]]]'       

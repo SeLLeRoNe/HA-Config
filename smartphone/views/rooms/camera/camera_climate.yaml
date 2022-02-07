@@ -1,0 +1,159 @@
+- title: Camera Climate
+  path: camera_climate
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        # HEADER
+        - type: custom:stack-in-card
+          cards:
+            
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/camera_homepage
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Camera
+                  label: Riscaldamento
+                  styles:
+                    card:
+                      - width: 140px
+     
+                - type: custom:button-card                        
+                  template: header_sensor_text 
+                  entity: sensor.temperatura_camera_temperature
+                  units: '<span style="font-size: 16px; font-weight: 200">°C</span>'  
+                  styles:                  
+                    state:
+                      - font-size: 20px                                  
+
+                - type: custom:button-card      
+                  template: header_sensor_text                    
+                  entity: sensor.temperatura_camera_humidity
+                  units: '<span style="font-size: 16px; font-weight: 200">%</span>'    
+                  styles:                  
+                    state:
+                      - font-size: 20px                         
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 5
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.climate_netatmo_camera_stato
+                  template: header_binary_sensor                              
+
+                - type: custom:button-card
+                  entity: binary_sensor.climate_netatmo_camera_manuale
+                  template: header_binary_sensor             
+                  confirmation:
+                    text: 'Tornare alla programmazione?'             
+                  tap_action:
+                    action: >
+                      [[[
+                        if (entity.state === 'on') {
+                          return 'call-service';
+                        } else {
+                          return 'none';
+                        }
+                      ]]]                
+                    service: climate.turn_on
+                    service_data:
+                      entity_id: climate.netatmo_camera                 
+
+                - type: custom:button-card
+                  entity: binary_sensor.finestra_camera_contact
+                  template: header_binary_sensor   
+
+                - type: custom:button-card
+                  entity: sensor.valvola_camera_battery_percent
+                  template: header_base
+
+                - type: custom:button-card
+                  entity: sensor.climate_netatmo_camera_power_request
+                  template: header_sensor_text
+                  units: '<span style="font-size: 16px; font-weight: 200">%</span>' 
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5   
+
+        # CONTENT
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_camera_stato
+                template: climate_state
+                           
+              - type: custom:stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        entity: sensor.netatmo_homekit_camera_current_temperature
+                        template: climate_current_temperature             
+
+                      - type: custom:simple-thermostat
+                        entity: climate.netatmo_homekit_camera
+                        header: false
+                        control: false
+                        hide:
+                          temperature: true
+                          state: true
+                        style: |
+                          ha-card {
+                            background: none!important;
+                            box-shadow: none;
+                            border-radius: 0px;
+                            padding: 0px!important;
+                          }     
+                          .body {
+                            padding: 0px!important;
+                          }      
+                          .current--unit {
+                            display: none;
+                          }               
+                          .current--value {
+                            font-size: 26px!important;
+                            color: var(--accent-color);
+                          }                          
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 0
+                      margin_top: 0  
+
+                  - type: custom:mini-graph-card
+                    entities:
+                      - entity: sensor.temperatura_camera_temperature
+                    hours_to_show: 24
+                    points_per_hour: 2
+                    hour24: true
+                    show:
+                      graph: line
+                      name: false
+                      icon: false
+                      state: false
+                      average: true
+                      extrema: true                                                               

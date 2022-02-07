@@ -1,0 +1,57 @@
+- title: Studio Media
+  path: studio_media
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/studio_homepage
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Studio
+                  label: Media     
+                
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Media Player
+                template: label_heading               
+
+              - type: media-control
+                entity: media_player.echo_dot_studio            
+
+              - type: custom:button-card
+                name: Stazioni Radio
+                template: label_heading    
+
+
+              - type: grid
+                columns: 4
+                cards:
+                  !include ../../../cards/button_radio.yaml                                       
+                    
+                    

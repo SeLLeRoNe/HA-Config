@@ -1,0 +1,47 @@
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: RadioDeejay.png
+    stazione: Radio Deejay
+  
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: RDS.png
+    stazione: RDS Radio
+  
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: RTL102.5.png
+    stazione: "RTL"    
+
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: Virgin.png
+    stazione: Virgin Radio Italy
+
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: TeleRadioStereo.png
+    stazione: Tele Radio Stereo
+
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: RadioRamPower.png
+    stazione: Ram Power
+
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: RadioSubasio.png
+    stazione: Radio Subasio
+
+- type: 'custom:button-card'
+  template: button_radio
+  variables:
+    picture_name: m2o.png
+    stazione: m. 2. o. 

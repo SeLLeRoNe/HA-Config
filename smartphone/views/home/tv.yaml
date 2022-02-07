@@ -1,0 +1,264 @@
+- title: TV
+  path: tv
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: TV          
+
+                - type: custom:button-card
+                  template: header_sensor_text 
+                  entity: remote.harmony_hub
+                  styles:
+                    state:
+                      - font-size: 20px
+                      - justify-self: end
+                      - align-self: center
+                      - text-align: right   
+                      - margin-right: 20px                    
+                  state_display: >
+                    [[[
+                      return states['sensor.current_activity'].state;
+                    ]]]             
+                  state:
+                    - value: 'off'
+                      styles:
+                        state:
+                          - font-weight: normal
+                          - color: var(--disabled-text-color)       
+                    - value: 'on'
+                      styles:
+                        state:
+                          - font-weight: bold
+                          - color: var(--accent-color)                                                                                                               
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 5
+              cards:
+
+                - type: custom:button-card
+                  entity: media_player.chromecast_camera
+                  icon: mdi:google-chrome
+                  template: header_base  
+                  state:
+                    - value: 'playing'
+                      styles:
+                        icon:
+                          - color: var(--paper-item-icon-active-color)     
+
+                - type: custom:button-card
+                  entity: media_player.fire_tv_sala
+                  icon: phu:firetv
+                  template: header_base  
+                  state:
+                    - value: 'playing'
+                      styles:
+                        icon:
+                          - color: var(--paper-item-icon-active-color)       
+
+                - type: custom:button-card
+                  entity: switch.cuffie
+                  icon: 'mdi:headphones-bluetooth'
+                  template: header_switch         
+
+                - type: custom:button-card
+                  template: header_base 
+                  icon: mdi:cog
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/tv_settings 
+
+                - type: custom:button-card
+                  entity: remote.harmony_hub
+                  template: header_off_button                                                     
+
+                                              
+
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5    
+                
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: grid
+                square: false
+                columns: 3
+                cards:
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_harmony_menu
+                    name: Attività
+                    template: state_switch_menu     
+
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_harmony_menu
+                    name: Routine
+                    template: state_switch_menu     
+
+                  - type: 'custom:button-card'
+                    entity: input_select.ui_smartphone_harmony_menu
+                    name: Comandi
+                    template: state_switch_menu              
+
+              - type: custom:state-switch
+                entity: input_select.ui_smartphone_harmony_menu
+                states:
+                  Attività:
+                    type: grid
+                    square: false
+                    columns: 2
+                    cards:    
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Sky
+                        icon: 'mdi:satellite-uplink'
+                        variables:
+                          activity: Sky
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Digitale
+                        icon: 'mdi:television-classic'
+                        variables:
+                          activity: Digitale                        
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Fire TV
+                        icon: 'phu:firetv'
+                        variables:
+                          activity: Fire TV   
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Nintendo
+                        icon: 'mdi:nintendo-switch'
+                        variables:
+                          activity: Nintendo                                 
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Lettore DVD
+                        icon: 'mdi:disc-player'
+                        variables:
+                          activity: Lettore DVD       
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Timvision
+                        icon: 'mdi:alpha-t-circle'
+                        variables:
+                          activity: Timvision    
+
+                      - type: custom:button-card
+                        template: button_harmony_activity
+                        name: Sky + Sinto
+                        icon: 'mdi:speaker'
+                        variables:
+                          activity: Sky Sinto 
+
+                  Routine:
+                    type: grid
+                    square: false
+                    columns: 2
+                    cards:    
+                      - type: custom:button-card
+                        name: Netflix
+                        icon: 'mdi:netflix'
+                        template: button_action          
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.routine_netflix
+
+                      - type: 'custom:button-card' 
+                        name: Cartoni
+                        template: button_action
+                        icon: 'mdi:baby-face-outline'
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.harmony_channel_sky
+                          service_data:
+                            canale: 5041          
+
+                      - type: custom:button-card
+                        name: Guarda TG
+                        icon: 'mdi:newspaper-variant-outline'
+                        template: button_action          
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.harmony_guarda_tg  
+
+                      - type: custom:button-card
+                        name: Guarda DVD
+                        icon: 'mdi:disc-player'
+                        template: button_action          
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.routine_dvd_film                                           
+                     
+                  Comandi:
+                    type: grid
+                    square: false
+                    columns: 2
+                    cards:
+                      - type: custom:button-card
+                        name: Toggle TV
+                        icon: 'mdi:television'
+                        template: button_action          
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.harmony_tv_command
+                          service_data:
+                            comando: PowerToggle      
+
+                      - type: custom:button-card
+                        name: Ambilight
+                        icon: 'mdi:television-ambient-light'
+                        template: button_action          
+                        tap_action:
+                          haptic: medium
+                          action: call-service
+                          service: script.harmony_tv_command
+                          service_data:
+                            comando: AmbiLight                                                
+                                               

@@ -1,0 +1,138 @@
+- title: Media
+  path: media
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Media     
+
+                - type: custom:button-card
+                  entity: script.alexa_update_echo_entity
+                  icon: mdi:update
+                  template: header_base
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%                  
+                  tap_action:
+                    action: call-service
+                    service: script.alexa_update_echo_entity                  
+
+
+                - type: custom:button-card
+                  entity: group.alexa_echo
+                  template: header_off_button         
+                  #icon: phu:echo-dot-gen-4
+                  icon: mdi:power
+                  styles:
+                    grid:
+                      - position: relative
+                    custom_fields:
+                      count:
+                        - background-color: '#1c6997'
+                        - border-radius: 50%
+                        - position: absolute
+                        - left: 65%
+                        - top: 0%
+                        - height: 18px
+                        - width: 18px
+                        - font-size: 14px         
+                        - font-weight: bold         
+                  custom_fields:
+                    count: >
+                      [[[ return states['sensor.active_speakers'].state ]]]                                      
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              # - type: custom:button-card
+              #   name: Spotify
+              #   template: label_heading          
+                         
+              # - type: media-control
+              #   entity: media_player.spotify
+
+              - type: conditional
+                conditions:
+                  - entity: media_player.echo_sala
+                    state_not: standby
+                card:
+                  type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      name: Sala
+                      template: label_heading                   
+                    - type: media-control
+                      entity: media_player.echo_sala  
+                               
+              - type: conditional
+                conditions:
+                  - entity: media_player.echo_dot_studio
+                    state_not: standby
+                card:
+                  type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      name: Studio
+                      template: label_heading                   
+                    - type: media-control
+                      entity: media_player.echo_dot_studio
+
+              - type: conditional
+                conditions:
+                  - entity: media_player.echo_camera
+                    state_not: standby
+                card:
+                  type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      name: Camera
+                      template: label_heading                   
+                    - type: media-control
+                      entity: media_player.echo_camera
+
+              - type: conditional
+                conditions:
+                  - entity: media_player.echo_bagno
+                    state_not: standby
+                card:
+                  type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      name: Bagno
+                      template: label_heading                   
+                    - type: media-control
+                      entity: media_player.echo_bagno
+
+
+                                
+           
+
+           

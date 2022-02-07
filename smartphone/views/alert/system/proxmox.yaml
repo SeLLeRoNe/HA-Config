@@ -1,0 +1,178 @@
+- title: Sistema Proxmox
+  path: sistema_proxmox
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_sistema
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sistema
+                  label: Proxmox
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 3
+              cards:
+
+                - type: custom:button-card
+                  template: header_base_with_state 
+                  entity: sensor.system_cpu_temperature
+                  units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">°C</span>' 
+                  state:
+                    - value: 75
+                      operator: '>'
+                      styles:
+                        icon:
+                          - color: var(--label-badge-red)                       
+
+                - type: custom:button-card
+                  template: 
+                    - header_base_with_state 
+                    - time_since_state
+                  icon: mdi:clock
+                  entity: sensor.system_proxmox_uptime
+
+                - type: custom:button-card
+                  template: header_base_with_state 
+                  entity: sensor.system_glances_proxmox_cpu_load     
+                  show_units: false          
+
+        
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5                         
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:                   
+
+              - type: custom:button-card
+                name: Uso Risorse
+                template: label_heading                    
+
+              - type: 'custom:bar-card'
+                width: 70%
+                positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  name: outside                    
+                entities:
+                  - entity: sensor.system_glances_proxmox_cpu_used
+                    name: CPU           
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 80
+                        to: 100                         
+                  - entity: sensor.system_glances_proxmox_ram_used_percent
+                    name: RAM
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 90
+                        to: 100                       
+                  - entity: sensor.system_glances_proxmox_used_percent
+                    name: STORAGE
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 75
+                        to: 100                       
+                  - entity: sensor.system_glances_proxmox_swap_used_percent
+                    name: SWAP  
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 75
+                        to: 100                                        
+                style: |-
+                  bar-card-value {
+                    font-weight: bold;
+                    margin-right: 10px;
+                  }                            
+
+              - type: custom:button-card
+                name: Dettaglio Risorse
+                template: label_heading              
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_ram_used
+                    name: RAM Used                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">MB</span>'              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_ram_free
+                    name: RAM Free                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">MB</span>'              
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 2
+                      margin_top: 2 
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_swap_used
+                    name: SWAP Used                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">GB</span>'              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_swap_free
+                    name: SWAP Free                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">GB</span>'              
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 2
+                      margin_top: 2 
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_used
+                    name: STORAGE Used                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">GB</span>'              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.system_glances_proxmox_free
+                    name: STORAGE Free                
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">GB</span>'              

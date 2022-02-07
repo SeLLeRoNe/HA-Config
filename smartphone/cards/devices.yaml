@@ -1,0 +1,154 @@
+- type: custom:button-card
+  template: device_homepage
+  entity: sensor.shelly_em_power
+  name: Energia
+  #icon: phu:echo-dot-gen-4
+  label: >
+    [[[
+      return entity.state + ' <span style="font-size: 13px; font-weight: 200">W</span>';
+    ]]]
+  state:
+    - operator: '>'
+      value: 3000
+      styles:
+        icon:
+          - color: var(--label-badge-red)       
+        label:
+          - color: var(--label-badge-red)       
+
+    - operator: '>'
+      value: 2000
+      styles:
+        icon:
+          - color: var(--label-badge-yellow)    
+        label:
+          - color: var(--label-badge-yellow)              
+    - operator: '>'
+      value: 0
+      styles:
+        icon:
+          - color: var(--label-badge-green)              
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/energia   
+
+- type: custom:button-card
+  template: device_homepage
+  entity: sensor.climate_netatmo_valvole_aperte
+  name: Riscaldamento
+  icon: mdi:thermometer
+  label: >
+    [[[
+      if (entity.state > 0)
+      {
+        if (entity.state == 1)
+        {
+          return '1 valvola aperta';
+        } else {
+          return entity.state + ' valvole aperte';
+        }
+      } else {
+        return 'Spento';
+      }  
+    ]]]
+  state:
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/clima      
+
+- type: custom:button-card
+  template: device_homepage
+  entity: sensor.lights_count_on
+  name: Luci
+  icon: phu:bulb-group
+  label: >
+    [[[
+      if (entity.state > 0)
+      {
+        if (entity.state == 1)
+        {
+          return '1 accesa';
+        } else {
+          return entity.state + ' accese';
+        }
+      } else {
+        return 'Spente';
+      }  
+    ]]]
+  state:
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/luci                 
+
+- type: custom:button-card
+  template: device_homepage
+  entity: sensor.finestre_aperte
+  name: Finestre
+  icon: phu:double-window-closed
+  label: >
+    [[[
+      if (entity.state > 0)
+      {
+        if (entity.state == 1)
+        {
+          return '1 aperta';
+        } else {
+          return entity.state + ' aperte';
+        }
+      } else {
+        return 'Chiuse';
+      }  
+    ]]]
+  state:
+    - value: 0
+      operator: '>'
+      icon: phu:double-window-open
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/finestre             
+
+- type: custom:button-card
+  template: device_homepage
+  entity: sensor.active_speakers
+  name: Media Player
+  icon: phu:echo-dot-gen-4
+  label: >
+    [[[
+      if (entity.state > 0)
+      {
+        if (entity.state == 1)
+        {
+          return '1 attivo';
+        } else {
+          return entity.state + ' attivi';
+        }
+      } else {
+        return 'Spenti';
+      }  
+    ]]]
+  state:
+    - value: 0
+      operator: '>'
+      styles:
+        icon:
+          - color: var(--paper-item-icon-active-color)       
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/media     
+
+      
+
+     

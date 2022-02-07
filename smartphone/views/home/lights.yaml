@@ -1,0 +1,215 @@
+- title: Luci
+  path: luci
+  icon: phu:bulb-group
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Luci     
+
+                - type: custom:button-card
+                  entity: group.lights_all
+                  template: header_off_button         
+                  icon: phu:bulb-group  
+                  styles:
+                    grid:
+                      - position: relative
+                    custom_fields:
+                      count:
+                        - background-color: '#1c6997'
+                        - border-radius: 50%
+                        - position: absolute
+                        - left: 65%
+                        - top: 0%
+                        - height: 18px
+                        - width: 18px
+                        - font-size: 14px         
+                        - font-weight: bold        
+                        #- display: none    
+                  custom_fields:
+                    count: >
+                      [[[ return states['sensor.lights_count_on'].state ]]]                            
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Sala
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_living_room
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true  
+
+              - type: custom:button-card
+                name: Scala
+                template: label_heading                                              
+           
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_stairs
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true                   
+
+              - type: custom:button-card
+                name: Studio
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_studio
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true               
+
+              - type: custom:button-card
+                name: Cucina
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_kitchen
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true          
+
+              - type: custom:button-card
+                name: Camera
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_bedroom
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true                     
+
+              - type: custom:button-card
+                name: Cameretta
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_kidsbedroom
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true                
+
+              - type: custom:button-card
+                name: Terrazzi
+                template: label_heading     
+                                
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_terraces
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true              
+
+              - type: custom:button-card
+                name: Bagni
+                template: label_heading                                              
+           
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_bathrooms
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true  
+
+                   
+           

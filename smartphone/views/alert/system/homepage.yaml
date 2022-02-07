@@ -1,0 +1,157 @@
+- title: Alert Sistema
+  path: alert_sistema
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sistema
+                  label: Homepage     
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                entity: binary_sensor.system_alert_home_assistant
+                template: alert_card
+                name: Home Assistant
+                icon: mdi:home-assistant
+                label: >
+                  [[[
+                    return `<ha-icon
+                              icon="mdi:cpu-64-bit"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.processor_use'].state} <span style="font-size: 90%">%</span>
+                            </span> | 
+                            <ha-icon
+                              icon="mdi:memory"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.memory_use_percent'].state} <span style="font-size: 90%">%</span>
+                            </span>`
+                  ]]] 
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/sistema_home_assistant           
+
+              - type: custom:button-card
+                entity: binary_sensor.system_alert_network
+                template: alert_card
+                name: Network
+                icon: mdi:router-wireless
+                label: >
+                  [[[
+                    return states['sensor.speedtest_download'].state + " Mb/s | " + states['sensor.speedtest_upload'].state + " Mb/s";
+                  ]]]
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/sistema_network                  
+
+              - type: custom:button-card
+                entity: binary_sensor.system_alert_proxmox
+                template: alert_card
+                name: Proxmox
+                icon: phu:proxmox
+                label: >
+                  [[[
+                    return `<ha-icon
+                              icon="mdi:cpu-64-bit"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.system_glances_proxmox_cpu_used'].state} <span style="font-size: 90%">%</span>
+                            </span> | 
+                            <ha-icon
+                              icon="mdi:memory"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.system_glances_proxmox_ram_used_percent'].state} <span style="font-size: 90%">%</span>
+                            </span>`
+                  ]]]                
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/sistema_proxmox          
+
+              - type: custom:button-card
+                entity: binary_sensor.system_alert_zigbee
+                template: alert_card
+                name: Zigbee Server
+                icon: mdi:zigbee
+                label: >
+                  [[[
+                    return `<ha-icon
+                              icon="mdi:cpu-64-bit"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.rpizigbee_cpu_usage'].state} <span style="font-size: 90%">%</span>
+                            </span> | 
+                            <ha-icon
+                              icon="mdi:memory"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.rpizigbee_memory_use'].state} <span style="font-size: 90%">%</span>
+                            </span>`
+                  ]]] 
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/sistema_zigbee    
+
+              - type: custom:button-card
+                entity: binary_sensor.system_alert_imac
+                template: alert_card
+                name: iMac
+                icon: mdi:desktop-mac
+                label: >
+                  [[[
+                    return `<ha-icon
+                              icon="mdi:cpu-64-bit"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.system_glances_imac_cpu_used'].state} <span style="font-size: 90%">%</span>
+                            </span> | 
+                            <ha-icon
+                              icon="mdi:memory"
+                              style="width: 18px; height: 18px;">
+                            </ha-icon>
+                            <span>
+                              ${states['sensor.system_glances_imac_ram_used_percent'].state} <span style="font-size: 90%">%</span>
+                            </span>`
+                  ]]] 
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/sistema_imac                                         
+                
+                
+                                

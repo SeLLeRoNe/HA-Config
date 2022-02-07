@@ -1,0 +1,258 @@
+- title: Sistema Zigbee
+  path: sistema_zigbee
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_sistema
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sistema
+                  label: Zigbee Server
+
+                # Reboot HOST (fare script di reboot)
+                - type: custom:button-card
+                  template: header_base 
+                  icon: mdi:restart      
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%      
+                    icon:
+                      - color: var(--paper-item-icon-active-color)                                   
+                  confirmation:
+                    text: "Vuoi riavviare l'host rpi-zigbee?"
+                  tap_action:
+                    action: none
+
+                - type: custom:button-card
+                  template: header_base 
+                  icon: mdi:power      
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%                   
+                    icon:
+                      - color: var(--paper-item-icon-active-color)                                                   
+                  confirmation:
+                    text: "Vuoi spegnere l'host rpi-zigbee?"
+                  tap_action:
+                    action: none
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 3
+              cards:
+
+                - type: custom:button-card
+                  template: header_base_with_state 
+                  entity: binary_sensor.rpi_zigbee
+                  state_display: >
+                    [[[
+                      if (entity.state == 'on')
+                      {
+                        return 'Host UP';
+                      } else {
+                        return 'Host DOWN';
+                      }
+                    ]]]
+                  state:
+                    - value: 'on'
+                      styles:
+                        icon:
+                          - color: var(--label-badge-green)                            
+                    - value: 'off'
+                      styles:
+                        state:
+                          - color: var(--label-badge-red)                    
+                        icon:
+                          - color: var(--label-badge-red)                   
+
+                - type: custom:button-card
+                  template: header_base_with_state 
+                  entity: sensor.zigbee2mqtt_bridge_state   
+                  icon: mdi:zigbee
+                  state_display: >
+                    [[[
+                      if (entity.state == 'online')
+                      {
+                        return 'z2m UP';
+                      } else {
+                        return 'z2m DOWN';
+                      }
+                    ]]]
+                  state:
+                    - value: 'online'
+                      styles:
+                        icon:
+                          - color: var(--label-badge-green)                            
+                    - value: 'offline'
+                      styles:
+                        state:
+                          - color: var(--label-badge-red)                    
+                        icon:
+                          - color: var(--label-badge-red)                     
+
+                - type: custom:button-card
+                  template: header_base_with_state 
+                  entity: sensor.rpizigbee_temperature
+                  units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">°C</span>' 
+                  state:
+                    - value: 75
+                      operator: '>'
+                      styles:
+                        icon:
+                          - color: var(--label-badge-red)                      
+
+        
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5                         
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:             
+
+              - type: custom:button-card
+                name: zigbee2mqtt
+                template: label_heading                    
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.zigbee2mqtt_bridge_state
+                    name: zigbee2mqtt             
+                    icon: mdi:zigbee
+                    state:
+                      - value: 'online'
+                        styles:
+                          state:
+                            - color: var(--label-badge-green)
+                          icon:
+                            - color: var(--label-badge-green)                            
+                      - value: 'offline'
+                        styles:
+                          state:
+                            - color: var(--label-badge-red)                    
+                          icon:
+                            - color: var(--label-badge-red)                       
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.zigbee2mqtt_current_version
+                    name: Versione installata    
+
+
+              - type: custom:button-card
+                name: Uso Risorse
+                template: label_heading                    
+
+              - type: 'custom:bar-card'
+                width: 70%
+                positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  name: outside                    
+                entities:
+                  - entity: sensor.rpizigbee_cpu_usage
+                    name: CPU           
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 80
+                        to: 100                         
+                  - entity: sensor.rpizigbee_memory_use
+                    name: RAM
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 90
+                        to: 100                       
+                  - entity: sensor.rpizigbee_disk_use
+                    name: STORAGE
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 75
+                        to: 100                       
+                  - entity: sensor.rpizigbee_swap_usage
+                    name: SWAP  
+                    severity:
+                      - color: var(--label-badge-red)
+                        from: 75
+                        to: 100                                        
+                style: |-
+                  bar-card-value {
+                    font-weight: bold;
+                    margin-right: 10px;
+                  }                            
+
+              - type: custom:button-card
+                name: Info
+                template: label_heading              
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:              
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.rpizigbee_hostname
+                    name: Hostname               
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.rpizigbee_host_ip
+                    name: Indirizzo IP                
+                    icon: mdi:ip-network
+
+                  - type: custom:button-card
+                    template: 
+                      - entity_card
+                      - time_since_state
+                    entity: sensor.rpizigbee_last_boot
+                    name: Uptime Host               
+                    icon: mdi:clock
+
+                  - type: custom:button-card
+                    template: entity_card
+                    entity: sensor.rpizigbee_updates
+                    name: Updates             
+                

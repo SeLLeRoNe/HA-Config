@@ -1,0 +1,88 @@
+- title: Camera Homepage
+  path: camera_homepage
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Camera
+                  label: Homepage
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            # SENSORI
+            - type: grid
+              square: false
+              columns: 3
+              cards:
+
+                - type: custom:button-card
+                  entity: binary_sensor.finestra_camera_contact
+                  template: header_binary_sensor    
+
+                - type: custom:button-card                        
+                  template: header_sensor_text 
+                  entity: sensor.temperatura_camera_temperature
+                  units: '<span style="font-size: 16px; font-weight: 200">°C</span>'              
+
+                - type: custom:button-card      
+                  template: header_sensor_text                    
+                  entity: sensor.temperatura_camera_humidity
+                  units: '<span style="font-size: 16px; font-weight: 200">%</span>'                                   
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5                                                   
+                     
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+              - type: custom:button-card
+                entity: sensor.lights_bedroom_count_on
+                template: room_lights
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/camera_lights
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_camera_stato
+                template: room_climate         
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/camera_climate                    
+
+              - type: custom:button-card
+                entity: media_player.echo_camera
+                icon: 'phu:echo-show-5-gen-2'
+                template: room_media        
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace-smartphone/camera_media                    

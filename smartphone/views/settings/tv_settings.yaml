@@ -1,0 +1,156 @@
+- title: TV Settings
+  path: tv_settings
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/tv
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: TV
+                  label: Impostazioni   
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:                  
+              - type: custom:button-card
+                name: Audio Mode
+                template: label_heading              
+
+              - type: grid
+                square: false
+                columns: 2
+                cards:
+                  - type: custom:button-card
+                    name: Game
+                    icon: mdi:speaker-multiple
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: ModeGame
+
+                  - type: custom:button-card
+                    name: Movie/TV
+                    icon: mdi:speaker-multiple
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: ModeMovie/Tv     
+
+                  - type: custom:button-card
+                    name: Music
+                    icon: mdi:speaker-multiple
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: ModeMusic 
+
+                  - type: custom:button-card
+                    name: Stereo
+                    icon: mdi:speaker-multiple
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: ModeStereo         
+
+              - type: custom:button-card
+                name: Correggi Input
+                template: label_heading                                                                                      
+
+              - type: grid
+                square: false
+                columns: 2
+                cards:
+
+                  - type: custom:button-card
+                    name: Fire TV
+                    icon: mdi:video-input-component
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: InputVcr/Dvr
+
+                  - type: custom:button-card
+                    name: Nintendo
+                    icon: mdi:video-input-component
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: InputGame                           
+
+                  - type: custom:button-card
+                    name: Sky + Sinto
+                    icon: mdi:video-input-component
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: InputCd
+
+                  - type: custom:button-card
+                    name: DVD
+                    icon: mdi:video-input-component
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: InputDvd/Bd
+ 
+                  - type: custom:button-card
+                    name: Timvision
+                    icon: mdi:video-input-component
+                    template: button_action          
+                    tap_action:
+                      haptic: medium
+                      action: call-service
+                      service: script.harmony_sinto_command
+                      service_data:
+                        comando: InputCbl/Sat                                               
+
+
+               
+                      

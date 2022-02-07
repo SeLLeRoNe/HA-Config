@@ -1,0 +1,247 @@
+- title: Energia
+  path: energia
+  icon: mdi:speedometer
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Energia          
+
+                - type: custom:button-card
+                  template: header_sensor_text 
+                  entity: sensor.shelly_em_power
+                  units: '<span style="font-size: 14px; font-weight: 200; opacity: 0.6;">watt</span>'
+                  # state_display: >
+                  #   [[[
+                  #     var html = '';
+                  #     html += '<ha-icon style="height: 20px; width: 20px;" icon="mdi:speedometer"></ha-icon>';
+                  #     html += '<span style="margin: 0px 5px;">'+entity.state+'</span><span style="font-size: 14px; font-weight: 200">W</span>';
+                  #     return html;
+                  #   ]]]             
+                  styles:
+                    state:
+                      - font-weight: bold
+                  state:
+                    - operator: '>'
+                      value: 3000
+                      styles:
+                        state:
+                          - color: var(--label-badge-red)       
+                    - operator: '>'
+                      value: 2000
+                      styles:
+                        state:
+                          - color: var(--label-badge-yellow)                  
+                    - operator: '>'
+                      value: 0
+                      styles:
+                        state:
+                          - color: var(--label-badge-green)                                                                                    
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 4
+              cards:
+                - type: custom:button-card
+                  entity: switch.lavatrice
+                  icon: mdi:washing-machine
+                  template: header_switch_lock    
+                  variables:
+                    message_off: 'Spengo la lavatrice, sei sicuro?'
+                    message_on: 'Accendo la lavatrice?'
+
+                - type: custom:button-card
+                  entity: switch.asciugatrice
+                  icon: mdi:tumble-dryer
+                  template: header_switch_lock    
+                  variables:
+                    message_off: "Spengo l'asciugatrice, sei sicuro?"
+                    message_on: "Accendo l'asciugatrice?"
+
+                - type: custom:button-card
+                  entity: switch.lavastoviglie
+                  icon: mdi:dishwasher
+                  template: header_switch_lock    
+                  variables:
+                    message_off: 'Spengo la lavastoviglie, sei sicuro?'
+                    message_on: 'Accendo la lavastoviglie?'                                      
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5    
+                
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Elettrodomestici
+                template: label_heading  
+
+              - type: custom:button-card
+                entity: binary_sensor.lavatrice_stato_operativo                
+                name: Lavatrice
+                icon: mdi:washing-machine
+                template: appliance_card                
+                variables:
+                  time: sensor.lavatrice_tempo_ciclo
+                  power: sensor.lavatrice_power
+                triggers_update:
+                  - sensor.lavatrice_tempo_ciclo
+                  - sensor.lavatrice_power                     
+
+              - type: custom:button-card
+                entity: binary_sensor.asciugatrice_stato_operativo                
+                name: Asciugatrice
+                icon: mdi:tumble-dryer
+                template: appliance_card                
+                variables:
+                  time: sensor.asciugatrice_tempo_ciclo
+                  power: sensor.asciugatrice_power      
+                triggers_update:
+                  - sensor.asciugatrice_tempo_ciclo
+                  - sensor.asciugatrice_power                         
+
+              - type: custom:button-card
+                entity: binary_sensor.lavastoviglie_stato_operativo                
+                name: Lavastoviglie
+                icon: mdi:dishwasher
+                template: appliance_card                
+                variables:
+                  time: sensor.lavastoviglie_tempo_ciclo
+                  power: sensor.lavastoviglie_power         
+                triggers_update:
+                  - sensor.lavastoviglie_tempo_ciclo
+                  - sensor.lavastoviglie_power                 
+
+              - type: custom:button-card
+                name: UPS
+                template: label_heading                     
+
+              - type: custom:stack-in-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-radius: 5px;
+                    } 
+                cards:                     
+                  - type: custom:button-card
+                    entity: binary_sensor.energy_rete_elettrica            
+                    icon: 'mdi:transmission-tower'   
+                    template: no_background                    
+                    show_name: false
+                    show_icon: true
+                    show_state: true
+                    show_label: false                      
+                    state_display: >
+                      [[[
+                        if (entity.state == 'on')
+                        {
+                          return 'Alimentazione da rete elettrica';
+                        } else {
+                          return 'Alimentazione interrotta!';
+                        }
+                      ]]]
+                    state:
+                      - value: 'off'
+                        styles:
+                          icon:
+                            - color: var(--label-badge-red)                 
+                            - animation: blink 2s ease infinite   
+                          state:
+                            - font-weight: bold         
+                      - value: 'on'
+                        styles:
+                          icon:
+                            - color: var(--label-badge-green)                  
+                          state:
+                            - font-weight: normal           
+                    styles:
+                      grid:
+                        - grid-template-areas: '"i s"'
+                        - grid-template-columns: 70px auto
+                      card:
+                        - padding-top: 5px
+                        - padding-bottom: 5px
+                      icon:
+                        - width: 30px
+                        - height: 30px
+                      img_cell:
+                        - width: 50px
+                        - height: 50px
+                        - border-radius: 100%                   
+                        - background: var(--primary-background-color)       
+                      state:
+                        - justify-self: end
+                        - font-size: 16px
+                        - font-weight: bold  
+                        - text-align: right
+                        - margin-right: 20px                               
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 0
+                      margin_top: 0                    
+
+                  - type: 'custom:button-card'
+                    template: row_space
+                    variables:
+                      height: 5
+
+                  - type: custom:button-card
+                    entity: sensor.ups_battery_charge 
+                    name: Batteria UPS     
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">%</span>'              
+                    template: entity_card
+
+                  - type: custom:button-card
+                    entity: sensor.ups_load
+                    name: Load    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">%</span>'              
+                    template: entity_card                    
+               
+                  - type: custom:button-card
+                    entity: sensor.energy_ups_autonomia
+                    name: Autonomia    
+                    units: '<span style="font-size: 13px; font-weight: 200; color: var(--secondary-text-color)">minuti</span>'              
+                    template: entity_card                   
+
+                  - type: 'custom:button-card'
+                    template: row_space
+                    variables:
+                      height: 5
+
+
+

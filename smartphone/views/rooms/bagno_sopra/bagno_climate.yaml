@@ -1,0 +1,143 @@
+- title: Bagno Climate
+  path: bagno_climate
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        # HEADER
+        - type: custom:stack-in-card
+          cards:
+            
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/bagno_sopra_homepage
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Bagno Sopra
+                  label: Riscaldamento
+                  styles:
+                    card:
+                      - width: 140px                       
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: grid
+              square: false
+              columns: 5
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.climate_netatmo_bagno_stato
+                  template: header_binary_sensor                              
+
+                - type: custom:button-card
+                  entity: binary_sensor.climate_netatmo_bagno_manuale
+                  template: header_binary_sensor             
+                  confirmation:
+                    text: 'Tornare alla programmazione?'             
+                  tap_action:
+                    action: >
+                      [[[
+                        if (entity.state === 'on') {
+                          return 'call-service';
+                        } else {
+                          return 'none';
+                        }
+                      ]]]                
+                    service: climate.turn_on
+                    service_data:
+                      entity_id: climate.netatmo_bagno                  
+
+                - type: custom:button-card
+                  entity: binary_sensor.finestra_bagno_sopra_contact
+                  template: header_binary_sensor   
+
+                - type: custom:button-card
+                  entity: sensor.valvola_bagno_battery_percent
+                  template: header_base
+
+                - type: custom:button-card
+                  entity: sensor.climate_netatmo_bagno_power_request
+                  template: header_sensor_text
+                  units: '<span style="font-size: 16px; font-weight: 200">%</span>' 
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5   
+
+        # CONTENT
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_bagno_stato
+                template: climate_state
+                           
+              - type: custom:stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        entity: sensor.netatmo_homekit_bagno_current_temperature
+                        template: climate_current_temperature             
+
+                      - type: custom:simple-thermostat
+                        entity: climate.netatmo_homekit_bagno
+                        header: false
+                        control: false
+                        hide:
+                          temperature: true
+                          state: true
+                        style: |
+                          ha-card {
+                            background: none!important;
+                            box-shadow: none;
+                            border-radius: 0px;
+                            padding: 0px!important;
+                          }     
+                          .body {
+                            padding: 0px!important;
+                          }      
+                          .current--unit {
+                            display: none;
+                          }               
+                          .current--value {
+                            font-size: 26px!important;
+                            color: var(--accent-color);
+                          }                          
+
+                  - type: 'custom:button-card'
+                    template: row_border        
+                    variables:
+                      margin_bottom: 0
+                      margin_top: 0  
+
+                  - type: custom:mini-graph-card
+                    entities:
+                      - entity: sensor.netatmo_homekit_bagno_current_temperature
+                    hours_to_show: 24
+                    points_per_hour: 2
+                    hour24: true
+                    show:
+                      graph: line
+                      name: false
+                      icon: false
+                      state: false
+                      average: true
+                      extrema: true                                                               

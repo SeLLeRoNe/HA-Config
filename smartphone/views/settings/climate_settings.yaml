@@ -1,0 +1,93 @@
+- title: Clima Settings
+  path: clima_settings
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/clima
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Riscaldamento
+                  label: Impostazioni   
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:                  
+              - type: 'custom:button-card'   
+                name: Gestione apertura finestre
+                template: automation_card
+                icon: phu:double-window-closed
+                entity: input_boolean.climate_netatmo_windows_management
+
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.climate_netatmo_windows_management
+                    state: "on"
+                card:                
+                  type: entities
+                  show_header_toggle: false
+                  state_color: true                   
+                  entities:
+                    - entity: input_boolean.climate_annunci_finestre_aperte
+                      icon: phu:echo-dot-gen-4
+
+                    - type: custom:state-switch
+                      entity: input_boolean.climate_annunci_finestre_aperte
+
+                      states:
+                        "on":
+                          type: entities
+                          show_header_toggle: false                        
+                          entities:
+                      
+                            - type: section
+                              label: Attesa in minuti primo annuncio
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.ritardo_annuncio_finestre_aperte
+                              full_row: true   
+                              hide_state: false
+
+                            - type: section
+                              label: Attesa in minuti annunci successivi
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.ritardo_annuncio_finestre_aperte_loop                    
+                              full_row: true   
+                              hide_state: false
+
+                    - entity: input_boolean.climate_windows_notifiche
+                      name: Notifiche stato valvola
+                      
+                    - type: divider
+
+                    - entity: input_boolean.climate_spegni_valvola_sala
+                    - entity: input_boolean.climate_spegni_valvola_studio
+                    - entity: input_boolean.climate_spegni_valvola_camera
+                    - entity: input_boolean.climate_spegni_valvola_cameretta
+                    - entity: input_boolean.climate_spegni_valvola_bagno
+
+               
+                      

@@ -1,0 +1,132 @@
+- title: Allarme
+  path: alarm
+  icon: mdi:shield-lock
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Sicurezza          
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: horizontal-stack
+              cards:
+                - type: grid
+                  square: false
+                  columns: 5
+                  cards:
+                    - type: 'custom:button-card'
+                      entity: switch.synology_nas_home_mode
+                      template: header_base                  
+                      icon: mdi:cctv                       
+                      state:
+                        - value: 'off'
+                          styles:
+                            icon:
+                              - color: var(--paper-item-icon-active-color)  
+                        - value: 'on'
+                          styles:
+                            icon:
+                              - color: var(--disabled-text-color)  
+                      confirmation:
+                        text: >
+                          [[[
+                            if ( entity.state == 'on' )
+                            {
+                              return "Attivo la videosorveglianza?"
+                            } else {
+                              return "Disattivo la videosorveglianza?"
+                            }
+                          ]]]                         
+
+                    - type: custom:button-card
+                      entity: sensor.finestre_aperte
+                      template: header_sensor_count              
+                      tap_action:
+                        action: navigate
+                        navigation_path: /lovelace-smartphone/finestre     
+
+                    - type: custom:button-card
+                      entity: binary_sensor.movimento_in_casa
+                      template: header_binary_sensor       
+                      tap_action:
+                        action: navigate
+                        navigation_path: /lovelace-smartphone/motion              
+
+                    - type: custom:button-card
+                      template: empty_card                                                  
+
+                    - type: custom:button-card
+                      template: header_base 
+                      icon: mdi:cog
+                      tap_action:
+                        action: navigate
+                        navigation_path: /lovelace-smartphone/alarm_settings                                                                                                  
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5    
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: alarm-panel
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
+                entity: alarm_control_panel.home
+                name: Allarme            
+
+              - type: custom:button-card
+                entity: input_datetime.alarm_last_triggered            
+                show_name: true
+                show_icon: false
+                show_state: true
+                styles:
+                  card:
+                    - padding-left: 10px
+                  name:
+                    - color: var(--secondary-text-color)
+                    - justify-self: start
+                    - font-size: 15px   
+                    - margin-bottom: 5px 
+                  state:
+                    - justify-self: start
+                    - font-size: 18px           
+                tap_action:
+                  action: none   
+
+              - type: picture-entity
+                entity: camera.synology_nas_living_room
+                name: Camera Sala                

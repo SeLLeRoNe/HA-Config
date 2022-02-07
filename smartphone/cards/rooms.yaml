@@ -1,0 +1,139 @@
+- type: custom:button-card
+  entity: group.lights_living_room
+  name: Sala
+  icon: phu:rooms-living
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/sala_homepage   
+  variables:
+    lights: group.lights_living_room
+    window: binary_sensor.finestra_sala_contact
+    climate_state: binary_sensor.climate_netatmo_sala_stato
+    motion: binary_sensor.movimento_sala
+    media_player: media_player.echo_sala
+    temperature: sensor.temperatura_sala_temperature
+    humidity: sensor.temperatura_sala_humidity 
+  triggers_update:
+    - binary_sensor.finestra_sala_contact
+    - binary_sensor.climate_netatmo_sala_stato
+    - binary_sensor.movimento_sala
+    - media_player.echo_sala
+    - sensor.temperatura_sala_temperature
+    - sensor.temperatura_sala_humidity     
+
+- type: custom:button-card
+  name: Studio
+  entity: group.lights_studio
+  icon: phu:rooms-office
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/studio_homepage      
+  variables:
+    lights: group.lights_studio
+    window: binary_sensor.finestra_studio_contact
+    climate_state: binary_sensor.climate_netatmo_studio_stato
+    motion: binary_sensor.movimento_studio
+    media_player: media_player.echo_dot_studio
+    temperature: sensor.temperatura_studio_temperature
+    humidity: sensor.temperatura_studio_humidity             
+  triggers_update:
+    - binary_sensor.finestra_studio_contact
+    - binary_sensor.climate_netatmo_studio_stato
+    - binary_sensor.movimento_studio
+    - media_player.echo_dot_studio
+    - sensor.temperatura_studio_temperature
+    - sensor.temperatura_studio_humidity           
+
+- type: custom:button-card
+  entity: group.lights_kitchen
+  name: Cucina
+  icon: phu:rooms-kitchen
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/cucina_homepage      
+  variables:
+    lights: group.lights_kitchen
+    window: binary_sensor.finestra_cucina_contact
+  triggers_update:
+    - binary_sensor.finestra_cucina_contact
+
+- type: custom:button-card
+  entity: light.bagno_sotto
+  name: Bagno Sotto
+  icon: phu:rooms-bathroom
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/bagno_sotto_homepage      
+  variables:
+    lights: light.bagno_sotto
+    window: binary_sensor.finestra_bagno_sotto_contact
+  triggers_update:
+    - binary_sensor.finestra_bagno_sotto_contact        
+
+- type: custom:button-card
+  entity: group.lights_bedroom
+  name: Camera
+  icon: phu:rooms-bedroom
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/camera_homepage      
+  variables:
+    lights: group.lights_bedroom
+    window: binary_sensor.finestra_camera_contact
+    climate_state: binary_sensor.climate_netatmo_camera_stato
+    media_player: media_player.echo_camera
+    temperature: sensor.temperatura_camera_temperature
+    humidity: sensor.temperatura_camera_humidity             
+  triggers_update:
+    - binary_sensor.finestra_camera_contact
+    - binary_sensor.climate_netatmo_camera_stato
+    - media_player.echo_camera
+    - sensor.temperatura_camera_temperature
+    - sensor.temperatura_camera_humidity  
+
+- type: custom:button-card
+  entity: group.lights_kidsbedroom
+  name: Cameretta
+  icon: phu:rooms-kids-bedroom
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/cameretta_homepage      
+  variables:
+    lights: group.lights_kidsbedroom
+    window: binary_sensor.finestra_cameretta_contact
+    climate_state: binary_sensor.climate_netatmo_cameretta_stato
+    temperature: sensor.temperatura_cameretta_temperature
+    humidity: sensor.temperatura_cameretta_humidity    
+  triggers_update:
+    - binary_sensor.finestra_cameretta_contact
+    - binary_sensor.climate_netatmo_cameretta_stato
+    - media_player.echo_camera
+    - sensor.temperatura_cameretta_temperature
+    - sensor.temperatura_cameretta_humidity              
+
+- type: custom:button-card
+  entity: light.bagno_sopra
+  name: Bagno Sopra
+  icon: phu:rooms-bathroom
+  template: room_homepage
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace-smartphone/bagno_sopra_homepage      
+  variables:
+    lights: light.bagno_sopra
+    window: binary_sensor.finestra_bagno_sopra_contact
+    climate_state: binary_sensor.climate_netatmo_bagno_stato
+    media_player: media_player.echo_bagno
+  triggers_update:
+    - binary_sensor.finestra_bagno_sopra_contact      
+    - binary_sensor.climate_netatmo_bagno_stato
+    - media_player.echo_bagno
+
+
+

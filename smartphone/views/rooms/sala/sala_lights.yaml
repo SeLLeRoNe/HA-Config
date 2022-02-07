@@ -1,0 +1,99 @@
+- title: Sala Luci
+  path: sala_lights
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/sala_homepage
+                    
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Sala
+                  label: Luci
+
+                - type: custom:button-card
+                  entity: group.lights_living_room
+                  template: header_off_button            
+                  icon: phu:bulb-group            
+
+        # ELENCO SCENE
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                name: Scene
+                template: label_heading              
+
+              - type: grid
+                square: false
+                columns: 2
+                cards:
+                  - type: custom:button-card
+                    entity: scene.sala_giorno
+                    template: scene_card         
+
+                  - type: custom:button-card
+                    entity: scene.sala_soffusa
+                    template: scene_card   
+
+                  - type: custom:button-card
+                    entity: scene.sala_cinema_1
+                    template: scene_card   
+
+                  - type: custom:button-card
+                    entity: scene.sala_tutto
+                    template: scene_card                                                                        
+
+        # ELENCO LUCI
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+              - type: custom:button-card
+                name: Luci
+                template: label_heading     
+
+              - type: custom:auto-entities
+                filter:
+                  include:
+                    - group: group.lights_living_room
+                      options:
+                        type: custom:button-card
+                        entity_id: this.entity_id
+                        template: light_card
+                card:
+                  type: vertical-stack
+                card_param: cards
+                sort:
+                  method: name
+                  ignore_case: true            
+
+           

@@ -1,0 +1,191 @@
+- title: Clima
+  path: clima
+  icon: mdi:thermometer
+  visible: true
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Home
+                  label: Riscaldamento          
+
+                - type: custom:button-card
+                  template: header_base 
+                  entity: sensor.climate_netatmo_preset_mode
+                  icon: mdi:home-export-outline       
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%                     
+                  state:
+                    - value: 'Fuori Casa'
+                      styles:
+                        icon:
+                          - color: var(--accent-color)
+                          - font-weight: bold                     
+                  confirmation:
+                    text: >
+                      [[[
+                        if (entity.state == 'Fuori Casa')
+                        {
+                          return 'Tornare alla programmazione?';
+                        } else {
+                          return 'Impostare la modalità Fuori Casa?';
+                        }
+                      ]]]
+                    
+                  tap_action:
+                    action: call-service
+                    service: climate.set_preset_mode
+                    service_data:
+                      entity_id: climate.netatmo_sala
+                      preset_mode: >
+                        [[[
+                          if (entity.state == 'Fuori Casa')
+                          {
+                            return 'Schedule';
+                          } else {
+                            return 'away';
+                          }
+                        ]]]                                    
+
+                - type: custom:button-card
+                  template: header_base 
+                  entity: sensor.climate_netatmo_preset_mode
+                  icon: mdi:snowflake             
+                  styles:                  
+                    card:
+                      - width: 70px
+                      - height: 100%                  
+                  state:
+                    - value: 'Antigelo'
+                      styles:
+                        icon:
+                          - color: var(--accent-color)
+                          - font-weight: bold                       
+                  confirmation:
+                    text: >
+                      [[[
+                        if (entity.state == 'Antigelo')
+                        {
+                          return 'Tornare alla programmazione?';
+                        } else {
+                          return 'Impostare la modalità Antigelo?';
+                        }
+                      ]]]                          
+                  tap_action:
+                    action: call-service
+                    service: climate.set_preset_mode
+                    service_data:
+                      entity_id: climate.netatmo_sala
+                      preset_mode: >
+                        [[[
+                          if (entity.state == 'Antigelo')
+                          {
+                            return 'Schedule';
+                          } else {
+                            return 'Frost Guard';
+                          }
+                        ]]]                                                      
+
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5
+
+            - type: horizontal-stack
+              cards:
+                - type: grid
+                  square: false
+                  columns: 5
+                  cards:
+                    - type: custom:button-card
+                      entity: binary_sensor.climate_netatmo_termostato_stato
+                      template: header_binary_sensor      
+
+                    - type: custom:button-card
+                      entity: sensor.climate_netatmo_valvole_aperte
+                      template: header_sensor_count      
+
+                    - type: custom:button-card
+                      template: empty_card  
+
+                    - type: custom:button-card
+                      template: empty_card                                                  
+
+                    - type: custom:button-card
+                      template: header_base 
+                      icon: mdi:cog
+                      tap_action:
+                        action: navigate
+                        navigation_path: /lovelace-smartphone/clima_settings                    
+
+
+                # - type: custom:button-card
+                #   entity: select.netatmo_home
+                #   template: header_sensor_text               
+                #   styles:                  
+                #     state:
+                #       - font-size: 20px                                                                             
+                                                  
+            - type: 'custom:button-card'
+              template: row_space
+              variables:
+                height: 5    
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_termostato_stato
+                template: climate_state 
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_sala_stato
+                name: Sala
+                template: climate_card
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_studio_stato
+                name: Studio
+                template: climate_card         
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_camera_stato
+                name: Camera
+                template: climate_card                          
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_cameretta_stato
+                name: Cameretta
+                template: climate_card                          
+
+              - type: custom:button-card
+                entity: binary_sensor.climate_netatmo_bagno_stato
+                name: Bagno
+                template: climate_card                          

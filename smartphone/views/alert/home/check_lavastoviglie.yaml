@@ -1,0 +1,299 @@
+- title: Home Check Lavastoviglie
+  path: home_check_lavastoviglie
+  visible: false
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:stack-in-card
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0px;
+              }          
+          cards:
+            # HEADER
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  template: header_back_button
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-smartphone/alert_home
+
+                - type: custom:button-card
+                  template: header_label_page
+                  name: Alert Home
+                  label: Controlli Lavastoviglie
+                 
+
+        - type: custom:mod-card
+          style:
+            hui-vertical-stack-card$: |
+              #root > * {
+                margin-right: 10px!important;
+                margin-left: 10px!important;
+              }  
+          card:
+            type: vertical-stack
+            cards:                   
+
+              - type: custom:button-card
+                entity: binary_sensor.lavastoviglie_controllo_sale
+                template: alert_card
+                name: Controllo Sale
+                icon: mdi:shaker-outline
+                label: >
+                  [[[
+                    if (entity.state=='off')
+                    {
+                      return "Ok";
+                    } else {
+                      if (entity.attributes.cicli_fuori_soglia == 0)
+                      {
+                        return "da ora";
+                      } else if (entity.attributes.cicli_fuori_soglia == 1)
+                      {
+                        return "da 1 ciclo";
+                      } else {
+                        return "da " + entity.attributes.cicli_fuori_soglia + " cicli";
+                      }
+                    }
+                  ]]]
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    command: popup
+                    title: Controllo Sale
+                    card:
+                      type: vertical-stack
+                      cards:
+                        - type: entities
+                          show_header_toggle: false
+                          entities:
+                            - entity: counter.lavastoviglie_controllo_sale_cicli
+                              name: Numero Cicli dal reset
+                            - type: attribute
+                              icon: mdi:alert-circle-outline
+                              entity: binary_sensor.lavastoviglie_controllo_sale
+                              attribute: cicli_fuori_soglia
+                              name: Numero Cicli fuori soglia
+
+                            - type: section
+                              label: Controlla sale ogni ...
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.lavastoviglie_controllo_sale_soglia
+                              full_row: true   
+                              hide_state: false
+
+                        - type: grid
+                          square: false
+                          columns: 3
+                          cards:
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:reload     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.reset
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_sale_cicli 
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:numeric-positive-1     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.increment
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_sale_cicli     
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:numeric-negative-1     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.decrement
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_sale_cicli       
+
+
+              - type: custom:button-card
+                entity: binary_sensor.lavastoviglie_controllo_pulizia
+                template: alert_card
+                name: Controllo Pulizia
+                icon: mdi:silverware-clean
+                label: >
+                  [[[
+                    if (entity.state=='off')
+                    {
+                      return "Ok";
+                    } else {
+                      if (entity.attributes.cicli_fuori_soglia == 0)
+                      {
+                        return "da ora";
+                      } else if (entity.attributes.cicli_fuori_soglia == 1)
+                      {
+                        return "da 1 ciclo";
+                      } else {
+                        return "da " + entity.attributes.cicli_fuori_soglia + " cicli";
+                      }
+                    }
+                  ]]]                      
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    command: popup
+                    title: Controllo Pulizia
+                    card:
+                      type: vertical-stack
+                      cards:
+                        - type: entities
+                          show_header_toggle: false
+                          entities:
+                            - entity: counter.lavastoviglie_controllo_pulizia_cicli
+                              name: Numero Cicli dal reset
+                            - type: attribute
+                              icon: mdi:alert-circle-outline
+                              entity: binary_sensor.lavastoviglie_controllo_pulizia
+                              attribute: cicli_fuori_soglia
+                              name: Numero Cicli fuori soglia
+
+                            - type: section
+                              label: Esegui pulizia ogni ...
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.lavastoviglie_controllo_pulizia_soglia
+                              full_row: true   
+                              hide_state: false
+
+                        - type: grid
+                          square: false
+                          columns: 3
+                          cards:
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:reload     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.reset
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_pulizia_cicli 
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:numeric-positive-1     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.increment
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_pulizia_cicli     
+
+                            - type: custom:button-card
+                              template: 
+                                - header_base 
+                                - no_background
+                              icon: mdi:numeric-negative-1     
+                              styles:                                   
+                                icon:
+                                  - color: var(--paper-item-icon-active-color)                                
+                              state:                           
+                              tap_action:
+                                haptic: medium
+                                action: call-service
+                                service: counter.decrement
+                                target:
+                                  entity_id: counter.lavastoviglie_controllo_pulizia_cicli             
+
+              - type: custom:button-card
+                entity: binary_sensor.lavastoviglie_controllo_pastiglie
+                template: alert_card
+                name: Controllo Pastiglie
+                icon: mdi:pill
+                label: >
+                  [[[
+                    return states["counter.lavastoviglie_numero_pastiglie"].state + ' pastiglie disponibili';
+                  ]]]               
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    command: popup
+                    title: Controllo Pastiglie
+                    card:
+                      type: vertical-stack
+                      cards:
+                        - type: entities
+                          show_header_toggle: false
+                          entities:
+                            - entity: counter.lavastoviglie_numero_pastiglie
+                              name: Pastiglie rimaste
+
+                            - type: section
+                              label: Soglia segnalazione
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.lavastoviglie_pastiglie_soglia
+                              full_row: true   
+                              hide_state: false
+
+                            - type: section
+                              label: Ricarica
+
+                            - type: custom:slider-entity-row
+                              entity: input_number.lavastoviglie_ricarica_pastiglie
+                              full_row: true   
+                              hide_state: false         
+
+                            - type: 'custom:button-card'
+                              name: RICARICA PASTIGLIE
+                              template: no_background    
+                              styles:
+                                card:
+                                  - padding: 5px
+                                name:
+                                  - font-size: 18px
+                                  - font-weight: bold               
+                                  - color: var(--accent-color)
+                              tap_action:
+                                action: call-service
+                                service: script.ricarica_pastiglie_lavastoviglie                                                   
+                                                                                                              
+
+                  
