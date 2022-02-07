@@ -3,16 +3,12 @@ id: '9641894765835'
 alias: House - Cleaning Mode Activated
 initial_state: on
 trigger:
-  - platform: homeassistant
-    event: start
   - platform: time
-    at: "21:00:00"
+    at: "09:30:00"
 condition:
   condition: and
   conditions:
     - condition: time
-      after: "09:30:00"
-      before: "12:00:00"
       weekday:
         - tue
     - condition: state
