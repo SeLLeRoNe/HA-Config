@@ -1,5 +1,0 @@
----
-platform: dnsip
-name: Hostname IP
-hostname: !secret ha_hostname
-resolver: 1.1.1.1

@@ -1,5 +1,0 @@
----
-platform: androidtv
-name: Living Room Google TV
-host: !secret living_room_chromecast_ip
-device_class: androidtv
