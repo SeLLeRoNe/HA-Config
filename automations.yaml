@@ -46,3 +46,30 @@
         - 4573594cd2f5c483f1d2fff1ec7542af
         - 251ab0bef835d7621318e5bf881c454e
         - 43ceefdea05ae470558813573f58ad1c
+- id: '1642341146989'
+  alias: Living Room Remote
+  description: ''
+  use_blueprint:
+    path: z2m-tint-remote.yaml
+    input:
+      remote: sensor.living_room_lights_remote_action
+      light_group_1:
+        device_id:
+        - 096a4ffb70f8e6fa175434623d65c307
+        - 71e1cf9b472711bd9aa6a26c07d3a4df
+        - aaf78621abc0c6af3f02f00f9d73ddb8
+        - 2b339ff3c58e3c5b2ecfa0ec9fe0c5ab
+      light_group_2:
+        device_id:
+        - d6163f4c3ec766ee1ecdb10cf5dbbbf6
+        - 4628885055733f305b90705949413aa4
+        - 4c36c1779820b2dce71a0c2d44d8886c
+      light_group_3:
+        device_id:
+        - 096a4ffb70f8e6fa175434623d65c307
+        - 71e1cf9b472711bd9aa6a26c07d3a4df
+        - aaf78621abc0c6af3f02f00f9d73ddb8
+        - 2b339ff3c58e3c5b2ecfa0ec9fe0c5ab
+        - d6163f4c3ec766ee1ecdb10cf5dbbbf6
+        - 4628885055733f305b90705949413aa4
+        - 4c36c1779820b2dce71a0c2d44d8886c

@@ -97,6 +97,8 @@
     type: module
   - url: /hacsfiles/scheduler-card/scheduler-card.js
     type: module
+  - url: /hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js
+    type: module
 
   - url: /local/q-card.js
     type: module

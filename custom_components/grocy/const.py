@@ -4,7 +4,7 @@ from enum import Enum
 # Base component constants
 NAME = "Grocy"
 DOMAIN = "grocy"
-VERSION = "v4.0.1"
+VERSION = "v4.1.0"
 
 ISSUE_URL = "https://github.com/custom-components/grocy/issues"
 
