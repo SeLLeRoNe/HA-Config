@@ -17,7 +17,7 @@ _LOGGER = logging.getLogger(__name__)
 
 DATA_REGISTRY = f"{const.DOMAIN}_storage"
 STORAGE_KEY = f"{const.DOMAIN}.storage"
-STORAGE_VERSION = 2
+STORAGE_VERSION = 3
 SAVE_DELAY = 10
 
 
@@ -97,6 +97,21 @@ def parse_schedule_data(data: dict):
 class MigratableStore(Store):
     async def _async_migrate_func(self, old_version, data: dict):
 
+        def remove_unequal_number_conditions(timeslots):
+            """ensure all timeslots have the same number of conditions"""
+            if len(timeslots) > 1 and not all(
+                len(el["conditions"]) == len(timeslots[0]["conditions"])
+                for el in timeslots
+            ):
+                return [
+                    {
+                        **slot,
+                        "conditions": timeslots[0]["conditions"]
+                    }
+                    for slot in timeslots
+                ]
+            return timeslots
+
         if old_version < 2:
             data["schedules"] = (
                 [
@@ -108,6 +123,18 @@ class MigratableStore(Store):
                         const.ATTR_END_DATE: entry[const.ATTR_END_DATE]
                         if const.ATTR_END_DATE in entry
                         else None,
+                    }
+                    for entry in data["schedules"]
+                ]
+                if "schedules" in data
+                else []
+            )
+        if old_version < 3:
+            data["schedules"] = (
+                [
+                    {
+                        **entry,
+                        const.ATTR_TIMESLOTS: remove_unequal_number_conditions(entry[const.ATTR_TIMESLOTS])
                     }
                     for entry in data["schedules"]
                 ]

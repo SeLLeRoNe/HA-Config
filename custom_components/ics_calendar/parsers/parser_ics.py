@@ -1,6 +1,7 @@
 """Support for ICS Calendar."""
 import re
-from arrow import Arrow, get as arrowget, utcnow
+from arrow import Arrow, get as arrowget
+from datetime import datetime, timedelta
 from ics import Calendar
 from ..icalendarparser import ICalendarParser
 
@@ -51,13 +52,17 @@ class parser_ics(ICalendarParser):
         return event_list
 
     @staticmethod
-    def get_current_event(content: str, include_all_day: bool):
+    def get_current_event(
+        content: str, include_all_day: bool, now: datetime, days: int
+    ):
         calendar = Calendar(content)
 
         if calendar is None:
             return None
+
         temp_event = None
-        for event in calendar.timeline.at(utcnow()):
+        end = now + timedelta(days=days)
+        for event in calendar.timeline.included(arrowget(now), arrowget(end)):
             if event.all_day and not include_all_day:
                 continue
             if temp_event is None:

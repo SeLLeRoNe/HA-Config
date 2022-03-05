@@ -82,6 +82,8 @@ class GrocyEntity(GrocyCoordinatorEntity):
     @property
     def entity_data(self):
         """Return the entity_data of the entity."""
+        if self.coordinator.data is None:
+            return None
         return self.coordinator.data.get(self.entity_type)
 
     @property
@@ -139,5 +141,8 @@ class GrocyEntity(GrocyCoordinatorEntity):
             data = {"products": [x.as_dict() for x in self.entity_data]}
         elif self.entity_type == GrocyEntityType.TASKS:
             data = {"tasks": [x.as_dict() for x in self.entity_data]}
+
+        if data:
+            data["count"] = sum(len(entry) for entry in data.values())
 
         return json.loads(json.dumps(data, cls=GrocyJSONEncoder))

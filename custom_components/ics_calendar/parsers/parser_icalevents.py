@@ -1,5 +1,5 @@
 """Support for ICS Calendar."""
-from datetime import datetime
+from datetime import datetime, timedelta
 from icalevents import icalparser
 from ..icalendarparser import ICalendarParser
 
@@ -32,10 +32,13 @@ class parser_icalevents(ICalendarParser):
         return event_list
 
     @staticmethod
-    def get_current_event(content: str, include_all_day: bool):
-        now = datetime.now().astimezone()
-        events = icalparser.parse_events(content=content)
-        if events is None:
+    def get_current_event(
+        content: str, include_all_day: bool, now: datetime, days: int
+    ):
+        now = now.astimezone()
+        end = now + timedelta(days=days)
+        events = icalparser.parse_events(content=content, start=now, end=end)
+        if events is None or len(events) == 0:
             return None
 
         temp_event = None

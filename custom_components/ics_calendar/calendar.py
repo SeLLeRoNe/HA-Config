@@ -32,6 +32,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CONF_DEVICE_ID = "device_id"
 CONF_CALENDARS = "calendars"
+CONF_DAYS = "days"
 CONF_CALENDAR = "calendar"
 CONF_INCLUDE_ALL_DAY = "includeAllDay"
 CONF_PARSER = "parser"
@@ -54,7 +55,12 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                             ): cv.boolean,
                             vol.Optional(CONF_USERNAME, default=""): cv.string,
                             vol.Optional(CONF_PASSWORD, default=""): cv.string,
-                            vol.Optional(CONF_PARSER, default="rie"): cv.string,
+                            vol.Optional(
+                                CONF_PARSER, default="rie"
+                            ): cv.string,
+                            vol.Optional(
+                                CONF_DAYS, default=1
+                            ): cv.positive_int,
                         }
                     )
                 ]
@@ -65,9 +71,9 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=15)
 # MIN_TIME_BETWEEN_DOWNLOADS is smaller than MIN_TIME_BETWEEN_UPDATES so that
-# it won't be skipped if an explicit update is called.  Eventually, if these are
-# configurable, we'll let end users worry about if they mean to have it happen
-# that way.
+# it won't be skipped if an explicit update is called.  Eventually, if these
+# are configurable, we'll let end users worry about if they mean to have it
+# happen that way.
 MIN_TIME_BETWEEN_DOWNLOADS = timedelta(minutes=10)
 
 
@@ -83,6 +89,7 @@ def setup_platform(hass, config, add_entities, _=None):
             CONF_USERNAME: calendar.get(CONF_USERNAME),
             CONF_PASSWORD: calendar.get(CONF_PASSWORD),
             CONF_PARSER: calendar.get(CONF_PARSER),
+            CONF_DAYS: calendar.get(CONF_DAYS),
         }
         device_id = "{}".format(device_data[CONF_NAME])
         entity_id = generate_entity_id(ENTITY_ID_FORMAT, device_id, hass=hass)
@@ -146,6 +153,7 @@ class ICSCalendarData:
         """Set up how we are going to connect to the ICS Calendar"""
         self.name = device_data[CONF_NAME]
         self.url = device_data[CONF_URL]
+        self._days = device_data[CONF_DAYS]
         self.include_all_day = device_data[CONF_INCLUDE_ALL_DAY]
         self.parser = ICalendarParser.get_instance(device_data[CONF_PARSER])
         self.event = None
@@ -177,7 +185,8 @@ class ICSCalendarData:
                 _LOGGER.error(f"{self.name}: Failed to open url: {http_error.reason}")
             except ContentTooShortError as content_too_short_error:
                 _LOGGER.error(
-                    f"{self.name}: Could not download calendar data: {content_too_short_error.reason}"
+                    f"{self.name}: Could not download calendar"
+                    f" data: {content_too_short_error.reason}"
                 )
             except URLError as url_error:
                 _LOGGER.error(f"{self.name}: Failed to open url: {url_error.reason}")
@@ -198,7 +207,7 @@ class ICSCalendarData:
             )
             event_list = list(map(self.format_dates, events))
         except:
-            _LOGGER.error(f"{self.name}: Failed to parse ICS!")
+            _LOGGER.error(f"async_get_events: {self.name}: Failed to parse ICS!")
             event_list = []
 
         return event_list
@@ -209,13 +218,18 @@ class ICSCalendarData:
         self._download_calendar()
         try:
             self.event = self.parser.get_current_event(
-                content=self._calendar_data, include_all_day=self.include_all_day
+                content=self._calendar_data,
+                include_all_day=self.include_all_day,
+                now=datetime.now(),
+                days=self._days
             )
         except:
-            _LOGGER.error(f"{self.name}: Failed to parse ICS!")
+            _LOGGER.error(f"update: {self.name}: Failed to parse ICS!")
         if self.event is not None:
             _LOGGER.debug(
-                f'{self.name}: got event: {self.event["summary"]}; start: {self.event["start"]}; end: {self.event["end"]}; all_day: {self.event["all_day"]}'
+                f'{self.name}: got event: {self.event["summary"]};'
+                f'start: {self.event["start"]}; end: {self.event["end"]};'
+                f'all_day: {self.event["all_day"]}'
             )
             self.event["start"] = self.get_hass_date(
                 self.event["start"], self.event["all_day"]

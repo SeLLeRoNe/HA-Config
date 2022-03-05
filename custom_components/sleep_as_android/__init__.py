@@ -1,10 +1,15 @@
 """Sleep As Android integration"""
 
+from awesomeversion import AwesomeVersion
 import logging
 from functools import cached_property, cache
 from typing import Dict, Callable
 
+from homeassistant.components.mqtt.subscription import EntitySubscription
+from pyhaversion import HaVersion
+
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import Platform
 from homeassistant.helpers import entity_registry as er
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.components.mqtt import subscription
@@ -28,7 +33,24 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
 
     registry = await er.async_get_registry(hass)
     hass.data[DOMAIN][config_entry.entry_id] = SleepAsAndroidInstance(hass, config_entry, registry)
+
+    hass.config_entries.async_setup_platforms(config_entry, [Platform.SENSOR])
+    config_entry.async_on_unload(config_entry.add_update_listener(async_update_options))
     return True
+
+
+async def async_update_options(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Update options for entry that was configured via user interface."""
+    await hass.config_entries.async_reload(entry.entry_id)
+
+
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Remove entry configured via user interface."""
+    unload_ok = await hass.config_entries.async_unload_platforms(entry, [Platform.SENSOR])
+    if unload_ok:
+        instance: SleepAsAndroidInstance = hass.data[DOMAIN].pop(entry.entry_id)
+        await instance.unsubscribe()
+    return unload_ok
 
 
 class SleepAsAndroidInstance:
@@ -44,9 +66,24 @@ class SleepAsAndroidInstance:
         except KeyError:
             self._name = 'SleepAsAndroid'
 
-        # will call async_setup_entry from sensor.py
-        self.hass.loop.create_task(self.hass.config_entries.async_forward_entry_setup(self._config_entry, 'sensor'))
         # ToDo prepare topic_template and other variables that should be defined one time.
+
+    async def unsubscribe(self):
+        _LOGGER.debug(f"subscription state is {self._subscription_state}")
+        if self._subscription_state is not None:
+            _LOGGER.debug("Unsubscribing")
+            ha_version = HaVersion()
+            await ha_version.get_version()
+            if ha_version.version >= AwesomeVersion('2022.3.0'):
+                self._subscription_state = subscription.async_unsubscribe_topics(
+                    hass=self.hass,
+                    sub_state=self._subscription_state,
+                )
+            else:
+                self._subscription_state = await subscription.async_unsubscribe_topics(
+                    hass=self.hass,
+                    sub_state=self._subscription_state,
+                )
 
     @cached_property
     def device_position_in_topic(self) -> int:
@@ -180,17 +217,49 @@ class SleepAsAndroidInstance:
                 # ToDo:  async_write_ha_state() runs before async_add_entities, so entity have no entity_id yet
                 pass
 
-        self._subscription_state = await subscription.async_subscribe_topics(
-            self.hass,
-            self._subscription_state,
-            {
-                "state_topic": {
-                    "topic": self.topic_template,
-                    "msg_callback": message_received,
-                    "qos": self._config_entry.data['qos']
-                }
+        async def subscribe_2022_03(_hass: HomeAssistant, _state, _topic: dict) -> dict[str, EntitySubscription]:
+
+            result = subscription.async_prepare_subscribe_topics(
+                hass=_hass,
+                new_state=_state,
+                topics=_topic,
+            )
+            if result is not None:
+                await subscription.async_subscribe_topics(
+                    hass=self.hass,
+                    sub_state=result,
+                )
+            return result
+
+        async def subscribe_2021_07(_hass: HomeAssistant, _state, _topic: dict) -> dict[str, EntitySubscription]:
+            return await subscription.async_subscribe_topics(
+                hass=_hass, new_state=_state, topics=_topic
+            )
+
+        topic = {
+            "state_topic": {
+                "topic": self.topic_template,
+                "msg_callback": message_received,
+                "qos": self._config_entry.data['qos']
             }
-        )
+        }
+
+        ha_version = HaVersion()
+        await ha_version.get_version()
+
+        if ha_version.version >= AwesomeVersion('2022.3.0'):
+            self._subscription_state = await subscribe_2022_03(
+                self.hass,
+                self._subscription_state,
+                topic,
+            )
+        else:
+            self._subscription_state = await subscribe_2021_07(
+                self.hass,
+                self._subscription_state,
+                topic,
+            )
+
         if self._subscription_state is not None:
             _LOGGER.debug("Subscribing to root topic is done!")
         else:

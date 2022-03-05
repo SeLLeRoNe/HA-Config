@@ -61,6 +61,9 @@ class SleepAsAndroidSensor(SensorEntity, RestoreEntity):
     Keys is field names from SleepAsAndroid event https://docs.sleep.urbandroid.org/services/automation.html#events
     Values is sensor attributes.
     """
+    _attr_icon = "mdi:sleep"
+    _attr_should_poll = False
+    _attr_device_class = f"{DOMAIN}__status"
 
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry, name: str):
         self._instance: SleepAsAndroidInstance = hass.data[DOMAIN][config_entry.entry_id]
@@ -71,7 +74,7 @@ class SleepAsAndroidSensor(SensorEntity, RestoreEntity):
         self._state: str = STATE_UNKNOWN
         self._device_id: str = "unknown"
         self._attr_extra_state_attributes = {}
-        self._set_attributes({}) # initiate _attr_extra_state_attributes with empty values
+        self._set_attributes({})  # initiate _attr_extra_state_attributes with empty values
         _LOGGER.debug(f"Creating sensor with name {name}")
 
     async def async_added_to_hass(self):
@@ -127,11 +130,6 @@ class SleepAsAndroidSensor(SensorEntity, RestoreEntity):
             _LOGGER.warning("expected JSON payload. got '%s' instead", msg.payload)
 
     @property
-    def should_poll(self):
-        """No polling needed."""
-        return False
-
-    @property
     def name(self):
         """Return the name of the sensor."""
         return self._instance.create_entity_id(self._name)
@@ -159,11 +157,6 @@ class SleepAsAndroidSensor(SensorEntity, RestoreEntity):
     def unique_id(self) -> str:
         """Return a unique ID."""
         return self._instance.create_entity_id(self._name)
-
-    @property
-    def icon(self):
-        """Return the icon."""
-        return "mdi:sleep"
 
     @property
     def available(self) -> bool:
