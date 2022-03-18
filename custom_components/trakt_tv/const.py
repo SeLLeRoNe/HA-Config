@@ -3,11 +3,12 @@
 DOMAIN = "trakt_tv"
 
 API_HOST = "https://api.trakt.tv"
-OAUTH2_AUTHORIZE = f"{API_HOST}/oauth/authorize"
+OAUTH2_AUTHORIZE = "https://trakt.tv/oauth/authorize"
 OAUTH2_TOKEN = f"{API_HOST}/oauth/token"
 
 UPCOMING_DATA_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
 
+TMDB_HOST = "http://api.tmdb.org"
 TMDB_TOKEN = "0eee347e2333d7a97b724106353ca42f"
 
 LANGUAGE_CODES = [

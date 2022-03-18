@@ -1,3 +1,7 @@
+from datetime import datetime, timedelta
+from math import ceil
+from typing import List, Tuple
+
 from .const import DOMAIN
 
 
@@ -9,20 +13,29 @@ def update_domain_data(hass, key, content):
         hass.data[DOMAIN][key] = content
 
 
-def nested_get(dictionary, keys):
-    for key in keys:
-        dictionary = dictionary.get(key, {})
-    return dictionary
+def split(number: int, by: int) -> List[int]:
+    size = ceil(number / by)
+    res = []
+    for i in range(0, size):
+        if i + 1 == size:
+            rest = number % by
+            if rest == 0:
+                res.append(by)
+            else:
+                res.append(rest)
+        else:
+            res.append(by)
+    return res
 
 
-def should_compute_identifier(hass, identifier):
-    return nested_get(
-        hass.data,
-        [
-            DOMAIN,
-            "configuration",
-            "sensors",
-            "upcoming",
-            identifier,
-        ],
-    )
+def compute_calendar_args(
+    days_to_fetch: int, max_days_per_request: int
+) -> List[Tuple[str, int]]:
+    group_of_days = split(days_to_fetch, by=max_days_per_request)
+    previous_date = datetime.now()
+    res = []
+    for days in group_of_days:
+        from_date = previous_date
+        res.append((from_date.strftime("%Y-%m-%d"), days))
+        previous_date = from_date + timedelta(days)
+    return res

@@ -4,15 +4,10 @@ import logging
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_CLIENT_ID, CONF_CLIENT_SECRET
-from homeassistant.core import callback
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers.config_entry_oauth2_flow import (
-    AbstractOAuth2FlowHandler,
-    async_get_implementations,
-)
+from homeassistant.helpers.config_entry_oauth2_flow import AbstractOAuth2FlowHandler
 
 from .const import DOMAIN, OAUTH2_AUTHORIZE, OAUTH2_TOKEN
-from .model.kind import TraktKind
 
 
 class OAuth2FlowHandler(AbstractOAuth2FlowHandler, domain=DOMAIN):
@@ -67,4 +62,4 @@ class OAuth2FlowHandler(AbstractOAuth2FlowHandler, domain=DOMAIN):
         Ok to override if you want to fetch extra info or even add another step.
         """
         augmented_data = {**data, **self.user_input}
-        return self.async_create_entry(title=self.flow_impl.name, data=augmented_data)
+        return self.async_create_entry(title="Trakt", data=augmented_data)

@@ -1,39 +1,60 @@
-import logging
+from dataclasses import dataclass
+from typing import Any, Dict
 
-import voluptuous as vol
-from homeassistant.helpers import config_validation as cv
-
-from .const import DOMAIN, LANGUAGE_CODES
-from .model.kind import TraktKind
+from custom_components.trakt_tv.const import DOMAIN
 
 
-def build_config_schema():
-    return vol.Schema(
-        {DOMAIN: build_config_domain_schema()},
-        extra=vol.ALLOW_EXTRA,
-    )
+@dataclass
+class Configuration:
+    data: Dict[str, Any]
 
+    @property
+    def conf(self) -> Dict[str, Any]:
+        return self.data[DOMAIN]["configuration"]
 
-def build_config_domain_schema():
-    return vol.Schema(
-        {
-            "sensors": vol.Schema(
-                {
-                    vol.Required("upcoming"): build_config_upcoming_schema(),
-                }
-            ),
-            vol.Required("language"): vol.In(LANGUAGE_CODES),
-        }
-    )
+    def get_language(self) -> str:
+        try:
+            return self.conf["language"]
+        except KeyError:
+            return "en"
 
+    def identifier_exists(self, identifier: str, source: str) -> bool:
+        try:
+            self.conf["sensors"][source][identifier]
+            return True
+        except KeyError:
+            return False
 
-def build_config_upcoming_schema():
-    subschemas = {}
-    for trakt_kind in TraktKind:
-        subschemas[trakt_kind.value.identifier] = vol.Schema(
-            {
-                vol.Required("days_to_fetch", default=90): cv.positive_int,
-                vol.Required("max_medias", default=3): cv.positive_int,
-            }
-        )
-    return vol.Schema(subschemas)
+    def get_days_to_fetch(self, identifier: str, source: str) -> int:
+        try:
+            return self.conf["sensors"][source][identifier]["days_to_fetch"]
+        except KeyError:
+            return 30
+
+    def get_max_medias(self, identifier: str, source: str) -> int:
+        try:
+            return self.conf["sensors"][source][identifier]["max_medias"]
+        except KeyError:
+            return 3
+
+    def upcoming_identifier_exists(
+        self, identifier: str, all_medias: bool = False
+    ) -> bool:
+        source = "all_upcoming" if all_medias else "upcoming"
+        return self.identifier_exists(identifier, source)
+
+    def get_upcoming_days_to_fetch(
+        self, identifier: str, all_medias: bool = False
+    ) -> int:
+        source = "all_upcoming" if all_medias else "upcoming"
+        return self.get_days_to_fetch(identifier, source)
+
+    def get_upcoming_max_medias(self, identifier: str, all_medias: bool = False) -> int:
+        source = "all_upcoming" if all_medias else "upcoming"
+        return self.get_max_medias(identifier, source)
+
+    def recommendation_identifier_exists(self, identifier: str) -> bool:
+        return self.identifier_exists(identifier, "recommendation")
+
+    def get_recommendation_max_medias(self, identifier: str) -> int:
+        return self.get_max_medias(identifier, "recommendation")

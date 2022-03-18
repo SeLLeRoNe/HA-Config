@@ -511,7 +511,7 @@ SUPPORTED_MODELS = {
         ATTR_MIN_FIRMWARE_DATE: 20220205,
     },
     MODEL_PLUS_I4: {
-        ATTR_NAME: "Shelly Plus i4",
+        ATTR_NAME: "Shelly Plus I4",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
             SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
@@ -697,6 +697,16 @@ SUPPORTED_MODELS = {
 }
 
 
+def get_consumption_type(consumption_list, relay_id):
+    """Return consumption type for relay."""
+    try:
+        consumption_type = consumption_list[relay_id]
+    except IndexError:
+        return ATTR_SWITCH
+
+    return ATTR_LIGHT if "light" in consumption_type else ATTR_SWITCH
+
+
 def mqtt_publish(topic, payload):
     """Publish data to MQTT broker."""
     payload_str = str(payload).replace("'", '"').replace("^", '\\"')
@@ -740,7 +750,7 @@ def get_cover(cover_id, profile):
         KEY_VALUE_TEMPLATE: "{%if value_json.state!=^calibrating^%}{{value_json.state}}{%endif%}",
         KEY_POSITION_TEMPLATE: "{%if is_number(value_json.get(^current_pos^))%}{{value_json.current_pos}}{%endif%}",
         KEY_SET_POSITION_TOPIC: TOPIC_RPC,
-        KEY_SET_POSITION_TEMPLATE: f"{{^id^:1,^src^:^{device_id}^,^method^:^Cover.GoToPosition^,^params^:{{^id^:{cover_id},^pos^:position}}}}",
+        KEY_SET_POSITION_TEMPLATE: f"{{^id^:1,^src^:^{device_id}^,^method^:^Cover.GoToPosition^,^params^:{{^id^:{cover_id},^pos^:{{{{position}}}}}}}}",
         KEY_PAYLOAD_OPEN: f"{{^id^:1,^src^:^{device_id}^,^method^:^Cover.Open^,^params^:{{^id^:{cover_id}}}}}",
         KEY_PAYLOAD_CLOSE: f"{{^id^:1,^src^:^{device_id}^,^method^:^Cover.Close^,^params^:{{^id^:{cover_id}}}}}",
         KEY_PAYLOAD_STOP: f"{{^id^:1,^src^:^{device_id}^,^method^:^Cover.Stop^,^params^:{{^id^:{cover_id}}}}}",
@@ -1025,9 +1035,9 @@ def configure_device():
     for relay_id in range(relays):
         consumption_types = [
             item.lower()
-            for item in device_config["sys"]["device"].get("consumption_types", [])
+            for item in device_config["sys"]["ui_data"].get("consumption_types", [])
         ]
-        relay_type = ATTR_LIGHT if ATTR_LIGHT in consumption_types else ATTR_SWITCH
+        relay_type = get_consumption_type(consumption_types, relay_id)
 
         topic, payload = get_switch(relay_id, relay_type, profile)
         config[topic] = payload

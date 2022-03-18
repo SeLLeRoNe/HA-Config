@@ -1,14 +1,11 @@
-import json
 from abc import ABC, abstractmethod, abstractstaticmethod
-from asyncio import gather
 from dataclasses import dataclass, field
 from datetime import datetime
-from enum import Enum
 from typing import Any, Dict, List, Optional
 
-import aiohttp
+from custom_components.trakt_tv.apis.tmdb import get_movie_data, get_show_data
 
-from ..const import TMDB_TOKEN, UPCOMING_DATA_FORMAT
+from ..const import UPCOMING_DATA_FORMAT
 
 
 @dataclass
@@ -38,7 +35,6 @@ class Identifiers:
 @dataclass
 class Media(ABC):
     name: str
-    released: datetime
     ids: Identifiers
 
     @abstractstaticmethod
@@ -48,7 +44,7 @@ class Media(ABC):
         """
 
     @abstractmethod
-    def to_upcoming(self) -> Dict[str, Any]:
+    def to_homeassistant(self) -> Dict[str, Any]:
         """
         Convert the Media to upcoming data.
 
@@ -56,7 +52,7 @@ class Media(ABC):
                  card
         """
 
-    def common_upcoming_information(self) -> Dict[str, Any]:
+    def common_information(self) -> Dict[str, Any]:
         """
         Common upcoming information.
 
@@ -64,8 +60,6 @@ class Media(ABC):
         """
         default = {
             "title": self.name,
-            "release": "$day, $date $time",
-            "airdate": self.released.isoformat() + "Z",
             "poster": self.poster,
             "fanart": self.fanart,
             "genres": self.genres,
@@ -86,12 +80,12 @@ class Media(ABC):
 @dataclass
 class Movie(Media):
     """
-    A movie
+    An upcoming movie
     """
 
+    genres: List[str] = field(default_factory=list)
     poster: Optional[str] = None
     fanart: Optional[str] = None
-    genres: List[str] = field(default_factory=list)
     rating: Optional[int] = None
     runtime: Optional[int] = None
     studio: Optional[str] = None
@@ -101,11 +95,10 @@ class Movie(Media):
         """
         Create a Movie from trakt api.
         """
-        movie = data["movie"]
+        movie = data
 
         return Movie(
             name=movie["title"],
-            released=datetime.fromisoformat(data["released"]),
             ids=Identifiers.from_trakt(movie),
         )
 
@@ -115,27 +108,24 @@ class Movie(Media):
 
         :param language: The favorite language of the user
         """
-        host = "http://api.tmdb.org"
-        url = f"{host}/3/movie/{self.ids.tmdb}?api_key={TMDB_TOKEN}&language={language}"
-        async with aiohttp.request("GET", url) as response:
-            json = await response.json()
-            if title := json.get("title"):
-                self.name = title
-            if poster := json.get("poster_path"):
-                self.poster = f"https://image.tmdb.org/t/p/w500{poster}"
-            if fanart := json.get("backdrop_path"):
-                self.fanart = f"https://image.tmdb.org/t/p/w500{fanart}"
-            if genres := json.get("genres"):
-                self.genres = [genre["name"] for genre in genres]
-            if vote_average := json.get("vote_average"):
-                if vote_average != 0:
-                    self.rating = vote_average
-            if runtime := json.get("runtime"):
-                self.runtime = runtime
-            if production_companies := json.get("production_companies"):
-                self.studio = production_companies[0].get("name")
+        data = await get_movie_data(self.ids.tmdb, language)
+        if title := data.get("title"):
+            self.name = title
+        if poster := data.get("poster_path"):
+            self.poster = f"https://image.tmdb.org/t/p/w500{poster}"
+        if fanart := data.get("backdrop_path"):
+            self.fanart = f"https://image.tmdb.org/t/p/w500{fanart}"
+        if genres := data.get("genres"):
+            self.genres = [genre["name"] for genre in genres]
+        if vote_average := data.get("vote_average"):
+            if vote_average != 0:
+                self.rating = vote_average
+        if runtime := data.get("runtime"):
+            self.runtime = runtime
+        if production_companies := data.get("production_companies"):
+            self.studio = production_companies[0].get("name")
 
-    def to_upcoming(self) -> Dict[str, Any]:
+    def to_homeassistant(self) -> Dict[str, Any]:
         """
         Convert the Movie to upcoming data.
 
@@ -143,8 +133,45 @@ class Movie(Media):
                  card
         """
         default = {
-            **self.common_upcoming_information(),
+            **self.common_information(),
             "runtime": self.runtime,
+        }
+
+        return default
+
+
+@dataclass
+class UpcomingMovie(Movie):
+    """
+    An upcoming movie
+    """
+
+    released: Optional[datetime] = None  # This one is actually mandatory
+
+    @staticmethod
+    def from_trakt(data) -> "UpcomingMovie":
+        """
+        Create a Movie from trakt api.
+        """
+        movie = data["movie"]
+
+        return UpcomingMovie(
+            name=movie["title"],
+            released=datetime.fromisoformat(data["released"]),
+            ids=Identifiers.from_trakt(movie),
+        )
+
+    def to_homeassistant(self) -> Dict[str, Any]:
+        """
+        Convert the Movie to upcoming data.
+
+        :return: The dictionary containing all necessary information for upcoming media
+                 card
+        """
+        default = {
+            **super().to_homeassistant(),
+            "release": "$day, $date $time",
+            "airdate": self.released.isoformat() + "Z",
         }
 
         return default
@@ -174,7 +201,6 @@ class Episode:
 
 @dataclass
 class Show(Media):
-    episode: Episode
     poster: Optional[str] = None
     fanart: Optional[str] = None
     genres: List[str] = field(default_factory=list)
@@ -186,14 +212,25 @@ class Show(Media):
         """
         Create a Show from trakt api.
         """
-        show = data["show"]
+        show = data
 
         return Show(
             name=show["title"],
-            released=datetime.strptime(data["first_aired"], UPCOMING_DATA_FORMAT),
             ids=Identifiers.from_trakt(show),
-            episode=Episode.from_trakt(data),
         )
+
+    def update_common_information(self, data: Dict[str, Any]):
+        if title := data.get("title"):
+            self.name = title
+        if fanart := data.get("backdrop_path"):
+            self.fanart = f"https://image.tmdb.org/t/p/w500{fanart}"
+        if genres := data.get("genres"):
+            self.genres = [genre["name"] for genre in genres]
+        if vote_average := data.get("vote_average"):
+            if vote_average != 0:
+                self.rating = vote_average
+        if networks := data.get("networks"):
+            self.studio = networks[0].get("name")
 
     async def get_more_information(self, language):
         """
@@ -201,36 +238,56 @@ class Show(Media):
 
         :param language: The favorite language of the user
         """
-        host = "http://api.tmdb.org"
-        url = f"{host}/3/tv/{self.ids.tmdb}?api_key={TMDB_TOKEN}&language={language}"
-        async with aiohttp.request("GET", url) as response:
-            json = await response.json()
-            if title := json.get("title"):
-                self.name = title
-            season = [
-                season
-                for season in json.get("seasons", [])
-                if season["season_number"] == self.episode.season
-            ]
-            if season:
-                poster = season[0]["poster_path"]
-                self.poster = f"https://image.tmdb.org/t/p/w500{poster}"
-            if fanart := json.get("backdrop_path"):
-                self.fanart = f"https://image.tmdb.org/t/p/w500{fanart}"
-            if genres := json.get("genres"):
-                self.genres = [genre["name"] for genre in genres]
-            if vote_average := json.get("vote_average"):
-                if vote_average != 0:
-                    self.rating = vote_average
-            if networks := json.get("networks"):
-                self.studio = networks[0].get("name")
+        data = await get_show_data(self.ids.tmdb, language)
+        self.update_common_information(data)
 
-    def to_upcoming(self) -> Dict[str, Any]:
+    def to_homeassistant(self) -> Dict[str, Any]:
         """
         Convert the Show to upcoming data.
 
         :return: The dictionary containing all necessary information for upcoming media
                  card
+        """
+        default = {**self.common_information()}
+
+        return default
+
+
+@dataclass
+class UpcomingShow(Show):
+    episode: Optional[Episode] = None  # This one is actually mandatory
+    released: Optional[datetime] = None  # This one is actually mandatory
+
+    @staticmethod
+    def from_trakt(data) -> "UpcomingShow":
+        """
+        Create an UpcomingShow from trakt api.
+        """
+        show = data["show"]
+
+        return UpcomingShow(
+            name=show["title"],
+            released=datetime.strptime(data["first_aired"], UPCOMING_DATA_FORMAT),
+            ids=Identifiers.from_trakt(show),
+            episode=Episode.from_trakt(data),
+        )
+
+    def update_common_information(self, data: Dict[str, Any]):
+        super().update_common_information(data)
+        season = [
+            season
+            for season in data.get("seasons", [])
+            if season["season_number"] == self.episode.season
+        ]
+        if season:
+            poster = season[0]["poster_path"]
+            self.poster = f"https://image.tmdb.org/t/p/w500{poster}"
+
+    def to_homeassistant(self) -> Dict[str, Any]:
+        """
+        Convert the UpcomingShow to homeassistant data.
+
+        :return: The dictionary containing all necessary information for homeassistant
         """
         season = self.episode.season
         season = season if season >= 10 else f"0{season}"
@@ -239,16 +296,18 @@ class Show(Media):
         episode = episode if episode >= 10 else f"0{episode}"
 
         default = {
-            **self.common_upcoming_information(),
+            **super().to_homeassistant(),
             "episode": self.episode.title,
             "number": f"S{season}E{episode}",
+            "release": "$day, $date $time",
+            "airdate": self.released.isoformat() + "Z",
         }
 
         return default
 
 
 @dataclass
-class Medias:
+class UpcomingMedias:
     items: List[Media]
 
     @staticmethod
@@ -262,7 +321,7 @@ class Medias:
             "icon": "mdi:arrow-down-bold",
         }
 
-    def to_upcoming(self) -> Dict[str, Any]:
+    def to_homeassistant(self) -> Dict[str, Any]:
         """
         Convert the List of medias to upcoming data.
 
@@ -270,5 +329,21 @@ class Medias:
                  card
         """
         medias = sorted(self.items, key=lambda media: media.released)
-        medias = [media.to_upcoming() for media in medias]
-        return [Medias.first_item()] + medias
+        medias = [media.to_homeassistant() for media in medias]
+        return [UpcomingMedias.first_item()] + medias
+
+
+@dataclass
+class Medias:
+    items: List[Media]
+
+    def to_homeassistant(self) -> Dict[str, Any]:
+        """
+        Convert the List of medias to upcoming data.
+
+        :return: The dictionary containing all necessary information for upcoming media
+                 card
+        """
+        medias = sorted(self.items, key=lambda media: media.name)
+        medias = [media.to_homeassistant() for media in medias]
+        return medias
