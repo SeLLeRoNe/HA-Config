@@ -8,7 +8,7 @@
 #
 platform: workday
 name: Workday UK
-country: UK
+country: GB
 workdays:
   - mon
   - tue
