@@ -7,6 +7,8 @@ import pathlib
 import re
 import jsonschema
 
+from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
+from homeassistant.components.number import DOMAIN as NUMBER_DOMAIN
 from homeassistant.components.binary_sensor import DOMAIN as BINARY_SENSOR_DOMAIN
 from homeassistant.components.light import DOMAIN as LIGHT_DOMAIN
 from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
@@ -82,7 +84,13 @@ from .image import ImageServeView, image_to_rgb565
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS = [LIGHT_DOMAIN, SWITCH_DOMAIN, BINARY_SENSOR_DOMAIN]
+PLATFORMS = [
+    LIGHT_DOMAIN,
+    SWITCH_DOMAIN,
+    BINARY_SENSOR_DOMAIN,
+    NUMBER_DOMAIN,
+    BUTTON_DOMAIN,
+]
 
 
 def hasp_object(value):
@@ -259,7 +267,7 @@ async def async_setup_entry(hass, entry) -> bool:
         )
 
     listener = entry.add_update_listener(async_update_options)
-    hass.data[DOMAIN][CONF_PLATE][DATA_LISTENER] = listener
+    entry.async_on_unload(listener)
 
     return True
 
@@ -270,10 +278,23 @@ async def async_unload_entry(hass, entry):
 
     _LOGGER.debug("Unload entry for plate %s", plate)
 
-    listener = hass.data[DOMAIN][CONF_PLATE][DATA_LISTENER]
+    for domain in PLATFORMS:
+        await hass.config_entries.async_forward_entry_unload(entry, domain)
+
+    component = hass.data[DOMAIN][CONF_COMPONENT]
+    await component.async_remove_entity(hass.data[DOMAIN][CONF_PLATE][plate].entity_id)
+
+    # Remove Plate entity
+    del hass.data[DOMAIN][CONF_PLATE][plate]
+
+    return True
+
+async def async_remove_entry(hass, entry):
+    plate = entry.data[CONF_NAME]
 
     # Only remove services if it is the last
     if len(hass.data[DOMAIN][CONF_PLATE]) == 1:
+        _LOGGER.debug("removing services")
         hass.services.async_remove(DOMAIN, SERVICE_WAKEUP)
         hass.services.async_remove(DOMAIN, SERVICE_PAGE_NEXT)
         hass.services.async_remove(DOMAIN, SERVICE_PAGE_PREV)
@@ -281,9 +302,6 @@ async def async_unload_entry(hass, entry):
         hass.services.async_remove(DOMAIN, SERVICE_LOAD_PAGE)
         hass.services.async_remove(DOMAIN, SERVICE_CLEAR_PAGE)
         hass.services.async_remove(DOMAIN, SERVICE_COMMAND)
-
-    for domain in PLATFORMS:
-        await hass.config_entries.async_forward_entry_unload(entry, domain)
 
     device_registry = await dr.async_get_registry(hass)
     dev = device_registry.async_get_device(
@@ -293,20 +311,9 @@ async def async_unload_entry(hass, entry):
         _LOGGER.debug("Removing device %s", dev)
         device_registry.async_remove_device(dev.id)
 
-    component = hass.data[DOMAIN][CONF_COMPONENT]
-    await component.async_remove_entity(hass.data[DOMAIN][CONF_PLATE][plate].entity_id)
-
     # Component does not remove entity from entity_registry, so we must do it
     registry = await entity_registry.async_get_registry(hass)
     registry.async_remove(hass.data[DOMAIN][CONF_PLATE][plate].entity_id)
-
-    listener()
-
-    # Remove Plate entity
-    del hass.data[DOMAIN][CONF_PLATE][plate]
-
-    return True
-
 
 # pylint: disable=R0902
 class SwitchPlate(RestoreEntity):
@@ -336,6 +343,20 @@ class SwitchPlate(RestoreEntity):
             pathlib.Path(__file__).parent.joinpath("pages_schema.json"), "r"
         ) as schema_file:
             self.json_schema = json.load(schema_file)
+
+        self._attr_unique_id = entry.data[CONF_HWID]
+        self._attr_name = entry.data[CONF_NAME]
+        self._attr_icon = "mdi:gesture-tap-box"
+
+    @property
+    def state(self):
+        """Return the state of the component."""
+        return self._page
+
+    @property
+    def available(self):
+        """Return if entity is available."""
+        return self._available
 
     async def async_will_remove_from_hass(self):
         """Run before entity is removed."""
@@ -468,31 +489,6 @@ class SwitchPlate(RestoreEntity):
         )
 
     @property
-    def unique_id(self):
-        """Return the plate identifier."""
-        return self._entry.data[CONF_HWID]
-
-    @property
-    def name(self):
-        """Return the name of the plate."""
-        return self._entry.data[CONF_NAME]
-
-    @property
-    def icon(self):
-        """Return the icon to be used for this entity."""
-        return "mdi:gesture-tap-box"
-
-    @property
-    def state(self):
-        """Return the state of the component."""
-        return self._page
-
-    @property
-    def available(self):
-        """Return if entity is available."""
-        return self._available
-
-    @property
     def state_attributes(self):
         """Return the state attributes."""
         attributes = {}
@@ -572,9 +568,9 @@ class SwitchPlate(RestoreEntity):
         self.async_write_ha_state()
 
     async def async_command_service(self, keyword, parameters):
-        """Sends commands directly to the plate entity"""
+        """Send commands directly to the plate entity."""
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             f"{self._topic}/command",
             f"{keyword} {parameters}".strip(),
             qos=0,
@@ -582,9 +578,9 @@ class SwitchPlate(RestoreEntity):
         )
 
     async def async_config_service(self, submodule, parameters):
-        """Sends configuration commands to plate entity"""
+        """Send configuration commands to plate entity."""
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             f"{self._topic}/config/{submodule}",
             f"{parameters}".strip(),
             qos=0,
@@ -592,7 +588,7 @@ class SwitchPlate(RestoreEntity):
         )
 
     async def async_push_image(self, image, obj, width=None, height=None):
-        """update object image."""
+        """Update object image."""
 
         image_id = hashlib.md5(image.encode("utf-8")).hexdigest()
 
@@ -637,13 +633,21 @@ class SwitchPlate(RestoreEntity):
             for line in lines:
                 if len(mqtt_payload_buffer) + len(line) > 1000:
                     await self.hass.components.mqtt.async_publish(
-                        self.hass, f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+                        self.hass,
+                        f"{cmd_topic}/jsonl",
+                        mqtt_payload_buffer,
+                        qos=0,
+                        retain=False,
                     )
                     mqtt_payload_buffer = line
                 else:
                     mqtt_payload_buffer = mqtt_payload_buffer + line
             await self.hass.components.mqtt.async_publish(
-                self.hass, f"{cmd_topic}/jsonl", mqtt_payload_buffer, qos=0, retain=False
+                self.hass,
+                f"{cmd_topic}/jsonl",
+                mqtt_payload_buffer,
+                qos=0,
+                retain=False,
             )
 
         try:

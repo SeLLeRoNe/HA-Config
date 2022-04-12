@@ -109,16 +109,13 @@ class HASPLight(HASPToggleEntity, LightEntity):
     def __init__(self, name, hwid, topic, gpio):
         """Initialize the light."""
         super().__init__(name, hwid, topic, gpio)
-
-    @property
-    def name(self):
-        """Return the name of the light."""
-        return f"{self._name} light {self._gpio}"
+        self._gpio = gpio
+        self._attr_name = f"{name} light {gpio}"
 
     async def refresh(self):
         """Sync local state back to plate."""
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             f"{self._topic}/command/output{self._gpio}",
             json.dumps(HASP_LIGHT_SCHEMA({"state": int(self._state)})),
             qos=0,
@@ -153,7 +150,11 @@ class HASPLight(HASPToggleEntity, LightEntity):
 
         # Force immediatable state update from plate
         await self.hass.components.mqtt.async_publish(
-            self.hass, f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
+            self.hass,
+            f"{self._topic}/command/output{self._gpio}",
+            "",
+            qos=0,
+            retain=False,
         )
 
 
@@ -164,16 +165,9 @@ class HASPDimmableLight(HASPToggleEntity, LightEntity):
         """Initialize the dimmable light."""
         super().__init__(name, hwid, topic, gpio)
         self._brightness = None
-
-    @property
-    def name(self):
-        """Return the name of the light."""
-        return f"{self._name} dimmable light {self._gpio}"
-
-    @property
-    def supported_features(self):
-        """Flag supported features."""
-        return SUPPORT_BRIGHTNESS
+        self._attr_supported_features = SUPPORT_BRIGHTNESS
+        self._gpio = gpio
+        self._attr_name = f"{name} dimmable light {self._gpio}"
 
     @property
     def brightness(self):
@@ -190,7 +184,7 @@ class HASPDimmableLight(HASPToggleEntity, LightEntity):
         )
 
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             f"{self._topic}/command/output{self._gpio}",
             json.dumps(
                 HASP_LIGHT_SCHEMA(
@@ -231,7 +225,11 @@ class HASPDimmableLight(HASPToggleEntity, LightEntity):
 
         # Force immediatable state update from plate
         await self.hass.components.mqtt.async_publish(
-            self.hass, f"{self._topic}/command/output{self._gpio}", "", qos=0, retain=False
+            self.hass,
+            f"{self._topic}/command/output{self._gpio}",
+            "",
+            qos=0,
+            retain=False,
         )
 
     async def async_turn_on(self, **kwargs):
@@ -247,25 +245,12 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
 
     def __init__(self, name, hwid, topic, brightness):
         """Initialize the light."""
-        super().__init__(name, hwid, topic)
+        super().__init__(name, hwid, topic, "backlight")
         self._awake_brightness = 255
         self._brightness = None
         self._idle_brightness = brightness
-
-    @property
-    def supported_features(self):
-        """Flag supported features."""
-        return SUPPORT_BRIGHTNESS
-
-    @property
-    def name(self):
-        """Return the name of the light."""
-        return f"{self._name} backlight"
-
-    @property
-    def unique_id(self):
-        """Return the identifier of the light."""
-        return f"{self._hwid}.backlight"
+        self._attr_supported_features = SUPPORT_BRIGHTNESS
+        self._attr_name = f"{name} backlight"
 
     @property
     def extra_state_attributes(self):
@@ -367,7 +352,7 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
             new_state = {"state": backlight, "brightness": brightness}
 
             await self.hass.components.mqtt.async_publish(
-                self.hass, 
+                self.hass,
                 f"{self._topic}/command",
                 f"backlight {json.dumps(new_state)}",
                 qos=0,
@@ -390,7 +375,7 @@ class HASPBackLight(HASPToggleEntity, LightEntity, RestoreEntity):
         _LOGGER.debug("refresh(%s) backlight - %s", self.name, new_state)
 
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             cmd_topic,
             f"backlight {json.dumps(new_state)}",
             qos=0,
@@ -414,14 +399,11 @@ class HASPMoodLight(HASPToggleEntity, LightEntity, RestoreEntity):
 
     def __init__(self, name, hwid, topic):
         """Initialize the light."""
-        super().__init__(name, hwid, topic)
+        super().__init__(name, hwid, topic, "moodlight")
         self._hs = None
         self._brightness = None
-
-    @property
-    def supported_features(self):
-        """Flag supported features."""
-        return SUPPORT_COLOR | SUPPORT_BRIGHTNESS
+        self._attr_supported_features = SUPPORT_COLOR | SUPPORT_BRIGHTNESS
+        self._attr_name = f"{name} moodlight"
 
     @property
     def hs_color(self):
@@ -432,16 +414,6 @@ class HASPMoodLight(HASPToggleEntity, LightEntity, RestoreEntity):
     def brightness(self):
         """Return the brightness of this light between 0..255."""
         return self._brightness
-
-    @property
-    def name(self):
-        """Return the name of the light."""
-        return f"{self._name} moodlight"
-
-    @property
-    def unique_id(self):
-        """Return the identifier of the light."""
-        return f"{self._hwid}.moodlight"
 
     async def async_added_to_hass(self):
         """Run when entity about to be added."""
@@ -501,7 +473,7 @@ class HASPMoodLight(HASPToggleEntity, LightEntity, RestoreEntity):
 
         _LOGGER.debug("refresh(%s) moodlight - %s", self.name, new_state)
         await self.hass.components.mqtt.async_publish(
-            self.hass, 
+            self.hass,
             cmd_topic,
             f"moodlight {json.dumps(new_state)}",
             qos=0,

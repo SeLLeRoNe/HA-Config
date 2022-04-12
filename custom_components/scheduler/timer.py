@@ -198,9 +198,10 @@ class TimerHandler:
                     return
                 # we are re-scheduling an existing timer
                 delta = (ts - self._next_trigger).total_seconds()
-                if abs(delta) >= 60 and abs(delta) < 50000:
+                if abs(delta) >= 60 and abs(delta) < 2000:
                     # only reschedule if the difference is at least a minute
                     # only reschedule if this doesnt cause the timer to shift to another day (+/- 24 hrs delta)
+                    # only reschedule if this doesnt cause the timer to shift to another hour (due to DST change)
                     await self.async_start_timer()
 
             self._sun_tracker = async_track_state_change(
@@ -229,7 +230,7 @@ class TimerHandler:
                 return
 
             @callback
-            async def async_workday_updated(entity, old_state, new_state):
+            async def async_workday_updated():
                 """the workday sensor was updated"""
                 [current_slot, timestamp_end] = self.current_timeslot()
                 [next_slot, timestamp_next] = self.next_timeslot()
@@ -246,8 +247,8 @@ class TimerHandler:
                         # only reschedule if the difference is at least a minute
                         await self.async_start_timer()
 
-            self._workday_tracker = async_track_state_change(
-                self.hass, const.WORKDAY_ENTITY, async_workday_updated
+            self._workday_tracker = async_dispatcher_connect(
+                self.hass, const.EVENT_WORKDAY_SENSOR_UPDATED, async_workday_updated
             )
         else:
             # clear existing tracker

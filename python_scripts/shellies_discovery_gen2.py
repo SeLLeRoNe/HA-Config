@@ -265,7 +265,7 @@ DESCRIPTION_SENSOR_ETH_IP = {
 DESCRIPTION_SENSOR_FIRMWARE = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_UPDATE,
     KEY_ENABLED_BY_DEFAULT: True,
-    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_CONFIG,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
     KEY_NAME: "Firmware",
     KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
     KEY_VALUE_TEMPLATE: TPL_FIRMWARE_STABLE,
@@ -430,7 +430,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PLUS_1PM: {
         ATTR_NAME: "Shelly Plus 1PM",
@@ -464,7 +464,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PLUS_2PM: {
         ATTR_NAME: "Shelly Plus 2PM",
@@ -508,7 +508,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220205,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PLUS_I4: {
         ATTR_NAME: "Shelly Plus I4",
@@ -529,7 +529,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220120,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_1: {
         ATTR_NAME: "Shelly Pro 1",
@@ -553,7 +553,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_1PM: {
         ATTR_NAME: "Shelly Pro 1PM",
@@ -588,7 +588,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_2: {
         ATTR_NAME: "Shelly Pro 2",
@@ -612,7 +612,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_2PM: {
         ATTR_NAME: "Shelly Pro 2PM",
@@ -656,7 +656,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220205,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_4PM: {
         ATTR_NAME: "Shelly Pro 4PM",
@@ -692,7 +692,7 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220117,
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
 }
 
@@ -978,7 +978,7 @@ def get_input(input_id, input_type, event):
 
     payload = {
         KEY_AUTOMATION_TYPE: VALUE_TRIGGER,
-        KEY_TOPIC: f"{device_id}/events/rpc",
+        KEY_TOPIC: f"{default_topic}events/rpc",
         KEY_PAYLOAD: f"{input_id}_{event}",
         KEY_VALUE_TEMPLATE: "{{value_json.params.events.0.id}}_{{value_json.params.events.0.event}}",
         KEY_QOS: qos,
@@ -1090,33 +1090,17 @@ def configure_device():
 
 
 device_id = data[ATTR_ID]  # noqa: F821
-device_config = data["device_config"]  # noqa: F821
-firmware_id = device_config["sys"]["device"][ATTR_FW_ID]
-mac = device_config["sys"]["device"][ATTR_MAC]
-device_name = device_config["sys"]["device"][ATTR_NAME]
-device_url = f"http://{device_config['mqtt']['topic_prefix']}.local/"
-default_topic = f"{device_config['mqtt']['topic_prefix']}/"
+if device_id is None:
+    raise ValueError("id value None is not valid, check script configuration")
 
 model = device_id.rsplit("-", 1)[0]
-
 if model not in SUPPORTED_MODELS:
     raise ValueError(
         f"model {model} is not supported, please open an issue here https://github.com/bieniu/ha-shellies-discovery-gen2/issues"
     )
 
-if not device_name:
-    device_name = SUPPORTED_MODELS[model][ATTR_NAME]
-
-if device_id is None:
-    raise ValueError("id value None is not valid, check script configuration")
-if mac is None:
-    raise ValueError("mac value None is not valid, check script configuration")
-
-qos = data.get(CONF_QOS, 0)  # noqa: F821
-if qos not in (0, 1, 2):
-    raise ValueError(f"QoS value {qos} is not valid, check script configuration")
-
-disc_prefix = data.get(CONF_DISCOVERY_PREFIX, DEFAULT_DISC_PREFIX)  # noqa: F821
+device_config = data["device_config"]  # noqa: F821
+firmware_id = device_config["sys"]["device"][ATTR_FW_ID]
 
 min_firmware_date = SUPPORTED_MODELS[model][ATTR_MIN_FIRMWARE_DATE]
 try:
@@ -1129,6 +1113,23 @@ if firmware_date < min_firmware_date:
     raise ValueError(
         f"firmware dated {min_firmware_date} is required, update your device {device_id}"
     )
+
+mac = device_config["sys"]["device"][ATTR_MAC]
+if mac is None:
+    raise ValueError("mac value None is not valid, check script configuration")
+
+device_name = device_config["sys"]["device"][ATTR_NAME]
+device_url = f"http://{device_config['mqtt']['topic_prefix']}.local/"
+default_topic = f"{device_config['mqtt']['topic_prefix']}/"
+
+if not device_name:
+    device_name = SUPPORTED_MODELS[model][ATTR_NAME]
+
+qos = data.get(CONF_QOS, 0)  # noqa: F821
+if qos not in (0, 1, 2):
+    raise ValueError(f"QoS value {qos} is not valid, check script configuration")
+
+disc_prefix = data.get(CONF_DISCOVERY_PREFIX, DEFAULT_DISC_PREFIX)  # noqa: F821
 
 device_info = {
     KEY_CONNECTIONS: [[KEY_MAC, format_mac(mac)]],

@@ -22,21 +22,19 @@ HASP_IDLE_SCHEMA = vol.Schema(vol.Any(*HASP_IDLE_STATES))
 class HASPEntity(Entity):
     """Generic HASP entity (base class)."""
 
-    def __init__(self, name, hwid: str, topic: str, gpio=None) -> None:
+    def __init__(self, name, hwid: str, topic: str, part=None) -> None:
         """Initialize the HASP entity."""
         super().__init__()
         self._name = name
         self._hwid = hwid
         self._topic = topic
-        self._gpio = gpio
         self._state = None
         self._available = False
         self._subscriptions = []
-
-    @property
-    def unique_id(self):
-        """Return the identifier of the toggle."""
-        return f"{self._hwid}.{self._gpio}"
+        self._attr_unique_id = f"{self._hwid}.{part}"
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, self._hwid)},
+        }
 
     @property
     def available(self):
@@ -57,6 +55,9 @@ class HASPEntity(Entity):
                 self._available = True
                 if self._state:
                     await self.refresh()
+                else:
+                    self.async_write_ha_state() # Just to update availability
+                _LOGGER.debug("%s is available, %s", self.entity_id, "refresh" if self._state else "stale")
 
         self._subscriptions.append(
             self.hass.bus.async_listen(EVENT_HASP_PLATE_ONLINE, online)
@@ -78,13 +79,6 @@ class HASPEntity(Entity):
 
         for subscription in self._subscriptions:
             subscription()
-
-    @property
-    def device_info(self):
-        """Return device information."""
-        return {
-            "identifiers": {(DOMAIN, self._hwid)},
-        }
 
 
 class HASPToggleEntity(HASPEntity, ToggleEntity):

@@ -15,7 +15,7 @@ from homeassistant.const import (
     ATTR_NAME,
 )
 
-VERSION = "3.2.7"
+VERSION = "3.2.8"
 
 DOMAIN = "scheduler"
 
@@ -73,6 +73,7 @@ EVENT_ITEM_UPDATED = "scheduler_item_updated"
 EVENT_ITEM_CREATED = "scheduler_item_created"
 EVENT_ITEM_REMOVED = "scheduler_item_removed"
 EVENT_STARTED = "scheduler_started"
+EVENT_WORKDAY_SENSOR_UPDATED = "workday_sensor_updated"
 
 STATE_INIT = "init"
 STATE_READY = "ready"
