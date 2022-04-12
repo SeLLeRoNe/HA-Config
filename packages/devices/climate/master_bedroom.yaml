@@ -779,7 +779,7 @@ automation:
             - condition: and
               conditions:
                 - condition: state
-                  entity_id: group.workday
+                  entity_id: binary_sensor.workday
                   state: 'on'
                 - condition: and
                   conditions:
@@ -1136,7 +1136,7 @@ automation:
             - condition: and
               conditions:
                 - condition: state
-                  entity_id: group.workday
+                  entity_id: binary_sensor.workday
                   state: 'off'
                 - condition: and
                   conditions:
@@ -1776,7 +1776,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -1942,7 +1942,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2108,7 +2108,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2274,7 +2274,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2440,7 +2440,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2606,7 +2606,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2772,7 +2772,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -2938,7 +2938,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -3104,7 +3104,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -3270,7 +3270,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'off'
         - condition: not
           conditions:
@@ -3436,7 +3436,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -3602,7 +3602,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -3768,7 +3768,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -3934,7 +3934,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4100,7 +4100,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4266,7 +4266,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4432,7 +4432,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4598,7 +4598,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4764,7 +4764,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:
@@ -4930,7 +4930,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
         - condition: state
-          entity_id: group.workday
+          entity_id: binary_sensor.workday
           state: 'on'
         - condition: not
           conditions:

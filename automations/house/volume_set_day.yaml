@@ -14,8 +14,8 @@ action:
   - service: media_player.volume_set
     data:
       entity_id: media_player.master_bedroom_echo_dot
-      volume_level: '0.25'
+      volume_level: '0.40'
   - service: media_player.volume_set
     data:
       entity_id: media_player.bedroom_luca_echo_dot
-      volume_level: '0.25'
+      volume_level: '0.40'
