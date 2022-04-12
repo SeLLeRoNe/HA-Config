@@ -1,5 +1,0 @@
----
-platform: group
-name: Laundry Room Lights
-entities:
-  - light.laundry_room_light

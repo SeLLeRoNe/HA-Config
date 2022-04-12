@@ -1,9 +1,0 @@
----
-heating_push:
-  name: Heating Push
-  entities:
-    - input_boolean.climate_house_heating_push
-    - input_boolean.climate_living_room_heating_push
-    - input_boolean.climate_studio_heating_push
-    - input_boolean.climate_bedroom_luca_heating_push
-

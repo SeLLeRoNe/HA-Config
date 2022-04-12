@@ -1,8 +1,0 @@
----
-platform: group
-name: Master Bedroom Lights
-entities:
-  - light.master_bedroom_ceiling_light_1
-  - light.master_bedroom_ceiling_light_2
-  - light.master_bedroom_ceiling_light_3
-  - light.master_bedroom_lamp

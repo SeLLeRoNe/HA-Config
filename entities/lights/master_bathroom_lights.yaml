@@ -1,5 +1,0 @@
----
-platform: group
-name: Master Bathroom Lights
-entities:
-  - light.master_bathroom_light

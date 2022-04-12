@@ -1,7 +1,0 @@
----
-platform: group
-name: Bedroom Luca Ceiling Lights
-entities:
-  - light.bedroom_luca_led1624g9_ceiling_1
-  - light.bedroom_luca_led1624g9_ceiling_2
-  - light.bedroom_luca_led1624g9_ceiling_3
