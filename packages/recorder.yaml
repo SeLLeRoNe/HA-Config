@@ -12,7 +12,6 @@ recorder:
     domains:
       - automation
       - weblink
-      - updater
       - media_player
       - weather
       - climate
