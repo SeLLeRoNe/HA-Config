@@ -1,0 +1,109 @@
+sensor:
+  - platform: dahua_vto
+    name: Doorbell
+    host: 192.168.0.110
+    username: admin
+    password: !secret doorbell_password
+    scan_interval: 5
+
+timer:
+  door_lock:
+    name: Door Lock
+    icon: mdi:timer
+
+lock:
+  - platform: template
+    name: Door Lock
+    value_template: "{{ not is_state('timer.door_lock', 'active') }}"
+    optimistic: false
+    lock:
+    unlock:
+      - service: dahua_vto.open_door
+        data_template:
+          entity_id: sensor.doorbell
+          channel: 1
+          short_number: HA
+
+automation:
+#  - alias: Dahua VTO All Events
+#    mode: queued
+#    trigger:
+#      - platform: event
+#        event_type: dahua_vto
+#    action:
+#      - service: persistent_notification.create
+#        data:
+#          title: "{{ trigger.event.data.Code if trigger.event.data.Code is defined else 'Unknown Code' }}"
+#          message: "{{ trigger.event.data }}"
+
+#  - alias: Dahua VTO Command Result
+#    mode: queued
+#    trigger:
+#      - platform: event
+#        event_type: dahua_vto
+#    condition:
+#      - condition: template
+#        value_template: "{{ trigger.event.data.method is defined }}"
+#    action:
+#      - service: persistent_notification.create
+#        data:
+#          title: "{{ trigger.event.data.method }}"
+#          message: "{{ trigger.event.data }}"
+
+#  - alias: Dahua VTO
+#    mode: queued
+#    trigger:
+#      - platform: event
+#        event_type: dahua_vto
+#        event_data:
+#          Code: BackKeyLight
+#    action:
+#      - choose:
+#          - conditions: >
+#              {{ trigger.event.data.Data.State | int in [0, 1, 2, 5, 6] }}
+#            sequence:
+#              - service: persistent_notification.create
+#                data:
+#                  title: "{{ 'Doorbell Ring' if trigger.event.data.Data.State | int in [1, 2] else 'Doorbell No Ring' }}"
+#                  message: "{{ trigger.event.data }}"
+#          - conditions: >
+#              {{ trigger.event.data.Data.State | int == 8 }}
+#            sequence:
+#              - service: timer.start
+#                data:
+#                  entity_id: timer.door_lock
+#                  duration: 00:00:02 # VTO Unlock Period
+#              - service: persistent_notification.create
+#                data:
+#                  title: Unlock
+#                  message: "{{ trigger.event.data }}"
+#          - conditions: >
+#              {{ trigger.event.data.Data.State | int == 9 }}
+#            sequence:
+#              - service: persistent_notification.create
+#                data:
+#                  title: Unlock failed
+#                  message: "{{ trigger.event.data }}"
+#          - conditions: >
+#              {{ trigger.event.data.Data.State | int == 11 }}
+#            sequence:
+#              - service: persistent_notification.create
+#                data:
+#                  title: Device rebooted
+#                  message: "{{ trigger.event.data }}"
+#        default:
+#          - service: persistent_notification.create
+#            data:
+#              title: "Unknown state {{ trigger.event.data.Data.State | int }}"
+#              message: "{{ trigger.event.data }}"
+
+template:
+  - trigger:
+      - platform: event
+        event_type: dahua_vto
+        event_data:
+          Code: DoorStatus
+    binary_sensor:
+      - name: VTO Door Status
+        state: "{{ trigger.event.data.Data.Status | string == 'Open' }}"
+        device_class: door
