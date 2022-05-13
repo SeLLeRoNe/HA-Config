@@ -7,6 +7,15 @@ from custom_components.trakt_tv.apis.tmdb import get_movie_data, get_show_data
 
 from ..const import UPCOMING_DATA_FORMAT
 
+first_item = {
+    "title_default": "$title",
+    "line1_default": "$episode",
+    "line2_default": "$release",
+    "line3_default": "$rating - $runtime",
+    "line4_default": "$number - $studio",
+    "icon": "mdi:arrow-down-bold",
+}
+
 
 @dataclass
 class Identifiers:
@@ -310,17 +319,6 @@ class UpcomingShow(Show):
 class UpcomingMedias:
     items: List[Media]
 
-    @staticmethod
-    def first_item():
-        return {
-            "title_default": "$title",
-            "line1_default": "$episode",
-            "line2_default": "$release",
-            "line3_default": "$rating - $runtime",
-            "line4_default": "$number - $studio",
-            "icon": "mdi:arrow-down-bold",
-        }
-
     def to_homeassistant(self) -> Dict[str, Any]:
         """
         Convert the List of medias to upcoming data.
@@ -330,7 +328,7 @@ class UpcomingMedias:
         """
         medias = sorted(self.items, key=lambda media: media.released)
         medias = [media.to_homeassistant() for media in medias]
-        return [UpcomingMedias.first_item()] + medias
+        return [first_item] + medias
 
 
 @dataclass
@@ -339,11 +337,11 @@ class Medias:
 
     def to_homeassistant(self) -> Dict[str, Any]:
         """
-        Convert the List of medias to upcoming data.
+        Convert the List of medias to recommendation data.
 
         :return: The dictionary containing all necessary information for upcoming media
                  card
         """
         medias = sorted(self.items, key=lambda media: media.name)
         medias = [media.to_homeassistant() for media in medias]
-        return medias
+        return [first_item] + medias
