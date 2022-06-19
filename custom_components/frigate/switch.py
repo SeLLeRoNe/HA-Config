@@ -7,8 +7,9 @@ from typing import Any
 from homeassistant.components.mqtt import async_publish
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_URL
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity import DeviceInfo, EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import (
@@ -21,6 +22,7 @@ from . import (
 from .const import (
     ATTR_CONFIG,
     DOMAIN,
+    ICON_CONTRAST,
     ICON_FILM_MULTIPLE,
     ICON_IMAGE_MULTIPLE,
     ICON_MOTION_SENSOR,
@@ -40,9 +42,11 @@ async def async_setup_entry(
     for camera in frigate_config["cameras"].keys():
         entities.extend(
             [
-                FrigateSwitch(entry, frigate_config, camera, "detect"),
-                FrigateSwitch(entry, frigate_config, camera, "recordings"),
-                FrigateSwitch(entry, frigate_config, camera, "snapshots"),
+                FrigateSwitch(entry, frigate_config, camera, "detect", True),
+                FrigateSwitch(entry, frigate_config, camera, "motion", False),
+                FrigateSwitch(entry, frigate_config, camera, "recordings", True),
+                FrigateSwitch(entry, frigate_config, camera, "snapshots", True),
+                FrigateSwitch(entry, frigate_config, camera, "improve_contrast", False),
             ]
         )
     async_add_entities(entities)
@@ -51,12 +55,15 @@ async def async_setup_entry(
 class FrigateSwitch(FrigateMQTTEntity, SwitchEntity):  # type: ignore[misc]
     """Frigate Switch class."""
 
+    _attr_entity_category = EntityCategory.CONFIG
+
     def __init__(
         self,
         config_entry: ConfigEntry,
         frigate_config: dict[str, Any],
         cam_name: str,
         switch_name: str,
+        default_enabled: bool,
     ) -> None:
         """Construct a FrigateSwitch."""
 
@@ -68,10 +75,14 @@ class FrigateSwitch(FrigateMQTTEntity, SwitchEntity):  # type: ignore[misc]
             f"/{self._cam_name}/{self._switch_name}/set"
         )
 
+        self._attr_entity_registry_enabled_default = default_enabled
+
         if self._switch_name == "snapshots":
             self._icon = ICON_IMAGE_MULTIPLE
         elif self._switch_name == "recordings":
             self._icon = ICON_FILM_MULTIPLE
+        elif self._switch_name == "improve_contrast":
+            self._icon = ICON_CONTRAST
         else:
             self._icon = ICON_MOTION_SENSOR
 
@@ -111,13 +122,14 @@ class FrigateSwitch(FrigateMQTTEntity, SwitchEntity):  # type: ignore[misc]
             "via_device": get_frigate_device_identifier(self._config_entry),
             "name": get_friendly_name(self._cam_name),
             "model": self._get_model(),
+            "configuration_url": f"{self._config_entry.data.get(CONF_URL)}/cameras/{self._cam_name}",
             "manufacturer": NAME,
         }
 
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._cam_name)} {self._switch_name}".title()
+        return f"{get_friendly_name(self._cam_name)} {get_friendly_name(self._switch_name)}".title()
 
     @property
     def is_on(self) -> bool:

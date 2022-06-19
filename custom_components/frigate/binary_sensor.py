@@ -9,6 +9,7 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
 )
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_URL
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -19,6 +20,7 @@ from . import (
     get_friendly_name,
     get_frigate_device_identifier,
     get_frigate_entity_unique_id,
+    get_zones,
 )
 from .const import ATTR_CONFIG, DOMAIN, NAME
 
@@ -52,6 +54,7 @@ class FrigateMotionSensor(FrigateMQTTEntity, BinarySensorEntity):  # type: ignor
         self._cam_name = cam_name
         self._obj_name = obj_name
         self._is_on = False
+        self._frigate_config = frigate_config
 
         super().__init__(
             config_entry,
@@ -92,6 +95,7 @@ class FrigateMotionSensor(FrigateMQTTEntity, BinarySensorEntity):  # type: ignor
             "via_device": get_frigate_device_identifier(self._config_entry),
             "name": get_friendly_name(self._cam_name),
             "model": self._get_model(),
+            "configuration_url": f"{self._config_entry.data.get(CONF_URL)}/cameras/{self._cam_name if self._cam_name not in get_zones(self._frigate_config) else ''}",
             "manufacturer": NAME,
         }
 
@@ -104,6 +108,11 @@ class FrigateMotionSensor(FrigateMQTTEntity, BinarySensorEntity):  # type: ignor
     def is_on(self) -> bool:
         """Return true if the binary sensor is on."""
         return self._is_on
+
+    @property
+    def entity_registry_enabled_default(self) -> bool:
+        """Whether or not the entity is enabled by default."""
+        return self._obj_name != "all"
 
     @property
     def device_class(self) -> str:

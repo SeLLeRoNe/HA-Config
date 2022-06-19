@@ -73,3 +73,755 @@
         - d6163f4c3ec766ee1ecdb10cf5dbbbf6
         - 4628885055733f305b90705949413aa4
         - 4c36c1779820b2dce71a0c2d44d8886c
+- id: '1655194807529'
+  alias: 'Shelly - Common Bathroom Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab70df0
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      device_id: 298dc65892048bdf1beb2412f66f75ca
+  mode: single
+- id: '1655194878005'
+  alias: 'Shelly - Common Bathroom Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab70df0
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      device_id: 62ce821eef1b8e15af71640f3a9878c5
+  mode: single
+- id: '1655195407255'
+  alias: 'Shelly - Studio Andrea Main Switch #1 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab67354
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_andrea_ceiling_lights_tv
+  mode: single
+- id: '1655195451759'
+  alias: 'Shelly - Studio Andrea Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab67354
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_andrea_ceiling_lights_computer
+  mode: single
+- id: '1655197656102'
+  alias: 'Shelly - Master Bathroom Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6d8e4
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_light_wardrobe
+  mode: single
+- id: '1655197657354'
+  alias: 'Shelly - Master Bathroom Main Switch #1 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6d8e4
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bathroom_lights
+  mode: single
+- id: '1655197945319'
+  alias: 'Shelly - First Floor Corridor Stairs Switch #1'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab65894
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.first_floor_corridor_ceiling_lights
+  mode: single
+- id: '1655199965533'
+  alias: 'Shelly - Master Bedroom Main Switch #1 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66e98
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_lights
+  mode: single
+- id: '1655200268390'
+  alias: 'Shelly - Master Bedroom Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66e98
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_light_wardrobe
+  mode: single
+- id: '1655219761954'
+  alias: Shelly - Master Bedroom Left Bed Switch - Single
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ''
+    event_data:
+      device: shellyplus2pm-a8032ab6e494
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_lights
+  mode: single
+- id: '1655219859298'
+  alias: Shelly - Master Bedroom Right Bed Switch - Single
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab716cc
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_lights
+  mode: single
+- id: '1655220195789'
+  alias: 'Shelly - First Floor Corridor Stairs Switch #2'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab65894
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.first_floor_ceiling_light_stairs
+  mode: single
+- id: '1655221270520'
+  alias: 'Shelly - Entrance Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab70320
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.entrance_ceiling_light
+  mode: single
+- id: '1655228502607'
+  alias: 'Shelly - First Floor Main Switch #2'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab62f4c
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.first_floor_corridor_ceiling_light_1
+  mode: single
+- id: '1655228539890'
+  alias: 'Shelly - First Floor Main Switch #1'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab62f4c
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.first_floor_corridor_ceiling_light_2
+  mode: single
+- id: '1655229218576'
+  alias: 'Shelly - Studio Sonia Main Switch #1 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66548
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_light_1
+  mode: single
+- id: '1655229258205'
+  alias: 'Shelly - Studio Sonia Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66548
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_light_2
+  mode: single
+- id: '1655229262385'
+  alias: 'Shelly - Studio Sonia Main Switch #2 - Single'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab67354
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_light_2
+  mode: single
+- id: '1655239101844'
+  alias: Shelly - Kids Bedroom Left Switch - SIngle
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab664d4
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.kids_bedroom_ceiling_lights
+  mode: single
+- id: '1655239155036'
+  alias: Shelly - Kids Bedroom Right Switch - SIngle
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab62c94
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.kids_bedroom_ceiling_lights
+  mode: single
+- id: '1655239542953'
+  alias: 'Shelly - Kids Bedroom Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6d7b0
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.kids_bedroom_ceiling_lights
+  mode: single
+- id: '1655239587493'
+  alias: 'Shelly - Kids Bedroom Main Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6d7b0
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.kids_bedroom_ceiling_lights
+  mode: single
+- id: '1655239847529'
+  alias: 'Shelly - Ground Floor Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6ea80
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ground_floor_corridor_ceiling_lights
+  mode: single
+- id: '1655239888743'
+  alias: 'Shelly - Ground Floor Main Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6ea80
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.entrance_ceiling_lights
+  mode: single
+- id: '1655240188460'
+  alias: 'Shelly - Ground Floor Upstairs Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66edc
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.first_floor_ceiling_light_stairs
+  mode: single
+- id: '1655240272622'
+  alias: 'Shelly - Ground Floor Upstairs Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66edc
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ground_floor_corridor_ceiling_lights
+  mode: single
+- id: '1655241917329'
+  alias: 'Shelly - Ground Floor Downstairs Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab71fcc
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.downstairs_corridor_main_switch_1
+  mode: single
+- id: '1655242176639'
+  alias: 'Shelly - Ground Floor Service Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66cd8
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.living_room_ceiling_lights
+  mode: single
+- id: '1655242214682'
+  alias: 'Shelly - Ground Floor Service Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66cd8
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ground_floor_corridor_ceiling_lights
+  mode: single
+- id: '1655242290199'
+  alias: 'Shelly - Kitchen Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6de54
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id:
+      - light.kitchen_ceiling_light_3
+      - light.kitchen_ceiling_light_4
+  mode: single
+- id: '1655242311015'
+  alias: 'Shelly - Kitchen Main Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6de54
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id:
+      - light.kitchen_ceiling_light_1
+      - light.kitchen_ceiling_light_2
+  mode: single
+- id: '1655281507209'
+  alias: 'Shelly - Guest bedroom Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66774
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655281542850'
+  alias: 'Shelly - Guest Bedroom Main Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66774
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655409421939'
+  alias: 'Shelly - Downstairs Corridor Main Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66fcc
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.ground_floor_corridor_downstairs_switch_1
+  mode: single
+- id: '1655409469228'
+  alias: 'Shelly - Downstairs Corridor Main Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66fcc
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.ground_floor_corridor_downstairs_switch_1
+  mode: single
+- id: '1655409556723'
+  alias: 'Shelly - Ground Floor Downstairs Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab71fcc
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.downstairs_corridor_main_switch_1
+  mode: single
+- id: '1655495294864'
+  alias: 'Shelly - Guest Bedroom Right Bed Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab705f0
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655495313290'
+  alias: 'Shelly - Guest Bedroom Right Bed Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab705f0
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655495495896'
+  alias: 'Shelly - Guest Bedroom Left Bed Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab705f0
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655495502739'
+  alias: 'Shelly - Guest Bedroom Left Bed Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab705f0
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.guest_bedroom_ceiling_lights
+  mode: single
+- id: '1655495635912'
+  alias: 'Shelly - Studio Sonia Right Bed Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab662bc
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_lights
+  mode: single
+- id: '1655495660927'
+  alias: 'Shelly - Studio Sonia Right Bed Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab662bc
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_lights
+  mode: single
+- id: '1655496248305'
+  alias: 'Shelly - Studio Sonia Left Bed Switch #2 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab64114
+      channel: 2
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_lights
+  mode: single
+- id: '1655496259326'
+  alias: 'Shelly - Studio Sonia Left Bed Switch #1 - SIngle'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab64114
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.studio_sonia_ceiling_lights
+  mode: single

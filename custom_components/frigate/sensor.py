@@ -5,8 +5,9 @@ import logging
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_URL
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity import DeviceInfo, EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -19,6 +20,7 @@ from . import (
     get_friendly_name,
     get_frigate_device_identifier,
     get_frigate_entity_unique_id,
+    get_zones,
 )
 from .const import (
     ATTR_CONFIG,
@@ -75,6 +77,8 @@ async def async_setup_entry(
 class FrigateFpsSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
     """Frigate Sensor class."""
 
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
     def __init__(
         self, coordinator: FrigateDataUpdateCoordinator, config_entry: ConfigEntry
     ) -> None:
@@ -96,6 +100,7 @@ class FrigateFpsSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
             "identifiers": {get_frigate_device_identifier(self._config_entry)},
             "name": NAME,
             "model": self._get_model(),
+            "configuration_url": self._config_entry.data.get(CONF_URL),
             "manufacturer": NAME,
         }
 
@@ -130,6 +135,8 @@ class FrigateFpsSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
 class DetectorSpeedSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
     """Frigate Detector Speed class."""
 
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
     def __init__(
         self,
         coordinator: FrigateDataUpdateCoordinator,
@@ -155,6 +162,7 @@ class DetectorSpeedSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[mis
             "identifiers": {get_frigate_device_identifier(self._config_entry)},
             "name": NAME,
             "model": self._get_model(),
+            "configuration_url": self._config_entry.data.get(CONF_URL),
             "manufacturer": NAME,
         }
 
@@ -193,6 +201,8 @@ class DetectorSpeedSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[mis
 class CameraFpsSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
     """Frigate Camera Fps class."""
 
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
     def __init__(
         self,
         coordinator: FrigateDataUpdateCoordinator,
@@ -225,6 +235,7 @@ class CameraFpsSensor(FrigateEntity, CoordinatorEntity):  # type: ignore[misc]
             "via_device": get_frigate_device_identifier(self._config_entry),
             "name": get_friendly_name(self._cam_name),
             "model": self._get_model(),
+            "configuration_url": f"{self._config_entry.data.get(CONF_URL)}/cameras/{self._cam_name}",
             "manufacturer": NAME,
         }
 
@@ -273,6 +284,7 @@ class FrigateObjectCountSensor(FrigateMQTTEntity):
         self._cam_name = cam_name
         self._obj_name = obj_name
         self._state = 0
+        self._frigate_config = frigate_config
 
         if self._obj_name == "person":
             self._icon = ICON_PERSON
@@ -325,6 +337,7 @@ class FrigateObjectCountSensor(FrigateMQTTEntity):
             "via_device": get_frigate_device_identifier(self._config_entry),
             "name": get_friendly_name(self._cam_name),
             "model": self._get_model(),
+            "configuration_url": f"{self._config_entry.data.get(CONF_URL)}/cameras/{self._cam_name if self._cam_name not in get_zones(self._frigate_config) else ''}",
             "manufacturer": NAME,
         }
 
@@ -347,3 +360,8 @@ class FrigateObjectCountSensor(FrigateMQTTEntity):
     def icon(self) -> str:
         """Return the icon of the sensor."""
         return self._icon
+
+    @property
+    def entity_registry_enabled_default(self) -> bool:
+        """Whether or not the entity is enabled by default."""
+        return self._obj_name != "all"

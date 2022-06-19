@@ -13,7 +13,7 @@ from custom_components.trakt_tv.utils import compute_calendar_args
 from ..configuration import Configuration
 from ..const import API_HOST, DOMAIN
 from ..models.kind import BASIC_KINDS, TraktKind
-from ..models.media import Medias, UpcomingMedias
+from ..models.media import Medias
 
 LOGGER = logging.getLogger(__name__)
 
@@ -100,13 +100,11 @@ class TraktApi:
         data = await gather(*[response.text() for response in responses])
         raw_medias = [media for medias in data for media in json.loads(medias)]
         raw_medias = raw_medias[0:max_medias]
-        medias = [
-            trakt_kind.value.upcoming_model.from_trakt(media) for media in raw_medias
-        ]
+        medias = [trakt_kind.value.model.from_trakt(media) for media in raw_medias]
 
         await gather(*[media.get_more_information(language) for media in medias])
 
-        return trakt_kind, UpcomingMedias(medias)
+        return trakt_kind, Medias(medias)
 
     async def fetch_upcomings(self, all_medias: bool):
         data = await gather(

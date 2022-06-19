@@ -18,17 +18,10 @@ from homeassistant.const import (
     ATTR_NAME,
 )
 
-from homeassistant.components.alarm_control_panel import (
-    SUPPORT_ALARM_ARM_AWAY,
-    SUPPORT_ALARM_ARM_HOME,
-    SUPPORT_ALARM_ARM_NIGHT,
-    SUPPORT_ALARM_ARM_CUSTOM_BYPASS,
-    SUPPORT_ALARM_ARM_VACATION,
-)
-
+from homeassistant.components.alarm_control_panel import AlarmControlPanelEntityFeature
 from homeassistant.helpers import config_validation as cv
 
-VERSION = "1.9.3"
+VERSION = "1.9.4"
 NAME = "Alarmo"
 MANUFACTURER = "@nielsfaber"
 
@@ -111,6 +104,7 @@ EVENT_NO_CODE_PROVIDED = "no_code_provided"
 EVENT_TRIGGER_TIME_EXPIRED = "trigger_time_expired"
 
 ATTR_MODES = "modes"
+ATTR_ARM_MODE = "arm_mode"
 ATTR_CODE_DISARM_REQUIRED = "code_disarm_required"
 ATTR_REMOVE = "remove"
 ATTR_OLD_CODE = "old_code"
@@ -158,11 +152,11 @@ EVENT_ACTION_RETRY_ARM = "ALARMO_RETRY_ARM"
 EVENT_ACTION_DISARM = "ALARMO_DISARM"
 
 MODES_TO_SUPPORTED_FEATURES = {
-    STATE_ALARM_ARMED_AWAY: SUPPORT_ALARM_ARM_AWAY,
-    STATE_ALARM_ARMED_HOME: SUPPORT_ALARM_ARM_HOME,
-    STATE_ALARM_ARMED_NIGHT: SUPPORT_ALARM_ARM_NIGHT,
-    STATE_ALARM_ARMED_CUSTOM_BYPASS: SUPPORT_ALARM_ARM_CUSTOM_BYPASS,
-    STATE_ALARM_ARMED_VACATION: SUPPORT_ALARM_ARM_VACATION
+    STATE_ALARM_ARMED_AWAY: AlarmControlPanelEntityFeature.ARM_AWAY,
+    STATE_ALARM_ARMED_HOME: AlarmControlPanelEntityFeature.ARM_HOME,
+    STATE_ALARM_ARMED_NIGHT: AlarmControlPanelEntityFeature.ARM_NIGHT,
+    STATE_ALARM_ARMED_CUSTOM_BYPASS: AlarmControlPanelEntityFeature.ARM_CUSTOM_BYPASS,
+    STATE_ALARM_ARMED_VACATION: AlarmControlPanelEntityFeature.ARM_VACATION
 }
 
 SERVICE_ARM = "arm"

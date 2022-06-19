@@ -1,7 +1,6 @@
 from aiohttp import hdrs, web
-from datetime import timedelta, datetime
+from datetime import datetime
 import logging
-import pytz
 
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -12,12 +11,9 @@ from .const import (
     CONF_PORT,
     GrocyEntityType,
 )
-from .helpers import MealPlanItem
+from .helpers import MealPlanItem, extract_base_url_and_path
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
 _LOGGER = logging.getLogger(__name__)
-
-utc = pytz.UTC
 
 
 class GrocyData:
@@ -87,8 +83,8 @@ class GrocyData:
         overdue_chores = []
         for chore in chores:
             if chore.next_estimated_execution_time:
-                now = datetime.now().replace(tzinfo=utc)
-                due = chore.next_estimated_execution_time.replace(tzinfo=utc)
+                now = datetime.now()
+                due = chore.next_estimated_execution_time
                 if due < now:
                     overdue_chores.append(chore)
         return overdue_chores
@@ -97,7 +93,7 @@ class GrocyData:
         """Get the configuration from Grocy."""
 
         def wrapper():
-            return self.client._api_client._do_get_request("/api/system/config")
+            return self.client._api_client._do_get_request("system/config")
 
         return await self.hass.async_add_executor_job(wrapper)
 
@@ -114,9 +110,9 @@ class GrocyData:
         overdue_tasks = []
         for task in tasks:
             if task.due_date:
-                now = datetime.now().replace(tzinfo=utc)
-                due = task.due_date.replace(tzinfo=utc)
-                if due < now:
+                current_date = datetime.now().date()
+                due_date = task.due_date
+                if due_date < current_date:
                     overdue_tasks.append(task)
         return overdue_tasks
 
@@ -132,7 +128,7 @@ class GrocyData:
         """Update data."""
         # This is where the main logic to update platform data goes.
         def wrapper():
-            return self.client.expiring_products(True)
+            return self.client.due_products(True)
 
         return await self.hass.async_add_executor_job(wrapper)
 
@@ -165,13 +161,20 @@ class GrocyData:
 
 
 async def async_setup_image_api(hass, config):
+    """Setup and register the image api for grocy images with HA."""
     session = async_get_clientsession(hass)
 
     url = config.get(CONF_URL)
+    (grocy_base_url, grocy_path) = extract_base_url_and_path(url)
     api_key = config.get(CONF_API_KEY)
     port_number = config.get(CONF_PORT)
-    base_url = f"{url}:{port_number}"
-    hass.http.register_view(GrocyPictureView(session, base_url, api_key))
+    if grocy_path:
+        grocy_full_url = f"{grocy_base_url}:{port_number}/{grocy_path}"
+    else:
+        grocy_full_url = f"{grocy_base_url}:{port_number}"
+
+    _LOGGER.debug("Generated image api url to grocy: '%s'", grocy_full_url)
+    hass.http.register_view(GrocyPictureView(session, grocy_full_url, api_key))
 
 
 class GrocyPictureView(HomeAssistantView):

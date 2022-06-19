@@ -98,16 +98,22 @@ class Movie(Media):
     rating: Optional[int] = None
     runtime: Optional[int] = None
     studio: Optional[str] = None
+    released: Optional[datetime] = None  # This one is actually mandatory
 
     @staticmethod
     def from_trakt(data) -> "Movie":
         """
         Create a Movie from trakt api.
         """
-        movie = data
+        movie = data if data.get("title") else data["movie"]
+
+        released = (
+            datetime.fromisoformat(data["released"]) if data.get("released") else None
+        )
 
         return Movie(
             name=movie["title"],
+            released=released,
             ids=Identifiers.from_trakt(movie),
         )
 
@@ -133,6 +139,11 @@ class Movie(Media):
             self.runtime = runtime
         if production_companies := data.get("production_companies"):
             self.studio = production_companies[0].get("name")
+        if not self.released:
+            if data.get("release_date"):
+                self.released = datetime.fromisoformat(data["release_date"])
+            else:
+                self.released = datetime.min
 
     def to_homeassistant(self) -> Dict[str, Any]:
         """
@@ -144,41 +155,6 @@ class Movie(Media):
         default = {
             **self.common_information(),
             "runtime": self.runtime,
-        }
-
-        return default
-
-
-@dataclass
-class UpcomingMovie(Movie):
-    """
-    An upcoming movie
-    """
-
-    released: Optional[datetime] = None  # This one is actually mandatory
-
-    @staticmethod
-    def from_trakt(data) -> "UpcomingMovie":
-        """
-        Create a Movie from trakt api.
-        """
-        movie = data["movie"]
-
-        return UpcomingMovie(
-            name=movie["title"],
-            released=datetime.fromisoformat(data["released"]),
-            ids=Identifiers.from_trakt(movie),
-        )
-
-    def to_homeassistant(self) -> Dict[str, Any]:
-        """
-        Convert the Movie to upcoming data.
-
-        :return: The dictionary containing all necessary information for upcoming media
-                 card
-        """
-        default = {
-            **super().to_homeassistant(),
             "release": "$day, $date $time",
             "airdate": self.released.isoformat() + "Z",
         }
@@ -198,7 +174,7 @@ class Episode:
         """
         Create an Episode from trakt api.
         """
-        episode = data["episode"]
+        episode = data
 
         return Episode(
             number=episode["number"],
@@ -215,17 +191,28 @@ class Show(Media):
     genres: List[str] = field(default_factory=list)
     rating: Optional[int] = None
     studio: Optional[str] = None
+    episode: Optional[Episode] = None
+    released: Optional[datetime] = None
 
     @staticmethod
     def from_trakt(data) -> "Show":
         """
         Create a Show from trakt api.
         """
-        show = data
+        show = data if data.get("title") else data["show"]
+
+        released = (
+            datetime.strptime(data["first_aired"], UPCOMING_DATA_FORMAT)
+            if data.get("first_aired")
+            else None
+        )
+        episode = Episode.from_trakt(data["episode"]) if data.get("episode") else None
 
         return Show(
             name=show["title"],
             ids=Identifiers.from_trakt(show),
+            released=released,
+            episode=episode,
         )
 
     def update_common_information(self, data: Dict[str, Any]):
@@ -240,6 +227,12 @@ class Show(Media):
                 self.rating = vote_average
         if networks := data.get("networks"):
             self.studio = networks[0].get("name")
+        if not self.released:
+            if data.get("first_air_date"):
+                self.released = datetime.fromisoformat(data["first_air_date"])
+            else:
+                # If we really can't find the release date, we set it to the minimum date
+                self.released = datetime.min
 
     async def get_more_information(self, language):
         """
@@ -257,78 +250,26 @@ class Show(Media):
         :return: The dictionary containing all necessary information for upcoming media
                  card
         """
-        default = {**self.common_information()}
-
-        return default
-
-
-@dataclass
-class UpcomingShow(Show):
-    episode: Optional[Episode] = None  # This one is actually mandatory
-    released: Optional[datetime] = None  # This one is actually mandatory
-
-    @staticmethod
-    def from_trakt(data) -> "UpcomingShow":
-        """
-        Create an UpcomingShow from trakt api.
-        """
-        show = data["show"]
-
-        return UpcomingShow(
-            name=show["title"],
-            released=datetime.strptime(data["first_aired"], UPCOMING_DATA_FORMAT),
-            ids=Identifiers.from_trakt(show),
-            episode=Episode.from_trakt(data),
-        )
-
-    def update_common_information(self, data: Dict[str, Any]):
-        super().update_common_information(data)
-        season = [
-            season
-            for season in data.get("seasons", [])
-            if season["season_number"] == self.episode.season
-        ]
-        if season:
-            poster = season[0]["poster_path"]
-            self.poster = f"https://image.tmdb.org/t/p/w500{poster}"
-
-    def to_homeassistant(self) -> Dict[str, Any]:
-        """
-        Convert the UpcomingShow to homeassistant data.
-
-        :return: The dictionary containing all necessary information for homeassistant
-        """
-        season = self.episode.season
-        season = season if season >= 10 else f"0{season}"
-
-        episode = self.episode.number
-        episode = episode if episode >= 10 else f"0{episode}"
-
         default = {
-            **super().to_homeassistant(),
-            "episode": self.episode.title,
-            "number": f"S{season}E{episode}",
+            **self.common_information(),
             "release": "$day, $date $time",
             "airdate": self.released.isoformat() + "Z",
         }
 
+        if self.episode:
+            season = self.episode.season
+            season = season if season >= 10 else f"0{season}"
+
+            episode = self.episode.number
+            episode = episode if episode >= 10 else f"0{episode}"
+
+            default = {
+                **default,
+                "episode": self.episode.title,
+                "number": f"S{season}E{episode}",
+            }
+
         return default
-
-
-@dataclass
-class UpcomingMedias:
-    items: List[Media]
-
-    def to_homeassistant(self) -> Dict[str, Any]:
-        """
-        Convert the List of medias to upcoming data.
-
-        :return: The dictionary containing all necessary information for upcoming media
-                 card
-        """
-        medias = sorted(self.items, key=lambda media: media.released)
-        medias = [media.to_homeassistant() for media in medias]
-        return [first_item] + medias
 
 
 @dataclass
@@ -342,6 +283,6 @@ class Medias:
         :return: The dictionary containing all necessary information for upcoming media
                  card
         """
-        medias = sorted(self.items, key=lambda media: media.name)
+        medias = sorted(self.items, key=lambda media: media.released)
         medias = [media.to_homeassistant() for media in medias]
         return [first_item] + medias

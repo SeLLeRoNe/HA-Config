@@ -14,7 +14,7 @@
                     "url": "Grocy API URL",
                     "verify_ssl": "SSL-Zertifikat verifizieren"
                 },
-                "description": "Wenn du Hilfe mit den Einstellungen brauchst, kannst du hier nachsehen: https:\/\/hacs.netlify.com\/installation\/configuration\/",
+                "description": "Wenn du Hilfe mit den Einstellungen brauchst, kannst du hier nachsehen: https:\/\/github.com\/custom-components\/grocy",
                 "title": "Grocy"
             }
         },
