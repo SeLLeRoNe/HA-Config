@@ -1,0 +1,69 @@
+---
+kids_bedroom_lights_fold:
+  card:
+    type: entities
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.kids_bedroom_lights
+          name: Kids Bedroom
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.kids_bedroom_ceiling_lights
+              name: Ceiling
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.kids_bedroom_ceiling_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.kids_bedroom_ceiling_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.kids_bedroom_ceiling_light_3
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.kids_bedroom_bedside_table_lights
+              name: Bedside Tables
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Luca
+                  - entity: light.kids_bedroom_bedside_table_luca
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Lara
+                  - entity: light.kids_bedroom_bedside_table_lara

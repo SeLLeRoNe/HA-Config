@@ -1,0 +1,18 @@
+---
+name: Kids Bedroom Lights On Guest
+entities:
+  light.bedroom_luca_ceiling_light_1:
+    state: on
+    color_temp: 153
+    hs_color: [0,0]
+    brightness: 50
+  light.bedroom_luca_ceiling_light_2:
+    state: on
+    color_temp: 153
+    hs_color: [0,0]
+    brightness: 50
+  light.bedroom_luca_ceiling_light_3:
+    state: on
+    color_temp: 153
+    hs_color: [0,0]
+    brightness: 50

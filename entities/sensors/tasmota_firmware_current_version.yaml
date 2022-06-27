@@ -1,8 +1,0 @@
----
-platform: mqtt
-name: "Tasmota Current Version"
-icon: mdi:git
-state_topic: "stat/RFBridge01/STATUS2"
-value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
-json_attributes_topic: "stat/RFBridge01/STATUS2"
-json_attributes_template: "{{ value_json.StatusFWR | tojson }}"

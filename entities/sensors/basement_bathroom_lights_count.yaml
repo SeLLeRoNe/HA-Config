@@ -1,0 +1,17 @@
+---
+platform: template
+sensors:
+  basement_bathroom_lights_count:
+    friendly_name: "Basement Bathroom Lights Count"
+#    entity_id: sensor.time
+    value_template: >-
+      {% set lights_on = states |
+        selectattr('entity_id','in',state_attr('light.basement_bathroom_lights','entity_id'))|
+        selectattr('state','eq','on') | map(attribute='entity_id') | list | count %}
+      {{lights_on}}
+    attribute_templates:
+      total_lights: >-
+        {% set lights_on = states |
+          selectattr('entity_id','in',state_attr('light.basement_bathroom_lights','entity_id'))|
+          map(attribute='entity_id') | list | count %}
+        {{lights_on}}

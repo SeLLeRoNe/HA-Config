@@ -1,0 +1,27 @@
+---
+id: '8693605277772'
+alias: Blinds- WXKG03LM Switch Double
+initial_state: off
+trigger:
+  - platform: state
+    entity_id: sensor.master_bedroom_wxkg03lm_action
+    to: 'double'
+action:
+  - service: cover.stop_cover
+    data:
+      entity_id: 
+        - cover.1
+        - cover.1_2
+        - cover.1_4
+        - cover.1_5
+        - cover.1_6
+        - cover.1_7
+        - cover.1_8
+        - cover.1_9
+        - cover.2
+        - cover.2_1
+        - cover.2_2
+        - cover.3
+        - cover.4
+
+

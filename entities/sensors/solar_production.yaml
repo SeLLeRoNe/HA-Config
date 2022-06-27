@@ -1,7 +1,0 @@
----
-platform: mqtt
-name: "Solar Production"
-state_topic: "house/solar/production"
-unit_of_measurement: "kWh"
-device_class: energy
-state_class: total_increasing

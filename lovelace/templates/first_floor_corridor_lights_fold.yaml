@@ -1,0 +1,59 @@
+---
+first_floor_corridor_lights_fold:
+  card:
+    type: entities
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.first_floor_corridor_lights
+          name: First Floor Corridor
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.first_floor_corridor_ceiling_lights
+              name: Ceiling
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.first_floor_corridor_ceiling_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.first_floor_corridor_ceiling_light_2
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.first_floor_stairs_ceiling_lights
+              name: Stairs
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.first_floor_stairs_ceiling_light_1

@@ -1,8 +1,0 @@
----
-platform: mqtt
-name: "Andrea OnePlus Nord"
-state_topic: "room-assistant/sensor/bluetooth-classic-andrea-oneplus-nord/state"
-availability_topic: "room-assistant/switch/studio-bluetooth-classic-inquiries-switch/status"
-payload_available: "online"
-payload_not_available: "offline"
-qos: 2

@@ -1,9 +1,0 @@
----
-platform: mqtt
-name: "Master Bedroom Window"
-device_class: window
-state_topic: "tele/RFBridge01/RESULT"
-value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
-payload_on: "E8447B"
-payload_off: "E8447Boff"
-qos: 1

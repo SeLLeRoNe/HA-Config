@@ -5,17 +5,6 @@ type: custom:vertical-layout
 layout:
   max_cols: 5
 cards:
-  - type: custom:decluttering-card
-    template: title
-    variables:
-      - title: House
-  - type: custom:decluttering-card
-    template: house_lights
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - entity: group.lights_automations_motion_house
-      - entity: group.lights_automations_lux_house
   - type: custom:stack-in-card
     mode: vertical
     cards:
@@ -23,6 +12,28 @@ cards:
         template: title
         variables:
           - title: Adaptive Lighting
+      - type: glance
+        show_state: false
+        columns: 3
+        entities:
+          - entity: switch.adaptive_lighting_ground_floor_entrance
+            name: Entrance
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_ground_floor_corridor
+            name: Ground Floor Corridor
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_first_floor_corridor
+            name: First Floor Corridor
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
       - type: glance
         show_state: false
         columns: 3
@@ -39,30 +50,8 @@ cards:
               action: none
             hold_action:
               action: toggle
-          - entity: switch.adaptive_lighting_patio
-            name: Patio
-            tap_action:
-              action: none
-            hold_action:
-              action: toggle
-      - type: glance
-        show_state: false
-        columns: 3
-        entities:
-          - entity: switch.adaptive_lighting_studio
-            name: Studio
-            tap_action:
-              action: none
-            hold_action:
-              action: toggle
-          - entity: switch.adaptive_lighting_master_bedroom
-            name: Master Bedroom
-            tap_action:
-              action: none
-            hold_action:
-              action: toggle
-          - entity: switch.adaptive_lighting_bedroom_luca
-            name: Bedroom Luca
+          - entity: switch.adaptive_lighting_play_room
+            name: Play Room
             tap_action:
               action: none
             hold_action:
@@ -71,18 +60,116 @@ cards:
         show_state: false
         columns: 2
         entities:
+          - entity: switch.adaptive_lighting_studio_andrea
+            name: Studio Andrea
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_studio_sonia
+            name: Studio Sonia
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+      - type: glance
+        show_state: false
+        columns: 3
+        entities:
+          - entity: switch.adaptive_lighting_master_bedroom
+            name: Master Bedroom
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
           - entity: switch.adaptive_lighting_master_bathroom
             name: Master Bathroom
             tap_action:
               action: none
             hold_action:
               action: toggle
-          - entity: switch.adaptive_lighting_bathroom
-            name: Bathroom
+          - entity: switch.adaptive_lighting_kids_bedroom
+            name: Kids Bedroom
             tap_action:
               action: none
             hold_action:
               action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - entity: switch.adaptive_lighting_guest_bedroom
+            name: Guest Bedroom
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_common_bathroom
+            name: Common Bathroom
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - entity: switch.adaptive_lighting_garage
+            name: Garage
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_laundry_room
+            name: Laundry Room
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - entity: switch.adaptive_lighting_front_patio
+            name: Front Patio
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_back_patio
+            name: Back Patio
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+      - type: glance
+        show_state: false
+        columns: 2
+        entities:
+          - entity: switch.adaptive_lighting_front_garden
+            name: Front Garden
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+          - entity: switch.adaptive_lighting_back_garden
+            name: Back Garden
+            tap_action:
+              action: none
+            hold_action:
+              action: toggle
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: title
+    variables:
+      - title: House
+  - type: custom:decluttering-card
+    template: house_lights
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: group.lights_automations_motion_house
+      - entity: group.lights_automations_lux_house
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: pir_settings
@@ -97,8 +184,8 @@ cards:
   - type: custom:decluttering-card
     template: pir_settings
     variables:
-      - title: Studio
-      - area: studio
+      - title: Studio Andrea
+      - area: studio_andrea
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: pir_settings

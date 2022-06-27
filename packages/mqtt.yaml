@@ -1,0 +1,39 @@
+---
+# This file load up my mqttes
+#
+# https://www.home-assistant.io/components/mqtt/
+#
+mqtt:
+  binary_sensor:
+    - name: "Bedroom Luca RF PIR"
+      device_class: motion
+      state_topic: "tele/RFBridge01/RESULT"
+      value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
+      payload_on: "EE485E"
+      off_delay: 5
+      qos: 1
+    - name: "Living Room RF PIR"
+      device_class: motion
+      state_topic: "tele/RFBridge01/RESULT"
+      value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
+      payload_on: "EF716E"
+      off_delay: 5
+      qos: 1
+    - name: "Patio RF PIR"
+      device_class: motion
+      state_topic: "tele/RFBridge01/RESULT"
+      value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
+      payload_on: "E8447E"
+      off_delay: 30
+  sensor:
+    - name: "Tasmota Current Version"
+      icon: mdi:git
+      state_topic: "stat/RFBridge01/STATUS2"
+      value_template: 'v{{ value_json.StatusFWR.Version | replace("(tasmota)", "") | replace("(release-tasmota)", "") }}'
+      json_attributes_topic: "stat/RFBridge01/STATUS2"
+      json_attributes_template: "{{ value_json.StatusFWR | tojson }}"
+    - name: "Solar Production"
+      state_topic: "house/solar/production"
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: total_increasing

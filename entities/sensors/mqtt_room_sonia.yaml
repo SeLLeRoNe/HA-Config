@@ -1,4 +1,0 @@
----
-platform: mqtt_room
-device_id: 'bluetooth-classic-sonia-mi-9t-pro'
-state_topic: 'room-assistant/mqtt-room'

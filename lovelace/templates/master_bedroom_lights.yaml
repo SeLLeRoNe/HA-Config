@@ -34,41 +34,23 @@ master_bedroom_lights:
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
-              - name: Light 3
-              - entity: light.master_bedroom_ceiling_light_3
-      - type: custom:fold-entity-row
-        head:
-          type: custom:slider-entity-row
-          entity: light.master_bedroom_lamp
-          name: Lamp
-          toggle: true
-          hide_state: true
-          hide_when_off: false
-          full_row: false
-          min: 0
-          max: 100
-          step: 1
-        entities:
-          - type: custom:decluttering-card
-            template: light_card_rgb
-            variables:
-              - name: Lamp
-              - entity: light.master_bedroom_lamp
+              - name: Light 2
+              - entity: light.master_bedroom_ceiling_light_wardrobe
       - type: entities
         show_header_toggle: false
         entities:
           - type: section
-            label: Bedside
+            label: Bedside Tables Lights
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
               - name: Andrea
-              - entity: light.andrea_bedside_lamp
+              - entity: light.master_bedroom_bedside_table_light_andrea
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
               - name: Sonia
-              - entity: light.sonia_bedside_lamp
+              - entity: light.master_bedroom_bedside_table_light_sonia
 #      - type: custom:decluttering-card
 #        template: light_card_rgb
 #        variables:

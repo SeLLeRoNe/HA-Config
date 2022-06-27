@@ -40,6 +40,24 @@ house_lights_small:
         tap_action:
           action: none
       - type: custom:state-switch
+        entity: light.ground_floor_corridor_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: ground_floor_corridor_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: ground_floor_corridor_lights_fold
+      - type: custom:state-switch
+        entity: light.first_floor_corridor_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: first_floor_corridor_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: first_floor_corridor_lights_fold
+      - type: custom:state-switch
         entity: light.living_room_lights
         states:
           "on":
@@ -58,14 +76,41 @@ house_lights_small:
             type: custom:decluttering-card
             template: kitchen_lights_fold
       - type: custom:state-switch
-        entity: light.studio_lights
+        entity: light.play_room_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: studio_lights_fold
+            template: play_room_lights_fold
           "off":
             type: custom:decluttering-card
-            template: studio_lights_fold
+            template: play_room_lights_fold
+      - type: custom:state-switch
+        entity: light.ground_floor_bathroom_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_lights_fold
+      - type: custom:state-switch
+        entity: light.studio_andrea_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: studio_andrea_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: studio_andrea_lights_fold
+      - type: custom:state-switch
+        entity: light.studio_sonia_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: studio_sonia_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: studio_sonia_lights_fold
       - type: custom:state-switch
         entity: light.master_bedroom_lights
         states:
@@ -85,23 +130,41 @@ house_lights_small:
             type: custom:decluttering-card
             template: master_bathroom_lights_fold
       - type: custom:state-switch
-        entity: light.bedroom_luca_lights
+        entity: light.kids_bedroom_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: bedroom_luca_lights_fold
+            template: kids_bedroom_lights_fold
           "off":
             type: custom:decluttering-card
-            template: bedroom_luca_lights_fold
+            template: kids_bedroom_lights_fold
       - type: custom:state-switch
-        entity: light.bathroom_lights
+        entity: light.guest_bedroom_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: bathroom_lights_fold
+            template: guest_bedroom_lights_fold
           "off":
             type: custom:decluttering-card
-            template: bathroom_lights_fold
+            template: guest_bedroom_lights_fold
+      - type: custom:state-switch
+        entity: light.common_bathroom_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: common_bathroom_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: common_bathroom_lights_fold
+      - type: custom:state-switch
+        entity: light.garage_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: garage_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: garage_lights_fold
       - type: custom:state-switch
         entity: light.laundry_room_lights
         states:
@@ -112,95 +175,41 @@ house_lights_small:
             type: custom:decluttering-card
             template: laundry_room_lights_fold
       - type: custom:state-switch
-        entity: light.patio_lights
+        entity: light.front_patio_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: patio_lights_fold
+            template: front_patio_lights_fold
           "off":
             type: custom:decluttering-card
-            template: patio_lights_fold
-#      - type: custom:state-switch
-#        entity: light.living_room_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: living_room_lights
-#          "off":
-#            type: custom:q-card
-#            card: living_room_lights
-#      - type: custom:state-switch
-#        entity: light.kitchen_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: kitchen_lights
-#          "off":
-#            type: custom:q-card
-#            card: kitchen_lights
-#      - type: custom:state-switch
-#        entity: light.studio_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: studio_lights
-#          "off":
-#            type: custom:q-card
-#            card: studio_lights
-#      - type: custom:state-switch
-#        entity: light.master_bedroom_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: master_bedroom_lights
-#          "off":
-#            type: custom:q-card
-#            card: master_bedroom_lights
-#      - type: custom:state-switch
-#        entity: light.master_bathroom_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: master_bathroom_lights
-#          "off":
-#            type: custom:q-card
-#            card: master_bathroom_lights
-#      - type: custom:state-switch
-#        entity: light.bedroom_luca_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: bedroom_luca_lights
-#          "off":
-#            type: custom:q-card
-#            card: bedroom_luca_lights
-#      - type: custom:state-switch
-#        entity: light.bathroom_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: bathroom_lights
-#          "off":
-#            type: custom:q-card
-#            card: bathroom_lights
-#      - type: custom:state-switch
-#        entity: light.laundry_room_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: laundry_room_lights
-#          "off":
-#            type: custom:q-card
-#            card: laundry_room_lights
-#      - type: custom:state-switch
-#        entity: light.patio_lights
-#        states:
-#          "on":
-#            type: custom:q-card
-#            card: patio_lights
-#          "off":
-#            type: custom:q-card
-#            card: patio_lights
+            template: front_patio_lights_fold
+      - type: custom:state-switch
+        entity: light.front_garden_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: front_garden_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: front_garden_lights_fold
+      - type: custom:state-switch
+        entity: light.back_patio_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: back_patio_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: back_patio_lights_fold
+      - type: custom:state-switch
+        entity: light.back_garden_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: back_garden_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: back_garden_lights_fold
       - type: custom:decluttering-card
         template: title
         variables:
@@ -208,4 +217,4 @@ house_lights_small:
       - type: custom:decluttering-card
         template: living_room_scenes
       - type: custom:decluttering-card
-        template: bedroom_luca_scenes
+        template: kids_bedroom_scenes

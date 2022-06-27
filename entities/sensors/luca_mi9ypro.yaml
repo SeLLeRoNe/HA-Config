@@ -1,8 +1,0 @@
----
-platform: mqtt
-name: "Luca OnePlus 9 Pro"
-state_topic: "room-assistant/sensor/bluetooth-classic-e0-dc-ff-ec-92-c8/state"
-availability_topic: "room-assistant/switch/studio-bluetooth-classic-inquiries-switch/status"
-payload_available: "online"
-payload_not_available: "offline"
-qos: 2
