@@ -1,0 +1,57 @@
+{
+  "config": {
+    "abort": {
+      "forgot_password": "La page Mot de passe oublié a été détectée. Amazon peut nécessiter une action avant qu'une reconnexion puisse être tentée.",
+      "login_failed": "Alexa Media Player n'a pas réussi à se connecter.",
+      "reauth_successful": "Alexa Media Player s'est authentifié avec succès."
+    },
+    "error": {
+      "2fa_key_invalid": "Clé 2FA intégrée non valide",
+      "connection_error": "Erreur de connexion; vérifier le réseau et réessayer",
+      "hass_url_invalid": "Impossible de se connecter à l'URL de Home Assistant. Veuillez vérifier l'URL externe sous Configuration - > Général",
+      "identifier_exists": "Email pour l'URL Alexa déjà enregistré",
+      "invalid_credentials": "Informations d'identification invalides",
+      "unknown_error": "Erreur inconnue, veuillez signaler les informations du journal"
+    },
+    "step": {
+      "captcha": {
+        "data": {
+          "securitycode": "Code 2FA (recommandé pour éviter les problèmes de connexion)"
+        }
+      },
+      "totp_register": {
+        "data": {
+          "registered": "OTP de la clé d'application 2FA intégrée confirmée avec succès."
+        },
+        "description": "** {email} - alexa. {url} **\n Avez-vous confirmé avec succès un OTP à partir de la clé d'application 2FA intégrée avec Amazon?\n > Code OTP {message}",
+        "title": "Alexa Media Player - OTP Confirmation"
+      },
+      "user": {
+        "data": {
+          "debug": "Débogage avancé",
+          "email": "Adresse Email",
+          "exclude_devices": "Appareil exclu (séparé par des virgules)",
+          "hass_url": "Url to access Home Assistant",
+          "include_devices": "Appareil inclus (séparé par des virgules)",
+          "otp_secret": "Clé d'application 2FA intégrée (génère automatiquement des codes 2FA)",
+          "password": "Mot de passe",
+          "scan_interval": "Secondes entre les analyses",
+          "securitycode": "Code 2FA (recommandé pour éviter les problèmes de connexion)",
+          "url": "Domaine de la région Amazon (exemple, amazon.fr)"
+        },
+        "description": "Veuillez confirmer les informations ci-dessous.",
+        "title": "Alexa Media Player - Configuration"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "extended_entity_discovery": "Inclure les appareils connectés via Echo",
+          "queue_delay": "Secondes à attendre pour mettre les commandes en file d'attente ensemble"
+        }
+      }
+    }
+  }
+}

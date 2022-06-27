@@ -1,0 +1,11 @@
+{
+  "domain": "cryptoinfo",
+  "name": "Cryptoinfo",
+  "version": "0.0.10",
+  "documentation": "https://github.com/heyajohnny/cryptoinfo",
+  "dependencies": [],
+  "codeowners": [
+    "@heyajohnny"
+  ],
+  "requirements": []
+}

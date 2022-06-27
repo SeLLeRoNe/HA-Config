@@ -1,0 +1,57 @@
+{
+  "config": {
+    "abort": {
+      "forgot_password": "A página Esqueci minha senha foi detectada. Isso normalmente é o resultado de muitos logins com falha. A Amazon pode exigir uma ação antes que um novo login possa ser tentado.",
+      "login_failed": "Alexa Media Player falhou no login.",
+      "reauth_successful": "O Alexa Media Player foi reautenticado com sucesso."
+    },
+    "error": {
+      "2fa_key_invalid": "Chave integrada 2FA inválida",
+      "connection_error": "Erro de conexão; verifique a sua conexão e tente novamente",
+      "hass_url_invalid": "Não foi possível conectar ao URL do Home Assistant. Por favor, verifique o URL Externo em Configuração - > Geral",
+      "identifier_exists": "E-mail para URL Alexa já registrado",
+      "invalid_credentials": "Credenciais inválidas",
+      "unknown_error": "Erro desconhecido, favor habilitar depuração avançada e informações de registro de relatório"
+    },
+    "step": {
+      "captcha": {
+        "data": {
+          "securitycode": "Código 2FA (recomendado para evitar problemas de login)"
+        }
+      },
+      "totp_register": {
+        "data": {
+          "registered": "OTP da chave de aplicativo 2FA integrada confirmada com sucesso."
+        },
+        "description": "** {email} - alexa. {url} **\n Você confirmou com sucesso um OTP da chave de aplicativo 2FA integrada com a Amazon?\n > Código OTP {message}",
+        "title": "Alexa Media Player - Confirmação OTP"
+      },
+      "user": {
+        "data": {
+          "debug": "Depuração avançada",
+          "email": "Endereço de e-mail",
+          "exclude_devices": "Dispositivos excluídos (separado por vírgula)",
+          "hass_url": "Url para acesso ao Home Assistant",
+          "include_devices": "Dispositivos incluídos (separado por vírgula)",
+          "otp_secret": "Chave de aplicativo 2FA integrada (gerar automaticamente códigos 2FA)",
+          "password": "Senha",
+          "scan_interval": "Segundos entre varreduras",
+          "securitycode": "Código 2FA (recomendado para evitar problemas de login)",
+          "url": "Domínio regional da Amazon (ex: amazon.co.uk)"
+        },
+        "description": "Por favor, confirme as informações abaixo.",
+        "title": "Alexa Media Player - Configurações"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "extended_entity_discovery": "Incluir dispositivos conectados via Echo",
+          "queue_delay": "Segundos para aguardar os comandos de fila juntos"
+        }
+      }
+    }
+  }
+}

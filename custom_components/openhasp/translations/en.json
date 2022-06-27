@@ -1,0 +1,40 @@
+{
+    "config": {
+        "step": {
+            "personalize": {
+                "title": "Setup your OpenHASP Plate",
+                "description": "Don't forget to add your plate to YAML configuration",
+                "data": {
+                    "name": "Name of the plate",
+                    "topic": "OpenHASP MQTT base topic",
+                    "idle_brightness": "Brightness level when plate is idle",
+                    "path": "Full path to the JSONL file"
+                }
+            }
+        },
+        "error": {
+            "name_exists": "A Plate with that name is already configured",
+            "invalid_discovery_info": "Invalid plate topic",
+            "invalid_jsonl_path": "Invalid path to a JSONL file"
+        },
+        "abort": {
+            "already_configured": "Plate already configured",
+            "mismatch_version": "Plate firmware mismatch",
+            "discovery_only": "Configuration is done through discovery"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "openHASP Plate Options",
+                "data": {
+                    "idle_brightness": "Brightness level when plate is idle",
+                    "path": "Full path to the JSONL file"
+                }
+            }
+        },
+        "abort":{
+            "invalid_jsonl_path": "Invalid path to a JSONL file"
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+  "config": {
+    "abort": {
+      "forgot_password": "Siden Glemt passord ble oppdaget. Dette er vanligvis et resultat av også mislykkede pålogginger. Amazon kan kreve handling før en pålogging kan forsøkes.",
+      "login_failed": "Alexa Media Player kunne ikke logge inn.",
+      "reauth_successful": "Alexa Media Player er godkjent på nytt."
+    },
+    "error": {
+      "2fa_key_invalid": "Invalid Built-In 2FA key",
+      "connection_error": "Feil ved tilkobling; sjekk nettverket og prøv på nytt",
+      "hass_url_invalid": "Kan ikke koble til nettadressen til hjemmeassistenten. Vennligst sjekk den eksterne nettadressen under Konfigurasjon - > Generelt",
+      "identifier_exists": "E-post for Alexa URL allerede registrert",
+      "invalid_credentials": "ugyldige legitimasjon",
+      "unknown_error": "Ukjent feil, vennligst rapporter logginfo"
+    },
+    "step": {
+      "captcha": {
+        "data": {
+          "securitycode": "2FA-kode (anbefales for å unngå påloggingsproblemer)"
+        }
+      },
+      "totp_register": {
+        "data": {
+          "registered": "OTP from the Built-in 2FA App Key confirmed successfully."
+        },
+        "description": "**{email} - alexa.{url}**  \nHave you successfully confirmed an OTP from the Built-in 2FA App Key with Amazon?  \n >OTP Code {message}",
+        "title": "Alexa Media Player - OTP Confirmation"
+      },
+      "user": {
+        "data": {
+          "debug": "Avansert feilsøking",
+          "email": "Epostadresse",
+          "exclude_devices": "Ekskludert enhet (kommaseparert)",
+          "hass_url": "Url to access Home Assistant",
+          "include_devices": "Inkluder enhet (kommaseparert)",
+          "otp_secret": "Built-in 2FA App Key (automatically generate 2FA Codes)",
+          "password": "Passord",
+          "scan_interval": "Sekunder mellom skanninger",
+          "securitycode": "2FA-kode (anbefales for å unngå påloggingsproblemer)",
+          "url": "Amazon-regiondomenet (f.eks. Amazon.co.uk)"
+        },
+        "description": "Bekreft informasjonen nedenfor.",
+        "title": "Alexa Media Player - Konfigurasjon"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "extended_entity_discovery": "Inkluder enheter som er koblet til via Echo",
+          "queue_delay": "Sekunder for å vente på køkommandoer sammen"
+        }
+      }
+    }
+  }
+}
