@@ -1,0 +1,11 @@
+---
+kids_bedroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.kids_bedroom_blinds
+      label: Kids Bedroom
+    entities:
+      - name: Blinds 1
+        entity: cover.kids_bedroom_blinds_1

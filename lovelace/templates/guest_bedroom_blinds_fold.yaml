@@ -1,0 +1,11 @@
+---
+guest_bedroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.guest_bedroom_blinds
+      label: Guest Bedroom
+    entities:
+      - name: Blinds 1
+        entity: cover.guest_bedroom_blinds_1

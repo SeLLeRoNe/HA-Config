@@ -1,0 +1,11 @@
+---
+play_room_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.play_room_blinds
+      label: Play Room
+    entities:
+      - name: Blinds 1
+        entity: cover.play_room_blinds_1

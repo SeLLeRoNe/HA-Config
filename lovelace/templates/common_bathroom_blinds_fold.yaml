@@ -1,0 +1,11 @@
+---
+common_bathroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.common_bathroom_blinds
+      label: Common Bathroom
+    entities:
+      - name: Blinds 1
+        entity: cover.common_bathroom_blinds_1

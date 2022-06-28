@@ -1,58 +1,17 @@
 ---
 living_room_blinds_fold:
   card:
-    type: entities
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.living_room_blinds
+      label: Living Room
     entities:
-      - type: custom:fold-entity-row
-        head:
-          type: custom:slider-entity-row
-          entity: cover.living_room_blinds
-          name: Living Room
-          toggle: true
-          hide_state: true
-          hide_when_off: false
-          full_row: false
-          min: 0
-          max: 100
-          step: 1
-        entities:
-          - type: custom:slider-entity-row
-            name: Blinds 1
-            entity: cover.living_room_blinds_1
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-          - type: custom:slider-entity-row
-            name: Blinds 2
-            entity: cover.living_room_blinds_2
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-          - type: custom:slider-entity-row
-            name: Blinds 3
-            entity: cover.living_room_blinds_3
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
-          - type: custom:slider-entity-row
-            name: Blinds 4
-            entity: cover.living_room_blinds_4
-            toggle: true
-            hide_state: true
-            hide_when_off: false
-            full_row: false
-            min: 0
-            max: 100
-            step: 1
+      - name: Blinds 1
+        entity: cover.living_room_blinds_1
+      - name: Blinds 2
+        entity: cover.living_room_blinds_2
+      - name: Blinds 3
+        entity: cover.living_room_blinds_3
+      - name: Blinds 4
+        entity: cover.living_room_blinds_4

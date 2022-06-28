@@ -1,0 +1,11 @@
+---
+ground_floor_bathroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.ground_floor_bathroom_blinds
+      label: Ground Floor Bathroom
+    entities:
+      - name: Blinds 1
+        entity: cover.ground_floor_bathroom_blinds_1

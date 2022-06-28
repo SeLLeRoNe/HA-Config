@@ -1,0 +1,11 @@
+---
+master_bathroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.master_bathroom_blinds
+      label: Master Bathroom
+    entities:
+      - name: Blinds 1
+        entity: cover.master_bathroom_blinds_1

@@ -1,0 +1,13 @@
+---
+kitchen_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.kitchen_blinds
+      label: Kitchen
+    entities:
+      - name: Blinds 1
+        entity: cover.kitchen_blinds_1
+      - name: Blinds 2
+        entity: cover.kitchen_blinds_2

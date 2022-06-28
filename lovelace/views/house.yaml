@@ -178,11 +178,11 @@ cards:
     template: house_lights_small
     layout:
       column: 3
-#  - type: custom:layout-break
-#  - type: custom:decluttering-card
-#    template: house_blinds_small
-#    layout:
-#      column: 3
+  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: house_blinds_small
+    layout:
+      column: 3
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
