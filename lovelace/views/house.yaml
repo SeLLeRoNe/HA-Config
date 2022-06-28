@@ -161,6 +161,8 @@ cards:
     cards:
       - type: custom:decluttering-card
         template: cars
+  - type: custom:decluttering-card
+    template: house_blinds_small
 #  - type: calendar
 #    initial_view: dayGridMonth
 #    entities:
@@ -176,11 +178,6 @@ cards:
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: house_lights_small
-    layout:
-      column: 3
-  - type: custom:layout-break
-  - type: custom:decluttering-card
-    template: house_blinds_small
     layout:
       column: 3
   - type: custom:layout-break
