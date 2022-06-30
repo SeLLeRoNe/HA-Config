@@ -1,5 +1,4 @@
 """Support for ICS Calendar."""
-import copy
 import logging
 from datetime import datetime, timedelta
 from typing import Optional
@@ -140,7 +139,6 @@ class ICSCalendarEntity(CalendarEntity):
         self._event = None
         self._name = device_data[CONF_NAME]
         self._last_call = None
-        self._last_event_list = None
 
     @property
     def event(self) -> Optional[CalendarEvent]:
@@ -167,8 +165,7 @@ class ICSCalendarEntity(CalendarEntity):
         """
         this_call = hanow()
         if (
-            self._last_event_list is None
-            or self._last_call is None
+            self._last_call is None
             or (this_call - self._last_call) > MIN_TIME_BETWEEN_UPDATES
         ):
             self._last_call = this_call
@@ -187,34 +184,18 @@ class ICSCalendarEntity(CalendarEntity):
         :param end_date: The last starting date to consider
         :type end_date: datetime
         """
-        this_call = hanow()
-        if (
-            self._last_event_list is None
-            or self._last_call is None
-            or (this_call - self._last_call) > MIN_TIME_BETWEEN_UPDATES
-        ):
-            _LOGGER.debug(
-                "%s: async_get_events called; calling internal.", self.name
-            )
-            self._last_call = this_call
-            self._last_event_list = await self.data.async_get_events(
-                hass, start_date, end_date
-            )
-        return self._last_event_list
+        _LOGGER.debug(
+            "%s: async_get_events called; calling internal.", self.name
+        )
+        return await self.data.async_get_events(hass, start_date, end_date)
 
     def update(self):
         """Get the current or next event."""
         self.data.update()
-        event = copy.deepcopy(self.data.event)
-        if event is None:
-            self._event = event
-            return
-        [summary, offset] = extract_offset(event.summary, OFFSET)
-        event.summary = summary
-        self._event = event
+        self._event = self.data.event
         self._attr_extra_state_attributes = {
             "offset_reached": is_offset_reached(
-                event.start_datetime_local, offset
+                self._event.start_datetime_local, self.data.offset
             )
         }
 
@@ -231,6 +212,7 @@ class ICSCalendarData:
         self._days = device_data[CONF_DAYS]
         self.include_all_day = device_data[CONF_INCLUDE_ALL_DAY]
         self.parser = ICalendarParser.get_instance(device_data[CONF_PARSER])
+        self.offset = None
         self.event = None
         self._calendar_data = CalendarData(
             _LOGGER,
@@ -307,6 +289,9 @@ class ICSCalendarData:
                 self.event.end,
                 self.event.all_day,
             )
+            (summary, offset) = extract_offset(self.event.summary, OFFSET)
+            self.event.summary = summary
+            self.offset = offset
             return True
 
         _LOGGER.debug("%s: No event found!", self.name)
