@@ -36,6 +36,15 @@ house_blinds_small:
             type: custom:decluttering-card
             template: play_room_blinds_fold
       - type: custom:state-switch
+        entity: cover.ground_floor_bathroom_blinds
+        states:
+          "open":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_blinds_fold
+          "closed":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_blinds_fold
+      - type: custom:state-switch
         entity: cover.studio_sonia_blinds
         states:
           "open":
