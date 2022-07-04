@@ -921,7 +921,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.living_room_ceiling_lights
+      entity_id: light.back_patio_lights
   mode: single
 - id: '1655830068850'
   alias: 'Shelly - Living Room Right Window Switch #1 - SIngle'

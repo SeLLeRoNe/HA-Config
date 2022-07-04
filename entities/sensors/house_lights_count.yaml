@@ -16,7 +16,8 @@ sensors:
       (states('sensor.kids_bedroom_lights_count') | int) +
       (states('sensor.guest_bedroom_lights_count') | int) +
       (states('sensor.common_bathroom_lights_count') | int) +
-      (states('sensor.ground_floor_bathroom_lights_count') | int)
+      (states('sensor.ground_floor_bathroom_lights_count') | int) +
+      (states('sensor.garage_lights_count') | int)
       )
       | int
       }}
@@ -34,7 +35,8 @@ sensors:
         (state_attr('sensor.kids_bedroom_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.guest_bedroom_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.common_bathroom_lights_count', 'total_lights') | int ) +
-        (state_attr('sensor.ground_floor_bathroom_lights_count', 'total_lights') | int )
+        (state_attr('sensor.ground_floor_bathroom_lights_count', 'total_lights') | int ) +
+        (state_attr('sensor.garage_lights_count', 'total_lights') | int )
         )
         | int
         }}
