@@ -7,9 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.house_electricity_yearly_punta.state | float) +
-      (states.sensor.house_electricity_yearly_llano.state | float) +
-      (states.sensor.house_electricity_yearly_valle.state | float)
+      (states.sensor.house_yearly_energy_consumption_punta.state | float) +
+      (states.sensor.house_yearly_energy_consumption_llano.state | float) +
+      (states.sensor.house_yearly_energy_consumption_valle.state | float)
       )
       | round(3)
       }}

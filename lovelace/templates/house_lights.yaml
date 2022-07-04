@@ -171,38 +171,20 @@ house_lights:
             type: custom:decluttering-card
             template: laundry_room_lights_fold
       - type: custom:state-switch
-        entity: light.front_patio_lights
+        entity: light.patio_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: front_patio_lights_fold
+            template: patio_lights_fold
           "off":
             type: custom:decluttering-card
-            template: front_patio_lights_fold
+            template: patio_lights_fold
       - type: custom:state-switch
-        entity: light.front_garden_lights
+        entity: light.garden_lights
         states:
           "on":
             type: custom:decluttering-card
-            template: front_garden_lights_fold
+            template: garden_lights_fold
           "off":
             type: custom:decluttering-card
-            template: front_garden_lights_fold
-      - type: custom:state-switch
-        entity: light.back_patio_lights
-        states:
-          "on":
-            type: custom:decluttering-card
-            template: back_patio_lights_fold
-          "off":
-            type: custom:decluttering-card
-            template: back_patio_lights_fold
-      - type: custom:state-switch
-        entity: light.back_garden_lights
-        states:
-          "on":
-            type: custom:decluttering-card
-            template: back_garden_lights_fold
-          "off":
-            type: custom:decluttering-card
-            template: back_garden_lights_fold
+            template: garden_lights_fold

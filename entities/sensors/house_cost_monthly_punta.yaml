@@ -7,7 +7,7 @@ sensors:
     value_template: >-
       {{
       (
-      (states('sensor.house_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float)
+      (states('sensor.house_monthly_energy_consumption_punta')|float * states('input_number.energy_price_punta')|float)
       )
       | round(2)
       }}

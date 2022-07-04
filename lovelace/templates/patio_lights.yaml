@@ -8,8 +8,26 @@ patio_lights:
         template: title
         variables:
           - title: Lights
-      - type: custom:decluttering-card
-        template: light_card_rgb
-        variables:
-          - name: Wall Light
-          - entity: light.patio_led1624g9_wall
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.back_patio_lights
+          name: Back Patio
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 1
+              - entity: light.back_patio_light_door
+          - type: custom:decluttering-card
+            template: light_card_rgb
+            variables:
+              - name: Light 2
+              - entity: light.back_patio_light_window

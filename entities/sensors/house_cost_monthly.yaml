@@ -7,14 +7,14 @@ sensors:
     value_template: >-
       {{
       (
-      (states('sensor.house_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float) +
-      (states('sensor.house_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float) +
-      (states('sensor.house_electricity_monthly_valle')|float * states('input_number.energy_price_valle')|float) -
+      (states('sensor.house_monthly_energy_consumption_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.house_monthly_energy_consumption_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.house_monthly_energy_consumption_valle')|float * states('input_number.energy_price_valle')|float) -
       (
       (
-      (states('sensor.house_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float) +
-      (states('sensor.house_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float) +
-      (states('sensor.house_electricity_monthly_valle')|float * states('input_number.energy_price_valle')|float)
+      (states('sensor.house_monthly_energy_consumption_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.house_monthly_energy_consumption_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.house_monthly_energy_consumption_valle')|float * states('input_number.energy_price_valle')|float)
       ) *
       15
       )
@@ -24,14 +24,14 @@ sensors:
       ( 5.95 * 50 )/100 +
       (
       (
-      (states('sensor.house_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float) +
-      (states('sensor.house_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float) +
-      (states('sensor.house_electricity_monthly_valle')|float * states('input_number.energy_price_valle')|float) -
+      (states('sensor.house_monthly_energy_consumption_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.house_monthly_energy_consumption_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.house_monthly_energy_consumption_valle')|float * states('input_number.energy_price_valle')|float) -
       (
       (
-      (states('sensor.house_electricity_monthly_punta')|float * states('input_number.energy_price_punta')|float) +
-      (states('sensor.house_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float) +
-      (states('sensor.house_electricity_monthly_valle')|float * states('input_number.energy_price_valle')|float)
+      (states('sensor.house_monthly_energy_consumption_punta')|float * states('input_number.energy_price_punta')|float) +
+      (states('sensor.house_monthly_energy_consumption_llano')|float * states('input_number.energy_price_llano')|float) +
+      (states('sensor.house_monthly_energy_consumption_valle')|float * states('input_number.energy_price_valle')|float)
       ) *
       15
       )

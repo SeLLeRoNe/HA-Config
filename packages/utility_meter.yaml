@@ -6,31 +6,6 @@
 # https://www.home-assistant.io/components/utility_meter/
 #
 utility_meter:
-  # HOUSE #
-  house_electricity_daily:
-    name: House Daily Energy Consumption
-    source: sensor.house_total_energy_usage
-    cycle: daily
-    tariffs:
-      - punta
-      - llano
-      - valle
-  house_electricity_monthly:
-    name: House Monthly Energy Consumption
-    source: sensor.house_total_energy_usage
-    cycle: monthly
-    tariffs:
-      - punta
-      - llano
-      - valle
-  house_electricity_yearly:
-    name: House Yearly Energy Consumption
-    source: sensor.house_total_energy_usage
-    cycle: yearly
-    tariffs:
-      - punta
-      - llano
-      - valle
   # LIVING ROOM #
   living_room_electricity_daily:
     name: Living Room Daily Energy Consumption

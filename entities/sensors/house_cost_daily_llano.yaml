@@ -8,7 +8,7 @@ sensors:
       {{
       (
       (states('input_number.energy_daily_price')|float) +
-      (states('sensor.house_electricity_daily_llano')|float * states('input_number.energy_price_llano')|float)
+      (states('sensor.house_daily_energy_consumption_llano')|float * states('input_number.energy_price_llano')|float)
       )
       | round(2)
       }}

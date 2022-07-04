@@ -33,7 +33,7 @@ kitchen_lights_fold:
                 template: light_card_rgb
                 variables:
                   - name: Light 1
-                  - entity: light.living_room_ceiling_light_1
+                  - entity: light.kitchen_room_ceiling_light_1
               - type: custom:decluttering-card
                 template: light_card_rgb
                 variables:
