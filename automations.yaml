@@ -1059,3 +1059,18 @@
     target:
       entity_id: light.ground_floor_bathroom_ceiling_lights
   mode: single
+- id: '1657014987035'
+  alias: Doorbell Ring
+  description: ''
+  trigger:
+  - platform: event
+    event_type: dahua_vto
+    event_data:
+      Code: BackKeyLight
+  condition: []
+  action:
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      message: There is someone at the door!
+      title: Doorbell
+  mode: single
