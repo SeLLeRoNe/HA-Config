@@ -56,7 +56,7 @@ cards:
               action: toggle
       - type: conditional
         conditions:
-          - entity: group.alerts
+          - entity: binary_sensor.alerts
             state: "on"
         card:
           type: custom:decluttering-card

@@ -1,6 +1,0 @@
----
-bedroom_luca_pir:
-  name: Bedroom Luca PiR
-  icon: mdi:motion-sensor
-  entities:
-    - binary_sensor.bedroom_luca_rf_pir

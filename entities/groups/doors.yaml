@@ -1,6 +1,0 @@
----
-doors:
-  name: Doors
-  icon: mdi:door
-  entities:
-    - binary_sensor.patio_mccgq01lm_outside_contact
