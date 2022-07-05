@@ -1,7 +1,7 @@
 ---
 id: '3247797456625'
 alias: Patio - PIR Off
-initial_state: on
+initial_state: off
 trigger:
   - platform: state
     entity_id: binary_sensor.patio_pir

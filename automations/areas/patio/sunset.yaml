@@ -1,7 +1,7 @@
 ---
 id: '9924523477437'
 alias: Patio - Sunset
-initial_state: on
+initial_state: off
 trigger:
   - platform: numeric_state
     entity_id: sensor.patio_gzcgq01lm_illuminance_lux
