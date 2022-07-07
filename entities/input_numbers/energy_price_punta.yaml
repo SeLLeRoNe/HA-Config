@@ -1,8 +1,0 @@
----
-energy_price_punta:
-  name: Energy Price per kWh (Punta)
-  mode: box
-  min: 0
-  max: 100
-  unit_of_measurement: "EUR/kWh"
-  icon: mdi:currency-eur

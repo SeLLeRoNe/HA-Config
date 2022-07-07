@@ -1,8 +1,0 @@
----
-energy_daily_meter:
-  name: Meter Rent (Daily)
-  mode: box
-  min: 0
-  max: 100
-  unit_of_measurement: "EUR/Day"
-  icon: mdi:currency-eur

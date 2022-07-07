@@ -1,8 +1,0 @@
----
-energy_price_llano:
-  name: Energy Price per kWh (Llano)
-  mode: box
-  min: 0
-  max: 100
-  unit_of_measurement: "EUR/kWh"
-  icon: mdi:currency-eur

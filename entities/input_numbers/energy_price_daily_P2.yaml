@@ -1,8 +1,0 @@
----
-energy_daily_price_p2:
-  name: Energy Price for 4.6kW Provided (Daily - P2)
-  mode: box
-  min: 0
-  max: 100
-  unit_of_measurement: "EUR/Day"
-  icon: mdi:currency-eur
