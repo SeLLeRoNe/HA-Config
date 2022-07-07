@@ -15,12 +15,18 @@ alerts:
         show_state: false
         state_color: true
         entities:
+          - name: Living Room Window 1
+            entity: binary_sensor.living_room_window_1_contact
+          - name: Living Room Window 3
+            entity: binary_sensor.living_room_window_3_contact
+          - name: Patio Door
+            entity: binary_sensor.living_room_window_4_contact
+          - name: Play Room Window
+            entity: binary_sensor.play_room_window_contact
           - name: Bathroom Window
             entity: binary_sensor.bathroom_mccgq01lm_window_contact
           - name: Master Bathroom Window
             entity: binary_sensor.master_bathroom_window_contact
-          - name: Patio Door
-            entity: binary_sensor.patio_door_contact
           - entity: binary_sensor.studio_pir
           - entity: binary_sensor.bathroom_pir
           - entity: binary_sensor.bedroom_luca_pir
