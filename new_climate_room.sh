@@ -21,9 +21,17 @@ fi
 
 if [ $ALL -eq 1 ]; then
 	$HA_PATH/new_climate_room.sh Living Room
-	$HA_PATH/new_climate_room.sh Studio
+        $HA_PATH/new_climate_room.sh Kitchen
+        $HA_PATH/new_climate_room.sh Play Room
+	$HA_PATH/new_climate_room.sh Studio Andrea
+        $HA_PATH/new_climate_room.sh Studio Sonia
 	$HA_PATH/new_climate_room.sh Master Bedroom
-	$HA_PATH/new_climate_room.sh Bedroom Luca
+        $HA_PATH/new_climate_room.sh Guest Bedroom
+	$HA_PATH/new_climate_room.sh Kids Bedroom
+        $HA_PATH/new_climate_room.sh Common Bathroom
+        $HA_PATH/new_climate_room.sh Ground Floor Bathroom
+        $HA_PATH/new_climate_room.sh Service Bathroom
+        $HA_PATH/new_climate_room.sh Master Bathroom
 	exit 0;
 fi
 
