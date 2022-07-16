@@ -1,7 +1,0 @@
----
-platform: min_max
-name: Studio Temperature
-type: mean
-round_digits: 2
-entity_ids:
-  - sensor.studio_ts0201_temperature

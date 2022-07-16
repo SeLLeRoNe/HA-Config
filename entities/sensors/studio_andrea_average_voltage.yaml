@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Studio Andrea Average Voltage
+type: max
+round_digits: 1
+entity_ids:
+  - sensor.studio_andrea_desk_plug_energy_voltage

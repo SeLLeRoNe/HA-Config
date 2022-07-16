@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  studio_sonia_today_energy_usage:
+    friendly_name: Studio Sonia Daily Energy Usage
+    icon_template: mdi:counter
+    value_template: >-
+      {{
+      (
+      (states.sensor.studio_sonia_desk_plug_energy_today.state | float)
+      )
+      | round(3)
+      }}
+    unit_of_measurement: 'kWh'

@@ -82,25 +82,50 @@ utility_meter:
       - llano
       - valle
   # STUDIO ANDREA #
-  studio_electricity_daily:
-    name: Studio Daily Energy Consumption
-    source: sensor.studio_total_energy_usage
+  studio_andrea_electricity_daily:
+    name: Studio Andrea_Daily Energy Consumption
+    source: sensor.studio_andrea_total_energy_usage
     cycle: daily
     tariffs:
       - punta
       - llano
       - valle
-  studio_electricity_monthly:
-    name: Studio Monthly Energy Consumption
-    source: sensor.studio_total_energy_usage
+  studio_andrea_electricity_monthly:
+    name: Studio Andrea Monthly Energy Consumption
+    source: sensor.studio_andrea_total_energy_usage
     cycle: monthly
     tariffs:
       - punta
       - llano
       - valle
-  studio_electricity_yearly:
-    name: Studio Yearly Energy Consumption
-    source: sensor.studio_total_energy_usage
+  studio_andrea_electricity_yearly:
+    name: Studio Andrea Yearly Energy Consumption
+    source: sensor.studio_andrea_total_energy_usage
+    cycle: yearly
+    tariffs:
+      - punta
+      - llano
+      - valle
+  # STUDIO SONIA #
+  studio_sonia_electricity_daily:
+    name: Studio Andrea_Daily Energy Consumption
+    source: sensor.studio_sonia_total_energy_usage
+    cycle: daily
+    tariffs:
+      - punta
+      - llano
+      - valle
+  studio_sonia_electricity_monthly:
+    name: Studio Andrea Monthly Energy Consumption
+    source: sensor.studio_sonia_total_energy_usage
+    cycle: monthly
+    tariffs:
+      - punta
+      - llano
+      - valle
+  studio_sonia_electricity_yearly:
+    name: Studio Andrea Yearly Energy Consumption
+    source: sensor.studio_sonia_total_energy_usage
     cycle: yearly
     tariffs:
       - punta

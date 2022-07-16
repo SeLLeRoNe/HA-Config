@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Studio Andrea Pressure
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.studio_andrea_TS0201_pressure

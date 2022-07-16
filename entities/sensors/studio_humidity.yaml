@@ -1,7 +1,0 @@
----
-platform: min_max
-name: Studio Humidity
-type: mean
-round_digits: 2
-entity_ids:
-  - sensor.studio_TS0201_humidity

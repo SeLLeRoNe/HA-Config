@@ -1,0 +1,14 @@
+---
+platform: template
+sensors:
+  studio_sonia_cost_monthly_llano:
+    friendly_name: 'Studio Sonia Cost Monthly (Llano)'
+    icon_template: mdi:currency-eur
+    value_template: >-
+      {{
+      (
+      (states('sensor.studio_sonia_electricity_monthly_llano')|float * states('input_number.energy_price_llano')|float)
+      )
+      | round(2)
+      }}
+    unit_of_measurement: "EUR"

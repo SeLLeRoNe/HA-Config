@@ -1,9 +1,0 @@
----
-platform: min_max
-name: Studio Average Voltage
-type: max
-round_digits: 1
-entity_ids:
-  - sensor.studio_andrea_plug_energy_voltage
-  - sensor.studio_sonia_plug_energy_voltage
-  - sensor.studio_table_plug_energy_voltage

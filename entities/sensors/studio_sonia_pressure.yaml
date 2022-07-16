@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Studio Sonia Pressure
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.studio_sonia_TS0201_pressure
