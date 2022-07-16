@@ -1,0 +1,68 @@
+---
+studio_andrea_plugs:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Plugs
+      - type: entities
+        show_header_toggle: false
+#        state_color: true
+        entities:
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "Desk Andrea"
+              - entity: switch.studio_desk_andrea_plug
+              - block: true
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "Table"
+              - entity: switch.studio_table_plug
+              - block: true
+      - type: custom:hui-element
+        row_type: divider
+      - type: entities
+        show_header_toggle: false
+#        state_color: true
+        entities:
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "LG Monitor #1"
+              - entity: switch.studio_desk_andrea_lg_monitor_1
+              - block: false
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "LG Monitor #2"
+              - entity: switch.studio_desk_andrea_lg_monitor_2
+              - block: false
+      - type: custom:hui-element
+        row_type: divider
+      - type: entities
+        show_header_toggle: false
+#        state_color: true
+        entities:
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "OnePlus USB Charger"
+              - entity: switch.studio_usb_relay_01
+              - block: false
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "USB Ports"
+              - entity: switch.studio_desk_andrea_usb_ports
+              - block: true
+          - type: custom:decluttering-card
+            template: plug_card
+            variables:
+              - name: "USB Hub"
+              - entity: switch.studio_desk_andrea_usb_hub
+              - block: false

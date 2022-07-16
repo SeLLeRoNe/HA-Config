@@ -4,7 +4,7 @@ alias: House - Night Mode Activated
 initial_state: on
 trigger:
   - platform: time
-    at: "00:30:00"
+    at: "23:00:00"
 action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.night_mode

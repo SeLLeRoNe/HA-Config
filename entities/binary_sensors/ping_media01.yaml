@@ -1,6 +1,6 @@
 ---
 platform: ping
 name: NETGEAR MEDIA01
-host: !secret studio_media01_ip
+host: !secret studio_andrea_media01_ip
 count: 2
 scan_interval: 30

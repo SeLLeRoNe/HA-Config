@@ -1,6 +1,6 @@
 ---
 platform: ping
 name: Studio Desk Andrea Laptop Work Ping
-host: !secret studio_desk_andrea_laptop_work_ip
+host: !secret studio_andrea_laptop_work_ip
 count: 2
 scan_interval: 30

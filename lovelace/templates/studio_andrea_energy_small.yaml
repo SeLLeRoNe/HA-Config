@@ -1,5 +1,5 @@
 ---
-studio_energy_small:
+studio_andrea_energy_small:
   card:
     type: custom:stack-in-card
     mode: vertical
@@ -16,35 +16,29 @@ studio_energy_small:
             template: energy_usage_card
             variables:
               - type: room
-              - area: studio
+              - area: studio_andrea
           - type: custom:decluttering-card
             template: energy_cost_card
             variables:
               - type: room
-              - area: studio
+              - area: studio_andrea
           - type: section
           - type: custom:decluttering-card
             template: energy_total_card
             variables:
               - type: room
-              - area: studio
+              - area: studio_andrea
           - type: section
             label: Devices
           - type: custom:decluttering-card
             template: energy_device_10_card
             variables:
-              - area: studio
+              - area: studio_andrea
               - device_name: Desk Andrea
               - device: desk_andrea
           - type: custom:decluttering-card
             template: energy_device_10_card
             variables:
-              - area: studio
-              - device_name: Desk Sonia
-              - device: desk_sonia
-          - type: custom:decluttering-card
-            template: energy_device_10_card
-            variables:
-              - area: studio
+              - area: studio_andrea
               - device_name: Table
               - device: table

@@ -17,6 +17,12 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: living_room_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: living_room_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: living_room_blinds_fold
       - type: custom:state-switch
         entity: cover.kitchen_blinds
         states:
@@ -26,13 +32,26 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: kitchen_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: kitchen_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: kitchen_blinds_fold
       - type: custom:state-switch
         entity: cover.play_room_blinds
+        states:
         states:
           "open":
             type: custom:decluttering-card
             template: play_room_blinds_fold
           "closed":
+            type: custom:decluttering-card
+            template: play_room_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: play_room_blinds_fold
+          "closing":
             type: custom:decluttering-card
             template: play_room_blinds_fold
       - type: custom:state-switch
@@ -44,6 +63,12 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: ground_floor_bathroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: ground_floor_bathroom_blinds_fold
       - type: custom:state-switch
         entity: cover.studio_sonia_blinds
         states:
@@ -51,6 +76,12 @@ house_blinds_small:
             type: custom:decluttering-card
             template: studio_sonia_blinds_fold
           "closed":
+            type: custom:decluttering-card
+            template: studio_sonia_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: studio_sonia_blinds_fold
+          "closing":
             type: custom:decluttering-card
             template: studio_sonia_blinds_fold
       - type: custom:state-switch
@@ -62,6 +93,12 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: master_bedroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: master_bedroom_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: master_bedroom_blinds_fold
       - type: custom:state-switch
         entity: cover.master_bathroom_blinds
         states:
@@ -69,6 +106,12 @@ house_blinds_small:
             type: custom:decluttering-card
             template: master_bathroom_blinds_fold
           "closed":
+            type: custom:decluttering-card
+            template: master_bathroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: master_bathroom_blinds_fold
+          "closing":
             type: custom:decluttering-card
             template: master_bathroom_blinds_fold
       - type: custom:state-switch
@@ -80,6 +123,12 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: kids_bedroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: kids_bedroom_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: kids_bedroom_blinds_fold
       - type: custom:state-switch
         entity: cover.guest_bedroom_blinds
         states:
@@ -89,6 +138,12 @@ house_blinds_small:
           "closed":
             type: custom:decluttering-card
             template: guest_bedroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: guest_bedroom_blinds_fold
+          "closing":
+            type: custom:decluttering-card
+            template: guest_bedroom_blinds_fold
       - type: custom:state-switch
         entity: cover.common_bathroom_blinds
         states:
@@ -96,5 +151,11 @@ house_blinds_small:
             type: custom:decluttering-card
             template: common_bathroom_blinds_fold
           "closed":
+            type: custom:decluttering-card
+            template: common_bathroom_blinds_fold
+          "opening":
+            type: custom:decluttering-card
+            template: common_bathroom_blinds_fold
+          "closing":
             type: custom:decluttering-card
             template: common_bathroom_blinds_fold

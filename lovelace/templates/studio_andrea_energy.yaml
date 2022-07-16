@@ -1,0 +1,44 @@
+---
+studio_andrea_energy:
+  card:
+    type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: '[[title]]'
+      - type: custom:decluttering-card
+        template: room_cost
+        variables:
+          - area: studio_andrea
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:decluttering-card
+        template: room_total
+        variables:
+          - area: studio_andrea
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - area: studio_andrea
+          - device_name: Desk Andrea
+          - device: desk_andrea
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - area: studio_andrea
+          - device_name: Desk andrea
+          - device: desk_andrea
+      - type: custom:hui-element
+        row_type: divider
+      - type: custom:decluttering-card
+        template: room_device_10
+        variables:
+          - area: studio_andrea
+          - device_name: Table
+          - device: table

@@ -4,11 +4,11 @@ name: House Temperature
 type: mean
 round_digits: 2
 entity_ids:
-  - sensor.living_room_temperature
-  - sensor.kitchen_temperature
-  - sensor.studio_temperature
-  - sensor.bedroom_luca_temperature
-  - sensor.bathroom_temperature
-  - sensor.master_bedroom_temperature
-  - sensor.master_bathroom_temperature
-  - sensor.laundry_room_temperature
+  - sensor.living_room_wsdcgq11lm_temperature
+  - sensor.kitchen_wsdcgq11lm_temperature
+  - sensor.studio_andrea_wsdcgq11lm_temperature
+  - sensor.studio_sonia_wsdcgq11lm_temperature
+  - sensor.kids_bedroom_wsdcgq11lm_temperature
+  - sensor.bathroom_wsdcgq11lm_temperature
+  - sensor.master_bedroom_wsdcgq11lm_temperature
+  - sensor.master_bathroom_wsdcgq11lm_temperature

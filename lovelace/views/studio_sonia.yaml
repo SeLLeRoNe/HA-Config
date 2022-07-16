@@ -1,21 +1,21 @@
-title: Studio Andrea
-icon: mdi:desktop-tower-monitor
-path: studio_andrea
+title: Studio Sonia
+icon: mdi:laptop
+path: studio_sonia
 type: custom:vertical-layout
 layout:
   max_cols: 5
 cards:
   - type: custom:state-switch
-    entity: light.studio_andrea_lights
+    entity: light.studio_sonia_lights
     states:
       "on":
         type: custom:decluttering-card
-        template: studio_andrea_lights
+        template: studio_sonia_lights
       "off":
         type: custom:decluttering-card
-        template: studio_andrea_lights
+        template: studio_sonia_lights
   - type: custom:decluttering-card
-    template: studio_andrea_plugs
+    template: studio_sonia_plugs
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
@@ -31,11 +31,11 @@ cards:
             columns: 2
             entities:
               - name: Motion Sensor
-                entity: binary_sensor.studio_andrea_pir
+                entity: binary_sensor.studio_pir
                 tap_action:
                   action: none
               - name: Window Status
-                entity: binary_sensor.studio_andrea_window
+                entity: binary_sensor.studio_window
                 tap_action:
                   action: none
   - type: custom:stack-in-card
@@ -45,85 +45,6 @@ cards:
         template: title
         variables:
           - title: Devices
-      - type: glance
-        show_state: false
-        columns: 2
-        entities:
-          - name: "Computer Andrea"
-            icon: mdi:desktop-tower
-            entity: binary_sensor.studio_andrea_computer_ping
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_andrea_computer_wol
-            hold_action:
-              action: call-service
-              service: switch.turn_off
-              service_data:
-                entity_id: switch.studio_andrea_computer_wol
-          - name: "VoIP Phone"
-            icon: mdi:phone-voip
-            entity: binary_sensor.polycom_wx410
-            tap_action:
-              action: none
-      - type: glance
-        show_state: false
-        columns: 2
-        entities:
-          - name: "Laptop Andrea"
-            icon: mdi:laptop
-            entity: binary_sensor.studio_andrea_laptop_ping
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_andrea_laptop_wol
-          - name: "Work Laptop Andrea"
-            icon: mdi:laptop
-            entity: binary_sensor.studio_andrea_laptop_work_ping
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_andrea_laptop_work_wol
-      - type: glance
-        show_state: false
-        columns: 3
-        entities:
-          - name: MEDIA01
-            icon: mdi:nas
-            entity: binary_sensor.netgear_media01
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_media01_wol
-            hold_action:
-              action: call-service
-              service: shell_command.media01_off
-          - name: MEDIA02
-            icon: mdi:nas
-            entity: binary_sensor.netgear_media02
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_media02_wol
-            hold_action:
-              action: call-service
-              service: shell_command.media02_off
-          - name: MEDIA03
-            icon: mdi:nas
-            entity: binary_sensor.netgear_media03
-            tap_action:
-              action: call-service
-              service: switch.turn_on
-              service_data:
-                entity_id: switch.studio_media03_wol
-            hold_action:
-              action: call-service
-              service: shell_command.media03_off
       - type: glance
         show_state: false
         columns: 2
@@ -174,27 +95,6 @@ cards:
         template: title
         variables:
           - title: Music
-      - type: custom:mini-media-player
-        entity: media_player.studio_andrea_amplifier
-        artwork: cover
-        source: icon
-        hide:
-          info: true
-          power: false
-          source: false
-          sound_mode: true
-          controls: true
-          play_pause: true
-          play_stop: true
-          volume: false
-          mute: false
-          progress: true
-          runtime: true
-          artwork_border: true
-          power_state: false
-          shuffle: true
-        tap_action:
-          action: none
       - type: custom:spotify-card
         client_id: !secret spotify_client_id
         hide_top_header: true
@@ -232,31 +132,6 @@ cards:
           shuffle: false
         tap_action:
           action: none
-      - type: entities
-        entities:
-          - type: divider
-      - type: custom:mini-media-player
-        entity: media_player.studio_google_mini
-        hide:
-          info: true
-          power: true
-          source: true
-          sound_mode: true
-          controls: true
-          play_pause: true
-          play_stop: true
-          volume: false
-          mute: false
-          progress: true
-          runtime: true
-          artwork_border: true
-          power_state: true
-          shuffle: true
-        tts:
-          platform: reversotts
-#              platform: google_translate
-        tap_action:
-          action: none
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
@@ -266,20 +141,20 @@ cards:
           - type: custom:decluttering-card
             template: temperature
             variables:
-              - entity: sensor.studio_andrea_temperature 
+              - entity: sensor.studio_sonia_temperature 
       - type: vertical-stack
         cards:
           - type: custom:decluttering-card
             template: humidity
             variables:
-              - entity: sensor.studio_andrea_humidity
+              - entity: sensor.studio_sonia_humidity
 #          - type: custom:decluttering-card
 #            template: pressure
 #            variables:
-#              - entity: sensor.studio_andrea_pressure
+#              - entity: sensor.studio_sonia_pressure
   - type: custom:layout-break
   - type: custom:decluttering-card
-    template: studio_andrea_energy_small
+    template: studio_sonia_energy_small
     variables:
       - title: Energy Consumption
 #      - type: custom:layout-break
