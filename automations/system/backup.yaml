@@ -15,7 +15,7 @@ condition:
           state: 'RUNNING'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_media01_wol
+    entity_id: switch.studio_andrea_andrea_media01_wol
   - delay: '00:05:00'
   - service: hassio.addon_stdin
     data:
@@ -23,4 +23,4 @@ action:
       input: trigger
   - delay: '00:30:00'
   - service: switch.turn_off
-    entity_id: switch.studio_media01_wol
+    entity_id: switch.studio_andrea_andrea_media01_wol

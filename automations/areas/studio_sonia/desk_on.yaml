@@ -4,7 +4,7 @@ alias: Studio - Sonia - Desk On
 initial_state: on
 trigger:
 #  - platform: state
-#    entity_id: binary_sensor.studio_desk_sonia_laptop_ping
+#    entity_id: binary_sensor.studio_andrea_andrea_desk_sonia_laptop_ping
 #    to: 'on'
   - platform: time
     at: "07:00:00"
@@ -21,4 +21,4 @@ condition:
       before: '19:30:00'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_desk_sonia_plug
+    entity_id: switch.studio_andrea_andrea_desk_sonia_plug

@@ -10,7 +10,7 @@ trigger:
     entity_id: group.kithcen_pir
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: binary_sensor.studio_andrea_andrea_andrea_pir
     to: 'on'
   - platform: state
     entity_id: binary_sensor.bathroom_pir
@@ -56,7 +56,7 @@ action:
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
@@ -79,7 +79,7 @@ action:
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection" %}in the Living Room
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_pir" %}in the Studio
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio

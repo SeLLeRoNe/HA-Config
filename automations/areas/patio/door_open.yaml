@@ -25,7 +25,7 @@ condition:
 action:
 #  - service: light.turn_on
 #    data:
-#      entity_id: light.studio_lights
+#      entity_id: light.studio_andrea_andrea_lights
   - service: notify.alarm
     data:
       title: "Home Alarm"
@@ -37,6 +37,6 @@ action:
         ttl: 0
   - service: tts.google_say
     data:
-      entity_id: media_player.studio_google_mini
+      entity_id: media_player.studio_andrea_andrea_google_mini
       message: "The patio door has been opened for 15 minutes."
       language: 'en'

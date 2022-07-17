@@ -5,22 +5,6 @@ laundry_room_energy:
     mode: vertical
     cards:
       - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: '[[title]]'
-      - type: custom:decluttering-card
-        template: room_cost
-        variables:
-          - area: laundry_room
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
-        template: room_total
-        variables:
-          - area: laundry_room
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
         template: room_device_16
         variables:
           - area: laundry_room

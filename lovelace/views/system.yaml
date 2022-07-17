@@ -472,7 +472,7 @@ cards:
             entities:
               - name: "Computer Andrea"
                 icon: mdi:desktop-tower
-                entity: binary_sensor.studio_desk_andrea_computer_ping
+                entity: binary_sensor.studio_andrea_desk_computer_ping
                 tap_action:
                   action: none
               - name: "VoIP Phone"
@@ -488,12 +488,12 @@ cards:
             entities:
               - name: "Laptop Andrea"
                 icon: mdi:laptop
-                entity: binary_sensor.studio_desk_andrea_laptop_ping
+                entity: binary_sensor.studio_andrea_desk_laptop_ping
                 tap_action:
                   action: none
               - name: "Laptop Andrea Work"
                 icon: mdi:laptop
-                entity: binary_sensor.studio_desk_andrea_laptop_work_ping
+                entity: binary_sensor.studio_andrea_desk_laptop_work_ping
                 tap_action:
                   action: none
           - type: glance
@@ -758,22 +758,22 @@ cards:
           - type: 'custom:decluttering-card'
             template: tasmota_info
             variables:
-              - device: studio_desk_andrea_lamp
+              - device: studio_andrea_desk_lamp
               - device_name: "Desk Andrea Lamp"
           - type: 'custom:decluttering-card'
             template: tasmota_info
             variables:
-              - device: studio_desk_andrea_plug
+              - device: studio_andrea_desk_plug
               - device_name: "Desk Andrea Plug"
           - type: 'custom:decluttering-card'
             template: tasmota_info
             variables:
-              - device: studio_desk_andrea_power_strip_1
+              - device: studio_andrea_desk_power_strip_1
               - device_name: "Desk Andrea PowerStrip #1"
           - type: 'custom:decluttering-card'
             template: tasmota_info
             variables:
-              - device: studio_desk_andrea_power_strip_2
+              - device: studio_andrea_desk_power_strip_2
               - device_name: "Desk Andrea PowerStrip #2"
           - type: 'custom:decluttering-card'
             template: tasmota_info
@@ -1055,11 +1055,11 @@ cards:
                 state: "unavailable"
               not 2:
                 state: "unknown"
-            - entity_id: sensor.studio_desk_andrea_wxkg01lm_linkquality
+            - entity_id: sensor.studio_andrea_desk_wxkg01lm_linkquality
               options:
                 name: Studio Andrea - WXKG01LM - Link Quality
                 type: "custom:secondaryinfo-entity-row"
-                secondary_info: 'Battery Level: [[ if(sensor.studio_desk_andrea_wxkg01lm_linkquality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_desk_andrea_wxkg01lm_linkquality.state != "unknown", sensor.studio_desk_andrea_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_desk_andrea_wxkg01lm_linkquality.state != "unknown", "mV", "") ]]'
+                secondary_info: 'Battery Level: [[ if(sensor.studio_andrea_desk_wxkg01lm_linkquality.state != "unknown", sensor.studio_andrea_desk_wxkg01lm_battery.state , "Not Available") ]][[ if(sensor.studio_andrea_desk_wxkg01lm_linkquality.state != "unknown", "%" , "") ]] - Voltage: [[ if(sensor.studio_andrea_desk_wxkg01lm_linkquality.state != "unknown", sensor.studio_andrea_desk_wxkg01lm_voltage.state, "Not Available") ]][[ if(sensor.studio_andrea_desk_wxkg01lm_linkquality.state != "unknown", "mV", "") ]]'
                 tap_action:
                   action: none
               not 1:

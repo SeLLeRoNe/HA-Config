@@ -5,7 +5,7 @@ trigger:
   platform: event
   event_type: mobile_app_notification_action
   event_data:
-    action: studio_wall_light_off
+    action: studio_andrea_andrea_wall_light_off
 action:
   - service: light.turn_off
-    entity_id: light.studio_wall_light
+    entity_id: light.studio_andrea_andrea_wall_light

@@ -9,18 +9,6 @@ living_room_energy:
         variables:
           - title: '[[title]]'
       - type: custom:decluttering-card
-        template: room_cost
-        variables:
-          - area: living_room
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
-        template: room_total
-        variables:
-          - area: living_room
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
         template: room_device_10
         variables:
           - area: living_room

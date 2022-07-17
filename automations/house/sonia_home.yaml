@@ -18,6 +18,6 @@ condition:
 action:
   - service: tts.google_say
     data:
-      entity_id: media_player.studio_google_mini
+      entity_id: media_player.studio_andrea_google_mini
       message: 'Welcome home my queen'
       language: 'en'

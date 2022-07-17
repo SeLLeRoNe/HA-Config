@@ -604,7 +604,7 @@ cards:
               type: section
             padding: 0
             entities:
-              - entity: sensor.studio_desk_andrea_plug_energy_today
+              - entity: sensor.studio_andrea_desk_plug_energy_today
                 name: Desk Andrea
                 tap_action:
                   action: none
@@ -638,7 +638,7 @@ cards:
               type: section
             padding: 0
             entities:
-              - entity: sensor.studio_desk_andrea_plug_energy_yesterday
+              - entity: sensor.studio_andrea_desk_plug_energy_yesterday
                 name: Desk Andrea
                 tap_action:
                   action: none
@@ -672,7 +672,7 @@ cards:
               type: section
             padding: 0
             entities:
-              - entity: sensor.studio_desk_andrea_plug_energy_total
+              - entity: sensor.studio_andrea_desk_plug_energy_total
                 name: Desk Andrea
                 tap_action:
                   action: none

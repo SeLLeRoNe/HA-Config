@@ -31,19 +31,13 @@ condition:
             {% else %}
               true
             {% endif %}
-#    - condition: state
-#      entity_id: light.studio_lights
-#      state: 'off'
     - condition: state
-      entity_id: binary_sensor.studio_desk_andrea_computer_ping
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.studio_desk_sonia_laptop_ping
+      entity_id: binary_sensor.studio_sonia_laptop_ping
       state: 'off'
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.studio_desk_sonia_laptop_work_ping
+          entity_id: binary_sensor.studio_sonia_laptop_work_ping
           state: 'off'
         - condition: not
           conditions:

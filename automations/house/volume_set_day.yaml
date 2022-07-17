@@ -9,7 +9,7 @@ trigger:
 action:
   - service: media_player.volume_set
     data:
-      entity_id: media_player.studio_google_mini
+      entity_id: media_player.studio_andrea_google_mini
       volume_level: '0.45'
   - service: media_player.volume_set
     data:

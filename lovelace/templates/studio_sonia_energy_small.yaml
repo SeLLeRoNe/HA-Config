@@ -12,27 +12,10 @@ studio_sonia_energy_small:
         show_header_toggle: false
         entities:
           - type: section
-          - type: custom:decluttering-card
-            template: energy_usage_card
-            variables:
-              - type: room
-              - area: studio_sonia
-          - type: custom:decluttering-card
-            template: energy_cost_card
-            variables:
-              - type: room
-              - area: studio_sonia
-          - type: section
-          - type: custom:decluttering-card
-            template: energy_total_card
-            variables:
-              - type: room
-              - area: studio_sonia
-          - type: section
             label: Devices
           - type: custom:decluttering-card
             template: energy_device_10_card
             variables:
               - area: studio_sonia
               - device_name: Desk Sonia
-              - device: desk_sonia
+              - device: desk

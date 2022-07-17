@@ -12,23 +12,6 @@ living_room_energy_small:
         show_header_toggle: false
         entities:
           - type: section
-          - type: custom:decluttering-card
-            template: energy_usage_card
-            variables:
-              - type: room
-              - area: living_room
-          - type: custom:decluttering-card
-            template: energy_cost_card
-            variables:
-              - type: room
-              - area: living_room
-          - type: section
-          - type: custom:decluttering-card
-            template: energy_total_card
-            variables:
-              - type: room
-              - area: living_room
-          - type: section
             label: Devices
           - type: custom:decluttering-card
             template: energy_device_10_card

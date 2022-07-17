@@ -16,13 +16,13 @@ studio_andrea_plugs:
             template: plug_card
             variables:
               - name: "Desk Andrea"
-              - entity: switch.studio_desk_andrea_plug
+              - entity: switch.studio_andrea_desk_plug
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "Table"
-              - entity: switch.studio_table_plug
+              - entity: switch.studio_andrea_table_plug
               - block: true
       - type: custom:hui-element
         row_type: divider
@@ -34,13 +34,13 @@ studio_andrea_plugs:
             template: plug_card
             variables:
               - name: "LG Monitor #1"
-              - entity: switch.studio_desk_andrea_lg_monitor_1
+              - entity: switch.studio_andrea_desk_lg_monitor_1
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "LG Monitor #2"
-              - entity: switch.studio_desk_andrea_lg_monitor_2
+              - entity: switch.studio_andrea_desk_lg_monitor_2
               - block: false
       - type: custom:hui-element
         row_type: divider
@@ -52,17 +52,17 @@ studio_andrea_plugs:
             template: plug_card
             variables:
               - name: "OnePlus USB Charger"
-              - entity: switch.studio_usb_relay_01
+              - entity: switch.studio_andrea_desk_oneplus_charger
               - block: false
           - type: custom:decluttering-card
             template: plug_card
             variables:
-              - name: "USB Ports"
-              - entity: switch.studio_desk_andrea_usb_ports
+              - name: "NETGEAR Desk Switch"
+              - entity: switch.studio_andrea_desk_netgear_desk_switch
               - block: true
           - type: custom:decluttering-card
             template: plug_card
             variables:
               - name: "USB Hub"
-              - entity: switch.studio_desk_andrea_usb_hub
+              - entity: switch.studio_andrea_desk_usb_hub
               - block: false

@@ -3,5 +3,4 @@ name: "Studio Sonia Occupancy Confidence"
 type: max
 round_digits: 0
 entity_ids:
-  - sensor.studio_sonia_occupancy_confidence_andrea_oneplus_nord
   - sensor.studio_sonia_occupancy_confidence_sonia_oneplus_9

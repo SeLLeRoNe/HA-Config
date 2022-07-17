@@ -3,7 +3,6 @@ platform: template
 sensors:
   studio_sonia_total_energy_usage:
     friendly_name: Studio Sonia Daily Energy Usage
-#    entity_id: sensor.time
     unit_of_measurement: kWh
     icon_template: mdi:counter
     availability_template: >

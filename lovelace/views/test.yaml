@@ -98,7 +98,7 @@ cards:
     show_header_toggle: false
     entities:
       - type: custom:light-brightness-preset-row
-        entity: light.studio_desk_andrea_lamp
+        entity: light.studio_andrea_desk_lamp
         name: Andrea Desk Lamp
         customSetpoints: true
         LowBrightness: 50
@@ -112,7 +112,7 @@ cards:
         IsOnHiColor: '#248F24'
         ButtonInactiveColor: '#000000'
       - type: custom:light-brightness-preset-row
-        entity: light.studio_desk_andrea_lamp
+        entity: light.studio_andrea_desk_lamp
         name: Wall Light
         customSetpoints: true
         LowBrightness: 50

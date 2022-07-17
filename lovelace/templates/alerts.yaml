@@ -29,11 +29,13 @@ alerts:
             entity: binary_sensor.ground_floor_bathroom_window_contact
           - name: Kitchen Window 1
             entity: binary_sensor.kitchen_window_1_contact
-          - name: Kitchen Window 3
-            entity: binary_sensor.kitchen_window_3_contact
+          - name: Kitchen Window 2
+            entity: binary_sensor.kitchen_window_2_contact
           - name: Master Bathroom Window
             entity: binary_sensor.master_bathroom_window_contact
-          - entity: binary_sensor.studio_pir
+          - name: Studio Andrea Window
+            entity: binary_sensor.studio_andrea_window_contact
+          - entity: binary_sensor.studio_andrea_pir
           - entity: binary_sensor.bathroom_pir
           - entity: binary_sensor.bedroom_luca_pir
           - entity: binary_sensor.kitchen_pir

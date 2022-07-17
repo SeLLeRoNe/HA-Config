@@ -51,7 +51,7 @@ cards:
           - button_light_brightness
           - popup_light
       - type: 'custom:button-card'
-        entity: light.studio_desk_andrea_lamp
+        entity: light.studio_andrea_desk_lamp
         name: Desk Andrea
         icon: 'mdi:lamp'
         template:
@@ -59,7 +59,7 @@ cards:
           - button_light_brightness
           - popup_light
 #      - type: 'custom:button-card'
-#        entity: light.studio_desk_sonia_lamp
+#        entity: light.studio_sonia_desk_lamp
 #        name: Desk Sonia
 #        icon: 'mdi:lamp'
 #        template:

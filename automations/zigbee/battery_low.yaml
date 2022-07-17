@@ -9,8 +9,8 @@ trigger:
     entity_id:
       - sensor.living_room_wsdcgq01lm_battery
       - sensor.kitchen_wsdcgq01lm_battery
-      - sensor.studio_TS0201_battery
-      - sensor.studio_2ajz4kpbs_battery
+      - sensor.studio_andrea_TS0201_battery
+      - sensor.studio_andrea_2ajz4kpbs_battery
       - sensor.laundry_room_wxkg03lm_battery
       - sensor.laundry_room_washing_machine_djt11lm_battery
       - sensor.master_bedroom_wxkg02lm_battery
@@ -32,8 +32,8 @@ condition:
       entity_id:
         - sensor.living_room_wsdcgq01lm_battery
         - sensor.kitchen_wsdcgq01lm_battery
-        - sensor.studio_TS0201_battery
-        - sensor.studio_2ajz4kpbs_battery
+        - sensor.studio_andrea_TS0201_battery
+        - sensor.studio_andrea_2ajz4kpbs_battery
         - sensor.laundry_room_wxkg03lm_battery
         - sensor.laundry_room_washing_machine_djt11lm_battery
         - sensor.master_bedroom_wxkg02lm_battery

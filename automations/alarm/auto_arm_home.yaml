@@ -54,7 +54,7 @@ condition:
         - condition: or
           conditions:
             - condition: state
-              entity_id: binary_sensor.studio_desk_andrea_computer_ping
+              entity_id: binary_sensor.studio_andrea_andrea_desk_andrea_computer_ping
               state: 'on'
             - condition: state
               entity_id: binary_sensor.living_room_tv
@@ -74,7 +74,7 @@ action:
 #      code: !secret home_alarm_pin
 #  - service: tts.google_say
 #    data:
-#      entity_id: media_player.studio_google_mini
+#      entity_id: media_player.studio_andrea_andrea_google_mini
 #      message: "Switched to Home Mode" 
 #      language: 'en'
 #  - service: notify.alarm

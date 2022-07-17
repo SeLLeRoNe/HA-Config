@@ -1,18 +1,10 @@
 ---
 id: '1720110542926'
-alias: Studio - Andrea - Light On
+alias: Studio - Sonia - Light On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: light.studio_wall_light
-    from: 'unavailable'
-    to: 'on'
-  - platform: state
-    entity_id: light.studio_desk_andrea_lamp
-    from: 'unavailable'
-    to: 'on'
-  - platform: state
-    entity_id: light.studio_desk_sonia_lamp
+    entity_id: light.studio_sonia_desk_lamp
     from: 'unavailable'
     to: 'on'
 condition:
@@ -21,13 +13,7 @@ condition:
     - condition: or
       conditions:
         - condition: state
-          entity_id: light.studio_wall_light
-          state: "off"
-        - condition: state
-          entity_id: light.studio_desk_andrea_lamp
-          state: "off"
-        - condition: state
-          entity_id: light.studio_desk_sonia_lamp
+          entity_id: light.studio_sonia_desk_lamp
           state: "off"
     - condition: state
       entity_id: group.family

@@ -31,7 +31,7 @@ action:
       value: "0"
   - service: tts.google_say
     data:
-      entity_id: media_player.studio_google_mini
+      entity_id: media_player.studio_andrea_google_mini
       message: "Washing Machine is now done. Energy consumed was {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float - states('input_number.laundry_room_washing_machine_current_energy')|float | round(2) }}kWh"
       language: "en"
   - service: notify.telegram_andrea

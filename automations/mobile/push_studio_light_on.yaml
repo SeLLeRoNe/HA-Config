@@ -5,9 +5,9 @@ trigger:
   platform: event
   event_type: mobile_app_notification_action
   event_data:
-    action: studio_wall_light_on
+    action: studio_andrea_andrea_wall_light_on
 action:
   - service: light.turn_on
     data:
-      entity_id: light.studio_wall_light
+      entity_id: light.studio_andrea_andrea_wall_light
       brightness_pct: 10
