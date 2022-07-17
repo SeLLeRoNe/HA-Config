@@ -733,7 +733,7 @@ cards:
     template: living_room_energy
     variables:
       - title: Living Room
-  - type: custom:layout-break
+#  - type: custom:layout-break
   - type: custom:decluttering-card
     template: kitchen_energy
     variables:
@@ -745,6 +745,11 @@ cards:
       - title: Laundry Room
   - type: custom:layout-break
   - type: custom:decluttering-card
-    template: studio_energy
+    template: studio_andrea_energy
     variables:
-      - title: Studio
+      - title: Studio Andrea
+#  - type: custom:layout-break
+  - type: custom:decluttering-card
+    template: studio_sonia_energy
+    variables:
+      - title: Studio Sonia

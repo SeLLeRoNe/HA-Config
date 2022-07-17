@@ -9,28 +9,6 @@ kitchen_energy:
         variables:
           - title: '[[title]]'
       - type: custom:decluttering-card
-        template: room_cost
-        variables:
-          - area: kitchen
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
-        template: room_total
-        variables:
-          - area: kitchen
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
-        template: room_device_16
-        variables:
-          - area: kitchen
-          - device_name: Dishwasher
-          - device: dishwasher
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
         template: room_device_16
         variables:
           - area: kitchen

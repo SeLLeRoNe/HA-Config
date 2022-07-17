@@ -10,7 +10,3 @@ house_energy:
           - title: House
       - type: custom:decluttering-card
         template: house_cost
-      - type: custom:hui-element
-        row_type: divider
-      - type: custom:decluttering-card
-        template: house_total

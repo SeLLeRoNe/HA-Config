@@ -38,21 +38,6 @@ energy_total_card:
           card_mod:
             style:
               width: 450px
-      - entity: sensor.[[area]]_today_energy_usage
-        name: false
-        tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
-            title: Details
-            card:
-              type: custom:decluttering-card
-              template: '[[type]]_total'
-              variables:
-                - area: '[[area]]'
-          card_mod:
-            style:
-              width: 450px
     tap_action:
       action: call-service
       service: browser_mod.popup

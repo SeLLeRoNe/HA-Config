@@ -7,11 +7,9 @@ sensors:
     value_template: >-
       {{
       (
-      (states.sensor.living_room_total_ampere_usage.state | float) +
-      (states.sensor.kitchen_total_ampere_usage.state | float) +
-      (states.sensor.laundry_room_total_ampere_usage.state | float) +
-      (states.sensor.studio_andrea_total_ampere_usage.state | float) +
-      (states.sensor.studio_sonia_total_ampere_usage.state | float)
+      (states.sensor.energy_monitor_channel_a_current.state | float) +
+      (states.sensor.energy_monitor_channel_b_current.state | float) +
+      (states.sensor.energy_monitor_channel_c_current.state | float)
       )
       | round(3)
       }}
