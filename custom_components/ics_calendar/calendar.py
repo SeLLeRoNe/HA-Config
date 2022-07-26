@@ -14,6 +14,8 @@ from homeassistant.components.calendar import (
     is_offset_reached,
 )
 from homeassistant.const import (
+    CONF_EXCLUDE,
+    CONF_INCLUDE,
     CONF_NAME,
     CONF_PASSWORD,
     CONF_URL,
@@ -27,6 +29,7 @@ from homeassistant.util import Throttle
 from homeassistant.util.dt import now as hanow
 
 from .calendardata import CalendarData
+from .filter import Filter
 from .icalendarparser import ICalendarParser
 
 _LOGGER = logging.getLogger(__name__)
@@ -36,9 +39,9 @@ CONF_CALENDARS = "calendars"
 CONF_DAYS = "days"
 CONF_CALENDAR = "calendar"
 CONF_INCLUDE_ALL_DAY = "include_all_day"
-CONF_INCLUDE_ALL_DAY2 = "includeAllDay"
 CONF_PARSER = "parser"
 CONF_DOWNLOAD_INTERVAL = "download_interval"
+CONF_USER_AGENT = "user_agent"
 
 OFFSET = "!!"
 
@@ -56,9 +59,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                             vol.Optional(
                                 CONF_INCLUDE_ALL_DAY, default=False
                             ): cv.boolean,
-                            vol.Optional(
-                                CONF_INCLUDE_ALL_DAY2, default=False
-                            ): cv.boolean,
                             vol.Optional(CONF_USERNAME, default=""): cv.string,
                             vol.Optional(CONF_PASSWORD, default=""): cv.string,
                             vol.Optional(
@@ -70,6 +70,11 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                             vol.Optional(
                                 CONF_DOWNLOAD_INTERVAL, default=15
                             ): cv.positive_int,
+                            vol.Optional(
+                                CONF_USER_AGENT, default=""
+                            ): cv.string,
+                            vol.Optional(CONF_EXCLUDE, default=""): cv.string,
+                            vol.Optional(CONF_INCLUDE, default=""): cv.string,
                         }
                     )
                 ]
@@ -104,17 +109,16 @@ def setup_platform(
         device_data = {
             CONF_NAME: calendar.get(CONF_NAME),
             CONF_URL: calendar.get(CONF_URL),
-            CONF_INCLUDE_ALL_DAY: calendar.get(CONF_INCLUDE_ALL_DAY2),
+            CONF_INCLUDE_ALL_DAY: calendar.get(CONF_INCLUDE_ALL_DAY),
             CONF_USERNAME: calendar.get(CONF_USERNAME),
             CONF_PASSWORD: calendar.get(CONF_PASSWORD),
             CONF_PARSER: calendar.get(CONF_PARSER),
             CONF_DAYS: calendar.get(CONF_DAYS),
             CONF_DOWNLOAD_INTERVAL: calendar.get(CONF_DOWNLOAD_INTERVAL),
+            CONF_USER_AGENT: calendar.get(CONF_USER_AGENT),
+            CONF_EXCLUDE: calendar.get(CONF_EXCLUDE),
+            CONF_INCLUDE: calendar.get(CONF_INCLUDE),
         }
-        if calendar.get(CONF_INCLUDE_ALL_DAY):
-            device_data[CONF_INCLUDE_ALL_DAY] = calendar.get(
-                CONF_INCLUDE_ALL_DAY
-            )
         device_id = f"{device_data[CONF_NAME]}"
         entity_id = generate_entity_id(ENTITY_ID_FORMAT, device_id, hass=hass)
         calendar_devices.append(ICSCalendarEntity(entity_id, device_data))
@@ -133,7 +137,11 @@ class ICSCalendarEntity(CalendarEntity):
         :param device_data: dict describing the calendar
         :type device_data: dict
         """
-        _LOGGER.debug("Initializing calendar: %s", device_data[CONF_NAME])
+        _LOGGER.debug(
+            "Initializing calendar: %s with URL: %s",
+            device_data[CONF_NAME],
+            device_data[CONF_URL],
+        )
         self.data = ICSCalendarData(device_data)
         self.entity_id = entity_id
         self._event = None
@@ -197,6 +205,8 @@ class ICSCalendarEntity(CalendarEntity):
             "offset_reached": is_offset_reached(
                 self._event.start_datetime_local, self.data.offset
             )
+            if self._event
+            else False
         }
 
 
@@ -212,8 +222,12 @@ class ICSCalendarData:
         self._days = device_data[CONF_DAYS]
         self.include_all_day = device_data[CONF_INCLUDE_ALL_DAY]
         self.parser = ICalendarParser.get_instance(device_data[CONF_PARSER])
+        self.parser.set_filter(
+            Filter(device_data[CONF_EXCLUDE], device_data[CONF_INCLUDE])
+        )
         self.offset = None
         self.event = None
+
         self._calendar_data = CalendarData(
             _LOGGER,
             self.name,
@@ -221,13 +235,11 @@ class ICSCalendarData:
             timedelta(minutes=device_data[CONF_DOWNLOAD_INTERVAL]),
         )
 
-        if (
-            device_data[CONF_USERNAME] != ""
-            and device_data[CONF_PASSWORD] != ""
-        ):
-            self._calendar_data.set_user_name_password(
-                device_data[CONF_USERNAME], device_data[CONF_PASSWORD]
-            )
+        self._calendar_data.set_headers(
+            device_data[CONF_USERNAME],
+            device_data[CONF_PASSWORD],
+            device_data[CONF_USER_AGENT],
+        )
 
     async def async_get_events(
         self, hass: HomeAssistant, start_date: datetime, end_date: datetime

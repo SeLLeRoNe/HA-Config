@@ -1074,3 +1074,96 @@
       message: There is someone at the door!
       title: Doorbell
   mode: single
+- id: '1658147093838'
+  alias: Shelly - Living Room Window and Blinds Security
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab718fc
+      channel: 1
+      click_type: single_push
+    id: living_room_blinds_1
+  - platform: event
+    id: living_room_blinds_2
+    event_data:
+      device: shellyplus2pm-a8032ab702c8
+      channel: 1
+      click_type: single_push
+    event_type: shelly.click
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab70440
+      channel: 1
+      click_type: single_push
+    id: living_room_blinds_3
+  - platform: event
+    event_type: shelly.click
+    id: living_room_blinds_4
+    event_data:
+      device: shellyplus2pm-a8032ab6ed60
+      channel: 1
+      click_type: single_push
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: living_room_blinds_1
+      - type: is_open
+        condition: device
+        device_id: 2ac3341deab888954578f05eee670d5d
+        entity_id: binary_sensor.living_room_window_1_contact
+        domain: binary_sensor
+      sequence:
+      - device_id: 5f4218312019065edf9f807c2d303b23
+        domain: cover
+        entity_id: cover.living_room_blinds_1
+        type: set_position
+        position: 100
+    - conditions:
+      - condition: trigger
+        id: living_room_blinds_2
+      - type: is_open
+        condition: device
+        device_id: 2b6403db85ab47a3ff4db5b6eda617be
+        entity_id: binary_sensor.living_room_window_2_contact
+        domain: binary_sensor
+      sequence:
+      - device_id: b97c235a32b5a98930472eb5faf9c4fe
+        domain: cover
+        entity_id: cover.living_room_blinds_2
+        type: set_position
+        position: 100
+    - conditions:
+      - condition: trigger
+        id: living_room_blinds_3
+      - type: is_open
+        condition: device
+        device_id: 31360d3cdeecbd46c04d811d8cffbdb0
+        entity_id: binary_sensor.living_room_window_3_contact
+        domain: binary_sensor
+      sequence:
+      - device_id: 5716d7c71feb6a4b4ba24a27a69cfd4b
+        domain: cover
+        entity_id: cover.living_room_blinds_3
+        type: set_position
+        position: 100
+    - conditions:
+      - condition: trigger
+        id: living_room_blinds_4
+      - type: is_open
+        condition: device
+        device_id: 704f45f13c422416769ad4dbc1e31896
+        entity_id: binary_sensor.living_room_window_4_contact
+        domain: binary_sensor
+      sequence:
+      - device_id: e1c9e619fd3c991bb6fc46a890945eff
+        domain: cover
+        entity_id: cover.living_room_blinds_4
+        type: set_position
+        position: 100
+    default: []
+  mode: parallel
