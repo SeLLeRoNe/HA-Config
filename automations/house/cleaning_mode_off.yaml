@@ -4,13 +4,13 @@ alias: House - Cleaning Mode Deactivated
 initial_state: on
 trigger:
   - platform: time
-    at: "12:00:00"
+    at: "14:30:00"
 condition:
   condition: and
   conditions:
     - condition: time
       weekday:
-        - tue
+        - fri
     - condition: state
       entity_id: input_boolean.cleaning_mode
       state: 'on'
