@@ -34,7 +34,7 @@ master_bedroom_lights:
           - type: custom:decluttering-card
             template: light_card_rgb
             variables:
-              - name: Light 2
+              - name: Wardrobe
               - entity: light.master_bedroom_ceiling_light_wardrobe
       - type: entities
         show_header_toggle: false

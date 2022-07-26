@@ -42,8 +42,8 @@ master_bedroom_lights_fold:
               - type: custom:decluttering-card
                 template: light_card_rgb
                 variables:
-                  - name: Light 1
-                  - entity: light.master_bedroom_ceiling_wardrobe
+                  - name: Wardrobe
+                  - entity: light.master_bedroom_ceiling_light_wardrobe
 #          - type: custom:decluttering-card
 #            template: light_card_rgb
 #            variables:
