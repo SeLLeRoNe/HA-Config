@@ -1,16 +1,25 @@
 ---
 platform: template
 sensors:
-  ground_floor_bathroomlights_count:
+  ground_floor_bathroom_lights_count:
     friendly_name: "Ground Floor Bathroom Lights Count"
     value_template: >-
-      {% set lights_on = states |
-        selectattr('entity_id','in',state_attr('light.ground_floor_bathroomlights','entity_id'))|
-        selectattr('state','eq','on') | map(attribute='entity_id') | list | count %}
-      {{lights_on|int(0)}}
+      {% if not is_state('light.ground_floor_bathroom_lights', 'on') and not is_state('light.ground_floor_bathroom_lights', 'off') %}
+        {% set value = "0" | int(0) %}
+      {% else %}
+        {% set value = states |
+          selectattr('entity_id','in',state_attr('light.ground_floor_bathroom_lights','entity_id')) |
+          selectattr('state','eq','on') | map(attribute='entity_id') | list | count | int(0)
+        %}
+      {% endif %}
+      {{value | int(0)}}
     attribute_templates:
       total_lights: >-
-        {% set total_lights = states |
-          selectattr('entity_id','in',state_attr('light.ground_floor_bathroomlights','entity_id'))|
-          selectattr('state','ne','unavailable') | map(attribute='entity_id') | list | count %}
-        {{total_lights|int(0)}}
+        {% if not is_state('light.ground_floor_bathroom_lights', 'on') and not is_state('light.ground_floor_bathroom_lights', 'off') %}
+          {% set value = "0" | int(0) %}
+        {% else %}
+          {% set value = states |
+            selectattr('entity_id','in',state_attr('light.ground_floor_bathroom_lights','entity_id'))|
+            selectattr('state','ne','unavailable') | map(attribute='entity_id') | list | count %}
+        {% endif %}
+        {{value|int(0)}}
