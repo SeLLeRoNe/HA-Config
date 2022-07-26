@@ -18,7 +18,6 @@ sensors:
       (states('sensor.ground_floor_bathroom_lights_count') | int) +
       (states('sensor.ground_floor_corridor_lights_count') | int) +
       (states('sensor.guest_bedroom_lights_count') | int) +
-      (states('sensor.house_lights_count') | int) +
       (states('sensor.kids_bedroom_lights_count') | int) +
       (states('sensor.kitchen_lights_count') | int) +
       (states('sensor.laundry_room_lights_count') | int) +
@@ -47,7 +46,6 @@ sensors:
         (state_attr('sensor.ground_floor_bathroom_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.ground_floor_corridor_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.guest_bedroom_lights_count', 'total_lights') | int ) +
-        (state_attr('sensor.house_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.kids_bedroom_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.kitchen_lights_count', 'total_lights') | int ) +
         (state_attr('sensor.laundry_room_lights_count', 'total_lights') | int ) +
