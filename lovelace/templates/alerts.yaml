@@ -15,6 +15,10 @@ alerts:
         show_state: false
         state_color: true
         entities:
+          - name: Entrance Door
+            entity: binary_sensor.entrance_door_contact
+          - name: Living Room PIR
+            entity: binary_sensor.living_room_pir
           - name: Living Room Window 1
             entity: binary_sensor.living_room_window_1_contact
           - name: Living Room Window 3
@@ -31,14 +35,19 @@ alerts:
             entity: binary_sensor.kitchen_window_1_contact
           - name: Kitchen Window 2
             entity: binary_sensor.kitchen_window_2_contact
-          - name: Master Bathroom Window
-            entity: binary_sensor.master_bathroom_window_contact
           - name: Studio Andrea Window
             entity: binary_sensor.studio_andrea_window_contact
-          - entity: binary_sensor.studio_andrea_pir
+          - name: Studio Andrea Occupancy
+            entity: binary_sensor.studio_andrea_radar_occupancy
+          - name: Downstairs Window
+            entity: binary_sensor.downstairs_window_contact
+          - name: Upstairs Right Window
+            entity: binary_sensor.upstairs_window_right_contact
+          - name: Upstairs Left Window
+            entity: binary_sensor.upstairs_window_left_contact
+          - name: Garage Door
+            entity: binary_sensor.garage_door_contact
           - entity: binary_sensor.bathroom_pir
-          - entity: binary_sensor.bedroom_luca_pir
           - entity: binary_sensor.kitchen_pir
-          - entity: binary_sensor.living_room_pir
           - entity: binary_sensor.master_bathroom_pir
           - entity: binary_sensor.patio_pir

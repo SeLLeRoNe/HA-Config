@@ -24,7 +24,7 @@ batteries_tablets:
             - "charging"
             - "full"
       - entity: sensor.teclast_t40_plus_battery_level
-        name: "Andrea - Samsung Galaxy Tab 7+"
+        name: "Andrea - Teclast T40 Plus"
         charging_state:
           entity_id: sensor.teclast_t40_plus_battery_state
           state:

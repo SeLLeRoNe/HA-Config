@@ -3,20 +3,35 @@ id: '8285888123905'
 alias: Alarm - Triggered - Night
 initial_state: on
 trigger:
-#  - platform: state
-#    entity_id: binary_sensor.living_room_pir
-#    to: 'on'
-#  - platform: state
-#    entity_id: binary_sensor.studio_andrea_pir
-#    to: 'on'
-#  - platform: state
-#    entity_id: binary_sensor.bedroom_luca_pir
-#    to: 'on'
-#  - platform: state
-#    entity_id: binary_sensor.master_bedroom_pi
-#    to: 'on'
   - platform: state
-    entity_id: binary_sensor.garage_door
+    entity_id: binary_sensor.living_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_3_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_4_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.play_room_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_window_contact
     to: 'on'
   - platform: state
     entity_id: binary_sensor.bathroom_mccgq01lm_contact
@@ -44,7 +59,16 @@ action:
       message: >
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact" %}in the Ground Floor Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact" %}in the Kitchen Window 1
+        {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact" %}in the Kitchen Window 2
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact" %}in the Living Room Window 1
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact" %}in the Living Room Window 2
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact" %}in the Living Room Window 3
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact" %}in the Living Room Window 4
+        {% elif trigger.entity_id == "binary_sensor.play_room_window_contact" %}in the Play Room Window
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact" %}in the Studio Andrea Window
+        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir" %}in the Master Bedroom
         {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in Luca's Bedroom
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
@@ -66,6 +90,15 @@ action:
       message: >
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact" %}in the Ground Floor Bathroom Window
+        {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact" %}in the Kitchen Window 1
+        {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact" %}in the Kitchen Window 2
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact" %}in the Living Room Window 1
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact" %}in the Living Room Window 2
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact" %}in the Living Room Window 3
+        {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact" %}in the Living Room Window 4
+        {% elif trigger.entity_id == "binary_sensor.play_room_window_contact" %}in the Play Room Window
+        {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact" %}in the Studio Andrea Window
         {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
         {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir" %}in the Studio
         {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in Luca's Bedroom
