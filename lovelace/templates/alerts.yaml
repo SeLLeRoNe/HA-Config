@@ -37,14 +37,18 @@ alerts:
             entity: binary_sensor.kitchen_window_2_contact
           - name: Studio Andrea Window
             entity: binary_sensor.studio_andrea_window_contact
-          - name: Studio Andrea Occupancy
+          - name: Studio Andrea Presence Occupancy
             entity: binary_sensor.studio_andrea_radar_occupancy
+          - name: Studio Andrea Presence Presence
+            entity: binary_sensor.studio_andrea_radar_presence
           - name: Downstairs Window
             entity: binary_sensor.downstairs_window_contact
           - name: Upstairs Right Window
             entity: binary_sensor.upstairs_window_right_contact
           - name: Upstairs Left Window
             entity: binary_sensor.upstairs_window_left_contact
+          - name: Garage Window
+            entity: binary_sensor.garage_window_contact
           - name: Garage Door
             entity: binary_sensor.garage_door_contact
           - entity: binary_sensor.bathroom_pir

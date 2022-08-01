@@ -1,0 +1,7 @@
+---
+name: Granpa Home
+latitude: !secret zone_granpa_home_latitude
+longitude: !secret zone_granpa_home_longitude
+radius: 10
+passive: false
+icon: mdi:home-heart
