@@ -10,7 +10,6 @@ studio_andrea_plugs:
           - title: Plugs
       - type: entities
         show_header_toggle: false
-#        state_color: true
         entities:
           - type: custom:decluttering-card
             template: plug_card
@@ -28,7 +27,6 @@ studio_andrea_plugs:
         row_type: divider
       - type: entities
         show_header_toggle: false
-#        state_color: true
         entities:
           - type: custom:decluttering-card
             template: plug_card
@@ -46,7 +44,6 @@ studio_andrea_plugs:
         row_type: divider
       - type: entities
         show_header_toggle: false
-#        state_color: true
         entities:
           - type: custom:decluttering-card
             template: plug_card
@@ -60,9 +57,3 @@ studio_andrea_plugs:
               - name: "NETGEAR Desk Switch"
               - entity: switch.studio_andrea_desk_netgear_desk_switch
               - block: true
-          - type: custom:decluttering-card
-            template: plug_card
-            variables:
-              - name: "USB Hub"
-              - entity: switch.studio_andrea_desk_usb_hub
-              - block: false

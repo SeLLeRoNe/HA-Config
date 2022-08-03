@@ -31,11 +31,11 @@ cards:
             columns: 2
             entities:
               - name: Motion Sensor
-                entity: binary_sensor.studio_pir
+                entity: binary_sensor.studio_sonia_pir
                 tap_action:
                   action: none
               - name: Window Status
-                entity: binary_sensor.studio_window
+                entity: binary_sensor.studio_sonia_window_contact
                 tap_action:
                   action: none
   - type: custom:stack-in-card
@@ -56,82 +56,13 @@ cards:
               action: none
           - name: "Work Laptop Sonia"
             icon: mdi:laptop
-            entity: binary_sensor.studio_desk_sonia_laptop_work_ping
+            entity: binary_sensor.studio_sonia_laptop_work_ping
             tap_action:
               action: none
-#          - type: 'custom:kb-steam-card'
-#            game_background: true
-##            entity: sensor.steam_76561198052829771
-#            friendly_name: Steam
-#            game_background: true
-#            entities:
-#              - sensor.steam_76561198052829771
-#                friendly_name: SeLLeRoNe
-#              - sensor.steam_76561198116208864
-##                friendly_name: Sciapo (Sciapo)
-#              - sensor.steam_76561198152959392
-##                friendly_name: Biuzzo (biuzzo81)
-#              - sensor.steam_76561198346433411
-##                friendly_name: Martina (kessidycheshire)
-#              - sensor.steam_76561198052354692
-##                friendly_name: Dave (iLdAvE)
-#              - sensor.steam_76561198257304079
-##                friendly_name: Dave (iLsecondoDave=
-#              - sensor.steam_76561198052271353
-##                friendly_name: Giuseppe (bbelemon)
-#              - sensor.steam_76561198030250446
-##                friendly_name: Juan Carlos (JC)
-#              - sensor.steam_76561198004701815
-##                friendly_name: Francesco (Rynku)
       - type: custom:decluttering-card
         template: thermostat_card_small
         variables:
-          - area: studio
-  - type: custom:layout-break
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-      - type: custom:decluttering-card
-        template: title
-        variables:
-          - title: Music
-      - type: custom:spotify-card
-        client_id: !secret spotify_client_id
-        hide_top_header: true
-        limit: 10
-        device: YAMAHA-RXV779
-#          - type: entities
-#            entities:
-#              - input_select.spotify_playlist
-#              - input_select.spotify_device
-#              - input_number.spotify_volume
-#              - entity: input_boolean.spotify_shuffle
-#                tap_action:
-#                  action: none
-      - type: entities
-        entities:
-          - type: divider
-      - type: custom:mini-media-player
-        entity: media_player.spotify
-        artwork: cover
-        source: icon
-        hide:
-          info: true
-          power: true
-          source: true
-          sound_mode: true
-          controls: false
-          play_pause: false
-          play_stop: false
-          volume: false
-          mute: false
-          progress: false
-          runtime: true
-          artwork_border: false
-          power_state: true
-          shuffle: false
-        tap_action:
-          action: none
+          - area: studio_sonia
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
