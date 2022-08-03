@@ -1,6 +1,6 @@
 ---
 id: '1720110542926'
-alias: Studio - Sonia - Light On
+alias: Studio Sonia - Light On
 initial_state: on
 trigger:
   - platform: state

@@ -1,10 +1,10 @@
 ---
 id: '3347197456625'
-alias: Studio - PIR Off
+alias: Studio Andrea - PIR Off
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: binary_sensor.studio_andrea_pir
     to: 'off'
     for:
       seconds: '{{ states("input_number.lights_automations_duration_studio") | int }}'
@@ -15,10 +15,10 @@ condition:
       entity_id: input_boolean.lights_automations_motion_studio
       state: 'on'
     - condition: state
-      entity_id: light.studio_lights
+      entity_id: light.studio_andrea_lights
       state: 'on'
 action:
   - service: light.turn_off
     data:
-      entity_id: light.studio_lights
+      entity_id: light.studio_andrea_lights
       transition: 10

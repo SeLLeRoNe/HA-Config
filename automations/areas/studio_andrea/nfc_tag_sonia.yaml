@@ -1,6 +1,6 @@
 ---
 id: '2100690917604'
-alias: Studio - Andrea - PIR
+alias: Studio Andrea - PIR
 initial_state: on
 trigger:
   - platform: event
@@ -22,7 +22,7 @@ condition:
 action:
   - service: light.toggle
     data:
-      entity_id: light.studio_wall_light
+      entity_id: light.studio_andrea_wall_light
       transition: 5
       color_name: green
       brightness_pct: 50

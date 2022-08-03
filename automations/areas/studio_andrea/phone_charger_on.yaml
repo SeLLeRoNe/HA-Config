@@ -1,6 +1,6 @@
 ---
 id: '4580432665563'
-alias: Studio - Andrea - Phone Charger On
+alias: Studio Andrea - Phone Charger On
 initial_state: on
 trigger:
   - platform: homeassistant
@@ -22,7 +22,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: switch.studio_usb_relay_01
+      entity_id: switch.studio_andrea_usb_relay_01
       state: 'off'
     - condition: or
       conditions:
@@ -43,4 +43,4 @@ condition:
           value_template: '{{ ( states.sensor.andrea_oneplus_nord_battery_level.state | int ) > ( states.input_number.oneplus_charger_lower_bound.state | int ) }}'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_usb_relay_01
+    entity_id: switch.studio_andrea_usb_relay_01

@@ -1,18 +1,18 @@
 ---
 id: '1686845537304'
-alias: Studio - Andrea - Computer On - Work
+alias: Studio Andrea - Computer On - Work
 initial_state: off
 trigger:
   - platform: homeassistant
     event: start
   - platform: state
-    entity_id: binary_sensor.studio_desk_andrea_computer_ping
+    entity_id: binary_sensor.studio_andrea_desk_computer_ping
     to: 'on'
 condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.studio_desk_andrea_computer_ping
+      entity_id: binary_sensor.studio_andrea_desk_computer_ping
       state: 'on'
     - condition: or
       conditions:
@@ -30,22 +30,22 @@ condition:
       state: 'on'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_media03_wol
+    entity_id: switch.studio_andrea_media03_wol
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_uk_powerstrip
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_lg_monitor_1
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_lg_monitor_2
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
   - service: media_player.turn_on
-    entity_id: media_player.studio_amplifier
+    entity_id: media_player.studio_andrea_amplifier
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_usb_hub
+    entity_id: switch.studio_andrea_desk_usb_hub
   - service: mqtt.publish
     data:
       topic: "wled/001/fx"
       payload: "74"
   - service: light.turn_off
     data:
-      entity_id: light.studio_lights
+      entity_id: light.studio_andrea_lights
       transition: 5

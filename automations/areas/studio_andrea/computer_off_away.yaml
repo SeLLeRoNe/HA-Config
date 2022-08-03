@@ -1,10 +1,10 @@
 ---
 id: '1685034187571'
-alias: Studio - Andrea - Computer Off - Away
+alias: Studio Andrea - Computer Off - Away
 initial_state: off
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_desk_andrea_computer_ping
+    entity_id: binary_sensor.studio_andrea_desk_computer_ping
     to: 'off'
     for:
       seconds: 120
@@ -14,14 +14,14 @@ condition:
     state: 'not_home'
 action:
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_computer_plug
+    entity_id: switch.studio_andrea_desk_computer_plug
   - service: media_player.turn_off
-    entity_id: media_player.studio_amplifier
+    entity_id: media_player.studio_andrea_amplifier
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_usb_hub
+    entity_id: switch.studio_andrea_desk_usb_hub
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_lg_monitor_1
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_lg_monitor_2
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_uk_powerstrip
+    entity_id: switch.studio_andrea_desk_uk_powerstrip

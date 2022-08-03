@@ -1,6 +1,6 @@
 ---
 id: '8042467782035'
-alias: Studio - Andrea - Amplifier Off
+alias: Studio Andrea - Amplifier Off
 initial_state: on
 trigger:
   - platform: homeassistant
@@ -9,7 +9,7 @@ trigger:
     entity_id: input_boolean.night_mode
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.studio_desk_andrea_computer_ping
+    entity_id: binary_sensor.studio_andrea_desk_computer_ping
     to: 'off'
     for:
       seconds: 120
@@ -24,10 +24,10 @@ condition:
               entity_id: input_boolean.night_mode
               state: 'on'
             - condition: state
-              entity_id: binary_sensor.studio_desk_andrea_computer_ping
+              entity_id: binary_sensor.studio_andrea_desk_computer_ping
               state: 'on'
         - condition: state
-          entity_id: binary_sensor.studio_desk_andrea_computer_ping
+          entity_id: binary_sensor.studio_andrea_desk_computer_ping
           state: 'off'
     - condition: template
       value_template: "{{ states.media_player.spotify_andrea.state != 'playing' }}"
@@ -37,4 +37,4 @@ condition:
       value_template: "{{ states.media_player.spotify_andrea.attributes.source != 'PC-SELLERONE' }}"
 action:
   - service: media_player.turn_off
-    entity_id: media_player.studio_amplifier
+    entity_id: media_player.studio_andrea_amplifier

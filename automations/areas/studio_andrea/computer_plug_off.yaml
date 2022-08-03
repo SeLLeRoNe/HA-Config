@@ -1,11 +1,11 @@
 ---
 id: '2952331589064'
-alias: Studio - Andrea - Computer Plug Off
+alias: Studio Andrea - Computer Plug Off
 initial_state: off
 trigger:
   - platform: state
-    entity_id: switch.studio_desk_andrea_computer_plug
+    entity_id: switch.studio_andrea_desk_computer_plug
     to: 'off'
 action:
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_lg_monitor_1
+    entity_id: switch.studio_andrea_desk_lg_monitor_1

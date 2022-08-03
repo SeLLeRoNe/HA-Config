@@ -1,12 +1,12 @@
 ---
 id: '9405955254911'
-alias: Studio - Andrea - Night
+alias: Studio Andrea - Night
 initial_state: off
 trigger:
   - platform: homeassistant
     event: start
   - platform: state
-    entity_id: binary_sensor.studio_desk_andrea_computer_ping
+    entity_id: binary_sensor.studio_andrea_desk_computer_ping
     to: 'off'
   - platform: state
     entity_id: input_boolean.night_mode
@@ -18,7 +18,7 @@ condition:
       entity_id: input_boolean.night_mode
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.studio_desk_andrea_computer_ping
+      entity_id: binary_sensor.studio_andrea_desk_computer_ping
       state: 'off'
       for:
         seconds: 60
@@ -27,14 +27,14 @@ action:
   - service: shell_command.media02_off
   - service: shell_command.media03_off
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_usb_hub
+    entity_id: switch.studio_andrea_desk_usb_hub
   - service: switch.turn_off
-    entity_id: switch.studio_desk_andrea_lg_monitor_2
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
 #  - service: switch.turn_off
-#    entity_id: switch.studio_desk_andrea_computer_plug
+#    entity_id: switch.studio_andrea_desk_computer_plug
 #  - service: switch.turn_off
-#    entity_id: switch.studio_desk_andrea_uk_powerstrip
+#    entity_id: switch.studio_andrea_desk_uk_powerstrip
 #  - service: switch.turn_off
-#    entity_id: switch.studio_desk_andrea_powerstrip_2
+#    entity_id: switch.studio_andrea_desk_powerstrip_2
 #  - service: switch.turn_off
-#    entity_id: switch.studio_table_plug
+#    entity_id: switch.studio_andrea_table_plug

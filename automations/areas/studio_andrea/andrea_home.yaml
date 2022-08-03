@@ -1,6 +1,6 @@
 ---
 id: '0594999905433'
-alias: Studio - Andrea is back home
+alias: Studio Andrea - Andrea is back home
 initial_state: on
 trigger:
   - platform: zone
@@ -11,14 +11,14 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: switch.studio_desk_andrea_computer_plug
+      entity_id: switch.studio_andrea_desk_computer_plug
       state: 'off'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_media03_wol
+    entity_id: switch.studio_andrea_media03_wol
   - delay:
       seconds: 120
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_lg_monitor_1
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_computer_plug
+    entity_id: switch.studio_andrea_desk_computer_plug

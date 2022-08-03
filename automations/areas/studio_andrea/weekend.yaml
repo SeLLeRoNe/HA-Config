@@ -1,6 +1,6 @@
 ---
 id: '0621608613053'
-alias: Studio - Andrea - Weekend
+alias: Studio Andrea - Weekend
 initial_state: on
 trigger:
   - platform: homeassistant
@@ -21,20 +21,20 @@ condition:
       before: '12:00:00'
 action:
   - service: switch.turn_on
-    entity_id: switch.studio_table_plug
+    entity_id: switch.studio_andrea_table_plug
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_powerstrip_2
+    entity_id: switch.studio_andrea_desk_powerstrip_2
   - service: switch.turn_on
-    entity_id: switch.studio_desk_andrea_uk_powerstrip
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
   - delay:
       seconds: 10
   - service: switch.turn_on
-    entity_id: switch.studio_media03_wol
+    entity_id: switch.studio_andrea_media03_wol
 #  - delay:
 #      seconds: 10
 #  - service: switch.turn_on
-#    entity_id: switch.studio_desk_andrea_computer_plug
+#    entity_id: switch.studio_andrea_desk_computer_plug
 #  - delay:
 #      seconds: 10
 #  - service: switch.turn_on
-#    entity_id: switch.studio_desk_andrea_computer_wol
+#    entity_id: switch.studio_andrea_desk_computer_wol

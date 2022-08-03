@@ -1,10 +1,10 @@
 ---
 id: '8857948807317'
-alias: Studio - PIR On
+alias: Studio Andrea - PIR On
 initial_state: on
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_pir
+    entity_id: binary_sensor.studio_andrea_pir
     to: 'on'
 condition:
   condition: and
@@ -32,12 +32,12 @@ condition:
               true
             {% endif %}
     - condition: state
-      entity_id: binary_sensor.studio_sonia_laptop_ping
+      entity_id: binary_sensor.studio_andrea_sonia_laptop_ping
       state: 'off'
     - condition: or
       conditions:
         - condition: state
-          entity_id: binary_sensor.studio_sonia_laptop_work_ping
+          entity_id: binary_sensor.studio_andrea_sonia_laptop_work_ping
           state: 'off'
         - condition: not
           conditions:
@@ -58,9 +58,9 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.studio_lights
+      entity_id: light.studio_andrea_lights
       transition: 10
 #  - service: scene.turn_on
 #    data:
-#      entity_id: scene.studio_night
+#      entity_id: scene.studio_andrea_night
 #      transition: 5
