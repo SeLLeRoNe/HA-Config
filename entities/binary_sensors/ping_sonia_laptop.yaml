@@ -1,6 +1,6 @@
 ---
 platform: ping
-name: Studio Desk Sonia Laptop Ping
+name: Studio Sonia Laptop Ping
 host: !secret studio_sonia_laptop_ip
 count: 2
 scan_interval: 30

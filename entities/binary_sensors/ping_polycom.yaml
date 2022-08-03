@@ -1,6 +1,6 @@
 ---
 platform: ping
-name: Polycom WX410
-host: !secret polycom_wx410
+name: Studio Andrea Polycom WX410
+host: !secret studio_andrea_polycom_wx410
 count: 2
 scan_interval: 30
