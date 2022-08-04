@@ -8,7 +8,6 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_NAME, STATE_ON, STATE_OFF
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.restore_state import RestoreEntity
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 
@@ -110,7 +109,7 @@ class HASPSwitch(HASPToggleEntity):
         )
 
 
-class HASPAntiBurn(HASPToggleEntity, RestoreEntity):
+class HASPAntiBurn(HASPToggleEntity):
     """Configuration switch of an openHASP antiburn feature."""
 
     _attr_entity_category = EntityCategory.CONFIG

@@ -83,6 +83,11 @@ class HASPEntity(Entity):
 
 class HASPToggleEntity(HASPEntity, ToggleEntity):
     """Representation of HASP ToggleEntity."""
+    
+    def __init__(self, name, hwid, topic, gpio):
+        """Initialize the relay."""
+        super().__init__(name, hwid, topic, gpio)
+        self._gpio = gpio
 
     @property
     def is_on(self):

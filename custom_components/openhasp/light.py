@@ -109,7 +109,6 @@ class HASPLight(HASPToggleEntity, LightEntity):
     def __init__(self, name, hwid, topic, gpio):
         """Initialize the light."""
         super().__init__(name, hwid, topic, gpio)
-        self._gpio = gpio
         self._attr_name = f"{name} light {gpio}"
 
     async def refresh(self):
