@@ -8,8 +8,6 @@ name: Studio Andrea Amplifier
 #name: Amplifier YAMAHA RX-V779
 host: !secret studio_andrea_amplifier_ip
 #source_ignore:
-source_names:
-  HDMI1: "PC"
 zone_ignore:
   "Zone_2"
 #zone_names:

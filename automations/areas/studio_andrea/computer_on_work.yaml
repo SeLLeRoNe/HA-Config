@@ -1,10 +1,8 @@
 ---
 id: '1686845537304'
 alias: Studio Andrea - Computer On - Work
-initial_state: off
+initial_state: on
 trigger:
-  - platform: homeassistant
-    event: start
   - platform: state
     entity_id: binary_sensor.studio_andrea_desk_computer_ping
     to: 'on'
@@ -12,7 +10,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.studio_andrea_desk_computer_ping
+      entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'on'
     - condition: or
       conditions:
@@ -21,7 +19,7 @@ condition:
           state: 'home'
         - condition: state
           entity_id: person.andrea
-          state: 'Garage'
+          state: 'Garden'
     - condition: time
       after: '09:30:00'
       before: '18:30:00'
@@ -41,11 +39,11 @@ action:
     entity_id: media_player.studio_andrea_amplifier
   - service: switch.turn_on
     entity_id: switch.studio_andrea_desk_usb_hub
-  - service: mqtt.publish
-    data:
-      topic: "wled/001/fx"
-      payload: "74"
+#  - service: mqtt.publish
+#    data:
+#      topic: "wled/001/fx"
+#      payload: "74"
   - service: light.turn_off
     data:
       entity_id: light.studio_andrea_lights
-      transition: 5
+      transition: 10
