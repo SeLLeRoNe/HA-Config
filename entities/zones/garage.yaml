@@ -1,7 +1,0 @@
----
-name: Garage
-latitude: !secret zone_garage_latitude
-longitude: !secret zone_garage_longitude
-radius: 25
-passive: false
-icon: mdi:garage

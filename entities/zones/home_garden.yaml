@@ -1,0 +1,7 @@
+---
+name: Garden
+latitude: !secret zone_garden_latitude
+longitude: !secret zone_garden_longitude
+radius: 10
+passive: false
+icon: mdi:flower
