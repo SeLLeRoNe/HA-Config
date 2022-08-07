@@ -51,6 +51,8 @@ alerts:
             entity: binary_sensor.garage_window_contact
           - name: Garage Door
             entity: binary_sensor.garage_door_contact
+          - name: Garage PIR
+            entity: binary_sensor.garage_rtcgq11lm_occupancy
           - entity: binary_sensor.bathroom_pir
           - entity: binary_sensor.kitchen_pir
           - entity: binary_sensor.master_bathroom_pir
