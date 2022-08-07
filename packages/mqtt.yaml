@@ -5,21 +5,21 @@
 #
 mqtt:
   binary_sensor:
-    - name: "Bedroom Luca RF PIR"
+    - name: "Bedroom Luca PIR"
       device_class: motion
       state_topic: "tele/RFBridge01/RESULT"
       value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
       payload_on: "EE485E"
       off_delay: 5
       qos: 1
-    - name: "Living Room RF PIR"
+    - name: "Kitchen PIR"
       device_class: motion
       state_topic: "tele/RFBridge01/RESULT"
       value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
       payload_on: "EF716E"
       off_delay: 5
       qos: 1
-    - name: "Patio RF PIR"
+    - name: "Living Room PIR"
       device_class: motion
       state_topic: "tele/RFBridge01/RESULT"
       value_template: "{% if value_json.RfReceived is defined %}{{ value_json.RfReceived.Data }}{% endif %}"
