@@ -1167,3 +1167,18 @@
         position: 100
     default: []
   mode: parallel
+- id: '1659908392101'
+  alias: Image Processing - Doorbell
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.doorbell_person_motion
+    to: 'on'
+  condition: []
+  action:
+  - service: image_processing.scan
+    data: {}
+    target:
+      entity_id: image_processing.doorbell
+  mode: single
