@@ -1,0 +1,16 @@
+---
+image_processing:
+  - platform: deepstack_face
+    ip_address: 192.168.0.100
+    port: 5001
+    api_key: mysecretkey
+    timeout: 5
+    detect_only: False
+    save_file_folder: /media/deepstack/snapshots/
+    save_timestamped_file: True
+    save_faces: True
+    save_faces_folder: /media/deepstack/faces/
+    show_boxes: True
+    source:
+      - entity_id: camera.doorbell
+        name: Doorbell

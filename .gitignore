@@ -10,6 +10,7 @@ automations/system/tasmota_security.yaml
 custom_components/samsungtv_tizen/token-*.txt
 commands.txt
 frigate.yml
+double-take/
 getLatestConfs.sh
 www/icons/family/
 deps/
