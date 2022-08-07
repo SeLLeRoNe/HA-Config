@@ -1,9 +1,0 @@
----
-platform: template
-sensors:
-  master_bathroom_pir:
-    friendly_name: "Master Bathroom PIR"
-    device_class: motion
-    value_template: >
-      {% set sensors = [states.binary_sensor.master_bathroom_rf_pir] %}
-      {{ sensors | selectattr('state','eq','on') | list | count > 0 }}

@@ -1,9 +1,0 @@
----
-platform: template
-sensors:
-  kitchen_pir:
-    friendly_name: "Kitchen PIR"
-    device_class: motion
-    value_template: >
-      {% set sensors = [states.binary_sensor.kitchen_rf_pir] %}
-      {{ sensors | selectattr('state','eq','on') | list | count > 0 }}

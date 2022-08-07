@@ -1,9 +1,0 @@
----
-platform: template
-sensors:
-  patio_pir:
-    friendly_name: "Patio PIR"
-    device_class: motion
-    value_template: >
-      {% set sensors = [states.binary_sensor.patio_rf_pir] %}
-      {{ sensors | selectattr('state','eq','on') | list | count > 0 }}
