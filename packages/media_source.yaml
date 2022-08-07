@@ -1,0 +1,8 @@
+---
+# Media Source
+# https://www.home-assistant.io/integrations/media_source/
+#
+media_source:
+  media_dirs:
+    local: /media
+    recording: /recordings
