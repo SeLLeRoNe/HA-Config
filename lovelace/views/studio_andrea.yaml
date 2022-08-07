@@ -219,8 +219,8 @@ cards:
           power_state: true
           shuffle: true
         tts:
-          platform: reversotts
-#              platform: google_translate
+#          platform: reversotts
+          platform: google
         tap_action:
           action: none
   - type: custom:layout-break
