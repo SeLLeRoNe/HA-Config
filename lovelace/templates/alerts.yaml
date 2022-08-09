@@ -17,6 +17,19 @@ alerts:
         entities:
           - name: Entrance Door
             entity: binary_sensor.entrance_door_contact
+          - name: Entrance PIR
+            entity: binary_sensor.entrance_rtcgq11lm_occupancy
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Living Room Patio Door
+            entity: binary_sensor.living_room_window_4_contact
+          - name: Living Room PIR
+            entity: binary_sensor.living_room_pir
       - type: glance
         columns: 3
         show_header_toggle: false
@@ -24,16 +37,12 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - name: Living Room PIR
-            entity: binary_sensor.living_room_pir
           - name: Living Room Window 1
             entity: binary_sensor.living_room_window_1_contact
           - name: Living Room Window 3
             entity: binary_sensor.living_room_window_3_contact
           - name: Living Room Window 2
             entity: binary_sensor.living_room_window_2_contact
-          - name: Living Room Patio Door
-            entity: binary_sensor.living_room_window_4_contact
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -54,6 +63,8 @@ alerts:
         entities:
           - name: Ground Floor Bathroom Window
             entity: binary_sensor.ground_floor_bathroom_window_contact
+          - name: Ground Floor Bathroom PIR
+            entity: binary_sensor.ground_floor_bathroom_rtcgq11lm_occupancy
       - type: glance
         columns: 3
         show_header_toggle: false
@@ -65,6 +76,8 @@ alerts:
             entity: binary_sensor.kitchen_window_1_contact
           - name: Kitchen Window 2
             entity: binary_sensor.kitchen_window_2_contact
+          - name: Kitchen PIR
+            entity: binary_sensor.kitchen_rtcgq11lm_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -74,7 +87,8 @@ alerts:
         entities:
           - name: Kids Bedroom PIR
             entity: binary_sensor.kids_bedroom_rtcgq11lm_occupancy
-      - type: glance
+          - name: Kids Bedroom Window
+            entity: binary_sensor.kids_bedroom_window_contact
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -82,6 +96,8 @@ alerts:
         show_state: false
         state_color: true
         entities:
+          - name: Guest Bedroom PIR
+            entity: binary_sensor.guest_bedroom_rtcgq11lm_occupancy
           - name: Guest Bedroom Window
             entity: binary_sensor.guest_bedroom_window_contact
       - type: glance
@@ -96,7 +112,7 @@ alerts:
           - name: Common Bathroom PIR
             entity: binary_sensor.common_bathroom_rtcgq11lm_occupancy
       - type: glance
-        columns: 3
+        columns: 2
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -104,10 +120,19 @@ alerts:
         entities:
           - name: Studio Andrea Window
             entity: binary_sensor.studio_andrea_window_contact
-          - name: Studio Andrea Presence Occupancy
+          - name: Studio Andrea PIR
             entity: binary_sensor.studio_andrea_radar_occupancy
-          - name: Studio Andrea Presence Presence
-            entity: binary_sensor.studio_andrea_radar_presence
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Studio Andrea Window
+            entity: binary_sensor.studio_sonia_window_contact
+          - name: Studio Andrea PIR
+            entity: binary_sensor.studio_sonia_rtcgq11lm_occupancy
       - type: glance
         columns: 3
         show_header_toggle: false
