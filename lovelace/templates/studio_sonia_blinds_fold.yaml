@@ -1,0 +1,11 @@
+---
+studio_sonia_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.studio_sonia_blinds
+      label: Studio Sonia
+    entities:
+      - name: Blinds 1
+        entity: cover.studio_sonia_blinds_1
