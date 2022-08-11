@@ -1,6 +1,0 @@
----
-guest_mode:
-  name: Guest Mode
-  icon: mdi:human-greeting
-#  icon: mdi:human-handsup
-#  icon: mdi:hotel
