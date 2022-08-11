@@ -85,10 +85,10 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - name: Kids Bedroom PIR
-            entity: binary_sensor.kids_bedroom_rtcgq11lm_occupancy
           - name: Kids Bedroom Window
             entity: binary_sensor.kids_bedroom_window_contact
+          - name: Kids Bedroom PIR
+            entity: binary_sensor.kids_bedroom_rtcgq11lm_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -96,10 +96,10 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - name: Guest Bedroom PIR
-            entity: binary_sensor.guest_bedroom_rtcgq11lm_occupancy
           - name: Guest Bedroom Window
             entity: binary_sensor.guest_bedroom_window_contact
+          - name: Guest Bedroom PIR
+            entity: binary_sensor.guest_bedroom_rtcgq11lm_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -129,9 +129,9 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - name: Studio Andrea Window
+          - name: Studio Sonia Window
             entity: binary_sensor.studio_sonia_window_contact
-          - name: Studio Andrea PIR
+          - name: Studio Sonia PIR
             entity: binary_sensor.studio_sonia_rtcgq11lm_occupancy
       - type: glance
         columns: 3
