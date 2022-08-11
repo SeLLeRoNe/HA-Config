@@ -17,15 +17,20 @@ SERVICE_SUBPRODUCT_SUBSTITUTION = "allow_subproduct_substitution"
 SERVICE_TRANSACTION_TYPE = "transaction_type"
 SERVICE_CHORE_ID = "chore_id"
 SERVICE_DONE_BY = "done_by"
+SERVICE_SKIPPED = "skipped"
 SERVICE_TASK_ID = "task_id"
 SERVICE_ENTITY_TYPE = "entity_type"
 SERVICE_DATA = "data"
+SERVICE_RECIPE_ID = "recipe_id"
+SERVICE_BATTERY_ID = "battery_id"
 
 SERVICE_ADD_PRODUCT = "add_product_to_stock"
 SERVICE_CONSUME_PRODUCT = "consume_product_from_stock"
 SERVICE_EXECUTE_CHORE = "execute_chore"
 SERVICE_COMPLETE_TASK = "complete_task"
 SERVICE_ADD_GENERIC = "add_generic"
+SERVICE_CONSUME_RECIPE = "consume_recipe"
+SERVICE_TRACK_BATTERY = "track_battery"
 
 SERVICE_ADD_PRODUCT_SCHEMA = vol.All(
     vol.Schema(
@@ -54,6 +59,7 @@ SERVICE_EXECUTE_CHORE_SCHEMA = vol.All(
         {
             vol.Required(SERVICE_CHORE_ID): vol.Coerce(int),
             vol.Optional(SERVICE_DONE_BY): vol.Coerce(int),
+            vol.Optional(SERVICE_SKIPPED): bool,
         }
     )
 )
@@ -75,12 +81,30 @@ SERVICE_ADD_GENERIC_SCHEMA = vol.All(
     )
 )
 
+SERVICE_CONSUME_RECIPE_SCHEMA = vol.All(
+    vol.Schema(
+        {
+            vol.Required(SERVICE_RECIPE_ID): vol.Coerce(int),
+        }
+    )
+)
+
+SERVICE_TRACK_BATTERY_SCHEMA = vol.All(
+    vol.Schema(
+        {
+            vol.Required(SERVICE_BATTERY_ID): vol.Coerce(int),
+        }
+    )
+)
+
 SERVICES_WITH_ACCOMPANYING_SCHEMA: list[tuple[str, vol.Schema]] = [
     (SERVICE_ADD_PRODUCT, SERVICE_ADD_PRODUCT_SCHEMA),
     (SERVICE_CONSUME_PRODUCT, SERVICE_CONSUME_PRODUCT_SCHEMA),
     (SERVICE_EXECUTE_CHORE, SERVICE_EXECUTE_CHORE_SCHEMA),
     (SERVICE_COMPLETE_TASK, SERVICE_COMPLETE_TASK_SCHEMA),
     (SERVICE_ADD_GENERIC, SERVICE_ADD_GENERIC_SCHEMA),
+    (SERVICE_CONSUME_RECIPE, SERVICE_CONSUME_RECIPE_SCHEMA),
+    (SERVICE_TRACK_BATTERY, SERVICE_TRACK_BATTERY_SCHEMA),
 ]
 
 
@@ -111,6 +135,12 @@ async def async_setup_services(
 
         elif service == SERVICE_ADD_GENERIC:
             await async_add_generic_service(hass, coordinator, service_data)
+
+        elif service == SERVICE_CONSUME_RECIPE:
+            await async_consume_recipe_service(hass, coordinator, service_data)
+
+        elif service == SERVICE_TRACK_BATTERY:
+            await async_track_battery_service(hass, coordinator, service_data)
 
     for service, schema in SERVICES_WITH_ACCOMPANYING_SCHEMA:
         hass.services.async_register(DOMAIN, service, async_call_grocy_service, schema)
@@ -166,9 +196,10 @@ async def async_execute_chore_service(hass, coordinator, data):
     """Execute a chore in Grocy."""
     chore_id = data[SERVICE_CHORE_ID]
     done_by = data.get(SERVICE_DONE_BY, "")
+    skipped = data.get(SERVICE_SKIPPED, False)
 
     def wrapper():
-        coordinator.grocy_api.execute_chore(chore_id, done_by)
+        coordinator.grocy_api.execute_chore(chore_id, done_by, skipped=skipped)
 
     await hass.async_add_executor_job(wrapper)
     await _async_force_update_entity(coordinator, ATTR_CHORES)
@@ -197,6 +228,26 @@ async def async_add_generic_service(hass, coordinator, data):
 
     def wrapper():
         coordinator.grocy_api.add_generic(entity_type, data)
+
+    await hass.async_add_executor_job(wrapper)
+
+
+async def async_consume_recipe_service(hass, coordinator, data):
+    """Consume a recipe in Grocy."""
+    recipe_id = data[SERVICE_RECIPE_ID]
+
+    def wrapper():
+        coordinator.grocy_api.consume_recipe(recipe_id)
+
+    await hass.async_add_executor_job(wrapper)
+
+
+async def async_track_battery_service(hass, coordinator, data):
+    """Track a battery in Grocy."""
+    battery_id = data[SERVICE_BATTERY_ID]
+
+    def wrapper():
+        coordinator.grocy_api.charge_battery(battery_id)
 
     await hass.async_add_executor_job(wrapper)
 

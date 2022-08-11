@@ -92,6 +92,13 @@ execute_chore:
       description: The id of the user who executed the chore
       selector:
         text:
+    skipped:
+      name: Skip execution
+      description: Skip next chore schedule
+      example: false
+      default: false
+      selector:
+        boolean:
 
 complete_task:
   name: Complete Task
@@ -146,3 +153,27 @@ add_generic:
       default: {"name": "Task name", "due_date": "2021-05-21"}
       selector:
         object:
+
+consume_recipe:
+  name: Consume Recipe
+  description: Consumes the given recipe
+  fields:
+    recipe_id:
+      name: Recipe Id
+      example: '3'
+      required: true
+      description: The id of the recipe to consume
+      selector:
+        text:
+
+track_battery:
+  name: Track Battery
+  description: Tracks the given battery
+  fields:
+    battery_id:
+      name: Battery Id
+      example: '1'
+      required: true
+      description: The id of the battery
+      selector:
+        text:

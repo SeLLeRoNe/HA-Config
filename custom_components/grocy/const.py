@@ -4,7 +4,7 @@ from typing import Final
 
 NAME: Final = "Grocy"
 DOMAIN: Final = "grocy"
-VERSION = "4.4.0"
+VERSION = "v4.5.1"
 
 ISSUE_URL: Final = "https://github.com/custom-components/grocy/issues"
 
@@ -32,13 +32,17 @@ CHORES: Final = "Chore(s)"
 MEAL_PLANS: Final = "Meal(s)"
 PRODUCTS: Final = "Product(s)"
 TASKS: Final = "Task(s)"
+ITEMS: Final = "Item(s)"
 
+ATTR_BATTERIES: Final = "batteries"
 ATTR_CHORES: Final = "chores"
 ATTR_EXPIRED_PRODUCTS: Final = "expired_products"
 ATTR_EXPIRING_PRODUCTS: Final = "expiring_products"
 ATTR_MEAL_PLAN: Final = "meal_plan"
 ATTR_MISSING_PRODUCTS: Final = "missing_products"
+ATTR_OVERDUE_BATTERIES: Final = "overdue_batteries"
 ATTR_OVERDUE_CHORES: Final = "overdue_chores"
+ATTR_OVERDUE_PRODUCTS: Final = "overdue_products"
 ATTR_OVERDUE_TASKS: Final = "overdue_tasks"
 ATTR_SHOPPING_LIST: Final = "shopping_list"
 ATTR_STOCK: Final = "stock"

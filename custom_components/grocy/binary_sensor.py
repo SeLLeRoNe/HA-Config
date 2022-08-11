@@ -18,7 +18,9 @@ from .const import (
     ATTR_EXPIRED_PRODUCTS,
     ATTR_EXPIRING_PRODUCTS,
     ATTR_MISSING_PRODUCTS,
+    ATTR_OVERDUE_BATTERIES,
     ATTR_OVERDUE_CHORES,
+    ATTR_OVERDUE_PRODUCTS,
     ATTR_OVERDUE_TASKS,
     DOMAIN,
 )
@@ -81,6 +83,16 @@ BINARY_SENSORS: tuple[GrocyBinarySensorEntityDescription, ...] = (
         },
     ),
     GrocyBinarySensorEntityDescription(
+        key=ATTR_OVERDUE_PRODUCTS,
+        name="Grocy overdue products",
+        icon="mdi:alert-circle-check-outline",
+        exists_fn=lambda entities: ATTR_OVERDUE_PRODUCTS in entities,
+        attributes_fn=lambda data: {
+            "overdue_products": [x.as_dict() for x in data],
+            "count": len(data),
+        },
+    ),
+    GrocyBinarySensorEntityDescription(
         key=ATTR_MISSING_PRODUCTS,
         name="Grocy missing products",
         icon="mdi:flask-round-bottom-empty-outline",
@@ -107,6 +119,16 @@ BINARY_SENSORS: tuple[GrocyBinarySensorEntityDescription, ...] = (
         exists_fn=lambda entities: ATTR_OVERDUE_TASKS in entities,
         attributes_fn=lambda data: {
             "overdue_tasks": [x.as_dict() for x in data],
+            "count": len(data),
+        },
+    ),
+    GrocyBinarySensorEntityDescription(
+        key=ATTR_OVERDUE_BATTERIES,
+        name="Grocy overdue batteries",
+        icon="mdi:battery-charging-10",
+        exists_fn=lambda entities: ATTR_OVERDUE_BATTERIES in entities,
+        attributes_fn=lambda data: {
+            "overdue_batteries": [x.as_dict() for x in data],
             "count": len(data),
         },
     ),

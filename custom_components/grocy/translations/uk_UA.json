@@ -1,0 +1,23 @@
+{
+    "config": {
+        "abort": {
+            "single_instance_allowed": "Дозволена лише одна конфігурація Grocy."
+        },
+        "error": {
+            "auth": "Щось пішло не так."
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Ключ Grocy API",
+                    "port": "Номер порту (9192)",
+                    "url": "URL-адреса Grocy API (наприклад, \"http:\/\/yourgrocyurl.com\")",
+                    "verify_ssl": "Перевірте сертифікат SSL"
+                },
+                "description": "Якщо вам потрібна допомога з налаштуванням, подивіться тут: https:\/\/github.com\/custom-components\/grocy",
+                "title": "Grocy"
+            }
+        },
+        "title": "Grocy"
+    }
+}

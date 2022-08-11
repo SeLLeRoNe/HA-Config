@@ -1,0 +1,23 @@
+{
+    "config": {
+        "abort": {
+            "single_instance_allowed": "Apenas uma única configuração do Grocy é permitida."
+        },
+        "error": {
+            "auth": "Algo deu errado."
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Chave de API do Grocy",
+                    "port": "Número da porta (9192)",
+                    "url": "URL da API do Grocy (por exemplo, \"http:\/\/yourgrocyurl.com\")",
+                    "verify_ssl": "Verificar certificado SSL"
+                },
+                "description": "Se precisar de ajuda com a configuração, dê uma olhada aqui: https:\/\/github.com\/custom-components\/grocy",
+                "title": "Grocy"
+            }
+        },
+        "title": "Grocy"
+    }
+}

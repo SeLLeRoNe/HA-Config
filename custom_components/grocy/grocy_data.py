@@ -1,20 +1,27 @@
 """Communication with Grocy API."""
+from __future__ import annotations
+
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
+from typing import List
 
 from aiohttp import hdrs, web
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from pygrocy.data_models.battery import Battery
 
 from .const import (
+    ATTR_BATTERIES,
     ATTR_CHORES,
     ATTR_EXPIRED_PRODUCTS,
     ATTR_EXPIRING_PRODUCTS,
     ATTR_MEAL_PLAN,
     ATTR_MISSING_PRODUCTS,
+    ATTR_OVERDUE_BATTERIES,
     ATTR_OVERDUE_CHORES,
+    ATTR_OVERDUE_PRODUCTS,
     ATTR_OVERDUE_TASKS,
     ATTR_SHOPPING_LIST,
     ATTR_STOCK,
@@ -23,7 +30,7 @@ from .const import (
     CONF_PORT,
     CONF_URL,
 )
-from .helpers import MealPlanItem, extract_base_url_and_path
+from .helpers import MealPlanItemWrapper, extract_base_url_and_path
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -42,10 +49,13 @@ class GrocyData:
             ATTR_SHOPPING_LIST: self.async_update_shopping_list,
             ATTR_EXPIRING_PRODUCTS: self.async_update_expiring_products,
             ATTR_EXPIRED_PRODUCTS: self.async_update_expired_products,
+            ATTR_OVERDUE_PRODUCTS: self.async_update_overdue_products,
             ATTR_MISSING_PRODUCTS: self.async_update_missing_products,
             ATTR_MEAL_PLAN: self.async_update_meal_plan,
             ATTR_OVERDUE_CHORES: self.async_update_overdue_chores,
             ATTR_OVERDUE_TASKS: self.async_update_overdue_tasks,
+            ATTR_BATTERIES: self.async_update_batteries,
+            ATTR_OVERDUE_BATTERIES: self.async_update_overdue_batteries,
         }
 
     async def async_update_data(self, entity_key):
@@ -68,45 +78,39 @@ class GrocyData:
     async def async_update_overdue_chores(self):
         """Update overdue chores data."""
 
-        def wrapper():
-            return self.api.chores(True)
+        query_filter = [f"next_estimated_execution_time<{datetime.now()}"]
 
-        chores = await self.hass.async_add_executor_job(wrapper)
-        overdue_chores = []
-        for chore in chores:
-            if chore.next_estimated_execution_time:
-                now = datetime.now()
-                due = chore.next_estimated_execution_time
-                if due < now:
-                    overdue_chores.append(chore)
-        return overdue_chores
+        def wrapper():
+            return self.api.chores(get_details=True, query_filters=query_filter)
+
+        return await self.hass.async_add_executor_job(wrapper)
 
     async def async_get_config(self):
         """Get the configuration from Grocy."""
 
         def wrapper():
-            return self.api._api_client._do_get_request(
-                "system/config"
-            )  # TODO Make endpoint available in pygrocy
+            return self.api.get_system_config()
 
         return await self.hass.async_add_executor_job(wrapper)
 
     async def async_update_tasks(self):
         """Update tasks data."""
+
         return await self.hass.async_add_executor_job(self.api.tasks)
 
     async def async_update_overdue_tasks(self):
         """Update overdue tasks data."""
-        tasks = await self.hass.async_add_executor_job(self.api.tasks)
 
-        overdue_tasks = []
-        for task in tasks:
-            if task.due_date:
-                current_date = datetime.now().date()
-                due_date = task.due_date
-                if due_date < current_date:
-                    overdue_tasks.append(task)
-        return overdue_tasks
+        and_query_filter = [
+            f"due_date<{datetime.now().date()}",
+            # It's not possible to pass an empty value to Grocy, so use a regex that matches non-empty values to exclude empty str due_date.
+            r"due_date§.*\S.*",
+        ]
+
+        def wrapper():
+            return self.api.tasks(query_filters=and_query_filter)
+
+        return await self.hass.async_add_executor_job(wrapper)
 
     async def async_update_shopping_list(self):
         """Update shopping list data."""
@@ -132,6 +136,14 @@ class GrocyData:
 
         return await self.hass.async_add_executor_job(wrapper)
 
+    async def async_update_overdue_products(self):
+        """Update overdue products data."""
+
+        def wrapper():
+            return self.api.overdue_products(True)
+
+        return await self.hass.async_add_executor_job(wrapper)
+
     async def async_update_missing_products(self):
         """Update missing products data."""
 
@@ -143,11 +155,31 @@ class GrocyData:
     async def async_update_meal_plan(self):
         """Update meal plan data."""
 
+        # The >= condition is broken before Grocy 3.3.1. So use > to maintain backward compatibility.
+        yesterday = datetime.now() - timedelta(1)
+        query_filter = [f"day>{yesterday.date()}"]
+
         def wrapper():
-            meal_plan = self.api.meal_plan(True)
-            today = datetime.today().date()
-            plan = [MealPlanItem(item) for item in meal_plan if item.day >= today]
-            return sorted(plan, key=lambda item: item.day)
+            meal_plan = self.api.meal_plan(get_details=True, query_filters=query_filter)
+            plan = [MealPlanItemWrapper(item) for item in meal_plan]
+            return sorted(plan, key=lambda item: item.meal_plan.day)
+
+        return await self.hass.async_add_executor_job(wrapper)
+
+    async def async_update_batteries(self) -> List[Battery]:
+        """Update batteries."""
+
+        def wrapper():
+            return self.api.batteries(get_details=True)
+
+        return await self.hass.async_add_executor_job(wrapper)
+
+    async def async_update_overdue_batteries(self) -> List[Battery]:
+        """Update overdue batteries."""
+
+        def wrapper():
+            filter_query = [f"next_estimated_charge_time<{datetime.now()}"]
+            return self.api.batteries(filter_query, get_details=True)
 
         return await self.hass.async_add_executor_job(wrapper)
 

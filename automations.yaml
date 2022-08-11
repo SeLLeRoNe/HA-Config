@@ -234,7 +234,7 @@
     event_type: ''
     event_data:
       device: shellyplus2pm-a8032ab6e494
-      channel: 2
+      channel: 1
       click_type: single_push
   condition: []
   action:
@@ -258,7 +258,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_lights
+      entity_id: light.master_bedroom_lamp_top
   mode: single
 - id: '1655220195789'
   alias: 'Shelly - First Floor Corridor Stairs Switch #2'
@@ -669,7 +669,7 @@
       entity_id: switch.downstairs_corridor_main_switch_1
   mode: single
 - id: '1655495294864'
-  alias: 'Shelly - Guest Bedroom Right Bed Switch #2 - SIngle'
+  alias: Shelly - Guest Bedroom Right Bed Switch - Double
   description: ''
   trigger:
   - platform: event
@@ -677,7 +677,7 @@
     event_data:
       device: shellyplus2pm-a8032ab705f0
       channel: 2
-      click_type: single_push
+      click_type: double_push
   condition: []
   action:
   - service: light.toggle
@@ -686,7 +686,7 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495313290'
-  alias: 'Shelly - Guest Bedroom Right Bed Switch #1 - SIngle'
+  alias: Shelly - Guest Bedroom Right Bed Switch - SIngle
   description: ''
   trigger:
   - platform: event
@@ -703,15 +703,15 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495495896'
-  alias: 'Shelly - Guest Bedroom Left Bed Switch #2 - SIngle'
+  alias: Shelly - Guest Bedroom Left Bed Switch - Double
   description: ''
   trigger:
   - platform: event
     event_type: shelly.click
     event_data:
-      device: shellyplus2pm-a8032ab705f0
+      device: shellyplus2pm-a8032ab662d8
       channel: 2
-      click_type: single_push
+      click_type: double_push
   condition: []
   action:
   - service: light.toggle
@@ -720,13 +720,13 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495502739'
-  alias: 'Shelly - Guest Bedroom Left Bed Switch #1 - SIngle'
+  alias: Shelly - Guest Bedroom Left Bed Switch - SIngle
   description: ''
   trigger:
   - platform: event
     event_type: shelly.click
     event_data:
-      device: shellyplus2pm-a8032ab705f0
+      device: shellyplus2pm-a8032ab662d8
       channel: 1
       click_type: single_push
   condition: []
@@ -771,15 +771,15 @@
       entity_id: light.studio_sonia_ceiling_lights
   mode: single
 - id: '1655496248305'
-  alias: 'Shelly - Studio Sonia Left Bed Switch #2 - SIngle'
+  alias: Shelly - Studio Sonia Left Bed Switch - Double
   description: ''
   trigger:
   - platform: event
     event_type: shelly.click
     event_data:
       device: shellyplus2pm-a8032ab64114
-      channel: 2
-      click_type: single_push
+      channel: 1
+      click_type: double_push
   condition: []
   action:
   - service: light.toggle
@@ -788,7 +788,7 @@
       entity_id: light.studio_sonia_ceiling_lights
   mode: single
 - id: '1655496259326'
-  alias: 'Shelly - Studio Sonia Left Bed Switch #1 - SIngle'
+  alias: Shelly - Studio Sonia Left Bed Switch - SIngle
   description: ''
   trigger:
   - platform: event
@@ -1181,4 +1181,21 @@
     data: {}
     target:
       entity_id: image_processing.doorbell
+  mode: single
+- id: '1660212306306'
+  alias: Shelly - Master Bedroom Right Bed Switch - Double
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab716cc
+      channel: 1
+      click_type: double_push
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.master_bedroom_ceiling_lights
   mode: single
