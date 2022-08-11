@@ -1,5 +1,0 @@
----
-platform: group
-name: Master Bedroom Lamp
-entities:
-  - light.master_bedroom_lamp
