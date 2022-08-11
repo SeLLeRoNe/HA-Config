@@ -1,5 +1,5 @@
 ---
-bedroom_luca_plugs:
+kids_bedroom_plugs:
   card:
     type: custom:stack-in-card
     mode: vertical

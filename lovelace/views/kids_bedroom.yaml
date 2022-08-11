@@ -1,0 +1,69 @@
+title: Kids Bedroom
+icon: mdi:bunk-bed
+path: kids-bedroom
+type: custom:vertical-layout
+layout:
+  max_cols: 5
+cards:
+  - type: custom:state-switch
+    entity: light.kids_bedroom_lights
+    states:
+      "on":
+        type: custom:decluttering-card
+        template: kids_bedroom_lights
+      "off":
+        type: custom:decluttering-card
+        template: kids_bedroom_lights
+  - type: custom:decluttering-card
+    template: kids_bedroom_plugs
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: title
+        variables:
+          - title: Sensors
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            show_state: true
+            columns: 2
+            entities:
+              - name: Motion Sensor
+                entity: binary_sensor.kids_bedroom_pir
+                tap_action:
+                  action: none
+              - name: Window Status
+                entity: binary_sensor.kids_bedroom_window
+                tap_action:
+                  action: none
+  - type: custom:decluttering-card
+    template: thermostat_card_small
+    variables:
+      - area: kids_bedroom
+  - type: custom:layout-break
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: temperature
+        variables:
+          - entity: sensor.kids_bedroom_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.kids_bedroom_humidity
+      - type: custom:decluttering-card
+        template: pressure
+        variables:
+          - entity: sensor.kids_bedroom_pressure
+      - type: custom:decluttering-card
+        template: illuminance
+        variables:
+          - entity: sensor.kids_bedroom_gzcgq01lm_illuminance_lux
+#      - type: custom:layout-break
+#      - type: custom:decluttering-card
+#        template: kids_bedroom_energy_small
+#        variables:
+#          - title: Energy Consumption

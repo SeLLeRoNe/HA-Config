@@ -19,7 +19,7 @@ master_bedroom_lights_fold:
           - type: custom:fold-entity-row
             head:
               type: custom:slider-entity-row
-              entity: light.living_room_ceiling_lights
+              entity: light.master_bedroom_ceiling_lights
               name: Ceiling
               toggle: true
               hide_state: true
@@ -44,11 +44,29 @@ master_bedroom_lights_fold:
                 variables:
                   - name: Wardrobe
                   - entity: light.master_bedroom_ceiling_light_wardrobe
-#          - type: custom:decluttering-card
-#            template: light_card_rgb
-#            variables:
-#              - name: Lamp
-#              - entity: light.master_bedroom_lamp
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.master_bedroom_lamp
+              name: Lamp
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Top
+                  - entity: light.master_bedroom_lamp_top
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Bottom
+                  - entity: light.master_bedroom_lamp_bottom
 #          - type: section
 #            label: Bedside
 #          - type: custom:decluttering-card

@@ -1,21 +1,21 @@
-title: Bedroom Luca
-icon: mdi:bunk-bed
-path: bedroom-luca
+title: Guest Bedroom
+icon: mdi:human-handsup
+path: guest-bedroom
 type: custom:vertical-layout
 layout:
   max_cols: 5
 cards:
   - type: custom:state-switch
-    entity: light.bedroom_luca_lights
+    entity: light.guest_bedroom_lights
     states:
       "on":
         type: custom:decluttering-card
-        template: bedroom_luca_lights
+        template: guest_bedroom_lights
       "off":
         type: custom:decluttering-card
-        template: bedroom_luca_lights
+        template: guest_bedroom_lights
   - type: custom:decluttering-card
-    template: bedroom_luca_plugs
+    template: guest_bedroom_plugs
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
@@ -31,17 +31,17 @@ cards:
             columns: 2
             entities:
               - name: Motion Sensor
-                entity: binary_sensor.bedroom_luca_pir
+                entity: binary_sensor.guest_bedroom_pir
                 tap_action:
                   action: none
               - name: Window Status
-                entity: binary_sensor.bedroom_luca_window
+                entity: binary_sensor.guest_bedroom_window
                 tap_action:
                   action: none
   - type: custom:decluttering-card
     template: thermostat_card_small
     variables:
-      - area: bedroom_luca
+      - area: guest_bedroom
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical
@@ -49,21 +49,21 @@ cards:
       - type: custom:decluttering-card
         template: temperature
         variables:
-          - entity: sensor.bedroom_luca_temperature
+          - entity: sensor.guest_bedroom_temperature
       - type: custom:decluttering-card
         template: humidity
         variables:
-          - entity: sensor.bedroom_luca_humidity
+          - entity: sensor.guest_bedroom_humidity
       - type: custom:decluttering-card
         template: pressure
         variables:
-          - entity: sensor.bedroom_luca_pressure
+          - entity: sensor.guest_bedroom_pressure
       - type: custom:decluttering-card
         template: illuminance
         variables:
-          - entity: sensor.bedroom_luca_gzcgq01lm_illuminance_lux
+          - entity: sensor.guest_bedroom_gzcgq01lm_illuminance_lux
 #      - type: custom:layout-break
 #      - type: custom:decluttering-card
-#        template: bedroom_luca_energy_small
+#        template: guest_bedroom_energy_small
 #        variables:
 #          - title: Energy Consumption
