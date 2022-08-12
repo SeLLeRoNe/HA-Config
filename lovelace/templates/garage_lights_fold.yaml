@@ -49,4 +49,3 @@ garage_lights_fold:
                 variables:
                   - name: Light 4
                   - entity: light.garage_ceiling_light_4
-

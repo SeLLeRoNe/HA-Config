@@ -1,0 +1,109 @@
+---
+garden_lights_fold:
+  card:
+    type: entities
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-entity-row
+          entity: light.garden_lights
+          name: Garden
+          toggle: true
+          hide_state: true
+          hide_when_off: false
+          full_row: false
+          min: 0
+          max: 100
+          step: 1
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.front_garden_lights
+              name: Front Garden
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.front_garden_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.front_garden_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.front_garden_light_3
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 4
+                  - entity: light.front_garden_light_4
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.passage_garden_lights
+              name: Passage Garden
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.passage_garden_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.passage_garden_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.passage_garden_light_3
+          - type: custom:fold-entity-row
+            head:
+              type: custom:slider-entity-row
+              entity: light.back_garden_lights
+              name: Back Garden
+              toggle: true
+              hide_state: true
+              hide_when_off: false
+              full_row: false
+              min: 0
+              max: 100
+              step: 1
+            entities:
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 1
+                  - entity: light.back_garden_light_1
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 2
+                  - entity: light.back_garden_light_2
+              - type: custom:decluttering-card
+                template: light_card_rgb
+                variables:
+                  - name: Light 3
+                  - entity: light.back_garden_light_3
+
+
