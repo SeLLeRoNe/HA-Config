@@ -207,7 +207,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_lights
+      entity_id: light.master_bedroom_ceiling_lights_bed
   mode: single
 - id: '1655200268390'
   alias: 'Shelly - Master Bedroom Main Switch #2 - Single'
@@ -241,7 +241,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_lights
+      entity_id: light.master_bedroom_ceiling_lights_bed
   mode: single
 - id: '1655219859298'
   alias: Shelly - Master Bedroom Right Bed Switch - Single
@@ -374,10 +374,14 @@
       click_type: single_push
   condition: []
   action:
-  - service: light.toggle
+  - service: light.turn_off
     data: {}
     target:
       entity_id: light.kids_bedroom_ceiling_lights
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.lullaby_time
   mode: single
 - id: '1655239155036'
   alias: Shelly - Kids Bedroom Right Switch - SIngle
@@ -1197,5 +1201,22 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_lights
+      entity_id: light.master_bedroom_ceiling_lights_bed
+  mode: single
+- id: '1660756824352'
+  alias: 'Shelly - Living Room Right Main Switch #2 - Double'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab6630c
+      channel: 2
+      click_type: double_push
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.living_room_reading
   mode: single
