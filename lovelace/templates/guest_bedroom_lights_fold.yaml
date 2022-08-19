@@ -7,7 +7,7 @@ guest_bedroom_lights_fold:
         head:
           type: custom:slider-entity-row
           entity: light.guest_bedroom_lights
-          name: Guest Room
+          name: Guest Bedroom
           toggle: true
           hide_state: true
           hide_when_off: false

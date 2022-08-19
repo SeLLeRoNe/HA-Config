@@ -4,11 +4,11 @@
 #
 #alert: !include_dir_list ../alerts
 alert:
-  garage_door:
+  garage_external_door:
     name: Garage Door is open
     message: The garage door seems to still be open..
     done_message: Thank you for closing the garage door!
-    entity_id: binary_sensor.garage_door_contact
+    entity_id: binary_sensor.garage_external_door_contact
     state: 'on'
     repeat:
       - 10

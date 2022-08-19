@@ -147,7 +147,18 @@ alerts:
           - name: Upstairs Left Window
             entity: binary_sensor.upstairs_window_left_contact
       - type: glance
-        columns: 3
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Garage Door
+            entity: binary_sensor.garage_door_contact
+          - name: Garage External Door
+            entity: binary_sensor.garage_external_door_contact
+      - type: glance
+        columns: 2
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -155,7 +166,29 @@ alerts:
         entities:
           - name: Garage Window
             entity: binary_sensor.garage_window_contact
-          - name: Garage Door
-            entity: binary_sensor.garage_door_contact
           - name: Garage PIR
             entity: binary_sensor.garage_rtcgq11lm_occupancy
+      - type: glance
+        columns: 3
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Laundry Room Door
+            entity: binary_sensor.laundry_room_door_contact
+          - name: Laundry Room Leak
+            entity: binary_sensor.laundry_room_sjcgq11lm_water_leak
+          - name: Gas Sensor
+            entity: binary_sensor.laundry_room_gas_sensor_gas
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Basement Bathroom Leak
+            entity: binary_sensor.basement_bathroom_sjcgq11lm_water_leak
+          - name: Laundry Room Leak
+            entity: binary_sensor.laundry_room_sjcgq11lm_water_leak

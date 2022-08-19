@@ -52,12 +52,12 @@ house_humidity:
         color: '#00BFFF'
         show_state: true
       - entity: sensor.patio_wsdcgq11lm_humidity
-        name: Patio
+        name: Outside
         color: '#00FFFF'
         show_state: true
         show_fill: true
       - entity: sensor.dark_sky_humidity
-        name: Outside
+        name: Meteo
         color: '#59B300'
         show_state: true
 #      - entity: binary_sensor.night_time

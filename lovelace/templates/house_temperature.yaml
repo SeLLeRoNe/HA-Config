@@ -62,12 +62,12 @@ house_temperature:
           show_state: true
           show_fill: true
         - entity: sensor.patio_wsdcgq11lm_temperature
-          name: Patio
+          name: Outside
           color: '#0066FF'
           show_state: true
           show_fill: true
         - entity: sensor.dark_sky_temperature
-          name: Outside
+          name: Meteo
           color: '#0099CC'
           show_state: true
           show_fill: true

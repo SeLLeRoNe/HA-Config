@@ -47,17 +47,17 @@ house_pressure:
           padding: 16px !important;
         }
     entities:
-      - entity: sensor.house_pressure
-        name: Inside
-        color: '#BF00FF'
-        show_state: true
+#      - entity: sensor.house_pressure
+#        name: Inside
+#        color: '#BF00FF'
+#        show_state: true
       - entity: sensor.patio_wsdcgq11lm_pressure
-        name: Patio
+        name: Outside
         color: '#FF99CC'
         show_state: true
         show_fill: true
       - entity: sensor.dark_sky_pressure
-        name: Outside
+        name: Meteo
         color: '#CC00CC'
         show_state: true
 #      - entity: binary_sensor.night_time

@@ -21,7 +21,7 @@ house_illuminance:
     align_icon: right
     align_state: center
     lower_bound: 0
-    upper_bound: 65000
+    upper_bound: 120000
     logarithmic: true
     show:
       name: true
@@ -52,8 +52,12 @@ house_illuminance:
         name: Patio
         color: '#FFDD00'
         show_state: true
+      - entity: sensor.garden_gzcgq01lm_illuminance_lux
+        name: Garden
+        color: '#FF4400'
+        show_state: true
       - entity: sensor.illuminance
-        name: Outside
+        name: Meteo
         color: '#FF9900'
         show_state: true
 #      - entity: binary_sensor.night_time
