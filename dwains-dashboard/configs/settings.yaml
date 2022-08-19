@@ -1,0 +1,6 @@
+disable_clock: false
+am_pm_clock: false
+disable_welcome_message: false
+v2_mode: false
+weather_entity: weather.aemet_daily
+alarm_entity: alarm_control_panel.home_alarm

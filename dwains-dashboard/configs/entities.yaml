@@ -1,0 +1,899 @@
+binary_sensor.christmas_tree_firmware:
+  sort_order: 1
+  hidden: true
+binary_sensor.living_room_blinds_1_cloud:
+  sort_order: 2
+  hidden: true
+binary_sensor.living_room_blinds_1_firmware_update:
+  sort_order: 3
+binary_sensor.living_room_blinds_3_cloud:
+  sort_order: 4
+binary_sensor.living_room_blinds_3_firmware_update:
+  sort_order: 5
+binary_sensor.living_room_blinds_4_cloud:
+  sort_order: 6
+binary_sensor.living_room_blinds_4_firmware_update:
+  sort_order: 7
+binary_sensor.none_headphones_connected:
+  sort_order: 8
+binary_sensor.none_supports_airplay:
+  sort_order: 9
+binary_sensor.none_supports_ethernet:
+  sort_order: 10
+binary_sensor.none_supports_find_remote:
+  sort_order: 11
+binary_sensor.living_room_blinds_3_overheating:
+  sort_order: 12
+binary_sensor.living_room_blinds_3_overpowering:
+  sort_order: 13
+binary_sensor.living_room_blinds_3_overvoltage:
+  sort_order: 14
+binary_sensor.living_room_blinds_4_overheating:
+  sort_order: 15
+binary_sensor.living_room_blinds_4_overpowering:
+  sort_order: 16
+binary_sensor.living_room_blinds_4_overvoltage:
+  sort_order: 17
+binary_sensor.living_room_blinds_1_overheating:
+  sort_order: 18
+binary_sensor.living_room_blinds_1_overpowering:
+  sort_order: 19
+binary_sensor.living_room_blinds_1_overvoltage:
+  sort_order: 20
+binary_sensor.living_room_right_main_switch_cloud:
+  sort_order: 21
+binary_sensor.living_room_right_main_switch_firmware_update:
+  sort_order: 22
+binary_sensor.living_room_right_main_switch_1_overheating:
+  sort_order: 23
+binary_sensor.living_room_right_main_switch_2_overheating:
+  sort_order: 24
+binary_sensor.living_room_right_main_switch_1_overpowering:
+  sort_order: 25
+binary_sensor.living_room_right_main_switch_2_overpowering:
+  sort_order: 26
+binary_sensor.living_room_right_main_switch_1_overvoltage:
+  sort_order: 27
+binary_sensor.living_room_right_main_switch_2_overvoltage:
+  sort_order: 28
+binary_sensor.living_room_left_main_switch_cloud:
+  sort_order: 29
+binary_sensor.living_room_left_main_switch_firmware_update:
+  sort_order: 30
+binary_sensor.living_room_left_main_switch_1_overheating:
+  sort_order: 31
+binary_sensor.living_room_left_main_switch_2_overheating:
+  sort_order: 32
+binary_sensor.living_room_left_main_switch_1_overpowering:
+  sort_order: 33
+binary_sensor.living_room_left_main_switch_2_overpowering:
+  sort_order: 34
+binary_sensor.living_room_left_main_switch_1_overvoltage:
+  sort_order: 35
+binary_sensor.living_room_left_main_switch_2_overvoltage:
+  sort_order: 36
+binary_sensor.living_room_blinds_2_cloud:
+  sort_order: 37
+binary_sensor.living_room_blinds_2_firmware_update:
+  sort_order: 38
+binary_sensor.living_room_blinds_2_overheating:
+  sort_order: 39
+binary_sensor.living_room_blinds_2_overpowering:
+  sort_order: 40
+binary_sensor.living_room_blinds_2_overvoltage:
+  sort_order: 41
+binary_sensor.living_room_right_window_switch_cloud:
+  sort_order: 42
+binary_sensor.living_room_right_window_switch_firmware_update:
+  sort_order: 43
+binary_sensor.living_room_right_window_switch_1_overheating:
+  sort_order: 44
+binary_sensor.living_room_right_window_switch_2_overheating:
+  sort_order: 45
+binary_sensor.living_room_right_window_switch_1_overpowering:
+  sort_order: 46
+binary_sensor.living_room_right_window_switch_2_overpowering:
+  sort_order: 47
+binary_sensor.living_room_right_window_switch_1_overvoltage:
+  sort_order: 48
+binary_sensor.living_room_right_window_switch_2_overvoltage:
+  sort_order: 49
+binary_sensor.living_room_left_window_switch_cloud:
+  sort_order: 50
+binary_sensor.living_room_left_window_switch_firmware_update:
+  sort_order: 51
+binary_sensor.living_room_left_window_switch_1_overheating:
+  sort_order: 52
+binary_sensor.living_room_left_window_switch_2_overheating:
+  sort_order: 53
+binary_sensor.living_room_left_window_switch_1_overpowering:
+  sort_order: 54
+binary_sensor.living_room_left_window_switch_2_overpowering:
+  sort_order: 55
+binary_sensor.living_room_left_window_switch_1_overvoltage:
+  sort_order: 56
+binary_sensor.living_room_left_window_switch_2_overvoltage:
+  sort_order: 57
+binary_sensor.living_room_window_3_contact:
+  sort_order: 58
+binary_sensor.living_room_window_3_battery_low:
+  sort_order: 59
+binary_sensor.living_room_window_3_update_available:
+  sort_order: 60
+binary_sensor.living_room_window_4_contact:
+  sort_order: 61
+binary_sensor.living_room_window_1_contact:
+  sort_order: 62
+binary_sensor.living_room_window_1_battery_low:
+  sort_order: 63
+binary_sensor.living_room_window_1_update_available:
+  sort_order: 64
+binary_sensor.living_room_window_2_contact:
+  sort_order: 65
+button.christmas_tree_restart:
+  sort_order: 66
+button.christmas_tree_update:
+  sort_order: 67
+button.living_room_blinds_1_ota_update:
+  sort_order: 68
+button.living_room_blinds_1_ota_update_beta:
+  sort_order: 69
+button.living_room_blinds_1_reboot:
+  sort_order: 70
+button.living_room_blinds_3_ota_update:
+  sort_order: 71
+button.living_room_blinds_3_ota_update_beta:
+  sort_order: 72
+button.living_room_blinds_3_reboot:
+  sort_order: 73
+button.living_room_blinds_4_ota_update:
+  sort_order: 74
+button.living_room_blinds_4_ota_update_beta:
+  sort_order: 75
+button.living_room_blinds_4_reboot:
+  sort_order: 76
+button.living_room_right_main_switch_ota_update:
+  sort_order: 77
+button.living_room_right_main_switch_ota_update_beta:
+  sort_order: 78
+button.living_room_right_main_switch_reboot:
+  sort_order: 79
+button.living_room_left_main_switch_ota_update:
+  sort_order: 80
+button.living_room_left_main_switch_ota_update_beta:
+  sort_order: 81
+button.living_room_left_main_switch_reboot:
+  sort_order: 82
+button.living_room_blinds_2_ota_update:
+  sort_order: 83
+button.living_room_blinds_2_ota_update_beta:
+  sort_order: 84
+button.living_room_blinds_2_reboot:
+  sort_order: 85
+button.living_room_right_window_switch_ota_update:
+  sort_order: 86
+button.living_room_right_window_switch_ota_update_beta:
+  sort_order: 87
+button.living_room_right_window_switch_reboot:
+  sort_order: 88
+button.living_room_left_window_switch_ota_update:
+  sort_order: 89
+button.living_room_left_window_switch_ota_update_beta:
+  sort_order: 90
+button.living_room_left_window_switch_reboot:
+  sort_order: 91
+cover.living_room_blinds_1:
+  sort_order: 92
+cover.living_room_blinds_3:
+  sort_order: 93
+cover.living_room_blinds_4:
+  sort_order: 94
+cover.living_room_blinds_2:
+  sort_order: 95
+light.christmas_tree:
+  sort_order: 96
+light.living_room_lights:
+  sort_order: 97
+light.living_room_ceiling_lights:
+  sort_order: 98
+media_player.living_room_chromecast:
+  sort_order: 99
+media_player.living_room_tv:
+  sort_order: 100
+media_player.tv_samsung_q60:
+  sort_order: 101
+media_player.roku_yd0012106071:
+  sort_order: 102
+number.christmas_tree_speed:
+  sort_order: 103
+number.christmas_tree_intensity:
+  sort_order: 104
+remote.roku_yd0012106071:
+  sort_order: 105
+select.christmas_tree_live_override:
+  sort_order: 106
+select.christmas_tree_playlist:
+  sort_order: 107
+select.christmas_tree_preset:
+  sort_order: 108
+select.christmas_tree_color_palette:
+  sort_order: 109
+select.none_application:
+  sort_order: 110
+sensor.living_room_e220_linkquality:
+  sort_order: 111
+sensor.christmas_tree_estimated_current:
+  sort_order: 112
+sensor.christmas_tree_led_count:
+  sort_order: 113
+sensor.christmas_tree_max_current:
+  sort_order: 114
+sensor.living_room_blinds_1_rssi:
+  sort_order: 115
+sensor.living_room_blinds_1_uptime:
+  sort_order: 116
+sensor.living_room_blinds_3_rssi:
+  sort_order: 117
+sensor.living_room_blinds_3_uptime:
+  sort_order: 118
+sensor.living_room_blinds_4_rssi:
+  sort_order: 119
+sensor.living_room_blinds_4_uptime:
+  sort_order: 120
+sensor.none_active_app:
+  sort_order: 121
+sensor.none_active_app_id:
+  sort_order: 122
+sensor.living_room_blinds_3_power:
+  sort_order: 123
+sensor.living_room_blinds_3_voltage:
+  sort_order: 124
+sensor.living_room_blinds_3_energy:
+  sort_order: 125
+sensor.living_room_blinds_3_temperature:
+  sort_order: 126
+sensor.living_room_blinds_4_power:
+  sort_order: 127
+sensor.living_room_blinds_4_voltage:
+  sort_order: 128
+sensor.living_room_blinds_4_energy:
+  sort_order: 129
+sensor.living_room_blinds_4_temperature:
+  sort_order: 130
+sensor.living_room_blinds_1_power:
+  sort_order: 131
+sensor.living_room_blinds_1_voltage:
+  sort_order: 132
+sensor.living_room_blinds_1_energy:
+  sort_order: 133
+sensor.living_room_blinds_1_temperature:
+  sort_order: 134
+sensor.living_room_right_main_switch_1_power:
+  sort_order: 135
+sensor.living_room_right_main_switch_2_power:
+  sort_order: 136
+sensor.living_room_right_main_switch_1_voltage:
+  sort_order: 137
+sensor.living_room_right_main_switch_2_voltage:
+  sort_order: 138
+sensor.living_room_right_main_switch_1_energy:
+  sort_order: 139
+sensor.living_room_right_main_switch_2_energy:
+  sort_order: 140
+sensor.living_room_right_main_switch_1_temperature:
+  sort_order: 141
+sensor.living_room_right_main_switch_2_temperature:
+  sort_order: 142
+sensor.living_room_right_main_switch_rssi:
+  sort_order: 143
+sensor.living_room_right_main_switch_uptime:
+  sort_order: 144
+sensor.living_room_left_main_switch_1_power:
+  sort_order: 145
+sensor.living_room_left_main_switch_2_power:
+  sort_order: 146
+sensor.living_room_left_main_switch_1_voltage:
+  sort_order: 147
+sensor.living_room_left_main_switch_2_voltage:
+  sort_order: 148
+sensor.living_room_left_main_switch_1_energy:
+  sort_order: 149
+sensor.living_room_left_main_switch_2_energy:
+  sort_order: 150
+sensor.living_room_left_main_switch_1_temperature:
+  sort_order: 151
+sensor.living_room_left_main_switch_2_temperature:
+  sort_order: 152
+sensor.living_room_left_main_switch_rssi:
+  sort_order: 153
+sensor.living_room_left_main_switch_uptime:
+  sort_order: 154
+sensor.living_room_blinds_2_power:
+  sort_order: 155
+sensor.living_room_blinds_2_voltage:
+  sort_order: 156
+sensor.living_room_blinds_2_energy:
+  sort_order: 157
+sensor.living_room_blinds_2_temperature:
+  sort_order: 158
+sensor.living_room_blinds_2_rssi:
+  sort_order: 159
+sensor.living_room_blinds_2_uptime:
+  sort_order: 160
+sensor.living_room_right_window_switch_1_power:
+  sort_order: 161
+sensor.living_room_right_window_switch_2_power:
+  sort_order: 162
+sensor.living_room_right_window_switch_1_voltage:
+  sort_order: 163
+sensor.living_room_right_window_switch_2_voltage:
+  sort_order: 164
+sensor.living_room_right_window_switch_1_energy:
+  sort_order: 165
+sensor.living_room_right_window_switch_2_energy:
+  sort_order: 166
+sensor.living_room_right_window_switch_1_temperature:
+  sort_order: 167
+sensor.living_room_right_window_switch_2_temperature:
+  sort_order: 168
+sensor.living_room_right_window_switch_rssi:
+  sort_order: 169
+sensor.living_room_right_window_switch_uptime:
+  sort_order: 170
+sensor.living_room_left_window_switch_1_power:
+  sort_order: 171
+sensor.living_room_left_window_switch_2_power:
+  sort_order: 172
+sensor.living_room_left_window_switch_1_voltage:
+  sort_order: 173
+sensor.living_room_left_window_switch_2_voltage:
+  sort_order: 174
+sensor.living_room_left_window_switch_1_energy:
+  sort_order: 175
+sensor.living_room_left_window_switch_2_energy:
+  sort_order: 176
+sensor.living_room_left_window_switch_1_temperature:
+  sort_order: 177
+sensor.living_room_left_window_switch_2_temperature:
+  sort_order: 178
+sensor.living_room_left_window_switch_rssi:
+  sort_order: 179
+sensor.living_room_left_window_switch_uptime:
+  sort_order: 180
+sensor.living_room_window_3_battery:
+  sort_order: 181
+sensor.living_room_window_3_voltage:
+  sort_order: 182
+sensor.living_room_window_3_linkquality:
+  sort_order: 183
+sensor.living_room_window_3_last_seen:
+  sort_order: 184
+sensor.living_room_window_3_update_state:
+  sort_order: 185
+sensor.living_room_window_4_battery:
+  sort_order: 186
+sensor.living_room_window_4_voltage:
+  sort_order: 187
+sensor.living_room_window_4_power_outage_count:
+  sort_order: 188
+sensor.living_room_window_4_linkquality:
+  sort_order: 189
+sensor.living_room_window_4_last_seen:
+  sort_order: 190
+sensor.living_room_window_1_battery:
+  sort_order: 191
+sensor.living_room_window_1_voltage:
+  sort_order: 192
+sensor.living_room_window_1_last_seen:
+  sort_order: 193
+sensor.living_room_window_1_update_state:
+  sort_order: 194
+sensor.living_room_window_2_battery:
+  sort_order: 195
+sensor.living_room_window_2_voltage:
+  sort_order: 196
+sensor.living_room_window_2_power_outage_count:
+  sort_order: 197
+sensor.living_room_window_2_linkquality:
+  sort_order: 198
+sensor.living_room_window_2_last_seen:
+  sort_order: 199
+  hidden: true
+switch.living_room_e220_l1:
+  sort_order: 200
+switch.living_room_e220_l2:
+  sort_order: 201
+switch.living_room_e220_l3:
+  sort_order: 202
+switch.nintendo_wii:
+  sort_order: 203
+switch.christmas_tree_nightlight:
+  sort_order: 204
+switch.christmas_tree_sync_send:
+  sort_order: 205
+switch.christmas_tree_sync_receive:
+  sort_order: 206
+switch.christmas_tree_reverse:
+  sort_order: 207
+switch.living_room_right_main_switch_1:
+  sort_order: 208
+switch.living_room_right_main_switch_2:
+  sort_order: 209
+switch.living_room_left_main_switch_1:
+  sort_order: 210
+switch.living_room_left_main_switch_2:
+  sort_order: 211
+switch.living_room_right_window_switch_1:
+  sort_order: 212
+switch.living_room_right_window_switch_2:
+  sort_order: 213
+switch.living_room_left_window_switch_1:
+  sort_order: 214
+switch.living_room_left_window_switch_2:
+  sort_order: 215
+update.christmas_tree_firmware:
+  sort_order: 216
+binary_sensor.kitchen_main_switch_cloud:
+  hidden: true
+binary_sensor.kitchen_main_switch_firmware_update:
+  hidden: true
+binary_sensor.kitchen_main_switch_1_overheating:
+  hidden: true
+binary_sensor.kitchen_main_switch_2_overheating:
+  hidden: true
+binary_sensor.kitchen_main_switch_1_overpowering:
+  hidden: true
+binary_sensor.kitchen_main_switch_2_overpowering:
+  hidden: true
+binary_sensor.kitchen_main_switch_1_overvoltage:
+  hidden: true
+binary_sensor.kitchen_main_switch_2_overvoltage:
+  hidden: true
+button.kitchen_main_switch_ota_update:
+  hidden: true
+button.kitchen_main_switch_ota_update_beta:
+  hidden: true
+button.kitchen_main_switch_reboot:
+  hidden: true
+sensor.kitchen_main_switch_1_power:
+  hidden: true
+sensor.kitchen_main_switch_2_power:
+  hidden: true
+sensor.kitchen_main_switch_1_voltage:
+  hidden: true
+sensor.kitchen_main_switch_2_voltage:
+  hidden: true
+sensor.kitchen_main_switch_1_energy:
+  hidden: true
+sensor.kitchen_main_switch_2_energy:
+  hidden: true
+sensor.kitchen_main_switch_1_temperature:
+  hidden: true
+sensor.kitchen_main_switch_2_temperature:
+  hidden: true
+sensor.kitchen_main_switch_rssi:
+  hidden: true
+sensor.kitchen_main_switch_uptime:
+  hidden: true
+switch.kitchen_main_switch_1:
+  hidden: true
+switch.kitchen_main_switch_2:
+  hidden: true
+button.kitchen_blinds_1_ota_update:
+  hidden: true
+button.kitchen_blinds_1_reboot:
+  hidden: true
+cover.kitchen_blinds_1:
+  hidden: true
+button.kitchen_blinds_2_ota_update:
+  hidden: true
+button.kitchen_blinds_2_reboot:
+  hidden: true
+cover.kitchen_blinds_2:
+  hidden: true
+binary_sensor.kitchen_blinds_1_overheating:
+  hidden: true
+binary_sensor.kitchen_blinds_1_overpowering:
+  hidden: true
+binary_sensor.kitchen_blinds_1_overvoltage:
+  hidden: true
+sensor.kitchen_blinds_1_power:
+  hidden: true
+sensor.kitchen_blinds_1_energy:
+  hidden: true
+binary_sensor.kitchen_blinds_2_overheating:
+  hidden: true
+binary_sensor.kitchen_blinds_2_overpowering:
+  hidden: true
+binary_sensor.kitchen_blinds_2_overvoltage:
+  hidden: true
+sensor.kitchen_blinds_2_power:
+  hidden: true
+sensor.kitchen_blinds_2_energy:
+  hidden: true
+binary_sensor.kitchen_window_2_contact:
+  hidden: false
+sensor.kitchen_window_2_battery:
+  hidden: true
+binary_sensor.kitchen_window_2_battery_low:
+  hidden: true
+sensor.kitchen_window_2_voltage:
+  hidden: true
+sensor.kitchen_window_2_linkquality:
+  hidden: true
+sensor.kitchen_window_2_last_seen:
+  hidden: true
+sensor.kitchen_window_2_update_state:
+  hidden: true
+binary_sensor.kitchen_window_2_update_available:
+  hidden: true
+binary_sensor.kitchen_appliances_overpowering:
+  hidden: true
+binary_sensor.kitchen_appliances_cloud:
+  hidden: true
+binary_sensor.kitchen_appliances_firmware_update:
+  hidden: true
+button.kitchen_appliances_ota_update:
+  hidden: true
+button.kitchen_appliances_ota_update_beta:
+  hidden: true
+button.kitchen_appliances_reboot:
+  hidden: true
+sensor.hob_power:
+  hidden: true
+sensor.hob_energy:
+  hidden: true
+sensor.hob_energy_returned:
+  hidden: true
+sensor.hob_voltage:
+  hidden: true
+sensor.hob_power_factor:
+  hidden: true
+sensor.oven_power:
+  hidden: true
+sensor.oven_energy:
+  hidden: true
+sensor.oven_energy_returned:
+  hidden: true
+sensor.oven_voltage:
+  hidden: true
+sensor.oven_power_factor:
+  hidden: true
+sensor.kitchen_appliances_rssi:
+  hidden: true
+sensor.kitchen_appliances_uptime:
+  hidden: true
+switch.kitchen_appliances:
+  hidden: true
+binary_sensor.play_room_blinds_1_cloud:
+  hidden: true
+binary_sensor.play_room_blinds_1_firmware_update:
+  hidden: true
+button.play_room_blinds_1_ota_update:
+  hidden: true
+button.play_room_blinds_1_ota_update_beta:
+  hidden: true
+button.play_room_blinds_1_reboot:
+  hidden: true
+cover.play_room_blinds_1:
+  hidden: true
+sensor.play_room_blinds_1_rssi:
+  hidden: true
+sensor.play_room_blinds_1_uptime:
+  hidden: true
+binary_sensor.play_room_blinds_1_overheating:
+  hidden: true
+binary_sensor.play_room_blinds_1_overpowering:
+  hidden: true
+binary_sensor.play_room_blinds_1_overvoltage:
+  hidden: true
+sensor.play_room_blinds_1_power:
+  hidden: true
+sensor.play_room_blinds_1_voltage:
+  hidden: true
+sensor.play_room_blinds_1_energy:
+  hidden: true
+sensor.play_room_blinds_1_temperature:
+  hidden: true
+binary_sensor.play_room_main_switch_cloud:
+  hidden: true
+binary_sensor.play_room_main_switch_firmware_update:
+  hidden: true
+binary_sensor.play_room_main_switch_1_overheating:
+  hidden: true
+binary_sensor.play_room_main_switch_2_overheating:
+  hidden: true
+binary_sensor.play_room_main_switch_1_overpowering:
+  hidden: true
+binary_sensor.play_room_main_switch_2_overpowering:
+  hidden: true
+binary_sensor.play_room_main_switch_1_overvoltage:
+  hidden: true
+binary_sensor.play_room_main_switch_2_overvoltage:
+  hidden: true
+button.play_room_main_switch_ota_update:
+  hidden: true
+button.play_room_main_switch_ota_update_beta:
+  hidden: true
+button.play_room_main_switch_reboot:
+  hidden: true
+sensor.play_room_main_switch_1_power:
+  hidden: true
+sensor.play_room_main_switch_2_power:
+  hidden: true
+sensor.play_room_main_switch_1_voltage:
+  hidden: true
+sensor.play_room_main_switch_2_voltage:
+  hidden: true
+sensor.play_room_main_switch_1_energy:
+  hidden: true
+sensor.play_room_main_switch_2_energy:
+  hidden: true
+sensor.play_room_main_switch_1_temperature:
+  hidden: true
+sensor.play_room_main_switch_2_temperature:
+  hidden: true
+sensor.play_room_main_switch_rssi:
+  hidden: true
+sensor.play_room_main_switch_uptime:
+  hidden: true
+switch.play_room_main_switch_1:
+  hidden: true
+switch.play_room_main_switch_2:
+  hidden: true
+binary_sensor.play_room_bed_switch_cloud:
+  hidden: true
+binary_sensor.play_room_bed_switch_firmware_update:
+  hidden: true
+binary_sensor.play_room_bed_switch_1_overheating:
+  hidden: true
+binary_sensor.play_room_bed_switch_2_overheating:
+  hidden: true
+binary_sensor.play_room_bed_switch_1_overpowering:
+  hidden: true
+binary_sensor.play_room_bed_switch_2_overpowering:
+  hidden: true
+binary_sensor.play_room_bed_switch_1_overvoltage:
+  hidden: true
+binary_sensor.play_room_bed_switch_2_overvoltage:
+  hidden: true
+button.play_room_bed_switch_ota_update:
+  hidden: true
+button.play_room_bed_switch_ota_update_beta:
+  hidden: true
+button.play_room_bed_switch_reboot:
+  hidden: true
+sensor.play_room_bed_switch_1_power:
+  hidden: true
+sensor.play_room_bed_switch_2_power:
+  hidden: true
+sensor.play_room_bed_switch_1_voltage:
+  hidden: true
+sensor.play_room_bed_switch_2_voltage:
+  hidden: true
+sensor.play_room_bed_switch_1_energy:
+  hidden: true
+sensor.play_room_bed_switch_2_energy:
+  hidden: true
+sensor.play_room_bed_switch_1_temperature:
+  hidden: true
+sensor.play_room_bed_switch_2_temperature:
+  hidden: true
+sensor.play_room_bed_switch_rssi:
+  hidden: true
+sensor.play_room_bed_switch_uptime:
+  hidden: true
+switch.play_room_bed_switch_1:
+  hidden: true
+switch.play_room_bed_switch_2:
+  hidden: true
+binary_sensor.play_room_window_contact:
+  hidden: true
+sensor.play_room_window_battery:
+  hidden: true
+binary_sensor.play_room_window_battery_low:
+  hidden: true
+sensor.play_room_window_voltage:
+  hidden: true
+sensor.play_room_window_linkquality:
+  hidden: true
+sensor.play_room_window_last_seen:
+  hidden: true
+sensor.play_room_window_update_state:
+  hidden: true
+binary_sensor.play_room_window_update_available:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_cloud:
+  hidden: true
+binary_sensor.studio_andrea_window_battery_low:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_2_overpowering:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_firmware_update:
+  hidden: true
+button.studio_andrea_main_switch_ota_update_beta:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_2_overvoltage:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_1_overheating:
+  hidden: true
+binary_sensor.studio_andrea_window_update_available:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_1_overpowering:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_2_overheating:
+  hidden: true
+button.studio_andrea_main_switch_ota_update:
+  hidden: true
+binary_sensor.studio_andrea_main_switch_1_overvoltage:
+  hidden: true
+button.studio_andrea_main_switch_reboot:
+  hidden: true
+sensor.studio_andrea_main_switch_rssi:
+  hidden: true
+sensor.studio_andrea_window_battery:
+  hidden: true
+sensor.studio_andrea_main_switch_uptime:
+  hidden: true
+sensor.studio_andrea_main_switch_1_temperature:
+  hidden: true
+sensor.studio_andrea_main_switch_2_voltage:
+  hidden: true
+sensor.studio_andrea_main_switch_1_voltage:
+  hidden: true
+sensor.studio_andrea_main_switch_2_temperature:
+  hidden: true
+sensor.studio_andrea_main_switch_1_power:
+  hidden: true
+sensor.studio_andrea_main_switch_2_power:
+  hidden: true
+number.studio_andrea_radar_radar_sensitivity:
+  hidden: true
+select.studio_andrea_radar_radar_scene:
+  hidden: true
+sensor.studio_andrea_radar_linkquality:
+  hidden: true
+sensor.studio_andrea_radar_tumble_alarm_time:
+  hidden: true
+sensor.studio_andrea_radar_fall_sensitivity:
+  hidden: true
+sensor.studio_andrea_radar_motion_direction:
+  hidden: true
+sensor.studio_andrea_radar_static_dwell_alarm:
+  hidden: true
+sensor.studio_andrea_ceiling_light_1_linkquality:
+  hidden: true
+sensor.studio_andrea_radar_radar_scene:
+  hidden: true
+sensor.studio_andrea_radar_last_seen:
+  hidden: true
+sensor.studio_andrea_radar_tumble_switch:
+  hidden: true
+sensor.studio_andrea_ceiling_light_2_linkquality:
+  hidden: true
+sensor.studio_andrea_ceiling_light_4_last_seen:
+  hidden: true
+sensor.studio_andrea_ceiling_light_3_linkquality:
+  hidden: true
+sensor.studio_andrea_radar_fall_down_status:
+  hidden: true
+sensor.studio_andrea_radar_motion_speed:
+  hidden: true
+sensor.studio_andrea_ceiling_light_2_last_seen:
+  hidden: true
+sensor.studio_andrea_ceiling_light_1_last_seen:
+  hidden: true
+select.studio_andrea_radar_tumble_switch:
+  hidden: true
+number.studio_andrea_radar_fall_sensitivity:
+  hidden: true
+sensor.studio_andrea_ceiling_light_4_linkquality:
+  hidden: true
+sensor.studio_andrea_radar_radar_sensitivity:
+  hidden: true
+sensor.studio_andrea_ceiling_light_3_last_seen:
+  hidden: true
+number.studio_andrea_radar_tumble_alarm_time:
+  hidden: true
+light.kitchen_ceiling_light_1:
+  grouped_sort_order: 1
+light.kitchen_ceiling_light_4:
+  grouped_sort_order: 4
+light.kitchen_ceiling_light_3:
+  grouped_sort_order: 3
+light.kitchen_ceiling_light_2:
+  grouped_sort_order: 2
+sensor.kitchen_ceiling_light_4_linkquality:
+  hidden: true
+sensor.kitchen_ceiling_light_1_linkquality:
+  hidden: true
+sensor.kitchen_ceiling_light_3_linkquality:
+  hidden: true
+sensor.kitchen_ceiling_light_2_linkquality:
+  hidden: true
+sensor.kitchen_ceiling_light_4_last_seen:
+  hidden: true
+sensor.kitchen_wsdcgq01lm_last_seen:
+  hidden: true
+sensor.kitchen_toaster_plug_ip:
+  hidden: true
+sensor.kitchen_ceiling_light_2_last_seen:
+  hidden: true
+sensor.kitchen_ceiling_light_1_last_seen:
+  hidden: true
+sensor.kitchen_ceiling_light_3_last_seen:
+  hidden: true
+sensor.kitchen_wsdcgq01lm_voltage:
+  hidden: true
+sensor.kitchen_window_1_battery:
+  hidden: true
+sensor.kitchen_toaster_plug_energy_factor:
+  hidden: true
+sensor.kitchen_toaster_plug_energy_apparentpower:
+  hidden: true
+sensor.kitchen_toaster_plug_energy_totalstarttime:
+  hidden: true
+sensor.kitchen_toaster_plug_firmware_version:
+  hidden: true
+sensor.kitchen_toaster_plug_ssid:
+  hidden: true
+sensor.kitchen_toaster_plug_rssi:
+  hidden: true
+sensor.kitchen_toaster_plug_restart_reason:
+  hidden: true
+sensor.kitchen_toaster_plug_mqtt_connect_count:
+  hidden: true
+sensor.kitchen_microwave_plug_firmware_version:
+  hidden: true
+sensor.kitchen_microwave_plug_ssid:
+  hidden: true
+sensor.kitchen_microwave_plug_rssi:
+  hidden: true
+sensor.kitchen_microwave_plug_restart_reason:
+  hidden: true
+sensor.kitchen_microwave_plug_mqtt_connect_count:
+  hidden: true
+sensor.kitchen_microwave_plug_wifi_connect_count:
+  hidden: true
+sensor.kitchen_microwave_plug_last_restart_time:
+  hidden: true
+sensor.kitchen_microwave_plug_ip:
+  hidden: true
+sensor.kitchen_toaster_plug_energy_period:
+  hidden: true
+sensor.kitchen_rtcgq11lm_last_seen:
+  hidden: true
+sensor.kitchen_rtcgq11lm_linkquality:
+  hidden: true
+sensor.kitchen_rtcgq11lm_power_outage_count:
+  hidden: true
+sensor.kitchen_rtcgq11lm_voltage:
+  hidden: true
+sensor.kitchen_rtcgq11lm_device_temperature:
+  hidden: true
+sensor.kitchen_rtcgq11lm_battery:
+  hidden: true
+sensor.kitchen_window_1_voltage:
+  hidden: true
+sensor.kitchen_wsdcgq01lm_linkquality:
+  hidden: true
+sensor.kitchen_wsdcgq01lm_battery:
+  hidden: true
+sensor.kitchen_window_1_power_outage_count:
+  hidden: true
+sensor.kitchen_microwave_plug_energy_period:
+  hidden: true
+sensor.kitchen_microwave_plug_energy_factor:
+  hidden: true
+sensor.kitchen_microwave_plug_energy_apparentpower:
+  hidden: true
+sensor.kitchen_microwave_plug_energy_totalstarttime:
+  hidden: true
+sensor.kitchen_toaster_plug_energy_reactivepower:
+  hidden: true
+sensor.kitchen_toaster_plug_signal:
+  hidden: true
+sensor.kitchen_toaster_plug_wifi_connect_count:
+  hidden: true
+sensor.kitchen_toaster_plug_last_restart_time:
+  hidden: true
