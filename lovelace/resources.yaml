@@ -101,7 +101,12 @@
     type: module
   - url: /hacsfiles/platinum-weather-card/platinum-weather-card.js
     type: module
-
+  - url: /hacsfiles/irrigation-unlimited-card/irrigation-unlimited-card.js
+    type: module
+  - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+    type: module
+  - url: /hacsfiles/lovelace-paper-buttons-row/paper-buttons-row.js
+    type: module
 
   - url: /local/q-card.js
     type: module

@@ -568,7 +568,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.kitchen_ceiling_dining_lights
+      entity_id: light.kitchen_ceiling_lights_dining
   mode: single
 - id: '1655242311015'
   alias: 'Shelly - Kitchen Main Switch #2 - SIngle'
@@ -585,7 +585,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.kitchen_ceiling_cooking_lights
+      entity_id: light.kitchen_ceiling_lights_cooking
   mode: single
 - id: '1655281507209'
   alias: 'Shelly - Guest bedroom Main Switch #1 - SIngle'
@@ -1220,3 +1220,42 @@
     target:
       entity_id: scene.living_room_reading
   mode: single
+- id: 'IU1653097957047'
+  alias: Smart Irrigation adjustment
+  description: Adjust watering times based on smart irrigation calculations
+  trigger:
+    - platform: time
+      at: "23:30"
+  condition:
+    condition: and
+    conditions:
+    - "{{ states('sensor.smart_irrigation_daily_adjusted_run_time') | float(-1) >= 0 }}"
+  action:
+    - service: irrigation_unlimited.adjust_time
+      data:
+        actual: "{{ timedelta(seconds=states('sensor.smart_irrigation_daily_adjusted_run_time') | int(0)) }}"
+        # -------------------------------------------------------------------
+        # Please see documentation regarding the adjust_time service call.
+        # Choose an option below. Comment out/delete as needed. This will NOT work as is.
+        # 1. Adjust a single zone. Change the zone as required
+        # entity_id: binary_sensor.irrigation_unlimited_c1_z1
+        # 2. Adjust a sequence. Change the sequence_id as required
+        # entity_id: binary_sensor.irrigation_unlimited_c1_m
+        # sequence_id: 1
+        # -------------------------------------------------------------------
+  mode: single
+- id: 'IU1653098247170'
+  alias: Smart Irrigation reset bucket
+  description: Resets the Smart Irrigation bucket after watering
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.irrigation_unlimited_c1_m
+      from: "on"
+      to: "off"
+  condition:
+    - condition: numeric_state
+      above: '0'
+      entity_id: sensor.smart_irrigation_daily_adjusted_run_time
+  action:
+    - service: smart_irrigation.smart_irrigation_reset_bucket
