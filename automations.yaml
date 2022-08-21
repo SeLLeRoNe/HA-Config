@@ -1252,3 +1252,20 @@
     entity_id: sensor.smart_irrigation_daily_adjusted_run_time
   action:
   - service: smart_irrigation.smart_irrigation_reset_bucket
+- id: IU1654498247110
+  alias: Rainy days in future
+  trigger:
+    platform: state
+    entity_id: sensor.rainy_day
+    to: 'Yes'
+  action:
+    service: irrigation_unlimited.disable
+    data: { entity_id: binary_sensor.irrigation_unlimited_c1_m }
+- alias: No rainy days in future
+  trigger:
+    platform: state
+    entity_id: sensor.rainy_day
+    to: 'No'
+  action:
+    service: irrigation_unlimited.enable
+    data: { entity_id: binary_sensor.irrigation_unlimited_c1_m }
