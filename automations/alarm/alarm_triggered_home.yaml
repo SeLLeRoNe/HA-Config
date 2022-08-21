@@ -1,13 +1,22 @@
 ---
 id: '8130423303258'
 alias: Alarm - Triggered - Home
-initial_state: off
+initial_state: on
 trigger:
-#  - platform: state
-#    entity_id: binary_sensor.studio_andrea_andrea_andrea_pir
-#    to: 'on'
   - platform: state
-    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
+    entity_id: binary_sensor.basement_bathroom_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_gas_sensor_gas
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak
     to: 'on'
 condition:
   condition: and
@@ -15,31 +24,20 @@ condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
       state: 'armed_home'
-    - condition: state
-      entity_id: binary_sensor.patio_pir
-      state: 'off'
-    - condition: state
-      entity_id: light.patio_lights
-      state: 'off'
 action:
   - service: alarm_control_panel.alarm_trigger
     entity_id: alarm_control_panel.home_alarm
-#  - service: alarm_control_panel.alarm_trigger
-#    entity_id: alarm_control_panel.home_alarm_mqtt
   - service: tts.google_say
     data:
       entity_id: media_player.studio_andrea_andrea_andrea_google_mini
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir" %}in the Studio
-        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
-        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
-        {% else %}from Unknown Sensor
+        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Ground Floor Bathroom
+        {% else %}but the trigger cannot be identified
         {% endif %}
       language: 'en'
   - service: notify.alarm
@@ -47,15 +45,12 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir" %}in the Studio
-        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
-        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
-        {% else %}from Unknown Sensor
+        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Ground Floor Bathroom
+        {% else %}but the trigger cannot be identified
         {% endif %}
       data:
         color: "#FF3300"
@@ -69,28 +64,25 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.living_room_pir" %}in the Living Room
-        {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi" %}in the Master Bedroom
-        {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir" %}in the Studio
-        {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir" %}in the Luca's Bedroom
-        {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
-        {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
-        {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
-        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
-        {% else %}from Unknown Sensor
+        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
+        {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Ground Floor Bathroom
+        {% else %}but the trigger cannot be identified
         {% endif %}
-  - service: homeassistant.turn_on
-    data:
-      entity_id:
-        - light.patio_light
-        - light.studio_andrea_andrea_andrea_wall_light
-      rgb_color: [255,0,0]
-      brightness_pct: 100
-      transition: 1
-  - delay:
-      seconds: 30
-  - service: homeassistant.turn_off
-    data:
-      entity_id:
-        - light.patio_light
-        - light.studio_andrea_andrea_andrea_wall_light
+#  - service: homeassistant.turn_on
+#    data:
+#      entity_id:
+#        - light.patio_light
+#        - light.studio_andrea_andrea_andrea_wall_light
+#      rgb_color: [255,0,0]
+#      brightness_pct: 100
+#      transition: 1
+#  - delay:
+#      seconds: 30
+#  - service: homeassistant.turn_off
+#    data:
+#      entity_id:
+#        - light.patio_light
+#        - light.studio_andrea_andrea_andrea_wall_light
