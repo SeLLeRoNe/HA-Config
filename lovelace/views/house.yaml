@@ -190,8 +190,12 @@ cards:
         template: title
         variables:
           - title: Weather
-      - type: custom:decluttering-card
-        template: darksky_card
+      - type: weather-forecast
+        entity: weather.openweathermap
+      - type: weather-forecast
+        entity: weather.home
+#      - type: custom:decluttering-card
+#        template: darksky_card
 #  - type: custom:decluttering-card
 #    template: plants_card
   - type: custom:decluttering-card

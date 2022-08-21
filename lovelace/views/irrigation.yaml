@@ -1,0 +1,43 @@
+title: Irrigation
+#icon: mdi:flower
+icon: mdi:sprinkler-variant
+path: irrigation
+panel: false
+theme: ''
+badges: []
+cards:
+  - type: 'custom:irrigation-unlimited-card'
+  - type: 'custom:mini-graph-card'
+    name: Watering Last 7 Days
+    icon: 'mdi:sprinkler-variant'
+    entities:
+      - entity: binary_sensor.irrigation_unlimited_c1_z1
+        attribute: today_total
+      - entity: binary_sensor.irrigation_unlimited_c1_z2
+        attribute: today_total
+      - entity: binary_sensor.irrigation_unlimited_c1_z3
+        attribute: today_total
+      - entity: binary_sensor.irrigation_unlimited_c1_z4
+        attribute: today_total
+    show:
+      graph: bar
+      labels: true
+    unit: min
+    aggregate_func: max
+    hours_to_show: 168
+    group_by: date
+    lower_bound: 0
+  - type: 'custom:logbook-card'
+    entity: binary_sensor.irrigation_unlimited_c1_z1
+    title: History
+    attributes:
+      - value: current_name
+        label: Schedule
+      - value: adjustment
+        label: Adjustment
+    history: 5
+    collapse: 2
+    show:
+      separator: true
+    hiddenState:
+      - 'off'

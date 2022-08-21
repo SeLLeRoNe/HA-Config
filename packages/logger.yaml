@@ -34,3 +34,4 @@ logger:
     custom_components.dahua_vto: error
     custom_components.entity_controller: error
     custom_components.sleep_as_android: error
+    custom_components.irrigation_unlimited: error

@@ -1,0 +1,50 @@
+# Irrigation Unlimited support file.
+#
+# Filename: irrigation_unlimited_controls.yaml
+#
+# This file is a package and should be located in the config/packages
+# folder. If you do not have a packages folder then create it and add
+# the following to configuration.yaml
+#
+# homeassistant:
+#  packages: !include_dir_named packages
+#
+# More information on packages can be found at https://www.home-assistant.io/docs/configuration/packages
+#
+input_select:
+  irrigation_unlimited_entities:
+    name: Irrigation Unlimited Entities
+    options:
+      - <none>
+      - binary_sensor.irrigation_unlimited_c1_z1
+      - binary_sensor.irrigation_unlimited_c1_z2
+      - binary_sensor.irrigation_unlimited_c1_z3
+      - binary_sensor.irrigation_unlimited_c1_z4
+
+  irrigation_unlimited_sequences:
+    name: Irrigation Unlimited Sequences
+    options:
+      - <none>
+
+input_datetime:
+  irrigation_unlimited_run_time:
+    name: Run Time
+    has_date: false
+    has_time: true
+
+automation:
+  - alias: Irrigation Unlimited Load UI Controls
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: irrigation_unlimited.list_config
+        data:
+          entity_id: input_select.irrigation_unlimited_entities
+          section: entities
+          first: <none>
+      - service: irrigation_unlimited.list_config
+        data:
+          entity_id: input_select.irrigation_unlimited_sequences
+          section: sequences
+          first: <none>

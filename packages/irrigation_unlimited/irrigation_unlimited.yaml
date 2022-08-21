@@ -1,0 +1,49 @@
+irrigation_unlimited:
+  controllers:
+    zones:
+      - entity_id: "switch.garden_irrigation_system_zone_1"
+        show:
+          timeline: true
+        schedules:
+          - time: "07:00"
+            duration: "00:05"
+      - entity_id: "switch.garden_irrigation_system_zone_2"
+        show:
+          timeline: true
+        schedules:
+          - time: "07:10"
+            duration: "00:05"
+      - entity_id: "switch.garden_irrigation_system_zone_3"
+        show:
+          timeline: true
+        schedules:
+          - time: "07:15"
+            duration: "00:10"
+      - entity_id: "switch.garden_irrigation_system_zone_4"
+        show:
+          timeline: true
+        schedules:
+          - time: "07:30"
+            duration: "00:05"
+#    sequences:
+#      - name: "Run 1"
+#        duration: "23:20"
+#        delay: "00:01"
+#        schedules:
+#          - name: "Summer"
+#            time: "00:00"
+##            weekday: [mon, wed, fri]
+#            month: [jun, jul, aug]
+#            duration: "00:45"
+#          - name: "Winter"
+#            time: "06:00"
+##            weekday: [sun]
+#            month: [dec, jan, feb]
+#            duration: "00:30"
+#          - name: "Spring and Autumn"
+#            time: "06:00"
+##            weekday: [mon, thu]
+#            month: [mar, apr, may, sep, oct, nov]
+#        zones:
+#          - zone_id: 3
+#          - zone_id: 4

@@ -85,6 +85,17 @@ alerts:
         show_state: false
         state_color: true
         entities:
+          - name: Master Bedroom Window
+            entity: binary_sensor.master_bedroom_window_1_contact
+          - name: Master Bedroom Window 2
+            entity: binary_sensor.master_bedroom_window_2_contact
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
           - name: Kids Bedroom Window
             entity: binary_sensor.kids_bedroom_window_contact
           - name: Kids Bedroom PIR
