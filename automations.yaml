@@ -224,7 +224,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_light_wardrobe
+      entity_id: light.master_bedroom_ceiling_lights_wardrobe
   mode: single
 - id: '1655219761954'
   alias: Shelly - Master Bedroom Left Bed Switch - Single
@@ -1242,8 +1242,7 @@
   description: Resets the Smart Irrigation bucket after watering
   trigger:
   - platform: state
-    entity_id:
-    - binary_sensor.irrigation_unlimited_c1_m
+    entity_id: binary_sensor.irrigation_unlimited_c1_m
     from: 'on'
     to: 'off'
   condition:
@@ -1255,17 +1254,20 @@
 - id: IU1654498247110
   alias: Rainy days in future
   trigger:
-    platform: state
+  - platform: state
     entity_id: sensor.rainy_day
     to: 'Yes'
   action:
-    service: irrigation_unlimited.disable
-    data: { entity_id: binary_sensor.irrigation_unlimited_c1_m }
-- alias: No rainy days in future
+  - service: irrigation_unlimited.disable
+    data:
+      entity_id: binary_sensor.irrigation_unlimited_c1_m
+- id: IU1654498247122
+  alias: No rainy days in future
   trigger:
-    platform: state
+  - platform: state
     entity_id: sensor.rainy_day
     to: 'No'
   action:
-    service: irrigation_unlimited.enable
-    data: { entity_id: binary_sensor.irrigation_unlimited_c1_m }
+  - service: irrigation_unlimited.enable
+    data:
+      entity_id: binary_sensor.irrigation_unlimited_c1_m

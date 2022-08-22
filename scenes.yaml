@@ -1,143 +1,245 @@
-- id: '1627321383895'
-  name: Bedroom Luca Mood
+- id: '1660756745573'
+  name: Living Room - Reading
   entities:
-    light.bedroom_luca_lamp_top:
+    light.living_room_ceiling_row_1_light_2:
       min_mireds: 153
       max_mireds: 500
-      effect_list:
-      - None
-      - Wake up
-      - Cycle up
-      - Cycle down
-      - Random
       supported_color_modes:
       - color_temp
-      - hs
-      color_mode: hs
-      brightness_pct: 50
-      hs_color:
-      - 240
-      - 100
-      rgb_color:
-      - 0
-      - 0
-      - 255
-      xy_color:
-      - 0.136
-      - 0.04
-      effect: None
-      friendly_name: Bedroom Luca Lamp Top
-      supported_features: 36
-      state: 'on'
-    light.bedroom_luca_led1624g9_ceiling_1:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
       - xy
-      friendly_name: bedroom_luca_LED1624G9_ceiling_1
-      supported_features: 61
-      state: unavailable
-    light.bedroom_luca_led1624g9_ceiling_2:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      friendly_name: bedroom_luca_LED1624G9_ceiling_2
-      supported_features: 61
-      state: unavailable
-    light.bedroom_luca_led1624g9_ceiling_3:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      friendly_name: bedroom_luca_LED1624G9_ceiling_3
-      supported_features: 61
-      state: unavailable
-    light.bedroom_luca_lamp_bottom:
-      min_mireds: 250
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - color_temp
+      friendly_name: Living Room Ceiling Row 1 Light 2
+      supported_features: 59
+      color:
+        h: 38
+        hue: 38
+        s: 59
+        saturation: 59
+        x: 0.3988
+        y: 0.3873
       device:
-        applicationVersion: 32
-        dateCode: '20200312'
-        friendlyName: bedroom_luca_LED1537R6_lamp_bottom
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 1 Light 2
         hardwareVersion: 1
-        ieeeAddr: '0xd0cf5efffedcd4a8'
-        manufacturerID: 4476
-        manufacturerName: IKEA of Sweden
-        model: LED1537R6/LED1739R5
-        networkAddress: 11919
+        ieeeAddr: '0x00124b00244f9cc1'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 5969
         powerSource: Mains (single phase)
-        softwareBuildID: 2.0.029
-        stackVersion: 98
+        softwareBuildID: 1.0.13
+        stackVersion: 2
         type: Router
-        zclVersion: 2
-      last_seen: '2021-09-29T16:27:18.185Z'
-      linkquality: 63
-      power_on_behavior: 'off'
-      update:
-        state: idle
-      update_available: false
-      friendly_name: bedroom_luca_LED1537R6_lamp_bottom
-      supported_features: 47
-      state: 'off'
-    select.bedroom_luca_lamp_bottom_power_on_behavior:
-      options:
-      - 'off'
-      - previous
-      - 'on'
-      brightness: 64
+        zclVersion: 1
+      last_seen: '2022-08-22T17:41:45.247Z'
+      linkquality: 178
       color_mode: color_temp
-      color_temp: 259
+      brightness: 255
+      color_temp: 276
+      hs_color:
+      - 27.059
+      - 42.165
+      rgb_color:
+      - 255
+      - 195
+      - 147
+      xy_color:
+      - 0.446
+      - 0.371
+      state: 'on'
+    light.living_room_ceiling_row_1_light_3:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      friendly_name: Living Room Ceiling Row 1 Light 3
+      supported_features: 59
+      color:
+        h: 38
+        hue: 38
+        s: 59
+        saturation: 59
+        x: 0.3988
+        y: 0.3873
       device:
-        applicationVersion: 32
-        dateCode: '20200312'
-        friendlyName: bedroom_luca_LED1537R6_lamp_bottom
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 1 Light 3
         hardwareVersion: 1
-        ieeeAddr: '0xd0cf5efffedcd4a8'
-        manufacturerID: 4476
-        manufacturerName: IKEA of Sweden
-        model: LED1537R6/LED1739R5
-        networkAddress: 11919
+        ieeeAddr: '0x00124b00244f98df'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 31075
         powerSource: Mains (single phase)
-        softwareBuildID: 2.0.029
-        stackVersion: 98
+        softwareBuildID: 1.0.13
+        stackVersion: 2
         type: Router
-        zclVersion: 2
-      last_seen: '2021-09-29T16:27:18.185Z'
-      linkquality: 63
-      power_on_behavior: 'off'
-      update:
-        state: idle
-      update_available: false
-      friendly_name: bedroom_luca_LED1537R6_lamp_bottom_power_on_behavior
-      icon: mdi:power-settings
-      state: 'off'
-- id: '1660756474642'
-  name: Lullaby Time
+        zclVersion: 1
+      last_seen: '2022-08-22T17:41:45.123Z'
+      linkquality: 174
+      color_mode: color_temp
+      brightness: 255
+      color_temp: 276
+      hs_color:
+      - 27.059
+      - 42.165
+      rgb_color:
+      - 255
+      - 195
+      - 147
+      xy_color:
+      - 0.446
+      - 0.371
+      state: 'on'
+  icon: si:gitbook
+  metadata: {}
+- id: '1661189930047'
+  name: Living Room Table - Game Night
+  entities:
+    light.living_room_ceiling_row_3_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      friendly_name: Living Room Ceiling Row 3 Light 1
+      supported_features: 59
+      color:
+        h: 38
+        hue: 38
+        s: 61
+        saturation: 61
+        x: 0.4009
+        y: 0.3885
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 1
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9648'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 9727
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-08-22T17:41:59.206Z'
+      linkquality: 14
+      color_mode: color_temp
+      brightness: 255
+      color_temp: 279
+      hs_color:
+      - 27.093
+      - 42.979
+      rgb_color:
+      - 255
+      - 194
+      - 145
+      xy_color:
+      - 0.448
+      - 0.372
+      state: 'on'
+    light.living_room_ceiling_row_3_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      friendly_name: Living Room Ceiling Row 3 Light 2
+      supported_features: 59
+      color:
+        h: 38
+        hue: 38
+        s: 61
+        saturation: 61
+        x: 0.4009
+        y: 0.3885
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 2
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9deb'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 20041
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-08-22T17:41:59.230Z'
+      linkquality: 10
+      color_mode: color_temp
+      brightness: 255
+      color_temp: 279
+      hs_color:
+      - 27.093
+      - 42.979
+      rgb_color:
+      - 255
+      - 194
+      - 145
+      xy_color:
+      - 0.448
+      - 0.372
+      state: 'on'
+    light.living_room_ceiling_row_3_light_3:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      friendly_name: Living Room Ceiling Row 3 Light 3
+      supported_features: 59
+      color:
+        h: 38
+        hue: 38
+        s: 61
+        saturation: 61
+        x: 0.4009
+        y: 0.3885
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 3
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9041'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 62254
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-08-22T17:41:59.280Z'
+      linkquality: 10
+      color_mode: color_temp
+      brightness: 255
+      color_temp: 279
+      hs_color:
+      - 27.093
+      - 42.979
+      rgb_color:
+      - 255
+      - 194
+      - 145
+      xy_color:
+      - 0.448
+      - 0.372
+      state: 'on'
+  icon: mdi:controller
+  metadata: {}
+- id: '1661190199790'
+  name: Kids Bedroom - Lullaby Time
   entities:
     light.kids_bedroom_ceiling_light_3:
       min_mireds: 153
@@ -148,8 +250,8 @@
       friendly_name: Kids Bedroom Ceiling Light 3
       supported_features: 59
       color:
-        x: 0.4909
-        y: 0.415
+        x: 0.4031
+        y: 0.3896
       device:
         applicationVersion: 5
         dateCode: '20220301'
@@ -165,110 +267,21 @@
         stackVersion: 2
         type: Router
         zclVersion: 3
-      last_seen: '2022-08-17T17:14:25.496Z'
-      linkquality: 36
+      last_seen: '2022-08-22T17:43:18.950Z'
+      linkquality: 61
       color_mode: color_temp
-      brightness: 255
-      color_temp: 425
+      brightness: 79
+      color_temp: 282
       hs_color:
-      - 29.294
-      - 78.165
+      - 27.128
+      - 43.783
       rgb_color:
       - 255
-      - 152
-      - 55
+      - 193
+      - 143
       xy_color:
-      - 0.564
-      - 0.389
+      - 0.451
+      - 0.372
       state: 'on'
-  icon: mdi:weather-night
-  metadata: {}
-- id: '1660756745573'
-  name: Living Room Reading
-  entities:
-    light.living_room_ceiling_light_1_2:
-      min_mireds: 153
-      max_mireds: 500
-      supported_color_modes:
-      - color_temp
-      - xy
-      friendly_name: Living Room Ceiling Light 1 2
-      supported_features: 59
-      color:
-        x: 0.4599
-        y: 0.4106
-      device:
-        applicationVersion: 16
-        dateCode: '20210522'
-        friendlyName: Living Room Ceiling Light 1 2
-        hardwareVersion: 1
-        ieeeAddr: '0x00124b00244f9cc1'
-        manufacturerID: 0
-        manufacturerName: eWeLight
-        model: ZB-RGBCW
-        networkAddress: 5969
-        powerSource: Mains (single phase)
-        softwareBuildID: 1.0.13
-        stackVersion: 2
-        type: Router
-        zclVersion: 1
-      last_seen: '2022-08-17T17:19:02.517Z'
-      linkquality: 7
-      color_mode: color_temp
-      brightness: 76
-      color_temp: 370
-      hs_color:
-      - 28.391
-      - 65.659
-      rgb_color:
-      - 255
-      - 166
-      - 87
-      xy_color:
-      - 0.526
-      - 0.387
-      state: 'on'
-    light.living_room_ceiling_light_1_3:
-      min_mireds: 153
-      max_mireds: 500
-      supported_color_modes:
-      - color_temp
-      - xy
-      friendly_name: Living Room Ceiling Light 1 3
-      supported_features: 59
-      color:
-        x: 0.4599
-        y: 0.4106
-      device:
-        applicationVersion: 16
-        dateCode: '20210522'
-        friendlyName: Living Room Ceiling Light 1 3
-        hardwareVersion: 1
-        ieeeAddr: '0x00124b00244f98df'
-        manufacturerID: 0
-        manufacturerName: eWeLight
-        model: ZB-RGBCW
-        networkAddress: 31075
-        powerSource: Mains (single phase)
-        softwareBuildID: 1.0.13
-        stackVersion: 2
-        type: Router
-        zclVersion: 1
-      last_seen: '2022-08-17T17:18:53.573Z'
-      linkquality: 3
-      color_mode: color_temp
-      brightness: 76
-      color_temp: 370
-      hs_color:
-      - 28.391
-      - 65.659
-      rgb_color:
-      - 255
-      - 166
-      - 87
-      xy_color:
-      - 0.526
-      - 0.387
-      state: 'on'
-  icon: si:gitbook
+  icon: mdi:teddy-bear
   metadata: {}
