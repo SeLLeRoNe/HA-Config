@@ -1,0 +1,10 @@
+---
+platform: template
+sensors:
+    rainy_day:
+        friendly_name: "Rain in next 3 Days"
+        value_template: >-
+            {% set p0 = state_attr('weather.openweathermap', 'forecast')[0].precipitation_probability > 50 %}
+            {% set p1 = state_attr('weather.openweathermap', 'forecast')[1].precipitation_probability > 50 %}
+            {% set p2 = state_attr('weather.openweathermap', 'forecast')[2].precipitation_probability > 50 %}
+            {{ 'Yes' if p0 or p1 or p2 else 'No' }}

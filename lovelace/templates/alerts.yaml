@@ -63,10 +63,12 @@ alerts:
         entities:
           - name: Ground Floor Bathroom Window
             entity: binary_sensor.ground_floor_bathroom_window_contact
-          - name: Ground Floor Bathroom PIR
-            entity: binary_sensor.ground_floor_bathroom_rtcgq11lm_occupancy
+          - name: Ground Floor Bathroom Leak
+            entity: binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak
+#          - name: Ground Floor Bathroom PIR
+#            entity: binary_sensor.ground_floor_bathroom_rtcgq11lm_occupancy
       - type: glance
-        columns: 3
+        columns: 2
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -76,6 +78,15 @@ alerts:
             entity: binary_sensor.kitchen_window_1_contact
           - name: Kitchen Window 2
             entity: binary_sensor.kitchen_window_2_contact
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Kitchen Leak
+            entity: binary_sensor.kitchen_sjcgq11lm_water_leak
           - name: Kitchen PIR
             entity: binary_sensor.kitchen_rtcgq11lm_occupancy
       - type: glance
@@ -89,6 +100,14 @@ alerts:
             entity: binary_sensor.master_bedroom_window_1_contact
           - name: Master Bedroom Window 2
             entity: binary_sensor.master_bedroom_window_2_contact
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Master Bathroom Window
+            entity: binary_sensor.master_bathroom_window_contact
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -109,8 +128,8 @@ alerts:
         entities:
           - name: Guest Bedroom Window
             entity: binary_sensor.guest_bedroom_window_contact
-          - name: Guest Bedroom PIR
-            entity: binary_sensor.guest_bedroom_rtcgq11lm_occupancy
+#          - name: Guest Bedroom PIR
+#            entity: binary_sensor.guest_bedroom_rtcgq11lm_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -145,7 +164,18 @@ alerts:
           - name: Studio Sonia PIR
             entity: binary_sensor.studio_sonia_rtcgq11lm_occupancy
       - type: glance
-        columns: 3
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Upstairs Left Window
+            entity: binary_sensor.upstairs_window_left_contact
+          - name: Upstairs Right Window
+            entity: binary_sensor.upstairs_window_right_contact
+      - type: glance
+        columns: 1
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -153,10 +183,6 @@ alerts:
         entities:
           - name: Downstairs Window
             entity: binary_sensor.downstairs_window_contact
-          - name: Upstairs Right Window
-            entity: binary_sensor.upstairs_window_right_contact
-          - name: Upstairs Left Window
-            entity: binary_sensor.upstairs_window_left_contact
       - type: glance
         columns: 2
         show_header_toggle: false

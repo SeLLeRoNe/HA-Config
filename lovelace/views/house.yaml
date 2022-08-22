@@ -192,9 +192,7 @@ cards:
           - title: Weather
       - type: weather-forecast
         entity: weather.openweathermap
-      - type: weather-forecast
-        entity: weather.home
-#      - type: custom:decluttering-card
+#       - type: custom:decluttering-card
 #        template: darksky_card
 #  - type: custom:decluttering-card
 #    template: plants_card
