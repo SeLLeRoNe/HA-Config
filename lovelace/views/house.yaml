@@ -149,6 +149,11 @@ cards:
 #      - person.sonia
 #      - zone.allowed_area
   - type: custom:layout-break
+  - type: 'custom:notify-card'
+    target: telegram_andrea
+    label: Telegram Andrea
+    card_title: Send Notification
+    notification_title: 'New Notification'
   - type: custom:stack-in-card
     mode: vertical
     layout:
