@@ -34,3 +34,4 @@ node-red/
 tts-cache/
 zigbee2mqtt/
 esphome/
+watchman_report.txt
