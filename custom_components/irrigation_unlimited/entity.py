@@ -3,6 +3,7 @@ import json
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.core import ServiceCall
 from homeassistant.helpers.restore_state import RestoreEntity
+import homeassistant.util.dt as dt
 
 from homeassistant.const import (
     CONF_STATE,
@@ -25,6 +26,8 @@ from .const import (
     ATTR_CONFIGURATION,
     ATTR_CONTROLLER_COUNT,
     ATTR_ENABLED,
+    ATTR_NEXT_TICK,
+    ATTR_TICK_LOG,
     CONF_CONTROLLER,
     CONF_CONTROLLERS,
     CONF_ENABLED,
@@ -329,4 +332,12 @@ class IUComponent(RestoreEntity):
         attr = {}
         attr[ATTR_CONTROLLER_COUNT] = len(self._coordinator.controllers)
         attr[ATTR_CONFIGURATION] = self._coordinator.configuration
+        if self._coordinator.clock.show_log:
+            next_tick = self._coordinator.clock.next_tick
+            attr[ATTR_NEXT_TICK] = (
+                dt.as_local(next_tick) if next_tick is not None else None
+            )
+            attr[ATTR_TICK_LOG] = list(
+                dt.as_local(tick) for tick in self._coordinator.clock.tick_log
+            )
         return attr

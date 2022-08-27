@@ -5,7 +5,7 @@ DOMAIN = "irrigation_unlimited"
 DOMAIN_DATA = f"{DOMAIN}_data"
 COORDINATOR = "coordinator"
 COMPONENT = "component"
-VERSION = "2022.7.0"
+VERSION = "2022.8.0"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/rgc99/irrigation_unlimited/issues"
 
@@ -87,6 +87,12 @@ CONF_RUN = "run"
 CONF_SYNC_SWITCHES = "sync_switches"
 CONF_RENAME_ENTITIES = "rename_entities"
 CONF_ENTITY_BASE = "entity_base"
+CONF_CLOCK = "clock"
+CONF_MODE = "mode"
+CONF_FIXED = "fixed"
+CONF_SEER = "seer"
+CONF_MAX_LOG_ENTRIES = "max_log_entries"
+DEFAULT_MAX_LOG_ENTRIES = 50
 
 # Defaults
 DEFAULT_NAME = DOMAIN
@@ -160,6 +166,8 @@ ATTR_ZONES = "zones"
 ATTR_SEQUENCE_STATUS = "sequence_status"
 ATTR_ZONE_IDS = "zone_ids"
 ATTR_CONTROLLER_COUNT = "controller_count"
+ATTR_NEXT_TICK = "next_tick"
+ATTR_TICK_LOG = "tick_log"
 
 # Resources
 RES_MANUAL = "Manual"

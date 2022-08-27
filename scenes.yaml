@@ -238,8 +238,8 @@
       state: 'on'
   icon: mdi:controller
   metadata: {}
-- id: '1661190199790'
-  name: Kids Bedroom - Lullaby Time
+- id: '1661190480638'
+  name: Kids Bedroom - Lullaby
   entities:
     light.kids_bedroom_ceiling_light_3:
       min_mireds: 153
@@ -250,8 +250,8 @@
       friendly_name: Kids Bedroom Ceiling Light 3
       supported_features: 59
       color:
-        x: 0.4031
-        y: 0.3896
+        x: 0.4059
+        y: 0.391
       device:
         applicationVersion: 5
         dateCode: '20220301'
@@ -267,21 +267,21 @@
         stackVersion: 2
         type: Router
         zclVersion: 3
-      last_seen: '2022-08-22T17:43:18.950Z'
-      linkquality: 61
+      last_seen: '2022-08-22T17:43:25.969Z'
+      linkquality: 174
       color_mode: color_temp
-      brightness: 79
-      color_temp: 282
+      brightness: 255
+      color_temp: 286
       hs_color:
-      - 27.128
-      - 43.783
+      - 27.177
+      - 44.861
       rgb_color:
       - 255
-      - 193
-      - 143
+      - 192
+      - 140
       xy_color:
-      - 0.451
-      - 0.372
+      - 0.455
+      - 0.374
       state: 'on'
   icon: mdi:teddy-bear
   metadata: {}

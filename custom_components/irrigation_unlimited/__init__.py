@@ -26,13 +26,18 @@ from .service import register_component_services
 
 from .const import (
     BINARY_SENSOR,
+    CONF_CLOCK,
     CONF_ENABLED,
     CONF_FINISH,
+    CONF_FIXED,
     CONF_FUTURE_SPAN,
+    CONF_HISTORY,
     CONF_HISTORY_REFRESH,
     CONF_HISTORY_SPAN,
+    CONF_MAX_LOG_ENTRIES,
     CONF_MAXIMUM,
     CONF_MINIMUM,
+    CONF_MODE,
     CONF_MONTH,
     CONF_DAY,
     CONF_ODD,
@@ -44,6 +49,7 @@ from .const import (
     CONF_ANCHOR,
     CONF_SPAN,
     CONF_SYNC_SWITCHES,
+    CONF_SEER,
     DOMAIN,
     COORDINATOR,
     COMPONENT,
@@ -164,11 +170,11 @@ SEQUENCE_ZONE_SCHEMA = vol.Schema(
 
 SEQUENCE_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_SCHEDULES, default={}): vol.All(
-            cv.ensure_list, [SEQUENCE_SCHEDULE_SCHEMA], _list_is_not_empty
-        ),
         vol.Required(CONF_ZONES, default={}): vol.All(
             cv.ensure_list, [SEQUENCE_ZONE_SCHEMA], _list_is_not_empty
+        ),
+        vol.Optional(CONF_SCHEDULES): vol.All(
+            cv.ensure_list, [SEQUENCE_SCHEDULE_SCHEMA]
         ),
         vol.Optional(CONF_NAME): cv.string,
         vol.Optional(CONF_DELAY): cv.positive_time_period,
@@ -187,7 +193,6 @@ CONTROLLER_SCHEMA = vol.Schema(
             cv.ensure_list, [SEQUENCE_SCHEMA], _list_is_not_empty
         ),
         vol.Optional(CONF_NAME): cv.string,
-        vol.Optional(CONF_NAME): cv.string,
         vol.Optional(CONF_CONTROLLER_ID): cv.matches_regex(r"^[a-z0-9]+(_[a-z0-9]+)*$"),
         vol.Optional(CONF_ENTITY_ID): cv.entity_ids,
         vol.Optional(CONF_PREAMBLE): cv.time_period,
@@ -202,6 +207,16 @@ HISTORY_SCHEMA = vol.Schema(
         vol.Optional(CONF_ENABLED): cv.boolean,
         vol.Optional(CONF_REFRESH_INTERVAL): cv.positive_int,
         vol.Optional(CONF_SPAN): cv.positive_int,
+    }
+)
+
+clock_mode = vol.Any(CONF_FIXED, CONF_SEER)
+
+CLOCK_SCHEMA = vol.Schema(
+    {
+        vol.Optional(CONF_MODE, default=CONF_SEER): clock_mode,
+        vol.Optional(CONF_SHOW_LOG, default=False): cv.boolean,
+        vol.Optional(CONF_MAX_LOG_ENTRIES): cv.positive_int,
     }
 )
 
@@ -246,7 +261,8 @@ IRRIGATION_SCHEMA = vol.Schema(
         vol.Optional(CONF_SYNC_SWITCHES): cv.boolean,
         vol.Optional(CONF_RENAME_ENTITIES): cv.boolean,
         vol.Optional(CONF_TESTING): TEST_SCHEMA,
-        vol.Optional("history"): HISTORY_SCHEMA,
+        vol.Optional(CONF_HISTORY): HISTORY_SCHEMA,
+        vol.Optional(CONF_CLOCK): CLOCK_SCHEMA,
     }
 )
 
@@ -274,6 +290,6 @@ async def async_setup(hass: HomeAssistant, config: Config):
     register_component_services(component, coordinator)
 
     coordinator.listen()
-    coordinator.start()
+    coordinator.clock.start()
 
     return True

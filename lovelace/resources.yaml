@@ -107,6 +107,10 @@
     type: module
   - url: /hacsfiles/lovelace-paper-buttons-row/paper-buttons-row.js
     type: module
+  - url: /hacsfiles/lovelace-notify-card/notify-card.js
+    type: module
+  - url: /hacsfiles/lovelace-mushroom/mushroom.js
+    type: module
 
   - url: /local/q-card.js
     type: module

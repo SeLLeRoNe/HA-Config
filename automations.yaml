@@ -1271,3 +1271,246 @@
   - service: irrigation_unlimited.enable
     data:
       entity_id: binary_sensor.irrigation_unlimited_c1_m
+- id: '1661508936675'
+  alias: Night Mode - Living Room Blinds 1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    to: 'on'
+    from: 'off'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 2ac3341deab888954578f05eee670d5d
+    entity_id: binary_sensor.living_room_window_1_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.living_room_blinds_1
+  mode: single
+- id: '1661509017221'
+  alias: Night Mode - Living Room Blinds 2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 2ccbf9bb8673ae8708553ff90cd2a558
+    entity_id: binary_sensor.living_room_window_2_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.living_room_blinds_2
+  mode: single
+- id: '1661509148945'
+  alias: Night Mode - Living Room Blinds 3
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.living_room_blinds_3
+  mode: single
+- id: '1661509189024'
+  alias: Night Mode - Living Room Blinds 4
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.living_room_blinds_3
+  mode: single
+- id: '1661509859074'
+  alias: Night Mode - Guest Bedroom Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 2d779a11e4898b93cf48b2fe057f7b28
+    entity_id: binary_sensor.guest_bedroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.guest_bedroom_blinds
+  mode: single
+- id: '1661510783993'
+  alias: Night Mode - Studio Sonia Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 2ad7681d7be1a0bd8f22dbfea4ba5aa3
+    entity_id: binary_sensor.studio_sonia_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.studio_sonia_blinds_1
+  mode: single
+- id: '1661510823673'
+  alias: Night Mode - Play Room Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 7dc503893e8eb487662071609f530c9f
+    entity_id: binary_sensor.play_room_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.play_room_blinds_1
+  mode: single
+- id: '1661510860346'
+  alias: Night Mode - Master Bedroom Blinds 1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: be1baac82928667accfc37863b4411ba
+    entity_id: binary_sensor.master_bedroom_window_1_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.master_bedroom_blinds_1
+  mode: single
+- id: '1661510901400'
+  alias: Night Mode - Master Bedroom Blinds 2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 1d9c7f86f31a5cc237fc3c0bff82d208
+    entity_id: binary_sensor.master_bedroom_window_2_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.master_bedroom_blinds_2
+  mode: single
+- id: '1661510942034'
+  alias: Night Mode - Kids Bedroom Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: ccdefaa6e4c352e6537518862b40b7bd
+    entity_id: binary_sensor.kids_bedroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.kids_bedroom_blinds_1
+  mode: single
+- id: '1661512384039'
+  alias: Night Mode - Master Bathroom Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: cf1c05f110342fa4f464359a1b35c4fd
+    entity_id: binary_sensor.master_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.master_bathroom_blinds_1
+  mode: single
+- id: '8298153596081'
+  alias: House - Night Mode Activated
+  trigger:
+  - platform: time
+    at: '21:30:00'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.night_mode
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.working_late_andrea
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.working_late_sonia
+  initial_state: true
+- id: '2175879175501'
+  alias: House - Night Mode Deactivated
+  initial_state: true
+  trigger:
+  - platform: time
+    at: 08:00:00
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.night_mode

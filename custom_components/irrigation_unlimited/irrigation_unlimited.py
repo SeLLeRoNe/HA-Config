@@ -1,17 +1,18 @@
 """Irrigation Unlimited Coordinator and sub classes"""
 # pylint: disable=too-many-lines
 import weakref
-from datetime import datetime, time, timedelta
+from datetime import datetime, time, timedelta, timezone
+from collections import deque
 from types import MappingProxyType
-from typing import Dict, OrderedDict, List, Set, NamedTuple
+from typing import Dict, OrderedDict, List, Set, NamedTuple, Callable, Awaitable
 from logging import WARNING, Logger, getLogger, INFO, DEBUG, ERROR
 import uuid
 import time as tm
 import json
-from homeassistant.core import HomeAssistant, CALLBACK_TYPE, DOMAIN as HADOMAIN
+from homeassistant.core import HomeAssistant, HassJob, CALLBACK_TYPE, DOMAIN as HADOMAIN
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.event import (
-    async_track_time_interval,
+    async_track_point_in_utc_time,
     async_call_later,
     Event as HAEvent,
 )
@@ -63,7 +64,9 @@ from .const import (
     BINARY_SENSOR,
     CONF_ACTUAL,
     CONF_ALL_ZONES_CONFIG,
+    CONF_CLOCK,
     CONF_CONTROLLER,
+    CONF_MODE,
     CONF_RENAME_ENTITIES,
     CONF_ENTITY_BASE,
     CONF_RUN,
@@ -153,6 +156,9 @@ from .const import (
     STATUS_DISABLED,
     STATUS_INITIALISING,
     TIMELINE_STATUS,
+    CONF_FIXED,
+    CONF_MAX_LOG_ENTRIES,
+    DEFAULT_MAX_LOG_ENTRIES,
 )
 
 _LOGGER: Logger = getLogger(__package__)
@@ -226,6 +232,14 @@ def wash_t(stime: time, granularity: int = None) -> time:
     return None
 
 
+def round_dt(stime: datetime, granularity: int = None) -> datetime:
+    """Round the supplied datetime to internal boundaries"""
+    if stime is not None:
+        base_time = wash_dt(stime, granularity)
+        return base_time + round_td(stime - base_time, granularity)
+    return None
+
+
 def round_td(delta: timedelta, granularity: int = None) -> timedelta:
     """Round the supplied timedelta to internal boundaries"""
     if delta is not None:
@@ -242,6 +256,11 @@ def str_to_td(atime: str) -> timedelta:
     """Convert a string in 0:00:00 format to timedelta"""
     dur = datetime.strptime(atime, "%H:%M:%S")
     return timedelta(hours=dur.hour, minutes=dur.minute, seconds=dur.second)
+
+
+def utc_eot() -> datetime:
+    """Return the end of time in UTC format"""
+    return datetime.max.replace(tzinfo=timezone.utc)
 
 
 class IUJSONEncoder(json.JSONEncoder):
@@ -808,7 +827,7 @@ class IURunQueue(List[IURun]):
         self._current_run: IURun = None
         self._next_run: IURun = None
         self._sorted: bool = False
-        self._cancel_request: bool = False
+        self._cancel_request: datetime = None
         self._future_span = wash_td(timedelta(days=self.DAYS_SPAN))
 
     @property
@@ -877,9 +896,9 @@ class IURunQueue(List[IURun]):
         self._sorted = False
         return run
 
-    def cancel(self) -> None:
+    def cancel(self, stime: datetime) -> None:
         """Flag the current run to be cancelled"""
-        self._cancel_request = True
+        self._cancel_request = stime
 
     def clear_all(self) -> bool:
         """Clear out all runs"""
@@ -1018,10 +1037,10 @@ class IURunQueue(List[IURun]):
             if run.sequence_update(stime):
                 status |= self.RQ_STATUS_CHANGED
 
-        if self._cancel_request:
+        if self._cancel_request is not None:
             if self.remove_current():
                 status |= self.RQ_STATUS_CANCELED
-            self._cancel_request = False
+            self._cancel_request = None
 
         if self.remove_expired(stime):
             status |= self.RQ_STATUS_REDUCED
@@ -1050,6 +1069,18 @@ class IURunQueue(List[IURun]):
         if self._current_run is None:
             return False
         return self._current_run.update_time_remaining(stime)
+
+    def next_event(self, stime: datetime) -> datetime:
+        """Return the time of the next state change"""
+        result = utc_eot()
+        for run in self:
+            if not run.is_running(stime):
+                result = min(run.start_time, result)
+            else:
+                result = min(run.end_time, result)
+        if self._cancel_request is not None:
+            result = min(self._cancel_request, result)
+        return result
 
     def as_list(self) -> list:
         """Return a list of runs"""
@@ -1378,7 +1409,7 @@ class IUZone(IUBase):
     def service_cancel(self, data: MappingProxyType, stime: datetime) -> None:
         """Cancel the current running schedule"""
         # pylint: disable=unused-argument
-        self._run_queue.cancel()
+        self._run_queue.cancel(stime)
 
     def add(self, schedule: IUSchedule) -> IUSchedule:
         """Add a new schedule to the zone"""
@@ -1565,6 +1596,15 @@ class IUZone(IUBase):
             updated = True
 
         return updated
+
+    def next_awakening(self, stime: datetime) -> datetime:
+        """Return the next event time"""
+        result = self._run_queue.next_event(stime)
+        if self._is_on and self._sensor_last_update is not None:
+            result = min(
+                self._sensor_last_update + self._coordinator.refresh_interval, result
+            )
+        return result
 
     def check_switch(self, resync: bool, stime: datetime) -> bool:
         """Check the linked entity is in sync"""
@@ -2092,8 +2132,9 @@ class IUSequence(IUBase):
         self._enabled = config.get(CONF_ENABLED, self._enabled)
         for zidx, zone_config in enumerate(config[CONF_ZONES]):
             self.find_add_zone(zidx).load(zone_config)
-        for sidx, schedule_config in enumerate(config[CONF_SCHEDULES]):
-            self.find_add_schedule(sidx).load(schedule_config)
+        if CONF_SCHEDULES in config:
+            for sidx, schedule_config in enumerate(config[CONF_SCHEDULES]):
+                self.find_add_schedule(sidx).load(schedule_config)
         return self
 
     def as_dict(self) -> OrderedDict:
@@ -2331,7 +2372,10 @@ class IUSequenceRun(IUBase):
         result[ATTR_ZONES] = []
         for zone in self._sequence.zones:
             runs = self.zone_runs(zone)
-            is_on = zone == self._active_zone
+            if self._active_zone is not None:
+                is_on = zone == self._active_zone.sequence_zone
+            else:
+                is_on = False
             sqr = {}
             sqr[ATTR_INDEX] = zone.index
             sqr[ATTR_ENABLED] = zone.enabled
@@ -2681,7 +2725,7 @@ class IUController(IUBase):
 
     def sequence_status(self) -> List[dict]:
         """Return the sequence status or run information"""
-        result = []
+        result: list[dict] = []
         runs = self.up_next()
         for sequence in self._sequences:
             run = runs.get(sequence)
@@ -2948,6 +2992,17 @@ class IUController(IUBase):
 
         for zone in self._zones:
             zone.update_sensor(stime, True)
+
+    def next_awakening(self, stime: datetime) -> datetime:
+        """Return the next event time"""
+        result = self._run_queue.next_event(stime)
+        if self._is_on and self._sensor_last_update is not None:
+            result = min(
+                self._sensor_last_update + self._coordinator.refresh_interval, result
+            )
+        for zone in self._zones:
+            result = min(zone.next_awakening(stime), result)
+        return result
 
     def check_switch(self, resync: bool, stime: datetime) -> bool:
         """Check the linked entity is in sync"""
@@ -3256,9 +3311,9 @@ class IUTest(IUBase):
         """Return the number of expected results from the test"""
         return len(self._results)
 
-    def is_finished(self, stime) -> bool:
+    def is_finished(self, atime) -> bool:
         """Indicate if this test has finished"""
-        return self.virtual_time(stime) > self._end
+        return self.virtual_time(atime) >= self._end
 
     def next_result(self) -> IUEvent:
         """Return the next result"""
@@ -3317,13 +3372,26 @@ class IUTest(IUBase):
         virtual_start: datetime = atime - self._delta
         actual_duration: float = (virtual_start - self._start).total_seconds()
         virtual_duration: float = actual_duration * self._speed
-        return self._start + timedelta(seconds=virtual_duration)
+        vtime = self._start + timedelta(seconds=virtual_duration)
+        # The conversion may not be exact due to the internal precision
+        # of the compiler particularly at high speed values. Compensate
+        # by rounding if the value is very close to an internal boundary
+        vtime_rounded = round_dt(vtime)
+        if abs(vtime - vtime_rounded) < timedelta(microseconds=100000):
+            return vtime_rounded
+        return vtime
+
+    def actual_time(self, stime: datetime) -> datetime:
+        """Return the actual time from the virtual time"""
+        virtual_duration = (stime - self._start).total_seconds()
+        actual_duration = virtual_duration / self._speed
+        return self._start + self._delta + timedelta(seconds=actual_duration)
 
 
 class IUTester:
     """Irrigation Unlimited testing class"""
 
-    # pylint: disable=too-many-instance-attributes
+    # pylint: disable=too-many-instance-attributes, too-many-public-methods
 
     def __init__(self, coordinator: "IUCoordinator") -> None:
         # Passed parameters
@@ -3334,6 +3402,7 @@ class IUTester:
         self._running_test: int = None
         self._last_test: int = None
         self._autoplay_initialised: bool = False
+        self._ticker: datetime = None
         self.load(None)
 
     @property
@@ -3423,8 +3492,31 @@ class IUTester:
             result += test.total_results
         return result
 
+    @property
+    def ticker(self) -> datetime:
+        """Return the tester clock"""
+        return self._ticker
+
+    @ticker.setter
+    def ticker(self, value: datetime) -> None:
+        """Set the tester clock"""
+        self._ticker = value
+
+    def virtual_time(self, atime: datetime) -> datetime:
+        """Convert actual time to virtual time"""
+        if self.is_testing:
+            return self.current_test.virtual_time(atime)
+        return atime
+
+    def actual_time(self, stime: datetime) -> datetime:
+        """Convert virtual time to actual time"""
+        if self.is_testing:
+            return self.current_test.actual_time(stime)
+        return stime
+
     def start_test(self, test_no: int, atime: datetime) -> IUTest:
         """Start the test"""
+        self._ticker = atime
         if 0 < test_no <= len(self._tests):
             self._running_test = test_no - 1  # 0-based
             test = self._tests[self._running_test]
@@ -3471,6 +3563,7 @@ class IUTester:
         self._running_test = None
         self._last_test = None
         self._autoplay_initialised = False
+        self._ticker: datetime = None
 
     def load(self, config: OrderedDict) -> "IUTester":
         """Load config data for the tester"""
@@ -3506,6 +3599,7 @@ class IUTester:
                     test = self.next_test(atime)
                     if test is not None:
                         poll_func(test.start, True)
+                        self._test_initialised = True
                     else:  # All tests finished
                         if self._show_log:
                             self._coordinator.logger.log_test_completed(
@@ -3553,6 +3647,8 @@ class IUTester:
 
 class IULogger:
     """Irrigation Unlimited logger class"""
+
+    # pylint: disable=too-many-public-methods
 
     def __init__(self, logger: Logger) -> None:
         # Passed parameters
@@ -3785,11 +3881,188 @@ class IULogger:
         )
 
 
+class IUClock:
+    """Irrigation Unlimited Clock class"""
+
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        coordinator: "IUCoordinator",
+        action: Callable[[datetime], Awaitable[None]],
+    ) -> None:
+        # Pass parameters
+        self._hass = hass
+        self._coordinator = coordinator
+        self._action = action
+        # Private variables
+        self._listener_job = HassJob(self._listener)
+        self._remove_timer_listener: CALLBACK_TYPE = None
+        self._tick_log = deque["datetime"](maxlen=DEFAULT_MAX_LOG_ENTRIES)
+        self._next_tick: datetime = None
+        self._fixed_clock = True
+        self._show_log = False
+
+    @property
+    def is_fixed(self) -> bool:
+        """Return if the clock is fixed or variable"""
+        return self._fixed_clock
+
+    @property
+    def next_tick(self) -> datetime:
+        """Return the next anticipated scheduled tick. It
+        may however be cancelled due to a service call"""
+        return self._next_tick
+
+    @property
+    def tick_log(self) -> deque["datetime"]:
+        """Return the tick history log"""
+        return self._tick_log
+
+    @property
+    def show_log(self) -> bool:
+        """Indicate if we should show the tick log"""
+        return self._show_log
+
+    def track_interval(self) -> timedelta:
+        """Returns the system clock time interval"""
+        track_time = SYSTEM_GRANULARITY / self._coordinator.tester.speed
+        track_time *= 0.95  # Run clock slightly ahead of required to avoid skipping
+        return min(timedelta(seconds=track_time), self._coordinator.refresh_interval)
+
+    def start(self) -> None:
+        """Start the system clock"""
+        self.stop()
+        self._schedule_next_poll(dt.utcnow())
+        self._coordinator.logger.log_start()
+
+    def stop(self) -> None:
+        """Stop the system clock"""
+        if self._remove_timer():
+            self._coordinator.logger.log_stop()
+
+    def next_awakening(self, atime: datetime) -> datetime:
+        """Return the time for the next event"""
+        if not self._coordinator.initialised:
+            return atime + timedelta(seconds=5)
+        if self._fixed_clock:
+            return atime + self.track_interval()
+
+        # Handle testing
+        if self._coordinator.tester.is_testing:
+            stime = self._coordinator.tester.virtual_time(atime)
+            next_stime = self._coordinator.next_awakening(stime)
+            next_stime = min(next_stime, self._coordinator.tester.current_test.end)
+            result = self._coordinator.tester.actual_time(next_stime)
+        else:
+            result = self._coordinator.next_awakening(atime)
+
+        # Midnight rollover
+        if result == utc_eot() or (
+            dt.as_local(self._coordinator.tester.virtual_time(atime)).toordinal()
+            != dt.as_local(self._coordinator.tester.virtual_time(result)).toordinal()
+        ):
+            local_tomorrow = dt.as_local(
+                self._coordinator.tester.virtual_time(atime)
+            ) + timedelta(days=1)
+            local_midnight = local_tomorrow.replace(
+                hour=0, minute=0, second=0, microsecond=0
+            )
+            result = dt.as_utc(self._coordinator.tester.actual_time(local_midnight))
+
+        # Sanity check
+        if result < atime:
+            result = atime + granularity_time()
+
+        return result
+
+    def _update_next_tick(self, atime: datetime) -> bool:
+        """Update the next_tick variable"""
+        if atime != self._next_tick:
+            self._next_tick = atime
+            if self._show_log:
+                self._coordinator.request_update(False)
+            return True
+        return False
+
+    def _add_to_log(self, atime: datetime) -> bool:
+        """Add a time to the head of tick log"""
+        if not self._fixed_clock and atime is not None:
+            self._tick_log.appendleft(atime)
+            if self._show_log:
+                self._coordinator.request_update(False)
+            return True
+        return False
+
+    def _remove_timer(self) -> None:
+        """Remove the current timer. Return False if there is
+        no timer currently active (clock is stopped)"""
+        if self._remove_timer_listener is not None:
+            self._remove_timer_listener()
+            self._remove_timer_listener = None
+            return True
+        return False
+
+    def _schedule_next_poll(self, atime: datetime) -> None:
+        """Set the timer for the next update"""
+        self._update_next_tick(self.next_awakening(atime))
+
+        self._remove_timer_listener = async_track_point_in_utc_time(
+            self._hass, self._listener_job, self._next_tick
+        )
+
+    async def _listener(self, atime: datetime) -> None:
+        """Listener for the timer event"""
+        self._add_to_log(atime)
+        try:
+            await self._action(atime)
+        finally:
+            self._schedule_next_poll(atime)
+        if self._show_log:
+            self._coordinator.update_sensor(atime, False)
+
+    def test_ticker_update(self, atime: datetime) -> bool:
+        """Interface for testing unit when starting tick"""
+        if self._update_next_tick(atime) and self._show_log:
+            self._coordinator.update_sensor(atime, False)
+            return True
+        return False
+
+    def test_ticker_fired(self, atime: datetime) -> bool:
+        """Interface for testing unit when finishing tick"""
+        if self._add_to_log(atime) and self._show_log:
+            self._coordinator.update_sensor(atime, False)
+            return True
+        return False
+
+    def rearm(self, atime: datetime) -> None:
+        """Rearm the timer"""
+        if not self._fixed_clock and self._remove_timer():
+            self._schedule_next_poll(atime)
+            if self._show_log:
+                self._coordinator.update_sensor(atime, False)
+
+    def load(self, config: OrderedDict) -> "IUClock":
+        """Load config data"""
+        if config is not None and CONF_CLOCK in config:
+            clock_conf: dict = config[CONF_CLOCK]
+            self._fixed_clock = clock_conf[CONF_MODE] == CONF_FIXED
+            self._show_log = clock_conf[CONF_SHOW_LOG]
+            if (
+                max_entries := clock_conf.get(CONF_MAX_LOG_ENTRIES)
+            ) is not None and max_entries != self._tick_log.maxlen:
+                self._tick_log = deque["datetime"](maxlen=max_entries)
+
+        if not self._fixed_clock:
+            global SYSTEM_GRANULARITY  # pylint: disable=global-statement
+            SYSTEM_GRANULARITY = 1
+
+        return self
+
+
 class IUCoordinator:
     """Irrigation Unlimited Coordinator class"""
 
-    # pylint: disable=too-many-instance-attributes
-    # pylint: disable=too-many-public-methods
+    # pylint: disable=too-many-instance-attributes, too-many-public-methods
 
     def __init__(self, hass: HomeAssistant) -> None:
         # Passed parameters
@@ -3807,11 +4080,11 @@ class IUCoordinator:
         self._last_tick: datetime = None
         self._last_muster: datetime = None
         self._muster_required: bool = False
-        self._remove_timer_listener: CALLBACK_TYPE = None
         self._remove_shutdown_listener: CALLBACK_TYPE = None
-        self._tester = IUTester(self)
         self._logger = IULogger(_LOGGER)
-        self._history = IUHistory(self._hass)
+        self._tester = IUTester(self)
+        self._clock = IUClock(self._hass, self, self._async_timer)
+        self._history = IUHistory(self._hass, self.service_history)
         self._restored_from_configuration: bool = False
         self._sync_switches: bool = True
         self._rename_entities = False
@@ -3825,6 +4098,11 @@ class IUCoordinator:
     def controllers(self) -> "list[IUController]":
         """Return the list of controllers"""
         return self._controllers
+
+    @property
+    def clock(self) -> IUClock:
+        """Return the clock object"""
+        return self._clock
 
     @property
     def tester(self) -> IUTester:
@@ -3922,6 +4200,8 @@ class IUCoordinator:
 
         global SYSTEM_GRANULARITY  # pylint: disable=global-statement
         SYSTEM_GRANULARITY = config.get(CONF_GRANULARITY, DEFAULT_GRANULARITY)
+        self._clock.load(config)
+
         self._refresh_interval = timedelta(
             seconds=config.get(CONF_REFRESH_INTERVAL, DEFAULT_REFRESH_INTERVAL)
         )
@@ -3934,8 +4214,8 @@ class IUCoordinator:
         while cidx < len(self._controllers) - 1:
             self._controllers.pop().finalise(True)
 
-        self._tester = IUTester(self).load(config.get(CONF_TESTING))
-        self._logger = IULogger(_LOGGER).load(config.get(CONF_LOGGING))
+        self._tester.load(config.get(CONF_TESTING))
+        self._logger.load(config.get(CONF_LOGGING))
 
         self._dirty = True
         self._muster_required = True
@@ -3960,17 +4240,7 @@ class IUCoordinator:
         """Calculate run times for system"""
         status: int = 0
 
-        entity_ids = self._history.muster(stime, force)
-        if entity_ids is not None and len(entity_ids) > 0:
-            for controller in self._controllers:
-                if controller.entity_id in entity_ids:
-                    controller.request_update(False)
-                    entity_ids.remove(controller.entity_id)
-                for zone in controller.zones:
-                    if zone.entity_id in entity_ids:
-                        zone.request_update()
-                        entity_ids.remove(zone.entity_id)
-            status |= IURunQueue.RQ_STATUS_CHANGED
+        status |= self._history.muster(stime, force)
 
         for controller in self._controllers:
             status |= controller.muster(stime, force)
@@ -4011,10 +4281,12 @@ class IUCoordinator:
             for controller in self._controllers:
                 controller.request_update(True)
 
-    def update_sensor(self, stime: datetime) -> None:
+    def update_sensor(self, stime: datetime, deep: bool = True) -> None:
         """Update home assistant sensors if required"""
-        for controller in self._controllers:
-            controller.update_sensor(stime)
+        stime = wash_dt(stime, 1)
+        if deep:
+            for controller in self._controllers:
+                controller.update_sensor(stime)
 
         if self._component is not None and self._sensor_update_required:
             self._component.schedule_update_ha_state()
@@ -4031,7 +4303,7 @@ class IUCoordinator:
                 self.check_run(wtime)
             self._muster_required = False
             self._last_muster = wtime
-        self.update_sensor(wash_dt(vtime, 1))
+        self.update_sensor(vtime)
 
     def poll_main(self, atime: datetime, force: bool = False) -> None:
         """Post initialisation worker. Divert to testing unit if
@@ -4057,27 +4329,6 @@ class IUCoordinator:
     async def _async_timer(self, atime: datetime) -> None:
         """Timer callback"""
         self.timer(atime)
-
-    def track_interval(self) -> timedelta:
-        """Returns the system clock time interval"""
-        track_time = SYSTEM_GRANULARITY / self._tester.speed
-        track_time *= 0.95  # Run clock slightly ahead of required to avoid skipping
-        return min(timedelta(seconds=track_time), self._refresh_interval)
-
-    def start(self) -> None:
-        """Start the system clock"""
-        self.stop()
-        self._remove_timer_listener = async_track_time_interval(
-            self._hass, self._async_timer, self.track_interval()
-        )
-        self._logger.log_start()
-
-    def stop(self) -> None:
-        """Stop the system clock"""
-        if self._remove_timer_listener is not None:
-            self._remove_timer_listener()
-            self._remove_timer_listener = None
-            self._logger.log_stop()
 
     def finalise(self, turn_off: bool) -> None:
         """Tear down the system and clean up"""
@@ -4106,8 +4357,21 @@ class IUCoordinator:
         # pylint: disable=unused-argument
         self.request_update(False)
         self._muster_required = True
-        if self._last_tick is not None:
-            self.timer(self._last_tick)
+        if self._tester.is_testing:
+            tick = self._tester.ticker
+        elif self._last_tick is not None:
+            tick = self._last_tick
+        else:
+            return
+        self.timer(tick)
+        self._clock.rearm(atime)
+
+    def next_awakening(self, stime: datetime) -> datetime:
+        """Return the next event time"""
+        result = utc_eot()
+        for controller in self._controllers:
+            result = min(controller.next_awakening(stime), result)
+        return result
 
     def check_switches(self, resync: bool, stime: datetime) -> bool:
         """Check if entities match current status"""
@@ -4168,12 +4432,13 @@ class IUCoordinator:
 
     def service_time(self) -> datetime:
         """Return a time midway between last and next future tick"""
-        if self._last_tick is not None:
-            result = self._last_tick + self.track_interval() / 2
+        if self._tester.is_testing:
+            result = self._tester.ticker
+            result = self._tester.virtual_time(result)
+        elif self._clock.is_fixed and self._last_tick is not None:
+            result = self._last_tick + self._clock.track_interval() / 2
         else:
             result = dt.utcnow()
-        if self._tester.is_testing:
-            result = self._tester.current_test.virtual_time(result)
         return wash_dt(result)
 
     def service_call(
@@ -4212,6 +4477,17 @@ class IUCoordinator:
         if changed:
             self._logger.log_service_call(service, stime, controller, zone, data)
             async_call_later(self._hass, 0, self._async_replay_last_timer)
+
+    def service_history(self, entity_ids: set[str]) -> None:
+        """History service call entry point. The history has changed
+        and the sensors require an update"""
+        for controller in self._controllers:
+            if controller.entity_id in entity_ids:
+                controller.request_update(False)
+            for zone in controller.zones:
+                if zone.entity_id in entity_ids:
+                    zone.request_update()
+        self.update_sensor(self.service_time())
 
     def start_test(self, test_no: int) -> datetime:
         """Main entry to start a test"""
