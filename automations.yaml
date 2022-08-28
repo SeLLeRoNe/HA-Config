@@ -1514,3 +1514,226 @@
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.night_mode
+- id: '1661606354687'
+  alias: Humidity - Ground Floor Bathroom
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.ground_floor_bathroom_ih_k009_humidity
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    attribute: humidity
+    above: '80'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 569035df95d6ed1b82ead372b5fce0f3
+    entity_id: binary_sensor.ground_floor_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: notify.telegram_andrea
+    data:
+      message: The humidity in the ground floor bathroom is too high, please open
+        the window.
+      title: Ground Floor Bathroom
+  mode: single
+- id: '1661606489840'
+  alias: Humidity - Masterr Bathroom
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.master_bathroom_wsdcgq01lm_humidity
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    above: '80'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: cf1c05f110342fa4f464359a1b35c4fd
+    entity_id: binary_sensor.master_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: notify.telegram_andrea
+    data:
+      message: The humidity in the master bathroom is too high, please open the window.
+      title: Master Bathroom
+  mode: single
+- id: '1661606546354'
+  alias: Humidity - Common  Bathroom
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.common_bathroom_wsdcgq01lm_humidity
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    above: '80'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: a031b0123f5659f3d9695322250dc935
+    entity_id: binary_sensor.common_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: notify.telegram_andrea
+    data:
+      title: Common Bathroom
+      message: The humidity in the common bathroom is too high, please open the window.
+  mode: single
+- id: '1661632087170'
+  alias: Night Mode - Kitchen Blinds 1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: c4d037268dbde8d237190f5c388f216a
+    entity_id: binary_sensor.kitchen_window_1_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.kitchen_blinds_1
+  mode: single
+- id: '1661632170868'
+  alias: Night Mode - Kitchen Blinds 2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 334ea26b9f7a9c40530fc237915bc21e
+    entity_id: binary_sensor.kitchen_window_2_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.kitchen_blinds_2
+  mode: single
+- id: '1661697808443'
+  alias: Lights - Garage Doors Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.garage_lights
+  mode: single
+- id: '1661697933048'
+  alias: Lights - Garage PIR Off
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: 59ed7433622f0acb96935351a0400719
+    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+  - type: is_not_open
+    condition: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.garage_lights
+  mode: single
+- id: '1661698009935'
+  alias: Lights - Garage Doors Close
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+  - type: not_opened
+    platform: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+  condition:
+  - type: is_no_motion
+    condition: device
+    device_id: 59ed7433622f0acb96935351a0400719
+    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.garage_lights
+  mode: single
+- id: '1661698155406'
+  alias: Lights - Garage PIR On
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 59ed7433622f0acb96935351a0400719
+    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
+    domain: binary_sensor
+  condition:
+  - type: is_open
+    condition: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+  - type: is_not_open
+    condition: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+  - condition: state
+    entity_id: light.garage_lights
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.garage_lights
+  mode: single
