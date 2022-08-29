@@ -1737,3 +1737,110 @@
     target:
       entity_id: light.garage_lights
   mode: single
+- id: '1661764591975'
+  alias: Night - Studio Andrea
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.studio_andrea_computer_ping
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  - condition: state
+    entity_id: input_boolean.night_mode
+    state: 'on'
+  action:
+  - service: shell_command.media01_off
+    data: {}
+  - service: shell_command.media02_off
+    data: {}
+  - service: shell_command.media03_off
+    data: {}
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.studio_andrea_desk_lg_monitor_2
+  mode: single
+- id: '1661765778855'
+  alias: Studio Andrea - Away Mode
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.andrea
+    zone: zone.home
+    event: leave
+  condition:
+  - condition: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  - condition: state
+    entity_id: person.andrea
+    state: not_home
+    for:
+      hours: 12
+      minutes: 0
+      seconds: 0
+  action:
+  - service: shell_command.media01_off
+    data: {}
+  - service: shell_command.media02_off
+    data: {}
+  - service: shell_command.media03_off
+    data: {}
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.studio_andrea_desk_lg_monitor_2
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: media_player.studio_andrea_amplifier
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.studio_andrea_lights
+  mode: single
+- id: '1661766110496'
+  alias: Studio Andrea - Home Mode
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.andrea
+    zone: zone.home
+    event: enter
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.studio_media03_wol
+  mode: single

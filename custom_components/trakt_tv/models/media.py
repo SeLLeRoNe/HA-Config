@@ -160,7 +160,7 @@ class Movie(Media):
             **self.common_information(),
             "runtime": self.runtime,
             "release": "$day, $date $time",
-            "airdate": self.released.isoformat() + "Z",
+            "airdate": self.released.replace(tzinfo=None).isoformat() + "Z",
         }
 
         return default
@@ -260,7 +260,7 @@ class Show(Media):
         default = {
             **self.common_information(),
             "release": "$day, $date $time",
-            "airdate": self.released.isoformat() + "Z",
+            "airdate": self.released.replace(tzinfo=None).isoformat() + "Z",
         }
 
         if self.episode:
