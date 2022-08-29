@@ -13,7 +13,7 @@ trigger:
     entity_id: media_player.studio_andrea_amplifier
     to: "idle"
   - platform: state
-    entity_id: binary_sensor.studio_andrea_desk_computer_ping
+    entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'on'
 condition:
   condition: and
@@ -22,7 +22,7 @@ condition:
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: binary_sensor.studio_andrea_desk_computer_ping
+      entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'on'
     - condition: or
       conditions:

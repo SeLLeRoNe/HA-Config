@@ -4,7 +4,7 @@ alias: Studio Andrea - Workday Off
 initial_state: off
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_andrea_desk_computer_ping
+    entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'off'
     for:
       seconds: 120
@@ -25,7 +25,7 @@ condition:
     - condition: time
       after: '19:00:00'
     - condition: state
-      entity_id: binary_sensor.studio_andrea_desk_computer_ping
+      entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'on'
     - condition: state
       entity_id: input_boolean.working_late_andrea

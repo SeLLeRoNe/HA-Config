@@ -4,7 +4,7 @@ alias: Studio Andrea - Computer Off - Away
 initial_state: off
 trigger:
   - platform: state
-    entity_id: binary_sensor.studio_andrea_desk_computer_ping
+    entity_id: binary_sensor.studio_andrea_computer_ping
     to: 'off'
     for:
       seconds: 120

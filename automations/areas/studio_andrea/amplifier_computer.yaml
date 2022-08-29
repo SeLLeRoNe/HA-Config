@@ -9,7 +9,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.studio_andrea_desk_computer_ping
+      entity_id: binary_sensor.studio_andrea_computer_ping
       state: "on"
 action:
   - service: media_player.volume_set

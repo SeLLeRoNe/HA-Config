@@ -17,7 +17,7 @@ condition:
   condition: and
   conditions:
     - condition: state
-      entity_id: binary_sensor.studio_andrea_desk_computer_ping
+      entity_id: binary_sensor.studio_andrea_computer_ping
       state: 'on'
     - condition: template
       value_template: "{{ is_state_attr('media_player.studio_andrea_amplifier', 'source', 'Spotify') }}"
