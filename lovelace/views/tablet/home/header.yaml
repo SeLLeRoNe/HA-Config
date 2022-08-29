@@ -48,7 +48,7 @@ cards:
             height: 100px;
           }
         entities:
-          - entity: binary_sensor.studio_andrea_desk_computer_ping
+          - entity: binary_sensor.studio_andrea_computer_ping
             name: PC
           - entity: binary_sensor.netgear_media01
             name: MEDIA01

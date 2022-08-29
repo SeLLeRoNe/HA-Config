@@ -22,12 +22,12 @@ cards:
 #            entity: sensor.date
 #            scale: 20px
 #      - type: custom:username-element
-      - type: alarm-panel
-        entity: alarm_control_panel.home_alarm
-        states:
-          - arm_home
-          - arm_away
-          - arm_night
+#      - type: alarm-panel
+#        entity: alarm_control_panel.home_alarm
+#        states:
+#          - arm_home
+#          - arm_away
+#          - arm_night
       - type: custom:alarmo-card
         entity: alarm_control_panel.house
       - type: glance

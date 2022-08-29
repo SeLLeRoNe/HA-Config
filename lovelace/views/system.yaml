@@ -472,7 +472,7 @@ cards:
             entities:
               - name: "Computer Andrea"
                 icon: mdi:desktop-tower
-                entity: binary_sensor.studio_andrea_desk_computer_ping
+                entity: binary_sensor.studio_andrea_computer_ping
                 tap_action:
                   action: none
               - name: "VoIP Phone"
