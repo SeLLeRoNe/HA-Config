@@ -1,6 +1,7 @@
 ---
 trakt_tv:
   language: en
+  timezone: Europe/Madrid
   sensors:
     upcoming:
       show:
