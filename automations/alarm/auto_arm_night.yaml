@@ -83,6 +83,8 @@ action:
     entity_id: alarm_control_panel.home_alarm
     data:
       code: !secret home_alarm_pin
+  - service: alarm_control_panel.alarm_arm_night
+    entity_id: alarm_control_panel.house
 #  - service: alarm_control_panel.alarm_arm_night
 #    entity_id: alarm_control_panel.home_alarm_mqtt
 #    data:
