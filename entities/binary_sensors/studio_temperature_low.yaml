@@ -1,5 +1,0 @@
----
-platform: threshold
-name: Studio Temperature - Low
-entity_id: sensor.studio_temperature
-lower: 15

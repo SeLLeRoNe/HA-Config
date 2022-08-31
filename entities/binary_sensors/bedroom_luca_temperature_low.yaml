@@ -1,5 +1,0 @@
----
-platform: threshold
-name: Bedroom Luca Temperature - Low
-entity_id: sensor.bedroom_luca_temperature
-lower: 15

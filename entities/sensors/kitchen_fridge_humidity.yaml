@@ -1,0 +1,7 @@
+---
+platform: min_max
+name: Kitchen Fridge Humidity
+type: mean
+round_digits: 2
+entity_ids:
+  - sensor.kitchen_fridge_wsd500a_humidity

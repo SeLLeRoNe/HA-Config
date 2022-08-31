@@ -1,6 +1,0 @@
----
-platform: threshold
-name: Master Bathroom Temperature - Optimal
-entity_id: sensor.master_bathroom_temperature
-lower: 18
-upper: 22

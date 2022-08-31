@@ -1,5 +1,0 @@
----
-platform: threshold
-name: Living Room Temperature - Low
-entity_id: sensor.living_room_temperature
-lower: 15

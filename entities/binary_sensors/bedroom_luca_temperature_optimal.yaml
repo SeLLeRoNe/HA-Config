@@ -1,6 +1,0 @@
----
-platform: threshold
-name: Bedroom Luca Temperature - Optimal
-entity_id: sensor.bedroom_luca_temperature
-lower: 18
-upper: 22

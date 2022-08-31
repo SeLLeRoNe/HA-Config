@@ -1,5 +1,0 @@
----
-platform: threshold
-name: Master Bathroom Temperature - High
-entity_id: sensor.master_bathroom_temperature
-upper: 22

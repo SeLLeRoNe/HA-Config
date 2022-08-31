@@ -1,5 +1,0 @@
----
-platform: threshold
-name: Master Bedroom Temperature - Low
-entity_id: sensor.master_bedroom_temperature
-lower: 15
