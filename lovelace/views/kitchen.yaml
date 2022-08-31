@@ -1,5 +1,5 @@
 title: Kitchen
-icon: mdi:fridge
+icon: mdi:fride
 path: kitchen
 type: custom:vertical-layout
 layout:
@@ -74,6 +74,36 @@ cards:
         template: humidity
         variables:
           - entity: sensor.kitchen_humidity
+  - type: custom:decluttering-card
+    template: title
+    variables:
+      - title: Fridge
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: temperature
+        variables:
+          - entity: sensor.kitchen_fridge_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.kitchen_fridge_humidity
+  - type: custom:decluttering-card
+    template: title
+    variables:
+      - title: Freezer
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:decluttering-card
+        template: temperature
+        variables:
+          - entity: sensor.kitchen_freezer_temperature
+      - type: custom:decluttering-card
+        template: humidity
+        variables:
+          - entity: sensor.kitchen_freezer_humidity
   - type: custom:layout-break
   - type: custom:decluttering-card
     template: kitchen_energy_small

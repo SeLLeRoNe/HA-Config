@@ -14,6 +14,18 @@ kitchen_energy_small:
           - type: section
             label: Devices
           - type: custom:decluttering-card
+            template: energy_shelly_card
+            variables:
+              - area: kitchen
+              - device_name: Hob
+              - device: hob
+          - type: custom:decluttering-card
+            template: energy_shelly_card
+            variables:
+              - area: kitchen
+              - device_name: Oven
+              - device: oven
+          - type: custom:decluttering-card
             template: energy_device_16_card
             variables:
               - area: kitchen

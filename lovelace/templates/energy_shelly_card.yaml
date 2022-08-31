@@ -1,0 +1,72 @@
+---
+energy_shelly_card:
+  card:
+    type: custom:multiple-entity-row
+    entity: sensor.[[area]]_[[device]]_power
+    name: '[[device_name]]'
+    icon: mdi:flash
+    show_state: true
+    toggle: false
+    entities:
+      - entity: sensor.[[area]]_[[device]]_voltage
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            card_mod:
+              style:
+                width: 450px
+      - entity: sensor.[[area]]_[[device]]_ampere
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            card_mod:
+              style:
+                width: 450px
+      - entity: sensor.[[area]]_[[device]]_today
+        name: false
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Details
+            card:
+              type: custom:decluttering-card
+              template: room_device_16
+              variables:
+                - device_name: '[[device_name]]'
+                - device: '[[device]]'
+            card_mod:
+              style:
+                width: 450px
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Details
+        card:
+          type: custom:decluttering-card
+          template: room_device_16
+          variables:
+            - device_name: '[[device_name]]'
+            - device: '[[device]]'
+        card_mod:
+          style:
+            width: 450px
