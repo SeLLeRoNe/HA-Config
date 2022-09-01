@@ -32,19 +32,19 @@ input_datetime:
     has_date: false
     has_time: true
 
-automation:
-  - alias: Irrigation Unlimited Load UI Controls
-    trigger:
-      - platform: homeassistant
-        event: start
-    action:
-      - service: irrigation_unlimited.list_config
-        data:
-          entity_id: input_select.irrigation_unlimited_entities
-          section: entities
-          first: <none>
-      - service: irrigation_unlimited.list_config
-        data:
-          entity_id: input_select.irrigation_unlimited_sequences
-          section: sequences
-          first: <none>
+#automation:
+#  - alias: Irrigation Unlimited Load UI Controls
+#    trigger:
+#      - platform: homeassistant
+#        event: start
+#    action:
+#      - service: irrigation_unlimited.list_config
+#        data:
+#          entity_id: input_select.irrigation_unlimited_entities
+#          section: entities
+#          first: <none>
+#      - service: irrigation_unlimited.list_config
+#        data:
+#          entity_id: input_select.irrigation_unlimited_sequences
+#          section: sequences
+#          first: <none>

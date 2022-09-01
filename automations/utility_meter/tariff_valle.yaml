@@ -34,45 +34,15 @@ condition:
           after: '00:00:00'
           before: '08:00:00'
 action:
-  - service: utility_meter.select_tariff
+  - service: select.select_option
+    target:
+      entity_id: select.house_daily_energy_consumption
     data:
-      entity_id:
-        - utility_meter.house_electricity_daily
-        - utility_meter.house_electricity_monthly
-        - utility_meter.house_electricity_yearly
-      tariff: valle
-  - service: utility_meter.select_tariff
-    data:
-      entity_id:
-        - utility_meter.living_room_electricity_daily
-        - utility_meter.living_room_electricity_monthly
-        - utility_meter.living_room_electricity_yearly
-      tariff: valle
-  - service: utility_meter.select_tariff
-    data:
-      entity_id:
-        - utility_meter.kitchen_electricity_daily
-        - utility_meter.kitchen_electricity_monthly
-        - utility_meter.kitchen_electricity_yearly
-      tariff: valle
-  - service: utility_meter.select_tariff
-    data:
-      entity_id:
-        - utility_meter.laundry_room_electricity_daily
-        - utility_meter.laundry_room_electricity_monthly
-        - utility_meter.laundry_room_electricity_yearly
-      tariff: valle
-  - service: utility_meter.select_tariff
-    data:
-      entity_id:
-        - utility_meter.studio_andrea_andrea_andrea_electricity_daily
-        - utility_meter.studio_andrea_andrea_andrea_electricity_monthly
-        - utility_meter.studio_andrea_andrea_andrea_electricity_yearly
-      tariff: valle
+      option: valle
 #  - service: utility_meter.select_tariff
 #    data:
 #      entity_id:
-#        - utility_meter.bedroom_luca_electricity_daily
-#        - utility_meter.bedroom_luca_electricity_monthly
-#        - utility_meter.bedroom_luca_electricity_yearly
+#        - utility_meter.house_electricity_daily
+#        - utility_meter.house_electricity_monthly
+#        - utility_meter.house_electricity_yearly
 #      tariff: valle

@@ -42,10 +42,15 @@ condition:
           after: '22:00:00'
           before: '00:00:00'
 action:
-  - service: utility_meter.select_tariff
+  - service: select.select_option
+    target:
+      entity_id: select.house_daily_energy_consumption
     data:
-      entity_id:
-        - utility_meter.house_electricity_daily
-        - utility_meter.house_electricity_monthly
-        - utility_meter.house_electricity_yearly
-      tariff: llano
+      option: llano
+#  - service: utility_meter.select_tariff
+#    data:
+#      entity_id:
+#        - utility_meter.house_electricity_daily
+#        - utility_meter.house_electricity_monthly
+#        - utility_meter.house_electricity_yearly
+#      tariff: llano
