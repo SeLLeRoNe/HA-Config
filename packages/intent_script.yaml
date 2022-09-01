@@ -1,0 +1,7 @@
+---
+intent_script:
+  HassGetTemperature:
+    speech:
+      text: >-
+        {% set sensor =  "sensor." + name %}
+        The temperature is currently {{ states(sensor) | int }} degrees
