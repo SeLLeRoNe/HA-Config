@@ -14,6 +14,7 @@ from .const.const import (
     CONF_CRYPTOCURRENCY_NAME,
     CONF_CURRENCY_NAME,
     CONF_MULTIPLIER,
+    CONF_UNIT_OF_MEASUREMENT,
     CONF_UPDATE_FREQUENCY,
     SENSOR_PREFIX,
     ATTR_LAST_UPDATE,
@@ -39,6 +40,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_CRYPTOCURRENCY_NAME, default="bitcoin"): cv.string,
         vol.Required(CONF_CURRENCY_NAME, default="usd"): cv.string,
+        vol.Optional(CONF_UNIT_OF_MEASUREMENT, default="$"): cv.string,
         vol.Required(CONF_MULTIPLIER, default=1): cv.string,
         vol.Required(CONF_UPDATE_FREQUENCY, default=60): cv.string,
         vol.Optional(CONF_ID, default=""): cv.string,
@@ -52,6 +54,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     id_name = config.get(CONF_ID)
     cryptocurrency_name = config.get(CONF_CRYPTOCURRENCY_NAME).lower().strip()
     currency_name = config.get(CONF_CURRENCY_NAME).strip()
+    unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT).strip()
     multiplier = config.get(CONF_MULTIPLIER).strip()
     update_frequency = timedelta(minutes=(int(config.get(CONF_UPDATE_FREQUENCY))))
 
@@ -62,6 +65,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
             CryptoinfoSensor(
                 cryptocurrency_name,
                 currency_name,
+                unit_of_measurement,
                 multiplier,
                 update_frequency,
                 id_name,
@@ -76,11 +80,18 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
 class CryptoinfoSensor(Entity):
     def __init__(
-        self, cryptocurrency_name, currency_name, multiplier, update_frequency, id_name
+        self,
+        cryptocurrency_name,
+        currency_name,
+        unit_of_measurement,
+        multiplier,
+        update_frequency,
+        id_name,
     ):
         self.data = None
         self.cryptocurrency_name = cryptocurrency_name
         self.currency_name = currency_name
+        self._unit_of_measurement = unit_of_measurement
         self.multiplier = multiplier
         self.update = Throttle(update_frequency)(self._update)
         self._attr_device_class = SensorDeviceClass.MONETARY
@@ -117,6 +128,10 @@ class CryptoinfoSensor(Entity):
     @property
     def state_class(self):
         return self._state_class
+
+    @property
+    def unit_of_measurement(self):
+        return self._unit_of_measurement
 
     @property
     def state(self):

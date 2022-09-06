@@ -1659,8 +1659,8 @@
     domain: binary_sensor
     for:
       hours: 0
-      minutes: 2
-      seconds: 0
+      minutes: 0
+      seconds: 30
   condition:
   - type: is_not_open
     condition: device
@@ -1700,8 +1700,8 @@
     domain: binary_sensor
     for:
       hours: 0
-      minutes: 2
-      seconds: 0
+      minutes: 0
+      seconds: 30
   action:
   - service: light.turn_off
     data: {}
