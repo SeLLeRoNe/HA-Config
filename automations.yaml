@@ -1567,7 +1567,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.common_bathroom_wsdcgq01lm_humidity
+    entity_id: sensor.first_floor_bathroom_wsdcgq01lm_humidity
     for:
       hours: 0
       minutes: 5
@@ -1577,7 +1577,7 @@
   - type: is_not_open
     condition: device
     device_id: a031b0123f5659f3d9695322250dc935
-    entity_id: binary_sensor.common_bathroom_window_contact
+    entity_id: binary_sensor.first_floor_bathroom_window_contact
     domain: binary_sensor
   action:
   - service: notify.telegram_andrea
@@ -1857,11 +1857,11 @@
   - type: is_not_open
     condition: device
     device_id: a031b0123f5659f3d9695322250dc935
-    entity_id: binary_sensor.common_bathroom_window_contact
+    entity_id: binary_sensor.first_floor_bathroom_window_contact
     domain: binary_sensor
   action:
   - service: cover.close_cover
     data: {}
     target:
-      entity_id: cover.common_bathroom_blinds_1
+      entity_id: cover.first_floor_bathroom_blinds_1
   mode: single
