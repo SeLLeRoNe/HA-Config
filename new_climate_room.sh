@@ -11,7 +11,7 @@ if [ "$1" = "" ]; then
 	read ROOM_NAME
 elif [ "$2" = "" ]; then
 	if [ "$1" != "all" ]; then
-		ROOM_NAME=$1
+		ROOM_NAME=$@
 	else
 		ALL=1
 	fi
