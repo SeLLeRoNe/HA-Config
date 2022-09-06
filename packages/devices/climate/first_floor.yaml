@@ -499,7 +499,7 @@ timer:
     duration: '02:00:00'
 
 automation:
-  - id: '590113848695660'
+  - id: '005857737054631'
     alias: Climate - First Floor - Active Off
     initial_state: 'on'
     trigger:
@@ -569,7 +569,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: group.climate_first_floor_active
-  - id: '364313946672252'
+  - id: '922317102458499'
     alias: Climate - First Floor - Away Mode On
     initial_state: 'on'
     trigger:
@@ -627,7 +627,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "Away"
-  - id: '310878500141317'
+  - id: '999003394369867'
     alias: Climate - First Floor - Idle
     initial_state: 'on'
     trigger:
@@ -1506,7 +1506,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T0"
-  - id: '338770524881283'
+  - id: '931954457500232'
     alias: Climate - First Floor - Off
     initial_state: 'on'
     trigger:
@@ -1542,7 +1542,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T0"
-  - id: '370390528215761'
+  - id: '008167076043713'
     alias: Climate - First Floor - Timer Reset
     initial_state: 'on'
     trigger:
@@ -1576,7 +1576,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_first_floor
-  - id: '371470344540839'
+  - id: '362772341771827'
     alias: Climate - First Floor - Timer Start
     initial_state: 'on'
     trigger:
@@ -1620,7 +1620,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "Push"
-  - id: '226360585387939'
+  - id: '782957499521425'
     alias: Climate - First Floor - Timer Stop
     initial_state: 'on'
     trigger:
@@ -1641,7 +1641,7 @@ automation:
       - service: timer.finish
         data:
           entity_id: timer.heating_push_first_floor
-  - id: '661142176327687'
+  - id: '089892067636810'
     alias: Climate - T10 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -1807,7 +1807,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T10"
-  - id: '273156768966277'
+  - id: '850737703840531'
     alias: Climate - T1 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -1973,7 +1973,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T1"
-  - id: '145139844843167'
+  - id: '880330279499841'
     alias: Climate - T2 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2139,7 +2139,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T2"
-  - id: '568790363423539'
+  - id: '251846824633913'
     alias: Climate - T3 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2305,7 +2305,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T3"
-  - id: '505996281601456'
+  - id: '010749499051608'
     alias: Climate - T4 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2471,7 +2471,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T4"
-  - id: '926870656002935'
+  - id: '717939837075215'
     alias: Climate - T5 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2637,7 +2637,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T5"
-  - id: '546662360889906'
+  - id: '462730370929066'
     alias: Climate - T6 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2803,7 +2803,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T6"
-  - id: '411393849826898'
+  - id: '187784168738965'
     alias: Climate - T7 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -2969,7 +2969,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T7"
-  - id: '660247350917153'
+  - id: '763738810852696'
     alias: Climate - T8 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -3135,7 +3135,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T8"
-  - id: '946309849282959'
+  - id: '776717735977211'
     alias: Climate - T9 - First Floor - Weekend
     initial_state: 'on'
     trigger:
@@ -3301,7 +3301,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T9"
-  - id: '652158757634293'
+  - id: '875251520435758'
     alias: Climate - T10 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -3467,7 +3467,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T10"
-  - id: '674548986962083'
+  - id: '344884424783517'
     alias: Climate - T1 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -3633,7 +3633,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T1"
-  - id: '546335088434427'
+  - id: '620895529238567'
     alias: Climate - T2 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -3799,7 +3799,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T2"
-  - id: '183956319223012'
+  - id: '266517129770933'
     alias: Climate - T3 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -3965,7 +3965,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T3"
-  - id: '075449524546538'
+  - id: '132892538939137'
     alias: Climate - T4 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -4131,7 +4131,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T4"
-  - id: '926123768027413'
+  - id: '225313847410382'
     alias: Climate - T5 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -4297,7 +4297,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T5"
-  - id: '587515473921952'
+  - id: '629338553790410'
     alias: Climate - T6 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -4463,7 +4463,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T6"
-  - id: '663280639919608'
+  - id: '761979370200893'
     alias: Climate - T7 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -4629,7 +4629,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T7"
-  - id: '849206910514665'
+  - id: '241288240554999'
     alias: Climate - T8 - First Floor - Workday
     initial_state: 'on'
     trigger:
@@ -4795,7 +4795,7 @@ automation:
         data:
           entity_id: input_select.climate_first_floor
           option: "T8"
-  - id: '099389452201031'
+  - id: '397163407375228'
     alias: Climate - T9 - First Floor - Workday
     initial_state: 'on'
     trigger:
