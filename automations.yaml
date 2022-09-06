@@ -74,7 +74,7 @@
         - 4628885055733f305b90705949413aa4
         - 4c36c1779820b2dce71a0c2d44d8886c
 - id: '1655194807529'
-  alias: 'Shelly - Common Bathroom Main Switch #2 - Single'
+  alias: 'Shelly - First Floor Bathroom Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -91,7 +91,7 @@
       device_id: 298dc65892048bdf1beb2412f66f75ca
   mode: single
 - id: '1655194878005'
-  alias: 'Shelly - Common Bathroom Main Switch #1 - SIngle'
+  alias: 'Shelly - First Floor Bathroom Main Switch #1 - SIngle'
   description: ''
   trigger:
   - platform: event
@@ -1563,7 +1563,7 @@
       title: Master Bathroom
   mode: single
 - id: '1661606546354'
-  alias: Humidity - Common  Bathroom
+  alias: Humidity - First Floor Bathroom
   description: ''
   trigger:
   - platform: numeric_state
@@ -1845,7 +1845,7 @@
       entity_id: switch.studio_media03_wol
   mode: single
 - id: '1662463142598'
-  alias: Night Mode - Common Bathroom Blinds
+  alias: Night Mode - First Floor Bathroom Blinds
   description: ''
   trigger:
   - platform: state
