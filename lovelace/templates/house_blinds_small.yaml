@@ -145,17 +145,17 @@ house_blinds_small:
             type: custom:decluttering-card
             template: guest_bedroom_blinds_fold
       - type: custom:state-switch
-        entity: cover.common_bathroom_blinds
+        entity: cover.first_floor_bathroom_blinds
         states:
           "open":
             type: custom:decluttering-card
-            template: common_bathroom_blinds_fold
+            template: first_floor_bathroom_blinds_fold
           "closed":
             type: custom:decluttering-card
-            template: common_bathroom_blinds_fold
+            template: first_floor_bathroom_blinds_fold
           "opening":
             type: custom:decluttering-card
-            template: common_bathroom_blinds_fold
+            template: first_floor_bathroom_blinds_fold
           "closing":
             type: custom:decluttering-card
-            template: common_bathroom_blinds_fold
+            template: first_floor_bathroom_blinds_fold

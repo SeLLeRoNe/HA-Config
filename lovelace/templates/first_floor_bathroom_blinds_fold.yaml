@@ -1,0 +1,11 @@
+---
+first_floor_bathroom_blinds_fold:
+  card:
+    type: custom:fold-entity-row
+    head:
+      type: section
+      entity: cover.first_floor_bathroom_blinds
+      label: First Floor Bathroom
+    entities:
+      - name: Blinds 1
+        entity: cover.first_floor_bathroom_blinds_1

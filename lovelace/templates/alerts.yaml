@@ -138,9 +138,9 @@ alerts:
         state_color: true
         entities:
           - name: Common Bathroom Window
-            entity: binary_sensor.common_bathroom_window_contact
+            entity: binary_sensor.first_floor_bathroom_window_contact
           - name: Common Bathroom PIR
-            entity: binary_sensor.common_bathroom_rtcgq11lm_occupancy
+            entity: binary_sensor.first_floor_bathroom_rtcgq11lm_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false

@@ -1,13 +1,13 @@
 ---
-common_bathroom_lights_fold:
+first_floor_bathroom_lights_fold:
   card:
     type: entities
     entities:
       - type: custom:fold-entity-row
         head:
           type: custom:slider-entity-row
-          entity: light.common_bathroom_lights
-          name: Common Bathroom
+          entity: light.first_floor_bathroom_lights
+          name: First Floor Bathroom
           toggle: true
           hide_state: true
           hide_when_off: false
@@ -19,7 +19,7 @@ common_bathroom_lights_fold:
           - type: custom:fold-entity-row
             head:
               type: custom:slider-entity-row
-              entity: light.common_bathroom_ceiling_lights
+              entity: light.first_floor_bathroom_ceiling_lights
               name: Ceiling
               toggle: true
               hide_state: true
@@ -33,10 +33,9 @@ common_bathroom_lights_fold:
                 template: light_card_rgb
                 variables:
                   - name: Light 1
-                  - entity: light.common_bathroom_ceiling_light_1
-
+                  - entity: light.first_floor_bathroom_ceiling_light_1
               - type: custom:decluttering-card
                 template: light_card_rgb
                 variables:
                   - name: Light 2
-                  - entity: light.common_bathroom_ceiling_light_2
+                  - entity: light.first_floor_bathroom_ceiling_light_2

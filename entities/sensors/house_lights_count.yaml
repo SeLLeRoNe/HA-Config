@@ -10,7 +10,7 @@ sensors:
       (states('sensor.back_patio_lights_count') | int(0) ) +
       (states('sensor.basement_bathroom_lights_count') | int(0) ) +
       (states('sensor.basement_corridor_lights_count') | int(0) ) +
-      (states('sensor.common_bathroom_lights_count') | int(0) ) +
+      (states('sensor.first_floor_bathroom_lights_count') | int(0) ) +
       (states('sensor.first_floor_corridor_lights_count') | int(0) ) +
       (states('sensor.first_floor_stairs_lights_count') | int(0) ) +
       (states('sensor.front_garden_lights_count') | int(0) ) +
@@ -41,7 +41,7 @@ sensors:
         (state_attr('sensor.back_patio_lights_count', 'total_lights') | int(0) ) +
         (state_attr('sensor.basement_bathroom_lights_count', 'total_lights') | int(0) ) +
         (state_attr('sensor.basement_corridor_lights_count', 'total_lights') | int(0) ) +
-        (state_attr('sensor.common_bathroom_lights_count', 'total_lights') | int(0) ) +
+        (state_attr('sensor.first_floor_bathroom_lights_count', 'total_lights') | int(0) ) +
         (state_attr('sensor.first_floor_corridor_lights_count', 'total_lights') | int(0) ) +
         (state_attr('sensor.first_floor_stairs_lights_count', 'total_lights') | int(0) ) +
         (state_attr('sensor.front_garden_lights_count', 'total_lights') | int(0) ) +

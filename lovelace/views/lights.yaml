@@ -104,7 +104,7 @@ cards:
               action: none
             hold_action:
               action: toggle
-          - entity: switch.adaptive_lighting_common_bathroom
+          - entity: switch.adaptive_lighting_first_floor_bathroom
             name: Common Bathroom
             tap_action:
               action: none
