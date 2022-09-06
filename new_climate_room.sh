@@ -11,12 +11,12 @@ if [ "$1" = "" ]; then
 	read ROOM_NAME
 elif [ "$2" = "" ]; then
 	if [ "$1" != "all" ]; then
-		ROOM_NAME=$@
+		ROOM_NAME=$1
 	else
 		ALL=1
 	fi
 else
-	ROOM_NAME="$1 $2"
+	ROOM_NAME="$@"
 fi
 
 if [ $ALL -eq 1 ]; then
