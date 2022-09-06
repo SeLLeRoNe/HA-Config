@@ -56,7 +56,7 @@ house_humidity:
         color: '#00FFFF'
         show_state: true
         show_fill: true
-      - entity: sensor.dark_sky_humidity
+      - entity: sensor.openweathermap_humidity
         name: Meteo
         color: '#59B300'
         show_state: true

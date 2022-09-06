@@ -13,7 +13,7 @@ house_humidity_apex:
         group_by:
           func: avg
           duration: 30min
-      - entity: sensor.dark_sky_humidity
+      - entity: sensor.openweathermap_humidity
         type: column
         name: Outside
         color: '#59B300'

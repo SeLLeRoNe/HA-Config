@@ -56,7 +56,7 @@ house_pressure:
         color: '#FF99CC'
         show_state: true
         show_fill: true
-      - entity: sensor.dark_sky_pressure
+      - entity: sensor.openweathermap_pressure
         name: Meteo
         color: '#CC00CC'
         show_state: true

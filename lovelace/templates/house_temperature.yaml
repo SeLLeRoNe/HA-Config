@@ -5,7 +5,7 @@ house_temperature:
     entities:
       - binary_sensor.night_time
       - sensor.house_temperature
-      - sensor.dark_sky_temperature
+      - sensor.openweathermap_temperature
     variables:
       - vars[0]: states['sensor.house_temperature'].state
     card:
@@ -66,7 +66,7 @@ house_temperature:
           color: '#0066FF'
           show_state: true
           show_fill: true
-        - entity: sensor.dark_sky_temperature
+        - entity: sensor.openweathermap_temperature
           name: Meteo
           color: '#0099CC'
           show_state: true
