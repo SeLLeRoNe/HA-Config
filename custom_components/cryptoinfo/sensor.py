@@ -103,7 +103,7 @@ class CryptoinfoSensor(Entity):
         self._market_cap = None
         self._circulating_supply = None
         self._total_supply = None
-        self._unit_of_measurement = "\u200b"
+        self._state_class = "measurement"
         self._attr_unique_id = cryptocurrency_name + currency_name + multiplier
 
     @property
@@ -115,12 +115,12 @@ class CryptoinfoSensor(Entity):
         return self._icon
 
     @property
-    def state(self):
-        return self._state
+    def state_class(self):
+        return self._state_class
 
     @property
-    def unit_of_measurement(self):
-        return self._unit_of_measurement
+    def state(self):
+        return self._state
 
     @property
     def extra_state_attributes(self):

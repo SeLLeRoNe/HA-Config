@@ -1844,3 +1844,24 @@
     target:
       entity_id: switch.studio_media03_wol
   mode: single
+- id: '1662463142598'
+  alias: Night Mode - Common Bathroom Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: a031b0123f5659f3d9695322250dc935
+    entity_id: binary_sensor.common_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.common_bathroom_blinds_1
+  mode: single
