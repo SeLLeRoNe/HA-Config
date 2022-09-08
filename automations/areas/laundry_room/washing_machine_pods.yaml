@@ -1,7 +1,7 @@
 ---
 id: '795773894926300'
 # Alert for when the Washing Machine Pods are running out
-alias: Kitchen - Washing Machine - Pods
+alias: Laundry Room - Washing Machine - Pods
 initial_state: on
 trigger:
   - platform: numeric_state

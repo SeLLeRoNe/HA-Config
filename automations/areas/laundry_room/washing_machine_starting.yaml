@@ -6,7 +6,7 @@ id: '5708782140671'
 # The status check will ensure we don't try to put the state 
 # to Running each time the power level changes, and we're already
 # in the Running state.
-alias: Kitchen - Washing Machine - Starting
+alias: Laundry Room - Washing Machine - Starting
 initial_state: on
 trigger:
   - platform: numeric_state
