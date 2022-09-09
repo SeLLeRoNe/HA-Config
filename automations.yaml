@@ -1504,7 +1504,7 @@
     entity_id: input_boolean.working_late_andrea
   - service: input_boolean.turn_off
     entity_id: input_boolean.working_late_sonia
-- id: '2175879175501'
+- id: '6175879175501'
   alias: House - Night Mode Deactivated
   trigger:
   - platform: time
@@ -1896,7 +1896,7 @@
       entity_id: light.studio_andrea_lights
   mode: single
 - id: '1662487603160'
-  alias: Lights - Studio Andrea - Computer On - Night
+  alias: Lights - Studio Andrea - Computer On
   description: ''
   trigger:
   - platform: state
@@ -1904,13 +1904,7 @@
     - binary_sensor.studio_andrea_computer_ping
     from: 'off'
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.night_mode
-    state: 'on'
-  - condition: state
-    entity_id: light.studio_andrea_lights
-    state: 'on'
+  condition: []
   action:
   - service: light.turn_off
     data: {}
@@ -1930,92 +1924,42 @@
   action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: >
-        {{ state_attr('binary_sensor.meteoalarm', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarm', 'awareness_level') }})
-      message: >
-        {{ state_attr('binary_sensor.meteoalarm', 'message') }}
-        \n\n
-        Effective from **{{ state_attr('binary_sensor.meteoalarm', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarm', 'until') }}**
+      title: '{{ state_attr(''binary_sensor.meteoalarm'', ''awareness_type'') }} ({{
+        state_attr(''binary_sensor.meteoalarm'', ''awareness_level'') }})
+
+        '
+      message: '{{ state_attr(''binary_sensor.meteoalarm'', ''message'') }} \n\n Effective
+        from **{{ state_attr(''binary_sensor.meteoalarm'', ''from'') }}** until **{{
+        state_attr(''binary_sensor.meteoalarm'', ''until'') }}**
+
+        '
       data:
-        color: "#0000FF"
-        sticky: "true"
+        color: '#0000FF'
+        sticky: 'true'
         tag: tag
         ttl: 0
-- id: '1541959637947'
-  alias: System - Refresh date countdown sensors (Birthdays)
-  trigger:
-  - platform: time
-    at: '00:00:01'
-  - platform: homeassistant
-    event: start
-  action:
-  - service: python_script.date_countdown
-    data:
-      name: Andrea
-      type: birthday
-      date: !secret andrea_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Sonia
-      type: birthday
-      date: !secret sonia_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Luca
-      type: birthday
-      date: !secret luca_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Lara
-      type: birthday
-      date: !secret lara_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Maurizio
-      type: birthday
-      date: !secret maurizio_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Patrizia
-      type: birthday
-      date: !secret patrizia_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Alessandra
-      type: birthday
-      date: !secret alessandra_birthday
-  - service: python_script.date_countdown
-    data:
-      name: Martina
-      type: birthday
-      date: !secret martina_birthday
-  - service: python_script.date_countdown
-    data:
-      name: "Andrea Sonia"
-      type: anniversary
-      date: !secret andrea_sonia_anniversary
 - id: '5176015904441'
   alias: System - Start Backup to NAS MEDIA01
   trigger:
-    - platform: time
-      at: '02:15:00'
+  - platform: time
+    at: 02:15:00
   condition:
   - condition: and
     conditions:
     - condition: not
       conditions:
-        - condition: state
-          entity_id: sensor.samba_backup
-          state: 'RUNNING'
+      - condition: state
+        entity_id: sensor.samba_backup
+        state: RUNNING
   action:
   - service: switch.turn_on
     entity_id: switch.studio_andrea_andrea_media01_wol
-  - delay: '00:05:00'
+  - delay: 00:05:00
   - service: hassio.addon_stdin
     data:
       addon: 15d21743_samba_backup
       input: trigger
-  - delay: '00:30:00'
+  - delay: 00:30:00
   - service: switch.turn_off
     entity_id: switch.studio_andrea_andrea_media01_wol
 - id: '6020975345972'
@@ -2024,7 +1968,7 @@
   - platform: homeassistant
     event: start
   - platform: time
-    at: '00:00:00'
+    at: 00:00:00
   action:
   - service: google_assistant.request_sync
 - id: '6020971188972'
@@ -2044,201 +1988,181 @@
   - platform: homeassistant
     event: start
   - platform: time
-    at: '00:00:00'
+    at: 00:00:00
   action:
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/IPAddress4"
-      payload: "192.168.0.100"
+      topic: cmnd/tasmotas/IPAddress4
+      payload: 192.168.0.100
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/Timezone"
-      payload: "99"
+      topic: cmnd/tasmotas/Timezone
+      payload: '99'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/NtpServer"
-      payload: "1"
+      topic: cmnd/tasmotas/NtpServer
+      payload: '1'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/NtpServer1"
-      payload: "192.168.0.100"
+      topic: cmnd/tasmotas/NtpServer1
+      payload: 192.168.0.100
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/Time"
-      payload: "0"
+      topic: cmnd/tasmotas/Time
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/Backlog"
-      payload: "POWER1 ;POWER2 ;POWER3 ;POWER4 ;POWER5; DIMMER; STATE;"
+      topic: cmnd/tasmotas/Backlog
+      payload: POWER1 ;POWER2 ;POWER3 ;POWER4 ;POWER5; DIMMER; STATE;
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/WebServer"
-      payload: "0"
+      topic: cmnd/tasmotas/WebServer
+      payload: '0'
       retain: true
   - delay:
       seconds: 10
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/WebServer"
-      payload: "2"
+      topic: cmnd/tasmotas/WebServer
+      payload: '2'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/TelePeriod"
-      payload: "30"
+      topic: cmnd/tasmotas/TelePeriod
+      payload: '30'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/PowerDelta"
-      payload: "10"
+      topic: cmnd/tasmotas/PowerDelta
+      payload: '10'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/PowerRetain"
-      payload: "1"
+      topic: cmnd/tasmotas/PowerRetain
+      payload: '1'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SensorRetain"
-      payload: "1"
+      topic: cmnd/tasmotas/SensorRetain
+      payload: '1'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SwitchRetain"
-      payload: "Off"
+      topic: cmnd/tasmotas/SwitchRetain
+      payload: 'Off'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/ButtonRetain"
-      payload: "Off"
+      topic: cmnd/tasmotas/ButtonRetain
+      payload: 'Off'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/PowerOnState"
-      payload: "3"
+      topic: cmnd/tasmotas/PowerOnState
+      payload: '3'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SetOption0"
-      payload: "1"
+      topic: cmnd/tasmotas/SetOption0
+      payload: '1'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SetOption19"
-      payload: "0"
+      topic: cmnd/tasmotas/SetOption19
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SetOption36"
-      payload: "0"
+      topic: cmnd/tasmotas/SetOption36
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SetOption59"
-      payload: "0"
+      topic: cmnd/tasmotas/SetOption59
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/SetOption73"
-      payload: "1"
+      topic: cmnd/tasmotas/SetOption73
+      payload: '1'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/WebColor"
-      payload: "0"
+      topic: cmnd/tasmotas/WebColor
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/Status"
-      payload: "0"
+      topic: cmnd/tasmotas/Status
+      payload: '0'
       retain: true
   - service: mqtt.publish
     data:
-      topic: "cmnd/tasmotas/WifiConfig"
-      payload: "4"
+      topic: cmnd/tasmotas/WifiConfig
+      payload: '4'
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/tasmotas/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota.bin.gz"
+      payload: http://ota.tasmota.com/tasmota/tasmota.bin.gz
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/Citroen_Cactus/otaurl
-      payload: "https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz"
+      payload: https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/tasmota/other/tasmota-gps.bin.gz
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge01/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
+      payload: http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge02/otaurl
-      payload: "http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz"
+      payload: http://ota.tasmota.com/tasmota/tasmota-zbbridge.bin.gz
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge01/Rule1
-      payload: "ON System#Boot do TCPStart 8888 endon"
+      payload: ON System#Boot do TCPStart 8888 endon
       retain: true
   - service: mqtt.publish
     data:
       topic: cmnd/ZBBridge02/Rule1
-      payload: "ON System#Boot do TCPStart 8888 endon"
+      payload: ON System#Boot do TCPStart 8888 endon
       retain: true
 - id: '1236007345972'
-  alias: "Telegram callback to stop alerts for garage door"
+  alias: Telegram callback to stop alerts for garage door
   trigger:
   - platform: event
     event_type: telegram_callback
     event_data:
-      data: "/garage_acknowledge"
+      data: /garage_acknowledge
   action:
   - service: alert.turn_off
     target:
       entity_id: alert.garage_door
-- id: '8298153596081'
-  alias: House - Night Mode Activated
-  trigger:
-  - platform: time
-    at: "23:00:00"
-  action:
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.night_mode
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.working_late_andrea
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.working_late_sonia
-- id: '2175879175501'
-  alias: House - Night Mode Deactivated
-  trigger:
-  - platform: time
-    at: "08:00:00"
-  action:
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.night_mode
-- id: '0420800586524'
+- id: 0420800586524
   alias: House - Guest Arrived
   trigger:
   - platform: state
     entity_id: person.maurizio_iannucci
-    to: 'home'
+    to: home
   - platform: state
     entity_id: person.alessandra_iannucci
-    to: 'home'
+    to: home
   - platform: state
     entity_id: person.martina_iannucci
-    to: 'home'
+    to: home
   - platform: state
     entity_id: person.patrizia_borzone
-    to: 'home'
+    to: home
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.guest_mode
@@ -2247,16 +2171,16 @@
   trigger:
   - platform: state
     entity_id: person.maurizio_iannucci
-    to: 'not_home'
+    to: not_home
   - platform: state
     entity_id: person.alessandra_iannucci
-    to: 'not_home'
+    to: not_home
   - platform: state
     entity_id: person.martina_iannucci
-    to: 'not_home'
+    to: not_home
   - platform: state
     entity_id: person.patrizia_borzone
-    to: 'not_home'
+    to: not_home
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.guest_mode
@@ -2268,22 +2192,22 @@
     to: 'on'
   condition:
   - condition: time
-    after: '09:00:00'
+    after: 09:00:00
     before: '23:00:00'
   action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Home Alarm"
-      message: "Guest Mode Activated. Alarm Disarmed"
+      title: Home Alarm
+      message: Guest Mode Activated. Alarm Disarmed
       data:
-        color: "#0066FF"
-        sticky: "false"
+        color: '#0066FF'
+        sticky: 'false'
         tag: tag
   - service: tts.google_say
     data:
       entity_id: media_player.studio_andrea_google_mini
-      message: "Guest Mode Activated"
-      language: 'en'
+      message: Guest Mode Activated
+      language: en
 - id: '3126035620144'
   alias: House - Guest Mode Deactivated
   trigger:
@@ -2292,22 +2216,22 @@
     to: 'off'
   condition:
   - condition: time
-    after: '09:00:00'
+    after: 09:00:00
     before: '23:00:00'
   action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Home Alarm"
-      message: "Guest Mode Deactivated. Alarm Armed"
+      title: Home Alarm
+      message: Guest Mode Deactivated. Alarm Armed
       data:
-        color: "#33CC33"
-        sticky: "false"
+        color: '#33CC33'
+        sticky: 'false'
         tag: tag
   - service: tts.google_say
     data:
       entity_id: media_player.studio_andrea_google_mini
-      message: "Guest Mode Deactivated"
-      language: 'en'
+      message: Guest Mode Deactivated
+      language: en
 - id: '2152045805703'
   alias: House - Mold Alert
   trigger:
@@ -2349,20 +2273,24 @@
   action:
   - service: notify.alarm
     data:
-      title: 'Mold Alert'
-      message: >
-        Mold alert
-        {% if trigger.entity_id == "sensor.living_room_mold_indicator" %}in the Living Room ({{ states.sensor.living_room_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen Room ({{ states.sensor.kitchen_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.bedroom_luca_mold_indicator" %}in the Luca's Bedroom ({{ states.sensor.bedroom_luca_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the Bathroom ({{ states.sensor.bathroom_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ({{ states.sensor.master_bedroom_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator" %}in the Master Bedroom ({{ states.sensor.master_bathroom_mold_indicator.state }}%)
-        {% elif trigger.entity_id == "sensor.studio_andrea_mold_indicator" %}in the Studio ({{ states.sensor.studio_andrea_mold_indicator.state }}%)
-        {% else %}from Unknown Sensor
-        {% endif %}
+      title: Mold Alert
+      message: 'Mold alert {% if trigger.entity_id == "sensor.living_room_mold_indicator"
+        %}in the Living Room ({{ states.sensor.living_room_mold_indicator.state }}%)
+        {% elif trigger.entity_id == "sensor.kitchen_mold_indicator" %}in the Kitchen
+        Room ({{ states.sensor.kitchen_mold_indicator.state }}%) {% elif trigger.entity_id
+        == "sensor.bedroom_luca_mold_indicator" %}in the Luca''s Bedroom ({{ states.sensor.bedroom_luca_mold_indicator.state
+        }}%) {% elif trigger.entity_id == "sensor.bathroom_mold_indicator" %}in the
+        Bathroom ({{ states.sensor.bathroom_mold_indicator.state }}%) {% elif trigger.entity_id
+        == "sensor.master_bedroom_mold_indicator" %}in the Master Bedroom ({{ states.sensor.master_bedroom_mold_indicator.state
+        }}%) {% elif trigger.entity_id == "sensor.master_bathroom_mold_indicator"
+        %}in the Master Bedroom ({{ states.sensor.master_bathroom_mold_indicator.state
+        }}%) {% elif trigger.entity_id == "sensor.studio_andrea_mold_indicator" %}in
+        the Studio ({{ states.sensor.studio_andrea_mold_indicator.state }}%) {% else
+        %}from Unknown Sensor {% endif %}
+
+        '
       data:
-        color: "#FF3300"
+        color: '#FF3300'
         sticky: false
         tag: house
         ttl: 0
@@ -2371,11 +2299,11 @@
   alias: House - Cleaning Mode Activated
   trigger:
   - platform: time
-    at: "10:30:00"
+    at: '08:30:00'
   condition:
   - condition: time
     weekday:
-      - fri
+    - wed
   - condition: state
     entity_id: input_boolean.cleaning_mode
     state: 'off'
@@ -2384,26 +2312,26 @@
     entity_id: input_boolean.cleaning_mode
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Home"
-      message: "Cleaningt Mode Activated."
+      title: Home
+      message: Cleaningt Mode Activated.
       data:
-        color: "#0066FF"
-        sticky: "false"
+        color: '#0066FF'
+        sticky: 'false'
         tag: tag
   - service: tts.google_say
     data:
       entity_id: media_player.studio_andrea_google_mini
-      message: "Cleaning Mode Activated"
-      language: 'en'
+      message: Cleaning Mode Activated
+      language: en
 - id: '8126035620144'
   alias: House - Cleaning Mode Deactivated
   trigger:
   - platform: time
-    at: "14:30:00"
+    at: '12:30:00'
   condition:
   - condition: time
     weekday:
-      - fri
+    - wed
   - condition: state
     entity_id: input_boolean.cleaning_mode
     state: 'on'
@@ -2412,17 +2340,17 @@
     entity_id: input_boolean.cleaning_mode
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Home"
-      message: "Cleaning Mode Deactivated"
+      title: Home
+      message: Cleaning Mode Deactivated
       data:
-        color: "#33CC33"
-        sticky: "false"
+        color: '#33CC33'
+        sticky: 'false'
         tag: tag
   - service: tts.google_say
     data:
       entity_id: media_player.studio_andrea_google_mini
-      message: "Cleaning Mode Deactivated"
-      language: 'en'
+      message: Cleaning Mode Deactivated
+      language: en
 - id: '4029069700947'
   alias: House - Volume Set - Day
   trigger:
@@ -2462,50 +2390,50 @@
       entity_id: media_player.bedroom_luca_echo_dot
       volume_level: '0.205'
 - id: '548588280111608'
-  alias: "Lights - Adaptive lighting - Enable Sleep Mode"
+  alias: Lights - Adaptive lighting - Enable Sleep Mode
   trigger:
   - platform: state
     entity_id: input_boolean.night_mode
   - platform: homeassistant
     event: start
   variables:
-  - night_mode: "{{ states('input_boolean.night_mode') }}"
+    night_mode: '{{ states(''input_boolean.night_mode'') }}'
   action:
-  - service: "switch.turn_{{ night_mode }}"
+  - service: switch.turn_{{ night_mode }}
     entity_id:
-  - switch.adaptive_lighting_sleep_mode_ground_floor_entrance
-  - switch.adaptive_lighting_sleep_mode_ground_floor_corridor
-  - switch.adaptive_lighting_sleep_mode_first_floor_corridor
-  - switch.adaptive_lighting_sleep_mode_first_floor_stairs
-  - switch.adaptive_lighting_sleep_mode_living_room
-  - switch.adaptive_lighting_sleep_mode_kitchen
-  - switch.adaptive_lighting_sleep_mode_play_room
-  - switch.adaptive_lighting_sleep_mode_studio_andrea
-  - switch.adaptive_lighting_sleep_mode_studio_sonia
-  - switch.adaptive_lighting_sleep_mode_kids_bedroom
-  - switch.adaptive_lighting_sleep_mode_first_floor_bathroom
-  - switch.adaptive_lighting_sleep_mode_master_bedroom
-  - switch.adaptive_lighting_sleep_mode_master_bathroom
-  - switch.adaptive_lighting_sleep_mode_guest_bedroom
-  - switch.adaptive_lighting_sleep_mode_garage
-  - switch.adaptive_lighting_sleep_mode_laundry_room
+    - switch.adaptive_lighting_sleep_mode_ground_floor_entrance
+    - switch.adaptive_lighting_sleep_mode_ground_floor_corridor
+    - switch.adaptive_lighting_sleep_mode_first_floor_corridor
+    - switch.adaptive_lighting_sleep_mode_first_floor_stairs
+    - switch.adaptive_lighting_sleep_mode_living_room
+    - switch.adaptive_lighting_sleep_mode_kitchen
+    - switch.adaptive_lighting_sleep_mode_play_room
+    - switch.adaptive_lighting_sleep_mode_studio_andrea
+    - switch.adaptive_lighting_sleep_mode_studio_sonia
+    - switch.adaptive_lighting_sleep_mode_kids_bedroom
+    - switch.adaptive_lighting_sleep_mode_first_floor_bathroom
+    - switch.adaptive_lighting_sleep_mode_master_bedroom
+    - switch.adaptive_lighting_sleep_mode_master_bathroom
+    - switch.adaptive_lighting_sleep_mode_guest_bedroom
+    - switch.adaptive_lighting_sleep_mode_garage
+    - switch.adaptive_lighting_sleep_mode_laundry_room
 - id: '619264096959765'
-  alias: "Lights - Adaptive lighting - Reset Manual Control after 6 hours"
+  alias: Lights - Adaptive lighting - Reset Manual Control after 6 hours
   mode: parallel
   trigger:
   - platform: event
     event_type: adaptive_lighting.manual_control
   variables:
-  - light: "{{ trigger.event.data.entity_id }}"
-    switch: "{{ trigger.event.data.switch }}"
+    light: '{{ trigger.event.data.entity_id }}'
+    switch: '{{ trigger.event.data.switch }}'
   action:
-  - delay: "06:00:00"
+  - delay: 06:00:00
   - condition: template
-    value_template: "{{ light in state_attr(switch, 'manual_control') }}"
+    value_template: '{{ light in state_attr(switch, ''manual_control'') }}'
   - service: adaptive_lighting.set_manual_control
     data:
-      entity_id: "{{ switch }}"
-      lights: "{{ light }}"
+      entity_id: '{{ switch }}'
+      lights: '{{ light }}'
       manual_control: false
 - id: '2267429579067'
   alias: Utility Meter - Daily Energy Report
@@ -2515,14 +2443,58 @@
   action:
   - service: notify.mobile_app_andrea_oneplus_nord
     data:
-      title: "Energy Report"
-      message: "Today's energy use was {{ states('sensor.house_daily_energy_usage') }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro"
+      title: Energy Report
+      message: Today's energy use was {{ states('sensor.house_daily_energy_usage')
+        }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro
       data:
-        color: "#FF9933"
-        sticky: "false"
+        color: '#FF9933'
+        sticky: 'false'
         tag: tag
         ttl: 0
   - service: notify.telegram_andrea
     data:
-      title: "Energy Report"
-      message: "Today's energy use was {{ states('sensor.house_daily_energy_usage') }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro"
+      title: Energy Report
+      message: Today's energy use was {{ states('sensor.house_daily_energy_usage')
+        }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro
+- id: '1662713022006'
+  alias: Lights - Office Andrea - PIR Off
+  description: ''
+  trigger:
+  - type: not_present
+    platform: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_presence
+    domain: binary_sensor
+  condition:
+  - type: is_not_present
+    condition: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_presence
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.studio_andrea_lights
+  mode: single
+- id: '1662714190863'
+  alias: Night - Master Bathroom Window
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  condition:
+  - type: is_open
+    condition: device
+    device_id: cf1c05f110342fa4f464359a1b35c4fd
+    entity_id: binary_sensor.master_bathroom_window_contact
+    domain: binary_sensor
+  action:
+  - service: notify.mobile_app_sonia_oneplus_9
+    data:
+      message: Master bathroom window is open, please closed it.
+  mode: single
