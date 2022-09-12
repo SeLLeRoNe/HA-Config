@@ -1,19 +1,27 @@
 ---
 id: '8130423303258'
 alias: Alarm - Triggered - Home
-initial_state: on
 trigger:
   - platform: state
     entity_id: binary_sensor.basement_bathroom_sjcgq11lm_water_leak
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.laundry_room_gas_sensor_gas
+    entity_id: binary_sensor.laundry_room_lpg_sensor_gas
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
     to: 'on'
   - platform: state
     entity_id: binary_sensor.laundry_room_sjcgq11lm_water_leak
     to: 'on'
   - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
+  - platform: state
     entity_id: binary_sensor.kitchen_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_hs3sa_smoke
     to: 'on'
   - platform: state
     entity_id: binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak
@@ -32,10 +40,12 @@ action:
       entity_id: media_player.studio_andrea_andrea_andrea_google_mini
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke" %}by the Smoke sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.kitchen_hs3sa_smoke" %}by the Smoke sensor in the Kitchen
         {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Ground Floor Bathroom
         {% else %}but the trigger cannot be identified
         {% endif %}
@@ -45,8 +55,9 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke" %}by the Smoke sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
         {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Ground Floor Bathroom
@@ -64,7 +75,7 @@ action:
       title: "Home Alarm"
       message: >
         Alarm triggered
-        {% if trigger.entity_id == "binary_sensor.laundry_room_gas_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen

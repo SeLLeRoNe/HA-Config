@@ -60,6 +60,9 @@ trigger:
   - platform: state
     entity_id: binary_sensor.patio_mccgq01lm_outside_contact
     to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
 condition:
   condition: and
   conditions:
@@ -99,6 +102,7 @@ action:
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact" %}at the Patio Door
+
         {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}

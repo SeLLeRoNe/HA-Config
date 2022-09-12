@@ -85,6 +85,8 @@ alerts:
         show_state: false
         state_color: true
         entities:
+          - name: Kitchen HS3SA
+            entity: binary_sensor.kitchen_hs3sa_smoke
           - name: Kitchen Leak
             entity: binary_sensor.kitchen_sjcgq11lm_water_leak
           - name: Kitchen PIR
@@ -204,9 +206,9 @@ alerts:
           - name: Garage Window
             entity: binary_sensor.garage_window_contact
           - name: Garage PIR
-            entity: binary_sensor.garage_rtcgq11lm_occupancy
+            entity: binary_sensor.garage_pir
       - type: glance
-        columns: 3
+        columns: 2
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -216,8 +218,17 @@ alerts:
             entity: binary_sensor.laundry_room_door_contact
           - name: Laundry Room Leak
             entity: binary_sensor.laundry_room_sjcgq11lm_water_leak
-          - name: Gas Sensor
-            entity: binary_sensor.laundry_room_gas_sensor_gas
+      - type: glance
+        columns: 2
+        show_header_toggle: false
+        show_icon: true
+        show_state: false
+        state_color: true
+        entities:
+          - name: Smoke Sensor
+            entity: binary_sensor.laundry_room_hs3sa_smoke
+          - name: LPG Gas Sensor
+            entity: binary_sensor.laundry_room_lpg_sensor_gas
       - type: glance
         columns: 2
         show_header_toggle: false

@@ -74,7 +74,7 @@ action:
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside" %}at the Patio Door
-        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
+        {% elif trigger.entity_id == "binary_sensor.garage_pir" %}at the Garage
         {% else %}from Unknown Sensor
         {% endif %}
       data:
@@ -105,7 +105,7 @@ action:
         {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact" %}at the Bathroom Window
         {% elif trigger.entity_id == "binary_sensor.patio_pir" %}in the Patio
         {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside" %}at the Patio Door
-        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
+        {% elif trigger.entity_id == "binary_sensor.garage_pir" %}at the Garage Door
         {% else %}from Unknown Sensor
         {% endif %}
   - service: homeassistant.turn_on
