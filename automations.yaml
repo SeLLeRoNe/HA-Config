@@ -1322,7 +1322,12 @@
     - input_boolean.night_mode
     from: 'off'
     to: 'on'
-  condition: []
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 31360d3cdeecbd46c04d811d8cffbdb0
+    entity_id: binary_sensor.living_room_window_3_contact
+    domain: binary_sensor
   action:
   - service: cover.close_cover
     data: {}
@@ -1650,26 +1655,30 @@
   alias: Lights - Garage - PIR Off
   description: ''
   trigger:
-  - type: no_motion
-    platform: device
-    device_id: 59ed7433622f0acb96935351a0400719
-    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 30
+  - platform: state
+    entity_id:
+    - binary_sensor.garage_pir
+    from: 'on'
+    to: 'off'
   condition:
-  - type: is_not_open
-    condition: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
   - type: is_not_open
     condition: device
     device_id: 55eb97e25bd57f1c7f7366b06a002b24
     entity_id: binary_sensor.garage_external_door_contact
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  - type: is_not_open
+    condition: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
   action:
   - service: light.turn_off
     data: {}
@@ -1691,42 +1700,7 @@
     entity_id: binary_sensor.garage_external_door_contact
     domain: binary_sensor
   condition:
-  - type: is_no_motion
-    condition: device
-    device_id: 59ed7433622f0acb96935351a0400719
-    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 30
   - type: is_not_open
-    condition: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
-  - type: is_not_open
-    condition: device
-    device_id: 55eb97e25bd57f1c7f7366b06a002b24
-    entity_id: binary_sensor.garage_external_door_contact
-    domain: binary_sensor
-  action:
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.garage_lights
-  mode: single
-- id: '1661698155406'
-  alias: Lights - Garage - PIR On
-  description: ''
-  trigger:
-  - type: motion
-    platform: device
-    device_id: 59ed7433622f0acb96935351a0400719
-    entity_id: binary_sensor.garage_rtcgq11lm_occupancy
-    domain: binary_sensor
-  condition:
-  - type: is_open
     condition: device
     device_id: d2480e66430a90ff781f49b96ed75eec
     entity_id: binary_sensor.garage_door_contact
@@ -1737,8 +1711,28 @@
     entity_id: binary_sensor.garage_external_door_contact
     domain: binary_sensor
   - condition: state
-    entity_id: light.garage_lights
+    entity_id: binary_sensor.garage_pir
     state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 15
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.garage_lights
+  mode: single
+- id: '1661698155406'
+  alias: Lights - Garage - PIR On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.garage_pir
+    from: 'off'
+    to: 'on'
+  condition: []
   action:
   - service: light.turn_on
     data: {}
@@ -2299,7 +2293,7 @@
   alias: House - Cleaning Mode Activated
   trigger:
   - platform: time
-    at: '08:30:00'
+    at: 08:30:00
   condition:
   - condition: time
     weekday:
@@ -2457,7 +2451,7 @@
       message: Today's energy use was {{ states('sensor.house_daily_energy_usage')
         }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro
 - id: '1662713022006'
-  alias: Lights - Office Andrea - PIR Off
+  alias: Lights - Studio Andrea - PIR Off
   description: ''
   trigger:
   - type: not_present
@@ -2465,16 +2459,7 @@
     device_id: aae61ddfcd6991472d007493aeb96e1c
     entity_id: binary_sensor.studio_andrea_radar_presence
     domain: binary_sensor
-  condition:
-  - type: is_not_present
-    condition: device
-    device_id: aae61ddfcd6991472d007493aeb96e1c
-    entity_id: binary_sensor.studio_andrea_radar_presence
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 30
+  condition: []
   action:
   - service: light.turn_off
     data: {}
@@ -2497,4 +2482,102 @@
   - service: notify.mobile_app_sonia_oneplus_9
     data:
       message: Master bathroom window is open, please closed it.
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      message: Master bathroom window is open, please closed it.
   mode: single
+- id: '6157120614939'
+  alias: Studio Andrea - Workday
+  trigger:
+  - platform: time
+    at: 09:30:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: person.andrea
+      state: home
+  - condition: state
+    entity_id: binary_sensor.workday_uk
+    state: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_table_plug
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_powerstrip_2
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - delay:
+      minutes: 5
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_computer_plug
+  - delay:
+      seconds: 5
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_computer_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+- id: 0229296780689
+  alias: Studio Andrea - Workday Off
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      seconds: 120
+  condition:
+  - condition: state
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+    state: 'on'
+  - condition: state
+    entity_id: person.andrea
+    state: home
+  - condition: state
+    entity_id: binary_sensor.workday_uk
+    state: 'on'
+  - condition: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.working_late_andrea
+    state: 'off'
+  action:
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_andrea_google_mini
+      message: Time to stop working, the Monitor will be turned off in 60 seconds.
+      language: en
+  - delay:
+      seconds: 60
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+- id: 0621608613053
+  alias: Studio Andrea - Weekend
+  trigger:
+  - platform: time
+    at: '11:00:00'
+  condition:
+  - condition: state
+    entity_id: person.andrea
+    state: home
+  - condition: state
+    entity_id: binary_sensor.workday_uk
+    state: 'off'
+  - condition: time
+    after: '11:00:00'
+    before: '12:00:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_table_plug
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_powerstrip_2
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
+  - delay:
+      seconds: 10
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
