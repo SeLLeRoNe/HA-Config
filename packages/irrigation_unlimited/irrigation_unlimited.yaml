@@ -4,32 +4,32 @@ irrigation_unlimited:
       - entity_id: "switch.garden_irrigation_system_zone_1"
         show:
           timeline: true
-        schedules:
-          - time: "07:00"
-            duration: "00:05"
+#        schedules:
+#          - time: "07:00"
+#            duration: "00:05"
       - entity_id: "switch.garden_irrigation_system_zone_2"
         show:
           timeline: true
-        schedules:
-          - time: "07:10"
-            duration: "00:05"
+#        schedules:
+#          - time: "07:10"
+#            duration: "00:05"
       - entity_id: "switch.garden_irrigation_system_zone_3"
         show:
           timeline: true
-        schedules:
-          - time: "07:15"
-            duration: "00:10"
+#        schedules:
+#          - time: "07:15"
+#            duration: "00:05"
       - entity_id: "switch.garden_irrigation_system_zone_4"
         show:
           timeline: true
-        schedules:
-          - time: "07:30"
-            duration: "00:05"
-#    sequences:
-#      - name: "Run 1"
-#        duration: "23:20"
-#        delay: "00:01"
 #        schedules:
+#          - time: "07:30"
+#            duration: "00:05"
+    sequences:
+      - name: "Run 1"
+        duration: "20:00"
+        delay: "00:01"
+        schedules:
 #          - name: "Summer"
 #            time: "00:00"
 ##            weekday: [mon, wed, fri]
@@ -44,6 +44,8 @@ irrigation_unlimited:
 #            time: "06:00"
 ##            weekday: [mon, thu]
 #            month: [mar, apr, may, sep, oct, nov]
-#        zones:
-#          - zone_id: 3
-#          - zone_id: 4
+        zones:
+          - zone_id: 1
+          - zone_id: 2
+          - zone_id: 3
+          - zone_id: 4
