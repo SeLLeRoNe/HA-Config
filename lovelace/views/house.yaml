@@ -49,7 +49,7 @@ cards:
               action: none
             hold_action:
               action: toggle
-          - entity: input_boolean.cleaning_mode
+          - entity: schedule.cleaning_mode
             tap_action:
               action: none
             hold_action:

@@ -10,10 +10,8 @@ trigger:
     entity_id: input_boolean.guest_mode
     to: 'off'
   - platform: state
-    entity_id: input_boolean.cleaning_mode
+    entity_id: schedule.cleaning_mode
     to: 'off'
-  - platform: time_pattern
-    minutes: '*'
   - platform: state
     entity_id: group.family
     to: 'not_home'
@@ -33,7 +31,7 @@ condition:
               entity_id: input_boolean.guest_mode
               state: 'off'
             - condition: state
-              entity_id: input_boolean.clenaing_mode
+              entity_id: schedule.cleaning_mode
               state: 'off'
         - condition: and
           conditions:
@@ -44,22 +42,11 @@ condition:
               entity_id: input_boolean.guest_mode
               state: 'off'
             - condition: state
-              entity_id: input_boolean.cleaning_mode
+              entity_id: schedule.cleaning_mode
               state: 'off'
     - condition: state
       entity_id: group.family
       state: 'not_home'
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: person.andrea
-          state: 'Garage'
-        - condition: state
-          entity_id: person.sonia
-          state: 'Garage'
-        - condition: state
-          entity_id: person.luca
-          state: 'Garage'
 action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
