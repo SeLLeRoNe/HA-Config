@@ -285,3 +285,413 @@
       state: 'on'
   icon: mdi:teddy-bear
   metadata: {}
+- id: '1663228805266'
+  name: Living Room - Luca Party Mode
+  entities:
+    light.living_room_ceiling_row_1_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 24.471
+      - 100
+      rgb_color:
+      - 255
+      - 104
+      - 0
+      xy_color:
+      - 0.642
+      - 0.349
+      color:
+        h: 8
+        hue: 8
+        s: 100
+        saturation: 100
+        x: 0.642
+        y: 0.349
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 1 Light 1
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9887'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 23961
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:28:51.299Z'
+      linkquality: 18
+      friendly_name: Living Room Ceiling Row 1 Light 1
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_1_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 120
+      - 100
+      rgb_color:
+      - 0
+      - 255
+      - 0
+      xy_color:
+      - 0.172
+      - 0.747
+      color:
+        h: 120
+        hue: 120
+        s: 100
+        saturation: 100
+        x: 0.172
+        y: 0.747
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 1 Light 2
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9cc1'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 5969
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:24:00.922Z'
+      linkquality: 21
+      friendly_name: Living Room Ceiling Row 1 Light 2
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_1_light_3:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 242.588
+      - 100
+      rgb_color:
+      - 11
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      color:
+        h: 240
+        hue: 240
+        s: 100
+        saturation: 100
+        x: 0.136
+        y: 0.04
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 1 Light 3
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f98df'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 31075
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:29:04.380Z'
+      linkquality: 10
+      friendly_name: Living Room Ceiling Row 1 Light 3
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_2_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 299.754
+      - 95.686
+      rgb_color:
+      - 254
+      - 11
+      - 255
+      xy_color:
+      - 0.385
+      - 0.155
+      color:
+        h: 300
+        hue: 300
+        s: 100
+        saturation: 100
+        x: 0.385
+        y: 0.155
+      device:
+        applicationVersion: 5
+        dateCode: '20220301'
+        friendlyName: Living Room Ceiling Row 2 Light 1
+        hardwareVersion: 0
+        ieeeAddr: '0xa4c13833824beb5b'
+        manufacturerID: 4107
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 26881
+        powerSource: Mains (single phase)
+        softwareBuildID: 2.0.1
+        stackVersion: 2
+        type: Router
+        zclVersion: 3
+      last_seen: '2022-09-15T16:28:54.597Z'
+      linkquality: 193
+      friendly_name: Living Room Ceiling Row 2 Light 1
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_2_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 60.235
+      - 100
+      rgb_color:
+      - 254
+      - 255
+      - 0
+      xy_color:
+      - 0.444
+      - 0.517
+      color:
+        h: 60
+        hue: 60
+        s: 100
+        saturation: 100
+        x: 0.444
+        y: 0.517
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 2 Light 2
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f98ef'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 37297
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:27:53.080Z'
+      linkquality: 76
+      friendly_name: Living Room Ceiling Row 2 Light 2
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_2_light_3:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      color:
+        h: 0
+        hue: 0
+        s: 100
+        saturation: 100
+        x: 0.701
+        y: 0.299
+      device:
+        applicationVersion: 5
+        dateCode: '20220301'
+        friendlyName: Living Room Ceiling Row 2 Light 3
+        hardwareVersion: 0
+        ieeeAddr: '0xa4c138eaea011c28'
+        manufacturerID: 4107
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 25491
+        powerSource: Mains (single phase)
+        softwareBuildID: 2.0.1
+        stackVersion: 2
+        type: Router
+        zclVersion: 3
+      last_seen: '2022-09-15T16:28:51.937Z'
+      linkquality: 14
+      friendly_name: Living Room Ceiling Row 2 Light 3
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_3_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 120
+      - 100
+      rgb_color:
+      - 0
+      - 255
+      - 0
+      xy_color:
+      - 0.172
+      - 0.747
+      color:
+        h: 120
+        hue: 120
+        s: 100
+        saturation: 100
+        x: 0.172
+        y: 0.747
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 1
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9648'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 9727
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:26:09.799Z'
+      linkquality: 102
+      friendly_name: Living Room Ceiling Row 3 Light 1
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_3_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 242.588
+      - 100
+      rgb_color:
+      - 11
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      color:
+        h: 240
+        hue: 240
+        s: 100
+        saturation: 100
+        x: 0.136
+        y: 0.04
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 2
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9deb'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 20041
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:28:02.408Z'
+      linkquality: 21
+      friendly_name: Living Room Ceiling Row 3 Light 2
+      supported_features: 59
+      state: 'on'
+    light.living_room_ceiling_row_3_light_3:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 24.471
+      - 100
+      rgb_color:
+      - 255
+      - 104
+      - 0
+      xy_color:
+      - 0.642
+      - 0.349
+      color:
+        h: 8
+        hue: 8
+        s: 100
+        saturation: 100
+        x: 0.642
+        y: 0.349
+      device:
+        applicationVersion: 16
+        dateCode: '20210522'
+        friendlyName: Living Room Ceiling Row 3 Light 3
+        hardwareVersion: 1
+        ieeeAddr: '0x00124b00244f9041'
+        manufacturerID: 0
+        manufacturerName: eWeLight
+        model: ZB-RGBCW
+        networkAddress: 62254
+        powerSource: Mains (single phase)
+        softwareBuildID: 1.0.13
+        stackVersion: 2
+        type: Router
+        zclVersion: 1
+      last_seen: '2022-09-15T16:27:40.065Z'
+      linkquality: 196
+      friendly_name: Living Room Ceiling Row 3 Light 3
+      supported_features: 59
+      state: 'on'
+  metadata: {}
+  icon: mdi:human-female-dance

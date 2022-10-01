@@ -1,31 +1,3 @@
-- id: '1627031906001'
-  alias: HASP Core functionality
-  description: ''
-  use_blueprint:
-    path: HASwitchPlate/hasp_Core_Functionality.yaml
-    input:
-      page3font_select: 6 - Noto Sans 32
-      haspdevice: 2c52107a10c4ee28a7e13ecf813f0959
-      page_names:
-        page0: Page 0
-        page1: Page 1
-        page2: Page 2
-        page3: Page 3
-        page4: Page 4
-        page5: Page 5
-        page6: Page 6
-        page7: Page 7
-        page8: Page 8
-        page9: Page 9
-        page10: Page 10
-        page11: Page 11
-      page2font_select: 5 - Noto Sans 24
-      page2text: Weather
-      page3text: Alarm
-      page1font_select: 6 - Noto Sans 32
-      page1text: Lights
-      page3page: 7
-      reset_hasp: false
 - id: '1636126939277'
   alias: Master Bedroom Remote
   description: ''
@@ -156,7 +128,7 @@
   - service: light.toggle
     data: {}
     target:
-      entity_id: light.master_bedroom_ceiling_light_wardrobe
+      entity_id: light.master_bedroom_ceiling_light_wardrobe_1
   mode: single
 - id: '1655197657354'
   alias: 'Shelly - Master Bathroom Main Switch #1 - Single'
@@ -1658,7 +1630,6 @@
   - platform: state
     entity_id:
     - binary_sensor.garage_pir
-    from: 'on'
     to: 'off'
   condition:
   - type: is_not_open
@@ -1694,11 +1665,19 @@
     device_id: d2480e66430a90ff781f49b96ed75eec
     entity_id: binary_sensor.garage_door_contact
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
   - type: not_opened
     platform: device
     device_id: 55eb97e25bd57f1c7f7366b06a002b24
     entity_id: binary_sensor.garage_external_door_contact
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
   condition:
   - type: is_not_open
     condition: device
@@ -1716,7 +1695,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 15
+      seconds: 0
   action:
   - service: light.turn_off
     data: {}
@@ -1877,9 +1856,6 @@
     entity_id: binary_sensor.studio_andrea_radar_occupancy
     domain: binary_sensor
   condition:
-  - condition: state
-    entity_id: input_boolean.night_mode
-    state: 'on'
   - condition: state
     entity_id: binary_sensor.studio_andrea_computer_ping
     state: 'off'
@@ -2459,6 +2435,10 @@
     device_id: aae61ddfcd6991472d007493aeb96e1c
     entity_id: binary_sensor.studio_andrea_radar_presence
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
   condition: []
   action:
   - service: light.turn_off
