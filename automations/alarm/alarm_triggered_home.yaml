@@ -9,6 +9,9 @@ trigger:
     entity_id: binary_sensor.laundry_room_lpg_sensor_gas
     to: 'on'
   - platform: state
+    entity_id: binary_sensor.laundry_room_cng_sensor_gas
+    to: 'on'
+  - platform: state
     entity_id: binary_sensor.laundry_room_hs3sa_smoke
     to: 'on'
   - platform: state
@@ -41,6 +44,7 @@ action:
       message: >
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke" %}by the Smoke sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
@@ -56,6 +60,7 @@ action:
       message: >
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke" %}by the Smoke sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
@@ -76,6 +81,7 @@ action:
       message: >
         Alarm triggered
         {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas" %}by the Gas sensor in the Laundry Room
+        {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas" %}by the Gas sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak" %}by the Leak sensor in the Laundry Room
         {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak" %}by the Leak sensor in the Basemenet Bathroom
         {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
