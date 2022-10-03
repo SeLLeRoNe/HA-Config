@@ -209,6 +209,17 @@ cards:
     template: house_energy_small
     variables:
       - title: Energy Consumption
+#  - type: custom:frigate-card
+#    cameras:
+#      - camera_entity: camera.doorbell
+#        live_provider: frigate-jsmpeg
+#        title: Doorbell
+#      - camera_entity: camera.front
+#        live_provider: frigate-jsmpeg
+#        title: Front Door
+#      - camera_entity: camera.gardenleft
+#        live_provider: frigate-jsmpeg
+#        title: Garden Left
   - type: custom:layout-break
   - type: custom:stack-in-card
     mode: vertical

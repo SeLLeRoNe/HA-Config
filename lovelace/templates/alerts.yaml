@@ -219,7 +219,7 @@ alerts:
           - name: Laundry Room Leak
             entity: binary_sensor.laundry_room_sjcgq11lm_water_leak
       - type: glance
-        columns: 2
+        columns: 3
         show_header_toggle: false
         show_icon: true
         show_state: false
@@ -227,6 +227,8 @@ alerts:
         entities:
           - name: Smoke Sensor
             entity: binary_sensor.laundry_room_hs3sa_smoke
+          - name: CNG Gas Sensor
+            entity: binary_sensor.laundry_room_cng_sensor_gas
           - name: LPG Gas Sensor
             entity: binary_sensor.laundry_room_lpg_sensor_gas
       - type: glance

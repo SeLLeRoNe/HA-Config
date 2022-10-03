@@ -27,3 +27,13 @@ living_room_scenes:
                 transition: 10
             hold_action:
               action: none
+          - entity: scene.living_room_luca_party_mode
+            name: "Luca Party Mode"
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.living_room_table_game_night
+                transition: 10
+            hold_action:
+              action: none

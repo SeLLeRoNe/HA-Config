@@ -16,5 +16,5 @@ studio_sonia_plugs:
             template: plug_card
             variables:
               - name: "Desk Sonia"
-              - entity: switch.studio_desk_sonia_plug
+              - entity: switch.studio_sonia_desk_plug
               - block: true
