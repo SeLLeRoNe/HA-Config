@@ -1,5 +1,0 @@
----
-platform: version
-name: Home Assistant Available Beta Version
-source: hassio
-beta: true
