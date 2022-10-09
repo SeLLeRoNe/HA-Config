@@ -2439,7 +2439,16 @@
       hours: 0
       minutes: 0
       seconds: 30
-  condition: []
+  condition:
+  - type: is_no_motion
+    condition: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_occupancy
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 15
   action:
   - service: light.turn_off
     data: {}
@@ -2561,3 +2570,1647 @@
       seconds: 10
   - service: switch.turn_on
     entity_id: switch.studio_andrea_media03_wol
+- id: '1665139400747'
+  alias: Alarm - Triggered - Night
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_3_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_4_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.play_room_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bathroom_mccgq01lm_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_night
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+  - service: notify.alarm
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside"
+        %}at the Patio Door {% elif trigger.entity_id == "binary_sensor.garage_pir"
+        %}at the Garage {% else %}from Unknown Sensor {% endif %}
+
+        '
+      data:
+        color: FF3300
+        sticky: true
+        persistent: false
+        tag: alarm
+        ttl: 0
+        priority: high
+  - service: notify.telegram_andrea
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside"
+        %}at the Patio Door {% elif trigger.entity_id == "binary_sensor.garage_pir"
+        %}at the Garage Door {% else %}from Unknown Sensor {% endif %}
+
+        '
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+      - light.patio_light
+      - light.studio_andrea_wall_light
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+      transition: 1
+  - delay:
+      seconds: 30
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+      - light.patio_light
+      - light.studio_andrea_wall_light
+  mode: single
+  initial_state: true
+- id: '1665139449779'
+  alias: Alarm - Triggered - Away
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_3_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_4_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.play_room_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: group.kithcen_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_andrea_andrea_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bathroom_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bedroom_luca_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_pi
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.master_bathroom_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_away
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+  - service: notify.alarm
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact"
+        %}at the Patio Door
+
+        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
+        {% else %}from Unknown Sensor {% endif %}
+
+        '
+      data:
+        color: '#FF3300'
+        sticky: true
+        persistent: false
+        tag: alarm
+        ttl: 0
+        priority: high
+  - service: notify.telegram_andrea
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact"
+        %}at the Patio Door {% elif trigger.entity_id == "group.garage_room_pir" %}at
+        the Garage Door {% else %}from Unknown Sensor {% endif %}
+
+        '
+  - service: camera.snapshot
+    data:
+      entity_id: camera.hallway
+      filename: /home/ha/webcam/hallway.jpg
+  - service: camera.snapshot
+    data:
+      entity_id: camera.living_room_camera_mediaprofile_channel1_mainstream
+      filename: /home/ha/webcam/living_room.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: 56169046
+      caption: Hallway
+      file: /home/ha/webcam/hallway.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: 56169046
+      caption: Living Room
+      file: /home/ha/webcam/living_room.jpg
+  mode: single
+  initial_state: true
+- id: '1665139490677'
+  alias: Alarm - Triggered - Away
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_1_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_2_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_3_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_window_4_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.play_room_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_window_contact
+    to: 'on'
+  - platform: state
+    entity_id: group.kithcen_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_andrea_andrea_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bathroom_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bedroom_luca_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_pi
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.master_bathroom_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_pir
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.patio_mccgq01lm_outside_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_away
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+  - service: notify.alarm
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact"
+        %}at the Patio Door
+
+        {% elif trigger.entity_id == "group.garage_room_pir" %}at the Garage Door
+        {% else %}from Unknown Sensor {% endif %}
+
+        '
+      data:
+        color: '#FF3300'
+        sticky: true
+        persistent: false
+        tag: alarm
+        ttl: 0
+        priority: high
+  - service: notify.telegram_andrea
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.living_room_pir"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_window_contact"
+        %}in the Ground Floor Bathroom Window {% elif trigger.entity_id == "binary_sensor.kitchen_window_1_contact"
+        %}in the Kitchen Window 1 {% elif trigger.entity_id == "binary_sensor.kitchen_window_2_contact"
+        %}in the Kitchen Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_1_contact"
+        %}in the Living Room Window 1 {% elif trigger.entity_id == "binary_sensor.living_room_window_2_contact"
+        %}in the Living Room Window 2 {% elif trigger.entity_id == "binary_sensor.living_room_window_3_contact"
+        %}in the Living Room Window 3 {% elif trigger.entity_id == "binary_sensor.living_room_window_4_contact"
+        %}in the Living Room Window 4 {% elif trigger.entity_id == "binary_sensor.play_room_window_contact"
+        %}in the Play Room Window {% elif trigger.entity_id == "binary_sensor.studio_andrea_window_contact"
+        %}in the Studio Andrea Window {% elif trigger.entity_id == "binary_sensor.master_bedroom_pir"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.00000_cell_motion_detection"
+        %}in the Living Room {% elif trigger.entity_id == "binary_sensor.master_bedroom_pi"
+        %}in the Master Bedroom {% elif trigger.entity_id == "binary_sensor.studio_andrea_andrea_andrea_pir"
+        %}in the Studio {% elif trigger.entity_id == "binary_sensor.bedroom_luca_pir"
+        %}in Luca''s Bedroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_contact"
+        %}at the Bathroom Window {% elif trigger.entity_id == "binary_sensor.patio_pir"
+        %}in the Patio {% elif trigger.entity_id == "binary_sensor.patio_mccgq01lm_outside_contact"
+        %}at the Patio Door {% elif trigger.entity_id == "group.garage_room_pir" %}at
+        the Garage Door {% else %}from Unknown Sensor {% endif %}
+
+        '
+  - service: camera.snapshot
+    data:
+      entity_id: camera.hallway
+      filename: /home/ha/webcam/hallway.jpg
+  - service: camera.snapshot
+    data:
+      entity_id: camera.living_room_camera_mediaprofile_channel1_mainstream
+      filename: /home/ha/webcam/living_room.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: 56169046
+      caption: Hallway
+      file: /home/ha/webcam/hallway.jpg
+  - service: telegram_bot.send_photo
+    data:
+      target: 56169046
+      caption: Living Room
+      file: /home/ha/webcam/living_room.jpg
+  mode: single
+  initial_state: true
+- id: '1665139524800'
+  alias: Alarm - Triggered - Home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.basement_bathroom_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_lpg_sensor_gas
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_cng_sensor_gas
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.laundry_room_hs3sa_smoke
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_hs3sa_smoke
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_home
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_andrea_andrea_andrea_google_mini
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke"
+        %}by the Smoke sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Basemenet Bathroom {% elif trigger.entity_id ==
+        "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.kitchen_hs3sa_smoke" %}by the
+        Smoke sensor in the Kitchen {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Ground Floor Bathroom {% else %}but the trigger
+        cannot be identified {% endif %}
+
+        '
+      language: en
+  - service: notify.alarm
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_hs3sa_smoke"
+        %}by the Smoke sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Basemenet Bathroom {% elif trigger.entity_id ==
+        "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Ground Floor Bathroom {% else %}but the trigger
+        cannot be identified {% endif %}
+
+        '
+      data:
+        color: '#FF3300'
+        sticky: true
+        persistent: false
+        tag: alarm
+        ttl: 0
+        priority: high
+  - service: notify.telegram_andrea
+    data:
+      title: Home Alarm
+      message: 'Alarm triggered {% if trigger.entity_id == "binary_sensor.laundry_room_lpg_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_cng_sensor_gas"
+        %}by the Gas sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.laundry_room_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Laundry Room {% elif trigger.entity_id == "binary_sensor.basement_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Basemenet Bathroom {% elif trigger.entity_id ==
+        "binary_sensor.kitchen_sjcgq11lm_water_leak" %}by the Leak sensor in the Kitchen
+        {% elif trigger.entity_id == "binary_sensor.ground_floor_bathroom_sjcgq11lm_water_leak"
+        %}by the Leak sensor in the Ground Floor Bathroom {% else %}but the trigger
+        cannot be identified {% endif %}
+
+        '
+  mode: single
+- id: '1665146506953'
+  alias: Alarm - Disarmed Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: disarmed
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: disarmed
+    - condition: state
+      entity_id: group.family
+      state: not_home
+  action:
+  - service: notify.alarm
+    data:
+      title: Alarm Notification
+      message: Alarm Deactivated while no one is at home!
+  - service: notify.telegram_andrea
+    data:
+      title: Alarm Notification
+      message: Alarm Deactivated while no one is at home!
+  mode: single
+  initial_state: true
+- id: '1665146534894'
+  alias: Alarm - Auto Arm - Away
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.holiday_mode
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: schedule.cleaning_mode
+    to: 'off'
+  - platform: state
+    entity_id: group.family
+    to: not_home
+  condition:
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ not is_state(''alarm_control_panel.home_alarm'', ''armed_away'')
+        }}'
+    - condition: or
+      conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.holiday_mode
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'off'
+        - condition: state
+          entity_id: schedule.cleaning_mode
+          state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.holiday_mode
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'off'
+        - condition: state
+          entity_id: schedule.cleaning_mode
+          state: 'off'
+    - condition: state
+      entity_id: group.family
+      state: not_home
+  action:
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.home_alarm
+    data:
+      code: '2016'
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.house
+  - service: notify.alarm
+    data:
+      title: Home Alarm Activated
+      message: Alarm automatically activated - Away mode
+  mode: single
+  initial_state: true
+- id: '1665146550553'
+  alias: Alarm - Auto Arm - Home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.holiday_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+  - platform: state
+    entity_id: schedule.cleaning_mode
+    to: 'on'
+  - platform: state
+    entity_id: group.family
+    to: home
+  - platform: zone
+    entity_id: device_tracker.citroen_cactus
+    event: enter
+    zone: zone.garage
+  condition:
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ not is_state(''alarm_control_panel.home_alarm'', ''armed_home'')
+        }}'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.family
+        state: home
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'on'
+      - condition: state
+        entity_id: schedule.cleaning_mode
+        state: 'on'
+    - condition: or
+      conditions:
+      - condition: time
+        after: 07:00:00
+        before: 01:00:00
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.studio_andrea_andrea_desk_andrea_computer_ping
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.living_room_tv
+          state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/house_alarm_siren/set
+      payload: '{"warning": {"duration": 1, "mode": "stop", "strobe": false}}'
+  - service: alarm_control_panel.alarm_arm_home
+    entity_id: alarm_control_panel.house
+  - service: alarm_control_panel.alarm_arm_home
+    entity_id: alarm_control_panel.home_alarm
+    data:
+      code: '2016'
+  mode: single
+  initial_state: true
+- id: '1665146591758'
+  alias: Alarm - Auto Arm - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00:00
+  - platform: state
+    entity_id: input_boolean.holiday_mode
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+  - platform: state
+    entity_id: schedule.cleaning_mode
+    to: 'off'
+  - platform: state
+    entity_id: group.family
+    to: home
+  - platform: zone
+    entity_id: device_tracker.citroen_cactus
+    event: enter
+    zone: zone.garage
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_desk_computer_ping
+    to: 'off'
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: binary_sensor.living_room_tv
+    to: 'off'
+    for:
+      minutes: 10
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+    - condition: template
+      value_template: '{{ not is_state(''alarm_control_panel.home_alarm'', ''armed_night'')
+        }}'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: schedule.cleaning_mode
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.family
+        state: home
+      - condition: state
+        entity_id: person.andrea
+        state: Garage
+      - condition: state
+        entity_id: person.sonia
+        state: Garage
+      - condition: state
+        entity_id: person.luca
+        state: Garage
+    - condition: time
+      after: 01:00:00
+      before: 07:00:00
+    - condition: state
+      entity_id: binary_sensor.studio_desk_computer_ping
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.living_room_tv
+      state: 'off'
+    - condition: and
+      conditions:
+      - condition: template
+        value_template: '{% if states.binary_sensor.studio_andrea_desk_computer_ping
+          is defined %} {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.studio_andrea_desk_computer_ping.last_changed))
+          > 600 }} {% endif %}'
+      - condition: template
+        value_template: '{% if states.binary_sensor.living_room_tv is defined %} {{
+          (as_timestamp(now()) - as_timestamp(states.binary_sensor.living_room_tv.last_changed))
+          > 600 }} {% endif %}'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/house_alarm_siren/set
+      payload: '{"warning": {"duration": 0, "mode": "stop", "strobe": false}}'
+  - service: alarm_control_panel.alarm_arm_night
+    entity_id: alarm_control_panel.home_alarm
+    data:
+      code: '2016'
+  - service: alarm_control_panel.alarm_arm_night
+    entity_id: alarm_control_panel.house
+  mode: single
+  initial_state: true
+- id: '1665146617878'
+  alias: Alarm - Flood Alert
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bathroom_sjcgq11lm_water_leak
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.bathroom_mccgq01lm_water_leak
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.alarm
+    data:
+      title: Home Alarm
+      message: 'Flood detected {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_water_leak"
+        %} in the Master Bathroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak"
+        %} in the Bathroom {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak"
+        %} in the Kitchen {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_water_leak"
+        %} in the Patio {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_water_leak"
+        %} in the Garage {% else %} from an Unknown Sensor {% endif %}
+
+        '
+      data:
+        color: '#FF3300'
+        sticky: 'true'
+        tag: tag
+        ttl: 0
+        priority: high
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_andrea_google_mini
+      message: 'Flood detected {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_water_leak"
+        %} in the Master Bathroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak"
+        %} in the Bathroom {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak"
+        %} in the Kitchen {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_water_leak"
+        %} in the Patio {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_water_leak"
+        %} in the Garage {% else %} from an Unknown Sensor {% endif %}
+
+        '
+      language: en
+  - service: notify.telegram_andrea
+    data:
+      title: Home Alarm
+      message: 'Flood detected {% if trigger.entity_id == "binary_sensor.master_bathroom_sjcgq11lm_water_leak"
+        %} in the Master Bathroom {% elif trigger.entity_id == "binary_sensor.bathroom_mccgq01lm_water_leak"
+        %} in the Bathroom {% elif trigger.entity_id == "binary_sensor.kitchen_sjcgq11lm_water_leak"
+        %} in the Kitchen {% elif trigger.entity_id == "binary_sensor.patio_sjcgq11lm_water_leak"
+        %} in the Patio {% elif trigger.entity_id == "binary_sensor.garage_sjcgq11lm_water_leak"
+        %} in the Garage {% else %} from an Unknown Sensor {% endif %}
+
+        '
+  mode: single
+  initial_state: true
+- id: '1665146652384'
+  alias: System - Refresh date countdown sensors (Birthdays)
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00:01
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: python_script.date_countdown
+    data:
+      name: Andrea
+      type: birthday
+      date: 22/09/1982
+  - service: python_script.date_countdown
+    data:
+      name: Sonia
+      type: birthday
+      date: 30/12/1980
+  - service: python_script.date_countdown
+    data:
+      name: Luca
+      type: birthday
+      date: 15/02/2020
+  - service: python_script.date_countdown
+    data:
+      name: Lara
+      type: birthday
+      date: 11/10/2021
+  - service: python_script.date_countdown
+    data:
+      name: Maurizio
+      type: birthday
+      date: 07/08/1957
+  - service: python_script.date_countdown
+    data:
+      name: Patrizia
+      type: birthday
+      date: 25/06/1959
+  - service: python_script.date_countdown
+    data:
+      name: Alessandra
+      type: birthday
+      date: 12/08/1985
+  - service: python_script.date_countdown
+    data:
+      name: Martina
+      type: birthday
+      date: 03/06/1992
+  - service: python_script.date_countdown
+    data:
+      name: Andrea Sonia
+      type: anniversary
+      date: 01/03/2016
+  mode: single
+- id: '1665146702268'
+  alias: Kitchen - Dishwasher - Done
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    below: 2
+    for:
+      seconds: 15
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Drying
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Done
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.kitchen_dishwasher_current_energy
+      value: '0'
+  - service: notify.telegram_andrea
+    data:
+      title: Kitchen
+      message: 'Dishwasher is now done. Energy consumed: {{ states(''sensor.kitchen_dishwasher_plug_energy_today'')|float
+        - states(''input_number.kitchen_dishwasher_current_energy'')|float | round(3)
+        }}kWh'
+  mode: single
+  initial_state: true
+- id: '1665146716946'
+  alias: Kitchen - Dishwasher - Drying
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    above: 2000
+    for:
+      minutes: 1
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Washing
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Drying
+  mode: single
+  initial_state: true
+- id: '1665146729808'
+  alias: Kitchen - Dishwasher - Idle
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    below: 1
+    for:
+      seconds: 15
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Done
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Idle
+  mode: single
+  initial_state: true
+- id: '1665146754418'
+  alias: Kitchen - Dishwasher - Pods
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: counter.kitchen_dishwasher_pods
+    below: 10
+  condition: []
+  action:
+  - service: notify.telegram_andrea
+    data:
+      title: Kitchen
+      message: Dishwasher pods are running out ({{ states('counter.dishwasher_pods')}}
+        left). Please remember to buy them!
+  mode: single
+  initial_state: true
+- id: '1665146767605'
+  alias: Kitchen - Dishwasher - Starting
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    above: 1
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Idle
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Starting
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.kitchen_dishwasher_current_energy
+      value: '{{ states(''sensor.kitchen_dishwasher_plug_energy_today'') }}'
+  mode: single
+  initial_state: true
+- id: '1665146778427'
+  alias: Kitchen - Dishwasher - Warming Up
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    above: 2000
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Starting
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Warming Up
+  - service: counter.decrement
+    data:
+      entity_id: counter.kitchen_dishwasher_pods
+  mode: single
+  initial_state: true
+- id: '1665146793314'
+  alias: Kitchen - Dishwasher - Washing
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.kitchen_dishwasher_plug_energy_power
+    above: 2
+    below: 2000
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.kitchen_dishwasher_status
+      state: Warming Up
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.kitchen_dishwasher_status
+      option: Washing
+  mode: single
+  initial_state: true
+- id: '1665146878882'
+  alias: Laundry Room - Washing Machine - Done
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    below: 5
+    for:
+      seconds: 15
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.laundry_room_washing_machine_status
+      state: Spinning
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.laundry_room_washing_machine_status
+      option: Done
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.laundry_room_washing_machine_current_energy
+      value: '0'
+  - service: tts.google_say
+    data:
+      entity_id: media_player.studio_andrea_google_mini
+      message: Washing Machine is now done. Energy consumed was {{ states('sensor.laundry_room_washing_machine_plug_energy_today')|float
+        - states('input_number.laundry_room_washing_machine_current_energy')|float
+        | round(2) }}kWh
+      language: en
+  - service: notify.telegram_andrea
+    data:
+      title: Laundry Room
+      message: 'Washing Machine is now done. Energy consumed: {{ states(''sensor.laundry_room_washing_machine_plug_energy_today'')|float
+        - states(''input_number.laundry_room_washing_machine_current_energy'')|float
+        | round(3) }}kWh'
+  - service: notify.living_room_chromecast
+    data:
+      title: Laundry Room
+      message: Washing Machine is now done
+      fontsize: large
+      position: center
+      duration: 2
+      transparency: 20%
+      color: blue
+      interrupt: 1
+  mode: single
+  initial_state: true
+- id: '1665146888382'
+  alias: Laundry Room - Washing Machine - Idle
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    below: 1
+    for:
+      seconds: 15
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.laundry_room_washing_machine_status
+      state: Done
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.laundry_room_washing_machine_status
+      option: Idle
+  mode: single
+  initial_state: true
+- id: '1665146900512'
+  alias: Laundry Room - Washing Machine - Pods
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: counter.laundry_room_washing_machine_pods
+    below: 15
+  condition: []
+  action:
+  - service: notify.telegram_andrea
+    data:
+      title: Laundry Room
+      message: Washing Machine pods are running out ({{ states('counter.washing_machine_pods')}}
+        left). Please remember to buy them!
+  mode: single
+  initial_state: true
+- id: '1665146929909'
+  alias: Laundry Room - Washing Machine - Starting
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    above: 1
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.laundry_room_washing_machine_status
+      state: Idle
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.laundry_room_washing_machine_status
+      option: Starting
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.laundry_room_washing_machine_current_energy
+      value: '{{ states(''sensor.laundry_room_washing_machine_plug_energy_today'')
+        }}'
+  mode: single
+  initial_state: true
+- id: '1665146944719'
+  alias: Laundry Room - Washing Machine - Warming Up
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    above: 500
+    for:
+      seconds: 15
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.laundry_room_washing_machine_status
+      state: Starting
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.laundry_room_washing_machine_status
+      option: Warming Up
+  - service: counter.decrement
+    data:
+      entity_id: counter.laundry_room_washing_machine_pods
+  mode: single
+  initial_state: true
+- id: '1665146974131'
+  alias: Laundry Room - Washing Machine - Washing
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    above: 500
+    below: 2250
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_select.laundry_room_washing_machine_status
+      state: Warming Up
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.laundry_room_washing_machine_status
+      option: Washing
+  mode: single
+  initial_state: true
+- id: '1665147061510'
+  alias: Studio Andrea - Amplifier Off
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      seconds: 120
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.night_mode
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.studio_andrea_computer_ping
+          state: 'on'
+      - condition: state
+        entity_id: binary_sensor.studio_andrea_computer_ping
+        state: 'off'
+    - condition: template
+      value_template: '{{ states.media_player.spotify_andrea.state != ''playing''
+        }}'
+    - condition: template
+      value_template: '{{ states.media_player.spotify_andrea.attributes.source !=
+        ''YAMAHA-RXV779'' }}'
+    - condition: template
+      value_template: '{{ states.media_player.spotify_andrea.attributes.source !=
+        ''PC-SELLERONE'' }}'
+  action:
+  - service: media_player.turn_off
+    entity_id: media_player.studio_andrea_amplifier
+  mode: single
+  initial_state: true
+- id: '1665147083931'
+  alias: Studio Andrea - Amplifier On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.night_mode
+    to: 'off'
+  - platform: state
+    entity_id: media_player.studio_andrea_amplifier
+    to: 'on'
+  - platform: state
+    entity_id: media_player.studio_andrea_amplifier
+    to: idle
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: and
+        conditions:
+        - condition: template
+          value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'',
+            ''source'', ''Spotify'') }}'
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: media_player.spotify_andrea
+            state: paused
+          - condition: state
+            entity_id: media_player.spotify_andrea
+            state: idle
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: media_player.studio_andrea_amplifier
+          state: 'off'
+        - condition: state
+          entity_id: media_player.studio_andrea_amplifier
+          state: idle
+  action:
+  - service: media_player.turn_on
+    entity_id: media_player.studio_andrea_amplifier
+  - delay:
+      seconds: 5
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.studio_andrea_amplifier
+      source: AV1
+  mode: single
+  initial_state: true
+- id: '1665147107499'
+  alias: Studio Andrea - Set Amplifier Volume for PC
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'', ''source'',
+      ''PC'') }}'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+  action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.studio_andrea_amplifier
+      volume_level: '0.9'
+  mode: single
+  initial_state: true
+- id: '1665147115521'
+  alias: Studio Andrea - Set Amplifier Volume for Spotify
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'', ''source'',
+      ''Spotify'') }}'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: media_player.spotify_andrea
+      state: paused
+    - condition: state
+      entity_id: media_player.spotify_andrea
+      state: idle
+  action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.studio_andrea_amplifier
+      volume_level: '0.7'
+  mode: single
+  initial_state: true
+- id: '1665319906273'
+  alias: Studio Andrea - Computer Off - Away
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      seconds: 120
+  condition:
+  - condition: state
+    entity_id: person.andrea
+    state: not_home
+  action:
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_computer_plug
+  - service: media_player.turn_off
+    entity_id: media_player.studio_andrea_amplifier
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_usb_hub
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
+  mode: single
+  initial_state: false
+- id: '1665319928912'
+  alias: Studio Andrea - Computer Off - Home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    for:
+      seconds: 120
+  condition:
+  - condition: state
+    entity_id: person.andrea
+    state: home
+  action:
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_usb_hub
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+  mode: single
+  initial_state: false
+- id: '1665319953450'
+  alias: Studio Andrea - Computer On - Away
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: person.andrea
+    state: not_home
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_usb_hub
+  - service: notify.mobile_app_andrea_oneplus_nord
+    data:
+      title: Studio Andrea
+      message: Computer has been turned on!
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+  mode: single
+  initial_state: true
+- id: '1665319976542'
+  alias: Studio Andrea - Computer On - Home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: state
+      entity_id: person.andrea
+      state: home
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.workday_uk
+        state: 'off'
+      - condition: time
+        after: '18:30:00'
+        before: '10:00:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_usb_hub
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_andrea_lights
+      transition: 10
+  mode: single
+  initial_state: true
+- id: '1665319993232'
+  alias: Studio Andrea - Computer On - Work
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.studio_andrea_computer_ping
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: person.andrea
+        state: home
+      - condition: state
+        entity_id: person.andrea
+        state: Garden
+    - condition: time
+      after: 09:30:00
+      before: '18:30:00'
+    - condition: state
+      entity_id: binary_sensor.workday_uk
+      state: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_uk_powerstrip
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_2
+  - service: media_player.turn_on
+    entity_id: media_player.studio_andrea_amplifier
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_usb_hub
+  - service: light.turn_off
+    data:
+      entity_id: light.studio_andrea_lights
+      transition: 10
+  mode: single
+  initial_state: true
+- id: '1665320013837'
+  alias: Studio Andrea - Computer Plug Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.studio_andrea_desk_computer_plug
+    to: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  mode: single
+  initial_state: false
+- id: '1665320034539'
+  alias: Studio Andrea - Computer Plug On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.studio_andrea_desk_computer_plug
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_media03_wol
+  - service: switch.turn_on
+    entity_id: switch.studio_andrea_desk_lg_monitor_1
+  mode: single
+  initial_state: false
+- id: '1665320069456'
+  alias: Studio Andrea - Spotify Idle to Computer
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.spotify_andrea
+    to: paused
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: media_player.spotify_andrea
+    to: idle
+    for:
+      minutes: 5
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'on'
+    - condition: template
+      value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'',
+        ''source'', ''Spotify'') }}'
+  action:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.studio_andrea_amplifier
+      source: AV1
+  mode: single
+  initial_state: true
+- id: '1665320079993'
+  alias: Studio Andrea - Spotify Idle to Off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.spotify_andrea
+    to: paused
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: media_player.spotify_andrea
+    to: idle
+    for:
+      minutes: 5
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.studio_andrea_computer_ping
+      state: 'off'
+    - condition: template
+      value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'',
+        ''source'', ''Spotify'') }}'
+  action:
+  - service: media_player.turn_off
+    entity_id: media_player.studio_andrea_amplifier
+  mode: single
+  initial_state: true
+- id: '1665320316907'
+  alias: Studio Andrea - NFC - Lights on
+  description: ''
+  trigger:
+  - platform: event
+    event_type: tag_scanned
+    event_data:
+      device_id: a17f6772e9780696
+      tag_id: cd60f958-4a93-415e-a188-83df8ed9da8f
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: disarmed
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_home
+  action:
+  - service: light.toggle
+    data:
+      entity_id: light.studio_andrea_lights
+      transition: 5
+      color_name: cyan
+      brightness_pct: 50
+  mode: single
+  initial_state: true
+- id: '1665320354083'
+  alias: Studio Sonia - NFC - Ligfts On
+  description: ''
+  trigger:
+  - platform: event
+    event_type: tag_scanned
+    event_data:
+      device_id: df03e51f5bd84b2b
+      tag_id: cd60f958-4a93-415e-a188-83df8ed9da8f
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: disarmed
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_home
+  action:
+  - service: light.toggle
+    data:
+      entity_id: light.studio_sonia_lights
+      transition: 5
+      color_name: green
+      brightness_pct: 50
+  mode: single
+  initial_state: true
