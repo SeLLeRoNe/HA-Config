@@ -2437,6 +2437,15 @@
     domain: binary_sensor
     for:
       hours: 0
+      minutes: 1
+      seconds: 0
+  - type: no_motion
+    platform: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_occupancy
+    domain: binary_sensor
+    for:
+      hours: 0
       minutes: 0
       seconds: 30
   condition:
@@ -2449,6 +2458,11 @@
       hours: 0
       minutes: 0
       seconds: 15
+  - type: is_not_present
+    condition: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_presence
+    domain: binary_sensor
   action:
   - service: light.turn_off
     data: {}
