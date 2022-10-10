@@ -161,11 +161,11 @@ cards:
           shuffle: true
         tap_action:
           action: none
-      - type: custom:spotify-card
-        client_id: !secret spotify_client_id
-        hide_top_header: true
-        limit: 10
-        device: YAMAHA-RXV779
+#      - type: custom:spotify-card
+#        client_id: !secret spotify_client_id
+#        hide_top_header: true
+#        limit: 10
+#        device: YAMAHA-RXV779
 #          - type: entities
 #            entities:
 #              - input_select.spotify_playlist
@@ -174,30 +174,30 @@ cards:
 #              - entity: input_boolean.spotify_shuffle
 #                tap_action:
 #                  action: none
-      - type: entities
-        entities:
-          - type: divider
-      - type: custom:mini-media-player
-        entity: media_player.spotify
-        artwork: cover
-        source: icon
-        hide:
-          info: true
-          power: true
-          source: true
-          sound_mode: true
-          controls: false
-          play_pause: false
-          play_stop: false
-          volume: false
-          mute: false
-          progress: false
-          runtime: true
-          artwork_border: false
-          power_state: true
-          shuffle: false
-        tap_action:
-          action: none
+#      - type: entities
+#        entities:
+#          - type: divider
+#      - type: custom:mini-media-player
+#        entity: media_player.spotify
+#        artwork: cover
+#        source: icon
+#        hide:
+#          info: true
+#          power: true
+#          source: true
+#          sound_mode: true
+#          controls: false
+#          play_pause: false
+#          play_stop: false
+#          volume: false
+#          mute: false
+#          progress: false
+#          runtime: true
+#          artwork_border: false
+#          power_state: true
+#          shuffle: false
+#        tap_action:
+#          action: none
       - type: entities
         entities:
           - type: divider

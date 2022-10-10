@@ -37,3 +37,9 @@ kitchen_energy_small:
               - area: kitchen
               - device_name: Toaster
               - device: toaster
+          - type: custom:decluttering-card
+            template: energy_device_16_card
+            variables:
+              - area: kitchen
+              - device_name: Microwave
+              - device: microwave
