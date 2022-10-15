@@ -40,7 +40,7 @@ kids_bedroom_lights:
         head:
           type: custom:slider-entity-row
           entity: light.kids_bedroom_bedside_table_lights
-          name: Bedside Tbales
+          name: Bedside Tables
           toggle: true
           hide_state: true
           hide_when_off: false
