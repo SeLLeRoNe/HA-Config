@@ -1472,8 +1472,9 @@
 - id: '8298153596081'
   alias: House - Night Mode Activated
   trigger:
-  - platform: time
-    at: '21:30:00'
+  - platform: sun
+    event: sunset
+    offset: 0
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.night_mode
