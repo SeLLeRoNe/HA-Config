@@ -1244,7 +1244,7 @@
     data:
       entity_id: binary_sensor.irrigation_unlimited_c1_m
 - id: '1661508936675'
-  alias: Night Mode - Living Room Blinds 1
+  alias: Night Mode - On - Living Room Blinds 1
   description: ''
   trigger:
   - platform: state
@@ -1265,7 +1265,7 @@
       entity_id: cover.living_room_blinds_1
   mode: single
 - id: '1661509017221'
-  alias: Night Mode - Living Room Blinds 2
+  alias: Night Mode - On - Living Room Blinds 2
   description: ''
   trigger:
   - platform: state
@@ -1286,7 +1286,7 @@
       entity_id: cover.living_room_blinds_2
   mode: single
 - id: '1661509148945'
-  alias: Night Mode - Living Room Blinds 3
+  alias: Night Mode - On - Living Room Blinds 3
   description: ''
   trigger:
   - platform: state
@@ -1307,7 +1307,7 @@
       entity_id: cover.living_room_blinds_3
   mode: single
 - id: '1661509189024'
-  alias: Night Mode - Living Room Blinds 4
+  alias: Night Mode - On - Living Room Blinds 4
   description: ''
   trigger:
   - platform: state
@@ -1323,7 +1323,7 @@
       entity_id: cover.living_room_blinds_3
   mode: single
 - id: '1661509859074'
-  alias: Night Mode - Guest Bedroom Blinds
+  alias: Night Mode - On - Guest Bedroom Blinds
   description: ''
   trigger:
   - platform: state
@@ -1344,7 +1344,7 @@
       entity_id: cover.guest_bedroom_blinds
   mode: single
 - id: '1661510783993'
-  alias: Night Mode - Studio Sonia Blinds
+  alias: Night Mode - On - Studio Sonia Blinds
   description: ''
   trigger:
   - platform: state
@@ -1365,7 +1365,7 @@
       entity_id: cover.studio_sonia_blinds_1
   mode: single
 - id: '1661510823673'
-  alias: Night Mode - Play Room Blinds
+  alias: Night Mode - On - Play Room Blinds
   description: ''
   trigger:
   - platform: state
@@ -1386,7 +1386,7 @@
       entity_id: cover.play_room_blinds_1
   mode: single
 - id: '1661510860346'
-  alias: Night Mode - Master Bedroom Blinds 1
+  alias: Night Mode - On - Master Bedroom Blinds 1
   description: ''
   trigger:
   - platform: state
@@ -1407,7 +1407,7 @@
       entity_id: cover.master_bedroom_blinds_1
   mode: single
 - id: '1661510901400'
-  alias: Night Mode - Master Bedroom Blinds 2
+  alias: Night Mode - On - Master Bedroom Blinds 2
   description: ''
   trigger:
   - platform: state
@@ -1428,7 +1428,7 @@
       entity_id: cover.master_bedroom_blinds_2
   mode: single
 - id: '1661510942034'
-  alias: Night Mode - Kids Bedroom Blinds
+  alias: Night Mode - On - Kids Bedroom Blinds
   description: ''
   trigger:
   - platform: state
@@ -1449,7 +1449,7 @@
       entity_id: cover.kids_bedroom_blinds_1
   mode: single
 - id: '1661512384039'
-  alias: Night Mode - Master Bathroom Blinds
+  alias: Night Mode - On - Master Bathroom Blinds 1
   description: ''
   trigger:
   - platform: state
@@ -1485,8 +1485,9 @@
 - id: '6175879175501'
   alias: House - Night Mode Deactivated
   trigger:
-  - platform: time
-    at: 08:00:00
+  - platform: sun
+    event: sunrise
+    offset: 0
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.night_mode
@@ -1562,7 +1563,7 @@
       message: The humidity in the common bathroom is too high, please open the window.
   mode: single
 - id: '1661632087170'
-  alias: Night Mode - Kitchen Blinds 1
+  alias: Night Mode - On - Kitchen Blinds 1
   description: ''
   trigger:
   - platform: state
@@ -1583,7 +1584,7 @@
       entity_id: cover.kitchen_blinds_1
   mode: single
 - id: '1661632170868'
-  alias: Night Mode - Kitchen Blinds 2
+  alias: Night Mode - On - Kitchen Blinds 2
   description: ''
   trigger:
   - platform: state
@@ -1827,7 +1828,7 @@
       entity_id: switch.studio_media03_wol
   mode: single
 - id: '1662463142598'
-  alias: Night Mode - First Floor Bathroom Blinds
+  alias: Night Mode - On - First Floor Bathroom Blinds
   description: ''
   trigger:
   - platform: state
@@ -2364,13 +2365,10 @@
   alias: Lights - Adaptive lighting - Enable Sleep Mode
   trigger:
   - platform: state
-    entity_id: input_boolean.night_mode
-  - platform: homeassistant
-    event: start
-  variables:
-    night_mode: '{{ states(''input_boolean.night_mode'') }}'
+    entity_id:
+    - input_boolean.children_night_mode
   action:
-  - service: switch.turn_{{ night_mode }}
+  - service: switch.turn_{{ children_night_mode }}
     entity_id:
     - switch.adaptive_lighting_sleep_mode_ground_floor_entrance
     - switch.adaptive_lighting_sleep_mode_ground_floor_corridor
@@ -2388,6 +2386,8 @@
     - switch.adaptive_lighting_sleep_mode_guest_bedroom
     - switch.adaptive_lighting_sleep_mode_garage
     - switch.adaptive_lighting_sleep_mode_laundry_room
+  variables:
+    night_mode: '{{ states(''input_boolean.night_mode'') }}'
 - id: '619264096959765'
   alias: Lights - Adaptive lighting - Reset Manual Control after 6 hours
   mode: parallel
@@ -4229,3 +4229,62 @@
       brightness_pct: 50
   mode: single
   initial_state: true
+- id: '1665908253481'
+  alias: Night Mode - Off - Ground Floor Blinds
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.night_mode
+    to: 'off'
+    from: 'on'
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - service: cover.open_cover
+    data: {}
+    target:
+      entity_id:
+      - cover.living_room_blinds
+      - cover.kitchen_blinds
+      - cover.play_room_blinds
+      - cover.ground_floor_bathroom_blinds
+  mode: single
+- id: '1665908625008'
+  alias: House - Children Night Mode Activated
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:30:00'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.children_night_mode
+  mode: single
+- id: '6175879175501'
+  alias: House - Night Mode Deactivated
+  trigger:
+  - platform: time
+    at: 08:00:00
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.children_night_mode
+- id: '1665908709109'
+  alias: House - Children Night Mode Deactivated
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.children_night_mode
+  mode: single

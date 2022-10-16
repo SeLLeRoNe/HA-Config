@@ -20,7 +20,7 @@ class SurveillanceCard extends LitElement {
     const showToolbarClass = ( !this.isMobileApp && this.showCaptureButtons ) ? "" : "hidden";
 
     return html`
-      <div class="container">
+      <div class="container thumbs-${this.thumbPosition}">
         <div class="thumbs">
           ${this.cameras.filter((c) => c.access_token).map((camera) => {
               let thumbClass = camera.has_motion ? "thumb motion" : "thumb";
@@ -49,7 +49,7 @@ class SurveillanceCard extends LitElement {
       if (!cameraObj) {
         return html``;
       }
-      
+
       return html`
         <ha-camera-stream
           .hass=${this.hass}
@@ -57,7 +57,7 @@ class SurveillanceCard extends LitElement {
         ></ha-camera-stream>
       `;
     }
-    
+
     return html`<img src="${this.selectedCamera.stream_url}" alt="${this.selectedCamera.name}" />`;
   }
 
@@ -68,6 +68,7 @@ class SurveillanceCard extends LitElement {
       selectedCamera: { type: Object },
       focusOnMotion: { type: Boolean },
       thumbInterval: { type: Number },
+      thumbPosition: { type: String },
       updateInterval: { type: Number },
       recordingDuration: { type: Number },
       showCaptureButtons: { type: Boolean },
@@ -105,6 +106,7 @@ class SurveillanceCard extends LitElement {
     this.recordingDuration = config.recording_duration || 10.0;
     this.showCaptureButtons = config.show_capture_buttons !== false;
     this.liveStream = config.camera_view === "live";
+    this.thumbPosition = config.thumb_position || "left";
 
     // There must be better way to tell if HA front end running from app or browser
     // Confirmed working on iOS, should be verified on Android app
@@ -112,18 +114,21 @@ class SurveillanceCard extends LitElement {
 
     const now = Date.now();
     this.cameras = config.cameras.map((camera) => {
-      const entity = this.hass && hass.states[camera.entity];
-      const attributes = entity && entity.attributes;
+      const { states = {} } = this.hass || {};
+      const entity = states[camera.entity];
+      const attributes = entity?.attributes;
+      const motionEntities = Array.isArray(camera.motion_entity) ? camera.motion_entity : [camera.motion_entity].filter(entityId => !!entityId);
+
       return {
-        access_token: attributes && attributes.access_token,
+        access_token: attributes?.access_token,
         entity: camera.entity,
-        motion_entity: camera.motion_entity,
-        name: attributes && attributes.friendly_name,
-        has_motion: this.hass && this.hass.states[camera.motion_entity].state === "on",
+        motion_entities: motionEntities,
+        name: attributes?.friendly_name,
+        has_motion: motionEntities.some(entityId => states[entityId]?.state === "on"),
         last_motion: now,
         last_update: now,
         stream_url: "",
-        url: attributes && attributes.entity_picture,
+        url: attributes?.entity_picture,
       };
     });
     this.updateCameras = this.throttle(() => this._updateCameras(), this.thumbInterval);
@@ -132,13 +137,13 @@ class SurveillanceCard extends LitElement {
 
   _updateCameras() {
     const now = Date.now();
-    const { states } = this.hass;
+    const { states = {} } = this.hass || {};
     const activatedCameras = [];
 
     for (const camera of this.cameras) {
       const hadMotion = camera.has_motion === true;
-      const { motion_entity } = camera;
-      camera.has_motion = motion_entity in states && states[motion_entity].state === "on";
+      const { motion_entities } = camera;
+      camera.has_motion = motion_entities.some(entityId => states[entityId]?.state === "on");
       if (camera.has_motion) {
         camera.last_motion = now;
       }
@@ -153,7 +158,7 @@ class SurveillanceCard extends LitElement {
         camera.last_update = now;
       }
 
-      const attributes = camera.entity in states ? states[camera.entity].attributes || {} : {};
+      const attributes = states[camera.entity]?.attributes || {};
       camera.access_token = attributes.access_token;
       camera.name = attributes.friendly_name;
       camera.url = `${attributes.entity_picture}&last_update=${camera.last_update}`;
@@ -214,7 +219,7 @@ class SurveillanceCard extends LitElement {
         cameraThumbContainer.classList.remove("recording");
         clearInterval(snapshotInterval);
       }
-    
+
     }, this.thumbInterval);
   }
 
@@ -233,6 +238,35 @@ class SurveillanceCard extends LitElement {
         overflow-y: auto;
         position: relative;
         text-align:center;
+      }
+
+      .container.thumbs-left {
+      }
+
+      .container.thumbs-right {
+        flex-direction: row-reverse;
+      }
+
+      .container.thumbs-top {
+        flex-direction: column;
+      }
+
+      .container.thumbs-top .thumbs {
+        display: flex;
+        flex: unset;
+      }
+
+      .container.thumbs-bottom {
+        flex-direction: column-reverse;
+      }
+
+      .container.thumbs-bottom .thumbs {
+        display: flex;
+        flex: unset;
+      }
+
+      .container.thumbs-none .thumbs {
+        display: none;
       }
 
       .thumb > img {
@@ -320,7 +354,7 @@ class SurveillanceCard extends LitElement {
         border: 1px solid var(--primary-color);
         margin-right:4px;
       }
-      
+
       .record{
         width: 60px;
         height: 60px;
