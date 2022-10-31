@@ -99,8 +99,6 @@
     type: module
   - url: /hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js
     type: module
-  - url: /hacsfiles/platinum-weather-card/platinum-weather-card.js
-    type: module
   - url: /hacsfiles/irrigation-unlimited-card/irrigation-unlimited-card.js
     type: module
   - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js

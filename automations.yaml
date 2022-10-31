@@ -63,7 +63,7 @@
       device_id: 298dc65892048bdf1beb2412f66f75ca
   mode: single
 - id: '1655194878005'
-  alias: 'Shelly - First Floor Bathroom Main Switch #1 - SIngle'
+  alias: 'Shelly - First Floor Bathroom Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -356,7 +356,7 @@
       entity_id: scene.lullaby_time
   mode: single
 - id: '1655239155036'
-  alias: Shelly - Kids Bedroom Right Switch - SIngle
+  alias: Shelly - Kids Bedroom Right Switch - Single
   description: ''
   trigger:
   - platform: event
@@ -373,7 +373,7 @@
       entity_id: light.kids_bedroom_ceiling_lights
   mode: single
 - id: '1655239542953'
-  alias: 'Shelly - Kids Bedroom Main Switch #1 - SIngle'
+  alias: 'Shelly - Kids Bedroom Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -390,7 +390,7 @@
       entity_id: light.kids_bedroom_ceiling_lights
   mode: single
 - id: '1655239587493'
-  alias: 'Shelly - Kids Bedroom Main Switch #2 - SIngle'
+  alias: 'Shelly - Kids Bedroom Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -407,7 +407,7 @@
       entity_id: light.kids_bedroom_ceiling_lights
   mode: single
 - id: '1655239847529'
-  alias: 'Shelly - Ground Floor Main Switch #1 - SIngle'
+  alias: 'Shelly - Ground Floor Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -424,7 +424,7 @@
       entity_id: light.ground_floor_corridor_ceiling_lights
   mode: single
 - id: '1655239888743'
-  alias: 'Shelly - Ground Floor Main Switch #2 - SIngle'
+  alias: 'Shelly - Ground Floor Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -441,7 +441,7 @@
       entity_id: light.ground_floor_entrance_ceiling_lights
   mode: single
 - id: '1655240188460'
-  alias: 'Shelly - Ground Floor Upstairs Switch #1 - SIngle'
+  alias: 'Shelly - Ground Floor Upstairs Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -458,7 +458,7 @@
       entity_id: light.first_floor_stairs_lights
   mode: single
 - id: '1655240272622'
-  alias: 'Shelly - Ground Floor Upstairs Switch #2 - SIngle'
+  alias: 'Shelly - Ground Floor Upstairs Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -474,25 +474,8 @@
     target:
       entity_id: light.ground_floor_corridor_ceiling_lights
   mode: single
-- id: '1655241917329'
-  alias: 'Shelly - Ground Floor Downstairs Switch #1 - SIngle'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab71fcc
-      channel: 1
-      click_type: single_push
-  condition: []
-  action:
-  - service: switch.toggle
-    data: {}
-    target:
-      entity_id: switch.downstairs_corridor_main_switch_1
-  mode: single
 - id: '1655242176639'
-  alias: 'Shelly - Ground Floor Service Switch #1 - SIngle'
+  alias: 'Shelly - Ground Floor Service Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -509,7 +492,7 @@
       entity_id: light.living_room_ceiling_lights
   mode: single
 - id: '1655242214682'
-  alias: 'Shelly - Ground Floor Service Switch #2 - SIngle'
+  alias: 'Shelly - Ground Floor Service Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -526,7 +509,7 @@
       entity_id: light.ground_floor_corridor_ceiling_lights
   mode: single
 - id: '1655242290199'
-  alias: 'Shelly - Kitchen Main Switch #1 - SIngle'
+  alias: 'Shelly - Kitchen Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -543,7 +526,7 @@
       entity_id: light.kitchen_ceiling_lights_dining
   mode: single
 - id: '1655242311015'
-  alias: 'Shelly - Kitchen Main Switch #2 - SIngle'
+  alias: 'Shelly - Kitchen Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -560,7 +543,7 @@
       entity_id: light.kitchen_ceiling_lights_cooking
   mode: single
 - id: '1655281507209'
-  alias: 'Shelly - Guest bedroom Main Switch #1 - SIngle'
+  alias: 'Shelly - Guest bedroom Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -577,7 +560,7 @@
       entity_id: light.guest_bedroom_ceiling_light_1
   mode: single
 - id: '1655281542850'
-  alias: 'Shelly - Guest Bedroom Main Switch #2 - SIngle'
+  alias: 'Shelly - Guest Bedroom Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -592,57 +575,6 @@
     data: {}
     target:
       entity_id: light.guest_bedroom_ceiling_light_2
-  mode: single
-- id: '1655409421939'
-  alias: 'Shelly - Downstairs Corridor Main Switch #1 - SIngle'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab66fcc
-      channel: 1
-      click_type: single_push
-  condition: []
-  action:
-  - service: switch.toggle
-    data: {}
-    target:
-      entity_id: switch.ground_floor_corridor_downstairs_switch_1
-  mode: single
-- id: '1655409469228'
-  alias: 'Shelly - Downstairs Corridor Main Switch #2 - SIngle'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab66fcc
-      channel: 2
-      click_type: single_push
-  condition: []
-  action:
-  - service: switch.toggle
-    data: {}
-    target:
-      entity_id: switch.ground_floor_corridor_downstairs_switch_1
-  mode: single
-- id: '1655409556723'
-  alias: 'Shelly - Ground Floor Downstairs Switch #1 - SIngle'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab71fcc
-      channel: 2
-      click_type: single_push
-  condition: []
-  action:
-  - service: switch.toggle
-    data: {}
-    target:
-      entity_id: switch.downstairs_corridor_main_switch_1
   mode: single
 - id: '1655495294864'
   alias: Shelly - Guest Bedroom Right Bed Switch - Double
@@ -662,7 +594,7 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495313290'
-  alias: Shelly - Guest Bedroom Right Bed Switch - SIngle
+  alias: Shelly - Guest Bedroom Right Bed Switch - Single
   description: ''
   trigger:
   - platform: event
@@ -696,7 +628,7 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495502739'
-  alias: Shelly - Guest Bedroom Left Bed Switch - SIngle
+  alias: Shelly - Guest Bedroom Left Bed Switch - Single
   description: ''
   trigger:
   - platform: event
@@ -713,7 +645,7 @@
       entity_id: light.guest_bedroom_ceiling_lights
   mode: single
 - id: '1655495635912'
-  alias: 'Shelly - Studio Sonia Right Bed Switch #1 - SIngle'
+  alias: 'Shelly - Studio Sonia Right Bed Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -730,7 +662,7 @@
       entity_id: light.studio_sonia_ceiling_lights
   mode: single
 - id: '1655495660927'
-  alias: 'Shelly - Studio Sonia Right Bed Switch #2 - SIngle'
+  alias: 'Shelly - Studio Sonia Right Bed Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -764,7 +696,7 @@
       entity_id: light.studio_sonia_ceiling_lights
   mode: single
 - id: '1655496259326'
-  alias: Shelly - Studio Sonia Left Bed Switch - SIngle
+  alias: Shelly - Studio Sonia Left Bed Switch - Single
   description: ''
   trigger:
   - platform: event
@@ -781,7 +713,7 @@
       entity_id: light.studio_sonia_ceiling_lights
   mode: single
 - id: '1655829653086'
-  alias: 'Shelly - Living Room Right Main Switch #2 - SIngle'
+  alias: 'Shelly - Living Room Right Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -798,7 +730,7 @@
       entity_id: light.living_room_ceiling_lights_row_1
   mode: single
 - id: '1655829669696'
-  alias: 'Shelly - Living Room Right Main Switch #1 - SIngle'
+  alias: 'Shelly - Living Room Right Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -815,7 +747,7 @@
       entity_id: light.living_room_ceiling_lights_row_2
   mode: single
 - id: '1655829819050'
-  alias: 'Shelly - Living Room Left Main Switch #2 - SIngle'
+  alias: 'Shelly - Living Room Left Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -832,7 +764,7 @@
       entity_id: light.living_room_ceiling_lights_row_3
   mode: single
 - id: '1655829838769'
-  alias: 'Shelly - Living Room Left Main Switch #1 - SIngle'
+  alias: 'Shelly - Living Room Left Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -849,7 +781,7 @@
       entity_id: light.living_room_ceiling_lights
   mode: single
 - id: '1655829932149'
-  alias: 'Shelly - Living Room Left Window Switch #1 - SIngle'
+  alias: 'Shelly - Living Room Left Window Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -866,7 +798,7 @@
       entity_id: light.living_room_ceiling_lights_row_1
   mode: single
 - id: '1655829953251'
-  alias: 'Shelly - Living Room Left Window Switch #2 - SIngle'
+  alias: 'Shelly - Living Room Left Window Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -883,7 +815,7 @@
       entity_id: light.living_room_ceiling_lights_row_2
   mode: single
 - id: '1655830063867'
-  alias: 'Shelly - Living Room Right Window Switch #2 - SIngle'
+  alias: 'Shelly - Living Room Right Window Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -900,7 +832,7 @@
       entity_id: light.back_patio_lights
   mode: single
 - id: '1655830068850'
-  alias: 'Shelly - Living Room Right Window Switch #1 - SIngle'
+  alias: 'Shelly - Living Room Right Window Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -917,7 +849,7 @@
       entity_id: light.living_room_ceiling_lights_row_3
   mode: single
 - id: '1655833995531'
-  alias: 'Shelly - Play Room Corridor Main Switch #1 - SIngle'
+  alias: 'Shelly - Play Room Corridor Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -934,7 +866,7 @@
       entity_id: light.play_room_corridor_ceiling_lights
   mode: single
 - id: '1655834050928'
-  alias: 'Shelly - Play Room Corridor Main Switch #2 - SIngle'
+  alias: 'Shelly - Play Room Corridor Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -951,7 +883,7 @@
       entity_id: light.play_room_corridor_ceiling_lights
   mode: single
 - id: '1655834372048'
-  alias: 'Shelly - Play Room Main Switch #1 - SIngle'
+  alias: 'Shelly - Play Room Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -968,7 +900,7 @@
       entity_id: light.play_room_ceiling_lights
   mode: single
 - id: '1655834414616'
-  alias: 'Shelly - Play Room Main Switch #2 - SIngle'
+  alias: 'Shelly - Play Room Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -985,7 +917,7 @@
       entity_id: light.play_room_ceiling_lights
   mode: single
 - id: '1655834499669'
-  alias: Shelly - Play Room Bed Switch - SIngle
+  alias: Shelly - Play Room Bed Switch - Single
   description: ''
   trigger:
   - platform: event
@@ -1002,7 +934,7 @@
       entity_id: light.play_room_ceiling_lights
   mode: single
 - id: '1656366381285'
-  alias: 'Shelly - Ground Floor Bathroom Main Switch #1 - SIngle'
+  alias: 'Shelly - Ground Floor Bathroom Main Switch #1 - Single'
   description: ''
   trigger:
   - platform: event
@@ -1019,7 +951,7 @@
       entity_id: light.ground_floor_bathroom_ceiling_lights
   mode: single
 - id: '1656367952676'
-  alias: 'Shelly - Ground Floor Bathroom Main Switch #2 - SIngle'
+  alias: 'Shelly - Ground Floor Bathroom Main Switch #2 - Single'
   description: ''
   trigger:
   - platform: event
@@ -1604,108 +1536,8 @@
     target:
       entity_id: cover.kitchen_blinds_2
   mode: single
-- id: '1661697808443'
-  alias: Lights - Garage - Doors Open
-  description: ''
-  trigger:
-  - type: opened
-    platform: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
-  - type: opened
-    platform: device
-    device_id: 55eb97e25bd57f1c7f7366b06a002b24
-    entity_id: binary_sensor.garage_external_door_contact
-    domain: binary_sensor
-  condition: []
-  action:
-  - service: light.turn_on
-    data: {}
-    target:
-      entity_id: light.garage_lights
-  mode: single
-- id: '1661697933048'
-  alias: Lights - Garage - PIR Off
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.garage_pir
-    to: 'off'
-  condition:
-  - type: is_not_open
-    condition: device
-    device_id: 55eb97e25bd57f1c7f7366b06a002b24
-    entity_id: binary_sensor.garage_external_door_contact
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
-  - type: is_not_open
-    condition: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
-  action:
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.garage_lights
-  mode: single
-- id: '1661698009935'
-  alias: Lights - Garage - Doors Close
-  description: ''
-  trigger:
-  - type: not_opened
-    platform: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-  - type: not_opened
-    platform: device
-    device_id: 55eb97e25bd57f1c7f7366b06a002b24
-    entity_id: binary_sensor.garage_external_door_contact
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-  condition:
-  - type: is_not_open
-    condition: device
-    device_id: d2480e66430a90ff781f49b96ed75eec
-    entity_id: binary_sensor.garage_door_contact
-    domain: binary_sensor
-  - type: is_not_open
-    condition: device
-    device_id: 55eb97e25bd57f1c7f7366b06a002b24
-    entity_id: binary_sensor.garage_external_door_contact
-    domain: binary_sensor
-  - condition: state
-    entity_id: binary_sensor.garage_pir
-    state: 'off'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
-  action:
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.garage_lights
-  mode: single
 - id: '1661698155406'
-  alias: Lights - Garage - PIR On
+  alias: Lights - Garage
   description: ''
   trigger:
   - platform: state
@@ -1713,12 +1545,77 @@
     - binary_sensor.garage_pir
     from: 'off'
     to: 'on'
+    id: lights_on
+  - platform: state
+    entity_id:
+    - binary_sensor.garage_pir
+    to: 'off'
+    id: light_off
+  - type: opened
+    platform: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+    id: lights_on
+  - type: opened
+    platform: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+    id: lights_on
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.lights_garage
+    id: timer_finished
+  - type: not_opened
+    platform: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+    id: light_off
+  - type: not_opened
+    platform: device
+    device_id: 55eb97e25bd57f1c7f7366b06a002b24
+    entity_id: binary_sensor.garage_external_door_contact
+    domain: binary_sensor
+    id: light_off
   condition: []
   action:
-  - service: light.turn_on
-    data: {}
-    target:
-      entity_id: light.garage_lights
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: lights_on
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_garage
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.garage_lights
+    - conditions:
+      - condition: trigger
+        id: light_off
+      - type: is_not_open
+        condition: device
+        device_id: 55eb97e25bd57f1c7f7366b06a002b24
+        entity_id: binary_sensor.garage_external_door_contact
+        domain: binary_sensor
+      sequence:
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_garage
+    - conditions:
+      - condition: trigger
+        id: timer_finished
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.garage_lights
   mode: single
 - id: '1661764591975'
   alias: Night - Studio Andrea
@@ -1849,7 +1746,7 @@
       entity_id: cover.first_floor_bathroom_blinds_1
   mode: single
 - id: '1662487133975'
-  alias: Lights - Studio Andrea - PIR On - Night
+  alias: Lights - Studio Andrea
   description: ''
   trigger:
   - type: motion
@@ -1857,31 +1754,94 @@
     device_id: aae61ddfcd6991472d007493aeb96e1c
     entity_id: binary_sensor.studio_andrea_radar_occupancy
     domain: binary_sensor
-  condition:
-  - condition: state
-    entity_id: binary_sensor.studio_andrea_computer_ping
-    state: 'off'
-  action:
-  - service: light.turn_on
-    data: {}
-    target:
-      entity_id: light.studio_andrea_lights
-  mode: single
-- id: '1662487603160'
-  alias: Lights - Studio Andrea - Computer On
-  description: ''
-  trigger:
+    id: pir_on
+  - type: present
+    platform: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_presence
+    domain: binary_sensor
+    id: pir_on
+  - type: not_present
+    platform: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_presence
+    domain: binary_sensor
+    id: pir_off
+  - type: no_motion
+    platform: device
+    device_id: aae61ddfcd6991472d007493aeb96e1c
+    entity_id: binary_sensor.studio_andrea_radar_occupancy
+    domain: binary_sensor
+    id: pir_off
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.lights_studio_andrea
+    id: lights_off
   - platform: state
     entity_id:
     - binary_sensor.studio_andrea_computer_ping
-    from: 'off'
     to: 'on'
+    id: computer_on
+  - platform: state
+    entity_id:
+    - binary_sensor.studio_andrea_computer_ping
+    to: 'off'
+    id: computer_off
   condition: []
   action:
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.studio_andrea_lights
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: pir_on
+      - condition: state
+        entity_id: binary_sensor.studio_andrea_computer_ping
+        state: 'off'
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_studio_andrea
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
+    - conditions:
+      - condition: trigger
+        id: pir_off
+      sequence:
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_studio_andrea
+    - conditions:
+      - condition: trigger
+        id: lights_off
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
+    - conditions:
+      - condition: trigger
+        id: computer_on
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_studio_andrea
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
+    - conditions:
+      - condition: trigger
+        id: computer_off
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
   mode: single
 - id: '268782847155244'
   alias: Alert me about weather warnings
@@ -2266,7 +2226,7 @@
         sticky: false
         tag: house
         ttl: 0
-        clickAction: /lovelace-manageme
+        clickAction: /lovelace-management
 - id: '9641894765835'
   alias: House - Cleaning Mode Activated
   trigger:
@@ -2384,6 +2344,8 @@
     - switch.adaptive_lighting_sleep_mode_master_bedroom
     - switch.adaptive_lighting_sleep_mode_master_bathroom
     - switch.adaptive_lighting_sleep_mode_guest_bedroom
+    - switch.adaptive_lighting_sleep_mode_basement_corridor
+    - switch.adaptive_lighting_sleep_mode_basement_bathroom
     - switch.adaptive_lighting_sleep_mode_garage
     - switch.adaptive_lighting_sleep_mode_laundry_room
   variables:
@@ -2427,49 +2389,6 @@
       title: Energy Report
       message: Today's energy use was {{ states('sensor.house_daily_energy_usage')
         }} kWh for a total of {{ states('sensor.house_cost_daily') }} Euro
-- id: '1662713022006'
-  alias: Lights - Studio Andrea - PIR Off
-  description: ''
-  trigger:
-  - type: not_present
-    platform: device
-    device_id: aae61ddfcd6991472d007493aeb96e1c
-    entity_id: binary_sensor.studio_andrea_radar_presence
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-  - type: no_motion
-    platform: device
-    device_id: aae61ddfcd6991472d007493aeb96e1c
-    entity_id: binary_sensor.studio_andrea_radar_occupancy
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 30
-  condition:
-  - type: is_no_motion
-    condition: device
-    device_id: aae61ddfcd6991472d007493aeb96e1c
-    entity_id: binary_sensor.studio_andrea_radar_occupancy
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 15
-  - type: is_not_present
-    condition: device
-    device_id: aae61ddfcd6991472d007493aeb96e1c
-    entity_id: binary_sensor.studio_andrea_radar_presence
-    domain: binary_sensor
-  action:
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.studio_andrea_lights
-  mode: single
 - id: '1662714190863'
   alias: Night - Master Bathroom Window
   description: ''
@@ -3485,7 +3404,7 @@
       entity_id: input_select.kitchen_dishwasher_status
       option: Done
   - service: input_number.set_value
-    data_template:
+    data:
       entity_id: input_number.kitchen_dishwasher_current_energy
       value: '0'
   - service: notify.telegram_andrea
@@ -3494,6 +3413,13 @@
       message: 'Dishwasher is now done. Energy consumed: {{ states(''sensor.kitchen_dishwasher_plug_energy_today'')|float
         - states(''input_number.kitchen_dishwasher_current_energy'')|float | round(3)
         }}kWh'
+  - condition: numeric_state
+    entity_id: counter.dishwasher_pods
+    below: 10
+  - service: automation.trigger
+    data: {}
+    target:
+      entity_id: automation.kitchen_dishwasher_pods
   mode: single
   initial_state: true
 - id: '1665146716946'
@@ -3599,8 +3525,9 @@
       entity_id: input_select.kitchen_dishwasher_status
       option: Warming Up
   - service: counter.decrement
-    data:
-      entity_id: counter.kitchen_dishwasher_pods
+    data: {}
+    target:
+      entity_id: counter.dishwasher_pods
   mode: single
   initial_state: true
 - id: '1665146793314'
@@ -3786,8 +3713,6 @@
   alias: Studio Andrea - Amplifier Off
   description: ''
   trigger:
-  - platform: homeassistant
-    event: start
   - platform: state
     entity_id: input_boolean.night_mode
     to: 'on'
@@ -3796,31 +3721,7 @@
     to: 'off'
     for:
       seconds: 120
-  condition:
-  - condition: and
-    conditions:
-    - condition: or
-      conditions:
-      - condition: and
-        conditions:
-        - condition: state
-          entity_id: input_boolean.night_mode
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.studio_andrea_computer_ping
-          state: 'on'
-      - condition: state
-        entity_id: binary_sensor.studio_andrea_computer_ping
-        state: 'off'
-    - condition: template
-      value_template: '{{ states.media_player.spotify_andrea.state != ''playing''
-        }}'
-    - condition: template
-      value_template: '{{ states.media_player.spotify_andrea.attributes.source !=
-        ''YAMAHA-RXV779'' }}'
-    - condition: template
-      value_template: '{{ states.media_player.spotify_andrea.attributes.source !=
-        ''PC-SELLERONE'' }}'
+  condition: []
   action:
   - service: media_player.turn_off
     entity_id: media_player.studio_andrea_amplifier
@@ -3891,7 +3792,7 @@
   trigger:
   - platform: template
     value_template: '{{ is_state_attr(''media_player.studio_andrea_amplifier'', ''source'',
-      ''PC'') }}'
+      ''AV1'') }}'
   condition:
   - condition: and
     conditions:
@@ -4265,16 +4166,6 @@
     target:
       entity_id: input_boolean.children_night_mode
   mode: single
-- id: '6175879175501'
-  alias: House - Night Mode Deactivated
-  trigger:
-  - platform: time
-    at: 08:00:00
-  action:
-  - service: input_boolean.turn_off
-    data: {}
-    target:
-      entity_id: input_boolean.children_night_mode
 - id: '1665908709109'
   alias: House - Children Night Mode Deactivated
   description: ''
@@ -4287,4 +4178,159 @@
     data: {}
     target:
       entity_id: input_boolean.children_night_mode
+  mode: single
+- id: '1666605023542'
+  alias: Lights - Laundry Room
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: bebf9307fc2401bc45e8bf53f6624968
+    entity_id: binary_sensor.laundry_room_door_contact
+    domain: binary_sensor
+    id: lights_on
+  - type: not_opened
+    platform: device
+    device_id: bebf9307fc2401bc45e8bf53f6624968
+    entity_id: binary_sensor.laundry_room_door_contact
+    domain: binary_sensor
+    id: lights_off
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.lights_laundry_room
+    id: timer_finished
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: lights_on
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_laundry_room
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.laundry_room_lights
+      - service: timer.start
+        data:
+          duration: 00:05:00
+        target:
+          entity_id: timer.lights_laundry_room
+    - conditions:
+      - condition: trigger
+        id: lights_off
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_laundry_room
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_laundry_room
+    - conditions:
+      - condition: trigger
+        id: timer_finished
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.laundry_room_lights
+  mode: single
+- id: '1666694058188'
+  alias: Lights - Basement Corridor/Stairs
+  description: ''
+  trigger:
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66fcc
+      channel: 1
+      click_type: single_push
+    id: button_click
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.lights_basement
+    id: timer_finished
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab71fcc
+      channel: 1
+      click_type: single_push
+    id: button_click
+  - type: opened
+    platform: device
+    device_id: d2480e66430a90ff781f49b96ed75eec
+    entity_id: binary_sensor.garage_door_contact
+    domain: binary_sensor
+    id: lights_on
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab71fcc
+      channel: 2
+      click_type: single_push
+    id: button_click
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab66fcc
+      channel: 2
+      click_type: single_push
+    id: button_click
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: button_click
+      - condition: state
+        entity_id: light.basement_corridor_lights
+        state: 'off'
+      - condition: state
+        entity_id: light.basement_stairs_lights
+        state: 'off'
+      sequence:
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_basement
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id:
+          - light.basement_corridor_lights
+          - light.basement_stairs_lights
+    - conditions:
+      - condition: trigger
+        id: timer_finished
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.basement_corridor_lights
+          - light.basement_stairs_lights
+    - conditions:
+      - condition: trigger
+        id: button_click
+      - condition: state
+        entity_id: light.basement_stairs_lights
+        state: 'on'
+      - condition: state
+        entity_id: light.basement_corridor_lights
+        state: 'on'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.basement_stairs_lights
+          - light.basement_corridor_lights
   mode: single
