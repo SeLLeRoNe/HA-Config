@@ -1,13 +1,13 @@
 ---
-laundry_room_lights_fold:
+basement_bathroom_lights_fold:
   card:
     type: entities
     entities:
       - type: custom:fold-entity-row
         head:
           type: custom:slider-entity-row
-          entity: light.laundry_room_lights
-          name: Laundry Room
+          entity: light.basement_bathroom_lights
+          name: Basement Bathroom
           toggle: true
           hide_state: true
           hide_when_off: false
@@ -19,7 +19,7 @@ laundry_room_lights_fold:
           - type: custom:fold-entity-row
             head:
               type: custom:slider-entity-row
-              entity: light.laundry_room_ceiling_lights
+              entity: light.basement_bathroom_ceiling_lights
               name: Ceiling
               toggle: true
               hide_state: true
@@ -33,4 +33,4 @@ laundry_room_lights_fold:
                 template: light_card_rgb
                 variables:
                   - name: Light 1
-                  - entity: light.laundry_room_ceiling_light_1
+                  - entity: light.basement_bathroom_ceiling_light_1

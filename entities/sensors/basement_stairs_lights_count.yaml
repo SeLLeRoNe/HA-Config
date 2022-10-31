@@ -1,0 +1,25 @@
+---
+platform: template
+sensors:
+  basement_stairs_lights_count:
+    friendly_name: "Basement Stairs Lights Count"
+    value_template: >-
+      {% if not is_state('light.basement_stairs_lights_stats', 'on') and not is_state('light.basement_stairs_lights_stats', 'off') %}
+        {% set value = "0" | int(0) %}
+      {% else %}
+        {% set value = states |
+          selectattr('entity_id','in',state_attr('light.basement_stairs_lights_stats','entity_id')) |
+          selectattr('state','eq','on') | map(attribute='entity_id') | list | count | int(0)
+        %}
+      {% endif %}
+      {{value | int(0)}}
+    attribute_templates:
+      total_lights: >-
+        {% if not is_state('light.basement_stairs_lights_stats', 'on') and not is_state('light.basement_stairs_lights_stats', 'off') %}
+          {% set value = "0" | int(0) %}
+        {% else %}
+          {% set value = states |
+            selectattr('entity_id','in',state_attr('light.basement_stairs_lights_stats','entity_id'))|
+            selectattr('state','ne','unavailable') | map(attribute='entity_id') | list | count %}
+        {% endif %}
+        {{value|int(0)}}

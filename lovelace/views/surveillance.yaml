@@ -3,7 +3,7 @@ icon: mdi:cctv
 path: surveiilance
 type: custom:vertical-layout
 layout:
-  max_cols: 5
+  max_cols: 1
 cards:
   - type: custom:surveillance-card
     thumb_interval: 15
@@ -12,6 +12,9 @@ cards:
     recording_duration: 10
     focus_motion: true
     cameras:
-      - entity: camera.hallway
-      - entity: camera.living_room_camera_mediaprofile_channel1_mainstream
-        motion_entity: binary_sensor.00000_cell_motion_detection
+      - entity: camera.doorbell
+        motion_entity: binary_sensor.doorbell_motion
+      - entity: camera.front
+        motion_entity: binary_sensor.front_motion
+      - entity: camera.gardenleft
+        motion_entity: binary_sensor.gardenleft_motion

@@ -1,5 +1,5 @@
 ---
-laundry_roomment_bathroom_lights:
+basement_bathroom_lights:
   card:
     type: custom:stack-in-card
     mode: vertical
@@ -11,7 +11,7 @@ laundry_roomment_bathroom_lights:
       - type: custom:fold-entity-row
         head:
           type: custom:slider-entity-row
-          entity: light.laundry_roomment_bathroom_ceiling_lights
+          entity: light.basement_bathroom_ceiling_lights
           name: Ceiling
           toggle: true
           hide_state: true
@@ -25,4 +25,4 @@ laundry_roomment_bathroom_lights:
             template: light_card_rgb
             variables:
               - name: Light 1
-              - entity: light.laundry_roomment_bathroom_ceiling_light_1
+              - entity: light.basement_bathroom_ceiling_light_1

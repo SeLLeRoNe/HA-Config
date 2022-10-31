@@ -153,6 +153,24 @@ house_lights:
             type: custom:decluttering-card
             template: first_floor_bathroom_lights_fold
       - type: custom:state-switch
+        entity: light.basement_corridor_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: basement_corridor_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: baement_corridor_lights_fold
+      - type: custom:state-switch
+        entity: light.basement_bathroom_lights
+        states:
+          "on":
+            type: custom:decluttering-card
+            template: basement_bathroom_lights_fold
+          "off":
+            type: custom:decluttering-card
+            template: basemente_bathroom_lights_fold
+      - type: custom:state-switch
         entity: light.garage_lights
         states:
           "on":
