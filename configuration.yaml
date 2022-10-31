@@ -68,20 +68,6 @@ homeassistant:
 lovelace:
   resources: !include lovelace/resources.yaml
   dashboards:
-    lovelace-mobile:
-      mode: yaml
-      title: Mobile
-      icon: mdi:cellphone
-      show_in_sidebar: true
-      require_admin: false
-      filename: dashboard_mobile.yaml
-    lovelace-smartphone:
-      mode: yaml
-      title: Smartphone
-      icon: mdi:cellphone
-      show_in_sidebar: true
-      require_admin: false
-      filename: dashboard_smartphone.yaml
     lovelace-tablet:
       mode: yaml
       title: Tablet
@@ -96,12 +82,5 @@ lovelace:
       show_in_sidebar: true
       require_admin: true
       filename: dashboard_management.yaml
-    lovelace-test:
-      mode: yaml
-      title: Test
-      icon: mdi:tune
-      show_in_sidebar: true
-      require_admin: true
-      filename: dashboard_test.yaml
 
 scene: !include scenes.yaml
