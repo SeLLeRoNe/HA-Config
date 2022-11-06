@@ -79,40 +79,6 @@
     target:
       device_id: 62ce821eef1b8e15af71640f3a9878c5
   mode: single
-- id: '1655195407255'
-  alias: 'Shelly - Studio Andrea Main Switch #1 - Single'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab67354
-      channel: 1
-      click_type: single_push
-  condition: []
-  action:
-  - service: light.toggle
-    data: {}
-    target:
-      entity_id: light.studio_andrea_ceiling_lights_tv
-  mode: single
-- id: '1655195451759'
-  alias: 'Shelly - Studio Andrea Main Switch #2 - Single'
-  description: ''
-  trigger:
-  - platform: event
-    event_type: shelly.click
-    event_data:
-      device: shellyplus2pm-a8032ab67354
-      channel: 2
-      click_type: single_push
-  condition: []
-  action:
-  - service: light.toggle
-    data: {}
-    target:
-      entity_id: light.studio_andrea_ceiling_lights_computer
-  mode: single
 - id: '1655197656102'
   alias: 'Shelly - Master Bathroom Main Switch #2 - Single'
   description: ''
@@ -1406,7 +1372,11 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: 0
+    offset: +00:30:00
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   action:
   - service: input_boolean.turn_on
     entity_id: input_boolean.night_mode
@@ -1419,7 +1389,11 @@
   trigger:
   - platform: sun
     event: sunrise
-    offset: 0
+    offset: +00:30:00
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.night_mode
@@ -1586,6 +1560,11 @@
     - conditions:
       - condition: trigger
         id: lights_on
+      - type: is_not_open
+        condition: device
+        device_id: 55eb97e25bd57f1c7f7366b06a002b24
+        entity_id: binary_sensor.garage_external_door_contact
+        domain: binary_sensor
       sequence:
       - service: timer.cancel
         data: {}
@@ -1614,6 +1593,24 @@
       sequence:
       - service: light.turn_off
         data: {}
+        target:
+          entity_id: light.garage_lights
+    - conditions:
+      - condition: trigger
+        id: lights_on
+      - type: is_open
+        condition: device
+        device_id: 55eb97e25bd57f1c7f7366b06a002b24
+        entity_id: binary_sensor.garage_external_door_contact
+        domain: binary_sensor
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_garage
+      - service: light.turn_on
+        data:
+          brightness_pct: 100
         target:
           entity_id: light.garage_lights
   mode: single
@@ -1777,7 +1774,7 @@
     event_type: timer.finished
     event_data:
       entity_id: timer.lights_studio_andrea
-    id: lights_off
+    id: timer_finished
   - platform: state
     entity_id:
     - binary_sensor.studio_andrea_computer_ping
@@ -1788,6 +1785,20 @@
     - binary_sensor.studio_andrea_computer_ping
     to: 'off'
     id: computer_off
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab67354
+      channel: 1
+      click_type: single_push
+    id: button_click
+  - platform: event
+    event_type: shelly.click
+    event_data:
+      device: shellyplus2pm-a8032ab67354
+      channel: 2
+      click_type: single_push
+    id: button_click
   condition: []
   action:
   - choose:
@@ -1816,7 +1827,7 @@
           entity_id: timer.lights_studio_andrea
     - conditions:
       - condition: trigger
-        id: lights_off
+        id: timer_finished
       sequence:
       - service: light.turn_off
         data: {}
@@ -1839,6 +1850,32 @@
         id: computer_off
       sequence:
       - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
+    - conditions:
+      - condition: trigger
+        id: button_click
+      - condition: state
+        entity_id: binary_sensor.studio_andrea_computer_ping
+        state: 'off'
+      sequence:
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_studio_andrea
+      - service: light.toggle
+        data: {}
+        target:
+          entity_id: light.studio_andrea_lights
+    - conditions:
+      - condition: trigger
+        id: button_click
+      - condition: state
+        entity_id: binary_sensor.studio_andrea_computer_ping
+        state: 'on'
+      sequence:
+      - service: light.toggle
         data: {}
         target:
           entity_id: light.studio_andrea_lights
@@ -4290,18 +4327,12 @@
     - conditions:
       - condition: trigger
         id: button_click
-      - condition: state
-        entity_id: light.basement_corridor_lights
-        state: 'off'
-      - condition: state
-        entity_id: light.basement_stairs_lights
-        state: 'off'
       sequence:
       - service: timer.start
         data: {}
         target:
           entity_id: timer.lights_basement
-      - service: light.turn_on
+      - service: light.toggle
         data: {}
         target:
           entity_id:
@@ -4317,20 +4348,4 @@
           entity_id:
           - light.basement_corridor_lights
           - light.basement_stairs_lights
-    - conditions:
-      - condition: trigger
-        id: button_click
-      - condition: state
-        entity_id: light.basement_stairs_lights
-        state: 'on'
-      - condition: state
-        entity_id: light.basement_corridor_lights
-        state: 'on'
-      sequence:
-      - service: light.turn_off
-        data: {}
-        target:
-          entity_id:
-          - light.basement_stairs_lights
-          - light.basement_corridor_lights
   mode: single
