@@ -89,13 +89,9 @@
     type: module
   - url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
     type: module
-  - url: /hacsfiles/lovelace-collapsable-cards/collapsable-cards.js
-    type: module
   - url: /hacsfiles/bar-card/bar-card.js
     type: module
   - url: /hacsfiles/alarmo-card/alarmo-card.js
-    type: module
-  - url: /hacsfiles/scheduler-card/scheduler-card.js
     type: module
   - url: /hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js
     type: module
@@ -111,8 +107,8 @@
     type: module
   - url: /hacsfiles/frigate-hass-card/frigate-hass-card.js
     type: module
-  - url: /hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js
-    type: module
+#  - url: /hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js
+#    type: module
 
   - url: /local/q-card.js
     type: module
