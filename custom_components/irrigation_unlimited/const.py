@@ -5,7 +5,7 @@ DOMAIN = "irrigation_unlimited"
 DOMAIN_DATA = f"{DOMAIN}_data"
 COORDINATOR = "coordinator"
 COMPONENT = "component"
-VERSION = "2022.8.0"
+VERSION = "2022.11.0"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/rgc99/irrigation_unlimited/issues"
 
@@ -20,6 +20,7 @@ ICON_CONTROLLER_OFF = "mdi:water-off"
 ICON_CONTROLLER_PAUSED = "mdi:pause-circle-outline"
 ICON_SEQUENCE_ON = "mdi:play-circle-outline"
 ICON_SEQUENCE_OFF = "mdi:stop-circle-outline"
+ICON_SEQUENCE_PAUSED = "mdi:pause-circle-outline"
 ICON_SEQUENCE_ZONE_ON = "mdi:play-circle-outline"
 ICON_SEQUENCE_ZONE_OFF = "mdi:stop-circle-outline"
 
@@ -93,6 +94,7 @@ CONF_FIXED = "fixed"
 CONF_SEER = "seer"
 CONF_MAX_LOG_ENTRIES = "max_log_entries"
 DEFAULT_MAX_LOG_ENTRIES = 50
+CONF_ALLOW_MANUAL = "allow_manual"
 
 # Defaults
 DEFAULT_NAME = DOMAIN

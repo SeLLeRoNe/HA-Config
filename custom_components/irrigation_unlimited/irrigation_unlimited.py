@@ -64,6 +64,7 @@ from .const import (
     BINARY_SENSOR,
     CONF_ACTUAL,
     CONF_ALL_ZONES_CONFIG,
+    CONF_ALLOW_MANUAL,
     CONF_CLOCK,
     CONF_CONTROLLER,
     CONF_MODE,
@@ -121,6 +122,7 @@ from .const import (
     ICON_CONTROLLER_ON,
     ICON_CONTROLLER_PAUSED,
     ICON_DISABLED,
+    ICON_SEQUENCE_PAUSED,
     ICON_SEQUENCE_ZONE_OFF,
     ICON_SEQUENCE_ZONE_ON,
     ICON_ZONE_OFF,
@@ -855,6 +857,13 @@ class IURunQueue(List[IURun]):
                 return True
         return False
 
+    def is_sequence_paused(self, sequence: "IUSequence") -> bool:
+        """Check if the sequence is currently paused"""
+        for run in self:
+            if run.sequence_running and run.sequence == sequence:
+                return run.sequence_run.active_zone is not None
+        return False
+
     def sequence_duration(self, sequence: "IUSequence") -> timedelta:
         """If sequence is running then return the duration"""
         for run in self:
@@ -1221,6 +1230,7 @@ class IUZone(IUBase):
         # Config parameters
         self._zone_id: str = None
         self._is_enabled: bool = True
+        self._allow_manual: bool = False
         self._name: str = None
         self._switch_entity_id: list[str] = None
         self._show_config: bool = False
@@ -1400,7 +1410,7 @@ class IUZone(IUBase):
 
     def service_manual_run(self, data: MappingProxyType, stime: datetime) -> None:
         """Add a manual run."""
-        if self._is_enabled and self._controller.enabled:
+        if (self._is_enabled or self._allow_manual) and self._controller.enabled:
             nst = wash_dt(stime + granularity_time())
             if self._controller.preamble is not None:
                 nst += self._controller.preamble
@@ -1440,16 +1450,21 @@ class IUZone(IUBase):
     def load(self, config: OrderedDict, all_zones: OrderedDict) -> "IUZone":
         """Load zone data from the configuration"""
         self.clear()
+        if all_zones is not None:
+            self._allow_manual = all_zones.get(CONF_ALLOW_MANUAL, self._allow_manual)
+            if CONF_SHOW in all_zones:
+                self._show_config = all_zones[CONF_SHOW].get(
+                    CONF_CONFIG, self._show_config
+                )
+                self._show_timeline = all_zones[CONF_SHOW].get(
+                    CONF_TIMELINE, self._show_timeline
+                )
         self._zone_id = config.get(CONF_ZONE_ID, str(self.index + 1))
         self._is_enabled = config.get(CONF_ENABLED, True)
+        self._allow_manual = config.get(CONF_ALLOW_MANUAL, self._allow_manual)
         self._name = config.get(CONF_NAME, None)
         self._switch_entity_id = config.get(CONF_ENTITY_ID)
         self._run_queue.load(config, all_zones)
-        if all_zones is not None and CONF_SHOW in all_zones:
-            self._show_config = all_zones[CONF_SHOW].get(CONF_CONFIG, self._show_config)
-            self._show_timeline = all_zones[CONF_SHOW].get(
-                CONF_TIMELINE, self._show_timeline
-            )
         if CONF_SHOW in config:
             self._show_config = config[CONF_SHOW].get(CONF_CONFIG, self._show_config)
             self._show_timeline = config[CONF_SHOW].get(
@@ -1541,11 +1556,17 @@ class IUZone(IUBase):
         is_running: bool = False
         state_changed: bool = False
 
-        is_running = (
-            parent_enabled
-            and self._is_enabled
-            and self._run_queue.current_run is not None
-            and self._run_queue.current_run.is_running(stime)
+        is_running = parent_enabled and (
+            (
+                self._is_enabled
+                and self._run_queue.current_run is not None
+                and self._run_queue.current_run.is_running(stime)
+            )
+            or (
+                self._allow_manual
+                and self._run_queue.current_run is not None
+                and self._run_queue.current_run.is_manual()
+            )
         )
 
         state_changed = is_running ^ self._is_on
@@ -1924,25 +1945,38 @@ class IUSequence(IUBase):
         """Return if the sequence is on or off"""
         return self._controller.runs.is_sequence_running(self)
 
-    def icon(self, is_on: bool = None) -> str:
+    @property
+    def is_paused(self) -> bool:
+        """Return is the sequence is paused"""
+        return self._controller.runs.is_sequence_paused(self)
+
+    def icon(self, is_on: bool = None, is_paused: bool = None) -> str:
         """Return the icon to use in the frontend."""
         if self._controller.enabled:
             if self._enabled:
                 if is_on is None:
                     is_on = self.is_on
+                if is_paused is None:
+                    is_paused = self.is_paused
                 if is_on:
+                    if is_paused:
+                        return ICON_SEQUENCE_PAUSED
                     return ICON_SEQUENCE_ON
                 return ICON_SEQUENCE_OFF
             return ICON_DISABLED
         return ICON_BLOCKED
 
-    def status(self, is_on: bool = None) -> str:
+    def status(self, is_on: bool = None, is_paused: bool = None) -> str:
         """Return status of the sequence"""
         if self._controller.enabled:
             if self._enabled:
                 if is_on is None:
                     is_on = self.is_on
+                if is_paused is None:
+                    is_paused = self.is_paused
                 if is_on:
+                    if is_paused:
+                        return STATUS_PAUSED
                     return STATE_ON
                 return STATE_OFF
             return STATUS_DISABLED
@@ -2144,13 +2178,14 @@ class IUSequence(IUBase):
         total_duration_adjusted = self.total_duration_adjusted(total_duration)
         duration_factor = self.duration_factor(total_duration_adjusted + total_delay)
         is_on = self.is_on
+        is_paused = self.is_paused
         result = OrderedDict()
         result[CONF_INDEX] = self._index
         result[CONF_NAME] = self._name
         result[CONF_STATE] = STATE_ON if is_on else STATE_OFF
         result[CONF_ENABLED] = self._enabled
-        result[ATTR_ICON] = self.icon(is_on)
-        result[ATTR_STATUS] = self.status(is_on)
+        result[ATTR_ICON] = self.icon(is_on, is_paused)
+        result[ATTR_STATUS] = self.status(is_on, is_paused)
         result[ATTR_DEFAULT_DURATION] = self._duration
         result[ATTR_DEFAULT_DELAY] = self._delay
         result[ATTR_DURATION_FACTOR] = duration_factor
@@ -2354,8 +2389,12 @@ class IUSequenceRun(IUBase):
         result[ATTR_INDEX] = self._sequence.index
         result[ATTR_NAME] = self._sequence.name
         result[ATTR_ENABLED] = self._sequence.enabled
-        result[ATTR_STATUS] = self._sequence.status(self._running)
-        result[ATTR_ICON] = self._sequence.icon(self._running)
+        result[ATTR_STATUS] = self._sequence.status(
+            self._running, self._active_zone is None
+        )
+        result[ATTR_ICON] = self._sequence.icon(
+            self._running, self._active_zone is None
+        )
         result[ATTR_START] = dt.as_local(self._start_time)
         result[ATTR_DURATION] = to_secs(self.on_time())
         result[ATTR_ADJUSTMENT] = str(self._sequence.adjustment)
@@ -2396,8 +2435,8 @@ class IUSequenceRun(IUBase):
         result[ATTR_INDEX] = sequence.index
         result[ATTR_NAME] = sequence.name
         result[ATTR_ENABLED] = sequence.enabled
-        result[ATTR_STATUS] = sequence.status(False)
-        result[ATTR_ICON] = sequence.icon(False)
+        result[ATTR_STATUS] = sequence.status(False, False)
+        result[ATTR_ICON] = sequence.icon(False, False)
         result[ATTR_START] = None
         result[ATTR_DURATION] = 0
         result[ATTR_ADJUSTMENT] = str(sequence.adjustment)
@@ -2788,7 +2827,7 @@ class IUController(IUBase):
             sequence.repeat
         ):  # pylint: disable=unused-variable
             for sequence_zone in sequence.zones:
-                if not sequence_zone.enabled:
+                if not sequence.zone_enabled(sequence_zone):
                     continue
                 duration = sequence.zone_duration_final(sequence_zone, duration_factor)
                 duration_max = timedelta(0)
@@ -3403,6 +3442,7 @@ class IUTester:
         self._last_test: int = None
         self._autoplay_initialised: bool = False
         self._ticker: datetime = None
+        self._tests_completed: set[int] = set()
         self.load(None)
 
     @property
@@ -3493,6 +3533,11 @@ class IUTester:
         return result
 
     @property
+    def tests_completed(self) -> int:
+        """Return the number of tests completed"""
+        return len(self._tests_completed)
+
+    @property
     def ticker(self) -> datetime:
         """Return the tester clock"""
         return self._ticker
@@ -3543,6 +3588,7 @@ class IUTester:
                 )
             else:
                 self._coordinator.logger.log_test_end(test.virtual_time(atime), test)
+            self._tests_completed.add(self._running_test)
         self._last_test = self._running_test
         self._running_test = None
 
@@ -3564,6 +3610,7 @@ class IUTester:
         self._last_test = None
         self._autoplay_initialised = False
         self._ticker: datetime = None
+        self._tests_completed.clear()
 
     def load(self, config: OrderedDict) -> "IUTester":
         """Load config data for the tester"""
@@ -3884,6 +3931,8 @@ class IULogger:
 class IUClock:
     """Irrigation Unlimited Clock class"""
 
+    # pylint: disable=too-many-instance-attributes
+
     def __init__(
         self,
         hass: HomeAssistant,
@@ -3899,7 +3948,7 @@ class IUClock:
         self._remove_timer_listener: CALLBACK_TYPE = None
         self._tick_log = deque["datetime"](maxlen=DEFAULT_MAX_LOG_ENTRIES)
         self._next_tick: datetime = None
-        self._fixed_clock = True
+        self._fixed_clock = False
         self._show_log = False
 
     @property
