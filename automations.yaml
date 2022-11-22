@@ -4188,8 +4188,8 @@
   - platform: event
     event_type: shelly.click
     event_data:
-      device: shellyplus2pm-a8032ab66fcc
-      channel: 1
+      device: shellyplus2pm-a8032ab71fcc
+      channel: 2
       click_type: single_push
     id: button_click
   - platform: event
@@ -4207,7 +4207,7 @@
     event_type: shelly.click
     event_data:
       device: shellyplus2pm-a8032ab66fcc
-      channel: 2
+      channel: 1
       click_type: single_push
     id: button_click
     enabled: true
@@ -4346,7 +4346,7 @@
       - condition: trigger
         id: button_click
       sequence:
-      - service: timer.start
+      - service: timer.cancel
         data: {}
         target:
           entity_id: timer.lights_basement_bathroom
@@ -4354,6 +4354,10 @@
         data: {}
         target:
           entity_id: light.basement_bathroom_lights
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_basement_bathroom
     - conditions:
       - condition: trigger
         id: timer_finished
