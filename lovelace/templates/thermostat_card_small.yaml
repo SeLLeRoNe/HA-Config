@@ -38,85 +38,73 @@ thermostat_card_small:
                       rgb(128, 128, 128);
                     {% endif %}
                 }
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - type: custom:multiple-entity-row
-            entity: input_select.climate_[[area]]
-#            name: Thermostat
-            icon: mdi:timer
-            toggle: false
-            entities:
-              - entity: climate.[[area]]
-                attribute: current_temperature
-                name: Current Temperature
-                tap_action: 
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: Configuration
-                    card:
-                      type: custom:decluttering-card
-                      template: thermostat_popup
-                      variables:
-                        - area: '[[area]]'
-                    card_mod:
-                      style:
-                        width: 450px
-              - entity: climate.[[area]]
-                attribute: temperature
-                name: Set Temperature
-                tap_action:
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: Configuration
-                    card:
-                      type: custom:decluttering-card
-                      template: thermostat_popup
-                      variables:
-                        - area: '[[area]]'
-                    card_mod:
-                      style:
-                        width: 450px
-              - entity: climate.[[area]]
-                attribute: hvac_action
-                name: Status
-                tap_action:
-                  action: call-service
-                  service: browser_mod.popup
-                  service_data:
-                    title: Configuration
-                    card:
-                      type: custom:decluttering-card
-                      template: thermostat_popup
-                      variables:
-                        - area: '[[area]]'
-                    card_mod:
-                      style:
-                        width: 450px
-            tap_action:
-              action: call-service
-              service: browser_mod.popup
-              service_data:
-                title: Configuration
-                card:
-                  type: custom:decluttering-card
-                  template: thermostat_popup
-                  variables:
-                    - area: '[[area]]'
-                card_mod:
-                  style:
-                    width: 450px
-#            card_mod:
-#              style: |
-#                :host {
-#                  --paper-item-icon-color:
-#                    {% if is_state_attr('climate.[[area]]', 'hvac_action', 'heating') %}
-#                      rgb(51, 204, 51);
-#                    {% elif is_state_attr('climate.[[area]]', 'hvac_action', 'idle') %}
-#                      rgb(255, 0, 0);
-#                    {% else %}
-#                      rgb(128, 128, 128);
-#                    {% endif %}
-#                }
+#      - type: entities
+#        show_header_toggle: false
+#        entities:
+#          - type: custom:multiple-entity-row
+#            entity: input_select.climate_[[area]]
+##            name: Thermostat
+#            icon: mdi:timer
+#            toggle: false
+#            entities:
+#              - entity: climate.[[area]]
+#                attribute: current_temperature
+#                name: Current Temperature
+#                tap_action: 
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: Configuration
+#                    card:
+#                      type: custom:decluttering-card
+#                      template: thermostat_popup
+#                      variables:
+#                        - area: '[[area]]'
+#                    card_mod:
+#                      style:
+#                        width: 450px
+#              - entity: climate.[[area]]
+#                attribute: temperature
+#                name: Set Temperature
+#                tap_action:
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: Configuration
+#                    card:
+#                      type: custom:decluttering-card
+#                      template: thermostat_popup
+#                      variables:
+#                        - area: '[[area]]'
+#                    card_mod:
+#                      style:
+#                        width: 450px
+#              - entity: climate.[[area]]
+#                attribute: hvac_action
+#                name: Status
+#                tap_action:
+#                  action: call-service
+#                  service: browser_mod.popup
+#                  service_data:
+#                    title: Configuration
+#                    card:
+#                      type: custom:decluttering-card
+#                      template: thermostat_popup
+#                      variables:
+#                        - area: '[[area]]'
+#                    card_mod:
+#                      style:
+#                        width: 450px
+#            tap_action:
+#              action: call-service
+#              service: browser_mod.popup
+#              service_data:
+#                title: Configuration
+#                card:
+#                  type: custom:decluttering-card
+#                  template: thermostat_popup
+#                  variables:
+#                    - area: '[[area]]'
+#                card_mod:
+#                  style:
+#                    width: 450px

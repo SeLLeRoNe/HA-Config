@@ -53,7 +53,7 @@ alerts:
           - name: Play Room Window
             entity: binary_sensor.play_room_window_contact
           - name: Play Room PIR
-            entity: binary_sensor.play_room_rtcgq11lm_occupancy
+            entity: binary_sensor.play_room_radar_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -90,7 +90,7 @@ alerts:
           - name: Kitchen Leak
             entity: binary_sensor.kitchen_sjcgq11lm_water_leak
           - name: Kitchen PIR
-            entity: binary_sensor.kitchen_rtcgq11lm_occupancy
+            entity: binary_sensor.kitchen_radar_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false
@@ -139,9 +139,9 @@ alerts:
         show_state: false
         state_color: true
         entities:
-          - name: Common Bathroom Window
+          - name: First Floor Bathroom Window
             entity: binary_sensor.first_floor_bathroom_window_contact
-          - name: Common Bathroom PIR
+          - name: First Floor Bathroom PIR
             entity: binary_sensor.first_floor_bathroom_rtcgq11lm_occupancy
       - type: glance
         columns: 2
@@ -164,7 +164,7 @@ alerts:
           - name: Studio Sonia Window
             entity: binary_sensor.studio_sonia_window_contact
           - name: Studio Sonia PIR
-            entity: binary_sensor.studio_sonia_rtcgq11lm_occupancy
+            entity: binary_sensor.studio_sonia_radar_occupancy
       - type: glance
         columns: 2
         show_header_toggle: false

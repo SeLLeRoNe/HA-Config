@@ -1,4 +1,0 @@
----
-lights_automations_motion_master_bathroom:
-  name: Motion Detection - Master Bathroom
-  icon: mdi:motion-sensor

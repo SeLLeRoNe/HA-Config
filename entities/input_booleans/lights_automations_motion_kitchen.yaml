@@ -1,4 +1,0 @@
----
-lights_automations_motion_kitchen:
-  name: Motion Detection - Kitchen
-  icon: mdi:motion-sensor
