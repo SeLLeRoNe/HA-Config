@@ -2,7 +2,7 @@
 climate:
   - platform: generic_thermostat
     name: House
-    heater: switch.house_heating_system_disabled
+    heater: switch.house_heating_system
     target_sensor: sensor.house_temperature
     min_temp: 15
     max_temp: 25
@@ -496,7 +496,9 @@ input_select:
 
 timer:
   heating_push_house:
+    name: Push
     duration: '02:00:00'
+    restore: true
 
 automation:
   - id: '1609837961127'
@@ -582,7 +584,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'off'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'on'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -610,7 +612,7 @@ automation:
                   entity_id: input_boolean.guest_mode
                   state: 'off'
                 - condition: state
-                  entity_id: input_boolean.cleaning_mode
+                  entity_id: schedule.cleaning_mode
                   state: 'on'
         - condition: state
           entity_id: climate.house
@@ -746,7 +748,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'off'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'on'
       - platform: state
         entity_id: climate.house
@@ -769,7 +771,7 @@ automation:
               entity_id: input_boolean.guest_mode
               state: 'on'
             - condition: state
-              entity_id: input_boolean.cleaning_mode
+              entity_id: schedule.cleaning_mode
               state: 'off'
         - condition: state
           entity_id: input_boolean.climate_house_heating_push
@@ -1514,7 +1516,7 @@ automation:
         entity_id: climate.house
         to: 'off'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
     condition:
       condition: and
@@ -1528,7 +1530,7 @@ automation:
         - condition: or
           conditions:
             - condition: state
-              entity_id: input_boolean.cleaning_mode
+              entity_id: schedule.cleaning_mode
               state: 'on'
             - condition: state
               entity_id: input_boolean.guest_mode
@@ -1552,7 +1554,7 @@ automation:
       - platform: state
         entity_id: input_number.heating_push_house
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'on'
     condition:
       condition: or
@@ -1565,7 +1567,7 @@ automation:
             - condition: template
               value_template: "{{ states('input_number.heating_push_house') < states('sensor.house_temperature') }}"
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'on'
     action:
       - delay:
@@ -1592,7 +1594,7 @@ automation:
           entity_id: input_boolean.climate_house_heating_push
           state: 'on'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -1632,7 +1634,7 @@ automation:
         entity_id: input_boolean.climate_house_heating_push
         to: 'off'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
     action:
       - service: input_boolean.turn_off
@@ -1656,7 +1658,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -1784,7 +1786,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -1822,7 +1824,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -1950,7 +1952,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -1988,7 +1990,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2116,7 +2118,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2154,7 +2156,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2282,7 +2284,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2320,7 +2322,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2448,7 +2450,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2486,7 +2488,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2614,7 +2616,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2652,7 +2654,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2780,7 +2782,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2818,7 +2820,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -2946,7 +2948,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -2984,7 +2986,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3112,7 +3114,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3150,7 +3152,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3278,7 +3280,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3316,7 +3318,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3444,7 +3446,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3482,7 +3484,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3610,7 +3612,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3648,7 +3650,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3776,7 +3778,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3814,7 +3816,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -3942,7 +3944,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -3980,7 +3982,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4108,7 +4110,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -4146,7 +4148,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4274,7 +4276,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -4312,7 +4314,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4440,7 +4442,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -4478,7 +4480,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4606,7 +4608,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -4644,7 +4646,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4772,7 +4774,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
@@ -4810,7 +4812,7 @@ automation:
         entity_id: input_boolean.guest_mode
         to: 'on'
       - platform: state
-        entity_id: input_boolean.cleaning_mode
+        entity_id: schedule.cleaning_mode
         to: 'off'
       - platform: state
         entity_id: input_boolean.climate_house_heating_push
@@ -4938,7 +4940,7 @@ automation:
               entity_id: climate.house
               state: 'off'
         - condition: state
-          entity_id: input_boolean.cleaning_mode
+          entity_id: schedule.cleaning_mode
           state: 'off'
     action:
       - service: climate.turn_on
