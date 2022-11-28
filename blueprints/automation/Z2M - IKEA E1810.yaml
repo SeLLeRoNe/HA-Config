@@ -1,0 +1,59 @@
+blueprint:
+  name: ZigBee2Mqtt - Ikea E1810 Tradfri Remote Control
+  description: Control anything using "Ikea E1810 Tradfri Remote Control"
+  domain: automation
+  input:
+    action_sensor:
+      name: Remote
+      description: Zigbee2mqtt action sensor
+      selector:
+        entity:
+          integration: mqtt
+          domain: sensor
+          multiple: false
+    toggle_action:
+      name: Toggle Action
+      default: []
+      selector:
+        action: {}
+    arrow_right_action:
+      name: Arrow Right Action
+      default: []
+      selector:
+        action: {}
+    arrow_left_action:
+      name: Arrow Left Action
+      default: []
+      selector:
+        action: {}
+    brightness_up_action:
+      name: Brightness Up Action
+      default: []
+      selector:
+        action: {}
+    brightness_down_action:
+      name: Brightness Down Action
+      default: []
+      selector:
+        action: {}
+  source_url: https://community.home-assistant.io/t/zigbee2mqtt-ikea-e1810-tradfri-remote-control/308820
+mode: restart
+max_exceeded: silent
+trigger:
+  platform: state
+  entity_id: !input action_sensor
+  attribute: action
+action:
+- variables:
+    command: '{{ trigger.to_state.state }}'
+- choose:
+  - conditions: '{{ command == ''toggle'' }}'
+    sequence: !input toggle_action
+  - conditions: '{{ command == ''arrow_right_click'' }}'
+    sequence: !input arrow_right_action
+  - conditions: '{{ command == ''arrow_left_click'' }}'
+    sequence: !input arrow_left_action
+  - conditions: '{{ command == ''brightness_up_click'' }}'
+    sequence: !input brightness_up_action
+  - conditions: '{{ command == ''brightness_down_click'' }}'
+    sequence: !input brightness_down_action

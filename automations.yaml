@@ -2257,8 +2257,6 @@
     - switch.adaptive_lighting_sleep_mode_guest_bedroom
     - switch.adaptive_lighting_sleep_mode_basement_corridor
     - switch.adaptive_lighting_sleep_mode_basement_bathroom
-    - switch.adaptive_lighting_sleep_mode_garage
-    - switch.adaptive_lighting_sleep_mode_laundry_room
   variables:
     night_mode: '{{ states(''input_boolean.night_mode'') }}'
 - id: '619264096959765'
@@ -3467,7 +3465,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy
     below: 5
     for:
       seconds: 15
@@ -3516,7 +3514,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy
     below: 1
     for:
       seconds: 15
@@ -3554,7 +3552,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy
     above: 1
   condition:
   - condition: or
@@ -3579,7 +3577,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy
     above: 500
     for:
       seconds: 15
@@ -3604,7 +3602,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.laundry_room_washing_machine_plug_energy_power
+    entity_id: sensor.laundry_room_washing_machine_plug_energy
     above: 500
     below: 2250
   condition:
@@ -4219,6 +4217,30 @@
       click_type: single_push
     id: button_click
     enabled: true
+  - type: motion
+    platform: device
+    device_id: e8531280702f31aa10498ccbecfe00a1
+    entity_id: binary_sensor.basement_stairs_rtcgq11lm_occupancy
+    domain: binary_sensor
+    id: pir_on
+  - type: no_motion
+    platform: device
+    device_id: e8531280702f31aa10498ccbecfe00a1
+    entity_id: binary_sensor.basement_stairs_rtcgq11lm_occupancy
+    domain: binary_sensor
+    id: pir_off
+  - type: motion
+    platform: device
+    device_id: 12e1d15c8205600aace56f457ebc4c8c
+    entity_id: binary_sensor.ground_floor_downstairs_rtcgq11lm_occupancy
+    domain: binary_sensor
+    id: pir_on
+  - type: no_motion
+    platform: device
+    device_id: 12e1d15c8205600aace56f457ebc4c8c
+    entity_id: binary_sensor.ground_floor_downstairs_rtcgq11lm_occupancy
+    domain: binary_sensor
+    id: pir_off
   condition: []
   action:
   - choose:
@@ -4239,6 +4261,16 @@
     - conditions:
       - condition: trigger
         id: timer_finished
+      - type: is_no_motion
+        condition: device
+        device_id: e8531280702f31aa10498ccbecfe00a1
+        entity_id: binary_sensor.basement_stairs_rtcgq11lm_occupancy
+        domain: binary_sensor
+      - type: is_no_motion
+        condition: device
+        device_id: 12e1d15c8205600aace56f457ebc4c8c
+        entity_id: binary_sensor.ground_floor_downstairs_rtcgq11lm_occupancy
+        domain: binary_sensor
       sequence:
       - service: light.turn_off
         data: {}
@@ -4246,6 +4278,32 @@
           entity_id:
           - light.basement_corridor_lights
           - light.basement_stairs_lights
+    - conditions:
+      - condition: trigger
+        id: pir_on
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_basement_corridor
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id:
+          - light.basement_corridor_ceiling_lights
+          - light.basement_stairs_lights
+    - conditions:
+      - condition: trigger
+        id: pir_off
+      sequence:
+      - service: timer.cancel
+        data: {}
+        target:
+          entity_id: timer.lights_basement_corridor
+      - service: timer.start
+        data: {}
+        target:
+          entity_id: timer.lights_basement_corridor
   mode: single
 - id: '1668634357356'
   alias: Lights - Ground Floor Corridor
@@ -4303,7 +4361,8 @@
       - service: light.toggle
         data: {}
         target:
-          entity_id: light.ground_floor_corridor_lights
+          entity_id:
+          - light.ground_floor_corridor_ceiling_lights
     - conditions:
       - condition: trigger
         id: timer_finished
@@ -4818,3 +4877,22 @@
       - cover.studio_sonia_blinds
       - cover.guest_bedroom_blinds
   mode: single
+- id: '1669414540016'
+  alias: Sleep as Android MQTT actions
+  description: ''
+  use_blueprint:
+    path: IATkachenko/blueprint.yaml
+    input:
+      device: cd93fc449f336d0cd696227bca9c6959
+      person: person.andrea
+- id: '1669417245458'
+  alias: Low Battery Notification
+  description: ''
+  use_blueprint:
+    path: Low Battery Notification.yaml
+    input:
+      actions:
+      - service: notify.telegram_andrea
+        data:
+          title: Home Assistant - Battery Monitor
+          message: Low battery detected in {{sensors}}.

@@ -1,0 +1,122 @@
+blueprint:
+  name: Low battery level detection & notification for all battery sensors
+  description: Regularly test all sensors with 'battery' device-class for crossing
+    a certain battery level threshold and if so execute an action.
+  domain: automation
+  source_url: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+  input:
+    threshold:
+      name: Battery warning level threshold
+      description: Battery sensors below threshold are assumed to be low-battery (as
+        well as binary battery sensors with value 'on').
+      default: 20
+      selector:
+        number:
+          min: 5.0
+          max: 100.0
+          unit_of_measurement: '%'
+          mode: slider
+          step: 5.0
+    time:
+      name: Time to test on
+      description: Test is run at configured time
+      default: '10:00:00'
+      selector:
+        time: {}
+    monday_enabled:
+      name: Monday
+      description: Run test on Monday
+      default: true
+      selector:
+        boolean: {}
+    tuesday_enabled:
+      name: Tuesday
+      description: Run test on Tuesday
+      default: true
+      selector:
+        boolean: {}
+    wednesday_enabled:
+      name: Wednesday
+      description: Run test on Wednesday
+      default: true
+      selector:
+        boolean: {}
+    thursday_enabled:
+      name: Thursday
+      description: Run test on Thursday
+      default: true
+      selector:
+        boolean: {}
+    friday_enabled:
+      name: Friday
+      description: Run test on Friday
+      default: true
+      selector:
+        boolean: {}
+    saturday_enabled:
+      name: Saturday
+      description: Run test on Saturday
+      default: true
+      selector:
+        boolean: {}
+    sunday_enabled:
+      name: Sunday
+      description: Run test on Sunday
+      default: true
+      selector:
+        boolean: {}
+    exclude:
+      name: Excluded Sensors
+      description: Battery sensors (e.g. smartphone) to exclude from detection. Only
+        entities are supported, areas and devices must be expanded!
+      default: {}
+      selector:
+        target:
+          entity:
+            device_class: battery
+    actions:
+      name: Actions
+      description: Notifications or similar to be run. {{sensors}} is replaced with
+        the names of sensors being low on battery.
+      selector:
+        action: {}
+variables:
+  monday_enabled: !input monday_enabled
+  tuesday_enabled: !input tuesday_enabled
+  wednesday_enabled: !input wednesday_enabled
+  thursday_enabled: !input thursday_enabled
+  friday_enabled: !input friday_enabled
+  saturday_enabled: !input saturday_enabled
+  sunday_enabled: !input sunday_enabled
+  current_day: '{{ now().weekday() | int }}'
+  threshold: !input threshold
+  exclude: !input exclude
+  sensors: "{% set result = namespace(sensors=[]) %} {% for state in states.sensor
+    | selectattr('attributes.device_class', '==', 'battery') %}\n  {% if exclude.entity_id
+    is defined %}\n    {% if 0 <= state.state | int(-1) < threshold | int and not
+    state.entity_id in exclude.entity_id %}\n      {% set result.sensors = result.sensors
+    + [state.name ~ ' (' ~ state.state ~ ' %)'] %}\n    {% endif %}\n  {% else %}\n
+    \   {% if 0 <= state.state | int(-1) < threshold | int %}\n      {% set result.sensors
+    = result.sensors + [state.name ~ ' (' ~ state.state ~ ' %)'] %}\n    {% endif
+    %}\n  {% endif %}\n{% endfor %} {% for state in states.binary_sensor | selectattr('attributes.device_class',
+    '==', 'battery') | selectattr('state', '==', 'on') %}\n  {% if exclude.entity_id
+    is defined %}\n    {% if not state.entity_id in exclude.entity_id %}\n      {%
+    set result.sensors = result.sensors + [state.name] %}\n    {% endif %}\n  {% else
+    %}\n    {% set result.sensors = result.sensors + [state.name] %}\n  {% endif %}\n{%
+    endfor %} {{\"⤵ \\n- \"}}{{result.sensors|join('\\n- ')}}"
+trigger:
+- platform: time
+  at: !input time
+condition:
+- condition: template
+  value_template: "{{ \n  (current_day == 0 and monday_enabled) or \n  (current_day
+    == 1 and tuesday_enabled) or \n  (current_day == 2 and wednesday_enabled) or\n
+    \ (current_day == 3 and thursday_enabled) or \n  (current_day == 4 and friday_enabled)
+    or\n  (current_day == 5 and saturday_enabled) or\n  (current_day == 6 and sunday_enabled)\n}}"
+- condition: template
+  value_template: '{{ sensors != "⤵ \n-"}}'
+action:
+- choose: []
+  default: !input actions
+mode: single
+max_exceeded: silent
